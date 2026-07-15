@@ -1,0 +1,3 @@
+Code for the estimator, synthetic benchmarks, empirical analyses, figure generation and manuscript builds is provided with the submission. Environment specifications, execution parameters and random-seed conventions are included. The code regenerates the reported figures and tables from the supplied derived inputs and supports fresh empirical and benchmark reruns under the documented settings. Construction of the analysis panels from original source files depends on the third-party access conditions described in the `Data availability` statement.
+
+The author will deposit the redistributable code and derived data in a DOI-minting repository before publication. The persistent identifier, licence and access terms will be added to the final record.

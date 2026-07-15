@@ -1,0 +1,1 @@
+Large-language-model assistance was used for drafting support, manuscript editing, and code review assistance during revision. All scientific decisions, empirical checks, and final manuscript approval were performed by the sole author.

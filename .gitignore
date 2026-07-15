@@ -1,0 +1,40 @@
+# macOS and editor metadata
+.DS_Store
+*.swp
+*.swo
+
+# Language caches and local environments
+__pycache__/
+*.py[cod]
+node_modules/
+.venv/
+venv/
+
+# Raw/restricted data, generated evidence, and build products
+data/
+output/
+tmp/
+archive/
+**/_archives/
+.aris/
+
+# Generated manuscript products
+/main.tex
+/supplementary.tex
+/monte_carlo_cp_network_tvp_var_results.csv
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+
+# Local secrets and credentials
+.env
+.env.*
+*.pem
+*.key

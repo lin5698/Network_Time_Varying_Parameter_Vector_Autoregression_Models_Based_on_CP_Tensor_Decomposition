@@ -1,0 +1,185 @@
+# 高影响重投实验计划
+
+**问题**：时间变化网络模型经过正则化或低秩重构后，哪些 topology-substitution response queries 仍然可识别、可计算并可稳定恢复？
+
+**方法主线**：将现有一阶算子推广为 basis-switchable operator，保留每个 topology basis 的系数块，并用 query-identifiability 条件和端到端误差界连接表示、估计与有限期响应。
+
+**日期**：2026-07-15
+
+## Current Evidence Gate (2026-07-15)
+
+- C1 query identifiability: exact numerical constructions R001/R002 pass; generalized basis and structured-inverse runs remain pending.
+- C2 end-to-end recovery: **partial, high-confidence external-agent judgment** after R005/R006.
+- R006 remains `FAIL`: rho=0.95 approximate-rank cells pass, but rho=0.80 absolute operator gates fail and common coefficient scaling confounds stability with signal scale.
+- Working claim is restricted to smooth fixed-subspace paths with `a3 <= 0.25` in the tested rho=0.95 scaling regime; Tucker is at least as strong as CP.
+- Manuscript promotion and N=50/100 expansion are frozen until R006b separates stability from query scale/state excitation and R007 tests temporal/subspace misspecification.
+
+## Claim Map
+
+| Claim | Why It Matters | Minimum Convincing Evidence | Linked Blocks |
+| --- | --- | --- | --- |
+| C1. Query identifiability | 把“保留 topology argument”从特定 network VAR 设计原则提升为适用于一般 topology-basis operator 的可检验条件。 | 一个必要且充分的 kernel/row-space 定理；一阶、扩散多项式和受限 block 三类验证；collapsed representation 的不可识别反例和可识别例。 | B1, B2 |
+| C2. End-to-end recovery | 说明 block-preserving low-rank reconstruction 不仅保留 query，而且在 separation、rank approximation、stability 和 topology noise 可控时改善 response recovery 并可扩展。 | 局部 block recovery + approximate low-rank projection + uniform response transfer 的端到端界；强同目标基线；N=50/100/200 规模与 coherent uncertainty 验证；真实公共网络应用。 | B1, B3, B4, B5 |
+
+**Anti-claims to rule out**：
+
+- 改进只来自 synthetic DGP 与 CP rank 完全匹配。
+- 改进只相对于弱的 unrestricted rolling baseline 成立。
+- endpoint preservation 只适用于 $A+BW$，不能推广到其他 graph operators。
+- 大规模结果依赖单次 N=50 stress run。
+- 真实应用只返回无科学后果的描述性曲线。
+- 当前独立窗口 perturbation 可以被误读为正式覆盖率保证。
+
+## Paper Storyline
+
+### Main paper must prove
+
+1. 一个表示对给定 topology query 可识别，当且仅当其存储算子的零空间包含关系满足 query-specific kernel condition。
+2. Basis-switchable reconstruction 在同一 fitted path 上支持 observed、zero-network、frozen 和 higher-order diffusion topology readouts。
+3. 在 separation、低秩近似和 stability 条件下，block estimation error 可传递为统一的 finite-horizon response error。
+4. 与强同目标平滑器和原生 graph sequence baselines 相比，方法在 query recovery、prediction、stability 和成本之间具有可信优势。
+5. 公共电力网络中的预先指定事件分析产生一个具有实际解释价值的 topology-substitution readout，同时保留非因果边界。
+
+### Appendix can support
+
+- 完整 rank、noise、horizon、topology-distance phase diagrams。
+- 所有 native graph baseline 的 tuning grids、失败率和资源记录。
+- RCEP 与 NYC 作为 positive/near-null portability checks。
+- 额外 topology bases、heavy tails、missing edges 和 placebo events。
+
+### Experiments intentionally cut
+
+- 不再增加没有明确 query mapping 的 graph-feature surrogate 名称。
+- 不把预测更强自动解释为 topology-response recovery 更强。
+- 不为扩大表格而保留只运行 1-3 次的 headline rows。
+- 不把相关性网络指标提升为机制识别。
+
+## Experiment Blocks
+
+### B1: Theory-aligned phase diagram
+
+- **Claim tested**：C2；误差随 weak separation、rank approximation、stability margin、topology distance 和 measurement noise 的变化符合理论链条。
+- **Why this block exists**：当前 benchmark 场景多，但没有直接把每个理论常数映射到可控实验轴。
+- **Dataset / split / task**：合成 dynamic network VAR；$N\in\{20,50,100\}$，$T\in\{200,400\}$；训练/验证/测试按时间顺序切分；每个主格点 50 seeds，N=100 使用 20 seeds。
+- **Controlled axes**：residualized network Gram 最小特征值；true/estimated rank；coefficient drift；spectral radius 0.50/0.80/0.95/0.99；$\|W_1-W_0\|$；edge dropout；weight noise；Gaussian 与 t5 shocks。
+- **Compared systems**：block-preserving CP；block-preserving Tucker；temporally fused or spline-smoothed network VAR；unrestricted local rolling；collapsed-map smoother。
+- **Decisive metrics**：effective-operator error；topology-substitution response error；network-component GIRF error；frozen-topology error；failure/instability rate。
+- **Secondary metrics**：one-step prediction；runtime；peak memory；selected rank；optimization gap。
+- **Setup details**：所有可调方法使用同一 chronological validation budget；主结论只用至少 20 replications 的 rows；报告 paired seed differences 和 bootstrap confidence intervals over seeds。
+- **Success criterion**：CP 或另一 block-preserving estimator 在可声明 operating regime 内显著优于 local/collapsed baselines；误差在 weak separation 和 near-instability 处按理论预期恶化；负面区域被明确识别而不是隐藏。
+- **Failure interpretation**：若优势只在 exact-rank smooth DGP 出现，则将论文降为特定 CP smoother，而不能声称一般 operator-preserving advance。
+- **Table / figure target**：Main Fig. 2 phase diagram；Main Table 1 paired recovery summary；完整 grid 放 Supplementary。
+- **Priority**：MUST-RUN。
+
+### B2: Query identifiability across operator families
+
+- **Claim tested**：C1；kernel condition 而不是 CP family label 决定 endpoint availability。
+- **Why this block exists**：这是从特定 $A+BW$ 模型提升为广义计算表示贡献的关键。
+- **Dataset / split / task**：可精确计算 truth 的合成 operators，不需要预测训练。
+- **Operator families**：一阶 $A+B_1W$；扩散多项式 $A+B_1W+B_2W^2$；已知稀疏/对角 block restrictions；多个 stored topology evaluations；不可识别 collapsed single-topology case。
+- **Compared systems**：full basis-preserving storage；single collapsed map；multiple-topology stored maps；structured inverse where assumptions make it identifiable。
+- **Metrics**：kernel inclusion pass/fail；identified subspace dimension；query reconstruction error；adversarial equivalent-block endpoint gap。
+- **Setup details**：对每个 representation 先给解析判定，再做数值 rank tolerance sensitivity；不把 floating-point rank 当成理论证明。
+- **Success criterion**：定理正确预测所有 availability cases；展示至少一个 collapsed representation 可恢复的受限例子，避免不成立的普遍不可能性主张。
+- **Failure interpretation**：若 generalized basis 只能靠强到不现实的条件识别，则将理论收回到线性一阶 operator class。
+- **Table / figure target**：Main Fig. 1 representation-to-query map；Main Proposition/Theorem 1；Supplementary exact constructions。
+- **Priority**：MUST-RUN。
+
+### B3: Strong native baseline protocol
+
+- **Claim tested**：C2，并排除“只赢弱 baseline”的解释。
+- **Why this block exists**：当前 graph-neural、diffusion 和 recurrent rows 是手工 graph-feature projections，不是原生训练、调参公平的 graph sequence systems。
+- **Dataset / split / task**：B1 的主 synthetic settings，加 RCEP/NYC/EIA 的 chronological forecasting splits。
+- **Baseline families**：
+  1. Classical same-target: local ridge、kernel/spline TVP-NVAR、temporally fused network VAR。
+  2. Low-rank same-target: CP、Tucker、一个 matrix/tensor-train or dynamic-factor alternative。
+  3. Native graph sequence: DCRNN 与一个公开实现、支持 supplied adjacency 的强 temporal graph model。
+- **Metrics**：同目标模型报告 endpoint availability 和 response error；native nonlinear graph models同时报告 forecasting loss，并通过固定状态下的 finite perturbation/Jacobian protocol 报告 topology-query error；所有模型报告参数量、tuning trials 和运行成本。
+- **Setup details**：共享训练/验证/测试 dates；相同 tuning trial 上限；至少 3 training seeds；禁止把 projected linear surrogate 命名为 native GNN。
+- **Success criterion**：basis-preserving estimator 在 query recovery 上保持优势，同时 prediction 不出现不可接受劣势；结论对至少一个强 classical 和一个 native graph baseline 成立。
+- **Failure interpretation**：若 native model 在 prediction 与 topology query 上同时占优，则论文必须转向 representation diagnostic，而不能声称 estimator 优势。
+- **Table / figure target**：Main Table 2；prediction-query Pareto figure；完整 tuning audit 放 Supplementary。
+- **Priority**：MUST-RUN。
+
+### B4: Scale and coherent uncertainty
+
+- **Claim tested**：C2；去除 N=50 单次 stress 和独立窗口 perturbation 的证据弱点。
+- **Why this block exists**：高影响方法论文不能用单次大规模结果或非正式 sensitivity 代替 scale/inference evidence。
+- **Dataset / split / task**：$N=20/50/100/200$，T 随 N 增长；主要 smooth 与 misspecified DGP；N=20/50 各 50 seeds，N=100 各 20 seeds，N=200 各 10 seeds。
+- **Compared systems**：B3 中能在对应规模完成的 same-target methods；native GNN 只在资源允许且协议公平时运行。
+- **Metrics**：response error、prediction error、runtime、memory、failure、stability；90%/95% pointwise interval coverage 与 width。
+- **Setup details**：新增一次性 series-level moving-block or dependent-wild bootstrap，在完整 pseudo-series 上重估所有 rolling windows，保持跨窗口依赖；与现有 independent-window sensitivity 分开命名和报告。
+- **Success criterion**：N=50 至少 20 reps；N=100/200 给出重复运行和资源曲线；coherent bootstrap 在主 operating regime 内达到合理覆盖且不靠极宽区间。
+- **Failure interpretation**：若 coverage 失真，保留 sensitivity wording，不提出 inferential guarantee；若 N=200 不可运行，明确复杂度边界并优化实现。
+- **Table / figure target**：Main Fig. 3 scaling/coverage；Supplementary resource and coverage tables。
+- **Priority**：MUST-RUN。
+
+### B5: Consequential public-network application
+
+- **Claim tested**：C2；同一 operator 在实际动态基础设施网络中产生可解释且可复核的 topology-substitution conclusion。
+- **Why this block exists**：RCEP 的重估区间跨零，NYC 的 aggregate contrast 接近零，二者不足以形成广泛读者所需的立即实践信号。
+- **Dataset / split / task**：首选 US EIA-930 balancing-authority hourly/daily load and interchange data；构造动态有向 interchange-share topology；预先指定 2021 Winter Storm Uri 时段和事件前 frozen topology；保留 chronological validation 与 placebo windows。
+- **Compared systems**：block-preserving CP/Tucker/temporal smoother；observed、zero-network、pre-event frozen 和 edge-attenuation readouts。
+- **Metrics**：aggregate finite-horizon propagation；regional response decomposition；observed-minus-frozen contrast；uncertainty；held-out prediction；placebo-event distribution；stability和 weak separation。
+- **Setup details**：在查看 topology-substitution outcome 前冻结事件窗口、节点纳入规则、缺失处理、horizon 和 benchmark period；所有原始数据来自公开官方来源。
+- **Success criterion**：事件窗口的 topology substitution 对传播方向或集中度给出稳定、可解释且通过 placebo/context checks 的差异；不声称网络变化造成事件结果。
+- **Failure interpretation**：若结果近零，将其作为第三个 portability null，不足以支撑 broad high-selectivity route；需要更换应用或降低投稿目标。
+- **Table / figure target**：Main Fig. 4 infrastructure application；RCEP/NYC 移至次要主图或 Supplementary。
+- **Priority**：MUST-RUN，但在 B1/B2 stop-go gate 通过后再投入数据工程。
+
+## Run Order and Milestones
+
+| Milestone | Goal | Runs | Decision Gate | Cost | Risk |
+| --- | --- | --- | --- | --- | --- |
+| M0 | 验证数学对象和现有 metric | R001-R004 | kernel tests、response metrics、seed reproducibility 全通过 | 1-2 CPU days | 旧 benchmark 稳定化会掩盖真实 failure |
+| M1 | 建立强 baseline 和 theory axes | R005-R010, including R006b | strong same-target baseline 可复现；separation、rank approximation、stability 与 signal scale 可区分 | 3-7 CPU days | 当前 stability DGP 与 SNR 混杂；JS 数值实现不适合 N>=100 |
+| M2 | 跑主 synthetic evidence | R011-R017 | paired recovery 优势在预先声明区域成立；N=50 不再是 bounded single run | 1-3 wall-clock weeks | 大 grid 产生选择性报告诱因 |
+| M3 | 验证 generalized operator families | R018-R021 | 一阶和至少一个 higher-order basis family 通过解析/数值一致性 | 3-5 days | generalized claim 需要过强 assumptions |
+| M4 | 原生 graph baseline 与 scale | R022-R026 | 公平 tuning protocol 完成；N=100/200 资源曲线可用 | 1-2 GPU weeks + CPU | 本机无 NVIDIA GPU |
+| M5 | Coherent uncertainty | R027-R030 | coverage/width 达到可报告水平，否则保留 sensitivity 定位 | 1-2 CPU weeks | bootstrap 成本高且理论依赖复杂 |
+| M6 | EIA application | R031-R036 | 预注册式分析产生非平凡、稳定、非因果的 scientific readout | 2-4 weeks | 数据清洗和网络定义可能主导结果 |
+| M7 | Paper gate | 全部 MUST runs | 两项主张均有理论和实验闭环；否则转 specialist journal | 3-5 days audit | 继续堆实验而不收缩 claim |
+
+## Compute and Data Budget
+
+- 当前机器：Apple M5，10 CPU cores、10 GPU cores、16 GB unified memory、Metal 4；当前 Python 环境没有 MLX、JAX、TensorFlow 或 PyTorch/MPS 后端。
+- 当前 1,124 条 benchmark records 的记录运行时间合计约 1.65 小时，但 N=50 只有部分方法 1-4 reps，不能直接外推完整高规模成本。
+- Classical/tensor synthetic expansion：预计 100-250 CPU-hours；建议先把核心线性代数迁移到 NumPy/JAX/PyTorch，并支持 process-level parallelism。
+- Coherent bootstrap：预计 150-400 CPU-hours，取决于 N、draws 和是否缓存局部设计矩阵。
+- Native temporal GNN：预计 100-300 GPU-hours；先在隔离环境评估 Mac MPS 的算子兼容性、数值等价性与内存上限，无法公平完成时再使用外部 GPU 或云资源。
+- EIA-930：公开数据；预计 2-5 天数据获取/验证，1-2 周建模与 placebo checks。
+- 最大瓶颈：不是现有 CP 运行时间，而是公平的原生 baseline、series-level uncertainty 和 N=100/200 内存/数值稳定性。
+
+## Risks and Mitigations
+
+- **Risk: generalized theory 与现有实现脱节。**
+  - Mitigation: 先实现 $W$ 与 $W^2$ 两个 basis blocks；只有端到端测试通过后才把 basis-switchable operator 写入主文。
+- **Risk: CP 优势来自 exact low-rank DGP。**
+  - Mitigation: 加入 approximate rank、non-CP temporal path、abrupt drift 和 rank misspecification；预先声明 win/loss region。
+- **Risk: GNN query protocol 不公平。**
+  - Mitigation: 将 prediction 与 topology-query metrics 分栏；使用模型原生 supplied adjacency；固定 perturbation/Jacobian 定义。
+- **Risk: bootstrap coverage 不成立。**
+  - Mitigation: 将 coverage 作为 stop-go gate；失败时不升级 inferential claim。
+- **Risk: EIA application 仍近零。**
+  - Mitigation: 使用预先指定事件和 placebo，不事后搜索最大效果；近零则降低 broad-impact route 而不是改窗口追结果。
+- **Risk: 计算预算失控。**
+  - Mitigation: 每个 milestone 先跑 3-5 seeds；通过 gate 后才扩展 replications。
+
+## Next Three Runs
+
+1. **R006b design gate**：构造 fixed-query-norm stability axis，并用 matched-excitation diagnostic 与原生 VAR panel 分开审计 estimation/SNR coupling。
+2. **R007**：在 R006b 通过后运行 smooth/abrupt x fixed/rotating path grid，分 change-point 与 far bands 报告。
+3. **R010**：建立 NumPy 与 Mac MLX/MPS 候选后端的数值等价性、runtime 和 unified-memory audit；只有 M1 绝对恢复 gate 通过后才扩 N。
+
+## Final Checklist
+
+- [ ] Main paper tables are covered
+- [ ] Novelty is isolated through query-identifiability evidence
+- [ ] Simplicity is defended against stronger same-target smoothers
+- [ ] Native graph baselines use a fair prediction/query protocol
+- [ ] N=50 is no longer a bounded single-run headline
+- [ ] N=100/200 scaling evidence is repeated and resource-accounted
+- [ ] Coherent uncertainty is separated from sensitivity perturbations
+- [ ] EIA application is preregistered before outcome inspection
+- [ ] Nice-to-have runs are separated from must-run runs
+- [ ] Broad-journal resubmission proceeds only after M7 passes

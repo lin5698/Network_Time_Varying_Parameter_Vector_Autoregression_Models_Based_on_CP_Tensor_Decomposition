@@ -1,0 +1,77 @@
+{
+  "date": "2026-07-15",
+  "auditor": "independent-codex-reviewer",
+  "scope": "R006c endpoint-aware estimator post-remediation",
+  "overall_verdict": "warn",
+  "integrity_status": "pass",
+  "scientific_outcome": "fail",
+  "evaluation_type": "simulation_only",
+  "checks": {
+    "gt_provenance": {
+      "status": "pass",
+      "details": "Analytical simulation truth precedes estimation; oracle truth is confined to an ineligible diagnostic."
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "Truth-norm and declared zero-baseline denominators; raw, qualified and projected metrics remain separate."
+    },
+    "result_existence": {
+      "status": "pass",
+      "details": "2160 unique rows, zero failures, 216 summaries and zero independently recomputed gate mismatches."
+    },
+    "dead_code": {
+      "status": "pass",
+      "details": "The formal CLI reaches all declared paths; 44 R006c and 69 total experiment tests pass."
+    },
+    "leakage_causality": {
+      "status": "pass",
+      "details": "Held-out endpoints are absent from fitting and fused validation is strictly rolling-prefix."
+    },
+    "duplicate_provenance": {
+      "status": "pass",
+      "details": "Seven transitive code hashes match; primary and repeat have zero non-runtime differences."
+    },
+    "scope": {
+      "status": "pass",
+      "details": "N=20, T=200 simulation-only gate; broad endpoint-aware superiority is not licensed."
+    },
+    "gate_fidelity": {
+      "status": "pass",
+      "details": "One fixed candidate must pass two endpoints and all 16 required cells; diagnostics cannot rescue failures."
+    },
+    "eval_type": "simulation_only"
+  },
+  "rows": 2160,
+  "unique_rows": 2160,
+  "failure_rows": 0,
+  "nonfinite_values": 0,
+  "gate_numeric_mismatches": 0,
+  "duplicate_nonruntime_differences": 0,
+  "passed_cells": {
+    "anchor_split_cp3": 0,
+    "anchor_split_tucker333": 6
+  },
+  "promotion_candidates": [],
+  "claims": [
+    {
+      "id": "R006c-fixed-candidate-promotion",
+      "impact": "unsupported"
+    },
+    {
+      "id": "broad-endpoint-aware-superiority",
+      "impact": "unsupported"
+    },
+    {
+      "id": "matched-tucker-behavior",
+      "impact": "diagnostic_only"
+    }
+  ],
+  "prior_audits": [
+    {
+      "scope": "R006b stability-signal deconfounding",
+      "integrity_status": "pass",
+      "scientific_outcome": "fail",
+      "trace": ".aris/traces/experiment-audit/2026-07-15_run01/"
+    }
+  ]
+}

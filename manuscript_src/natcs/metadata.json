@@ -1,0 +1,29 @@
+{
+  "title": "When reconstructed network models retain topology-dependent responses",
+  "authors": [
+    "Yilin Wu"
+  ],
+  "affiliations": [
+    "Overseas Education College, Fujian Business University, Fuzhou 350012, China"
+  ],
+  "correspondence": "Correspondence should be addressed to Y.W.",
+  "keywords": [
+    "time-varying parameter VAR",
+    "tensor decomposition",
+    "network econometrics",
+    "generalized impulse responses",
+    "trade networks"
+  ],
+  "jel_classification": [
+    "C32",
+    "C63",
+    "F14",
+    "F15"
+  ],
+  "funding": "Natural Science Foundation of Fujian Province, Project No. 2025J011145.",
+  "reference_docx": "",
+  "output_docx": "output/doc/natcs_manuscript.docx",
+  "output_pdf": "output/pdf/natcs_manuscript.pdf",
+  "output_supp_docx": "output/doc/natcs_supplementary.docx",
+  "output_supp_pdf": "output/pdf/natcs_supplementary.pdf"
+}
