@@ -1,6 +1,16 @@
-# NCS Editorial First-Screen Audit
+# NCS Editorial First-Screen Audit (Historical)
 
 Purpose: audit what a Nature Computational Science editor sees before reading the full manuscript. This is a submission-support artifact for title, abstract, cover-letter and portal-field checks. It is not manuscript text and adds no new evidence.
+
+> **Current-status supersession, 2026-07-23.** `PAPER_CLAIM_AUDIT=BLOCKED`
+> and `EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL` make this a historical record,
+> not a current submission or portal-support document. In particular, its
+> abstract sentence audit, cover-letter analysis, Figure 3-4 discussion,
+> RCEP/NYC wording and derived-evidence reproducibility assessment are stale.
+> The authoritative active sources are `abstract.md`, `introduction.md`,
+> `results_framework.md`, `results_validation.md`, `discussion.md`, the claim
+> ledger and `ncs_source_only_rereview_20260723.md`. The only retained advice
+> is object-first framing and the Figure 2 endpoint-gate design principle.
 
 Audit date: 2026-07-07.
 
@@ -10,21 +20,21 @@ Serves: novelty / significance / rigour / clarity / generality / reproducibility
 
 ## 1. Title Signal
 
-Current title: "Topology-switchable response operators for evolving weighted networks."
+Current title: "Query-preserving topology-indexed responses in evolving weighted networks."
 
 First-screen read:
 
 | Screen question | Current signal | Risk | Keep or revise | Tags |
 | --- | --- | --- | --- | --- |
-| Does the title name a computational object? | Yes: "response operators" and "evolving weighted networks" signal a methods/object paper. | Low. | Keep current title unless a stronger query-preservation title is needed for portal wording. | novelty / clarity |
+| Does the title name a computational object? | Yes: "query-preserving", "topology-indexed responses" and "evolving weighted networks" signal a methods/object paper. | Low. | Keep the object and query in the title. | novelty / clarity |
 | Does it overlead with CP or RCEP? | No. CP and RCEP are absent from the title. | Low. | Keep CP and RCEP out of headline position. | novelty / significance |
 | Does it imply universal temporal-network scope? | No. "Weighted networks" is broad but bounded. | Moderate if readers assume all temporal-network models. | Keep limitations in abstract and cover letter. | generality / clarity |
 
 Safe alternate if editor-facing testing shows the query-preservation idea is still missed:
 
-- "Query-preserving response reconstruction for evolving weighted networks."
+- "Query-preserving response operators for evolving weighted networks."
 
-Use only if the authors want "query preservation" to be the first searchable phrase. The current title is more compact and object-like.
+Use only if the authors want a shorter title. The current title makes the query-preservation target more explicit.
 
 ## 2. Abstract Sentence-Function Audit
 
@@ -125,4 +135,8 @@ Do not move RCEP, NYC, CP rank, tariff details or topology-correlation diagnosti
 
 ## 9. Recommended Author Decision
 
-Submit with the current title, abstract and cover-letter opening if Fig. 2 passes portal preview or standalone figure-source inspection is available. Do not strengthen claims about raw-source reproducibility, public DOI release, broad empirical generality, native graph-learning benchmarks or causal RCEP effects without new evidence and author confirmation.
+> **Historical recommendation withdrawn, 2026-07-23.** No submission,
+> portal-preview or cover-letter action is authorised while the controlling
+> audits remain closed. A future NCS readiness decision requires the E3
+> activation conditions and a new independent claim audit; Figure 2
+> readability alone cannot restore submission readiness.

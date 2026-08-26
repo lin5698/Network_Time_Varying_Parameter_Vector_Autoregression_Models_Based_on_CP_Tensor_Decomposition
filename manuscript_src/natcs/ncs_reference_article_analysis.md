@@ -2,6 +2,8 @@
 
 Purpose: document the transferable article architecture and evidence practices from the four reference papers named for this submission. This memo is a strategy record, not manuscript text and not a claim that the present operator method improves their target tasks.
 
+For the author-requested 2026 update restricted to Nature, Nature Reviews, Nature disciplinary journals and Nature Communications, see `nature_portfolio_2026_positioning_matrix.md`. That update uses an explicit whitelist: `Scientific*` titles, other Nature Portfolio titles outside the named set and non-Nature venues are excluded.
+
 Evidence reviewed on 2026-07-11: the open Nature Communications PDFs downloaded from the DOI landing pages listed below. Counts and figure roles are based on the inspected PDFs, their text extraction and rendered opening figure pages.
 
 ## Materials And Boundary
@@ -61,7 +63,7 @@ Evidence reviewed on 2026-07-11: the open Nature Communications PDFs downloaded 
 
 **Credibility construction.** The paper specifies the local time-invariant target class, validates multiple synthetic dynamics and structures, includes a held-out empirical prediction route, and makes architecture visible. The transferable lesson is to tie generality to the exact invariance or target class tested.
 
-**Transfer to this paper.** The NYC case can support same-operator execution in a second weighted-network domain. It cannot support the broader structural generalization or nonlinear-contagion claim demonstrated in this GNN paper. The current Discussion boundary should retain that distinction.
+**Transfer to this paper.** A future second weighted-network case could test same-operator execution, but it would not support the broader structural generalization or nonlinear-contagion claim demonstrated in this GNN paper. The archived NYC case is inactive under the current claim and implementation audits and supplies no present evidence.
 
 ## Shared Nature Communications Pattern
 
@@ -74,10 +76,10 @@ Evidence reviewed on 2026-07-11: the open Nature Communications PDFs downloaded 
 
 ## NCS Implications For This Submission
 
-The revised Figure 1 -> Figure 2 -> Figure 3/4 sequence now follows the transferable structure: define the topology-indexed response object and collapsed availability loss; test endpoint and recovery properties; then report bounded RCEP and second-domain readouts. The central sentence should remain precise: this paper contributes a testable reconstruction criterion for a separable direct/network response operator with a supplied topology argument. It does not claim a new dynamic-community, memory, link-prediction or nonlinear-contagion model.
+The active source-only sequence is Figure 1 -> Figure 2: define the topology-indexed response object and collapsed availability loss, then test endpoint and recovery properties. Figure 3/4 slots and RCEP/NYC readouts are inactive under `PAPER_CLAIM_AUDIT=BLOCKED` and `EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL`; they cannot supply empirical breadth, generality or reproducibility evidence. The central sentence should remain precise: this paper contributes a testable reconstruction criterion for a separable direct/network response operator with a supplied topology argument. It does not claim a new dynamic-community, memory, link-prediction or nonlinear-contagion model.
 
-The remaining novelty question is empirical and comparative: whether a specification-level endpoint-availability criterion is sufficiently reusable and non-obvious to warrant an NCS methods/object contribution. The four references motivate why representation determines computable questions, but they do not establish that no earlier dynamic-network response work used an equivalent criterion. That priority claim needs a targeted literature check across dynamic network VAR, GVAR and spatial autoregression work.
+The remaining novelty question is empirical and comparative: whether a specification-level endpoint-availability criterion is sufficiently reusable and non-obvious to warrant an NCS methods/object contribution. The four references motivate why representation determines computable questions, but they do not establish that no earlier dynamic-network response work used an equivalent criterion. Under the current source whitelist, that priority question remains open and no priority claim should be made.
 
 ## Next Most Valuable Modification
 
-Add a concise, evidence-backed related-work distinction that asks a narrow question of prior separable dynamic-network response models: whether they retain an evaluable supplied topology argument after temporal smoothing and assess endpoint availability before numerical recovery. Use the four verified temporal-network papers only for the representation principle. Use separate, directly checked primary sources for the dynamic-VAR/GVAR comparison; do not infer their absence of an equivalent contract from citation titles or general field knowledge.
+Do not expand the current literature corpus beyond the stated whitelist. Use the four verified temporal-network papers only for the representation principle, and retain the specification-level wording in the manuscript. A dynamic-VAR/GVAR comparison may be undertaken only after explicit author authorization to broaden the corpus; it must then use directly checked primary sources and must not infer the absence of an equivalent contract from citation titles or general field knowledge.

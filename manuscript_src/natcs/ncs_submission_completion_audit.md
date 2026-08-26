@@ -1,8 +1,20 @@
 # NCS Submission Completion Audit
 
+> **Current-status supersession, 2026-07-22.** This pre-audit completion record
+> is historical QA only. It is superseded for every submission, empirical,
+> reproducibility and figure-availability decision by `PAPER_CLAIM_AUDIT.md`
+> (`BLOCKED`), `EMPIRICAL_IMPLEMENTATION_AUDIT.md` (`FAIL`),
+> `ncs_desk_rejection_tracker_20260722.md` and
+> `ncs_desk_rejection_rereview_20260722.md`. In particular, it must not be
+> used to support an NCS resubmission, an upload, Figs. 3-4, Table 2,
+> RCEP/NYC values, or a derived-evidence reproducibility claim. Its historical
+> discussion of source-package architecture is retained only for traceability.
+
 Purpose: requirement-by-requirement audit of the current Nature Computational Science-oriented package. This is a working strategy artifact, not manuscript text.
 
 Audit date: 2026-07-07.
+
+Literature-scope supersession, 2026-07-22: any historic references in this audit to sources outside the author-approved whitelist of Nature, Nature Reviews, Nature disciplinary journals and Nature Communications are excluded background. They must not set current NCS positioning, novelty wording or future literature tasks. The active positioning corpus is `nature_portfolio_2026_positioning_matrix.md`.
 
 Primary audited materials:
 
@@ -148,13 +160,15 @@ Main Fig. 3 caption-scope update, 2026-07-11: the RCEP figure has a visible pane
 
 Introduction contribution-scope update, 2026-07-11: the Introduction now treats topology re-evaluation after smoothing as specification-dependent and endpoint availability as a property to verify, rather than attributing that capability to a method family. It states the contribution as a testable reconstruction criterion that aligns the reconstruction target, availability check and finite-horizon evaluation for separable direct/network response operators with supplied topology arguments. A final gate protects these two anchors in both source and generated main text. This sharpens the NCS contribution without claiming that the operator algebra itself is new or changing any experiment, result or citation.
 
-GVAR precedent update, 2026-07-11: full-text review of Chudik and Pesaran's GVAR survey confirms that GVAR formulations can use time-varying trade weights and support scenario and impulse-response analysis. The Introduction now acknowledges that close precedent. The contribution is correspondingly limited to a reconstruction-level endpoint-availability test for fixed-path supplied-topology readouts, not to changing weights or impulse-response analysis alone. `scripts/check_natcs_final_gates.mjs` protects the acknowledgement together with the specification-level contribution boundary. This improves novelty discipline / rigour / clarity without changing estimates, figures or claims of comparative performance.
+Historical and excluded under the 2026-07-22 literature scope: the following GVAR-precedent note is retained only to explain prior edits. It must not be used to set current positioning or novelty claims. GVAR precedent update, 2026-07-11: full-text review of Chudik and Pesaran's GVAR survey confirms that GVAR formulations can use time-varying trade weights and support scenario and impulse-response analysis. The Introduction now acknowledges that close precedent. The contribution is correspondingly limited to a reconstruction-level endpoint-availability test for fixed-path supplied-topology readouts, not to changing weights or impulse-response analysis alone. `scripts/check_natcs_final_gates.mjs` protects the acknowledgement together with the specification-level contribution boundary. This improves novelty discipline / rigour / clarity without changing estimates, figures or claims of comparative performance.
 
 Preservation-wording precision update, 2026-07-10: implementation review confirmed that the CP stage applies standard CP-ALS reconstruction to the already separated direct/network coefficient tensor; it does not optimize an additional constrained objective. The abstract, benchmark Results, Supplementary estimator/scope text and submission-facing support snippets now call this an endpoint-preserving or block-preserving implementation. The representation contract, not the CP objective, is the preservation requirement. `scripts/check_natcs_final_gates.mjs` blocks constrained-optimization wording from returning to active manuscript and pasteable submission text. This improves methodological precision without changing the estimator, benchmark values or claims supported by the evidence.
 
 Collapsed-map identifiability-boundary update, 2026-07-10: algebraic review showed that the earlier unqualified phrase "collapsed maps make topology substitution undefined" was too broad. Over unrestricted direct/network matrix blocks, the collapsed map is non-injective: $(A-HW_0,B+H)$ gives the same map at $W_0$ and a difference $H(W_1-W_0)$ at a new topology. Restricted block classes can admit recovery if an inverse and its identification conditions are explicitly supplied. Methods and Supplementary Note 1 now state both the non-injectivity result and this structured-inverse exception. The benchmark claim is correspondingly limited to the implemented collapsed ablation, which estimates no inverse and therefore places structural endpoints outside its declared target. This strengthens novelty / rigour / clarity without changing any experiment or numerical result.
 
-Finite-horizon response-transfer theorem update, 2026-07-11: theory review found that the prior prose label "Proposition 1" bundled an unsupported CP-recovery claim with two valid deterministic ingredients. The Methods now state a formal finite-horizon response-transfer proposition: under bounded companion powers and common shock normalization, a given separated-block companion error bounds cumulative response error through horizon $H$. Supplementary Note 3 supplies the telescoping proof and the block-error link. The proposition now fixes a compatible induced, hence submultiplicative, matrix norm and the unit-norm companion-state selection map required by that proof; the SI also uses consistent $\mathcal{C}(W)$ and $\widehat{\mathcal{C}}(W)$ notation. The text explicitly excludes CP rank selection, CP-ALS global convergence and recovery improvement over local estimation from the proposition; those are assessed by validation and controlled benchmarks. `scripts/check_natcs_final_gates.mjs` checks the proposition, proof, norm assumption, notation and boundaries. This improves rigour / clarity without changing estimates or benchmark results.
+Finite-horizon response-transfer theorem update, 2026-07-11, superseded by the 2026-07-18 proof audit: the earlier response-transfer statement was renumbered Proposition 2 after Proposition 1 was replaced by the exact single-topology query-factorization boundary. Proposition 2 now uses the spectral norm, an explicit integer horizon $H\geq1$, bounded true and reconstructed powers, a common shock map, and a spectral-norm companion-block corollary. Supplementary Note 3 supplies the telescoping proof and separates moving-average coefficients $\Phi_h$ from normalized responses $R_h=\Phi_hS$. The same note replaces the ordinary residualized-ridge display with the exact Schur complement of the implemented all-coefficient joint ridge objective and distinguishes penalized uniqueness from unpenalized design identification. The text explicitly excludes CP rank selection, CP-ALS global convergence, recovery improvement and empirical verification of the bounded-power assumption from the proposition; those are assessed separately. `scripts/check_natcs_final_gates.mjs` checks both propositions, the ridge identity, response notation and scope boundaries. These changes improve rigour / clarity without changing estimates or benchmark results.
+
+Post-fix proof-contract update, 2026-07-18: an independent blind review found that the unrestricted Proposition 1 had been allowed to carry an unsupported application to the diagonal empirical estimator, that the displayed system conflated lag-specific estimation topology with report-date response topology, and that the weak-separation code reported an EPS-floor ratio as a condition number. The revision now pairs Proposition 1 with Corollary 1, an exact rowwise inverse and zero-row boundary for diagonal blocks under zero-diagonal topology. It explicitly states that the collapsed ablation does not apply this inverse rather than claiming mathematical non-identification. Rolling estimation uses $W_{\tau-k}y_{\tau-k}$, while response evaluation holds $\bar W_t=W_{t-1}$ fixed through the horizon. The estimator and diagnostic now share a data-independent exposure helper, rank-deficient Gram matrices return infinite spectral condition number, and production contract tests cover these boundaries. No R006e or R006f outcome was accessed or executed. These changes improve novelty / rigour / clarity / reproducibility without adding empirical outcomes.
 
 ## 1. Executive Verdict
 
@@ -168,7 +182,7 @@ Current decision forecast based on visible materials: suitable for submission as
 
 | Material | Current status | Impact on NCS fit | Impact on novelty | Impact on rigour | Impact on reproducibility | Impact on figure narrative |
 | --- | --- | --- | --- | --- | --- | --- |
-| Title | Available. Current title: "Topology-switchable response operators for evolving weighted networks." | Supports object-level fit. | Signals object novelty better than CP-first title. | Low impact. | Low impact. | Helps Fig. 1 anchor the story. |
+| Title | Available. Current title: "Query-preserving topology-indexed responses in evolving weighted networks." | Supports object-level fit. | Signals the computational query before CP or application context. | Low impact. | Low impact. | Helps Fig. 1 anchor the story. |
 | Abstract | Available and under the 150-word Article target. | Supports NCS framing. | Identifies query preservation and endpoint availability. | Quantitative claims are bounded. | States derived-evidence boundary. | Gives expected figure/evidence sequence. |
 | Introduction | Available. | Strong, computational gap first. | Distinguishes query preservation from CP implementation. | States excluded mechanisms and policy-causality claims. | Low impact. | Aligns with Fig. 1/Fig. 2. |
 | Results | Available. | Stronger after bounded Results organization. | Strong for endpoint-preservation object. | Benchmark and empirical readouts are bounded. | Medium impact through traceability. | Establishes problem -> object -> validation -> readouts. |
@@ -320,7 +334,7 @@ Residual reproducibility risk: the reviewer can inspect and regenerate manuscrip
 
 Title directions:
 
-1. Topology-switchable response operators for evolving weighted networks.
+1. Query-preserving topology-indexed responses in evolving weighted networks.
 2. Query-preserving response reconstruction for evolving weighted networks.
 3. Endpoint-preserving propagation measurement in dynamic weighted networks.
 4. Topology-substitution responses from reconstructed dynamic network operators.

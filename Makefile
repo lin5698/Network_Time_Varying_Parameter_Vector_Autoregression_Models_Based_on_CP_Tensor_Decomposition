@@ -20,3 +20,6 @@ natcs-release-safety-audit:
 
 natcs-final-gate-check:
 	node scripts/check_natcs_final_gates.mjs
+
+natcs-source-only-gate-check:
+	node scripts/check_natcs_source_only_gates.mjs

@@ -1,83 +1,146 @@
-This supplementary note expands `Methods > Propagation objects` and provides the precise definitions of the raw pair-level contribution, the bounded regression contribution and the aggregate propagation index. For a reported date label t, $\Psi_h^{tot}(t)$ denotes the horizon-h moving-average coefficient implied by the estimated direct block, network block and within-horizon topology $W_t$. $\Psi_h^{dir}(t)$ denotes the corresponding direct-only recursion with the same direct block and covariance matrix but with the network block set to zero.
+This supplementary note expands `Methods > Readout and design separation` and `Methods > Finite-horizon transfer`. It provides the precise definitions of the raw pair-level contribution, a bounded pair-level summary and the aggregate propagation index. It also distinguishes the moving-average coefficient from the shock-normalized response. For a reported date $t$ and supplied topology $W$, let
 
-Equivalently, the total response uses the lag operator $M_{k,t}(W_t)$, the direct-only response uses $M_{k,t}(0)$, and the frozen-topology response $\Psi_h^{pre}(t)$ uses $M_{k,t}(W_{pre})$. These three response families share the same reconstructed coefficient path and shock normalization. They differ only in the explicit network argument, which defines the propagation decomposition as operator-level readouts from one fitted path.
+$$
+\Phi_h(t,W)=J\mathcal{C}_t(W)^hJ'
+$$
 
-For an ordered receiver-shock pair i <- j and horizon H, the raw pair-level network contribution is the normalized difference between the total absolute response mass and the direct-only absolute response mass:
+be the horizon-$h$ moving-average coefficient. The implemented generalized-response normalization uses
+
+$$
+S_t=\Sigma_t\operatorname{diag}\left\{(\Sigma_{jj,t}+\delta)^{-1/2}\right\}_{j=1}^{N},
+\qquad \delta=10^{-12},
+$$
+
+so the matrix of floor-regularized one-standard-deviation generalized responses is
+
+$$
+R_h(t,W)=\Phi_h(t,W)S_t.
+$$
+
+Its $(i,j)$ entry is the response of receiver $i$ to the normalized innovation in unit $j$. This definition matches the implementation: the moving-average coefficient is multiplied by $\Sigma_t e_j/\sqrt{\Sigma_{jj,t}+\delta}$ exactly once.
+
+For target date $t$, define $\bar W_t:=W_{t-1}$ as the final topology available inside the rolling estimation window. The total response uses $\bar W_t$, the direct-only response uses the zero-network argument and the frozen-topology response uses $W_{pre}$:
+
+$$
+R_h^{tot}(t)=R_h(t,\bar W_t),
+\qquad
+R_h^{dir}(t)=R_h(t,0),
+\qquad
+R_h^{pre}(t)=R_h(t,W_{pre}).
+$$
+
+These three response families share the same reconstructed coefficient path and shock-normalization map. They differ only in the explicit network argument.
+
+For an ordered receiver-shock pair $i\leftarrow j$ and horizon $H$, the raw pair-level network contribution is the normalized difference between the total absolute response mass and the direct-only absolute response mass:
 
 $$
 q^{raw}_{ij}(t,H) =
 \frac{
-\sum_{h=0}^{H} \left| e_i' \Psi^{tot}_{h}(t)\Sigma_t e_j \right|
+\sum_{h=0}^{H} \left| e_i' R^{tot}_{h}(t)e_j \right|
 -
-\sum_{h=0}^{H} \left| e_i' \Psi^{dir}_{h}(t)\Sigma_t e_j \right|
+\sum_{h=0}^{H} \left| e_i' R^{dir}_{h}(t)e_j \right|
 }{
 \max \left\{
-\sum_{h=0}^{H} \left| e_i' \Psi^{tot}_{h}(t)\Sigma_t e_j \right|,
+\sum_{h=0}^{H} \left| e_i' R^{tot}_{h}(t)e_j \right|,
 \epsilon
 \right\}
-}.
+},
+\qquad \epsilon=10^{-12}>0.
 $$
 
-The bounded regression metric clips that raw contribution to the interval from 0 to 1:
+The bounded pair-level summary clips that raw contribution to the interval from 0 to 1:
 
 $$
-q^{bound}_{ij}(t,H)=\min\{1,\max\{0,q^{raw}_{ij}(t,H)\}\},
+q^{bound}_{ij}(t,H)=\min\{1,\max\{0,q^{raw}_{ij}(t,H)\}\}.
 $$
 
-This bounded metric is used only in the second-stage panel regressions. The aggregate index reported in the time-series figures applies the same total-minus-direct construction after summing over ordered non-self pairs:
+The aggregate index applies the same total-minus-direct construction after summing over ordered non-self pairs:
 
 $$
 G(t,H)=
 \frac{
-\sum_{i \neq j}\sum_{h=0}^{H} \left| e_i' \Psi^{tot}_{h}(t)\Sigma_t e_j \right|
+\sum_{i \neq j}\sum_{h=0}^{H} \left| e_i' R^{tot}_{h}(t)e_j \right|
 -
-\sum_{i \neq j}\sum_{h=0}^{H} \left| e_i' \Psi^{dir}_{h}(t)\Sigma_t e_j \right|
+\sum_{i \neq j}\sum_{h=0}^{H} \left| e_i' R^{dir}_{h}(t)e_j \right|
 }{
 \max \left\{
-\sum_{i \neq j}\sum_{h=0}^{H} \left| e_i' \Psi^{tot}_{h}(t)\Sigma_t e_j \right|,
+\sum_{i \neq j}\sum_{h=0}^{H} \left| e_i' R^{tot}_{h}(t)e_j \right|,
 \epsilon
 \right\}
 }.
 $$
 
-The aggregate index is intentionally not clipped and can be negative when the network block dampens cumulative responses. The bounded pair-level metric is used only as a dependent-variable transform for the second-stage panel association. The raw pair-level series is retained as an untruncated regression sensitivity because boundary mass and clipping can change regression magnitudes even when the reconstructed response path is unchanged.
+The aggregate index is intentionally not clipped and can be negative when the network block dampens cumulative responses. The raw and bounded pair-level summaries distinguish signed attenuation from a unit-interval diagnostic. The fixed positive floor $\epsilon$ makes both ratio maps defined and continuous even when the total response mass is zero.
 
 The frozen-topology benchmark keeps the coefficient blocks fixed at the same reported date and replaces the evolving network by the pre-period benchmark topology. This benchmark asks how the measured propagation signal changes when topology evolution is switched off.
 
-Proof sketch for the local weak-separation condition in the main Methods. Fix one equation, one rolling window and one lag block; stacking equations only repeats the same argument row by row. Let X denote the direct lag design and Z denote the network-exposure design. The local least-squares target regresses the outcome Y on direct coefficients a and network coefficients b, plus residual U:
+## Joint-design separation and the implemented ridge estimator
+
+Fix one equation and one rolling window, with integers $n\geq1$ and $m\geq1$. Let $X\in\mathbb{R}^{n\times q}$ contain every nuisance/direct regressor used in that equation: the intercept, all $p$ direct lags and any declared optional exogenous regressors. Let $Z\in\mathbb{R}^{n\times m}$ contain all $p$ network-exposure lag blocks jointly. Write
 
 $$
-Y = X a + Z b + U,
+Y=Xa+Zb+U.
 $$
 
-Here a and b are the direct and network coefficient vectors for the considered equation and lag. Residualize the network-exposure design and the outcome against the direct lag design. By the Frisch-Waugh-Lovell theorem, the unregularized network coefficient is obtained from the residualized normal equation:
+Let $P_X=XX^{\dagger}$ be the orthogonal projector onto the column span of $X$, where $X^{\dagger}$ is the Moore-Penrose inverse, and let $M_X=I-P_X$. Define $Z^{\perp}=M_XZ$ and $Y^{\perp}=M_XY$. The unpenalized network coefficient satisfies the Frisch-Waugh-Lovell normal equation
 
 $$
-\widehat{b}=\left((Z^{\perp})'Z^{\perp}\right)^{-1}(Z^{\perp})'Y^{\perp}
+\widehat b=\left((Z^{\perp})'Z^{\perp}\right)^{-1}(Z^{\perp})'Y^{\perp}
 $$
 
-This expression is valid when the residualized network Gram matrix is nonsingular. If its sample-scaled minimum eigenvalue is at least eta > 0, then
+when the residualized joint network Gram matrix is nonsingular. If, for the Euclidean vector norm and spectral matrix norm,
 
 $$
-\|\widehat{b}-b\|
+\lambda_{\min}\!\left(n^{-1}(Z^{\perp})'Z^{\perp}\right)\geq\eta>0,
+$$
+
+then
+
+$$
+\|\widehat b-b\|_2
 \leq
-\eta^{-1}
-\left\|
-n^{-1}(Z^{\perp})'U
-\right\|.
+\eta^{-1}\left\|n^{-1}(Z^{\perp})'U\right\|_2.
 $$
 
-With a ridge penalty applied to the residualized network block, the corresponding penalized update is
+If $\lambda_{\min}\{n^{-1}(Z^{\perp})'Z^{\perp}\}=0$, there is a nonzero network-direction vector $v$ with $Zv\in\operatorname{col}(X)$. That direction can be absorbed by the nuisance/direct span, so the unpenalized network block is not unique. Complete uniqueness of both $a$ and $b$ additionally requires full column rank of the joint design $[X\;Z]$. A per-lag calculation is not sufficient: all network lag blocks must enter $Z$ jointly, or the other network lags must be included among the regressors projected out.
+
+The implemented local estimator instead minimizes the all-coefficient joint ridge objective
 
 $$
-\widehat{b}_{\lambda}
-=
-\left((Z^{\perp})'Z^{\perp}+\lambda I\right)^{-1}(Z^{\perp})'Y^{\perp},
+\|Y-Xa-Zb\|_2^2+\lambda\left(\|a\|_2^2+\|b\|_2^2\right),
+\qquad \lambda>0.
 $$
 
-so perturbations in the residualized moment are damped by the ridge-adjusted eigenvalue bound, while the penalty introduces shrinkage bias relative to the unpenalized coefficient. The implemented equation-wise ridge regression penalizes the joint local design; the displayed formula is a diagnostic proof device for the same weak-separation condition. Thus a positive residualized eigenvalue lower bound is the finite-sample condition under which the network block is a locally stable coefficient block. If eta equals zero, a nonzero network-direction vector can be absorbed by the direct design inside the same window, so the direct/network split is not uniquely identified from the local design. This motivates the main-text near-collinearity diagnostic and the benchmark checks for network misspecification and topology perturbation. The statement is conditional on the observed design and leaves causal identification under endogenous network formation to a separate design.
+Eliminating $a$ from its two block normal equations gives the exact ridge Schur complement. Define
 
-Proof of Proposition 1 (finite-horizon response transfer). Let $\mathcal{C}(W)$ and $\widehat{\mathcal{C}}(W)$ denote the true and reconstructed companion matrices for a fixed reported date and a fixed topology argument $W$. Throughout this proof, the norm is the compatible induced, hence submultiplicative matrix norm used in the proposition, and the fixed companion-state selection map $J$ and its transpose $J'$ have norm one. The standard telescoping identity gives
+$$
+M_{X,\lambda}=I-X(X'X+\lambda I)^{-1}X'.
+$$
+
+Then the implemented network-block update satisfies
+
+$$
+\left\{Z'M_{X,\lambda}Z+\lambda I\right\}\widehat b_{\lambda}
+=Z'M_{X,\lambda}Y.
+$$
+
+This follows by substituting
+
+$$
+\widehat a_{\lambda}=(X'X+\lambda I)^{-1}X'(Y-Z\widehat b_{\lambda})
+$$
+
+into the network-block normal equation. The matrix $M_{X,\lambda}$ is not the ordinary FWL projection when $\lambda>0$. The positive penalty makes the joint ridge Hessian positive definite and the penalized coefficient vector unique in exact arithmetic even if the unpenalized design is singular. That penalized uniqueness is not evidence of unpenalized design identification. A weak-separation diagnostic therefore uses the unpenalized projector $M_X$, the joint $Z$ matrix and the same lag-specific topology matrices supplied to the estimator. A small residualized eigenvalue implies worst-case sensitivity in a weak network direction; it does not by itself show that the realized estimate is penalty-dominated. This distinction motivates reporting design separation and endpoint-specific recovery separately.
+
+## Proof of Proposition 2: finite-horizon response transfer
+
+Let $\mathcal{C}(W)$ and $\widehat{\mathcal{C}}(W)$ denote the true and reconstructed companion matrices for a fixed reported date and fixed topology argument $W$. Throughout this proof, $\|\cdot\|_2$ is the spectral matrix norm. Let $H\geq1$, and suppose
+
+$$
+\max_{0\leq r\leq H}\left\{\|\mathcal{C}(W)^r\|_2,\|\widehat{\mathcal{C}}(W)^r\|_2\right\}\leq K
+$$
+
+for $K\geq1$. The standard finite telescoping identity gives
 
 $$
 \widehat{\mathcal{C}}^{h}-\mathcal{C}^{h}
@@ -88,28 +151,47 @@ $$
 \mathcal{C}^{h-1-r}.
 $$
 
-If $\|\widehat{\mathcal{C}}^{r}\|\leq K$ and $\|\mathcal{C}^{r}\|\leq K$ for all powers used up to horizon $H$, submultiplicativity gives
+Spectral-norm submultiplicativity gives, for $1\leq h\leq H$,
 
 $$
-\|\widehat{\mathcal{C}}^{h}-\mathcal{C}^{h}\|
-\leq h K^{2}\|\widehat{\mathcal{C}}-\mathcal{C}\|.
+\|\widehat{\mathcal{C}}^{h}-\mathcal{C}^{h}\|_2
+\leq h K^{2}\|\widehat{\mathcal{C}}-\mathcal{C}\|_2.
 $$
 
-Let $J$ be the fixed companion-state selection map and let $S$ be the shared shock-normalization map, with $\|S\|\leq L_{\Sigma}$. Since $\Psi_h(W)=J\mathcal{C}(W)^hJ'S$, the response error is bounded by $hL_{\Sigma}K^2\|\widehat{\mathcal{C}}(W)-\mathcal{C}(W)\|$. Summing from $h=1$ through $H$ gives
+Let $J$ be the fixed companion-state selection map, with $\|J\|_2=\|J'\|_2=1$, and let $S$ be the shock-normalization map shared by the true and reconstructed responses, with $\|S\|_2\leq L_S$. Define
 
 $$
-\sum_{h=1}^{H}\left\|\widehat{\Psi}_{h}(W)-\Psi_{h}(W)\right\|
+R_h(W)=J\mathcal{C}(W)^hJ'S,
+\qquad
+\widehat R_h(W)=J\widehat{\mathcal{C}}(W)^hJ'S.
+$$
+
+The response error is bounded by $hL_SK^2\|\widehat{\mathcal{C}}(W)-\mathcal{C}(W)\|_2$. Summing from $h=1$ through $H$ gives
+
+$$
+\sum_{h=1}^{H}\left\|\widehat R_{h}(W)-R_{h}(W)\right\|_2
 \leq
-L_{\Sigma}K^{2}\frac{H(H+1)}{2}
-\left\|\widehat{\mathcal{C}}(W)-\mathcal{C}(W)\right\|.
+L_SK^{2}\frac{H(H+1)}{2}
+\left\|\widehat{\mathcal{C}}(W)-\mathcal{C}(W)\right\|_2.
 $$
 
-For the standard lag-$p$ companion embedding, only the top block row differs. The triangle inequality bounds its norm by the sum of the lag-operator differences, and for $M_{k,t}(W)=A_{k,t}+B_{k,t}W$,
+For the standard lag-$p$ companion embedding, only the top block row differs. Writing $\Delta M_k(W)=\widehat M_{k,t}(W)-M_{k,t}(W)$, the spectral norm obeys
 
 $$
-\|\widehat{M}_{k,t}(W)-M_{k,t}(W)\|
+\left\|\widehat{\mathcal{C}}(W)-\mathcal{C}(W)\right\|_2
 \leq
-\|\widehat{A}_{k,t}-A_{k,t}\|+\|W\|\|\widehat{B}_{k,t}-B_{k,t}\|.
+\left\{\sum_{k=1}^{p}\|\Delta M_k(W)\|_2^2\right\}^{1/2}
+\leq
+\sum_{k=1}^{p}\|\Delta M_k(W)\|_2.
 $$
 
-The direct-only and frozen-topology cases use the same argument with the zero-network and frozen benchmark topology arguments. The ratio metrics are continuous on the restricted domain where the normalizing denominator exceeds the explicit denominator floor, so the estimator keeps that floor and reports stability diagnostics. The proposition is conditional on the supplied coefficient error and bounded powers; it does not prove CP-ALS convergence, rank selection or a gain over local estimation.
+For $M_{k,t}(W)=A_{k,t}+B_{k,t}W$,
+
+$$
+\|\Delta M_k(W)\|_2
+\leq
+\|\widehat A_{k,t}-A_{k,t}\|_2
++\|W\|_2\|\widehat B_{k,t}-B_{k,t}\|_2.
+$$
+
+The observed, direct-only and frozen-topology cases apply the same proof separately at $\bar W_t$, zero and $W_{pre}$. If one common constant is reported, $K$ is the maximum of the true and reconstructed power bounds over all three companion families. The fixed positive denominator floor makes the ratio metrics continuous over the full finite-dimensional response domain. Proposition 2 is conditional on a supplied coefficient error, a common shock map and bounded powers; it does not prove CP-ALS convergence, rank selection or a gain over local estimation. It also does not empirically verify the power-bound assumption.

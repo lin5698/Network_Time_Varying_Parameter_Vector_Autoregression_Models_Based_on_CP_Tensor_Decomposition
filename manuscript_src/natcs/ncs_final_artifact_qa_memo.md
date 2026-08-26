@@ -1,5 +1,14 @@
 # NCS Final Artifact QA Memo
 
+> **Current-status supersession, 2026-07-22.** This is a historical render and
+> package QA record, not evidence that any current submission artifact is
+> usable. `PAPER_CLAIM_AUDIT.md` (`BLOCKED`) and
+> `EMPIRICAL_IMPLEMENTATION_AUDIT.md` (`FAIL`) control all current decisions.
+> Do not use the findings below to support an upload, a manuscript rebuild,
+> Figs. 3-4, Table 2, RCEP/NYC claims, or reproducibility claims. The only
+> retained revision reference is the non-numeric Fig. 1/Fig. 2 visual logic,
+> subject to a future authorized rebuild and fresh QA.
+
 Purpose: record page-level and upload-artifact QA for the current Nature Computational Science-oriented package after the final prose pass. This is a working QA artifact, not manuscript text.
 
 Audit date: 2026-07-07.

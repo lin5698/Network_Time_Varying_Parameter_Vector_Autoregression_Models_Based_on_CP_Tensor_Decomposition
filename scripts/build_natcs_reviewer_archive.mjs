@@ -3,7 +3,7 @@ import path from "path";
 import crypto from "crypto";
 import os from "os";
 import { spawnSync } from "child_process";
-import { ensureDir, readJson, renderTemplate, writeJson, writeText } from "./natcs_utils.mjs";
+import { ensureDir, readJson, renderTemplate, requireReleaseableNatcsEvidence, writeJson, writeText } from "./natcs_utils.mjs";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const ARCHIVE_ROOT = path.join(ROOT, "output", "reviewer_archive", "natcs_reviewer_archive");
@@ -854,6 +854,10 @@ function removeGeneratedReviewerSiblings() {
 }
 
 export function buildNatcsReviewerArchive() {
+  // Fail closed: the reviewer archive copies output/natcs_empirical_cp and
+  // other empirical artifacts, so it may not be assembled (including via the
+  // standalone Makefile target) while the controlling audits are blocked.
+  requireReleaseableNatcsEvidence(ROOT);
   removeGeneratedReviewerSiblings();
   fs.rmSync(ARCHIVE_ROOT, { recursive: true, force: true });
   ensureDir(ARCHIVE_ROOT);

@@ -1,123 +1,61 @@
-# Figure 2 Redesign Contract
+# Figure 2 Query-Certificate Contract
 
-Purpose: define a safe redesign path for Main Figure 2 if the journal upload preview makes the current embedded figure hard to scan. This is a working figure contract, not manuscript text.
+Date: 2026-07-26
 
-Boundary: this contract does not add evidence, remove benchmark rows or change numerical claims. It only reorganizes the existing endpoint-availability and benchmark evidence so the visual hierarchy matches the NCS methods argument.
+Status: source-only figure contract implemented in Python. This record and its
+exports do not change `PAPER_CLAIM_AUDIT=BLOCKED` or
+`EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL`, authorize a manuscript build, or
+activate E3, RCEP or NYC evidence.
 
-## Core Conclusion
+## Core conclusion
 
-Endpoint preservation, not raw numerical ranking alone, determines which topology-substitution responses can be evaluated after reconstruction.
+A requested topology-indexed operator is callable from a retained
+representation exactly when the query factors through that representation;
+the unrestricted one-hop class gives an exact negative construction, while
+the diagonal class supplies a constructive rowwise inverse under its stated
+row condition.
 
-## Reviewer Job
+## Figure contract
 
-Figure 2 must let a methods reviewer answer three questions within a quick scan:
+- Archetype: asymmetric schematic-led theorem figure.
+- Backend: Python/Matplotlib only for drawing, export, preview and QA.
+- Target: Nature Computational Science, double-column width (183 mm).
+- Exports: editable SVG, Type 42/Type 0 PDF and 600 dpi PNG.
+- Palette: warm orange for the callable query, cool teal for the verified
+  structured inverse and neutral greys for context or unsupported endpoints.
 
-1. Which fitted objects define the topology-substitution endpoints?
-2. Where does the endpoint-preserving implementation recover the submitted operator endpoints?
-3. Which comparisons are bounded stress tests or projection checks rather than native forecasting rankings?
+Panel map:
 
-## Current Risk
+- **a, hero:** the factorization diagram and the certificate
+  `Q(W1) = h(W1) o T(W0)`.
+- **b:** the exact unrestricted construction `(0,0)` versus `(-W0,I)`, which
+  shares `D=0` at `W0` and disagrees at `W1` when `W1 != W0`.
+- **c:** the diagonal structured inverse for zero-diagonal `W0`, including the
+  nonzero-row formula and the full zero-row compatibility condition.
+- **d:** categorical endpoint availability for separated CP, separated Tucker,
+  collapsed-total and no-network representations. A grey dash is outside
+  target and is not a numerical value.
 
-The current all-in-one figure is logically strong but visually dense. Panel a carries the endpoint gate, panels b-c carry the headline recovery result, and panels d-e carry topology-measurement stress and stability. In the embedded manuscript PDF, panel a and the bounded-stress annotations require close viewing. This creates a first-impression risk: a reviewer may scan the figure as a benchmark ranking before seeing the endpoint-availability logic.
+## Evidence boundary
 
-Serves: rigour / clarity / visual communication.
+Panels a-c trace only to Proposition 1, Corollary 1 and Supplementary Note 1.
+Panel d traces to the frozen fitted-object/endpoint definitions in
+Supplementary Note 4 and the manuscript-facing benchmark data dictionary. It
+contains no recovery value, uncertainty interval or application result.
 
-## Redesign Archetype
+Family-2 is excluded from the manuscript figure because its proof and E3
+artifacts remain source-governed and do not change the released evidence set.
+RCEP, NYC and E3 outcomes are absent.
 
-Use a two-tier quantitative grid with a larger endpoint gate.
+## Reviewer-risk controls
 
-- Top tier: endpoint-availability gate, occupying about 35-45% of the figure height.
-- Bottom tier: reduced benchmark evidence, occupying about 55-65% of the figure height.
-- Keep the same restrained method palette and marker family.
-- Keep "Outside target" visible as a structural endpoint label, not as a failed score.
+- The unrestricted negative and diagonal positive routes are adjacent, so the
+  theorem cannot be read as a non-identification result for the implemented
+  diagonal estimator.
+- The positive factorization statement is the dominant visual memory point;
+  the counterexample is evidence, not a large failure badge.
+- Endpoint availability is explicitly separated from numerical recovery.
+- The figure does not imply estimator consistency, finite-sample recovery,
+  uncertainty calibration or cross-family generality.
 
-## Recommended Panel Structure
-
-### Panel a. Endpoint Gate
-
-Question: which response endpoints remain defined after reconstruction?
-
-Design:
-
-- Expand the fitted-object x endpoint matrix.
-- Use three rows: separated operator path, collapsed total map, no-network map.
-- Use three endpoint columns: total response, network component, frozen topology.
-- Add a compact callout: "Topology can be supplied at readout only when direct and network blocks remain separate."
-- Remove any nonessential legend from this panel; encode available/outside target directly in the cells.
-
-Claim supported: collapsed-map smoothing can keep total responses while losing topology-substitution endpoints.
-
-Tags: novelty / rigour / clarity / visual communication.
-
-### Panel b. Headline Operator Recovery
-
-Question: does the endpoint-preserving implementation recover the operator on the replicated scale rows?
-
-Design:
-
-- Keep effective-operator recovery for N=15 and N=30 as the main scale evidence.
-- Show N=50 as a visually separated bounded stress column or move it to a small inset.
-- Keep points as medians and intervals as IQRs.
-- Use direct labels for CP-network and unrestricted local if space is tight.
-
-Claim supported: effective-operator recovery improves on replicated N=15/N=30 settings.
-
-Tags: rigour / clarity.
-
-### Panel c. Topology-Substitution Endpoint Recovery
-
-Question: does the fitted object recover the topology-specific endpoint after preserving the direct/network split?
-
-Design:
-
-- Choose either network-channel GIRF recovery or frozen-topology recovery as the main bottom-right panel.
-- If both are retained, make them small aligned subpanels with identical "outside target" notation.
-- Keep collapsed and no-network rows as outside-target marks.
-- Move the stability-boundary bar chart to Supplementary unless journal preview confirms the current five-panel layout remains readable.
-
-Claim supported: topology-specific readouts require the preserved endpoint and remain bounded by stability diagnostics.
-
-Tags: rigour / visual communication.
-
-### Optional Panel d. Stability Boundary
-
-Question: where do finite-horizon response errors need stability qualification?
-
-Design:
-
-- Include only if the figure remains readable at final journal width.
-- Otherwise move to Supplementary and cite it from the caption.
-- If retained, use a compact horizontal bar or dot strip rather than a full axes-heavy bar chart.
-
-Claim supported: response-error interpretation depends on finite-horizon stability.
-
-Tags: rigour / clarity.
-
-## What To Move To Supplementary If Space Is Tight
-
-- Full topology-measurement stress stability bars.
-- N=50 graph-feature stress details.
-- Projection-boundary explanation longer than one line.
-- Raw pair-level error and prediction diagnostics, which are already secondary to the endpoint argument.
-
-## Caption Requirements
-
-The redesigned caption must preserve four definitions:
-
-- Panel a is an endpoint-availability gate before numerical errors are compared.
-- Points are medians and intervals are interquartile ranges.
-- N=50 is a bounded stress check; headline recovery rests on replicated N=15/N=30 rows.
-- Projected graph-feature rows are operator-recovery stress tests under the submitted readout, not native graph-learning forecasting rankings.
-
-## Acceptance Criteria Before Replacing The Current Main Figure
-
-1. At final manuscript width, panel a must be readable without zooming.
-2. The phrase "endpoint availability" or "availability gate" must be visible in the figure itself.
-3. Outside-target endpoints must be visually distinct from numerical error values.
-4. The N=15/N=30 headline evidence must remain traceable to Table 1 and Supplementary Tables 1b-3.
-5. No new baseline, replication count, statistical interval or empirical claim may be introduced by the redesign.
-6. The standalone PDF/SVG must be included in the main figure source package.
-
-## Next Action
-
-If the journal portal preview rasterizes the current Fig. 2 poorly, redraw Fig. 2 using this contract and keep the current figure as a traceability reference until the redesigned output passes the acceptance criteria above.
+Serves: novelty / rigour / clarity / generality / visual communication.

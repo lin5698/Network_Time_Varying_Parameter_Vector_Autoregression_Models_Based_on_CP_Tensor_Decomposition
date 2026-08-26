@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { execFileSync } from "child_process";
 import { finalizeNatcsPackage } from "./finalize_natcs_package.mjs";
+import { requireReleaseableNatcsEvidence } from "./natcs_utils.mjs";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const OUT = path.join(ROOT, "output");
@@ -446,6 +447,10 @@ function refreshLatestUpload(uploadDir) {
 }
 
 export function createCleanIntegratedPackage() {
+  // Fail closed while the controlling audits are blocked: the integrated
+  // package is the upload-facing bundle and may not be rebuilt from stale
+  // blocked evidence.
+  requireReleaseableNatcsEvidence(ROOT);
   finalizeNatcsPackage();
   const timestamp = makeTimestamp();
   archiveLatestPointers(timestamp);

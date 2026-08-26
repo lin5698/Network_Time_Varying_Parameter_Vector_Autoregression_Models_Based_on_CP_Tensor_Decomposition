@@ -1,5 +1,14 @@
 # NCS Reference Strategy Memo
 
+> **Current-status boundary, 2026-07-22.** The PDF-verified article-architecture
+> analysis and the approved Nature Portfolio literature scope remain usable.
+> Any package-specific discussion below that treats Figs. 3-4, Table 2,
+> RCEP/NYC readouts, upload readiness or derived-evidence regeneration as
+> current evidence is superseded by `PAPER_CLAIM_AUDIT.md` (`BLOCKED`) and
+> `EMPIRICAL_IMPLEMENTATION_AUDIT.md` (`FAIL`). It must not be carried into
+> future manuscript or portal text before the corresponding independent audits
+> and promotion gates pass.
+
 Purpose: use primary-source materials from the four target Nature Communications papers, plus the current manuscript package, to guide the next Nature Computational Science-oriented revision. This memo is a strategy artifact, not manuscript text.
 
 Primary sources inspected:
@@ -77,7 +86,7 @@ Title pattern:
 
 - Strong titles identify the object and domain class.
 - Avoid "based on CP tensor decomposition" as the headline because CP is implementation, not the contribution.
-- Current title, "Topology-switchable response operators for evolving weighted networks", follows the stronger pattern.
+- Current title, "Query-preserving topology-indexed responses in evolving weighted networks", follows the stronger pattern.
 
 Abstract pattern:
 

@@ -1,9 +1,22 @@
 import argparse
+import ast
+import builtins
+import functools
+import hashlib
+import importlib
+import importlib.abc
+import importlib.machinery
+import io
 import json
 import logging
 import math
 import os
+import site
+import stat
+import subprocess
 import sys
+import sysconfig
+import types
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -11,6 +24,7 @@ os.environ.setdefault("MPLCONFIGDIR", str(ROOT / "tmp" / "matplotlib_cache"))
 os.environ.setdefault("XDG_CACHE_HOME", str(ROOT / "tmp" / "xdg_cache"))
 os.makedirs(os.environ["MPLCONFIGDIR"], exist_ok=True)
 os.makedirs(os.environ["XDG_CACHE_HOME"], exist_ok=True)
+sys.path.insert(0, str(ROOT / "scripts"))
 
 import matplotlib
 matplotlib.use("Agg")
@@ -19,34 +33,564 @@ import numpy as np
 import pandas as pd
 from linearmodels.iv.absorbing import AbsorbingLS
 from linearmodels.panel import PanelOLS
+from linearmodels.panel.utility import AbsorbingEffectError
+from natcs_design_contract import equationwise_ridge_fit, lagged_network_exposure
 
+RAW_HELPER_ERROR = (
+    "A scientific rebuild requires a verified helper checkout and frozen trust manifest."
+)
 helper_repo = os.environ.get("NATCS_RCEP_HELPER_REPO")
-if not helper_repo:
-    raise RuntimeError(
-        "A raw-to-derived RCEP rebuild requires NATCS_RCEP_HELPER_REPO to point to the authorized helper checkout."
-    )
-sys.path.insert(0, str(Path(helper_repo).expanduser().resolve()))
+RCEP_HELPER_TRUST_MANIFEST = ROOT / "manuscript_src" / "natcs" / "rcep_helper_trust_manifest.json"
+_HELPER_IDENTITY = None
+RCEP_HELPER_TRUST_SCHEMA_VERSION = 2
+RCEP_HELPER_FILES = {
+    "config.py",
+    "research_data_construction.py",
+    "research_network_tvp_var.py",
+}
 
-from research_data_construction import (  # noqa: E402
-    RCEP_LIST,
-    build_tariff_relief_tc,
-    build_trade_network_w,
-    chow_lin_quarterly_vax,
-    load_quarterly_macro_and_bilateral,
-    quality_control_missing,
-    quality_control_outliers,
+RCEP_DATA_APIS = (
+    "RCEP_LIST",
+    "build_tariff_relief_tc",
+    "chow_lin_quarterly_vax",
+    "load_quarterly_macro_and_bilateral",
+    "quality_control_missing",
+    "quality_control_outliers",
 )
-from research_network_tvp_var import (  # noqa: E402
-    girf_one,
-    moving_average_coefficients,
-    var_ols,
-)
+RCEP_NETWORK_APIS = ("girf_one", "moving_average_coefficients")
+
+
+def _sha256(path: Path) -> str:
+    # Hash the same descriptor-backed, no-follow snapshot that authorized
+    # readers consume.  This keeps the identity check from reopening a path
+    # through a symlink or a replaced non-regular file.
+    return hashlib.sha256(_read_nofollow_snapshot(path, "hash input")).hexdigest()
+
+
+def _read_nofollow_snapshot(path: Path, label: str) -> bytes:
+    source = Path(path)
+    if source.is_symlink():
+        raise RuntimeError(f"The {label} path is a symlink.")
+    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
+    try:
+        descriptor = os.open(source, flags)
+    except OSError as exc:
+        raise RuntimeError(f"The {label} cannot be opened without following symlinks.") from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise RuntimeError(f"The {label} is not a regular file.")
+        chunks = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+    finally:
+        os.close(descriptor)
+    return b"".join(chunks)
+
+
+def read_authorized_input_snapshot(path: Path, expected_sha256: str) -> bytes:
+    if not _is_sha256(expected_sha256):
+        raise RuntimeError("The authorized input snapshot SHA-256 is invalid.")
+    snapshot = _read_nofollow_snapshot(path, "authorized input")
+    if hashlib.sha256(snapshot).hexdigest() != expected_sha256.lower():
+        raise RuntimeError("The authorized input snapshot SHA-256 does not match.")
+    return snapshot
+
+
+def _validated_helper_identity(expected_manifest_sha256=None):
+    if not helper_repo:
+        raise RuntimeError(f"{RAW_HELPER_ERROR} NATCS_RCEP_HELPER_REPO is absent.")
+    manifest_path = Path(RCEP_HELPER_TRUST_MANIFEST)
+    try:
+        manifest_snapshot = _read_nofollow_snapshot(manifest_path, "helper trust manifest")
+    except RuntimeError as exc:
+        raise RuntimeError(f"{RAW_HELPER_ERROR} The helper trust manifest is absent or unsafe.") from exc
+    manifest_sha256 = hashlib.sha256(manifest_snapshot).hexdigest()
+    if expected_manifest_sha256 is not None and (
+        not _is_sha256(expected_manifest_sha256) or manifest_sha256 != expected_manifest_sha256.lower()
+    ):
+        raise RuntimeError(f"{RAW_HELPER_ERROR} The helper trust manifest identity does not match authorization.")
+
+    repo = Path(helper_repo).expanduser()
+    if repo.is_symlink() or not repo.is_dir():
+        raise RuntimeError(f"{RAW_HELPER_ERROR} The helper path must be a non-symlink directory.")
+    repo = repo.resolve()
+    try:
+        manifest = json.loads(manifest_snapshot.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"{RAW_HELPER_ERROR} The helper trust manifest is unreadable.") from exc
+
+    expected_keys = {"schema_version", "helper_git_commit", "files"}
+    if set(manifest) != expected_keys or manifest.get("schema_version") != RCEP_HELPER_TRUST_SCHEMA_VERSION:
+        raise RuntimeError(f"{RAW_HELPER_ERROR} The helper trust manifest schema is invalid.")
+    expected_files = RCEP_HELPER_FILES
+    files = manifest.get("files")
+    if not isinstance(files, dict) or set(files) != expected_files:
+        raise RuntimeError(f"{RAW_HELPER_ERROR} The helper trust manifest file set is invalid.")
+
+    try:
+        head = subprocess.run(
+            ["git", "-C", str(repo), "rev-parse", "HEAD"],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError) as exc:
+        raise RuntimeError(f"{RAW_HELPER_ERROR} The helper Git identity cannot be verified.") from exc
+    if head != manifest.get("helper_git_commit"):
+        raise RuntimeError(f"{RAW_HELPER_ERROR} The helper Git commit does not match the frozen manifest.")
+
+    for name in sorted(expected_files):
+        source = repo / name
+        expected_hash = files.get(name)
+        if not _is_sha256(expected_hash) or not source.is_file() or source.is_symlink():
+            raise RuntimeError(f"{RAW_HELPER_ERROR} Helper source identity mismatch: {name}.")
+        tracked_ok, _ = _git_check(repo, "ls-files", "--error-unmatch", "--", name)
+        if not tracked_ok:
+            raise RuntimeError(f"{RAW_HELPER_ERROR} Helper source is not tracked by the frozen commit: {name}.")
+    status_ok, helper_status = _git_check(
+        repo,
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all",
+        "--",
+        *sorted(expected_files),
+    )
+    if not status_ok:
+        raise RuntimeError(f"{RAW_HELPER_ERROR} The bound helper-file status cannot be verified.")
+    if helper_status:
+        raise RuntimeError(f"{RAW_HELPER_ERROR} The bound helper files are not clean relative to the frozen commit.")
+    source_snapshots = {
+        name: read_authorized_input_snapshot(repo / name, files[name]) for name in sorted(expected_files)
+    }
+    return (
+        repo,
+        head,
+        tuple(sorted(files.items())),
+        manifest_sha256,
+        tuple(sorted(source_snapshots.items())),
+    )
+
+
+def _git_check(repo: Path, *args: str) -> tuple[bool, str]:
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(repo), *args],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (OSError, subprocess.CalledProcessError) as exc:
+        output = getattr(exc, "stderr", "") or getattr(exc, "stdout", "") or str(exc)
+        return False, output.strip()
+    return True, result.stdout.strip()
+
+
+def _git_blob_sha256(repo: Path, relative_path: str) -> str:
+    """Return SHA-256 of bytes stored at HEAD, independent of the worktree."""
+
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(repo), "cat-file", "blob", f"HEAD:{relative_path}"],
+            check=True,
+            capture_output=True,
+        )
+    except (OSError, subprocess.CalledProcessError) as exc:
+        raise RuntimeError("The frozen Git blob identity cannot be verified.") from exc
+    return hashlib.sha256(result.stdout).hexdigest()
+
+
+def _is_within(path: Path, root: Path) -> bool:
+    try:
+        path.relative_to(root)
+    except ValueError:
+        return False
+    return True
+
+
+def _validate_verified_helper_imports(repo: Path, source_snapshots: dict[str, bytes]) -> None:
+    bound_modules = {Path(name).stem for name in source_snapshots}
+    prohibited_calls = {
+        "__import__",
+        "builtins.__import__",
+        "compile",
+        "delattr",
+        "eval",
+        "exec",
+        "globals",
+        "getattr",
+        "importlib.import_module",
+        "locals",
+        "runpy.run_module",
+        "runpy.run_path",
+        "setattr",
+        "vars",
+    }
+    prohibited_attributes = {
+        "__dict__",
+        "__getattribute__",
+        "__path__",
+        "meta_path",
+        "modules",
+        "path_hooks",
+        "path_importer_cache",
+    }
+    for filename, snapshot in source_snapshots.items():
+        try:
+            tree = ast.parse(snapshot, filename=str(repo / filename))
+        except SyntaxError as exc:
+            raise RuntimeError(f"{RAW_HELPER_ERROR} Verified helper source is not valid Python: {filename}.") from exc
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Name) and node.id == "__builtins__":
+                raise RuntimeError(f"{RAW_HELPER_ERROR} Helper builtin mutation is outside the frozen closure.")
+            if isinstance(node, ast.Attribute) and node.attr in prohibited_attributes:
+                raise RuntimeError(f"{RAW_HELPER_ERROR} Helper import-path mutation is outside the frozen closure.")
+            if isinstance(node, ast.Import):
+                imports = [(alias.name, 0) for alias in node.names]
+            elif isinstance(node, ast.ImportFrom):
+                imports = [(node.module or "", node.level)]
+            else:
+                imports = []
+            for module_name, level in imports:
+                if level:
+                    raise RuntimeError(f"{RAW_HELPER_ERROR} Relative helper imports are outside the frozen closure.")
+                root_name = module_name.split(".", 1)[0]
+                if root_name in {"builtins", "importlib", "runpy"}:
+                    raise RuntimeError(f"{RAW_HELPER_ERROR} Dynamic-import facilities are outside the frozen closure.")
+                local_candidates = (repo / f"{root_name}.py", repo / root_name)
+                if any(candidate.exists() for candidate in local_candidates) and root_name not in bound_modules:
+                    raise RuntimeError(f"{RAW_HELPER_ERROR} Unbound local helper import: {root_name}.")
+            if isinstance(node, ast.Call):
+                current = node.func
+                parts = []
+                while isinstance(current, ast.Attribute):
+                    parts.append(current.attr)
+                    current = current.value
+                if isinstance(current, ast.Name):
+                    parts.append(current.id)
+                if ".".join(reversed(parts)) in prohibited_calls:
+                    raise RuntimeError(f"{RAW_HELPER_ERROR} Dynamic code or imports are outside the frozen closure.")
+
+
+def _trusted_helper_import_roots() -> set[Path]:
+    runtime_paths = sysconfig.get_paths()
+    roots = {
+        Path(runtime_paths[key]).expanduser().resolve()
+        for key in ("stdlib", "platstdlib", "purelib", "platlib")
+        if runtime_paths.get(key)
+    }
+    try:
+        site_paths = list(site.getsitepackages())
+    except (AttributeError, OSError):
+        site_paths = []
+    try:
+        user_site = site.getusersitepackages()
+    except (AttributeError, OSError):
+        user_site = None
+    if isinstance(user_site, (str, os.PathLike)):
+        site_paths.append(user_site)
+    elif user_site:
+        site_paths.extend(user_site)
+    roots.update(
+        Path(path).expanduser().resolve()
+        for path in site_paths
+        if isinstance(path, (str, os.PathLike)) and path
+    )
+    return roots
+
+
+def _helper_spec_uses_untrusted_code(spec, repo: Path, trusted_roots: set[Path]) -> bool:
+    locations = []
+    origin = getattr(spec, "origin", None)
+    if origin not in (None, "built-in", "frozen"):
+        locations.append(origin)
+    locations.extend(getattr(spec, "submodule_search_locations", None) or ())
+    if not locations and origin not in ("built-in", "frozen"):
+        return True
+    for location in locations:
+        location_path = Path(location).expanduser().resolve()
+        if _is_within(location_path, repo) or _is_within(location_path, ROOT):
+            return True
+        if not any(_is_within(location_path, root) for root in trusted_roots):
+            return True
+    return False
+
+
+def _loaded_module_spec(module):
+    return getattr(module, "__spec__", None)
+
+
+class _VerifiedHelperMetaPathGuard(importlib.abc.MetaPathFinder):
+    def __init__(self, repo: Path, bound_modules: set[str], trusted_roots: set[Path]):
+        self.repo = repo
+        self.bound_modules = bound_modules
+        self.trusted_roots = trusted_roots
+
+    def find_spec(self, fullname, path=None, target=None):
+        root_name = fullname.split(".", 1)[0]
+        if root_name in self.bound_modules:
+            return None
+        spec = importlib.machinery.PathFinder.find_spec(fullname, path)
+        if spec is not None and _helper_spec_uses_untrusted_code(
+            spec,
+            self.repo,
+            self.trusted_roots,
+        ):
+            raise ImportError(f"{RAW_HELPER_ERROR} Unbound local helper import: {fullname}.")
+        return None
+
+
+def _helper_import_guard(repo: Path, bound_modules: set[str], trusted_roots: set[Path]):
+    def guarded_import(name, globals=None, locals=None, fromlist=(), level=0):
+        if level:
+            raise RuntimeError(f"{RAW_HELPER_ERROR} Relative helper imports are outside the frozen closure.")
+        root_name = name.split(".", 1)[0]
+        if root_name in {"builtins", "importlib", "runpy"}:
+            raise RuntimeError(f"{RAW_HELPER_ERROR} Dynamic-import facilities are outside the frozen closure.")
+        trusted_search_path = [
+            str(repo),
+            *(str(root) for root in sorted(trusted_roots, key=str)),
+        ]
+        if root_name not in bound_modules:
+            module = sys.modules.get(root_name)
+            if module is not None:
+                spec = _loaded_module_spec(module)
+            else:
+                spec = importlib.machinery.BuiltinImporter.find_spec(root_name)
+                if spec is None:
+                    spec = importlib.machinery.FrozenImporter.find_spec(root_name)
+                if spec is None:
+                    spec = importlib.machinery.PathFinder.find_spec(root_name, trusted_search_path)
+            if spec is None or _helper_spec_uses_untrusted_code(
+                spec,
+                repo,
+                trusted_roots,
+            ):
+                raise RuntimeError(f"{RAW_HELPER_ERROR} Unbound local helper import: {root_name}.")
+        original_meta_path = sys.meta_path
+        original_meta_snapshot = tuple(original_meta_path)
+        original_sys_path = sys.path
+        original_sys_snapshot = tuple(original_sys_path)
+        try:
+            sys.meta_path = [
+                importlib.machinery.BuiltinImporter,
+                importlib.machinery.FrozenImporter,
+                importlib.machinery.PathFinder,
+            ]
+            sys.path = list(trusted_search_path)
+            imported = builtins.__import__(name, globals, locals, fromlist, level)
+        finally:
+            original_meta_path[:] = original_meta_snapshot
+            original_sys_path[:] = original_sys_snapshot
+            sys.meta_path = original_meta_path
+            sys.path = original_sys_path
+        imported_root = sys.modules.get(root_name)
+        if root_name not in bound_modules and imported_root is not None:
+            imported_spec = _loaded_module_spec(imported_root)
+            if _helper_spec_uses_untrusted_code(imported_spec, repo, trusted_roots):
+                raise RuntimeError(f"{RAW_HELPER_ERROR} Imported module escaped the frozen closure: {root_name}.")
+        return imported
+
+    return guarded_import
+
+
+def _wrap_verified_helper_api(
+    function,
+    meta_path_guard: _VerifiedHelperMetaPathGuard,
+):
+    """Keep the verified import boundary active during lazy helper calls."""
+
+    @functools.wraps(function)
+    def guarded(*args, **kwargs):
+        original_meta_path = sys.meta_path
+        original_meta_snapshot = tuple(original_meta_path)
+        original_sys_path = sys.path
+        original_sys_snapshot = tuple(original_sys_path)
+        try:
+            sys.meta_path = [
+                meta_path_guard,
+                importlib.machinery.BuiltinImporter,
+                importlib.machinery.FrozenImporter,
+                importlib.machinery.PathFinder,
+            ]
+            return function(*args, **kwargs)
+        finally:
+            # Restore both the object and its contents.  A helper that replaces
+            # either list cannot leak its import-path mutation into the caller.
+            original_meta_path[:] = original_meta_snapshot
+            original_sys_path[:] = original_sys_snapshot
+            sys.meta_path = original_meta_path
+            sys.path = original_sys_path
+
+    return guarded
+
+
+def require_raw_helper(expected_manifest_sha256=None):
+    global _HELPER_IDENTITY
+    global RCEP_LIST
+    global build_tariff_relief_tc, chow_lin_quarterly_vax
+    global load_quarterly_macro_and_bilateral, quality_control_missing, quality_control_outliers
+    global girf_one, moving_average_coefficients
+
+    identity = _validated_helper_identity(expected_manifest_sha256)
+    if _HELPER_IDENTITY is not None:
+        if _HELPER_IDENTITY != identity:
+            raise RuntimeError(f"{RAW_HELPER_ERROR} The cached helper identity does not match the current checkout.")
+        return _HELPER_IDENTITY
+    repo = identity[0]
+    helper_module_names = ("config", "research_data_construction", "research_network_tvp_var")
+    preloaded = [name for name in helper_module_names if name in sys.modules]
+    if preloaded:
+        raise RuntimeError(
+            f"{RAW_HELPER_ERROR} Helper modules were preloaded before identity verification: {', '.join(preloaded)}."
+        )
+    source_snapshots = dict(identity[4])
+    _validate_verified_helper_imports(repo, source_snapshots)
+    baseline_sys_path = tuple(sys.path)
+    trusted_import_roots = _trusted_helper_import_roots()
+    guarded_import = _helper_import_guard(
+        repo,
+        {Path(name).stem for name in source_snapshots},
+        trusted_import_roots,
+    )
+    meta_path_guard = _VerifiedHelperMetaPathGuard(
+        repo,
+        {Path(name).stem for name in source_snapshots},
+        trusted_import_roots,
+    )
+    helper_builtins = {
+        name: value
+        for name, value in vars(builtins).items()
+        if name not in {"compile", "eval", "exec", "open"}
+    }
+    helper_builtins["__import__"] = guarded_import
+    modules = {}
+    baseline_meta_path = tuple(sys.meta_path)
+    try:
+        sys.meta_path[:] = [
+            meta_path_guard,
+            importlib.machinery.BuiltinImporter,
+            importlib.machinery.FrozenImporter,
+            importlib.machinery.PathFinder,
+        ]
+        for module_name in helper_module_names:
+            source_path = repo / f"{module_name}.py"
+            module = types.ModuleType(module_name)
+            module.__file__ = str(source_path)
+            module.__package__ = ""
+            module.__dict__["__builtins__"] = types.MappingProxyType(helper_builtins)
+            modules[module_name] = module
+            sys.modules[module_name] = module
+        for module_name in helper_module_names:
+            source_path = repo / f"{module_name}.py"
+            code = compile(source_snapshots[source_path.name], str(source_path), "exec")
+            exec(code, modules[module_name].__dict__)
+    except BaseException as exc:
+        for module_name, module in modules.items():
+            if sys.modules.get(module_name) is module:
+                sys.modules.pop(module_name, None)
+        raise RuntimeError(f"{RAW_HELPER_ERROR} Verified helper source execution failed.") from exc
+    finally:
+        sys.meta_path[:] = baseline_meta_path
+        sys.path[:] = baseline_sys_path
+
+    config_module = modules["config"]
+    data_module = modules["research_data_construction"]
+    network_module = modules["research_network_tvp_var"]
+    try:
+        if config_module is None or Path(config_module.__file__).resolve() != repo / "config.py":
+            raise RuntimeError(f"{RAW_HELPER_ERROR} The config import resolved outside the verified checkout.")
+        if Path(data_module.__file__).resolve() != repo / "research_data_construction.py":
+            raise RuntimeError(f"{RAW_HELPER_ERROR} The data-helper import resolved outside the verified checkout.")
+        if Path(network_module.__file__).resolve() != repo / "research_network_tvp_var.py":
+            raise RuntimeError(f"{RAW_HELPER_ERROR} The network-helper import resolved outside the verified checkout.")
+        missing = [name for name in RCEP_DATA_APIS if not hasattr(data_module, name)]
+        missing += [name for name in RCEP_NETWORK_APIS if not callable(getattr(network_module, name, None))]
+        if missing:
+            raise RuntimeError(f"{RAW_HELPER_ERROR} Missing helper API: {', '.join(missing)}.")
+    except BaseException:
+        for module_name, module in modules.items():
+            if sys.modules.get(module_name) is module:
+                sys.modules.pop(module_name, None)
+        raise
+
+    RCEP_LIST = data_module.RCEP_LIST
+    build_tariff_relief_tc = _wrap_verified_helper_api(
+        data_module.build_tariff_relief_tc, meta_path_guard
+    )
+    chow_lin_quarterly_vax = _wrap_verified_helper_api(
+        data_module.chow_lin_quarterly_vax, meta_path_guard
+    )
+    load_quarterly_macro_and_bilateral = _wrap_verified_helper_api(
+        data_module.load_quarterly_macro_and_bilateral, meta_path_guard
+    )
+    quality_control_missing = _wrap_verified_helper_api(
+        data_module.quality_control_missing, meta_path_guard
+    )
+    quality_control_outliers = _wrap_verified_helper_api(
+        data_module.quality_control_outliers, meta_path_guard
+    )
+    girf_one = _wrap_verified_helper_api(network_module.girf_one, meta_path_guard)
+    moving_average_coefficients = _wrap_verified_helper_api(
+        network_module.moving_average_coefficients, meta_path_guard
+    )
+    _HELPER_IDENTITY = identity
+    return identity
+
+
+RCEP_LIST = ()
+
+
+def _raw_helper_unavailable(*_args, **_kwargs):
+    raise RuntimeError(RAW_HELPER_ERROR)
+
+
+build_tariff_relief_tc = _raw_helper_unavailable
+chow_lin_quarterly_vax = _raw_helper_unavailable
+load_quarterly_macro_and_bilateral = _raw_helper_unavailable
+quality_control_missing = _raw_helper_unavailable
+quality_control_outliers = _raw_helper_unavailable
+girf_one = _raw_helper_unavailable
+moving_average_coefficients = _raw_helper_unavailable
 
 EPS = 1e-10
 
 
+def _local_moving_average_coefficients(A_list, B_list, W_list, horizon, W_fixed=None):
+    """Dataset-neutral MA recursion used when the RCEP helper is not in scope."""
+    p = len(A_list)
+    n = A_list[0].shape[0]
+    psi = [np.eye(n)]
+    for h in range(1, horizon + 1):
+        current = np.zeros((n, n))
+        for lag in range(1, min(p + 1, h + 1)):
+            previous = h - lag
+            if previous >= len(psi):
+                continue
+            current += A_list[lag - 1] @ psi[previous]
+            W_use = W_fixed if W_fixed is not None else (
+                W_list[previous] if previous < len(W_list) else None
+            )
+            if W_use is not None and B_list[lag - 1] is not None:
+                current += B_list[lag - 1] @ np.asarray(W_use) @ psi[previous]
+        psi.append(current)
+    return psi
+
+
+def _local_girf_one(Phi_h, Sigma, j_shock, scale=1.0):
+    """Generalized impulse response for the helper-independent NYC path."""
+    n = Sigma.shape[0]
+    shock_scale = np.sqrt(Sigma[j_shock, j_shock] + 1e-12)
+    shock = np.zeros(n)
+    shock[j_shock] = 1.0
+    return (Phi_h @ Sigma @ shock) / shock_scale * scale
+
+
 def build_trade_network_w(df_bilateral, date_val, window_quarters=4, use_import_share=True, mode="import"):
     """Local compatibility wrapper for pandas/numpy read-only pivot arrays."""
+    require_raw_helper()
     df = df_bilateral[
         (df_bilateral["date"] <= date_val)
         & (df_bilateral["date"] > (date_val - pd.DateOffset(months=3 * window_quarters)))
@@ -93,52 +637,94 @@ def build_trade_network_w(df_bilateral, date_val, window_quarters=4, use_import_
 
 
 def var_ols(Y, W_list, X_exog=None, p=2, lambda_ridge=1e-4):
-    T, N = Y.shape
-    if X_exog is None:
-        X_exog = np.zeros((T, 0))
-    K = X_exog.shape[1]
-
-    A_list = [np.zeros((N, N)) for _ in range(p)]
-    B_list = [np.zeros((N, N)) for _ in range(p)]
-    c = np.zeros(N)
-    Pi = np.zeros((N, K))
-    residuals = np.zeros((T - p, N))
-
-    for i in range(N):
-        rows = []
-        for tau in range(p, T):
-            row = [1.0]
-            for lag in range(1, p + 1):
-                row.append(Y[tau - lag, i])
-            for lag in range(1, p + 1):
-                Wy = W_list[tau - lag] @ Y[tau - lag] if W_list[tau - lag] is not None else np.zeros(N)
-                row.append(Wy[i])
-            if K > 0:
-                row.extend(X_exog[tau])
-            rows.append(row)
-
-        Z = np.asarray(rows, dtype=float)
-        y = Y[p:, i]
-        lhs = Z.T @ Z + float(lambda_ridge) * np.eye(Z.shape[1])
-        rhs = Z.T @ y
-        beta_i, _, _, _ = np.linalg.lstsq(lhs, rhs, rcond=None)
-
-        c[i] = beta_i[0]
-        for lag in range(p):
-            A_list[lag][i, i] = beta_i[1 + lag]
-            B_list[lag][i, i] = beta_i[1 + p + lag]
-        if K > 0:
-            Pi[i, :] = beta_i[1 + 2 * p:]
-        residuals[:, i] = y - Z @ beta_i
-
-    Sigma = (residuals.T @ residuals) / max(residuals.shape[0] - 1, 1)
-    Sigma = (Sigma + Sigma.T) / 2 + 1e-8 * np.eye(N)
-    return c, A_list, B_list, Pi, Sigma, residuals
+    return equationwise_ridge_fit(
+        Y,
+        W_list,
+        X_exog=X_exog,
+        p=p,
+        lambda_ridge=lambda_ridge,
+    )
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
-EMPIRICAL_OUT_ROOT = ROOT / "output" / "natcs_empirical_cp"
+AUTHORIZED_OUTPUT_ROOT = ROOT / "output" / "natcs_empirical_cp_authorized_runs"
+_AUTHORIZED_OUTPUT_DIRECTORY_IDENTITIES = {}
+SCIENTIFIC_AUTHORIZATION_SCHEMA_VERSION = 1
+SCIENTIFIC_AUTHORIZATION_ERROR = (
+    "A scientific rebuild requires an exact, author-approved scientific execution authorization."
+)
+SCIENTIFIC_AUTHORIZATION_ARGV = (
+    "window",
+    "p",
+    "n_boot",
+    "block_size",
+    "cp_inits",
+    "cp_max_iter",
+    "cp_tol",
+)
+SCIENTIFIC_AUTHORIZATION_IMPLEMENTATION_FILES = {
+    "scripts/run_cp_empirical_pipeline.py",
+    "scripts/natcs_design_contract.py",
+}
 NYC_TAXI_UPSTREAM_COMMIT = "7e63ba9734021171eaf49edb92be8a7e7e8802eb"
+NYC_TAXI_REQUIRED_FILES = tuple(f"yellow_taxi_trip_{year}.npz" for year in range(2012, 2022))
+RCEP_REQUIRED_INPUT_FILENAMES = (
+    "master_quarterly_macro_2005_2024.csv",
+    "master_quarterly_bilateral_2005_2024.csv",
+)
+
+
+def _validated_nyc_taxi_source(dataset_dir=None):
+    supplied_dir = dataset_dir or os.environ.get("NATCS_NYC_TAXI_DATASET_DIR")
+    if not supplied_dir:
+        raise RuntimeError(
+            "A raw-to-derived NYC Taxi rebuild requires NATCS_NYC_TAXI_DATASET_DIR to point to a verified datasets/NYC-taxi checkout."
+        )
+    source_path = Path(supplied_dir).expanduser()
+    if source_path.is_symlink() or not source_path.is_dir():
+        raise RuntimeError("The NYC Taxi source path must be a non-symlink directory.")
+    taxi_root = source_path.resolve()
+
+    root_ok, root_text = _git_check(taxi_root, "rev-parse", "--show-toplevel")
+    commit_ok, commit = _git_check(taxi_root, "rev-parse", "HEAD")
+    if not root_ok or not commit_ok:
+        raise RuntimeError("The NYC Taxi source Git identity cannot be verified.")
+    git_root = Path(root_text).resolve()
+    if taxi_root != git_root / "datasets" / "NYC-taxi":
+        raise RuntimeError("The NYC Taxi source must resolve to datasets/NYC-taxi in the verified checkout.")
+    if commit != NYC_TAXI_UPSTREAM_COMMIT:
+        raise RuntimeError("The NYC Taxi source commit does not match the frozen upstream commit.")
+
+    file_hashes = []
+    relative_paths = []
+    for name in NYC_TAXI_REQUIRED_FILES:
+        source = taxi_root / name
+        if not source.is_file() or source.is_symlink():
+            raise RuntimeError(f"NYC Taxi source identity mismatch: {name}.")
+        relative_path = str(source.relative_to(git_root))
+        tracked_ok, _ = _git_check(git_root, "ls-files", "--error-unmatch", "--", relative_path)
+        if not tracked_ok:
+            raise RuntimeError(f"NYC Taxi source is not tracked by the frozen commit: {name}.")
+        expected_sha256 = _git_blob_sha256(git_root, relative_path)
+        if _sha256(source) != expected_sha256:
+            raise RuntimeError(
+                f"NYC Taxi source files are not clean relative to the frozen commit: byte mismatch for {name}."
+            )
+        relative_paths.append(relative_path)
+        file_hashes.append((name, expected_sha256))
+    status_ok, source_status = _git_check(
+        git_root,
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all",
+        "--",
+        *relative_paths,
+    )
+    if not status_ok:
+        raise RuntimeError("The NYC Taxi source-file status cannot be verified.")
+    if source_status:
+        raise RuntimeError("The NYC Taxi source files are not clean relative to the frozen commit.")
+    return taxi_root, commit, tuple(file_hashes)
 
 plt.rcParams.update({
     "font.family": "Arial",
@@ -158,12 +744,124 @@ def ensure_dir(path: Path):
     path.mkdir(parents=True, exist_ok=True)
 
 
-def output_paths(dataset: str):
-    out_dir = EMPIRICAL_OUT_ROOT / dataset
+def _open_child_directory(parent_fd: int, name: str, *, allow_existing: bool, label: str) -> int:
+    try:
+        os.mkdir(name, mode=0o750, dir_fd=parent_fd)
+    except FileExistsError as exc:
+        mode = os.stat(name, dir_fd=parent_fd, follow_symlinks=False).st_mode
+        if stat.S_ISLNK(mode):
+            raise RuntimeError(f"The {label} is a symlink and cannot receive scientific outputs.") from exc
+        if not allow_existing:
+            raise RuntimeError(f"The {label} already exists; overwrite is denied.") from exc
+    flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | getattr(os, "O_NOFOLLOW", 0)
+    try:
+        return os.open(name, flags, dir_fd=parent_fd)
+    except OSError as exc:
+        raise RuntimeError(f"The {label} is not a no-follow directory.") from exc
+
+
+def output_paths(dataset: str, output_root: Path):
+    out_dir = Path(output_root).expanduser()
+    if out_dir.name != dataset:
+        raise RuntimeError("The authorized output root does not match the selected dataset.")
+    authorized_base = out_dir.parent.parent
+    base_parent = authorized_base.parent
+    if base_parent != base_parent.resolve() or base_parent.is_symlink() or not base_parent.is_dir():
+        raise RuntimeError("The authorized output base has a symlinked or unavailable parent.")
+    parent_flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | getattr(os, "O_NOFOLLOW", 0)
+    parent_fd = os.open(base_parent, parent_flags)
+    base_fd = decision_fd = out_fd = figures_fd = None
+    output_identity = figure_identity = None
+    try:
+        base_fd = _open_child_directory(
+            parent_fd,
+            authorized_base.name,
+            allow_existing=True,
+            label="authorized output base",
+        )
+        decision_fd = _open_child_directory(
+            base_fd,
+            out_dir.parent.name,
+            allow_existing=False,
+            label="authorized decision directory",
+        )
+        out_fd = _open_child_directory(
+            decision_fd,
+            dataset,
+            allow_existing=False,
+            label="authorized output root",
+        )
+        figures_fd = _open_child_directory(
+            out_fd,
+            "figures",
+            allow_existing=False,
+            label="authorized figure directory",
+        )
+        out_stat = os.fstat(out_fd)
+        figure_stat = os.fstat(figures_fd)
+        output_identity = (out_stat.st_dev, out_stat.st_ino)
+        figure_identity = (figure_stat.st_dev, figure_stat.st_ino)
+    finally:
+        for descriptor in (figures_fd, out_fd, decision_fd, base_fd, parent_fd):
+            if descriptor is not None:
+                os.close(descriptor)
+    if out_dir.is_symlink() or not out_dir.is_dir() or out_dir != out_dir.resolve():
+        raise RuntimeError("The authorized output root changed during no-follow creation.")
     fig_dir = out_dir / "figures"
-    ensure_dir(out_dir)
-    ensure_dir(fig_dir)
+    _AUTHORIZED_OUTPUT_DIRECTORY_IDENTITIES[out_dir] = output_identity
+    _AUTHORIZED_OUTPUT_DIRECTORY_IDENTITIES[fig_dir] = figure_identity
     return out_dir, fig_dir
+
+
+def _open_exclusive_output(path: Path, *, binary: bool):
+    target = Path(path)
+    parent = target.parent
+    expected_identity = _AUTHORIZED_OUTPUT_DIRECTORY_IDENTITIES.get(parent)
+    if expected_identity is None:
+        raise RuntimeError("The output parent is not an authorized reserved directory.")
+    if target.name in {"", ".", ".."} or target.name != str(target.relative_to(parent)):
+        raise RuntimeError("The output filename is invalid.")
+    flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | getattr(os, "O_NOFOLLOW", 0)
+    try:
+        parent_fd = os.open(parent, flags)
+    except OSError as exc:
+        raise RuntimeError("The authorized output directory cannot be reopened without following symlinks.") from exc
+    try:
+        parent_stat = os.fstat(parent_fd)
+        if (parent_stat.st_dev, parent_stat.st_ino) != expected_identity:
+            raise RuntimeError("The authorized output directory identity changed after reservation.")
+        file_flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0)
+        try:
+            descriptor = os.open(target.name, file_flags, 0o600, dir_fd=parent_fd)
+        except OSError as exc:
+            raise RuntimeError("The authorized output file already exists or is unsafe.") from exc
+    finally:
+        os.close(parent_fd)
+    if binary:
+        return os.fdopen(descriptor, "wb")
+    return os.fdopen(descriptor, "w", encoding="utf-8", newline="")
+
+
+def write_output_csv(frame, path: Path):
+    with _open_exclusive_output(path, binary=False) as handle:
+        frame.to_csv(handle, index=False)
+
+
+def write_output_json(payload, path: Path):
+    with _open_exclusive_output(path, binary=False) as handle:
+        json.dump(payload, handle, indent=2)
+
+
+def save_output_figure(fig, path: Path, *, dpi=None):
+    target = Path(path)
+    output_format = target.suffix.lower().lstrip(".")
+    if output_format not in {"png", "pdf"}:
+        raise RuntimeError("The requested figure output format is not authorized.")
+    save_options = {"format": output_format}
+    if dpi is not None:
+        save_options["dpi"] = dpi
+    with _open_exclusive_output(target, binary=True) as handle:
+        fig.savefig(handle, **save_options)
 
 
 def quarter_label(ts: pd.Timestamp) -> str:
@@ -187,8 +885,29 @@ def top_import_exposure_perturbation(W: np.ndarray, scale_factor: float = 0.5):
     return hub, safe_row_normalize(W_perturbed)
 
 
-def load_rcep_panel_data():
-    df_macro, df_bilateral = load_quarterly_macro_and_bilateral()
+def load_rcep_panel_data(input_identity):
+    manifest_sha256 = input_identity.get("rcep_helper_manifest_sha256") if isinstance(input_identity, dict) else None
+    require_raw_helper(manifest_sha256)
+    authorized_files = input_identity.get("rcep_input_files") if isinstance(input_identity, dict) else None
+    if not isinstance(authorized_files, dict):
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The RCEP input snapshots are not authorized.")
+    paths_by_name = {Path(path).name: (Path(path), digest) for path, digest in authorized_files.items()}
+    if set(paths_by_name) != set(RCEP_REQUIRED_INPUT_FILENAMES):
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The RCEP input snapshot set is invalid.")
+    macro_path, macro_hash = paths_by_name["master_quarterly_macro_2005_2024.csv"]
+    bilateral_path, bilateral_hash = paths_by_name["master_quarterly_bilateral_2005_2024.csv"]
+    df_macro = pd.read_csv(io.BytesIO(read_authorized_input_snapshot(macro_path, macro_hash)))
+    df_bilateral = pd.read_csv(io.BytesIO(read_authorized_input_snapshot(bilateral_path, bilateral_hash)))
+    df_macro["date"] = pd.to_datetime(
+        df_macro["date_quarterly"] if "date_quarterly" in df_macro.columns else df_macro["date"]
+    )
+    df_bilateral["date"] = pd.to_datetime(
+        df_bilateral["date_quarterly"] if "date_quarterly" in df_bilateral.columns else df_bilateral["date"]
+    )
+    df_macro = df_macro[df_macro["iso3"].isin(RCEP_LIST)]
+    df_bilateral = df_bilateral[
+        df_bilateral["reporter_iso"].isin(RCEP_LIST) & df_bilateral["partner_iso"].isin(RCEP_LIST)
+    ]
     df_tc = build_tariff_relief_tc(df_bilateral)
 
     vax = chow_lin_quarterly_vax(df_macro)
@@ -212,17 +931,22 @@ def load_rcep_panel_data():
     }
 
 
-def _build_monthly_taxi_tensor():
-    taxi_dataset_dir = os.environ.get("NATCS_NYC_TAXI_DATASET_DIR")
-    if not taxi_dataset_dir:
-        raise RuntimeError(
-            "A raw-to-derived NYC Taxi rebuild requires NATCS_NYC_TAXI_DATASET_DIR to point to datasets/NYC-taxi."
-        )
-    taxi_root = Path(taxi_dataset_dir).expanduser().resolve()
+def _build_monthly_taxi_tensor(input_identity):
+    if not isinstance(input_identity, dict):
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The NYC input snapshot is not authorized.")
+    authorized_dir = input_identity.get("nyc_dataset_dir")
+    if not isinstance(authorized_dir, str) or not authorized_dir.strip():
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The NYC source path is not bound.")
+    taxi_root, commit, file_hashes = _validated_nyc_taxi_source(authorized_dir)
+    if input_identity.get("nyc_upstream_commit") != commit:
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The NYC input snapshot is not authorized.")
+    expected_hashes = dict(file_hashes)
     monthly_mats = []
     monthly_dates = []
     for year in range(2012, 2022):
-        arr = np.load(taxi_root / f"yellow_taxi_trip_{year}.npz")["arr_0"]
+        name = f"yellow_taxi_trip_{year}.npz"
+        snapshot = read_authorized_input_snapshot(taxi_root / name, expected_hashes[name])
+        arr = np.load(io.BytesIO(snapshot), allow_pickle=False)["arr_0"]
         dates = pd.date_range(f"{year}-01-01", periods=arr.shape[2], freq="D")
         month_index = pd.PeriodIndex(dates, freq="M")
         for period in month_index.unique():
@@ -232,8 +956,8 @@ def _build_monthly_taxi_tensor():
     return monthly_dates, monthly_mats
 
 
-def load_nyc_taxi_data():
-    monthly_dates, monthly_mats = _build_monthly_taxi_tensor()
+def load_nyc_taxi_data(input_identity):
+    monthly_dates, monthly_mats = _build_monthly_taxi_tensor(input_identity)
     rolling_dates = []
     rolling_mats = []
     for idx in range(11, len(monthly_mats)):
@@ -285,12 +1009,133 @@ def load_nyc_taxi_data():
     }
 
 
-def load_dataset(name: str):
+def load_dataset(name: str, input_identity):
     if name == "rcep":
-        return load_rcep_panel_data()
+        return load_rcep_panel_data(input_identity)
     if name == "nyc_taxi":
-        return load_nyc_taxi_data()
+        return load_nyc_taxi_data(input_identity)
     raise ValueError(f"Unsupported dataset: {name}")
+
+
+def _validate_loaded_dataset(data: dict, dataset: str, p: int) -> None:
+    """Validate the loaded panel and topology before reserving output paths.
+
+    This is deliberately structural: it checks the objects that downstream
+    estimators require, without fitting a model or producing a scientific
+    artifact.  The production entry point calls it immediately after loading
+    authorized bytes and before creating the quarantine output tree.
+    """
+
+    if not isinstance(data, dict):
+        raise ValueError("loaded dataset must be a mapping")
+    if dataset not in {"rcep", "nyc_taxi"}:
+        raise ValueError("unsupported loaded dataset")
+
+    try:
+        Y = np.asarray(data["Y"], dtype=float)
+    except (KeyError, TypeError, ValueError) as exc:
+        raise ValueError("Y must be a numeric array") from exc
+    if Y.ndim != 2:
+        raise ValueError("Y must be two-dimensional")
+    n_rows, n_units = Y.shape
+    if n_rows <= p:
+        raise ValueError("Y must have more rows than the lag order")
+    if n_units < 1:
+        raise ValueError("Y must contain at least one unit")
+    if not np.isfinite(Y).all():
+        raise ValueError("Y must contain only finite values")
+
+    dates_value = data.get("dates")
+    if isinstance(dates_value, (str, bytes)) or dates_value is None:
+        raise ValueError("dates must be a sequence aligned with Y")
+    try:
+        dates = pd.DatetimeIndex(pd.to_datetime(list(dates_value), errors="raise"))
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise ValueError("dates must be parseable timestamps") from exc
+    if len(dates) != n_rows:
+        raise ValueError("dates must align with Y")
+    if dates.has_duplicates or not dates.is_monotonic_increasing:
+        raise ValueError("dates must be strictly increasing without duplicates")
+
+    unit_names = data.get("unit_names")
+    if isinstance(unit_names, (str, bytes)) or unit_names is None:
+        raise ValueError("unit_names must be a sequence")
+    unit_names = list(unit_names)
+    if len(unit_names) != n_units:
+        raise ValueError("unit_names must align with Y columns")
+    if any(not isinstance(name, str) or not name.strip() for name in unit_names):
+        raise ValueError("unit_names must be non-empty strings")
+    if len(set(unit_names)) != len(unit_names):
+        raise ValueError("unit_names must be unique")
+
+    girf_pair = data.get("girf_pair")
+    if (
+        not isinstance(girf_pair, (tuple, list))
+        or len(girf_pair) != 2
+        or any(name not in unit_names for name in girf_pair)
+        or girf_pair[0] == girf_pair[1]
+    ):
+        raise ValueError("girf_pair must contain two distinct known units")
+
+    requested_dates = data.get("requested_girf_dates")
+    if isinstance(requested_dates, (str, bytes)) or requested_dates is None:
+        raise ValueError("requested_girf_dates must be a sequence")
+    try:
+        pd.to_datetime(list(requested_dates), errors="raise")
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise ValueError("requested_girf_dates must be parseable timestamps") from exc
+
+    if dataset == "nyc_taxi":
+        w_list = data.get("w_list")
+        if not isinstance(w_list, (list, tuple)) or len(w_list) != n_rows:
+            raise ValueError("w_list must have one matrix per panel row")
+        for index, matrix in enumerate(w_list):
+            try:
+                matrix = np.asarray(matrix, dtype=float)
+            except (TypeError, ValueError) as exc:
+                raise ValueError(f"w_list[{index}] must be numeric") from exc
+            if matrix.shape != (n_units, n_units):
+                raise ValueError(f"w_list[{index}] has the wrong matrix dimensions")
+            if not np.isfinite(matrix).all():
+                raise ValueError(f"w_list[{index}] must contain only finite values")
+        try:
+            W_pre = np.asarray(data["W_pre"], dtype=float)
+        except (KeyError, TypeError, ValueError) as exc:
+            raise ValueError("W_pre must be a numeric matrix") from exc
+        if W_pre.shape != (n_units, n_units) or not np.isfinite(W_pre).all():
+            raise ValueError("W_pre has the wrong dimensions or non-finite values")
+        level_panel = data.get("level_panel")
+        if not isinstance(level_panel, pd.DataFrame) or "date" not in level_panel.columns:
+            raise ValueError("level_panel must be a table with a date column")
+        if len(level_panel) != n_rows:
+            raise ValueError("level_panel must align with Y")
+        if any(name not in level_panel.columns for name in unit_names):
+            raise ValueError("level_panel is missing a unit column")
+        acquisition_info = data.get("acquisition_info")
+        if not isinstance(acquisition_info, dict) or not acquisition_info:
+            raise ValueError("acquisition_info must be a non-empty mapping")
+    else:
+        bilateral = data.get("df_bilateral")
+        if not isinstance(bilateral, pd.DataFrame):
+            raise ValueError("RCEP bilateral panel is missing")
+        bilateral_required = {"date", "reporter_iso", "partner_iso"}
+        if not bilateral_required.issubset(bilateral.columns):
+            raise ValueError("RCEP bilateral panel is missing required columns")
+        tariff = data.get("df_tc")
+        if not isinstance(tariff, pd.DataFrame):
+            raise ValueError("RCEP tariff-relief panel is missing")
+        tariff_required = {"date", "reporter_iso", "partner_iso", "TC"}
+        if not tariff_required.issubset(tariff.columns):
+            raise ValueError("RCEP tariff-relief panel is missing required columns")
+        for frame, label in ((bilateral, "bilateral"), (tariff, "tariff-relief")):
+            try:
+                frame_dates = pd.to_datetime(frame["date"], errors="raise")
+            except (TypeError, ValueError, OverflowError) as exc:
+                raise ValueError(f"RCEP {label} dates are not parseable") from exc
+            if frame_dates.isna().any():
+                raise ValueError(f"RCEP {label} dates contain missing values")
+            if not frame[["reporter_iso", "partner_iso"]].notna().all().all():
+                raise ValueError(f"RCEP {label} topology identifiers contain missing values")
 
 
 def compute_w_pre(df_bilateral: pd.DataFrame) -> np.ndarray:
@@ -397,6 +1242,17 @@ def cp_reconstruct(factors):
 
 
 def cp_fit(tensor: np.ndarray, rank: int, n_init=6, max_iter=100, tol=1e-6, seed=20260328):
+    tensor = np.asarray(tensor, dtype=float)
+    if tensor.ndim != 3 or not np.all(np.isfinite(tensor)) or 0 in tensor.shape:
+        raise ValueError("tensor must be finite, three-dimensional and nonempty")
+    if not isinstance(rank, (int, np.integer)) or rank < 1:
+        raise ValueError("rank must be a positive integer")
+    if not isinstance(n_init, (int, np.integer)) or n_init < 1:
+        raise ValueError("n_init must be a positive integer")
+    if not isinstance(max_iter, (int, np.integer)) or max_iter < 1:
+        raise ValueError("max_iter must be a positive integer")
+    if not np.isfinite(tol) or tol <= 0:
+        raise ValueError("tol must be finite and strictly positive")
     rng = np.random.default_rng(seed)
     I, J, K = tensor.shape
     best = None
@@ -409,14 +1265,14 @@ def cp_fit(tensor: np.ndarray, rank: int, n_init=6, max_iter=100, tol=1e-6, seed
         prev_loss = np.inf
 
         for _ in range(max_iter):
-            gram_cb = (C.T @ C) * (B.T @ B) + 1e-6 * np.eye(rank)
-            A = unfold_tensor(tensor, 0) @ khatri_rao(C, B) @ np.linalg.inv(gram_cb)
+            gram_cb = (C.T @ C) * (B.T @ B)
+            A = unfold_tensor(tensor, 0) @ khatri_rao(B, C) @ np.linalg.pinv(gram_cb, hermitian=True)
 
-            gram_ca = (C.T @ C) * (A.T @ A) + 1e-6 * np.eye(rank)
-            B = unfold_tensor(tensor, 1) @ khatri_rao(C, A) @ np.linalg.inv(gram_ca)
+            gram_ca = (C.T @ C) * (A.T @ A)
+            B = unfold_tensor(tensor, 1) @ khatri_rao(A, C) @ np.linalg.pinv(gram_ca, hermitian=True)
 
-            gram_ba = (B.T @ B) * (A.T @ A) + 1e-6 * np.eye(rank)
-            C = unfold_tensor(tensor, 2) @ khatri_rao(B, A) @ np.linalg.inv(gram_ba)
+            gram_ba = (B.T @ B) * (A.T @ A)
+            C = unfold_tensor(tensor, 2) @ khatri_rao(A, B) @ np.linalg.pinv(gram_ba, hermitian=True)
 
             for r in range(rank):
                 norm_a = np.linalg.norm(A[:, r]) or 1.0
@@ -438,7 +1294,17 @@ def cp_fit(tensor: np.ndarray, rank: int, n_init=6, max_iter=100, tol=1e-6, seed
     return best, best_loss
 
 
-def rolling_origin_one_step_loss_for_rank(beta_tensor, rank, rolling_dates, Y, W_list, window, p, min_training_slices):
+def rolling_origin_one_step_loss_for_rank(
+    beta_tensor,
+    rank,
+    rolling_dates,
+    Y,
+    W_list,
+    window,
+    p,
+    min_training_slices,
+    local_intercepts,
+):
     errs = []
     fit_losses = []
     last_recon = None
@@ -450,7 +1316,7 @@ def rolling_origin_one_step_loss_for_rank(beta_tensor, rank, rolling_dates, Y, W
         factors, fit_loss = cp_fit(beta_tensor[:, :, :prefix_length], rank)
         recon = cp_reconstruct(factors)
         beta = recon[:, :, -1]
-        y_hat = predict_one_step(np.zeros(beta.shape[0]), beta, Y[:t], W_list[:t], p)
+        y_hat = predict_one_step(local_intercepts[k], beta, Y[:t], W_list[:t], p)
         errs.append(float(np.mean((Y[t] - y_hat) ** 2)))
         fit_losses.append(fit_loss)
         last_recon = recon
@@ -462,11 +1328,29 @@ def rolling_origin_one_step_loss_for_rank(beta_tensor, rank, rolling_dates, Y, W
     )
 
 
-def select_cp_rank(beta_tensor, rolling_dates, dates, Y, W_list, window, p=2, ranks=(1, 2, 3, 4)):
+def select_cp_rank(
+    beta_tensor,
+    rolling_dates,
+    dates,
+    Y,
+    W_list,
+    window,
+    p=2,
+    ranks=(1, 2, 3, 4),
+    local_intercepts=None,
+):
+    local_intercepts = np.asarray(local_intercepts, dtype=float)
+    expected_intercept_shape = (beta_tensor.shape[2], beta_tensor.shape[0])
+    if local_intercepts.shape != expected_intercept_shape:
+        raise ValueError(
+            "local_intercepts must align one fitted intercept vector with each coefficient slice; "
+            f"expected {expected_intercept_shape}, got {local_intercepts.shape}"
+        )
     cutoff = pd.Timestamp("2022-01-01")
     valid_idx = [idx for idx, t in enumerate(rolling_dates) if pd.Timestamp(dates[t]) < cutoff]
     valid_dates = [rolling_dates[idx] for idx in valid_idx]
     valid_tensor = beta_tensor[:, :, valid_idx]
+    valid_intercepts = local_intercepts[valid_idx]
 
     results = {}
     fit_losses = {}
@@ -482,6 +1366,7 @@ def select_cp_rank(beta_tensor, rolling_dates, dates, Y, W_list, window, p=2, ra
             window,
             p,
             min_training_slices,
+            valid_intercepts,
         )
         results[rank] = pred_loss
         fit_losses[rank] = fit_loss
@@ -496,6 +1381,7 @@ def select_cp_rank(beta_tensor, rolling_dates, dates, Y, W_list, window, p=2, ra
         "available_origins": len(valid_dates),
         "minimum_training_slices": min_training_slices,
         "evaluated_origins_by_rank": validation_origins,
+        "intercept_policy": "origin-specific fitted local intercept",
     }
     return chosen, results, fit_losses, full_recon, factors, full_fit_loss, validation_metadata
 
@@ -515,28 +1401,68 @@ def effective_companion_radius(A_list, B_list, W_use) -> float:
 
 def half_life_pair(irf_pair):
     vals = np.abs(np.asarray(irf_pair, dtype=float))
+    if vals.ndim != 1 or vals.size == 0 or not np.all(np.isfinite(vals)):
+        raise ValueError("irf_pair must be a nonempty finite one-dimensional sequence")
     peak = np.max(vals)
     if peak <= EPS:
         return 0.0
-    for h, v in enumerate(vals):
+    peak_h = int(np.argmax(vals))
+    for h in range(peak_h, len(vals)):
+        v = vals[h]
         if v <= 0.5 * peak:
             return float(h)
+    # The reported horizon is a right-censoring boundary when no post-peak
+    # half-amplitude crossing is observed.
     return float(len(vals) - 1)
 
 
-def pair_metrics_from_blocks(A_list, B_list, Sigma, W_use, horizon, unit_names):
+def signed_ratio_or_none(numerator, denominator, tolerance=EPS):
+    numerator = float(numerator)
+    denominator = float(denominator)
+    if not np.isfinite(numerator) or not np.isfinite(denominator):
+        return None
+    if abs(denominator) <= tolerance:
+        return None
+    return numerator / denominator
+
+
+def pair_metrics_from_blocks(
+    A_list,
+    B_list,
+    Sigma,
+    W_use,
+    horizon,
+    unit_names,
+    response_backend=None,
+):
+    moving_average_fn, girf_fn = response_backend or (
+        moving_average_coefficients,
+        girf_one,
+    )
     n = Sigma.shape[0]
     B_zero = [np.zeros_like(B) for B in B_list]
-    Psi_total = moving_average_coefficients(A_list, B_list, [W_use] * (horizon + len(A_list)), horizon, W_fixed=W_use)
-    Psi_direct = moving_average_coefficients(A_list, B_zero, [W_use] * (horizon + len(A_list)), horizon, W_fixed=W_use)
+    Psi_total = moving_average_fn(
+        A_list,
+        B_list,
+        [W_use] * (horizon + len(A_list)),
+        horizon,
+        W_fixed=W_use,
+    )
+    Psi_direct = moving_average_fn(
+        A_list,
+        B_zero,
+        [W_use] * (horizon + len(A_list)),
+        horizon,
+        W_fixed=W_use,
+    )
 
     rows = []
     s_tot_sum = 0.0
     s_dir_sum = 0.0
     hl_vals = []
     for j in range(n):
-        irf_tot = [girf_one(Psi_total[h], Sigma, j) for h in range(horizon + 1)]
-        irf_dir = [girf_one(Psi_direct[h], Sigma, j) for h in range(horizon + 1)]
+        irf_tot = [girf_fn(Psi_total[h], Sigma, j) for h in range(horizon + 1)]
+        irf_dir = [girf_fn(Psi_direct[h], Sigma, j) for h in range(horizon + 1)]
         for i in range(n):
             if i == j:
                 continue
@@ -619,7 +1545,19 @@ def resolve_target_dates(cp_results, requested_dates):
     return resolved
 
 
-def build_pair_panel(cp_results, df_tc, horizon, W_mode, w_label, unit_names, girf_pair, target_dates, W_fixed=None):
+def build_pair_panel(
+    cp_results,
+    df_tc,
+    horizon,
+    W_mode,
+    w_label,
+    unit_names,
+    girf_pair,
+    target_dates,
+    W_fixed=None,
+    response_backend=None,
+):
+    _, girf_fn = response_backend or (moving_average_coefficients, girf_one)
     rows = []
     aggregate_rows = []
     girf_store = {}
@@ -627,15 +1565,23 @@ def build_pair_panel(cp_results, df_tc, horizon, W_mode, w_label, unit_names, gi
     shock_idx = unit_names.index(girf_pair[1])
     for item in cp_results:
         W_use = safe_row_normalize(np.asarray(W_fixed if W_fixed is not None else item["W_window"][-1], dtype=float))
-        pair_rows, g_net, hl, Psi_total, Psi_direct = pair_metrics_from_blocks(item["A_list_cp"], item["B_list_cp"], item["Sigma"], W_use, horizon, unit_names)
+        pair_rows, g_net, hl, Psi_total, Psi_direct = pair_metrics_from_blocks(
+            item["A_list_cp"],
+            item["B_list_cp"],
+            item["Sigma"],
+            W_use,
+            horizon,
+            unit_names,
+            response_backend=response_backend,
+        )
         date = item["date"]
         for row in pair_rows:
             row.update({"date": date, "H": horizon, "W_type": w_label})
             rows.append(row)
         aggregate_rows.append({"date": date, "H": horizon, "W_type": w_label, "g_net": g_net, "half_life": hl})
         if date in target_dates:
-            total = [float(girf_one(Psi_total[h], item["Sigma"], shock_idx)[receiver_idx]) for h in range(horizon + 1)]
-            direct = [float(girf_one(Psi_direct[h], item["Sigma"], shock_idx)[receiver_idx]) for h in range(horizon + 1)]
+            total = [float(girf_fn(Psi_total[h], item["Sigma"], shock_idx)[receiver_idx]) for h in range(horizon + 1)]
+            direct = [float(girf_fn(Psi_direct[h], item["Sigma"], shock_idx)[receiver_idx]) for h in range(horizon + 1)]
             girf_store[target_dates[date]] = {"total": total, "direct": direct, "network": [t - d for t, d in zip(total, direct)]}
 
     df_rows = pd.DataFrame(rows)
@@ -655,18 +1601,56 @@ def build_pair_panel(cp_results, df_tc, horizon, W_mode, w_label, unit_names, gi
     return df_all, pd.DataFrame(aggregate_rows), girf_store
 
 
-def fit_panel(df, dep="s_net_clip", cluster="pair", fe="pair_time"):
+def _unidentified_panel_result(df, reason: str) -> dict:
+    return {
+        "Coefficient": np.nan,
+        "Std.Err": np.nan,
+        "p-value": np.nan,
+        "N": int(len(df)),
+        "Status": "not_identified",
+        "Identification": reason,
+    }
+
+
+def fit_panel(df, dep="s_net_clip", cluster="pair", fe="pair_time", allow_unidentified=False):
     df = df.dropna(subset=[dep, "TC_relief"]).copy()
+    if df.empty:
+        if allow_unidentified:
+            return _unidentified_panel_result(df, "no observations remain after filtering")
+        raise ValueError("panel has no observations after filtering")
     if fe == "pair_time":
         df_reg = df.set_index(["pair", "date"])
-        mod = PanelOLS.from_formula(f"{dep} ~ TC_relief + EntityEffects + TimeEffects", data=df_reg)
-        if cluster == "pair":
-            res = mod.fit(cov_type="clustered", cluster_entity=True)
-        elif cluster == "origin_dest":
-            clusters = df_reg.loc[mod.dependent.index, ["reporter_iso", "partner_iso"]]
-            res = mod.fit(cov_type="clustered", clusters=clusters)
-        else:
-            res = mod.fit(cov_type="robust")
+        # Build the absorbed design with rank checks disabled only for this
+        # diagnostic.  The resulting matrix is inspected explicitly so a
+        # stability-restricted sample with no identifying variation is
+        # reported as not identified rather than estimated with a singular
+        # inverse.
+        mod = PanelOLS.from_formula(
+            f"{dep} ~ TC_relief + EntityEffects + TimeEffects",
+            data=df_reg,
+            check_rank=False,
+        )
+        exog = mod.exog.values2d
+        rank = int(np.linalg.matrix_rank(exog))
+        if rank < exog.shape[1]:
+            if allow_unidentified:
+                return _unidentified_panel_result(
+                    df,
+                    "TC_relief is collinear with pair/time effects in the retained sample",
+                )
+            raise ValueError("exog does not have full column rank")
+        try:
+            if cluster == "pair":
+                res = mod.fit(cov_type="clustered", cluster_entity=True)
+            elif cluster == "origin_dest":
+                clusters = df_reg.loc[mod.dependent.index, ["reporter_iso", "partner_iso"]]
+                res = mod.fit(cov_type="clustered", clusters=clusters)
+            else:
+                res = mod.fit(cov_type="robust")
+        except (AbsorbingEffectError, ValueError) as exc:
+            if allow_unidentified:
+                return _unidentified_panel_result(df, f"fixed effects absorb TC_relief: {exc}")
+            raise
     else:
         absorb_df = df[["origin_time", "dest_time"]].copy()
         absorb_df["origin_time"] = absorb_df["origin_time"].astype("category")
@@ -679,48 +1663,125 @@ def fit_panel(df, dep="s_net_clip", cluster="pair", fe="pair_time"):
         "Std.Err": float(res.std_errors["TC_relief"]),
         "p-value": float(res.pvalues["TC_relief"]),
         "N": int(res.nobs),
+        "Status": "identified",
+        "Identification": "full rank after fixed-effect absorption",
     }
 
 
-def block_bootstrap_residuals(residuals, rng, block_size=4):
-    n = residuals.shape[0]
+def moving_block_indices(n, rng, block_size=4):
+    if not isinstance(n, (int, np.integer)) or n < 1:
+        raise ValueError("moving-block bootstrap requires at least one residual row")
+    if not isinstance(block_size, (int, np.integer)) or block_size < 1:
+        raise ValueError("block_size must be a positive integer")
     idx = []
     while len(idx) < n:
         start = int(rng.integers(0, max(n - block_size + 1, 1)))
         idx.extend(range(start, min(start + block_size, n)))
-    return residuals[np.array(idx[:n])]
+    return np.asarray(idx[:n], dtype=int)
 
 
-def bootstrap_cp_pipeline(local_results, rank, lambda_ridge, df_tc, unit_names, girf_pair, target_dates, n_boot=500, block_size=4, p=2, W_pre=None):
+def block_bootstrap_residuals(residuals, rng, block_size=4):
+    residuals = np.asarray(residuals, dtype=float)
+    return residuals[moving_block_indices(residuals.shape[0], rng, block_size)]
+
+
+def rolling_target_residuals(Y, W_list, local_results, p, window):
+    Y = np.asarray(Y, dtype=float)
+    if len(local_results) != len(Y) - window:
+        raise ValueError("local_results must contain one fitted path element per post-window target")
+    residuals = []
+    for offset, item in enumerate(local_results):
+        t = window + offset
+        if int(item.get("t_idx", t)) != t:
+            raise ValueError("local_results are not aligned with the global target path")
+        fitted = predict_one_step(item["c"], item["beta"], Y[:t], W_list[:t], p)
+        residuals.append(Y[t] - fitted)
+    residuals = np.asarray(residuals, dtype=float)
+    return residuals - residuals.mean(axis=0, keepdims=True)
+
+
+def simulate_global_bootstrap_panel(Y, W_list, local_results, rng, block_size, p, window):
+    Y = np.asarray(Y, dtype=float)
+    residuals = rolling_target_residuals(Y, W_list, local_results, p=p, window=window)
+    sampled_indices = moving_block_indices(len(residuals), rng, block_size)
+    sampled_residuals = residuals[sampled_indices]
+    Y_star = np.zeros_like(Y)
+    Y_star[:window] = Y[:window]
+    for offset, item in enumerate(local_results):
+        t = window + offset
+        fitted = predict_one_step(item["c"], item["beta"], Y_star[:t], W_list[:t], p)
+        Y_star[t] = fitted + sampled_residuals[offset]
+    return Y_star, sampled_indices
+
+
+def bootstrap_cp_pipeline(
+    Y,
+    W_list,
+    dates,
+    local_results,
+    rank,
+    lambda_ridge,
+    df_tc,
+    unit_names,
+    girf_pair,
+    target_dates,
+    window,
+    n_boot=500,
+    block_size=4,
+    p=2,
+    W_pre=None,
+    response_backend=None,
+):
     rng = np.random.default_rng(20260328)
     boot_series = []
     girf_store = {label: [] for label in target_dates.values()}
     coef_draws = []
 
     for b in range(n_boot):
-        tensor_blocks = []
-        cp_local = []
-        for item in local_results:
-            Y_w = item["Y_window"]
-            W_w = item["W_window"]
-            u_star = block_bootstrap_residuals(item["residuals"], rng, block_size=block_size)
-            Y_star = np.zeros_like(Y_w)
-            Y_star[:p] = Y_w[:p]
-            for s in range(p, len(Y_w)):
-                beta_prev = item["beta"]
-                y_hat = predict_one_step(item["c"], beta_prev, Y_star[:s], W_w[:s], p)
-                Y_star[s] = y_hat + u_star[s - p]
-            c_b, A_b, B_b, _, Sigma_b, residuals_b = var_ols(Y_star, W_w, X_exog=None, p=p, lambda_ridge=lambda_ridge)
-            beta_b = beta_matrix_from_lists(A_b, B_b)
-            tensor_blocks.append(beta_b)
-            cp_local.append({**item, "c": c_b, "Sigma": Sigma_b, "residuals": residuals_b, "beta": beta_b, "Y_window": Y_star})
-
-        tensor = np.stack(tensor_blocks, axis=2)
+        Y_star, _ = simulate_global_bootstrap_panel(
+            Y,
+            W_list,
+            local_results,
+            rng,
+            block_size=block_size,
+            p=p,
+            window=window,
+        )
+        cp_local, tensor, _ = estimate_rolling_local(
+            Y_star,
+            W_list,
+            dates,
+            p=p,
+            window=window,
+            lambda_ridge=lambda_ridge,
+        )
         factors, _ = cp_fit(tensor, rank, n_init=4, max_iter=80, tol=1e-5, seed=20260328 + b)
         recon = cp_reconstruct(factors)
         cp_results = cp_empirical_paths(cp_local, recon, p=p)
-        df_pair, df_agg, girf = build_pair_panel(cp_results, df_tc, horizon=8, W_mode="import", w_label="Time-Varying", unit_names=unit_names, girf_pair=girf_pair, target_dates=target_dates, W_fixed=None)
-        df_fix, df_agg_fix, _ = build_pair_panel(cp_results, df_tc, horizon=8, W_mode="import", w_label="Fixed-Pre", unit_names=unit_names, girf_pair=girf_pair, target_dates=target_dates, W_fixed=W_pre)
+        df_pair, df_agg, girf = build_pair_panel(
+            cp_results,
+            df_tc,
+            horizon=8,
+            W_mode="import",
+            w_label="Time-Varying",
+            unit_names=unit_names,
+            girf_pair=girf_pair,
+            target_dates=target_dates,
+            W_fixed=None,
+            response_backend=response_backend,
+        )
+        df_fix, df_agg_fix, _ = build_pair_panel(
+            cp_results,
+            df_tc,
+            horizon=8,
+            W_mode="import",
+            w_label="Fixed-Pre",
+            unit_names=unit_names,
+            girf_pair=girf_pair,
+            target_dates=target_dates,
+            W_fixed=W_pre,
+            response_backend=response_backend,
+        )
         if df_tc is not None:
             reg_evolving = fit_panel(df_pair, dep="s_net_clip", cluster="pair", fe="pair_time")
             reg_frozen = fit_panel(df_fix, dep="s_net_clip", cluster="pair", fe="pair_time")
@@ -732,7 +1793,7 @@ def bootstrap_cp_pipeline(local_results, rank, lambda_ridge, df_tc, unit_names, 
                     "evolving_coefficient": evolving,
                     "frozen_coefficient": frozen,
                     "attenuation_difference": evolving - frozen,
-                    "frozen_evolving_ratio": frozen / max(evolving, EPS),
+                    "frozen_evolving_ratio": signed_ratio_or_none(frozen, evolving),
                 }
             )
         for (_, row_tv), (_, row_fix) in zip(df_agg.iterrows(), df_agg_fix.iterrows()):
@@ -789,6 +1850,16 @@ def bootstrap_cp_pipeline(local_results, rank, lambda_ridge, df_tc, unit_names, 
 
         def summarize_quantity(name: str) -> dict[str, float | str]:
             vals = coef_draw_df[name].dropna().astype(float)
+            if vals.empty:
+                return {
+                    "quantity": name,
+                    "mean": None,
+                    "p025": None,
+                    "p16": None,
+                    "p50": None,
+                    "p84": None,
+                    "p975": None,
+                }
             return {
                 "quantity": name,
                 "mean": float(vals.mean()),
@@ -800,7 +1871,7 @@ def bootstrap_cp_pipeline(local_results, rank, lambda_ridge, df_tc, unit_names, 
             }
 
         coef_summary = {
-            "bootstrap_type": "moving-block residual bootstrap with CP re-estimation",
+            "bootstrap_type": "global moving-block residual bootstrap with full rolling and CP re-estimation",
             "bootstrap_replications": int(n_boot),
             "block_size": int(block_size),
             "quantities": {
@@ -813,10 +1884,30 @@ def bootstrap_cp_pipeline(local_results, rank, lambda_ridge, df_tc, unit_names, 
     return pd.DataFrame(agg_rows), girf_store, coef_summary, pd.DataFrame(coef_draws)
 
 
-def bootstrap_block_sensitivity(local_results, rank, lambda_ridge, df_tc, unit_names, girf_pair, target_dates, p, W_pre, block_sizes=(4, 8, 12), n_boot=120):
+def bootstrap_block_sensitivity(
+    Y,
+    W_list,
+    dates,
+    local_results,
+    rank,
+    lambda_ridge,
+    df_tc,
+    unit_names,
+    girf_pair,
+    target_dates,
+    window,
+    p,
+    W_pre,
+    block_sizes=(4, 8, 12),
+    n_boot=120,
+    response_backend=None,
+):
     rows = []
     for block_size in block_sizes:
         boot_df, _, coef_summary, _ = bootstrap_cp_pipeline(
+            Y,
+            W_list,
+            dates,
             local_results,
             rank,
             lambda_ridge,
@@ -824,10 +1915,12 @@ def bootstrap_block_sensitivity(local_results, rank, lambda_ridge, df_tc, unit_n
             unit_names,
             girf_pair,
             target_dates,
+            window=window,
             n_boot=n_boot,
             block_size=block_size,
             p=p,
             W_pre=W_pre,
+            response_backend=response_backend,
         )
         coef_quantities = (coef_summary or {}).get("quantities", {})
         evolving = coef_quantities.get("evolving_coefficient", {})
@@ -948,8 +2041,8 @@ def coefficient_plot(table_df: pd.DataFrame, out_png: Path, out_pdf: Path):
     ax.set_xlabel("Coefficient on tariff relief")
     ax.set_title("RCEP benchmark and inference panel")
     fig.tight_layout()
-    fig.savefig(out_png, dpi=900)
-    fig.savefig(out_pdf)
+    save_output_figure(fig, out_png, dpi=900)
+    save_output_figure(fig, out_pdf)
     plt.close(fig)
 
 
@@ -969,8 +2062,8 @@ def aggregate_plot(agg_df, boot_df, out_png: Path, out_pdf: Path):
     axes[1].set_ylabel("Half-life")
     axes[1].set_xlabel("Date")
     fig.tight_layout()
-    fig.savefig(out_png, dpi=900)
-    fig.savefig(out_pdf)
+    save_output_figure(fig, out_png, dpi=900)
+    save_output_figure(fig, out_pdf)
     plt.close(fig)
 
 
@@ -999,8 +2092,8 @@ def girf_plot(girf_point, girf_boot, out_png: Path, out_pdf: Path):
     axes[0].set_ylabel("Response")
     axes[0].legend(frameon=False, fontsize=8, loc="upper right")
     fig.tight_layout()
-    fig.savefig(out_png, dpi=900)
-    fig.savefig(out_pdf)
+    save_output_figure(fig, out_png, dpi=900)
+    save_output_figure(fig, out_pdf)
     plt.close(fig)
 
 
@@ -1030,18 +2123,34 @@ def topology_difference_plot(agg_tv, agg_fix, boot_df, out_png: Path, out_pdf: P
     ax.spines["right"].set_visible(False)
     ax.grid(axis="y", color="#eeeeee", lw=0.55)
     fig.tight_layout()
-    fig.savefig(out_png, dpi=900)
-    fig.savefig(out_pdf)
+    save_output_figure(fig, out_png, dpi=900)
+    save_output_figure(fig, out_pdf)
     plt.close(fig)
 
 
-def top_exposure_propagation_perturbations(cp_results, horizon, unit_names):
+def top_exposure_propagation_perturbations(cp_results, horizon, unit_names, response_backend=None):
     rows = []
     for item in cp_results:
         W_base = safe_row_normalize(np.asarray(item["W_window"][-1], dtype=float))
         hub, W_perturbed = top_import_exposure_perturbation(W_base, scale_factor=0.5)
-        _, g_base, hl_base, _, _ = pair_metrics_from_blocks(item["A_list_cp"], item["B_list_cp"], item["Sigma"], W_base, horizon, unit_names)
-        _, g_perturbed, hl_perturbed, _, _ = pair_metrics_from_blocks(item["A_list_cp"], item["B_list_cp"], item["Sigma"], W_perturbed, horizon, unit_names)
+        _, g_base, hl_base, _, _ = pair_metrics_from_blocks(
+            item["A_list_cp"],
+            item["B_list_cp"],
+            item["Sigma"],
+            W_base,
+            horizon,
+            unit_names,
+            response_backend=response_backend,
+        )
+        _, g_perturbed, hl_perturbed, _, _ = pair_metrics_from_blocks(
+            item["A_list_cp"],
+            item["B_list_cp"],
+            item["Sigma"],
+            W_perturbed,
+            horizon,
+            unit_names,
+            response_backend=response_backend,
+        )
         rows.append(
             {
                 "date": item["date"],
@@ -1094,8 +2203,8 @@ def top_exposure_perturbation_plot(perturb_df, out_png: Path, out_pdf: Path):
     for ax in axes:
         ax.grid(alpha=0.2)
     fig.tight_layout()
-    fig.savefig(out_png, dpi=900)
-    fig.savefig(out_pdf)
+    save_output_figure(fig, out_png, dpi=900)
+    save_output_figure(fig, out_pdf)
     plt.close(fig)
 
 
@@ -1138,8 +2247,8 @@ def clipping_histogram(panel_df: pd.DataFrame, out_png: Path, out_pdf: Path):
     ax.set_xlabel("Raw pair contribution")
     ax.set_ylabel("Count")
     fig.tight_layout()
-    fig.savefig(out_png, dpi=900)
-    fig.savefig(out_pdf)
+    save_output_figure(fig, out_png, dpi=900)
+    save_output_figure(fig, out_pdf)
     plt.close(fig)
 
 
@@ -1154,7 +2263,7 @@ def stability_summary(cp_results: list[dict], out_csv: Path):
             }
         )
     df = pd.DataFrame(rows)
-    df.to_csv(out_csv, index=False)
+    write_output_csv(df, out_csv)
     return df
 
 
@@ -1169,8 +2278,8 @@ def stability_plots(stability_df: pd.DataFrame, out_prefix: Path):
     axes[1].set_xlabel("Spectral radius")
     axes[1].set_ylabel("Count")
     fig.tight_layout()
-    fig.savefig(out_prefix.with_suffix(".png"), dpi=900)
-    fig.savefig(out_prefix.with_suffix(".pdf"))
+    save_output_figure(fig, out_prefix.with_suffix(".png"), dpi=900)
+    save_output_figure(fig, out_prefix.with_suffix(".pdf"))
     plt.close(fig)
 
 
@@ -1187,8 +2296,8 @@ def block_sensitivity_plot(block_df: pd.DataFrame, out_png: Path, out_pdf: Path)
     axes[1].set_xlabel("Bootstrap block length")
     axes[1].set_ylabel("Coefficient")
     fig.tight_layout()
-    fig.savefig(out_png, dpi=900)
-    fig.savefig(out_pdf)
+    save_output_figure(fig, out_png, dpi=900)
+    save_output_figure(fig, out_pdf)
     plt.close(fig)
 
 
@@ -1215,15 +2324,21 @@ def aggregate_topology_summary(agg_df: pd.DataFrame, agg_fix_df: pd.DataFrame, a
 def stability_exclusion_summary(panel_df: pd.DataFrame, agg_df: pd.DataFrame, agg_fix_df: pd.DataFrame, stability_df: pd.DataFrame, dep="s_net_clip") -> pd.DataFrame:
     stable_dates = set(pd.to_datetime(stability_df.loc[stability_df["unstable"] == 0, "date"]))
     reg_full = fit_panel(panel_df, dep=dep, cluster="pair", fe="pair_time")
-    reg_stable = fit_panel(panel_df[panel_df["date"].isin(stable_dates)], dep=dep, cluster="pair", fe="pair_time")
+    reg_stable = fit_panel(
+        panel_df[panel_df["date"].isin(stable_dates)],
+        dep=dep,
+        cluster="pair",
+        fe="pair_time",
+        allow_unidentified=True,
+    )
     rows = [
-        {"Statistic": "Pair-level coefficient", "Sample": "Full sample", "Value": reg_full["Coefficient"], "Std.Err": reg_full["Std.Err"], "p-value": reg_full["p-value"], "N": reg_full["N"]},
-        {"Statistic": "Pair-level coefficient", "Sample": "Stable dates only", "Value": reg_stable["Coefficient"], "Std.Err": reg_stable["Std.Err"], "p-value": reg_stable["p-value"], "N": reg_stable["N"]},
+        {"Statistic": "Pair-level coefficient", "Sample": "Full sample", "Value": reg_full["Coefficient"], "Std.Err": reg_full["Std.Err"], "p-value": reg_full["p-value"], "N": reg_full["N"], "Status": reg_full["Status"], "Identification": reg_full["Identification"]},
+        {"Statistic": "Pair-level coefficient", "Sample": "Stable dates only", "Value": reg_stable["Coefficient"], "Std.Err": reg_stable["Std.Err"], "p-value": reg_stable["p-value"], "N": reg_stable["N"], "Status": reg_stable["Status"], "Identification": reg_stable["Identification"]},
     ]
     for item in aggregate_topology_summary(agg_df, agg_fix_df):
-        rows.append({**item, "Sample": "Full sample", "Std.Err": np.nan, "p-value": np.nan})
+        rows.append({**item, "Sample": "Full sample", "Std.Err": np.nan, "p-value": np.nan, "Status": "identified", "Identification": "descriptive aggregate"})
     for item in aggregate_topology_summary(agg_df, agg_fix_df, stable_dates):
-        rows.append({**item, "Sample": "Stable dates only", "Std.Err": np.nan, "p-value": np.nan})
+        rows.append({**item, "Sample": "Stable dates only", "Std.Err": np.nan, "p-value": np.nan, "Status": "identified", "Identification": "descriptive aggregate"})
     return pd.DataFrame(rows)
 
 
@@ -1287,10 +2402,27 @@ def stability_sensitivity_plot(exclusion_df: pd.DataFrame, projected_df: pd.Data
     ]
     coef_labels = ["Full\nsample", "Stable dates\nonly", "Stability-projected\npath"]
     y = np.arange(len(coef_rows))[::-1]
-    coef_vals = [float(row["Value"]) for row in coef_rows]
-    coef_err = [1.96 * float(row["Std.Err"]) for row in coef_rows]
     axes[0].axvline(0, color="black", lw=0.8)
-    axes[0].errorbar(coef_vals, y, xerr=coef_err, fmt="o", color="#1f77b4", ecolor="#93c5fd", capsize=3)
+    identified = [
+        (idx, float(row["Value"]), 1.96 * float(row["Std.Err"]))
+        for idx, row in enumerate(coef_rows)
+        if row.get("Status", "identified") == "identified"
+        and np.isfinite(float(row["Value"]))
+        and np.isfinite(float(row["Std.Err"]))
+    ]
+    if identified:
+        axes[0].errorbar(
+            [value for _, value, _ in identified],
+            [y[idx] for idx, _, _ in identified],
+            xerr=[error for _, _, error in identified],
+            fmt="o",
+            color="#1f77b4",
+            ecolor="#93c5fd",
+            capsize=3,
+        )
+    for idx, row in enumerate(coef_rows):
+        if row.get("Status", "identified") != "identified":
+            axes[0].text(0.0, y[idx], "not identified", ha="left", va="center", color="#b91c1c", fontsize=8)
     axes[0].set_yticks(y)
     axes[0].set_yticklabels(coef_labels)
     axes[0].set_xlabel("Pair-level coefficient")
@@ -1310,8 +2442,8 @@ def stability_sensitivity_plot(exclusion_df: pd.DataFrame, projected_df: pd.Data
     axes[1].tick_params(axis="both", labelsize=8)
 
     fig.tight_layout()
-    fig.savefig(out_png, dpi=900)
-    fig.savefig(out_pdf)
+    save_output_figure(fig, out_png, dpi=900)
+    save_output_figure(fig, out_pdf)
     plt.close(fig)
 
 
@@ -1340,16 +2472,249 @@ def mobility_illustration_plot(agg_df: pd.DataFrame, boot_df: pd.DataFrame, girf
     for ax in axes:
         ax.tick_params(labelsize=8)
     fig.tight_layout()
-    fig.savefig(out_png, dpi=900)
-    fig.savefig(out_pdf)
+    save_output_figure(fig, out_png, dpi=900)
+    save_output_figure(fig, out_pdf)
     plt.close(fig)
 
 
+def validate_run_args(args):
+    if args.dataset not in {"rcep", "nyc_taxi"}:
+        raise ValueError("dataset must be rcep or nyc_taxi")
+    integer_contracts = {
+        "p": args.p,
+        "window": args.window,
+        "n_boot": args.n_boot,
+        "block_size": args.block_size,
+        "cp_inits": args.cp_inits,
+        "cp_max_iter": args.cp_max_iter,
+    }
+    for name, value in integer_contracts.items():
+        if not isinstance(value, (int, np.integer)) or value < 1:
+            raise ValueError(f"{name} must be a positive integer")
+    if args.window <= args.p:
+        raise ValueError("window must be greater than the lag order")
+    if not np.isfinite(args.cp_tol) or args.cp_tol <= 0:
+        raise ValueError("cp_tol must be finite and strictly positive")
+
+
+def _is_sha256(value) -> bool:
+    return isinstance(value, str) and len(value) == 64 and all(char in "0123456789abcdef" for char in value.lower())
+
+
+def _resolved_rcep_input_files(repo: Path) -> dict[str, str]:
+    repo = Path(repo).resolve()
+    local_root = repo / "data"
+    fallback_root = repo.parent / "data_acquisition" / "data"
+    identities = {}
+    for name in RCEP_REQUIRED_INPUT_FILENAMES:
+        local_path = local_root / name
+        selected_path = local_path if local_path.is_file() else fallback_root / name
+        if selected_path.is_symlink() or not selected_path.is_file():
+            raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} Required RCEP input is unavailable: {name}.")
+        resolved_path = selected_path.resolve()
+        identities[str(resolved_path)] = _sha256(resolved_path)
+    return identities
+
+
+def _validated_scientific_execution_authorization(args):
+    authorization_path_value = getattr(args, "authorization", None)
+    approved_sha256 = getattr(args, "authorization_sha256", None)
+    requested_output_root = getattr(args, "output_root", None)
+    if not authorization_path_value or not approved_sha256 or not requested_output_root:
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The scientific execution authorization is absent.")
+    if not _is_sha256(approved_sha256):
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The approved SHA-256 is invalid.")
+
+    authorization_path = Path(authorization_path_value).expanduser()
+    try:
+        authorization_snapshot = read_authorized_input_snapshot(authorization_path, approved_sha256)
+    except RuntimeError as exc:
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} {exc}") from exc
+    try:
+        authorization = json.loads(authorization_snapshot.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The authorization file is unreadable.") from exc
+
+    expected_keys = {
+        "schema_version",
+        "decision_id",
+        "decision",
+        "scientific_execution_authorized",
+        "authorized_by",
+        "authorized_at",
+        "action",
+        "dataset",
+        "argv",
+        "implementation_files",
+        "input_identity",
+        "output_root",
+        "overwrite",
+        "r006e_outcome_authorized",
+        "r006f_outcome_authorized",
+        "downstream_builds_authorized",
+        "post_run_controls",
+    }
+    if not isinstance(authorization, dict) or set(authorization) != expected_keys:
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The authorization schema is invalid.")
+    if authorization.get("schema_version") != SCIENTIFIC_AUTHORIZATION_SCHEMA_VERSION:
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The authorization schema version is invalid.")
+    if authorization.get("decision") != "AUTHORIZED" or authorization.get("scientific_execution_authorized") is not True:
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} Scientific execution is not authorized.")
+    decision_id = authorization.get("decision_id")
+    if (
+        not isinstance(decision_id, str)
+        or not decision_id
+        or len(decision_id) > 96
+        or any(not (char.isalnum() or char in "-_") for char in decision_id)
+    ):
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The decision ID is invalid.")
+    if not all(isinstance(authorization.get(key), str) and authorization[key].strip() for key in ("authorized_by", "authorized_at")):
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The authorizer identity or time is absent.")
+    if authorization.get("action") != "run_cp_empirical_pipeline" or authorization.get("dataset") != args.dataset:
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The authorized action or dataset does not match.")
+
+    authorized_argv = authorization.get("argv")
+    expected_argv = {name: getattr(args, name) for name in SCIENTIFIC_AUTHORIZATION_ARGV}
+    if not isinstance(authorized_argv, dict) or set(authorized_argv) != set(SCIENTIFIC_AUTHORIZATION_ARGV):
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The authorized argv schema is invalid.")
+    if authorized_argv != expected_argv:
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The authorized argv does not match the requested run.")
+
+    implementation_files = authorization.get("implementation_files")
+    if not isinstance(implementation_files, dict) or set(implementation_files) != SCIENTIFIC_AUTHORIZATION_IMPLEMENTATION_FILES:
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The implementation closure is invalid.")
+    for relative_path, expected_hash in implementation_files.items():
+        source = ROOT / relative_path
+        if not _is_sha256(expected_hash) or not source.is_file() or source.is_symlink() or _sha256(source) != expected_hash.lower():
+            raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} Implementation identity mismatch: {relative_path}.")
+
+    input_identity = authorization.get("input_identity")
+    input_keys = {
+        "rcep_helper_repo",
+        "rcep_helper_manifest_sha256",
+        "rcep_input_files",
+        "nyc_dataset_dir",
+        "nyc_upstream_commit",
+    }
+    if not isinstance(input_identity, dict) or set(input_identity) != input_keys:
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The input-identity schema is invalid.")
+    authorized_rcep_inputs = input_identity.get("rcep_input_files")
+    if not isinstance(authorized_rcep_inputs, dict):
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The RCEP input-file declaration is invalid.")
+
+    if args.dataset == "rcep":
+        authorized_helper = input_identity.get("rcep_helper_repo")
+        authorized_manifest_hash = input_identity.get("rcep_helper_manifest_sha256")
+        if not helper_repo or not isinstance(authorized_helper, str):
+            raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The RCEP helper path is not bound.")
+        supplied_helper = Path(helper_repo).expanduser()
+        if supplied_helper.is_symlink() or not supplied_helper.is_dir() or supplied_helper.resolve() != Path(authorized_helper).expanduser().resolve():
+            raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The RCEP helper path does not match.")
+        trust_manifest_path = Path(RCEP_HELPER_TRUST_MANIFEST)
+        try:
+            read_authorized_input_snapshot(trust_manifest_path, authorized_manifest_hash)
+        except RuntimeError as exc:
+            raise RuntimeError(
+                f"{SCIENTIFIC_AUTHORIZATION_ERROR} The RCEP helper manifest identity does not match."
+            ) from exc
+        try:
+            authorized_rcep_paths = {
+                Path(path).expanduser(): digest for path, digest in authorized_rcep_inputs.items()
+            }
+        except (TypeError, ValueError) as exc:
+            raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The RCEP input identity is invalid.") from exc
+        if (
+            {path.name for path in authorized_rcep_paths} != set(RCEP_REQUIRED_INPUT_FILENAMES)
+            or len(authorized_rcep_paths) != len(RCEP_REQUIRED_INPUT_FILENAMES)
+            or any(
+                not path.is_absolute() or path != path.resolve() or not _is_sha256(digest)
+                for path, digest in authorized_rcep_paths.items()
+            )
+        ):
+            raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The RCEP input identity is invalid.")
+        if input_identity.get("nyc_dataset_dir") is not None or input_identity.get("nyc_upstream_commit") is not None:
+            raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The RCEP authorization contains an unrelated NYC binding.")
+    else:
+        supplied_nyc_path = os.environ.get("NATCS_NYC_TAXI_DATASET_DIR")
+        authorized_nyc_path = input_identity.get("nyc_dataset_dir")
+        if not supplied_nyc_path or not isinstance(authorized_nyc_path, str):
+            raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The NYC source path is not bound.")
+        supplied_nyc = Path(supplied_nyc_path).expanduser()
+        if supplied_nyc.is_symlink() or not supplied_nyc.is_dir() or supplied_nyc.resolve() != Path(authorized_nyc_path).expanduser().resolve():
+            raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The NYC source path does not match.")
+        if input_identity.get("nyc_upstream_commit") != NYC_TAXI_UPSTREAM_COMMIT:
+            raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The NYC source commit does not match.")
+        if (
+            input_identity.get("rcep_helper_repo") is not None
+            or input_identity.get("rcep_helper_manifest_sha256") is not None
+            or authorized_rcep_inputs
+        ):
+            raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The NYC authorization contains an unrelated RCEP binding.")
+
+    post_run_controls = {
+        "quarantine_outputs": True,
+        "freeze_inventory_sha256_before_value_review": True,
+        "independent_claim_audit_required": True,
+        "manuscript_promotion_authorized": False,
+    }
+    if authorization.get("post_run_controls") != post_run_controls:
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The post-run controls are invalid.")
+    if (
+        authorization.get("overwrite") != "deny"
+        or authorization.get("r006e_outcome_authorized") is not False
+        or authorization.get("r006f_outcome_authorized") is not False
+        or authorization.get("downstream_builds_authorized") is not False
+    ):
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The execution boundary is invalid.")
+
+    authorized_output_value = authorization.get("output_root")
+    if not isinstance(authorized_output_value, str) or authorized_output_value != str(requested_output_root):
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The authorized output root does not match.")
+    raw_output_root = Path(authorized_output_value).expanduser()
+    if not raw_output_root.is_absolute() or raw_output_root != raw_output_root.resolve():
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The output root must be an absolute non-symlink path.")
+    output_root = raw_output_root.resolve()
+    authorized_base = Path(AUTHORIZED_OUTPUT_ROOT).resolve()
+    expected_output_root = authorized_base / decision_id / args.dataset
+    if output_root != expected_output_root:
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The output root is outside the isolated run namespace.")
+    if output_root.exists() or output_root.is_symlink():
+        raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The authorized output root already exists.")
+    return authorization, output_root
+
+
+def helper_commit_for_summary(helper_identity):
+    return helper_identity[1] if helper_identity is not None else None
+
+
 def run(args):
-    out_dir, fig_dir = output_paths(args.dataset)
-    data = load_dataset(args.dataset)
+    validate_run_args(args)
+    authorization, authorized_output_root = _validated_scientific_execution_authorization(args)
+    helper_identity = None
+    if args.dataset == "rcep":
+        helper_identity = require_raw_helper(
+            authorization["input_identity"]["rcep_helper_manifest_sha256"]
+        )
+        if _resolved_rcep_input_files(helper_identity[0]) != authorization["input_identity"]["rcep_input_files"]:
+            raise RuntimeError(f"{SCIENTIFIC_AUTHORIZATION_ERROR} The RCEP input identity does not match.")
+    else:
+        _validated_nyc_taxi_source(authorization["input_identity"]["nyc_dataset_dir"])
+    response_backend = (
+        (moving_average_coefficients, girf_one)
+        if args.dataset == "rcep"
+        else (_local_moving_average_coefficients, _local_girf_one)
+    )
+    data = load_dataset(args.dataset, authorization["input_identity"])
+    _validate_loaded_dataset(data, args.dataset, p=args.p)
     Y = data["Y"]
     dates = data["dates"]
+
+    effective_window = args.window if len(Y) > args.window + 8 else max(args.p + 8, len(Y) - 8)
+    if not (args.p < effective_window < len(Y)):
+        raise ValueError("loaded panel is too short for rolling estimation")
+    if effective_window != args.window:
+        logger.info("[%s] Requested window=%s is infeasible for T=%s; using effective window=%s", args.dataset, args.window, len(Y), effective_window)
+
     df_bilateral = data.get("df_bilateral")
     df_tc = data.get("df_tc")
     unit_names = data["unit_names"]
@@ -1365,13 +2730,13 @@ def run(args):
         base_w_list = data["w_list"]
         baseline_key = "baseline_mobility"
         baseline_label = data["primary_label"]
-        data["level_panel"].to_csv(out_dir / "derived_monthly_panel.csv", index=False)
-        with open(out_dir / "acquisition_info.json", "w") as f:
-            json.dump(data["acquisition_info"], f, indent=2)
 
-    effective_window = args.window if len(Y) > args.window + 8 else max(args.p + 8, len(Y) - 8)
-    if effective_window != args.window:
-        logger.info("[%s] Requested window=%s is infeasible for T=%s; using effective window=%s", args.dataset, args.window, len(Y), effective_window)
+    # Reserve the isolated output tree only after structural panel and
+    # topology preprocessing has succeeded.
+    out_dir, fig_dir = output_paths(args.dataset, authorized_output_root)
+    if args.dataset == "nyc_taxi":
+        write_output_csv(data["level_panel"], out_dir / "derived_monthly_panel.csv")
+        write_output_json(data["acquisition_info"], out_dir / "acquisition_info.json")
 
     lambda_ridge, lambda_losses = select_global_ridge_lambda(Y, base_w_list, dates, p=args.p, window=effective_window)
     logger.info("[%s] Selected ridge lambda=%s", args.dataset, lambda_ridge)
@@ -1385,6 +2750,7 @@ def run(args):
         base_w_list,
         effective_window,
         p=args.p,
+        local_intercepts=np.stack([item["c"] for item in local_results]),
     )
     logger.info("[%s] Selected CP rank=%s", args.dataset, rank)
 
@@ -1413,7 +2779,18 @@ def run(args):
                 factors_alt, _ = cp_fit(beta_tensor_alt, rank, n_init=args.cp_inits, max_iter=args.cp_max_iter, tol=args.cp_tol, seed=20260328 + window_quarters)
                 beta_recon_alt = cp_reconstruct(factors_alt)
                 cur_results = cp_empirical_paths(local_alt, beta_recon_alt, p=args.p)
-            pair_df, agg_df, girf = build_pair_panel(cur_results, df_tc, horizon=8, W_mode=mode, w_label=label, unit_names=unit_names, girf_pair=girf_pair, target_dates=target_dates, W_fixed=None)
+            pair_df, agg_df, girf = build_pair_panel(
+                cur_results,
+                df_tc,
+                horizon=8,
+                W_mode=mode,
+                w_label=label,
+                unit_names=unit_names,
+                girf_pair=girf_pair,
+                target_dates=target_dates,
+                W_fixed=None,
+                response_backend=response_backend,
+            )
             pair_df["variant_key"] = key
             agg_df["variant_key"] = key
             panels.append(pair_df)
@@ -1423,7 +2800,18 @@ def run(args):
             if key == baseline_key:
                 girf_points = girf
     else:
-        pair_df, agg_df, girf = build_pair_panel(cp_results, df_tc, horizon=8, W_mode=data["w_mode"], w_label=baseline_label, unit_names=unit_names, girf_pair=girf_pair, target_dates=target_dates, W_fixed=None)
+        pair_df, agg_df, girf = build_pair_panel(
+            cp_results,
+            df_tc,
+            horizon=8,
+            W_mode=data["w_mode"],
+            w_label=baseline_label,
+            unit_names=unit_names,
+            girf_pair=girf_pair,
+            target_dates=target_dates,
+            W_fixed=None,
+            response_backend=response_backend,
+        )
         pair_df["variant_key"] = baseline_key
         agg_df["variant_key"] = baseline_key
         panels.append(pair_df)
@@ -1432,7 +2820,18 @@ def run(args):
         aggregate_lookup[baseline_key] = agg_df
         girf_points = girf
 
-    pair_h12, agg_h12, _ = build_pair_panel(cp_results, df_tc, horizon=12, W_mode=data["w_mode"], w_label=baseline_label, unit_names=unit_names, girf_pair=girf_pair, target_dates=target_dates, W_fixed=None)
+    pair_h12, agg_h12, _ = build_pair_panel(
+        cp_results,
+        df_tc,
+        horizon=12,
+        W_mode=data["w_mode"],
+        w_label=baseline_label,
+        unit_names=unit_names,
+        girf_pair=girf_pair,
+        target_dates=target_dates,
+        W_fixed=None,
+        response_backend=response_backend,
+    )
     pair_h12["variant_key"] = "baseline_h12"
     agg_h12["variant_key"] = "baseline_h12"
     panels.append(pair_h12)
@@ -1440,7 +2839,18 @@ def run(args):
     panel_lookup["baseline_h12"] = pair_h12
     aggregate_lookup["baseline_h12"] = agg_h12
 
-    pair_fix, agg_fix, _ = build_pair_panel(cp_results, df_tc, horizon=8, W_mode=data["w_mode"], w_label="Frozen topology W_pre", unit_names=unit_names, girf_pair=girf_pair, target_dates=target_dates, W_fixed=W_pre)
+    pair_fix, agg_fix, _ = build_pair_panel(
+        cp_results,
+        df_tc,
+        horizon=8,
+        W_mode=data["w_mode"],
+        w_label="Frozen topology W_pre",
+        unit_names=unit_names,
+        girf_pair=girf_pair,
+        target_dates=target_dates,
+        W_fixed=W_pre,
+        response_backend=response_backend,
+    )
     pair_fix["variant_key"] = "fixed_pre"
     agg_fix["variant_key"] = "fixed_pre"
     panels.append(pair_fix)
@@ -1452,6 +2862,9 @@ def run(args):
     all_agg = pd.concat(agg_series, ignore_index=True)
 
     boot_agg, girf_boot, coef_summary, coef_draw_df = bootstrap_cp_pipeline(
+        Y,
+        base_w_list,
+        dates,
         local_results,
         rank,
         lambda_ridge,
@@ -1459,10 +2872,12 @@ def run(args):
         unit_names,
         girf_pair,
         target_dates,
+        window=effective_window,
         n_boot=args.n_boot,
         block_size=args.block_size,
         p=args.p,
         W_pre=W_pre,
+        response_backend=response_backend,
     )
     if coef_summary and df_tc is not None and baseline_key in panel_lookup and "fixed_pre" in panel_lookup:
         point_evolving = fit_panel(panel_lookup[baseline_key], dep="s_net_clip", cluster="pair", fe="pair_time")["Coefficient"]
@@ -1471,11 +2886,11 @@ def run(args):
             "evolving_coefficient": point_evolving,
             "frozen_coefficient": point_frozen,
             "attenuation_difference": point_evolving - point_frozen,
-            "frozen_evolving_ratio": point_frozen / max(point_evolving, EPS),
+            "frozen_evolving_ratio": signed_ratio_or_none(point_frozen, point_evolving),
         }
         for quantity, point in points.items():
             if quantity in coef_summary.get("quantities", {}):
-                coef_summary["quantities"][quantity]["point"] = float(point)
+                coef_summary["quantities"][quantity]["point"] = None if point is None else float(point)
 
     selection = {
         "dataset": args.dataset,
@@ -1494,15 +2909,16 @@ def run(args):
         "lag_order": args.p,
         "bootstrap_replications": args.n_boot,
         "bootstrap_block_size": args.block_size,
+        "helper_git_commit": helper_commit_for_summary(helper_identity),
         "stability_rate_cp": float(np.mean([row["radius_cp"] >= 1.0 for row in cp_results])),
         "requested_girf_dates": [str(pd.Timestamp(x).date()) for x in data["requested_girf_dates"]],
         "selected_girf_dates": {label: str(pd.Timestamp(date).date()) for date, label in target_dates.items()},
     }
 
-    all_agg.to_csv(out_dir / "aggregate_cp_metrics.csv", index=False)
-    boot_agg.to_csv(out_dir / "aggregate_cp_bootstrap.csv", index=False)
+    write_output_csv(all_agg, out_dir / "aggregate_cp_metrics.csv")
+    write_output_csv(boot_agg, out_dir / "aggregate_cp_bootstrap.csv")
     if len(coef_draw_df):
-        coef_draw_df.to_csv(out_dir / "full_path_attenuation_bootstrap.csv", index=False)
+        write_output_csv(coef_draw_df, out_dir / "full_path_attenuation_bootstrap.csv")
         full_path_rows = []
         quantities = (coef_summary or {}).get("quantities", {})
         for quantity, row in quantities.items():
@@ -1510,16 +2926,13 @@ def run(args):
                 {
                     **row,
                     "bootstrap_replications": (coef_summary or {}).get("bootstrap_replications", args.n_boot),
-                    "bootstrap_type": (coef_summary or {}).get("bootstrap_type", "moving-block residual bootstrap with CP re-estimation"),
+                    "bootstrap_type": (coef_summary or {}).get("bootstrap_type", "global moving-block residual bootstrap with full rolling and CP re-estimation"),
                 }
             )
-        pd.DataFrame(full_path_rows).to_csv(out_dir / "full_path_attenuation_bootstrap_summary.csv", index=False)
-        with open(out_dir / "full_path_attenuation_bootstrap_summary.json", "w") as f:
-            json.dump(coef_summary, f, indent=2)
-    with open(out_dir / "girf_cp_bootstrap.json", "w") as f:
-        json.dump(girf_boot, f, indent=2)
-    with open(out_dir / "girf_cp_point.json", "w") as f:
-        json.dump(girf_points, f, indent=2)
+        write_output_csv(pd.DataFrame(full_path_rows), out_dir / "full_path_attenuation_bootstrap_summary.csv")
+        write_output_json(coef_summary, out_dir / "full_path_attenuation_bootstrap_summary.json")
+    write_output_json(girf_boot, out_dir / "girf_cp_bootstrap.json")
+    write_output_json(girf_points, out_dir / "girf_cp_point.json")
 
     stability_df = stability_summary(cp_results, out_dir / "stability_summary.csv")
     stability_plots(stability_df, fig_dir / "fig_cp_stability")
@@ -1528,13 +2941,18 @@ def run(args):
     topology_difference_plot(aggregate_lookup[baseline_key], aggregate_lookup["fixed_pre"], boot_agg, fig_dir / "fig_cp_fixed_vs_tv.png", fig_dir / "fig_cp_fixed_vs_tv.pdf")
 
     if args.dataset == "rcep":
-        perturb_df = top_exposure_propagation_perturbations(cp_results, horizon=8, unit_names=unit_names)
+        perturb_df = top_exposure_propagation_perturbations(
+            cp_results,
+            horizon=8,
+            unit_names=unit_names,
+            response_backend=response_backend,
+        )
         perturb_summary_df = top_exposure_perturbation_summary(perturb_df)
-        perturb_df.to_csv(out_dir / "network_propagation_perturbations.csv", index=False)
-        perturb_summary_df.to_csv(out_dir / "network_propagation_perturbation_summary.csv", index=False)
+        write_output_csv(perturb_df, out_dir / "network_propagation_perturbations.csv")
+        write_output_csv(perturb_summary_df, out_dir / "network_propagation_perturbation_summary.csv")
         top_exposure_perturbation_plot(perturb_df, fig_dir / "fig_network_propagation_perturbation.png", fig_dir / "fig_network_propagation_perturbation.pdf")
 
-        all_pairs.to_csv(out_dir / "pairwise_cp_panel.csv", index=False)
+        write_output_csv(all_pairs, out_dir / "pairwise_cp_panel.csv")
         trimmed_panel, trim_q01, trim_q99 = trimmed_raw_panel(panel_lookup["baseline_import"])
         table_df = pd.DataFrame(
             [
@@ -1550,19 +2968,22 @@ def run(args):
                 {"Panel": "Metric sensitivity", "Specification": "1st-99th percentile trimmed raw pair-level contribution", **fit_panel(trimmed_panel, dep="s_net_raw", cluster="pair", fe="pair_time")},
             ]
         )
-        table_df.to_csv(out_dir / "table_rcep_cp_benchmark.csv", index=False)
+        write_output_csv(table_df, out_dir / "table_rcep_cp_benchmark.csv")
         coefficient_plot(table_df, fig_dir / "fig_cp_coefficient_plot.png", fig_dir / "fig_cp_coefficient_plot.pdf")
 
         breaks_df = structural_break_table(aggregate_lookup["baseline_import"], panel_lookup["baseline_import"])
-        breaks_df.to_csv(out_dir / "table_rcep_cp_structural_breaks.csv", index=False)
+        write_output_csv(breaks_df, out_dir / "table_rcep_cp_structural_breaks.csv")
 
         clip_df = clipping_summary(all_pairs)
         clip_df.loc[clip_df["variant_key"] == "baseline_import", "trim_q01"] = trim_q01
         clip_df.loc[clip_df["variant_key"] == "baseline_import", "trim_q99"] = trim_q99
-        clip_df.to_csv(out_dir / "clipping_summary.csv", index=False)
+        write_output_csv(clip_df, out_dir / "clipping_summary.csv")
         clipping_histogram(panel_lookup["baseline_import"], fig_dir / "fig_cp_clipping_histogram.png", fig_dir / "fig_cp_clipping_histogram.pdf")
 
         block_df = bootstrap_block_sensitivity(
+            Y,
+            base_w_list,
+            dates,
             local_results,
             rank,
             lambda_ridge,
@@ -1570,15 +2991,17 @@ def run(args):
             unit_names,
             girf_pair,
             target_dates,
+            window=effective_window,
             p=args.p,
             W_pre=W_pre,
             n_boot=min(args.n_boot, 160),
+            response_backend=response_backend,
         )
-        block_df.to_csv(out_dir / "block_length_sensitivity.csv", index=False)
+        write_output_csv(block_df, out_dir / "block_length_sensitivity.csv")
         block_sensitivity_plot(block_df, fig_dir / "fig_cp_block_length_sensitivity.png", fig_dir / "fig_cp_block_length_sensitivity.pdf")
 
         exclusion_df = stability_exclusion_summary(panel_lookup["baseline_import"], aggregate_lookup["baseline_import"], aggregate_lookup["fixed_pre"], stability_df)
-        exclusion_df.to_csv(out_dir / "stability_exclusion_sensitivity.csv", index=False)
+        write_output_csv(exclusion_df, out_dir / "stability_exclusion_sensitivity.csv")
 
         projected_results = project_cp_results(cp_results, target_radius=0.98)
         projected_pair, projected_agg, _ = build_pair_panel(
@@ -1591,6 +3014,7 @@ def run(args):
             girf_pair=girf_pair,
             target_dates=target_dates,
             W_fixed=None,
+            response_backend=response_backend,
         )
         projected_fix, projected_agg_fix, _ = build_pair_panel(
             projected_results,
@@ -1602,6 +3026,7 @@ def run(args):
             girf_pair=girf_pair,
             target_dates=target_dates,
             W_fixed=W_pre,
+            response_backend=response_backend,
         )
         projected_pair["variant_key"] = "stability_projected"
         projected_agg["variant_key"] = "stability_projected"
@@ -1615,7 +3040,7 @@ def run(args):
             projected_agg,
             projected_agg_fix,
         )
-        projected_df.to_csv(out_dir / "stability_projected_sensitivity.csv", index=False)
+        write_output_csv(projected_df, out_dir / "stability_projected_sensitivity.csv")
         stability_sensitivity_plot(
             exclusion_df,
             projected_df,
@@ -1625,22 +3050,24 @@ def run(args):
     else:
         mobility_illustration_plot(aggregate_lookup[baseline_key], boot_agg, girf_points, fig_dir / "fig_cp_mobility_illustration.png", fig_dir / "fig_cp_mobility_illustration.pdf")
 
-    with open(out_dir / "selection_summary.json", "w") as f:
-        json.dump({**selection, "coef_bootstrap_summary": coef_summary}, f, indent=2)
+    write_output_json({**selection, "coef_bootstrap_summary": coef_summary}, out_dir / "selection_summary.json")
 
     logger.info("Saved %s outputs to %s", args.dataset, out_dir)
 
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", choices=["rcep", "nyc_taxi"], default="rcep")
-    parser.add_argument("--window", type=int, default=40)
-    parser.add_argument("--p", type=int, default=2)
-    parser.add_argument("--n-boot", type=int, default=500)
-    parser.add_argument("--block-size", type=int, default=4)
-    parser.add_argument("--cp-inits", type=int, default=6)
-    parser.add_argument("--cp-max-iter", type=int, default=100)
-    parser.add_argument("--cp-tol", type=float, default=1e-6)
+    parser.add_argument("--dataset", choices=["rcep", "nyc_taxi"], required=True)
+    parser.add_argument("--authorization", required=True)
+    parser.add_argument("--authorization-sha256", required=True)
+    parser.add_argument("--output-root", required=True)
+    parser.add_argument("--window", type=int, required=True)
+    parser.add_argument("--p", type=int, required=True)
+    parser.add_argument("--n-boot", type=int, required=True)
+    parser.add_argument("--block-size", type=int, required=True)
+    parser.add_argument("--cp-inits", type=int, required=True)
+    parser.add_argument("--cp-max-iter", type=int, required=True)
+    parser.add_argument("--cp-tol", type=float, required=True)
     return parser.parse_args()
 
 

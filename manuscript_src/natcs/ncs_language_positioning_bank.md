@@ -2,7 +2,9 @@
 
 Purpose: provide evidence-bound wording that can be reused in abstracts, cover letters, portal fields, response letters and figure captions without drifting into overclaim. This is a working writing aid, not manuscript text.
 
-Boundary: use only statements whose evidence appears in the current manuscript package. Do not use stronger variants until new data, raw-source permissions, DOI records or portal-preview evidence exist.
+Status, 2026-07-23: **historical wording bank, disabled for submission use.** `PAPER_CLAIM_AUDIT=BLOCKED` and `EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL` supersede all entries that describe RCEP/NYC results, derived-evidence reproducibility or a ready submission package. The legacy entries below are retained for provenance only and must not be reused. Rebuild the bank from a newly released ledger after independent value and claim audit.
+
+Boundary: use only statements whose evidence appears in the current audited manuscript package. Do not use stronger variants until new data, raw-source permissions, DOI records or portal-preview evidence exist.
 
 Serves: novelty / significance / rigour / clarity / generality / reproducibility / visual communication.
 

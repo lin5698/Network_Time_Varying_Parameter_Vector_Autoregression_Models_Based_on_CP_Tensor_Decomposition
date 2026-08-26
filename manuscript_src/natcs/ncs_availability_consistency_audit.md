@@ -1,5 +1,13 @@
 # Data and Code Availability Consistency Audit
 
+> **Current-status supersession, 2026-07-23.** This is a historical
+> consistency record, not a current availability assessment. `PAPER_CLAIM_AUDIT=BLOCKED`
+> and `EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL` prohibit any claim that a reviewer
+> archive, derived data, code, figures, tables or rerun route is available with
+> a submission. Do not use the legacy three-layer availability position or its
+> response templates until a new independent audit has released the exact
+> package and formal statements.
+
 Purpose: verify that the current Data availability and Code availability statements stay aligned with Nature Computational Science expectations, visible package evidence and unresolved author/source-access gates. This is a submission-support artifact, not manuscript text and not new evidence.
 
 Audit date: 2026-07-07.

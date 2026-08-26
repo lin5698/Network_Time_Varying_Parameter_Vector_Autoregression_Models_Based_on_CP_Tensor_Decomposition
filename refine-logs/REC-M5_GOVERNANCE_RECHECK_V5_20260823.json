@@ -1,0 +1,176 @@
+{
+  "record_class": "governance_recheck_receipt",
+  "record_id": "REC-M5-governance-recheck-v5-20260823",
+  "lane": "B_governance_manifest",
+  "dispatch": "refine-logs/REC-M5_RECHECK_DISPATCH_V1_20260823.md",
+  "generation_date": "2026-08-26",
+  "timezone": "Asia/Shanghai",
+  "generated_at": "2026-08-26T03:44:52+08:00",
+  "repo_head_at_measurement": "e7ce60c28f27c17ecfffe5348dd04d8c957fb077",
+  "repo_branch_at_measurement": "refs/heads/codex/m5-current-luna-science-recheck",
+  "context_update_reflected": {
+    "p0_icloud_working_copy_repair": "CLOSED_2026_08_26",
+    "git_rev_parse_head": "WORKS",
+    "git_fsck_full_rc": 0,
+    "tracked_clean": false,
+    "changed_tracked_entries_vs_head": 76
+  },
+  "independence_and_provenance": {
+    "producing_agent_model": "ox-alpha (LLM developed by an undisclosed organization), delegated read-only Lane B reviewer subagent under DeepSeek Harness",
+    "self_adjudication": true,
+    "independence_statement": "Producer of this receipt is not the producer of any audited record and did not participate in TERRA_V4/V5 reviews; all hashes recomputed locally via shasum -a 256 / python hashlib; preflight recomputation not trusted.",
+    "tools_used_read_only": ["shasum -a 256", "python3 hashlib/json/existence probes", "git rev-parse", "git status --porcelain -uno", "git ls-files"]
+  },
+  "authoritative_inputs": [
+    {"path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md", "expected_sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd", "measured_sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd", "bytes": 27202, "match": true},
+    {"path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json", "expected_sha256": "938e5218280fcdf25ffb206040d420e2420851a3483e1cc7c282dabf0c01e0e6", "measured_sha256": "938e5218280fcdf25ffb206040d420e2420851a3483e1cc7c282dabf0c01e0e6", "bytes": 28217, "match": true},
+    {"path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md", "expected_sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341", "measured_sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341", "bytes": 10097, "match": true},
+    {"path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json", "expected_sha256": "ebb639ed613520ac643ee1ac21b53c9420e4bbf3a010af1f130a8e3d3b12d8b6", "measured_sha256": "ebb639ed613520ac643ee1ac21b53c9420e4bbf3a010af1f130a8e3d3b12d8b6", "bytes": 15091, "match": true},
+    {"path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.md", "expected_sha256": "dfd4385fd1f6f027e7a9ba12fc91f8e710e059edbe38179606898264e3d00539", "measured_sha256": "dfd4385fd1f6f027e7a9ba12fc91f8e710e059edbe38179606898264e3d00539", "bytes": 1467, "match": true},
+    {"path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.json", "expected_sha256": "94668a914aeba43dc2d8ca34e7639cb4930e34b2abbe8211980a77bf4adfd3ee", "measured_sha256": "94668a914aeba43dc2d8ca34e7639cb4930e34b2abbe8211980a77bf4adfd3ee", "bytes": 2987, "match": true}
+  ],
+  "verification_subjects_measured": [
+    {"path": "manuscript_src/natcs/methods_estimator.md", "measured_sha256": "8f4cb0f7efdb1438fcfad1fe1a3441ed80877093077fe7c7b9f8ec56508cb25d", "bytes": 2698, "bound_in_protected_baseline": true, "match_to_binding": true},
+    {"path": "manuscript_src/natcs/results_validation.md", "measured_sha256": "746567db7d4087c2335c65768e35a1a9e8b275791095c896afefd632d8278bb3", "bytes": 2749, "bound_in_protected_baseline": true, "match_to_binding": true},
+    {"path": "manuscript_src/natcs/supp_note4_benchmarks.md", "measured_sha256": "0bec42db15fd153c7480f42a68280111bef986e04496e72c35612af6a181939e", "bytes": 4019, "bound_in_protected_baseline": true, "match_to_binding": true},
+    {"path": "manuscript_src/natcs/methods_data.md", "measured_sha256": "26e0a984ac5af6676466fba2f403882a1fc841832c221b83b06e8c0d01cf7a2d", "bytes": 2260, "bound_in_protected_baseline": true, "match_to_binding": true},
+    {"path": "manuscript_src/natcs/methods_uncertainty.md", "measured_sha256": "2faf37836b9b274c9f2bd2cede54cbea9ce5c27a32bdc951ae7b1ee5e00f1601", "bytes": 2203, "bound_in_protected_baseline": true, "match_to_binding": true},
+    {"path": "manuscript_src/natcs/supp_note7_repro.md", "measured_sha256": "c33c63370a55ae4afe7abb2e1fb4deef47988585b411d03fa5f54809f6337230", "bytes": 1731, "bound_in_protected_baseline": true, "match_to_binding": true},
+    {"path": "manuscript_src/natcs/supp_note8_scope.md", "measured_sha256": "1f8a02a810b372a479bc9e3f877613c2dd670bea4b1d9deffdec681b9933d8fa", "bytes": 3531, "bound_in_protected_baseline": true, "match_to_binding": true},
+    {"path": "manuscript_src/natcs/controlled_benchmark_contract.json", "measured_sha256": "95199a3c16e6f55a2cf94f7f67289a658bcac7ccb4e17ceee9efa5cc8d7934ba", "bytes": 7765, "bound_in_protected_baseline": true, "match_to_binding": true},
+    {"path": "output/ncs_review_corpus/v1_author_decision_register.json", "measured_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2", "bytes": 110685, "bound_in_protected_baseline": true, "match_to_binding": true, "materialized": true, "json_parse": "PASS", "schema_version_observed": "ncs-author-decision-register-v1", "generated_at_observed": "2026-08-04"},
+    {"path": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json", "measured_sha256": "60523c09126fca78f9e87c1ef4776a74b6f5025bbed19ad65ec1755838d77c68", "bytes": 1736, "bound_in_protected_baseline": true, "match_to_binding": true},
+    {"path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json", "measured_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046", "bytes": 2281, "bound_in_protected_baseline": true, "match_to_binding": true},
+    {"path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json", "measured_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6", "bytes": 1822, "bound_in_protected_baseline": true, "match_to_binding": true}
+  ],
+  "existence_probes_not_opened": {
+    "conflict_copies_present_not_consumed": [
+      "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811 2.md",
+      "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811 2.json",
+      "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812 2.md",
+      "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812 2.json"
+    ],
+    "governance_recheck_v10_md": "ABSENT",
+    "governance_recheck_v10_json": "ABSENT",
+    "own_output_targets_pre_write": "BOTH_ABSENT"
+  },
+  "tasks": {
+    "G_T1_authoritative_input_hashes": {
+      "verdict": "PASS",
+      "summary": "6/6 measured == expected; no deviation."
+    },
+    "G_T2_v10_path_resolution": {
+      "verdict": "PASS",
+      "recheck_v10_paths_exist": false,
+      "baseline_v10_paths_exist": true,
+      "baseline_v10_hashes_match_dispatch": true,
+      "adjudication": "Governance-baseline role discharged by REC-M5_GOVERNANCE_BASELINE_V10_20260812.{md,json}: binds current hash chain, declares CURRENT_HASH_CHAIN_READY_FOR_TERRA_MAX_DIRECT_REVIEW, restates authorization boundary. GOVERNANCE_RECHECK_V10 name does not exist anywhere in tree; nominal mismatch only.",
+      "v10_baseline_edited": false
+    },
+    "G_T3_independent_review_receipts": {
+      "verdict": "PASS",
+      "receipt_count": 1,
+      "sole_entry": {
+        "path": "refine-logs/REC-M5_EDITORIAL_RECHECK_V2_20260812.md",
+        "sha256_recorded": "332bedf26d1d06387d9a6a00dc1e5d9f0eea5f7ef02a454b6748a67b9760212d",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "max",
+        "verdict": "BLOCKED_PENDING_EDITORIAL_REVISIONS",
+        "revisions_applied": true,
+        "final_recheck": "SERVICE_INTERRUPTED",
+        "current_version_applicability": "HISTORICAL_ONLY_PATCH_CHANGED_AFTER_ALL_AUTHOR_INPUT_CONFIRMATIONS"
+      },
+      "current_byte_receipt_for_outstanding_lanes": false,
+      "outstanding_lanes": ["scientific-boundary review", "governance-manifest review", "fresh editorial-traceability recheck"]
+    },
+    "G_T4_anchor_recomputation": {
+      "verdict": "PASS",
+      "algorithm_applied": "CRLF->LF normalization; blank-line paragraph splitting (numbering from 1); fragment trimEnd; SHA-256 over UTF-8 bytes",
+      "fail_closed_on_drift": true,
+      "group_anchor_records": 10,
+      "paragraph_segments_total": 20,
+      "segments_matched": 20,
+      "drift_detected": false,
+      "variant_robustness": "Three split/trim variants all yield identical 20/20 (no anchored fragment contains internal trailing whitespace or whitespace-only lines)",
+      "annotation_note": "Recorded line_range end-line exceeds content-only computed end-line by 1 for G02 p5, G04 p4, G05 p10, G09 p4, G10 p8 (recorder appears to include trailing blank separator); binding hashes match 20/20 so annotation-only, non-binding",
+      "per_anchor_match": {
+        "G01_p3": true, "G02_p5": true, "G03_p4": true,
+        "G04_p1": true, "G04_p2": true, "G04_p3": true, "G04_p4": true,
+        "G05_p1": true, "G05_p2": true, "G05_p4": true, "G05_p5": true, "G05_p6": true, "G05_p8": true, "G05_p9": true, "G05_p10": true,
+        "G06_p2": true, "G07_p5": true, "G08_p2": true, "G09_p4": true, "G10_p8": true
+      }
+    },
+    "G_T5_protected_baseline_fail_closed": {
+      "verdict": "PASS",
+      "entries_bound": 12,
+      "entries_measured": 12,
+      "entries_matched": 12,
+      "entries_absent": 0,
+      "changed_premise_item": {
+        "path": "output/ncs_review_corpus/v1_author_decision_register.json",
+        "status": "MATERIALIZED_AND_MEASURED",
+        "measured_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+        "binding_chain": "patch json #/protected_baseline/files <- baseline V10 #/current_artifacts.review_patch_json",
+        "not_verifiable_default_avoided": true,
+        "pass_scored_on_measurement": true
+      }
+    },
+    "G_T6_no_candidate_mutation": {
+      "verdict": "PASS",
+      "declared_scope": true,
+      "application_state_evidence": {
+        "output_applied": false,
+        "submission_ready": false,
+        "edit_groups_all_CANDIDATE_NOT_APPLIED": true,
+        "edit_group_count": 10,
+        "unit_coverage_count": 26,
+        "unit_coverage_unique": true,
+        "placeholder_tokens_found_by_this_agent": 0
+      },
+      "bindings_compared": [
+        "protected_baseline 12-entry exact-path SHA-256 bindings from REC-M5_REVIEW_PATCH_V1_20260811.json#/protected_baseline/files (all 12 measured equal)",
+        "pre_apply_anchor_checks 20 segment SHA-256 values from REC-M5_REVIEW_PATCH_V1_20260811.json#/pre_apply_anchor_checks/anchors (all 20 recomputed equal)"
+      ],
+      "not_verifiable_by_binding": [
+        {"artifact": "main.tex", "reason": "no frozen byte binding in opened authoritative records; untracked in git (ls-files count 0)"},
+        {"artifact": "supplementary.tex", "reason": "no frozen byte binding in opened authoritative records; untracked in git (ls-files count 0)"},
+        {"artifact": "formal register", "reason": "no formal-register path/hash bound in opened authoritative records; nearest bound register artifact is v1_author_decision_register.json (verified equal under G-T5); M5-F authorization separately required"}
+      ],
+      "drift_adjudication": "Repo-wide unchanged-vs-HEAD does NOT hold (76 changed tracked entries). The 7 anchor-target manuscript sources are modified vs HEAD yet byte-equal to the 2026-08-11/12 frozen bindings, proving HEAD lacks the governed bytes; candidate-application status rests on record-bound instruments plus the patch's own application-state fields, all clean/not-applied."
+    },
+    "G_T7_gate_items_status": {
+      "verdict": "PASS_REPORTED",
+      "items": [
+        {"item": "tracked/clean", "status": "MEASURABLE_FALSE", "detail": "76 changed tracked entries vs HEAD e7ce60c (74 M + 2 D: tests/test_main_fig2_scope.mjs, tests/test_main_fig3_caption_scope.mjs); any EMPIRICAL_IMPLEMENTATION_AUDIT item asserting a clean tree evaluates FAIL"},
+        {"item": "247/247 m4 allowlist validator", "status": "NOT_VERIFIABLE", "detail": "suite not run here (forbidden pre-M5-D); patch's own '247/247 PASS' is a historical generation-time claim"},
+        {"item": "85/85", "status": "NOT_VERIFIABLE", "detail": "suite not run in this environment"},
+        {"item": "145/145", "status": "NOT_VERIFIABLE", "detail": "suite not run in this environment"}
+      ],
+      "upgraded_without_measurement": []
+    },
+    "G_T8_consumed_generation_declaration": {
+      "verdict": "PASS",
+      "consumed_generation": "six canonical current-byte records of authoritative_inputs plus verification_subjects_measured from the same working tree",
+      "conflict_copy_resolved_as_input": false,
+      "conflict_copies_present_disclosed": 4,
+      "blocked_due_to_conflict_copy": false
+    }
+  },
+  "overall_verdict": "PASS",
+  "overall_scope": "Lane B governance-manifest recheck of current bytes; every measurable check passed on real measurement",
+  "constraints_carried_forward": [
+    "tracked/clean = FALSE (76 changed tracked entries): measurable FAIL for audit items asserting tree cleanliness; unresolved outside this lane",
+    "Test gates 247/247, 85/85, 145/145 remain NOT_VERIFIABLE until suites run post-M5-D",
+    "main.tex / supplementary.tex / formal register lack frozen byte bindings in opened records: NOT_VERIFIABLE by binding; prohibitions still stand",
+    "Scientific-boundary lane and fresh editorial-traceability recheck remain outstanding with no current-byte receipts",
+    "M5-D manuscript-mutation authorization and M5-F formal-register authorization remain REQUIRED_SEPARATELY"
+  ],
+  "not_done_statements": [
+    "No existing file was modified, moved or deleted; sole writes are this receipt pair, both newly created",
+    "No make target, test suite, build script or scientific entry point was executed",
+    "No git write operation performed; only rev-parse, status --porcelain -uno, ls-files used",
+    "V10 baseline and all historical receipts left untouched",
+    "No authorization issued: manuscript mutation, formal-register mutation, scientific execution, claim activation, M5-D and M5-F all remain NOT_AUTHORIZED / REQUIRED_SEPARATELY",
+    "No claim activated; this receipt is a review-only, record-only governance artifact"
+  ]
+}

@@ -27,7 +27,7 @@ const BLOCKER_CONTENT_PATTERNS = [
   ["openai_api_key", /\bsk-[A-Za-z0-9_-]{20,}\b/],
   ["github_token", /\bgh[pousr]_[A-Za-z0-9_]{20,}\b/],
   ["aws_access_key", /\bAKIA[0-9A-Z]{16}\b/],
-  ["credential_assignment", /\b(?:api[_-]?key|secret|token|password)\s*[:=]\s*["']?[A-Za-z0-9_./+=-]{16,}/i],
+  ["credential_assignment", /\b(?:api[_-]?key|secret|token|password)\s*[:=]\s*["']?[A-Za-z0-9_./+=-]{16,}(?=$|[\s"'`;,#])/i],
 ];
 
 const WARNING_CONTENT_PATTERNS = [

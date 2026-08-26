@@ -1,8 +1,10 @@
 import fs from "fs";
 import path from "path";
 import { spawnSync } from "child_process";
+import { createHash } from "crypto";
 import { generateSyntheticBenchmarks } from "./natcs_benchmarks.mjs";
-import { ensureDir, formatFixed, formatPValue, formatSmall, markdownTable, readCsv, readJson, runCommand, setPngDpi, writeCsv, writeJson, writeText } from "./natcs_utils.mjs";
+import { benchmarkFairnessAuditRows } from "./natcs_benchmark_contract_tables.mjs";
+import { ensureDir, formatFixed, formatPValue, formatSmall, markdownTable, readCsv, readJson, requireReleaseableNatcsEvidence, runCommand, setPngDpi, writeCsv, writeJson, writeText } from "./natcs_utils.mjs";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const EVIDENCE_DIR = path.join(ROOT, "output", "natcs_evidence");
@@ -469,6 +471,40 @@ function quantile(values, q) {
 
 function svgLineChart(summaryPath, detailPath, outSvg, outPng, outPdf) {
   const summary = readCsv(summaryPath);
+  const endpointGate = readJson(path.join(ROOT, "manuscript_src", "natcs", "r006c_endpoint_gate.json"));
+  const cpGate = endpointGate.candidates?.cp || {};
+  const tuckerGate = endpointGate.candidates?.tucker || {};
+  const requiredCells = Number(endpointGate.scope?.required_cells_per_candidate);
+  const nativeCells = Number(endpointGate.scope?.native_cells_per_candidate);
+  if (
+    endpointGate.evidence_status !== "frozen_v1_audited"
+    || endpointGate.scientific_outcome !== "fail"
+    || requiredCells !== 16
+    || nativeCells !== 8
+    || Number(cpGate.passed_cells) !== 0
+    || Number(tuckerGate.passed_cells) !== 6
+    || Number(tuckerGate.passed_native_cells) !== 0
+    || endpointGate.promoted_candidate !== null
+  ) {
+    throw new Error("Frozen R006c endpoint-gate summary no longer matches the audited manuscript claim");
+  }
+  const endpointGateSource = path.join(ROOT, endpointGate.source?.path || "");
+  if (fs.existsSync(endpointGateSource)) {
+    const sourceBytes = fs.readFileSync(endpointGateSource);
+    const sourceHash = createHash("sha256").update(sourceBytes).digest("hex");
+    const source = JSON.parse(sourceBytes.toString("utf8"));
+    const sourceCp = source.checks?.promotion?.candidates?.anchor_split_cp3 || {};
+    const sourceTucker = source.checks?.promotion?.candidates?.anchor_split_tucker333 || {};
+    const tuckerNativePasses = (sourceTucker.required_cells || []).filter((cell) => cell.layer === "native" && cell.pass === true).length;
+    if (
+      sourceHash !== endpointGate.source.sha256
+      || Number(sourceCp.passed_cells) !== Number(cpGate.passed_cells)
+      || Number(sourceTucker.passed_cells) !== Number(tuckerGate.passed_cells)
+      || tuckerNativePasses !== Number(tuckerGate.passed_native_cells)
+    ) {
+      throw new Error("Frozen R006c endpoint-gate summary does not match its declared raw source");
+    }
+  }
   const width = 1260;
   const height = 930;
   const safe = (value) => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -526,8 +562,8 @@ function svgLineChart(summaryPath, detailPath, outSvg, outPng, outPdf) {
     return `<circle cx="${x}" cy="${y}" r="${size}" fill="${color}" stroke="${stroke}" stroke-width="0.8"/>`;
   };
   let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><style>text{font-family:Arial,Helvetica,sans-serif;fill:#111}.title{font-size:18px;font-weight:700}.small{font-size:12px}.note{font-size:11.5px;fill:#444}.tick{font-size:11.5px;fill:#333}.tiny{font-size:10.8px;fill:#4a4a4a}.panelLabel{font-size:22px;font-weight:700}.panelTitle{font-size:14px;font-weight:700}.groupLabel{font-size:12px;font-weight:700;letter-spacing:.2px;fill:#555}.capHead{font-size:11px;font-weight:700;fill:#333}.capCell{font-size:11px;font-weight:700}.unavailable{font-size:10.8px;fill:#666}.callout{font-size:11px;font-weight:700;fill:#333}.calloutNote{font-size:10.5px;fill:#555}.stressText{font-size:10px;font-weight:700;fill:#8a6a2b}.footnote{font-size:11px;fill:#555}</style><rect width="100%" height="100%" fill="white"/>`;
-  svg += `<text x="70" y="38" class="title">Endpoint preservation keeps topology queries measurable</text>`;
-  svg += `<text x="70" y="58" class="note">Availability gate -> replicated recovery -> bounded stress.</text>`;
+  svg += `<text x="70" y="38" class="title">Query availability is necessary but does not ensure recovery</text>`;
+  svg += `<text x="70" y="58" class="note">Defined endpoint -> favourable-design recovery -> native abstention boundary.</text>`;
   [
     ["local_network", "Unrestricted local"],
     ["cp_network", methodLabels.cp_network],
@@ -550,7 +586,7 @@ function svgLineChart(summaryPath, detailPath, outSvg, outPng, outPdf) {
   };
 
   const drawAvailabilityPanel = ({ label, x, y, w, h }) => {
-    panelTitle(label, "Which response endpoints remain defined?", "Availability gate before numerical error", x, y);
+    panelTitle(label, "Which response endpoints remain defined?", "Availability and endpoint-aware recovery are distinct decisions", x, y);
     const tableX = x + 34;
     const tableY = y + 34;
     const rowH = 24;
@@ -585,9 +621,11 @@ function svgLineChart(summaryPath, detailPath, outSvg, outPng, outPdf) {
     svg += `<circle cx="${x + w - 190}" cy="${legendY - 4}" r="4.5" fill="white" stroke="#9a9a9a" stroke-width="1.2"/>`;
     svg += `<line x1="${x + w - 194}" y1="${legendY - 4}" x2="${x + w - 186}" y2="${legendY - 4}" stroke="#9a9a9a" stroke-width="1"/>`;
     svg += `<text x="${x + w - 178}" y="${legendY}" class="tiny">outside target</text>`;
-    svg += `<rect x="${x + 790}" y="${y + 43}" width="258" height="38" rx="4" fill="#ffffff" stroke="#d6d6d6" stroke-width="0.8"/>`;
-    svg += `<text x="${x + 806}" y="${y + 58}" class="callout">query preserved</text>`;
-    svg += `<text x="${x + 806}" y="${y + 73}" class="calloutNote">topology can be supplied at readout</text>`;
+    svg += `<rect x="${x + 790}" y="${y + 39}" width="258" height="62" rx="4" fill="#ffffff" stroke="#d6d6d6" stroke-width="0.8"/>`;
+    svg += `<text x="${x + 806}" y="${y + 54}" class="callout">endpoint-aware recovery gate</text>`;
+    svg += `<text x="${x + 806}" y="${y + 69}" class="calloutNote">CP ${safe(cpGate.passed_cells)}/${requiredCells}; Tucker ${safe(tuckerGate.passed_cells)}/${requiredCells}</text>`;
+    svg += `<text x="${x + 806}" y="${y + 84}" class="calloutNote">Tucker native ${safe(tuckerGate.passed_native_cells)}/${nativeCells}; no promotion</text>`;
+    svg += `<text x="${x + 806}" y="${y + 97}" class="tiny">defined does not imply recovered</text>`;
   };
 
   const unavailableEndpoint = (metric, method) => {
@@ -699,9 +737,9 @@ function svgLineChart(summaryPath, detailPath, outSvg, outPng, outPdf) {
     });
   };
 
-  drawAvailabilityPanel({ label: "a", x: 70, y: 86, w: 1115, h: 118 });
+  drawAvailabilityPanel({ label: "a", x: 70, y: 86, w: 1115, h: 136 });
 
-  svg += `<text x="70" y="244" class="groupLabel">HEADLINE OPERATOR RECOVERY</text>`;
+  svg += `<text x="70" y="244" class="groupLabel">FAVOURABLE-DESIGN OPERATOR RECOVERY</text>`;
   svg += `<text x="680" y="244" class="groupLabel">TOPOLOGY-SUBSTITUTION ENDPOINTS</text>`;
   drawLogPanel({
     label: "b",
@@ -869,44 +907,7 @@ function buildBaselineTuningProjectionTable() {
 }
 
 function buildBenchmarkFairnessAuditTable() {
-  return [
-    {
-      "Reviewer check": "Target alignment",
-      "What is compared": "Each method is evaluated only on response endpoints that its fitted object defines.",
-      "Where to verify": "Fig. 2a; Table 1; Supplementary Tables 2a-2b",
-      "Boundary protected": "Blank or Outside-target structural endpoints are not treated as numerical losses.",
-    },
-    {
-      "Reviewer check": "Tuning parity",
-      "What is compared": "Regression-style local fits share the 1e-6 ridge floor; CP, Tucker, collapsed and no-network rows use the scenario rank contract.",
-      "Where to verify": "Supplementary Table 1b; benchmark scripts; validation-grid notes",
-      "Boundary protected": "Tucker and graph-feature rows are declared comparators, not separately optimized method-development studies.",
-    },
-    {
-      "Reviewer check": "Projection contract",
-      "What is compared": "Sparse, graph-filter, graph-neural, diffusion and recurrent graph-feature fits are mapped to direct/network operator blocks before topology-response evaluation.",
-      "Where to verify": "Supplementary Table 1b; Supplementary Note 4; benchmark_replications.csv",
-      "Boundary protected": "These rows test operator recovery under projection and do not rank native graph-learning forecasting systems.",
-    },
-    {
-      "Reviewer check": "Replication coverage",
-      "What is compared": "Headline recovery uses replicated N=15 and N=30 rows; N=50 rows are bounded stress outputs with row-level coverage disclosed.",
-      "Where to verify": "Table 1; Fig. 2; Supplementary Table 3",
-      "Boundary protected": "The 93.6-96.8% and 82.5-87.3% claims are anchored to replicated N=15/N=30 comparisons.",
-    },
-    {
-      "Reviewer check": "Stability and failures",
-      "What is compared": "Instability and failure rates travel with recovery errors; finite-horizon response errors use the common stability convention while unscaled instability is still reported.",
-      "Where to verify": "Fig. 2e; Supplementary Table 2d; Supplementary Note 4",
-      "Boundary protected": "A finite response error with high instability is a diagnostic warning, not a stability claim.",
-    },
-    {
-      "Reviewer check": "Endpoint hierarchy",
-      "What is compared": "Operator and GIRF recovery are the primary evidence; raw pair-level contribution is retained as a fragile fine-grained attribution diagnostic.",
-      "Where to verify": "Table 1; Supplementary Table 2b; Results validation text",
-      "Boundary protected": "Weak raw pair-level recovery does not carry the headline measurement claim.",
-    },
-  ];
+  return benchmarkFairnessAuditRows();
 }
 
 function buildRcepBenchmarkTable() {
@@ -1471,6 +1472,7 @@ function buildSummaryMetrics(summaryRows) {
 }
 
 export function buildNatcsEvidence() {
+  requireReleaseableNatcsEvidence(ROOT);
   ensureDir(EVIDENCE_DIR);
   fs.rmSync(path.join(EVIDENCE_DIR, ["trace", "ability"].join("") + ".json"), { force: true });
   if (process.env.NATCS_FAST_EVIDENCE === "1") {

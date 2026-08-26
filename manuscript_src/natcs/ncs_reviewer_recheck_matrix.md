@@ -1,5 +1,12 @@
 # NCS Reviewer Re-check Matrix
 
+> **Current-status supersession, 2026-07-23.** This historical reviewer matrix
+> is disabled. `PAPER_CLAIM_AUDIT=BLOCKED` and
+> `EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL` invalidate every row that treats RCEP,
+> NYC, an evidence package or a reproducibility archive as current evidence.
+> Use `ncs_desk_rejection_rereview_20260722.md` and the claim ledger for the
+> current source-only assessment.
+
 Purpose: simulate the first external-review pass after the current Nature Computational Science-oriented revision. This is a working submission-support artifact for author preparation, portal wording and response planning. It is not manuscript text and adds no new evidence.
 
 Audit date: 2026-07-07.

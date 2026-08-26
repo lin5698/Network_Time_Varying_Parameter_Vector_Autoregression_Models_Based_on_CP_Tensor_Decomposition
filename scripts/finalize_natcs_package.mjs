@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { spawnSync } from "child_process";
+import { requireReleaseableNatcsEvidence } from "./natcs_utils.mjs";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 
@@ -136,6 +137,9 @@ function assertInventory() {
 }
 
 export function finalizeNatcsPackage() {
+  // Fail closed while the controlling audits are blocked: finalization is a
+  // submission-facing packaging step and may not run against stale artifacts.
+  requireReleaseableNatcsEvidence(ROOT);
   const targets = [
     path.join(ROOT, "output", "submission_package", "natcs_current"),
     path.join(ROOT, "output", "reviewer_archive", "natcs_reviewer_archive"),

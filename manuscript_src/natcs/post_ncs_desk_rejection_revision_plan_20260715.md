@@ -52,7 +52,7 @@ Current first-screen risks:
 
 - The conceptual contribution is framed as endpoint/query preservation, but the editor may read it as a representation constraint for a separable network VAR rather than a broadly new computational method.
 - CP, rolling ridge VAR and finite-horizon impulse responses are established components. The paper must make the new operation enabled by their combination more concrete and consequential.
-- Proposition 1 is a deterministic finite-horizon perturbation transfer result. It bounds interpretation but does not establish a new estimator rate, identification result, rank-selection theory or CP convergence result.
+- Proposition 1 now establishes the exact unrestricted-block query-factorization boundary, and Corollary 1 gives the complementary diagonal rowwise inverse used to delimit the empirical parameter class. Proposition 2 is the deterministic finite-horizon perturbation-transfer result; it bounds interpretation but does not establish a new estimator rate, rank-selection theory or CP convergence result.
 - The main benchmark headline compares primarily with unrestricted rolling estimation. Tucker is the strongest same-target comparator; projected graph-feature methods are bounded stress diagnostics rather than native competing systems.
 - The RCEP result is explicitly descriptive and its re-estimation interval crosses zero. The NYC result is deliberately near-null. These are rigorous boundaries, but they provide a weak immediate-practical-impact signal to a broad editor.
 - The Abstract devotes substantial space to exclusions and reproducibility mechanics. This makes the paper look defensive before the reader sees why the operator changes scientific practice.
@@ -87,16 +87,12 @@ This sentence is a direction, not final wording. It must remain qualified by the
 - Explain the practical failure caused by losing the topology argument: observed, zero-network and frozen-topology responses can no longer be matched evaluations of one fitted path.
 - Reframe the applications as demonstrations of both a non-zero and a near-null answer returned by the same operator, while preserving the descriptive/non-causal boundary.
 
-### Phase D1: Text-only specialist-journal route
+### Phase D1: Text-only alternative route (not currently in scope)
 
 Use this route if no new experiments or theory are planned.
 
-- Reframe the title and Abstract for a methods/network-econometrics audience.
-- Keep the current benchmark and empirical evidence, with transparent comparator scopes.
-- Shorten NCS-specific broad-readership positioning and remove all portal/reviewer language.
-- Candidate-fit order for detailed evaluation: `Computational Statistics & Data Analysis`, `Journal of Network Science`, and `International Journal of Forecasting` if the forecasting evaluation is strengthened in presentation.
-- `Journal of Econometrics` would likely require substantially deeper identification or asymptotic theory than the current manuscript provides.
-- Within Nature Portfolio, `Scientific Reports` is the most plausible transfer without a major evidence expansion; transfer to `Nature Communications` is not recommended on the present evidence because the same broad-significance objection would probably recur.
+- No specialist-journal screening outside the author-approved whitelist is currently in scope.
+- Within the permitted journal set, a transfer to `Nature Communications` should be reconsidered only after a material evidence expansion; the present evidence does not resolve the broad-significance objection.
 
 Journal scope and current author guidelines must be verified before choosing a target.
 

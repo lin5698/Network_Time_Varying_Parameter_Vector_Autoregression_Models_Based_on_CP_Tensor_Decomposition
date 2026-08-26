@@ -1,0 +1,89 @@
+{
+  "record_class": "p0_repair_closure",
+  "record_id": "REC-P0_REPAIR_CLOSURE_V1_20260826",
+  "generated": "2026-08-26",
+  "timezone_basis": "Asia/Shanghai",
+  "authority": {
+    "author_instruction": "同意上述分析，请继续后续工作 (2026-08-26 chat)",
+    "structured_decisions": {
+      "e4r007_handling": "independent_review_first",
+      "icloud_migration": "migrate_to_home_work"
+    }
+  },
+  "p0_status": "CLOSED",
+  "repair": {
+    "baseline_placeholder_count_20260826T0301": 9180,
+    "method": "per-file parallel brctl download loop after directory-level scheduling proved ineffective",
+    "tool": "tmp/materialize_all.sh",
+    "final_placeholder_count": 0,
+    "completed_at": "2026-08-26T03:26:07+08:00"
+  },
+  "git_health_after_repair": {
+    "head": "e7ce60c28f27c17ecfffe5348dd04d8c957fb077",
+    "branch": "refs/heads/codex/m5-current-luna-science-recheck",
+    "rev_parse_ok": true,
+    "fsck_full_rc": 0,
+    "fsck_note": "dangling objects only; previously dumped core",
+    "modified_tracked_files_vs_head": 76,
+    "full_porcelain_lines_including_untracked": 666,
+    "audit_critical_files_clean_vs_head": [
+      "scripts/experiments/config.py",
+      "scripts/experiments/research_data_construction.py",
+      "scripts/experiments/research_network_tvp_var.py"
+    ]
+  },
+  "m5c_frozen_inputs_recheck": {
+    "result": "ALL_SIX_MATCH",
+    "paths_and_sha256": {
+      "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd",
+      "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json": "938e5218280fcdf25ffb206040d420e2420851a3483e1cc7c282dabf0c01e0e6",
+      "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341",
+      "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json": "ebb639ed613520ac643ee1ac21b53c9420e4bbf3a010af1f130a8e3d3b12d8b6",
+      "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.md": "dfd4385fd1f6f027e7a9ba12fc91f8e710e059edbe38179606898264e3d00539",
+      "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.json": "94668a914aeba43dc2d8ca34e7639cb4930e34b2abbe8211980a77bf4adfd3ee"
+    }
+  },
+  "conflict_copy_audit": {
+    "tsv": "tmp/conflict_copy_audit_20260826.tsv",
+    "total": 369,
+    "byte_identical_deletable_candidate": 341,
+    "differs_copy_strictly_older": 15,
+    "differs_same_mtime_divergent_older_draft": [
+      "manuscript_src/natcs/discussion 2.md",
+      "scripts/build_natcs_framework_figure 2.py"
+    ],
+    "original_missing_all_inside_superseded_archives": 11,
+    "untracked_superseded_generation_copies_in_refine_logs": [
+      "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811 2.md",
+      "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811 2.json",
+      "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812 2.md",
+      "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812 2.json"
+    ],
+    "deletions_performed": 0
+  },
+  "migration": {
+    "destination": "~/work/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition",
+    "rsync_file_counts": { "src": 10285, "dst": 10285 },
+    "du_kib": { "src": 4975528, "dst": 4975524 },
+    "bundle": "~/work/repo-bundle-20260826.bundle",
+    "bundle_verify": "complete history",
+    "destination_fsck_rc": 0,
+    "source_disposition": "moved_intact_to_~/.Trash/<repo>-pre-migration-20260826",
+    "icloud_sync_domain_exit": true
+  },
+  "dispatched_lanes_read_only": [
+    "REC-M5_EDITORIAL_RECHECK_V4_20260823.{md,json}",
+    "REC-M5_GOVERNANCE_RECHECK_V5_20260823.{md,json}",
+    "NCS_E4_R007_INDEPENDENT_RESULT_TO_CLAIM_V1_20260826.{md,json}"
+  ],
+  "boundary": {
+    "manuscript_src_modified": false,
+    "formal_register_modified": false,
+    "preexisting_frozen_records_modified": false,
+    "generated_tex_modified": false,
+    "make_targets_run": false,
+    "tests_run": false,
+    "scientific_entries_executed": false,
+    "claim_activation": "NOT_ACTIVATED"
+  }
+}

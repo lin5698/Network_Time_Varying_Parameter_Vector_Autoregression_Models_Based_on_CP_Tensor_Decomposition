@@ -113,6 +113,10 @@ function markdownTable(rows) {
 }
 
 function main() {
+  // Fail closed while the controlling audits are blocked: the freeze manifest
+  // certifies upload-facing artifact hashes and may not be produced from
+  // stale blocked evidence.
+  requireReleaseableNatcsEvidence(ROOT);
   runReleaseSafetyAudit();
   const stampedUploadZip = newestStampedUploadZip();
   const reviewerArchive = path.join(ROOT, "output", "reviewer_archive", "natcs_reviewer_archive");

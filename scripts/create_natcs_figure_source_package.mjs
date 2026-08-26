@@ -46,14 +46,9 @@ function zipDir(srcDir, zipFile) {
 }
 
 function main() {
-  const surrogateResult = spawnSync("python3", ["scripts/build_natcs_fig2_portal_surrogate.py"], {
-    cwd: ROOT,
-    encoding: "utf8",
-  });
-  if (surrogateResult.status !== 0) {
-    throw new Error(surrogateResult.stderr || surrogateResult.stdout || "Fig. 2 surrogate preview build failed");
-  }
-
+  // Fail closed while the controlling audits are blocked: this produces a
+  // submission-facing artifact package.
+  requireReleaseableNatcsEvidence(ROOT);
   fs.rmSync(PACKAGE_DIR, { recursive: true, force: true });
   ensureDir(FIG_DIR);
   ensureDir(NOTES_DIR);
@@ -61,44 +56,35 @@ function main() {
   const figures = [
     {
       id: "figure_1",
-      title: "Topology-switchable evaluation operator",
-      manuscriptRole: "Defines the switchable response operator and collapsed-map failure.",
+      title: "Callable topology-indexed operator",
+      manuscriptRole: "Defines the learned object and its three same-path topology readouts.",
       serves: "novelty / clarity / visual communication",
       files: [
-        ["output/natcs_assets/figure1_natcs_framework.pdf", "figures/figure1_topology_switchable_operator.pdf"],
-        ["output/natcs_assets/figure1_natcs_framework.png", "figures/figure1_topology_switchable_operator.png"],
-        ["output/natcs_assets/figure1_natcs_framework.svg", "figures/figure1_topology_switchable_operator.svg"],
+        ["output/natcs_assets/figure1_natcs_framework.pdf", "figures/figure1_callable_operator.pdf"],
+        ["output/natcs_assets/figure1_natcs_framework.png", "figures/figure1_callable_operator.png"],
+        ["output/natcs_assets/figure1_natcs_framework.svg", "figures/figure1_callable_operator.svg"],
       ],
     },
     {
       id: "figure_2",
-      title: "Endpoint-preservation benchmark",
-      manuscriptRole: "Applies the endpoint gate and reports recovery, stress and stability evidence.",
-      serves: "rigour / clarity / visual communication",
+      title: "Query factorization certificate",
+      manuscriptRole: "Pairs the exact unrestricted boundary with the constructive diagonal inverse and endpoint classification.",
+      serves: "novelty / rigour / clarity / visual communication",
       files: [
-        ["output/natcs_evidence/fig_validation_recovery.pdf", "figures/figure2_endpoint_preservation_benchmark.pdf"],
-        ["output/natcs_evidence/fig_validation_recovery.png", "figures/figure2_endpoint_preservation_benchmark.png"],
-        ["output/natcs_evidence/fig_validation_recovery.svg", "figures/figure2_endpoint_preservation_benchmark.svg"],
+        ["output/natcs_assets/figure2_natcs_query_certificate.pdf", "figures/figure2_query_certificate.pdf"],
+        ["output/natcs_assets/figure2_natcs_query_certificate.png", "figures/figure2_query_certificate.png"],
+        ["output/natcs_assets/figure2_natcs_query_certificate.svg", "figures/figure2_query_certificate.svg"],
       ],
     },
     {
       id: "figure_3",
-      title: "RCEP fixed-path topology substitution",
-      manuscriptRole: "Shows the bounded empirical operator readout and estimation-path boundary.",
-      serves: "significance / rigour / clarity",
+      title: "Supported controlled operating regime",
+      manuscriptRole: "Shows released controlled recovery first and the strict native qualification as a bounded inset.",
+      serves: "significance / rigour / clarity / reproducibility / visual communication",
       files: [
-        ["output/natcs_empirical_cp/rcep/figures/fig_rcep_operator_switch.pdf", "figures/figure3_rcep_operator_readout.pdf"],
-        ["output/natcs_empirical_cp/rcep/figures/fig_rcep_operator_switch.png", "figures/figure3_rcep_operator_readout.png"],
-      ],
-    },
-    {
-      id: "figure_4",
-      title: "Public second-domain operator check",
-      manuscriptRole: "Shows same-operator execution in the NYC Taxi mobility panel.",
-      serves: "generality / reproducibility / visual communication",
-      files: [
-        ["output/natcs_empirical_cp/nyc_taxi/figures/fig_nyc_portability_summary.pdf", "figures/figure4_nyc_operator_check.pdf"],
-        ["output/natcs_empirical_cp/nyc_taxi/figures/fig_nyc_portability_summary.png", "figures/figure4_nyc_operator_check.png"],
+        ["output/natcs_assets/figure3_natcs_supported_regime.pdf", "figures/figure3_supported_regime.pdf"],
+        ["output/natcs_assets/figure3_natcs_supported_regime.png", "figures/figure3_supported_regime.png"],
+        ["output/natcs_assets/figure3_natcs_supported_regime.svg", "figures/figure3_supported_regime.svg"],
       ],
     },
   ];
@@ -133,84 +119,38 @@ function main() {
     manifest.figures.push(entry);
   }
 
-  const qaMemo = path.join(ROOT, "manuscript_src", "natcs", "ncs_figure_qa_memo.md");
-  const qaDest = path.join(NOTES_DIR, "ncs_figure_qa_memo.md");
-  copyFile(qaMemo, qaDest);
-  manifest.notes.push({
-    path: rel(qaDest),
-    role: "Current main-figure QA memo and residual visual-risk audit.",
-    sha256: sha256(qaDest),
-    bytes: fs.statSync(qaDest).size,
-  });
-  const fig2Contract = path.join(ROOT, "manuscript_src", "natcs", "ncs_fig2_redesign_contract.md");
-  const fig2ContractDest = path.join(NOTES_DIR, "ncs_fig2_redesign_contract.md");
-  copyFile(fig2Contract, fig2ContractDest);
-  manifest.notes.push({
-    path: rel(fig2ContractDest),
-    role: "Controlled redesign brief for Figure 2 if upload preview readability fails.",
-    sha256: sha256(fig2ContractDest),
-    bytes: fs.statSync(fig2ContractDest).size,
-  });
-  const fig2PortalChecklist = path.join(ROOT, "manuscript_src", "natcs", "ncs_fig2_portal_preview_checklist.md");
-  const fig2PortalChecklistDest = path.join(NOTES_DIR, "ncs_fig2_portal_preview_checklist.md");
-  copyFile(fig2PortalChecklist, fig2PortalChecklistDest);
-  manifest.notes.push({
-    path: rel(fig2PortalChecklistDest),
-    role: "Pass/fail checklist for Figure 2 journal portal preview and standalone-source inspection.",
-    sha256: sha256(fig2PortalChecklistDest),
-    bytes: fs.statSync(fig2PortalChecklistDest).size,
-  });
-  const fig2SurrogateAudit = path.join(ROOT, "manuscript_src", "natcs", "ncs_fig2_portal_surrogate_audit.md");
-  const fig2SurrogateAuditDest = path.join(NOTES_DIR, "ncs_fig2_portal_surrogate_audit.md");
-  copyFile(fig2SurrogateAudit, fig2SurrogateAuditDest);
-  manifest.notes.push({
-    path: rel(fig2SurrogateAuditDest),
-    role: "Local low-width Fig. 2 surrogate preview audit; does not close journal portal gate.",
-    sha256: sha256(fig2SurrogateAuditDest),
-    bytes: fs.statSync(fig2SurrogateAuditDest).size,
-  });
-  const fig2SurrogateContactSheet = path.join(ROOT, "output", "natcs_fig2_portal_surrogate", "fig2_portal_surrogate_contact_sheet.png");
-  const fig2SurrogateContactSheetDest = path.join(NOTES_DIR, "fig2_portal_surrogate_contact_sheet.png");
-  copyFile(fig2SurrogateContactSheet, fig2SurrogateContactSheetDest);
-  manifest.notes.push({
-    path: rel(fig2SurrogateContactSheetDest),
-    role: "Contact sheet for local standalone and embedded-page Fig. 2 preview stress checks.",
-    sha256: sha256(fig2SurrogateContactSheetDest),
-    bytes: fs.statSync(fig2SurrogateContactSheetDest).size,
-  });
-  const fig2PanelAContactSheet = path.join(ROOT, "output", "natcs_fig2_portal_surrogate", "fig2_panel_a_contact_sheet.png");
-  const fig2PanelAContactSheetDest = path.join(NOTES_DIR, "fig2_panel_a_contact_sheet.png");
-  copyFile(fig2PanelAContactSheet, fig2PanelAContactSheetDest);
-  manifest.notes.push({
-    path: rel(fig2PanelAContactSheetDest),
-    role: "Panel-a crop contact sheet for checking endpoint-gate readability before journal portal upload.",
-    sha256: sha256(fig2PanelAContactSheetDest),
-    bytes: fs.statSync(fig2PanelAContactSheetDest).size,
-  });
-  const fig2SurrogateSummary = path.join(ROOT, "output", "natcs_fig2_portal_surrogate", "fig2_portal_surrogate_summary.json");
-  const fig2SurrogateSummaryDest = path.join(NOTES_DIR, "fig2_portal_surrogate_summary.json");
-  copyFile(fig2SurrogateSummary, fig2SurrogateSummaryDest);
-  manifest.notes.push({
-    path: rel(fig2SurrogateSummaryDest),
-    role: "Machine-readable summary of local Fig. 2 surrogate preview dimensions and decision rule.",
-    sha256: sha256(fig2SurrogateSummaryDest),
-    bytes: fs.statSync(fig2SurrogateSummaryDest).size,
-  });
+  const notes = [
+    ["manuscript_src/natcs/ncs_figure_qa_memo.md", "ncs_figure_qa_memo.md", "Current visual-sequence QA memo."],
+    ["manuscript_src/natcs/ncs_fig2_redesign_contract.md", "ncs_fig2_redesign_contract.md", "Figure 2 scientific and visual contract."],
+    ["manuscript_src/natcs/ncs_figure1_python_redesign_qa_20260726.md", "ncs_figure1_python_redesign_qa_20260726.md", "Figure 1 Python export and visual QA."],
+    ["manuscript_src/natcs/ncs_figure2_python_redesign_qa_20260726.md", "ncs_figure2_python_redesign_qa_20260726.md", "Figure 2 Python export and visual QA."],
+    ["manuscript_src/natcs/ncs_figure3_python_redesign_qa_20260726.md", "ncs_figure3_python_redesign_qa_20260726.md", "Figure 3 Python export and visual QA."],
+    ["paper_rewriting_output/ncs_figure_sequence_contract_20260726.md", "ncs_figure_sequence_contract_20260726.md", "Active Figure 1-3 narrative contract."],
+  ];
+  for (const [sourceRelative, destinationName, role] of notes) {
+    const source = path.join(ROOT, sourceRelative);
+    const destination = path.join(NOTES_DIR, destinationName);
+    copyFile(source, destination);
+    manifest.notes.push({
+      path: rel(destination),
+      role,
+      sha256: sha256(destination),
+      bytes: fs.statSync(destination).size,
+    });
+  }
 
   const readme = [
     "# NatCS Main Figure Source Package",
     "",
-    "This package collects the generated source exports for the four main manuscript figures.",
+    "This source definition collects the generated exports for the three active main manuscript figures.",
     "",
     "Use it to inspect standalone figure quality during submission preview or peer review.",
     "",
-    "Key figure-risk note: Figure 2 is the densest figure in the embedded manuscript PDF because it carries the endpoint-availability gate, recovery benchmark, measurement stress and stability boundary. Local page-render QA found the standalone Figure 2 source legible, while the smallest embedded manuscript labels require zoom. The standalone PDF/SVG files in this package should be used when the journal portal allows separate figure-source upload.",
+    "The visual sequence is capability (Figure 1), exact certificate (Figure 2) and supported controlled regime (Figure 3). Each figure is supplied as editable SVG/PDF plus a 600 dpi PNG.",
     "",
-    "Use `notes/ncs_fig2_portal_preview_checklist.md` to record the portal-preview pass/fail evidence. If the journal portal preview rasterizes Figure 2 poorly or makes panel a unreadable, use `notes/ncs_fig2_redesign_contract.md` as the controlled redesign brief. It preserves the endpoint-availability argument and prevents accidental addition of unsupported evidence.",
+    "RCEP, NYC and E3 outcome figures are excluded because they are not active manuscript evidence under the controlling audits.",
     "",
-    "The local surrogate preview files in `notes/` document low-width Fig. 2 compression stress before upload. The panel-a contact sheet isolates the endpoint gate because that panel carries the methods-reviewer logic. These files are QA evidence only and should not be uploaded as manuscript figures.",
-    "",
-    "Included files are generated artifacts, not hand-edited illustrator files. Regeneration is controlled by the manuscript build scripts and reviewer archive.",
+    "Included files are generated artifacts, not hand-edited illustrator files. Regeneration is controlled by Python source and the manuscript build entry point.",
     "",
   ].join("\n");
   writeText(path.join(PACKAGE_DIR, "README.md"), readme);
