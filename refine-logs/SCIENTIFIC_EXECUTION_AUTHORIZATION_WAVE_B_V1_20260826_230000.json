@@ -1,0 +1,80 @@
+{
+  "author_signature": "OPEN_PENDING_CONFIRMATION",
+  "authorization_id": "rcep-nyc-wave-b-methodological-20260826-230000-cst-01",
+  "authorized_at": "2026-08-26T23:00:00+08:00",
+  "authorizer": "yilin-wu",
+  "implementation_files": {
+    "scripts/natcs_design_contract.py": {
+      "raw_sha256": "45e14cb8fdaf10e2f4b07e7a27c630841e968994cd246e44d0e27c017a58388b"
+    },
+    "scripts/run_cp_empirical_pipeline.py": {
+      "raw_sha256": "647f35cd433d0fb12b8d7ae903ad09bdf874a8fe01421b47c7fb1b22a371c31e"
+    }
+  },
+  "preconditions_for_execution": [
+    "author_signature complete",
+    "NATCS_NYC_TAXI_DATASET_DIR bound (ready)",
+    "NATCS_RCEP_HELPER_REPO bound once origin resolved (or RCEP lane deferred pending it)",
+    "dependency freeze recorded in tmp/requirements_freeze_20260826.txt",
+    "output root created (done)"
+  ],
+  "purpose": "wave_b_methodological_remediation_f2_f3_seed_echo",
+  "quarantine_contract": {
+    "audit_chain": "new artifacts feed the EMPIRICAL_IMPLEMENTATION_AUDIT / PAPER_CLAIM_AUDIT re-adjudication lane; no manuscript-source change without author RC-1 promotion decision",
+    "landing_zone": "output/natcs_empirical_cp_authorized_runs/<decision_id>/",
+    "outputs_remain_inactive_until_readjudication": true,
+    "receipts": "refine-logs/ paired records; measurement payloads in tmp/ (per *_vt1_measurement_20260826.json precedent)"
+  },
+  "run_plan": {
+    "merged_single_run_per_dataset": true,
+    "nyc": {
+      "dataset_commit": "7e63ba9734021171eaf49edb92be8a7e7e8802eb",
+      "dataset_dir_env": "NATCS_NYC_TAXI_DATASET_DIR",
+      "dataset_path": "tmp/external/vars_repo/datasets/NYC-taxi",
+      "dataset_verified": true,
+      "status": "READY"
+    },
+    "output_root": "output/natcs_empirical_cp_authorized_runs/rcep-nyc-wave-b-methodological-20260826-230000-cst-01/",
+    "rcep": {
+      "helper_env": "NATCS_RCEP_HELPER_REPO",
+      "reason": "helper checkout remains at legacy Desktop path; origin URL unknown; trust manifest pins commit d0e398b896848f26413cf9aa9dfca15fb4e7ce64 and file digests for verification",
+      "status": "BLOCKED_PENDING_HELPER_ORIGIN"
+    }
+  },
+  "schema_version": "rcep-nyc-wave-b-methodological-execution-authorization-v1",
+  "scope": {
+    "F2_bootstrap_correction": {
+      "authorized_actions": [
+        "run merged per-dataset bootstrap re-run with fixed seeds",
+        "emit point estimate AND bootstrap median with percentile interval for the flagged statistic",
+        "declare in the output bundle which summary is the promoted value",
+        "if the promoted value is not supported by the interval, report the statistic with an explicit skew disclosure instead of suppressing it"
+      ],
+      "finding": "point estimate lies outside bootstrap CI; bootstrap p50 approx 0.00073 vs point 0.0023 (genuine skew, deterministically reproducible with fixed seeds)"
+    },
+    "F3_absorption_variant": {
+      "authorized_actions": [
+        "complete the absorption variant to a runnable state",
+        "run it in the same merged re-run",
+        "record whether the absorption variant identifies a stable subsample or remains not_identified"
+      ],
+      "finding": "stable-subsample status not_identified; rank check at :1604-1641 is honest-by-design; absorption variant already half-implemented at :1654-1660"
+    },
+    "g_net_offline_decomposition": {
+      "authorized_actions": [
+        "offline decomposition of negative late-period g_net from existing CSVs without re-running estimation",
+        "emit characterization note into the value-audit bundle"
+      ],
+      "status": "OPTIONAL"
+    },
+    "seed_echo": {
+      "authorized_actions": [
+        "echo seed root and per-stage seeds into every produced artifact header",
+        "record equivalence check against frozen pre-Wave-B outputs for unchanged components"
+      ],
+      "finding": "seeds present in source (root 20260328 at :1244/:1735/:1758/:2779) but absent from artifacts"
+    }
+  },
+  "self_sha256": "1bf2ec7ef5803c9c2b237616dacc0c8b321032a3c18862e2dd2ed2657d24c78e",
+  "status": "PLANNED_PENDING_AUTHOR_SIGNATURE"
+}
