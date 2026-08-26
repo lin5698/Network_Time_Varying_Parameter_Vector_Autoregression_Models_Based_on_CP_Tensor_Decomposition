@@ -1,0 +1,70 @@
+{
+  "authorization": {
+    "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json",
+    "sha256": "c012f7d1a40168b264027c55a3760424c7686cd0e7941cf6765d99c2629fd63f"
+  },
+  "comparison": {
+    "all_entries_equal": true,
+    "files_per_run": 27,
+    "manifest": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_MANIFEST_V1_20260811_010147.json",
+    "path_bytes_sha": "PASS"
+  },
+  "execution_parent": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01",
+  "execution_sequence": {
+    "duplicate": {
+      "roots": [
+        "cal-e01-75-2400b0f538932133",
+        "cal-e02-128-ff23c1c2be0a83baae80298617211b5d0469b2a7614e3a1734df22853f013bbb",
+        "cal-e02-135-dd118064bc799a73",
+        "cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991"
+      ],
+      "status": "COMPLETE"
+    },
+    "primary": {
+      "roots": [
+        "cal-e01-75-2400b0f538932133",
+        "cal-e02-128-ff23c1c2be0a83baae80298617211b5d0469b2a7614e3a1734df22853f013bbb",
+        "cal-e02-135-dd118064bc799a73",
+        "cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991"
+      ],
+      "status": "COMPLETE"
+    }
+  },
+  "final_status": "REC-M2C PASS",
+  "generated_at": "2026-08-11T01:04:59.311524+08:00",
+  "preflight": {
+    "hashes": "PASS",
+    "py_compile_exactly_eight": "PASS",
+    "test_suites": {
+      "CAL-E01:75": 16,
+      "CAL-E02:128": 7,
+      "CAL-E02:135": 6,
+      "CAL-E03:164": 6,
+      "total": 35
+    }
+  },
+  "receipt_id": "ncs-post-acceptance-recovery-m2c-20260811_010147-cst",
+  "records": {
+    "coverage": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_COVERAGE_V1_20260811_010147.json",
+    "manifest": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_MANIFEST_V1_20260811_010147.json",
+    "receipt": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_RECEIPT_V1_20260811_010147.json",
+    "tracker": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_TRACKER_V1_20260811_010147.md"
+  },
+  "result": "REC-M2C_PASS",
+  "schema_version": "ncs-post-acceptance-recovery-m2c-receipt-v1",
+  "scope": {
+    "e4_r008_reuse": "NOT_USED",
+    "e4_r3_mutation": false,
+    "manuscript_mutation": false,
+    "n100_n200": "NOT_AUTHORIZED",
+    "new_scientific_experiment": "NOT_RUN",
+    "rcep_nyc": "NOT_AUTHORIZED",
+    "real_analyzers": "four analyzers, primary and duplicate only",
+    "register_mutation": false,
+    "s1_s4": "NOT_AUTHORIZED"
+  },
+  "state_preservation": {
+    "coverage": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_COVERAGE_V1_20260811_010147.json",
+    "failure_nonfinite_unstable_not_run": "PRESERVED_IN_ANALYZER_OUTPUTS"
+  }
+}

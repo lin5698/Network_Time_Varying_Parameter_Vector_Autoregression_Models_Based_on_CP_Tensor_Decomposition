@@ -1,0 +1,17 @@
+{
+  "schema_version": "e4-r3-clock-provenance-v1",
+  "workspace_timezone": "Asia/Shanghai",
+  "utc_offset": "+08:00",
+  "observed_local_time": "2026-08-01T02:34:41+08:00",
+  "observed_utc_time": "2026-07-31T18:34:41Z",
+  "clock_source": "/bin/date",
+  "interpretation": {
+    "execution_started_local_date": "2026-07-31",
+    "execution_completed_local_date": "2026-08-01",
+    "inventory_frozen_at": "2026-08-01T02:18:00+08:00",
+    "review_request_created_at": "2026-08-01T02:20:54+08:00",
+    "cross_midnight_run": true
+  },
+  "scope": "operational_clock_provenance_only",
+  "outcome_values_included": false
+}

@@ -1,0 +1,135 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-preflight-plan-v1",
+  "plan_id": "REC-M5-preflight-plan-20260811",
+  "generated_at": "2026-08-11T22:19:05+08:00",
+  "status": "PREFLIGHT_COMPLETE_M5_NOT_AUTHORIZED",
+  "governance_gate": {
+    "m4_record": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V4_20260811.json",
+    "m4_sha256": "c68fe23299eca1697d979ea0e72f9845af0e4793b58aed96a9029ed2a94d7fdc",
+    "m4_result": "REC-M4_INDEPENDENT_ACCEPTANCE_PASS",
+    "m4_class": "GOVERNANCE_AND_ARTIFACT_INTEGRITY_ONLY",
+    "m4_pass_applies_manuscript_patch": false,
+    "m4_pass_activates_scientific_claim": false,
+    "m5_authorization": "REQUIRES_EXPLICIT_SEPARATE_AUTHORIZATION"
+  },
+  "inputs": [
+    {
+      "path": "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811_R2.json",
+      "sha256": "dd03ce5369dff3c54b53910e4ab9368d07195f5294d5e9a3c130fb8456c145ca"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_026_PATCH_PROPOSAL_20260811.md",
+      "sha256": "5dc82aed028b4cc87bc44050e2d42ffdd0b22b4a21f89b35174dbf513feb2ebb"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json",
+      "sha256": "68a841cb4c5f68916cd305eb354200030564079f2e6fedf4e33a346a35f7f443"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_033_PATCH_PROPOSAL_20260811.md",
+      "sha256": "6d8fff0275be2bbeeefca33193656c397de494e3ad0812e521cd6d3a4551e6da"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json",
+      "sha256": "baee769a51c5861bfe04c7fcfc8e72608ea2bcd6f52fedcd909fca1bbb61ed33"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_045_PATCH_PROPOSAL_20260811.md",
+      "sha256": "7eb9d17f3c670de2babcd4e0587bd6ba13ff6787abf38119e4c435dd1397a0a0"
+    }
+  ],
+  "readiness_matrix": {
+    "V1-026_CAL-E01_75": {
+      "units": 3,
+      "exact_current_anchor_matches": 3,
+      "non_exact_anchor_units": 0,
+      "application_mode": "EXACT_ANCHOR_PATCH_ELIGIBLE_AFTER_EXPLICIT_AUTHORIZATION",
+      "scientific_ceiling": "Descriptive comparator role, endpoint, coverage, retained status and common-completion integrity only; no CI, ranking, superiority, equivalence, activation or promotion."
+    },
+    "V1-033_CAL-E02_128": {
+      "units": 13,
+      "exact_current_anchor_matches": 1,
+      "paragraph_summary_units": 12,
+      "application_mode": "PARAGRAPH_LEVEL_EDITORIAL_MERGE_REQUIRED",
+      "automatic_string_replacement": "PROHIBITED",
+      "scientific_ceiling": "Register PARTIAL; M2C BLOCKED/PARTIAL; simulation-only; independent empirical ground truth NOT_EVALUABLE; chronology, selection-input, query-identity, endpoint-signature and truth-isolation gaps retained."
+    },
+    "V1-045_CAL-E03_164": {
+      "units": 10,
+      "exact_current_anchor_matches": 0,
+      "contract_guided_items": 10,
+      "application_mode": "AUTHOR_DECISION_AND_EDITORIAL_DRAFTING_REQUIRED",
+      "automatic_string_replacement": "PROHIBITED",
+      "scientific_ceiling": "Register/M2C PARTIAL; N=20/N=50 only; N=100/N=200 NOT_RUN/ABSTAIN; telemetry BLOCKED/null; one execution is not repeated-run reproducibility; ALS 60 stopping semantics, compiled 100/80 separation and topology amplitudes remain unresolved."
+    },
+    "total_units": 26
+  },
+  "proposed_workflow": [
+    {
+      "phase": "M5-A",
+      "name": "scope_authorization",
+      "action": "Obtain explicit authorization for a selected subset or all 26 proposal units and separately identify permitted target files.",
+      "writes_authorized": false
+    },
+    {
+      "phase": "M5-B",
+      "name": "reviewable_patch_synthesis",
+      "action": "Generate a standalone review patch/draft without mutating manuscript sources; convert V1-033 summaries and V1-045 contract items into paragraph-aware edits.",
+      "writes_authorized": false
+    },
+    {
+      "phase": "M5-C",
+      "name": "independent_claim_boundary_review",
+      "action": "Revalidate every proposed sentence against the V1-026, V1-033 and V1-045 scientific ceilings before application.",
+      "writes_authorized": false
+    },
+    {
+      "phase": "M5-D",
+      "name": "manuscript_application",
+      "action": "Apply the approved, reviewed patch to explicitly authorized manuscript files only.",
+      "writes_authorized": false,
+      "authorization_required": "EXPLICIT_MANUSCRIPT_MUTATION_APPROVAL"
+    },
+    {
+      "phase": "M5-E",
+      "name": "compile_and_qa",
+      "action": "Compile affected outputs and run locator, claim, citation and protected-boundary checks; compare final text with the approved patch.",
+      "writes_authorized": false
+    },
+    {
+      "phase": "M5-F",
+      "name": "formal_register_adjudication",
+      "action": "Update the formal author decision register only under a separate explicit authorization and only after evidence-backed manuscript QA.",
+      "writes_authorized": false,
+      "authorization_required": "EXPLICIT_FORMAL_REGISTER_MUTATION_APPROVAL"
+    }
+  ],
+  "required_authorizations": {
+    "generate_review_patch_only": "NOT_YET_AUTHORIZED",
+    "modify_manuscript_sources": "NOT_AUTHORIZED",
+    "modify_formal_register": "NOT_AUTHORIZED",
+    "modify_e4_r3_or_scientific_payload": "PROHIBITED",
+    "modify_execution_authorizations": "PROHIBITED",
+    "git_stage_commit_push": "NOT_AUTHORIZED"
+  },
+  "stop_conditions": [
+    "Do not treat V1-033 paragraph summaries as verbatim replacement anchors.",
+    "Do not auto-apply V1-045 contract items as string replacements.",
+    "Do not convert any PARTIAL, BLOCKED, NOT_RUN, NOT_EVALUABLE, NOT_AUTHORIZED or NOT_RUN/ABSTAIN state to PASS.",
+    "Do not infer unresolved ALS stopping semantics, topology stress amplitudes, resource telemetry or repeated-run reproducibility.",
+    "Do not update the formal register in the same authorization as manuscript patch synthesis or application.",
+    "Do not use or compare e4_r008_primary_final or e4_r008_duplicate_final."
+  ],
+  "operation_policy": {
+    "record_only": true,
+    "written_files": [
+      "refine-logs/REC-M5_PREFLIGHT_PLAN_V1_20260811.json"
+    ],
+    "manuscript_modified": false,
+    "formal_register_modified": false,
+    "e4_r3_modified": false,
+    "authorization_modified": false,
+    "git_operations": "NONE",
+    "manuscript_patches_applied": false
+  }
+}

@@ -1,0 +1,393 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m2c-coverage-ledger-v1",
+  "execution_id": "rec-m2b2-20260810-235227-cst-01",
+  "register_statuses": {
+    "CAL-E01:75": {
+      "verdict": "PASS",
+      "claim_activation": "BLOCKED",
+      "scientific_execution": "NOT_RUN",
+      "allowed_artifacts": [
+        "raw_comparator",
+        "raw_paired_differences",
+        "status_inventory"
+      ],
+      "emitted_files": [
+        "comparator-ledger.json",
+        "input-manifest.json",
+        "paired-differences.json",
+        "status-inventory.json"
+      ],
+      "status_inventory": {
+        "bootstrap_replicates": {
+          "AVAILABLE": 12800,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "failure_bins_present_in_summaries": true,
+        "interval_records": {
+          "AVAILABLE": 160,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "paired_candidate_records": {
+          "AVAILABLE": 30720,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "paired_comparator_records": {
+          "AVAILABLE": 30720,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "recovery_records": {
+          "AVAILABLE": 46080,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "retained_failure_records": {
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        }
+      }
+    },
+    "CAL-E02:128": {
+      "verdict": "BLOCKED",
+      "data_sufficiency": "PARTIAL",
+      "scientific_execution": "NOT_RUN",
+      "fresh_payloads_created": false,
+      "blocking_gaps": [
+        "Independent empirical ground truth is absent from the synthetic-only frozen route.",
+        "Recovery records lack serialized chronology, truth, query, endpoint, and selection-input provenance fields."
+      ],
+      "uncovered_boundaries": [
+        "independent empirical ground truth and native measurement provenance",
+        "per-record train/validation/evaluation chronology receipt",
+        "per-record selection candidate list and loss vector provenance",
+        "per-record held-out topology/query identity provenance",
+        "per-record endpoint signature and truth-isolation receipt",
+        "any empirical or universal-performance claim beyond the synthetic DGP"
+      ],
+      "recovery_status_counts": {
+        "AVAILABLE": 46080,
+        "NONCONVERGED": 0,
+        "NONFINITE": 0,
+        "OUTSIDE_TARGET": 0,
+        "UNSTABLE": 0
+      },
+      "interval_status_counts": {
+        "AVAILABLE": 160,
+        "NONCONVERGED": 0,
+        "NONFINITE": 0,
+        "OUTSIDE_TARGET": 0,
+        "UNSTABLE": 0
+      },
+      "bootstrap_status_counts": {
+        "AVAILABLE": 12800,
+        "NONCONVERGED": 0,
+        "NONFINITE": 0,
+        "OUTSIDE_TARGET": 0,
+        "UNSTABLE": 0
+      }
+    },
+    "CAL-E02:135": {
+      "verdict": "PARTIAL",
+      "derived_sensitivity_verdict": "SUPPORTED",
+      "full_overfitting_and_stopping_sensitivity_verdict": "BLOCKED",
+      "independent_endpoint_audit_verdict": "PARTIAL",
+      "new_grid_execution_status": "NOT_RUN_DESCRIPTIVE_ONLY",
+      "governance_gate": "V2_BOUND_DESCRIPTIVE_AUDIT_ONLY",
+      "unresolved_boundaries": [
+        "No stopping variants or iteration/checkpoint trajectories in frozen E4-r3 records.",
+        "No record-level split labels or independent endpoint provenance receipt.",
+        "Only descriptive seed/scenario sensitivity is licensed by this repair route.",
+        "No new stopping-variant grid was executed.",
+        "No manuscript, author decision register, RCEP, NYC, or E4-r3 quarantine file was modified."
+      ],
+      "failure_stability": {
+        "bootstrap_replicate_status_counts": {
+          "AVAILABLE": 12800,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "interval_record_count": 160,
+        "interval_status_counts": {
+          "AVAILABLE": 160,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "non_available_interval_record_count": 0,
+        "non_available_recovery_record_count": 0,
+        "nonfinite_numeric_counts": {
+          "coverage": 0,
+          "estimated_spectral_radius": 0,
+          "mean_interval_width": 0,
+          "operator_mse": 0,
+          "raw_response_mse": 0,
+          "response_mse": 0,
+          "stability_qualified_response_mse": 0,
+          "truth_spectral_radius": 0,
+          "validation_loss": 0
+        },
+        "recovery_record_count": 46080,
+        "recovery_status_counts": {
+          "AVAILABLE": 46080,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "retention_rule": "retain_all_declared_records_and_report_non_available_or_nonfinite_records_explicitly"
+      },
+      "rejection_inference": {
+        "bootstrap_status_counts": {
+          "AVAILABLE": 12800,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "claim_boundary": "No no-overfitting or stopping-rule conclusion can be inferred from the observed selected configurations.",
+        "inference_license": "DESCRIPTIVE_ONLY",
+        "interval_status_counts": {
+          "AVAILABLE": 160,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "policy": {
+          "available_records_are_eligible_for_descriptive_metric_summaries": true,
+          "best_configuration_selection": "PROHIBITED",
+          "non_available_records_are_excluded_from_numeric_summaries_but_retained": true,
+          "nonfinite_values_are_excluded_from_numeric_summaries_but_retained": true,
+          "stable_cell_selection": "PROHIBITED",
+          "threshold_relaxation": "PROHIBITED"
+        },
+        "recovery_status_counts": {
+          "AVAILABLE": 46080,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "schema_version": "ncs-cal-e02-135-rejection-inference-v1"
+      }
+    },
+    "CAL-E03:164": {
+      "verdicts": {
+        "authorization_binding": "PASS",
+        "cross_scale_scope": "PARTIAL",
+        "failure_and_nonfinite_retention": "SUPPORTED",
+        "overall": "PARTIAL",
+        "resource_telemetry": "BLOCKED",
+        "scoped_grid_coverage": "SUPPORTED",
+        "stability_summary": "SUPPORTED"
+      },
+      "scoped_scales": [
+        20,
+        50
+      ],
+      "unrun_scale_boundary": {
+        "interpretation": "N=100 and N=200 were not run and are not inferred from N=20 or N=50.",
+        "n100_present": false,
+        "n200_present": false
+      },
+      "recovery_coverage": {
+        "expected_cells": 48,
+        "observed_cells": 48,
+        "record_count": 46080,
+        "missing_cells": [],
+        "unexpected_cells": []
+      },
+      "interval_coverage": {
+        "expected_cells": 8,
+        "observed_cells": 8,
+        "record_count": 160,
+        "missing_cells": [],
+        "unexpected_cells": []
+      },
+      "paired_coverage": {
+        "declared_cells_from_audit": null,
+        "observed_cells": 32
+      },
+      "status_totals": {
+        "bootstrap": {
+          "AVAILABLE": 12800,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "interval": {
+          "AVAILABLE": 160,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "recovery": {
+          "AVAILABLE": 46080,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        }
+      },
+      "resource_telemetry": {
+        "candidate_id": "e4-domain-stable-v4-20260731-candidate-r3",
+        "clock_provenance": null,
+        "declared_artifacts": [
+          {
+            "declared_path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json",
+            "declared_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+            "exists_in_current_worktree": true,
+            "hash_matches": true,
+            "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json",
+            "observed_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6"
+          },
+          {
+            "declared_path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+            "declared_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+            "exists_in_current_worktree": true,
+            "hash_matches": true,
+            "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+            "observed_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+          },
+          {
+            "declared_path": "refine-logs/e3_family2_runtime/com.openai.codex.natcs-e4-r3.plist",
+            "declared_sha256": "54597700bc3250d7dc6d5b801b05554de94388045bd22641595b9e43aa08dc5a",
+            "exists_in_current_worktree": true,
+            "hash_matches": true,
+            "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_runtime/com.openai.codex.natcs-e4-r3.plist",
+            "observed_sha256": "54597700bc3250d7dc6d5b801b05554de94388045bd22641595b9e43aa08dc5a"
+          },
+          {
+            "declared_path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+            "declared_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+            "exists_in_current_worktree": true,
+            "hash_matches": true,
+            "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+            "observed_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d"
+          },
+          {
+            "declared_path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json",
+            "declared_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+            "exists_in_current_worktree": true,
+            "hash_matches": true,
+            "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json",
+            "observed_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032"
+          },
+          {
+            "declared_path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+            "declared_sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+            "exists_in_current_worktree": true,
+            "hash_matches": true,
+            "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+            "observed_sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b"
+          },
+          {
+            "declared_path": "refine-logs/e3_family2_runtime/e4-r3.stdout.log",
+            "declared_sha256": "c13a534058b771a7229636f4ae4d624f1cdf413f62efa593d06131ad209faad0",
+            "exists_in_current_worktree": true,
+            "hash_matches": true,
+            "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_runtime/e4-r3.stdout.log",
+            "observed_sha256": "c13a534058b771a7229636f4ae4d624f1cdf413f62efa593d06131ad209faad0"
+          },
+          {
+            "declared_path": "refine-logs/e3_family2_runtime/e4-r3.stderr.log",
+            "declared_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "exists_in_current_worktree": true,
+            "hash_matches": true,
+            "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_runtime/e4-r3.stderr.log",
+            "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "execution_complete": {
+          "authorization_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+          "candidate_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+          "promotion": "PROHIBITED",
+          "schema_version": "e3-family2-synthetic-quarantine-results-v3",
+          "status": "COMPLETE_QUARANTINE_ONLY"
+        },
+        "execution_contract": {
+          "execution_failure_absent": true,
+          "last_exit_code": 0,
+          "launchd_label": "com.openai.codex.natcs-e4-r3",
+          "process_state": "not_running",
+          "runs": 1,
+          "stderr_empty": true,
+          "stdout_status": "COMPLETE_QUARANTINE_ONLY"
+        },
+        "inventory_path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+        "inventory_present": true,
+        "inventory_status": "FROZEN_PENDING_INDEPENDENT_AUDIT",
+        "missing_telemetry": [
+          "wall_clock_seconds",
+          "cpu_time_seconds",
+          "peak_memory_bytes",
+          "peak_rss_bytes",
+          "gpu_time_seconds",
+          "per_cell_runtime"
+        ],
+        "note": "Missing runtime telemetry is reported as missing; no runtime value is inferred from record count.",
+        "resource_proxies": {
+          "declared_last_exit_code": 0,
+          "declared_process_state": "not_running",
+          "declared_runs": 1,
+          "declared_stderr_empty": true,
+          "declared_stdout_status": "COMPLETE_QUARANTINE_ONLY"
+        },
+        "runtime_log_observation": {
+          "log_artifacts": [
+            {
+              "declared_path": "refine-logs/e3_family2_runtime/e4-r3.stdout.log",
+              "declared_sha256": "c13a534058b771a7229636f4ae4d624f1cdf413f62efa593d06131ad209faad0",
+              "exists_in_current_worktree": true,
+              "hash_matches": true,
+              "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_runtime/e4-r3.stdout.log",
+              "observed_sha256": "c13a534058b771a7229636f4ae4d624f1cdf413f62efa593d06131ad209faad0"
+            },
+            {
+              "declared_path": "refine-logs/e3_family2_runtime/e4-r3.stderr.log",
+              "declared_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "exists_in_current_worktree": true,
+              "hash_matches": true,
+              "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_runtime/e4-r3.stderr.log",
+              "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          ],
+          "logs_available_in_current_worktree": true,
+          "resource_values_read_from_logs": false
+        },
+        "telemetry": {
+          "cpu_time_seconds": null,
+          "gpu_time_seconds": null,
+          "peak_memory_bytes": null,
+          "peak_rss_bytes": null,
+          "per_cell_runtime": null,
+          "wall_clock_seconds": null
+        },
+        "verdict": "BLOCKED"
+      }
+    }
+  },
+  "status_policy": "All analyzer-emitted failure, nonfinite, unstable, NOT_RUN, BLOCKED, and PARTIAL states are retained in the listed raw artifacts; this ledger records their status accounting without activation or aggregation into a claim.",
+  "scientific_status": "READ_ONLY_DERIVED_M2_OUTPUTS_ONLY",
+  "governance_status": "REC-M2C_PASS"
+}

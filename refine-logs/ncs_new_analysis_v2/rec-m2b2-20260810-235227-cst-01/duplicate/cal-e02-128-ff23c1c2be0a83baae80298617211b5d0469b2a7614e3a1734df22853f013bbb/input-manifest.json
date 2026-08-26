@@ -1,0 +1,87 @@
+{
+  "analyzer_sha256": "ba96b03ec7d25d5ddca19718c175fefc424447c14c172d1abefe5f45760793dd",
+  "input_bundle_sha256": "ff23c1c2be0a83baae80298617211b5d0469b2a7614e3a1734df22853f013bbb",
+  "inputs": [
+    {
+      "input_id": "analysis_authorization",
+      "sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59"
+    },
+    {
+      "input_id": "analysis_plan",
+      "sha256": "29618783ccb17773e88d737bebfed466d5a0bb57fffc1f55261c0e5a6fdf0292"
+    },
+    {
+      "input_id": "candidate",
+      "sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6"
+    },
+    {
+      "input_id": "comparator_registry",
+      "sha256": "4eb3905ecad9115abaf89e8e5cae65c19dde10e83e0a466e5070a384cbad758b"
+    },
+    {
+      "input_id": "core_source",
+      "sha256": "0bf0ba97717885976f8d06d3532c96c0184579426d684e05df9f67d67984fea8"
+    },
+    {
+      "input_id": "decision_register",
+      "sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2"
+    },
+    {
+      "input_id": "e3_results",
+      "sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032"
+    },
+    {
+      "input_id": "e4_audit",
+      "sha256": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5"
+    },
+    {
+      "input_id": "e4_authorization",
+      "sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+    },
+    {
+      "input_id": "exact_fixture_manifest",
+      "sha256": "7e3c75449f35875c84bfbb83d63b4c59fe6d8cefc3b6bc49b4479551bddca2a6"
+    },
+    {
+      "input_id": "execution_complete",
+      "sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b"
+    },
+    {
+      "input_id": "execution_manifest",
+      "sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d"
+    },
+    {
+      "input_id": "executor_source",
+      "sha256": "26755f34567501623223763ec9ffc1fd57da8a5ce9fedde843761bc3d7b84d10"
+    },
+    {
+      "input_id": "failure_metric_schema",
+      "sha256": "8557beef5369783bf0dba773c44aac11ef9a39a029c283ede72561f6bce8e2c2"
+    },
+    {
+      "input_id": "gate_receipt",
+      "sha256": "68b9f97fed60d93819080f18caefb1a69567f3da402bd2130fe969ef0269abd9"
+    },
+    {
+      "input_id": "preoutcome_source",
+      "sha256": "e83b28b70bf639f91c3fbb285434ad1daf034ab5594797cf74a67a2f36d68d57"
+    },
+    {
+      "input_id": "query_contract",
+      "sha256": "fe6306d311e18dbc42120af1eecec192273a947784fd32c1a6677e8d28455d03"
+    },
+    {
+      "input_id": "specification",
+      "sha256": "e8301d647ce88681347228824a497fde8158f748ab4cdf1208612ed805003cd4"
+    },
+    {
+      "input_id": "terminal_inventory",
+      "sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+    },
+    {
+      "input_id": "tuning_split_manifest",
+      "sha256": "0c33ae9138d59279938eedc20e91e0119fad00f935e5ec2c0cf112f0206454d5"
+    }
+  ],
+  "register_key": "CAL-E02:128"
+}

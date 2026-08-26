@@ -1,0 +1,56 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-semantic-recheck-service-incident-v4",
+  "record_id": "REC-M5-semantic-recheck-service-incident-v4-20260812",
+  "generated_at": "2026-08-12",
+  "phase": "M5-C",
+  "task_mode": "REVIEW_ONLY_RECORD_ONLY",
+  "verdict": "BLOCKED",
+  "requested_provenance": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "max"
+  },
+  "observed_provenance": {
+    "model": "gpt-5 (Codex)",
+    "reasoning_effort": "high",
+    "source": "bounded codex exec CLI output",
+    "output_sha256": "c3e84d4caef28945c02fb96d0dcb4fd3f0158ae06d40c6692829d19bb3d728b2",
+    "output_path": "/tmp/ncs-terra-recovery.w1AcXU/last-message.txt"
+  },
+  "service_status": "MODEL_ROUTE_MISMATCH_UNUSABLE_FOR_TERRA_ADJUDICATION",
+  "decision_basis": "The bounded CLI recovery returned a structured BLOCKED review, but the output provenance was gpt-5 (Codex) with high reasoning rather than the requested gpt-5.6-terra with max reasoning. The result is retained as a non-authoritative diagnostic only; it cannot be promoted to a Terra semantic PASS.",
+  "observed_verdict": "BLOCKED",
+  "role_verdicts": {
+    "scientific-boundary": "BLOCKED",
+    "editorial-traceability": "BLOCKED",
+    "governance-manifest": "BLOCKED"
+  },
+  "input_sha256": {
+    "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md": "336c3cc4e25276ac6eeb56d597b3fd8486e8a90d02c7d977ace172048138c07d",
+    "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json": "8d9b1d2a7536daa6a7f7cb3ade5bc0f5b0674d2087d5efeb2fd2a8dcbf3e603a",
+    "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md": "d622854aba0b0e190ef8653fc87ab95324239be5257ff02d25478e2cdde571cd",
+    "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json": "83197e8828f894cabf9b21fe108be0c61c751dc8c967bdca684dc1220dfe4913",
+    "refine-logs/REC-M5_GOVERNANCE_RECHECK_V8_20260812.md": "8c6620d60a5fcc31cd22d5dbb0abfb6c8104cdc57d1dadba4b0c1bb7913f435c",
+    "refine-logs/REC-M5_GOVERNANCE_RECHECK_V8_20260812.json": "ff4182a3e5e67a23c095e8aac69c4a92ee9abcf217d93cc431572bb9f292d966"
+  },
+  "deterministic_context": {
+    "current_core_harness": "85/85 PASS",
+    "m4_allowlisted_validator": "247/247 PASS",
+    "interpretation": "CORROBORATING_ONLY_NOT_SEMANTIC_ACCEPTANCE"
+  },
+  "authorization_boundary": {
+    "manuscript_sources": "NOT_AUTHORIZED",
+    "formal_register": "NOT_AUTHORIZED",
+    "scientific_payload": "PROHIBITED",
+    "authorization_files": "PROHIBITED",
+    "generated_tex": "PROHIBITED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE",
+    "record_only": true
+  },
+  "next_gate": "Obtain a verifiable current-version gpt-5.6-terra/max semantic payload for all three roles; model-route mismatch or service failure remains BLOCKED.",
+  "changed_paths": [
+    "refine-logs/REC-M5_SEMANTIC_RECHECK_SERVICE_INCIDENT_V4_20260812.md",
+    "refine-logs/REC-M5_SEMANTIC_RECHECK_SERVICE_INCIDENT_V4_20260812.json"
+  ],
+  "changed_paths_only": true
+}

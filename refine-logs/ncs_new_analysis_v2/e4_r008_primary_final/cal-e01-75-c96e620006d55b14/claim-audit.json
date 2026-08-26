@@ -1,0 +1,54 @@
+{
+  "analysis_version": "cal-e01-75-independent-audit-v1",
+  "artifact_type": "independent_derived_read_only_audit",
+  "claim_activation": "BLOCKED",
+  "comparator_completeness": "SUPPORTED_WITHIN_FROZEN_GRID",
+  "evidence_ceiling": "simulation_only; frozen E4-r3 synthetic-only operating cells",
+  "excluded_routes": [
+    "RCEP",
+    "NYC"
+  ],
+  "failure_and_nonfinite_audit": "SUPPORTED_WITH_RETAINED_ZERO_COUNTS",
+  "independent_cell_ci": "DERIVED_DESCRIPTIVE_ONLY",
+  "independent_panel_log_ratio": "DERIVED_ARTIFACT_ONLY",
+  "input_sha256": {
+    "authorization": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+    "candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "comparator_registry": "4eb3905ecad9115abaf89e8e5cae65c19dde10e83e0a466e5070a384cbad758b",
+    "e4_audit": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5",
+    "execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+    "failure_metric_schema": "8557beef5369783bf0dba773c44aac11ef9a39a029c283ede72561f6bce8e2c2",
+    "manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "plan": "29618783ccb17773e88d737bebfed466d5a0bb57fffc1f55261c0e5a6fdf0292",
+    "register": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+    "workspace_authorization": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+  },
+  "manuscript_or_register_update": false,
+  "overall_verdict": "PASS",
+  "register_item": {
+    "action_class": "DIRECT_TEXT_REVISION",
+    "calibration_id": "CAL-E01",
+    "calibration_requested_action": "NEW_ANALYSIS",
+    "item_id": "V1-026",
+    "item_index": 75,
+    "minimum_action_zh": "\u6838\u5bf9 results_validation.md \u548c supp_note4_benchmarks.md \u662f\u5426\u540c\u65f6\u5448\u73b0 comparator roles\u3001endpoint availability\u3001replication count\u3001failure/non-finite handling \u548c bounded claim\u3002",
+    "priority": "P0",
+    "stop_condition_zh": "\u6bcf\u4e2a\u88ab\u8ba8\u8bba\u7684 comparator \u90fd\u6709 declared endpoint\u3001coverage \u548c failure status\uff1b\u672a\u8fd0\u884c\u6216 outside-target \u9879\u4e0d\u88ab\u4f2a\u88c5\u6210\u96f6\u8bef\u5dee\u6216 missing data\u3002",
+    "target_manuscript_files": [
+      "manuscript_src/natcs/results_validation.md",
+      "manuscript_src/natcs/supp_note4_benchmarks.md",
+      "manuscript_src/natcs/controlled_benchmark_contract.json"
+    ]
+  },
+  "register_key": "CAL-E01:75",
+  "same_endpoint_parity": "SUPPORTED_WITHIN_FROZEN_GRID",
+  "seed_replication_and_distribution_audit": "SUPPORTED_WITHIN_FROZEN_GRID",
+  "unsupported_boundaries": [
+    "the frozen result contains no serialized panel-level log-error-ratio summary",
+    "the frozen result contains no serialized cell-level CI for that metric",
+    "the exact predeclared CI construction and confidence level are not serialized",
+    "simulation_only evidence does not support empirical or universal claims"
+  ]
+}

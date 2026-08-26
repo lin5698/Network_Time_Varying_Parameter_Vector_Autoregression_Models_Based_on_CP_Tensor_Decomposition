@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-07-19T05:49:32Z",
+  "authorization_record": "refine-logs/PRODUCTION_SCIENTIFIC_AUTHORIZATION_APPROVAL_20260719.md",
+  "rcep": {
+    "decision_id": "psa-20260719-rcep-03",
+    "authorization_sha256": "ab9556bef62a8086bb6b05787f5442318107507ed8ffc06b9b289747f22f347f",
+    "exit_code": 0,
+    "status": "completed_quarantined_unreviewed",
+    "failure_boundary": null,
+    "failure_summary": null,
+    "output_root_created": true,
+    "provider_csv_read_for_scientific_execution": true,
+    "estimation_started": true,
+    "estimation_completed": true,
+    "automatic_retry_performed": false,
+    "inventory": "refine-logs/PSA_RCEP_03_OUTPUT_INVENTORY_20260719.json",
+    "inventory_sha256": "1645eb66267acbe57b19b5809da0e28af6ecf099cbb765703a96ddba53748ee9",
+    "file_count": 36,
+    "symlink_count": 0,
+    "value_review_performed": false,
+    "claim_audit_completed": false,
+    "downstream_build_performed": false,
+    "manuscript_promotion_performed": false
+  },
+  "rcep_prior_attempts": [
+    {
+      "decision_id": "psa-20260719-rcep-01",
+      "authorization_sha256": "04eb83670e0648d8e42e0194fcb3795499c296363ae91b6dc8e94fd2d7f14d84",
+      "exit_code": 1,
+      "status": "failed_pre_data_helper_import_guard",
+      "automatic_retry_performed": false,
+      "value_review_performed": false
+    },
+    {
+      "decision_id": "psa-20260719-rcep-02",
+      "authorization_sha256": "c06b34c44081a390d0ea277db8c80640ccd7e0737b6dc0fc83f1ddc255f47fbc",
+      "exit_code": 1,
+      "status": "failed_after_estimation_partial_quarantine",
+      "failure_boundary": "stability_exclusion_summary_panel_regression",
+      "inventory": "refine-logs/PSA_RCEP_02_OUTPUT_INVENTORY_20260719.json",
+      "inventory_sha256": "b01d0278759c5eaaff0c9f8e856fb96b769640cf5ac996d2d498239ea3272f4f",
+      "file_count": 31,
+      "automatic_retry_performed": false,
+      "value_review_performed": false
+    }
+  ],
+  "nyc_taxi": {
+    "decision_id": "psa-20260719-nyc-01",
+    "authorization_sha256": "4155bbed29b18be0fcd6d7c052439e26e946fcc37c47f6170862a1a0c3a8bd5d",
+    "exit_code": 0,
+    "status": "completed_quarantined_unreviewed",
+    "output_root_created": true,
+    "authorized_input_read": true,
+    "estimation_completed": true,
+    "inventory": "refine-logs/PSA_NYC_OUTPUT_INVENTORY_20260719.json",
+    "file_count": 18,
+    "value_review_performed": false,
+    "claim_audit_completed": false,
+    "downstream_build_performed": false,
+    "manuscript_promotion_performed": false
+  },
+  "r006e_outcome_accessed": false,
+  "r006f_outcome_accessed": false,
+  "downstream_build_performed": false,
+  "manuscript_promotion_performed": false
+}

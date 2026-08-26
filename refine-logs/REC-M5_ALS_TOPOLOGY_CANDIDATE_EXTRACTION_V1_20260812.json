@@ -1,0 +1,166 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-als-topology-candidate-extraction-v1",
+  "record_id": "REC-M5-als-topology-candidate-extraction-v1-20260812",
+  "generated_at": "2026-08-12",
+  "status": "AUTHOR_CONFIRMED_FOR_AIN_ALS_AND_AIN_TOPOLOGY",
+  "purpose": "Record author-confirmed code-supported answers for AIN-ALS and AIN-TOPOLOGY while retaining unresolved spectral-radius and 50%-attenuation source ownership.",
+  "sources": [
+    {
+      "path": "scripts/natcs_benchmarks.mjs",
+      "sha256": "9cfe55a771f7434617bf67bbc78c22aadcd74fd528b4ea5d8b7762e0ad2b4633"
+    },
+    {
+      "path": "manuscript_src/natcs/controlled_benchmark_contract.json",
+      "sha256": "95199a3c16e6f55a2cf94f7f67289a658bcac7ccb4e17ceee9efa5cc8d7934ba"
+    },
+    {
+      "path": "output/natcs_benchmarks/benchmark_summary.csv",
+      "sha256": "c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1"
+    },
+    {
+      "path": "output/natcs_benchmarks/benchmark_replications.csv",
+      "sha256": "b8c881dcbafee9ee04e8b344478367a17d3e6c5d353b15970c48e3d3783cd32e"
+    }
+  ],
+  "als_candidates": {
+    "AIN-ALS-01": {
+      "candidate_value": "fixed count of 60 iterations when the call completes normally",
+      "locator": "scripts/natcs_benchmarks.mjs:292-317",
+      "basis": "cpAls uses a for-loop from it=0 while it<iterations, defaults iterations to 60, and contains no convergence break."
+    },
+    "AIN-ALS-02": {
+      "candidate_value": "none",
+      "locator": "scripts/natcs_benchmarks.mjs:292-317",
+      "basis": "The function computes factor updates and normalization but does not compute or monitor an objective or residual."
+    },
+    "AIN-ALS-03": {
+      "candidate_value": "not applicable; no stopping tolerance",
+      "locator": "scripts/natcs_benchmarks.mjs:292-317",
+      "boundary": "The 1e-6 value is a Gram regularizer, not a convergence tolerance."
+    },
+    "AIN-ALS-04": {
+      "candidate_value": "none; no early-stop predicate",
+      "locator": "scripts/natcs_benchmarks.mjs:292-317"
+    },
+    "AIN-ALS-05": {
+      "candidate_value": "run all 60 iterations unless an exception aborts the call; the caller catches the exception and records failure",
+      "locator": "scripts/natcs_benchmarks.mjs:292-317,957-985"
+    },
+    "AIN-ALS-06": {
+      "candidate_value": "unresolved canonical Markdown source",
+      "observed_generated_text": "main.tex and supplementary.tex describe at-most-100 application iterations",
+      "boundary": "Generated TeX is not accepted as canonical ownership."
+    },
+    "AIN-ALS-07": {
+      "candidate_value": "unresolved canonical Markdown source",
+      "observed_generated_text": "main.tex describes at-most-80 bootstrap iterations",
+      "boundary": "Generated TeX is not accepted as canonical ownership."
+    },
+    "AIN-ALS-08": {
+      "candidate_value": "implementation-level separation is supported, but canonical prose ownership remains unresolved",
+      "basis": "The controlled benchmark calls its own fixed-60 cpAls implementation; the generated 100/80 text describes different application/bootstrap settings."
+    }
+  },
+  "topology_candidates": [
+    {
+      "scenario_id": "high_topology_vol",
+      "category": "topology volatility",
+      "exact_parameters": {
+        "topologyVol": 0.18,
+        "sparsity": 0.15,
+        "wNoise": 0.0,
+        "wDrop": 0.0
+      },
+      "affected_object": "truth.W evolution",
+      "generation_or_observation": "generation",
+      "mechanism": "row-normalized convex mixture of previous W and a newly generated weighted graph",
+      "replication_coverage": {
+        "local_network": 3,
+        "each_other_released_method": 20
+      }
+    },
+    {
+      "scenario_id": "sparse_misspecified",
+      "category": "combined graph sparsity and noisy observed weights",
+      "exact_parameters": {
+        "topologyVol": 0.08,
+        "sparsity": 0.55,
+        "wNoise": 0.18,
+        "wDrop": 0.0
+      },
+      "affected_object": "truth.W generation and WEst observation",
+      "generation_or_observation": "both",
+      "mechanism": "sparser generated graph plus row-normalized convex mixing of W with an alternative random graph at observation",
+      "replication_coverage": {
+        "each_released_method": 3
+      }
+    },
+    {
+      "scenario_id": "edge_missing",
+      "category": "missing observed edges",
+      "exact_parameters": {
+        "topologyVol": 0.06,
+        "sparsity": 0.15,
+        "wNoise": 0.0,
+        "wDrop": 0.30
+      },
+      "affected_object": "WEst observed nonzero off-diagonal edges",
+      "generation_or_observation": "observation, with a 0.06 generation volatility setting",
+      "mechanism": "independent 0.30 drop probability for observed nonzero off-diagonal edges followed by row normalization",
+      "replication_coverage": {
+        "local_network": 3,
+        "each_other_released_method": 20
+      }
+    },
+    {
+      "scenario_id": "noisy_network",
+      "category": "noisy observed weights",
+      "exact_parameters": {
+        "topologyVol": 0.06,
+        "sparsity": 0.15,
+        "wNoise": 0.35,
+        "wDrop": 0.0
+      },
+      "affected_object": "WEst observed weights",
+      "generation_or_observation": "observation, with a 0.06 generation volatility setting",
+      "mechanism": "row-normalized 0.65 W plus 0.35 alternative random graph",
+      "replication_coverage": {
+        "local_network": 3,
+        "each_other_released_method": 20
+      }
+    }
+  ],
+  "common_topology_fields": {
+    "seed_policy": "Scenario/replication simulation seed starts from 20260328 and advances deterministically by scenario and replication; CP initialization uses simSeed + 1001 + zero-based replication index. Seeds are code-derived and are not serialized in the released CSV.",
+    "endpoint_policy": "Use the contract method_to_endpoint_ids mapping; no single common endpoint list may be assumed for representations that mark a readout OUTSIDE TARGET.",
+    "replication_boundary": "Released stress coverage is not uniformly matched across methods; no stress-row ranking or robustness claim follows from these counts."
+  },
+  "author_confirmation": {
+    "received_at": "2026-08-12",
+    "user_response": "同意，请继续",
+    "confirmed_scope": [
+      "scripts/natcs_benchmarks.mjs is the canonical CAL-E03 implementation source",
+      "fixed 60 ALS iterations with no monitored objective, stopping tolerance or early-stop predicate",
+      "retain high_topology_vol, sparse_misspecified, edge_missing and noisy_network",
+      "accept the code-derived seed policy",
+      "disclose asymmetric released replication coverage and prohibit matched ranking",
+      "mark canonical Markdown ownership for application/bootstrap 100/80 wording unavailable",
+      "confirm generated TeX is not the canonical ownership source"
+    ],
+    "excluded_scope": [
+      "canonical source for spectral-radius wording",
+      "canonical source for 50% top-exposure attenuation",
+      "manuscript mutation authorization",
+      "formal-register mutation authorization"
+    ]
+  },
+  "authorization_boundary": {
+    "author_input_mutation": "PARTIAL_AIN_ALS_AND_AIN_TOPOLOGY_RESPONSE_TO_BE_RECORDED",
+    "review_patch_mutation": "G06_AND_G07_REVIEW_ONLY_UPDATE_TO_BE_APPLIED",
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_execution": "NOT_RUN",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  }
+}

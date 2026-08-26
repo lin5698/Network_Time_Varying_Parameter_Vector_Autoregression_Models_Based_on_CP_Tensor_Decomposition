@@ -1,0 +1,190 @@
+{
+  "all_declared_frozen_hashes_match": true,
+  "analysis_binding_sha256": "dd118064bc799a7344e777af9c58aae05cbff5d34344b1ddd7ffed742e459c1f",
+  "analysis_id": "cal-e02-135-derived-sensitivity-v1",
+  "authorization_v2_binding": {
+    "decision_register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "e4_chain": {
+      "candidate_id": "e4-domain-stable-v4-20260731-candidate-r3",
+      "complete": true
+    },
+    "frozen_input_sha256": {
+      "candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+      "execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+      "execution_manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+      "results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+      "terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+    },
+    "item_payload_sha256": "c9b9c201f94a7fd37b2049bfc44220258947f22483e769b39c19253a37e55ee8",
+    "register_item": {
+      "action_class": "NEW_ANALYSIS_OR_EXPERIMENT",
+      "applicability": "ANALOGICAL",
+      "applicability_rationale_zh": "\u5f53\u524d benchmark \u6ca1\u6709\u516c\u5f00 validation-loss trajectory \u6216 early-stopping selection\uff1b\u8fd9\u4e0e V1-032 \u7684\u4e00\u822c optimizer sensitivity \u4e0d\u540c\uff0c\u5f53\u524d\u9879\u4e13\u95e8\u5bf9\u5e94\u8bad\u7ec3\u8fc7\u7a0b\u8bc1\u636e\uff0c\u4e0d\u80fd\u5047\u88c5\u5df2\u6709\u3002",
+      "author_approval_required": true,
+      "author_decision": "PENDING",
+      "calibration_concern_domain": "STATISTICS_UNCERTAINTY",
+      "calibration_cost_level": "MEDIUM",
+      "calibration_issue_ids": [
+        "CAL-E02-I11"
+      ],
+      "calibration_requested_action": "ROBUSTNESS_CHECK",
+      "calibration_source": {
+        "calibration_id": "CAL-E02",
+        "doi": "10.1038/s43588-024-00698-1",
+        "title": "Toward subtask-decomposition-based learning and benchmarking for predicting genetic perturbation outcomes and beyond"
+      },
+      "cost_level": "MEDIUM",
+      "current_response_status": "PARTIAL",
+      "item_id": "V1-035",
+      "item_index": 135,
+      "manuscript_risk_status": "NO_VALIDATION_LOSS_CLAIM",
+      "minimum_action_zh": "\u4e0d\u8865\u5199\u4e0d\u5b58\u5728\u7684 validation-loss evidence\uff1b\u5728 methods_estimator.md \u548c supp_note6_robustness.md \u660e\u786e headline claim \u4e0d\u4f9d\u8d56 early-stopping \u6216 test-loss trajectory\u3002",
+      "new_analysis_or_experiment_requires_author_approval": true,
+      "priority": "P1",
+      "public_evidence": {
+        "paragraph_ids": [
+          "CAL-E02-PR-P0002-003",
+          "CAL-E02-PR-P0058-002",
+          "CAL-E02-PR-P0060-007"
+        ],
+        "source_type": "PUBLIC_REVIEW_EVIDENCE"
+      },
+      "reviewer_worry_zh": "\u9a8c\u8bc1\u635f\u5931\u6301\u7eed\u4e0a\u5347\u53ef\u80fd\u63d0\u793a\u8fc7\u62df\u5408\uff0c\u5e94\u89e3\u91ca\u6d4b\u8bd5\u6027\u80fd\u53ca\u6b63\u5219\u5316/early stopping\u3002",
+      "source_matrix_disposition": "ACCEPT_B",
+      "source_residual_limit_zh": "\u6700\u4f73 checkpoint \u9009\u62e9\u4e0d\u80fd\u8bc1\u660e\u6ca1\u6709\u8fc7\u62df\u5408\uff1b\u516c\u5f00\u6750\u6599\u672a\u663e\u793a\u5b8c\u6574 early-stopping \u6d88\u878d",
+      "stop_condition_zh": "\u7a3f\u4ef6\u4e0d\u4f7f\u7528 validation-loss trend \u652f\u6301\u7ed3\u8bba\uff1b\u56fa\u5b9a ALS contract \u4e0e observed failure/stability records \u8db3\u4ee5\u652f\u6491\u5f53\u524d bounded claim\u3002",
+      "strong_evidence_action_zh": "\u4ec5\u5728\u4f5c\u8005\u6279\u51c6\u540e\uff0c\u8bb0\u5f55\u8bad\u7ec3/\u91cd\u6784\u8fed\u4ee3\u8f68\u8ff9\u5e76\u8bbe\u8ba1 frozen validation/early-stopping comparison\uff1b\u4e0d\u80fd\u628a\u7ed3\u679c\u81ea\u52a8\u5347\u7ea7\u4e3a generalization proof\u3002",
+      "target_manuscript_files": [
+        "manuscript_src/natcs/methods_estimator.md",
+        "manuscript_src/natcs/supp_note6_robustness.md",
+        "manuscript_src/natcs/supp_note8_scope.md"
+      ]
+    },
+    "schema_version": "ncs-four-analysis-authorization-v2",
+    "scope_binding": {
+      "m2_scientific_analysis": "BLOCKED_IN_THIS_TASK",
+      "rec_m2_action": "run_read_only_derived_analysis_after_m1_and_separate_go_gate"
+    },
+    "workspace_authorization_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+  },
+  "entries": [
+    {
+      "expected_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "label": "register",
+      "observed_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/output/ncs_review_corpus/v1_author_decision_register.json",
+      "role": "formal_author_decision_register_external_read_only",
+      "sha256_matches": true
+    },
+    {
+      "expected_sha256": null,
+      "label": "authorization",
+      "observed_sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+      "role": "analysis_authorization",
+      "sha256_matches": false
+    },
+    {
+      "expected_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+      "label": "e4_r3_authorization",
+      "observed_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+      "role": "frozen_e4_r3_workspace_authorization_read_only",
+      "sha256_matches": true
+    },
+    {
+      "expected_sha256": null,
+      "label": "plan",
+      "observed_sha256": "29618783ccb17773e88d737bebfed466d5a0bb57fffc1f55261c0e5a6fdf0292",
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/NCS_FOUR_ANALYSIS_PLAN_20260804_010454.md",
+      "role": "analysis_plan",
+      "sha256_matches": false
+    },
+    {
+      "expected_sha256": null,
+      "label": "audit",
+      "observed_sha256": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5",
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md",
+      "role": "frozen_e4_r3_integrity_audit",
+      "sha256_matches": false
+    },
+    {
+      "expected_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+      "label": "results",
+      "observed_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json",
+      "role": "frozen_e4_r3_results_read_only",
+      "sha256_matches": true
+    },
+    {
+      "expected_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+      "label": "execution_manifest",
+      "observed_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+      "role": "frozen_e4_r3_execution_manifest_read_only",
+      "sha256_matches": true
+    },
+    {
+      "expected_sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+      "label": "execution_complete",
+      "observed_sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+      "role": "frozen_e4_r3_execution_complete_read_only",
+      "sha256_matches": true
+    },
+    {
+      "expected_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+      "label": "candidate",
+      "observed_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json",
+      "role": "frozen_e4_r3_candidate_read_only_context",
+      "sha256_matches": true
+    },
+    {
+      "expected_sha256": null,
+      "label": "tuning_split",
+      "observed_sha256": "0c33ae9138d59279938eedc20e91e0119fad00f935e5ec2c0cf112f0206454d5",
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/tuning_split_manifest.json",
+      "role": "frozen_e4_r3_selection_and_split_provenance",
+      "sha256_matches": false
+    },
+    {
+      "expected_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+      "label": "terminal_inventory",
+      "observed_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+      "role": "frozen_e4_r3_terminal_inventory_read_only",
+      "sha256_matches": true
+    }
+  ],
+  "expected_sha256_by_label": {
+    "audit": null,
+    "authorization": null,
+    "candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "e4_r3_authorization": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+    "execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+    "execution_manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "plan": null,
+    "register": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+    "tuning_split": null
+  },
+  "observed_sha256_by_label": {
+    "audit": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5",
+    "authorization": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+    "candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "e4_r3_authorization": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+    "execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+    "execution_manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "plan": "29618783ccb17773e88d737bebfed466d5a0bb57fffc1f55261c0e5a6fdf0292",
+    "register": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+    "tuning_split": "0c33ae9138d59279938eedc20e91e0119fad00f935e5ec2c0cf112f0206454d5"
+  },
+  "output_root_name": "cal-e02-135-dd118064bc799a73",
+  "register_key": "CAL-E02:135",
+  "register_path_is_external_to_current_worktree": false,
+  "schema_version": "ncs-cal-e02-135-input-manifest-v1"
+}

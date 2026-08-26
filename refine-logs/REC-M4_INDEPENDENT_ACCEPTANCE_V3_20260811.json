@@ -1,0 +1,524 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m4-independent-unified-acceptance-v3",
+  "acceptance_id": "REC-M4_INDEPENDENT_ACCEPTANCE_V3_20260811",
+  "generated_at": "2026-08-11",
+  "acceptance_result": "REC-M4_INDEPENDENT_ACCEPTANCE_FAIL",
+  "auditor_provenance": {
+    "model": "gpt-5.6-luna",
+    "reasoning": "max",
+    "task_thread_id": "019ff115-94e6-7660-9c86-1a824bcfb99d",
+    "source_thread_id": "019fbdde-2c02-7662-b9d2-9dc2b70e1253",
+    "method": "independent_reparse_and_recomputation",
+    "m3_pass_label_used_as_evidence": false,
+    "v2_pass_label_used_as_evidence": false,
+    "fresh_checks_stopped_after_scope_failure": true
+  },
+  "operation_policy": {
+    "root_acceptance_record_only": true,
+    "allowed_write_paths": [
+      "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V3_20260811.json"
+    ],
+    "manuscript_patch_application": "NOT_AUTHORIZED",
+    "formal_register_mutation": false,
+    "protected_artifact_mutation": false,
+    "authorization_mutation": false,
+    "git_operations": "NONE",
+    "claim_activation": "NOT_AUTHORIZED",
+    "m5_authorization": "NOT_AUTHORIZED_BY_THIS_RECORD",
+    "prohibited_scope_accessed": true,
+    "prohibited_scope_content_read": false,
+    "prohibited_scope_used_or_compared": false,
+    "broad_refine_logs_traversal": true,
+    "record_write_method": "apply_patch"
+  },
+  "predecessor_adjudication": {
+    "m3_v2": {
+      "path": "refine-logs/REC-M3_ACCEPTANCE_V2_20260811.json",
+      "bytes": 10510,
+      "sha256": "9fd8976112f55a8f055d2bc7c7636c762cb2ba00c423da7f9f303a4d35dcebdd",
+      "role": "reparsed_input_only"
+    },
+    "r2": {
+      "path": "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811_R2.json",
+      "bytes": 17223,
+      "sha256": "dd03ce5369dff3c54b53910e4ab9368d07195f5294d5e9a3c130fb8456c145ca",
+      "role": "reparsed_input_and_primary_ledger"
+    },
+    "m4_v1_fail": {
+      "path": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V1_20260811.json",
+      "sha256": "673946c72c35d7beb21a91e4a6e00f06c5288210e616eaefff901597cd0d2716",
+      "disposition": "RETAINED_AS_IMMUTABLE_FAIL_CLOSED_HISTORY"
+    },
+    "m4_v2_invalid_pass": {
+      "path": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V2_20260811.json",
+      "sha256": "1753c765f6cac417c85bc68ede595c384806f7f8d6f5257bedfb98bb016c769b",
+      "disposition": "INVALID_PASS_HISTORY_ONLY",
+      "pass_basis_rejected": "authorization hash mismatch and root-thread provenance mismatch"
+    },
+    "known_v2_failures": [
+      {
+        "failure_id": "REC-M4-V2-AUTHORIZATION-HASH-001",
+        "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+        "m3_v2_expected_sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+        "v2_recorded_sha256": "7d65768118f55a3760424c7686cd0e7941cf6765d99c2629fd63f",
+        "v3_observed_sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+        "status": "CORRECTED_BY_FRESH_RECOMPUTATION"
+      },
+      {
+        "failure_id": "REC-M4-V2-PROVENANCE-THREAD-001",
+        "v2_recorded_thread": "019fbdde-2c02-7662-b9d2-9dc2b70e1253",
+        "actual_v2_task_thread": "019ff0e1-d5a5-7110-ae72-ca03b8eb8d31",
+        "v3_task_thread": "019ff115-94e6-7660-9c86-1a824bcfb99d",
+        "status": "CORRECTED_IN_V3_PROVENANCE"
+      }
+    ]
+  },
+  "inputs": {
+    "m3_v2_acceptance": {
+      "path": "refine-logs/REC-M3_ACCEPTANCE_V2_20260811.json",
+      "bytes": 10510,
+      "sha256": "9fd8976112f55a8f055d2bc7c7636c762cb2ba00c423da7f9f303a4d35dcebdd",
+      "role": "expected_inventory_and_protected_hash_input"
+    },
+    "r2_claim_ledger": {
+      "path": "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811_R2.json",
+      "bytes": 17223,
+      "sha256": "dd03ce5369dff3c54b53910e4ab9368d07195f5294d5e9a3c130fb8456c145ca",
+      "role": "registry_pointer_and_comparator_definition_input"
+    },
+    "m4_v1_history_trigger": {
+      "path": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V1_20260811.json",
+      "sha256": "673946c72c35d7beb21a91e4a6e00f06c5288210e616eaefff901597cd0d2716",
+      "role": "fail_history_only"
+    },
+    "m4_v2_invalid_pass_history": {
+      "path": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V2_20260811.json",
+      "sha256": "1753c765f6cac417c85bc68ede595c384806f7f8d6f5257bedfb98bb016c769b",
+      "role": "invalid_pass_history_only"
+    }
+  },
+  "output_inventory": [
+    {
+      "path": "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811_R2.json",
+      "expected_bytes": 17223,
+      "expected_sha256": "dd03ce5369dff3c54b53910e4ab9368d07195f5294d5e9a3c130fb8456c145ca",
+      "observed_bytes": 17223,
+      "observed_sha256": "dd03ce5369dff3c54b53910e4ab9368d07195f5294d5e9a3c130fb8456c145ca",
+      "bytes_match": true,
+      "sha256_match": true,
+      "match_basis": "fresh_wc_and_shasum"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_026_PATCH_PROPOSAL_20260811.md",
+      "expected_bytes": 10613,
+      "expected_sha256": "5dc82aed028b4cc87bc44050e2d42ffdd0b22b4a21f89b35174dbf513feb2ebb",
+      "observed_bytes": 10613,
+      "observed_sha256": "5dc82aed028b4cc87bc44050e2d42ffdd0b22b4a21f89b35174dbf513feb2ebb",
+      "bytes_match": true,
+      "sha256_match": true,
+      "match_basis": "fresh_wc_and_shasum"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json",
+      "expected_bytes": 15181,
+      "expected_sha256": "68a841cb4c5f68916cd305eb354200030564079f2e6fedf4e33a346a35f7f443",
+      "observed_bytes": 15181,
+      "observed_sha256": "68a841cb4c5f68916cd305eb354200030564079f2e6fedf4e33a346a35f7f443",
+      "bytes_match": true,
+      "sha256_match": true,
+      "match_basis": "fresh_wc_and_shasum"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_033_PATCH_PROPOSAL_20260811.md",
+      "expected_bytes": 10169,
+      "expected_sha256": "6d8fff0275be2bbeeefca33193656c397de494e3ad0812e521cd6d3a4551e6da",
+      "observed_bytes": 10169,
+      "observed_sha256": "6d8fff0275be2bbeeefca33193656c397de494e3ad0812e521cd6d3a4551e6da",
+      "bytes_match": true,
+      "sha256_match": true,
+      "match_basis": "fresh_wc_and_shasum"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json",
+      "expected_bytes": 14990,
+      "expected_sha256": "baee769a51c5861bfe04c7fcfc8e72608ea2bcd6f52fedcd909fca1bbb61ed33",
+      "observed_bytes": 14990,
+      "observed_sha256": "baee769a51c5861bfe04c7fcfc8e72608ea2bcd6f52fedcd909fca1bbb61ed33",
+      "bytes_match": true,
+      "sha256_match": true,
+      "match_basis": "fresh_wc_and_shasum"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_045_PATCH_PROPOSAL_20260811.md",
+      "expected_bytes": 9907,
+      "expected_sha256": "7eb9d17f3c670de2babcd4e0587bd6ba13ff6787abf38119e4c435dd1397a0a0",
+      "observed_bytes": 9907,
+      "observed_sha256": "7eb9d17f3c670de2babcd4e0587bd6ba13ff6787abf38119e4c435dd1397a0a0",
+      "bytes_match": true,
+      "sha256_match": true,
+      "match_basis": "fresh_wc_and_shasum"
+    }
+  ],
+  "validator_counts": {
+    "output_inventory": {
+      "files_checked": 6,
+      "bytes_checked": 6,
+      "sha256_checked": 6,
+      "bytes_matches": 6,
+      "sha256_matches": 6,
+      "failures": 0
+    },
+    "protected_files": {
+      "files_checked": 9,
+      "bytes_checked": 9,
+      "sha256_checked": 9,
+      "bytes_matches": 9,
+      "sha256_matches": 9,
+      "failures": 0
+    },
+    "protected_trees": {
+      "trees_checked": 3,
+      "file_count_checked": 3,
+      "symlink_count_checked": 3,
+      "tree_sha256_checked": 3,
+      "file_count_matches": 3,
+      "symlink_count_matches": 3,
+      "tree_sha256_matches": 3,
+      "failures": 0,
+      "sort_algorithm": "Node Buffer.compare over UTF-8 relative paths"
+    },
+    "r2_registry_pointers": {
+      "checked": 3,
+      "resolved": 3,
+      "failures": 0
+    },
+    "r2_comparator_definitions": {
+      "checked": 3,
+      "role_parameterization_endpoint_matches": 3,
+      "failures": 0
+    },
+    "r2_primary_artifact_pointers": {
+      "checked": 9,
+      "resolved": 9,
+      "failures": 0
+    },
+    "v1_033_line_and_summary": {
+      "units_checked": 13,
+      "line_locators_checked": 13,
+      "line_locators_in_bounds": 13,
+      "current_summary_substring_matches": 1,
+      "proposal_unit_headings_checked": 13,
+      "failures": 0
+    },
+    "v1_045_and_remaining_jsonpath": {
+      "status": "STOPPED_AFTER_BLOCKING_SCOPE_FAILURE",
+      "checks_started": 0,
+      "checks_completed": 0
+    }
+  },
+  "failures": [
+    {
+      "failure_id": "REC-M4-V3-PROHIBITED-SCOPE-ENUMERATION-001",
+      "severity": "BLOCKING",
+      "status": "FAIL_CLOSED",
+      "operation": "rg --files output refine-logs -g comparator_registry.json -g comparator-ledger.json -g paired-differences.json -g status-inventory.json -g artifact-manifest.json",
+      "violation": "The locator command traversed refine-logs and emitted the two prohibited target pathnames listed below.",
+      "prohibited_paths_emitted": [
+        "refine-logs/ncs_new_analysis_v2/e4_r008_duplicate_final/cal-e01-75-c96e620006d55b14/artifact-manifest.json",
+        "refine-logs/ncs_new_analysis_v2/e4_r008_primary_final/cal-e01-75-c96e620006d55b14/artifact-manifest.json"
+      ],
+      "content_read": false,
+      "used_or_compared": false,
+      "effect": "V3 cannot be PASS even though all completed hash and pointer comparisons matched their expected values."
+    }
+  ],
+  "register_bindings": {
+    "formal_register": {
+      "path": "output/ncs_review_corpus/v1_author_decision_register.json",
+      "r2_key": "#/items/25",
+      "r2_priority": "P0",
+      "r2_action_class": "DIRECT_TEXT_REVISION",
+      "r2_status": "PARTIAL"
+    },
+    "v1_033": {
+      "register_key": "CAL-E02:128",
+      "register_pointer": "#/items/32",
+      "status": "PARTIAL",
+      "required_boundary": "Keep known truth, matched endpoints, OUTSIDE TARGET and failed promotion; do not claim broad fairness or superiority."
+    },
+    "v1_045": {
+      "register_key": "CAL-E03:164",
+      "locator": "output/ncs_review_corpus/v1_author_decision_register.json:2023-2066",
+      "status": "PARTIAL",
+      "stop_condition": "Keep settings as a declared benchmark contract; do not claim universal strategy utility or independent reuse."
+    },
+    "r2_comparator_registry": {
+      "path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/comparator_registry.json",
+      "pointer": "#/content/records",
+      "pointers_checked": [
+        "local_structured",
+        "causal_temporal_smoother",
+        "fixed_rank_basis"
+      ],
+      "all_resolved": true
+    },
+    "r2_primary_artifacts": {
+      "root": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133",
+      "pointers": [
+        {
+          "comparator": "local_structured",
+          "ledger": "comparator-ledger.json#/method_cell_audits",
+          "paired": "paired-differences.json#/pairs",
+          "status": "status-inventory.json#/inventory"
+        },
+        {
+          "comparator": "causal_temporal_smoother",
+          "ledger": "comparator-ledger.json#/endpoint_parity_audits",
+          "paired": "paired-differences.json#/pairs",
+          "status": "status-inventory.json#/nonfinite_policy"
+        },
+        {
+          "comparator": "fixed_rank_basis",
+          "ledger": "comparator-ledger.json#/declared_methods",
+          "paired": "paired-differences.json#/pairs",
+          "manifest": "artifact-manifest.json#/claim_activation"
+        }
+      ],
+      "all_resolved": true
+    }
+  },
+  "source_locator_validation": {
+    "v1_033": {
+      "line_locators_checked": 13,
+      "line_locators_in_bounds": 13,
+      "current_fields_policy": "paragraph_level_summary_only",
+      "verbatim_substring_matches": 1,
+      "heading_rule": "retain paragraph-summary headings and do not treat current fields as verbatim replacement anchors",
+      "status": "PASS_FOR_COMPLETED_SCOPE"
+    },
+    "v1_045": {
+      "line_locators": "NOT_RUN_AFTER_BLOCKING_SCOPE_FAILURE",
+      "jsonpaths": "NOT_RUN_AFTER_BLOCKING_SCOPE_FAILURE"
+    },
+    "jsonpath_validation": {
+      "status": "NOT_COMPLETED_AFTER_BLOCKING_SCOPE_FAILURE",
+      "reason": "fail-closed stop instruction"
+    }
+  },
+  "audit_units": {
+    "V1-026_CAL-E01_75": {
+      "unit_count": 3,
+      "status": "PASS_FOR_COMPLETED_POINTER_SCOPE",
+      "scientific_ceiling": "descriptive comparator role, endpoint, coverage, status, and common-completion integrity only"
+    },
+    "V1-033_CAL-E02_128": {
+      "unit_count": 13,
+      "unit_ids": [
+        "V1-033-M01",
+        "V1-033-M02",
+        "V1-033-M03",
+        "V1-033-R01",
+        "V1-033-R02",
+        "V1-033-R03",
+        "V1-033-R04",
+        "V1-033-R05",
+        "V1-033-S01",
+        "V1-033-S02",
+        "V1-033-S03",
+        "V1-033-S04",
+        "V1-033-S05"
+      ],
+      "current_field_policy": "paragraph_level_summary_only; verbatim replacement anchors not required",
+      "scientific_boundary": "simulation_only; DGP truth is not independent empirical ground truth; no broad fairness or superiority claim",
+      "status": "PARTIAL_FAIL_CLOSED"
+    },
+    "V1-045_CAL-E03_164": {
+      "unit_count": 10,
+      "unit_ids": [
+        "V1-045-RANK",
+        "V1-045-WINDOW",
+        "V1-045-ALS",
+        "V1-045-TOPOLOGY",
+        "V1-045-STABILITY",
+        "V1-045-FAILURE",
+        "V1-045-REPLICATION",
+        "V1-045-SCOPE",
+        "V1-045-UNRUN",
+        "V1-045-RESOURCE"
+      ],
+      "scientific_boundary": "N=20/N=50 descriptive audit only; N=100/N=200 NOT_RUN/ABSTAIN; resource telemetry BLOCKED; no promotion",
+      "status": "NOT_COMPLETED_AFTER_BLOCKING_SCOPE_FAILURE"
+    },
+    "total_units": 26,
+    "unique_units": 26
+  },
+  "protected_hashes": {
+    "file_hash_algorithm": "SHA-256 of raw bytes",
+    "protected_files_checked": 9,
+    "protected_file_matches": 9,
+    "all_file_matches": true,
+    "files": [
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json",
+        "bytes": 7074,
+        "expected_sha256": "c012f7d1a40168b264027c55a3760424c7686cd0e7941cf6765d99c2629fd63f",
+        "observed_sha256": "c012f7d1a40168b264027c55a3760424c7686cd0e7941cf6765d99c2629fd63f",
+        "match": true
+      },
+      {
+        "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+        "bytes": 3455,
+        "expected_sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+        "observed_sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+        "match": true
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2A_REPAIR_RECEIPT_V1_20260810_222232.json",
+        "bytes": 13026,
+        "expected_sha256": "b98f8a4dc6dd36ee28426182d9320d0696880867544a0cc05dd6c1fb5e943395",
+        "observed_sha256": "b98f8a4dc6dd36ee28426182d9320d0696880867544a0cc05dd6c1fb5e943395",
+        "match": true
+      },
+      {
+        "path": "output/ncs_review_corpus/v1_author_decision_register.json",
+        "bytes": 110685,
+        "expected_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+        "observed_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+        "match": true
+      },
+      {
+        "path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+        "bytes": 1822,
+        "expected_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+        "observed_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+        "match": true
+      },
+      {
+        "path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+        "bytes": 2281,
+        "expected_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+        "observed_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+        "match": true
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2_EXECUTION_AUTHORIZATION_V1_20260810_223606.json",
+        "bytes": 5715,
+        "expected_sha256": "44677a44f01876bba8c96d924a69cf39a37f4642e00a004c1b03fb2dcbf4034c",
+        "observed_sha256": "44677a44f01876bba8c96d924a69cf39a37f4642e00a004c1b03fb2dcbf4034c",
+        "match": true
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_PREFLIGHT_RECEIPT_V1_20260810_231758.json",
+        "bytes": 10995,
+        "expected_sha256": "5918f4eac9e6b01a012bcf511afc50a357e07e005b99dea242b36eff816359df",
+        "observed_sha256": "5918f4eac9e6b01a012bcf511afc50a357e07e005b99dea242b36eff816359df",
+        "match": true
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_TRACKER_V1_20260810_231758.md",
+        "bytes": 2947,
+        "expected_sha256": "c35bf484768de70b0d64d2858f1328600d9cc5cc4efc7bb704729432336541eb",
+        "observed_sha256": "c35bf484768de70b0d64d2858f1328600d9cc5cc4efc7bb704729432336541eb",
+        "match": true
+      }
+    ],
+    "tree_hash_algorithm": "SHA-256 of UTF-8 sorted relative-path TAB bytes TAB raw-SHA-256 LF lines; symlinks recorded separately",
+    "tree_sort_algorithm": "Node Buffer.compare(Buffer.from(relative_path, utf8))",
+    "protected_trees_checked": 3,
+    "protected_tree_matches": 3,
+    "trees": [
+      {
+        "path": "manuscript_src/natcs",
+        "file_count": 72,
+        "symlink_count": 0,
+        "expected_sha256": "21a1319b6f98e31804b7fd1766c66124553a2ad2904bdc2dcb655097e591a364",
+        "observed_sha256": "21a1319b6f98e31804b7fd1766c66124553a2ad2904bdc2dcb655097e591a364",
+        "match": true
+      },
+      {
+        "path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3",
+        "file_count": 11,
+        "symlink_count": 0,
+        "expected_sha256": "6859c367141f33e589fb2d536c96fbe763f40e406ca65bfa556d89b7536e00ec",
+        "observed_sha256": "6859c367141f33e589fb2d536c96fbe763f40e406ca65bfa556d89b7536e00ec",
+        "match": true
+      },
+      {
+        "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3",
+        "file_count": 3,
+        "symlink_count": 0,
+        "expected_sha256": "5398ec9a698ba0a7b878b0a8d25a7d8e9184ea6ff98af033f2b33f7165b1a83f",
+        "observed_sha256": "5398ec9a698ba0a7b878b0a8d25a7d8e9184ea6ff98af033f2b33f7165b1a83f",
+        "match": true
+      }
+    ]
+  },
+  "scientific_state": {
+    "V1-026_CAL-E01_75": {
+      "governance": "PASS",
+      "m2c": "PASS",
+      "scientific_execution": "NOT_RUN",
+      "claim_activation": "BLOCKED",
+      "contract_change": "NO_CONTRACT_CHANGE",
+      "ceiling": "Descriptive comparator role, endpoint, coverage, status, and common-completion integrity only."
+    },
+    "V1-033_CAL-E02_128": {
+      "governance": "PASS",
+      "register": "PARTIAL",
+      "m2c": "BLOCKED",
+      "data_sufficiency": "PARTIAL",
+      "scientific_execution": "NOT_RUN",
+      "evidence_type": "simulation_only",
+      "independent_empirical_ground_truth": "NOT_EVALUABLE",
+      "provenance_gaps": [
+        "chronology",
+        "selection inputs",
+        "held-out query identity",
+        "endpoint signature",
+        "truth isolation"
+      ],
+      "claim_ceiling": "No broad empirical fairness or superiority claim."
+    },
+    "V1-045_CAL-E03_164": {
+      "governance": "PASS",
+      "register": "PARTIAL",
+      "m2c": "PARTIAL",
+      "scope": "N=20/N=50 only",
+      "N100_N200": "NOT_RUN/ABSTAIN",
+      "resource_telemetry": "BLOCKED/null",
+      "runs": 1,
+      "seeds_per_cell": 20,
+      "repeated_run_reproducibility": "NOT_ESTABLISHED",
+      "unresolved_contracts": [
+        "CAL-E03 controlled ALS declares 60 iterations without stopping semantics; compiled application/bootstrap settings remain separate at 100/80 iterations.",
+        "Topology stress categories remain unbound to exact amplitudes and full protocol details."
+      ]
+    },
+    "claim_activation": "NOT_AUTHORIZED",
+    "promotion": "NOT_AUTHORIZED",
+    "new_scientific_experiment": "NOT_RUN",
+    "restricted_artifact_reuse": "NOT_USED"
+  },
+  "proposal_only_boundaries": {
+    "v1_026_patch_proposals": 3,
+    "v1_033_patch_units": 13,
+    "v1_045_contract_items": 10,
+    "all_proposal_only": true,
+    "no_manuscript_mutation": true,
+    "no_register_mutation": true,
+    "no_authorization_mutation": true,
+    "no_git_operations": true,
+    "no_scientific_claim_activation": true,
+    "M5": "NOT_AUTHORIZED_BY_THIS_RECORD"
+  },
+  "progression_gate": {
+    "REC-M3": "GOVERNANCE_ACCEPTED_V2",
+    "REC-M4_V1": "FAIL_RETAINED_AS_HISTORY",
+    "REC-M4_V2": "INVALID_PASS_RETAINED_AS_HISTORY",
+    "REC-M4_V3": "FAIL_CLOSED_PROHIBITED_SCOPE_ENUMERATION",
+    "REC-M5": "NOT_AUTHORIZED_BY_THIS_RECORD",
+    "m4_pass_applies_manuscript_patch": false,
+    "m4_pass_activates_scientific_claim": false,
+    "manuscript_patches_applied": false
+  }
+}

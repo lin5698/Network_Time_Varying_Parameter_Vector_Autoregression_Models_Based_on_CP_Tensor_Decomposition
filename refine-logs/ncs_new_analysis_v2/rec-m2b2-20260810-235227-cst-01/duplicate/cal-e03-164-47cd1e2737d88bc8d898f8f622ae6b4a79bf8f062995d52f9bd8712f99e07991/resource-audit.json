@@ -1,0 +1,136 @@
+{
+  "candidate_id": "e4-domain-stable-v4-20260731-candidate-r3",
+  "clock_provenance": null,
+  "declared_artifacts": [
+    {
+      "declared_path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json",
+      "declared_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+      "exists_in_current_worktree": true,
+      "hash_matches": true,
+      "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json",
+      "observed_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6"
+    },
+    {
+      "declared_path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+      "declared_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+      "exists_in_current_worktree": true,
+      "hash_matches": true,
+      "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+      "observed_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+    },
+    {
+      "declared_path": "refine-logs/e3_family2_runtime/com.openai.codex.natcs-e4-r3.plist",
+      "declared_sha256": "54597700bc3250d7dc6d5b801b05554de94388045bd22641595b9e43aa08dc5a",
+      "exists_in_current_worktree": true,
+      "hash_matches": true,
+      "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_runtime/com.openai.codex.natcs-e4-r3.plist",
+      "observed_sha256": "54597700bc3250d7dc6d5b801b05554de94388045bd22641595b9e43aa08dc5a"
+    },
+    {
+      "declared_path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+      "declared_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+      "exists_in_current_worktree": true,
+      "hash_matches": true,
+      "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+      "observed_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d"
+    },
+    {
+      "declared_path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json",
+      "declared_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+      "exists_in_current_worktree": true,
+      "hash_matches": true,
+      "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json",
+      "observed_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032"
+    },
+    {
+      "declared_path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+      "declared_sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+      "exists_in_current_worktree": true,
+      "hash_matches": true,
+      "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+      "observed_sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b"
+    },
+    {
+      "declared_path": "refine-logs/e3_family2_runtime/e4-r3.stdout.log",
+      "declared_sha256": "c13a534058b771a7229636f4ae4d624f1cdf413f62efa593d06131ad209faad0",
+      "exists_in_current_worktree": true,
+      "hash_matches": true,
+      "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_runtime/e4-r3.stdout.log",
+      "observed_sha256": "c13a534058b771a7229636f4ae4d624f1cdf413f62efa593d06131ad209faad0"
+    },
+    {
+      "declared_path": "refine-logs/e3_family2_runtime/e4-r3.stderr.log",
+      "declared_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exists_in_current_worktree": true,
+      "hash_matches": true,
+      "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_runtime/e4-r3.stderr.log",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "execution_complete": {
+    "authorization_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+    "candidate_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "promotion": "PROHIBITED",
+    "schema_version": "e3-family2-synthetic-quarantine-results-v3",
+    "status": "COMPLETE_QUARANTINE_ONLY"
+  },
+  "execution_contract": {
+    "execution_failure_absent": true,
+    "last_exit_code": 0,
+    "launchd_label": "com.openai.codex.natcs-e4-r3",
+    "process_state": "not_running",
+    "runs": 1,
+    "stderr_empty": true,
+    "stdout_status": "COMPLETE_QUARANTINE_ONLY"
+  },
+  "inventory_path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+  "inventory_present": true,
+  "inventory_status": "FROZEN_PENDING_INDEPENDENT_AUDIT",
+  "missing_telemetry": [
+    "wall_clock_seconds",
+    "cpu_time_seconds",
+    "peak_memory_bytes",
+    "peak_rss_bytes",
+    "gpu_time_seconds",
+    "per_cell_runtime"
+  ],
+  "note": "Missing runtime telemetry is reported as missing; no runtime value is inferred from record count.",
+  "resource_proxies": {
+    "declared_last_exit_code": 0,
+    "declared_process_state": "not_running",
+    "declared_runs": 1,
+    "declared_stderr_empty": true,
+    "declared_stdout_status": "COMPLETE_QUARANTINE_ONLY"
+  },
+  "runtime_log_observation": {
+    "log_artifacts": [
+      {
+        "declared_path": "refine-logs/e3_family2_runtime/e4-r3.stdout.log",
+        "declared_sha256": "c13a534058b771a7229636f4ae4d624f1cdf413f62efa593d06131ad209faad0",
+        "exists_in_current_worktree": true,
+        "hash_matches": true,
+        "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_runtime/e4-r3.stdout.log",
+        "observed_sha256": "c13a534058b771a7229636f4ae4d624f1cdf413f62efa593d06131ad209faad0"
+      },
+      {
+        "declared_path": "refine-logs/e3_family2_runtime/e4-r3.stderr.log",
+        "declared_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exists_in_current_worktree": true,
+        "hash_matches": true,
+        "observed_path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_runtime/e4-r3.stderr.log",
+        "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "logs_available_in_current_worktree": true,
+    "resource_values_read_from_logs": false
+  },
+  "telemetry": {
+    "cpu_time_seconds": null,
+    "gpu_time_seconds": null,
+    "peak_memory_bytes": null,
+    "peak_rss_bytes": null,
+    "per_cell_runtime": null,
+    "wall_clock_seconds": null
+  },
+  "verdict": "BLOCKED"
+}

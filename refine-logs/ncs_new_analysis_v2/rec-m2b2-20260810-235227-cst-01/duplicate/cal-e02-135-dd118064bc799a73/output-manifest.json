@@ -1,0 +1,16 @@
+{
+  "analysis_binding_sha256": "dd118064bc799a7344e777af9c58aae05cbff5d34344b1ddd7ffed742e459c1f",
+  "analysis_id": "cal-e02-135-derived-sensitivity-v1",
+  "files": {
+    "analysis.json": "2afc290a2fa6c90cfcdb93c13997011d09a4aa85ac8aea9947f75e5e66f2216e",
+    "frozen-data-sufficiency-audit.json": "67ece62ad8f32b7de728d854138742bf84c46004e5e5fb7a54ceebd2c68b72cf",
+    "independent-endpoint-audit.json": "8ab125657661590d525b580ab004c2e818a4b501c650532677253aba1103121f",
+    "input-manifest.json": "02358226202c958edf536b6b3924d891a91da2933648a68bd29807c93f218f50",
+    "retained-adverse-records.json": "89359e83d2bb93bb0ec8c560b827ec50aa1ff6a6cefb661f499dfbb5132c2016",
+    "seed-scenario-sensitivity.json": "7aeab22a7192da988ff082aad57a7d9254eae42e95a484b77ca8fd1eb21c64ba"
+  },
+  "output_root_name": "cal-e02-135-dd118064bc799a73",
+  "register_key": "CAL-E02:135",
+  "schema_version": "ncs-cal-e02-135-output-manifest-v1",
+  "self_hash_scope": "self_hash_excluded_from_files_to_avoid_recursive_binding"
+}

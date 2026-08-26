@@ -1,0 +1,117 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-governance-recheck-terra-v4",
+  "record_id": "REC-M5-governance-recheck-terra-v4-20260812",
+  "generated_at": "2026-08-12",
+  "phase": "M5-C",
+  "task_mode": "REVIEW_ONLY_RECORD_ONLY",
+  "verdict": "BLOCKED",
+  "result": "BLOCKED_V10_NOT_LOCALLY_VERIFIABLE",
+  "reviewer": "governance-manifest-direct-self-adjudication",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "max",
+  "execution_constraints": {
+    "delegation": "NONE",
+    "cli": "NONE",
+    "qwen": "NONE",
+    "external_payload": "NONE"
+  },
+  "v10_artifacts": [
+    {
+      "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V10_20260812.md",
+      "reported_sha256": "d8d56ff58c0663a3326eb50df1dc6640ef620c0ae59ea2b5c59ef4eaeb65f3e6",
+      "local_present": false,
+      "local_hash_verified": false,
+      "verification_status": "NOT_VERIFIABLE_EXACT_PATH_ABSENT"
+    },
+    {
+      "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V10_20260812.json",
+      "reported_sha256": "3e1d41edebe46af78421a2e8be12eb7c6f0684af893155208df977ae5915b184",
+      "local_present": false,
+      "local_hash_verified": false,
+      "verification_status": "NOT_VERIFIABLE_EXACT_PATH_ABSENT"
+    }
+  ],
+  "current_core_inputs": [
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "sha256": "b95a09609cf45477bbdf9eac78be84021a4c177b5d4028228ed804fa22ba5891"
+    },
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "sha256": "8c0546a7011a82042661f3423ca68a4dbab19044261a4280037fd996279124de"
+    },
+    {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341"
+    },
+    {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "sha256": "c7664285eff125335e75c1f13f51b20d38a4b8a368c87db11079386f9e7c56f5"
+    }
+  ],
+  "checks": {
+    "package_readiness": "ready_for_independent_review",
+    "paragraph_units": {
+      "expected": 26,
+      "actual": 26,
+      "unique": 26,
+      "partition": {
+        "V1-026": 3,
+        "V1-033": 13,
+        "V1-045": 10
+      }
+    },
+    "g06": {
+      "disposition": "CANDIDATE_NOT_APPLIED",
+      "label": "AUTHOR_CONFIRMED_REVIEW_ONLY"
+    },
+    "g07": {
+      "disposition": "CANDIDATE_NOT_APPLIED",
+      "label": "AUTHOR_CONFIRMED_REVIEW_ONLY"
+    },
+    "all_groups_not_applied": true,
+    "placeholder_scan": "PASS_NO_DOUBLE_BRACE_TOKENS",
+    "author_input_needed": [],
+    "deterministic_corroboration": {
+      "current_core_harness": "85/85 PASS",
+      "m4_allowlisted_validator": "247/247 PASS",
+      "interpretation": "DETERMINISTIC_ONLY_NOT_SEMANTIC_ACCEPTANCE",
+      "may_substitute_for_terra_pass": false
+    }
+  },
+  "authorization_boundary": {
+    "m5_d_manuscript_application": "NOT_PERMITTED",
+    "m5_f_formal_register_change": "NOT_PERMITTED",
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_payload_mutation": "PROHIBITED",
+    "scientific_execution_authorization_mutation": "PROHIBITED",
+    "authorization_file_mutation": "PROHIBITED",
+    "generated_tex_mutation": "PROHIBITED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  },
+  "operation_policy": {
+    "record_only": true,
+    "manuscript_modified": false,
+    "formal_register_modified": false,
+    "scientific_payload_modified": false,
+    "authorization_modified": false,
+    "generated_tex_modified": false,
+    "git_operations": "NONE"
+  },
+  "prohibited_path_policy": {
+    "e4_main_or_duplicate_final_paths_read": false,
+    "policy": "No previously prohibited E4 main or duplicate-final path was read."
+  },
+  "residual_risk": [
+    "The V10 artifacts were not locally materialized for independent hash verification.",
+    "No independently auditable Terra/max semantic payload is available; BLOCKED cannot become PASS.",
+    "M5-D and M5-F remain closed pending materialized V10 verification and separate authorization."
+  ],
+  "changed_paths": [
+    "refine-logs/REC-M5_GOVERNANCE_RECHECK_TERRA_V4_20260812.md",
+    "refine-logs/REC-M5_GOVERNANCE_RECHECK_TERRA_V4_20260812.json"
+  ],
+  "changed_paths_only": true
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-governance-baseline-v10",
+  "record_id": "REC-M5-governance-baseline-v10-20260812",
+  "generated_at": "2026-08-12",
+  "phase": "M5-C pre-review baseline",
+  "task_mode": "REVIEW_ONLY_RECORD_ONLY",
+  "result": "CURRENT_HASH_CHAIN_READY_FOR_TERRA_MAX_DIRECT_REVIEW",
+  "current_artifacts": {
+    "review_patch_markdown": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd"
+    },
+    "review_patch_json": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "sha256": "938e5218280fcdf25ffb206040d420e2420851a3483e1cc7c282dabf0c01e0e6"
+    },
+    "author_input_markdown": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341"
+    },
+    "author_input_json": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "sha256": "ebb639ed613520ac643ee1ac21b53c9420e4bbf3a010af1f130a8e3d3b12d8b6"
+    }
+  },
+  "record_consistency_repair": {
+    "editorial_finding_source": "REC-M5-EDITORIAL-RECHECK-TERRA-V3",
+    "chinese_summary_consistent": true,
+    "contradictions_reviewed": true,
+    "all_required_fields_resolved": true,
+    "unresolved_groups": [],
+    "g06_grammar_repaired": true,
+    "review_model_route": "gpt-5.6-terra",
+    "reasoning_effort": "max"
+  },
+  "deterministic_checks": {
+    "patch_package_readiness": "ready_for_independent_review",
+    "author_input_needed": [],
+    "unit_count": 26,
+    "unit_uniqueness": "PASS",
+    "all_candidates_not_applied": true,
+    "placeholder_scan": "PASS_NO_DOUBLE_BRACE_TOKENS",
+    "m4_allowlisted_validator": "RECHECK_REQUIRED_AFTER_REPAIR"
+  },
+  "semantic_review_gate": {
+    "required_model": "gpt-5.6-terra",
+    "required_reasoning_effort": "max",
+    "mode": "DIRECT_SELF_ADJUDICATION",
+    "required_roles": [
+      "scientific-boundary",
+      "editorial-traceability",
+      "governance-manifest"
+    ],
+    "status": "PENDING_CURRENT_HASH_REVIEW"
+  },
+  "authorization_boundary": {
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_payload_mutation": "PROHIBITED",
+    "authorization_file_mutation": "PROHIBITED",
+    "generated_tex_mutation": "PROHIBITED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  },
+  "historical_receipts": "V8 and all Terra V1-V4 receipts remain immutable historical records for prior bytes or prior findings.",
+  "changed_paths": [
+    "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+    "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+    "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+    "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+    "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.md",
+    "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.json"
+  ]
+}

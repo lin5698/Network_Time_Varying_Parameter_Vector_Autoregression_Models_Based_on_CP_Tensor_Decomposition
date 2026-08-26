@@ -1,0 +1,273 @@
+{
+  "final_status": "REC-M2A PASS / REC-M2 BLOCKED_PENDING_NEW_PREFLIGHT",
+  "gate": {
+    "repair_compatibility": "PASS",
+    "scientific_m2": "BLOCKED_PENDING_NEW_PREFLIGHT"
+  },
+  "generated_at": "2026-08-10T22:22:32+08:00",
+  "implementation": {
+    "analyzer_test_files": [
+      {
+        "after_bytes": 66506,
+        "after_sha256": "59e56945e2f36966d121d4fac56feda808a21fa49c018332307e6faa04f82c66",
+        "before_bytes": 61912,
+        "before_sha256": "60fbce6ba07a8395cd16dd260ccce3abaf7422cc4feb3ed8c8b25da9b17aa3de",
+        "path": "scripts/experiments/analyze_cal_e01_75.py"
+      },
+      {
+        "after_bytes": 15659,
+        "after_sha256": "fd28babf7996e0919b16436df3f8036fb8e0e51e02d2f74f7ee0396bac029fc7",
+        "before_bytes": 4766,
+        "before_sha256": "1dddfe08f47e598b75f926270918d0b8d2974a91796bb34212215505a451983d",
+        "path": "scripts/experiments/test_analyze_cal_e01_75.py"
+      },
+      {
+        "after_bytes": 58219,
+        "after_sha256": "1721a3a2b9afb17e111edb3531fc3afc5dd361bc9d7a917d4f66081332996c85",
+        "before_bytes": 53819,
+        "before_sha256": "cf7d21dfc577ac54900adbeb21ce60d56fec9fc3121020c799aa80bac22de9a4",
+        "path": "scripts/experiments/analyze_cal_e02_128.py"
+      },
+      {
+        "after_bytes": 8884,
+        "after_sha256": "ef601bbc00983d31e1eff0e6f442d43b4ee0e284a4e705c97d4ca34afadc64ab",
+        "before_bytes": 5682,
+        "before_sha256": "682704d48da341ff66b65948cda6d2f9ac4f64a464b4b9d951c2142c39ef9930",
+        "path": "scripts/experiments/test_analyze_cal_e02_128.py"
+      },
+      {
+        "after_bytes": 55431,
+        "after_sha256": "e1c054a5108f75daf063e83a1f50453a8bccd14944559eb1837146e9c0b9029a",
+        "before_bytes": 52976,
+        "before_sha256": "7e34dbefe304132df7fa3b0861cc850a1814568356bd0db0c536f7f76438f50e",
+        "path": "scripts/experiments/analyze_cal_e02_135.py"
+      },
+      {
+        "after_bytes": 15812,
+        "after_sha256": "c1eac89abd56c2dfc2d1707cee69498527bec4a6f565b6dc97ce17bc117fa7a8",
+        "before_bytes": 8739,
+        "before_sha256": "9c7256386406ed0ac9372bff1e3a7ed90dc5706ec352ef9bf8a94b5f6e5990fa",
+        "path": "scripts/experiments/test_analyze_cal_e02_135.py"
+      },
+      {
+        "after_bytes": 67559,
+        "after_sha256": "6c20720f071ff2322dbfe738648d0c360aaf05aa4f554ebf51b2c59285d0fa14",
+        "before_bytes": 55924,
+        "before_sha256": "2a29f0870bef6a5a538ffc952e4cbf1f7810898187a36d0e84b2d6c075d9a4a5",
+        "path": "scripts/experiments/analyze_cal_e03_164.py"
+      },
+      {
+        "after_bytes": 19895,
+        "after_sha256": "a7412d54ba1c42d439b695a8dd011b816cc5fe408fe0d8be43f4b3fd339ac8b7",
+        "before_bytes": 13562,
+        "before_sha256": "96d396d7af14114c75c5171e93914161942f98e1e9e993cf4df6f81ea161ba34",
+        "path": "tests/test_analyze_cal_e03_164.py"
+      }
+    ],
+    "changes": [
+      "All four analyzers require ncs-four-analysis-authorization-v2 and fail closed on legacy schema, missing v2 fields, register SHA drift, item payload drift, frozen E4 hash drift, workspace-authorization chain drift, REC_M2 scope drift, and current-task-limit drift.",
+      "All four tests bind the current canonical V1 item and E4 chain, reject legacy/missing/tampered inputs, and retain synthetic adverse status coverage.",
+      "CAL-E01:75 has a raw-only M2 artifact writer and raw-only CLI mode. Historical log-ratio and normal-approximation helpers remain unit-testable but are not called or serialized by the M2 artifact builder.",
+      "CAL-E02:128 and CAL-E02:135 remain descriptive/read-only and do not construct fresh protocol, candidate, or preoutcome payloads.",
+      "CAL-E03:164 retains the N=20/N=50 and missing-telemetry boundary and reports N=100/N=200 as NOT_RUN/ABSTAIN."
+    ],
+    "content_addressing_and_no_overwrite": "Retained and covered by fixture tests; default output roots are refine-logs/ncs_new_analysis_v2 or explicit test-only temporary roots."
+  },
+  "output_root_check": {
+    "m2a_scientific_outputs_created": false,
+    "path": "refine-logs/ncs_new_analysis_v2",
+    "test_writer_destination": "Temporary directories only",
+    "unrelated_observed_paths": [
+      {
+        "path": "refine-logs/ncs_new_analysis_v2/e4_r008_primary_final/cal-e01-75-c96e620006d55b14/artifact-manifest.json",
+        "sha256": "9ad1cbb37b0dde774157f37357945e114a1a1b513dc18286cf5915df5c895280",
+        "mtime": "2026-08-10T22:14:23+08:00"
+      },
+      {
+        "path": "refine-logs/ncs_new_analysis_v2/e4_r008_duplicate_final/cal-e01-75-c96e620006d55b14/artifact-manifest.json",
+        "sha256": "9ad1cbb37b0dde774157f37357945e114a1a1b513dc18286cf5915df5c895280",
+        "mtime": "2026-08-10T22:14:23+08:00"
+      }
+    ],
+    "unrelated_path_note": "These pre-existing e4_r008 paths are outside REC-M2A scope. No REC-M2A command targeted this root, and no real analyzer CLI was invoked."
+  },
+  "protected_hash_recheck": {
+    "historical_preflight_baseline": {
+      "candidate_tree": {
+        "file_count": 11,
+        "sha256": "ce1fdc3761e92c6cc5b9f918ea968d7aee208969c3d99447130af5395a9f1e7e"
+      },
+      "manuscript_tree": {
+        "file_count": 72,
+        "sha256": "d51400526813b388d3608fc4257ed4865609514827a71276cc572b6ae1df809a"
+      },
+      "quarantine_tree": {
+        "file_count": 3,
+        "sha256": "d4c4df67e3739acf54447e5a2663e6d06f901bc903a57646552fa3375277a85b"
+      },
+      "register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "terminal_inventory_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+    },
+    "observed_after_repair": {
+      "candidate_tree_list": {
+        "file_count": 11,
+        "sha256": "7f7011c5d399c33a07e8b4192a95a6beed216384a551c2e978c7a248858d1d8b"
+      },
+      "manuscript_tree_list": {
+        "file_count": 72,
+        "sha256": "150dbddfb99b1ed02954cc1759870e71312ac33a8b8da1802594f17117bc4c04"
+      },
+      "quarantine_tree_list": {
+        "file_count": 3,
+        "sha256": "d93f3f53852dfd8c7f13981b1b8a39ec3f23ede696e4a5878faeade81349ca8d"
+      },
+      "register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "terminal_inventory_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+    },
+    "observed_before_repair": {
+      "candidate_tree_list": {
+        "file_count": 11,
+        "sha256": "7f7011c5d399c33a07e8b4192a95a6beed216384a551c2e978c7a248858d1d8b"
+      },
+      "manuscript_tree_list": {
+        "file_count": 72,
+        "sha256": "150dbddfb99b1ed02954cc1759870e71312ac33a8b8da1802594f17117bc4c04"
+      },
+      "quarantine_tree_list": {
+        "file_count": 3,
+        "sha256": "d93f3f53852dfd8c7f13981b1b8a39ec3f23ede696e4a5878faeade81349ca8d"
+      },
+      "register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "terminal_inventory_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+    },
+    "tree_list_method": "SHA-256 of the sorted raw-file SHA-256 listing; used consistently before and after REC-M2A",
+    "unchanged_by_rec_m2a": true,
+    "v2_bound_leaf_files": {
+      "candidate_sha256": {
+        "expected": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+        "matches": true,
+        "observed": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6"
+      },
+      "execution_complete_sha256": {
+        "expected": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+        "matches": true,
+        "observed": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b"
+      },
+      "execution_manifest_sha256": {
+        "expected": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+        "matches": true,
+        "observed": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d"
+      },
+      "register_sha256": {
+        "expected": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+        "matches": true,
+        "observed": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2"
+      },
+      "results_sha256": {
+        "expected": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+        "matches": true,
+        "observed": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032"
+      },
+      "terminal_inventory_sha256": {
+        "expected": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+        "matches": true,
+        "observed": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+      },
+      "workspace_authorization_sha256": {
+        "expected": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+        "matches": true,
+        "observed": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+      }
+    },
+    "historical_aggregate_note": "The M2 preflight records aggregate tree hashes but not their aggregation construction. This receipt preserves those baseline values and uses a separately named, reproducible sorted raw-file listing for its before/after non-mutation check."
+  },
+  "provenance": {
+    "authorization_v2": {
+      "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+      "schema_version": "ncs-four-analysis-authorization-v2",
+      "sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59"
+    },
+    "parent_task": "019fbdde-2c02-7662-b9d2-9dc2b70e1253",
+    "repair_authorization": {
+      "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2A_REPAIR_AUTHORIZATION_V1_20260810_222232.json",
+      "sha256": "74a5164099977de87df42c2b6f7ebf5490085e168a8bafab520d168752b84eeb"
+    }
+  },
+  "receipt_id": "ncs-post-acceptance-recovery-m2a-repair-receipt-20260810-222232-cst",
+  "result": "REC-M2A_PASS",
+  "schema_version": "ncs-post-acceptance-recovery-m2a-repair-receipt-v1",
+  "scope": {
+    "claim_or_promotion_changed": false,
+    "e4_r3_mutated": false,
+    "manuscript_mutated": false,
+    "real_analyzer_cli_invoked": false,
+    "register_decision_mutated": false,
+    "scientific_analysis_executed": false,
+    "scientific_results_generated": false,
+    "stage": "REC-M2A"
+  },
+  "source_bindings": {
+    "canonical_item_hashes": {
+      "V1-026": "eb30214e8c353b27d446c1c77242bd6b2dd246841150205c8f339ddafc8f7e20",
+      "V1-033": "79937fd8b053e2bc7fd9abb864938b35a72134ecf93f5f621d7c8088fd383630",
+      "V1-035": "c9b9c201f94a7fd37b2049bfc44220258947f22483e769b39c19253a37e55ee8",
+      "V1-045": "25cd8fbf2e623cfd2fbcdc163f50959f1beb8e8cb1b59322da78d191e802cf82"
+    },
+    "canonicalization": "recursive object-key sort, array-order preservation, JSON.stringify-equivalent UTF-8 without whitespace",
+    "register_path": "output/ncs_review_corpus/v1_author_decision_register.json",
+    "register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "scope_limit_contract": {
+      "REC_M2_action": "run_read_only_derived_analysis_after_m1_and_separate_go_gate",
+      "m2_scientific_analysis": "BLOCKED_IN_THIS_TASK"
+    }
+  },
+  "verification": {
+    "py_compile": {
+      "command": "python3 -m py_compile scripts/experiments/analyze_cal_e01_75.py scripts/experiments/test_analyze_cal_e01_75.py scripts/experiments/analyze_cal_e02_128.py scripts/experiments/test_analyze_cal_e02_128.py scripts/experiments/analyze_cal_e02_135.py scripts/experiments/test_analyze_cal_e02_135.py scripts/experiments/analyze_cal_e03_164.py tests/test_analyze_cal_e03_164.py",
+      "exit_code": 0,
+      "target_count": 8
+    },
+    "static_contract_gate": {
+      "checks": [
+        "4 validate_authorization_v2 definitions",
+        "4 direct current_task_limits bindings",
+        "4 missing scope/limit fixture rejections",
+        "old register SHA and legacy authorization default absent",
+        "legacy field reads absent outside reject guards",
+        "CAL-E01 derived writer and derived mode absent",
+        "CAL-E01 historical helpers are definitions/tests only",
+        "CAL-E02 fresh constructor absent",
+        "old ncs_new_analysis root absent",
+        "CAL-E03 N=100/N=200 status is NOT_RUN/ABSTAIN"
+      ],
+      "exit_code": 0
+    },
+    "fixture_unit_tests": [
+      {
+        "command": "python3 -m unittest scripts.experiments.test_analyze_cal_e01_75",
+        "exit_code": 0,
+        "name": "CAL-E01:75",
+        "test_count": 12
+      },
+      {
+        "command": "python3 -m unittest scripts.experiments.test_analyze_cal_e02_128",
+        "exit_code": 0,
+        "name": "CAL-E02:128",
+        "test_count": 6
+      },
+      {
+        "command": "python3 -m unittest scripts.experiments.test_analyze_cal_e02_135",
+        "exit_code": 0,
+        "name": "CAL-E02:135",
+        "test_count": 6
+      },
+      {
+        "command": "python3 -m unittest tests.test_analyze_cal_e03_164",
+        "exit_code": 0,
+        "name": "CAL-E03:164",
+        "test_count": 6
+      }
+    ],
+    "total_fixture_unit_tests": 30
+  }
+}

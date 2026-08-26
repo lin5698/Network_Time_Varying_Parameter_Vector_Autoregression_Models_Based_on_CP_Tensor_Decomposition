@@ -1,0 +1,99 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-result-candidate-extraction-v1",
+  "record_id": "REC-M5-result-candidate-extraction-v1-20260812",
+  "generated_at": "2026-08-12",
+  "status": "AUTHOR_CONFIRMED_FOR_AIN_RESULT_ONLY",
+  "purpose": "Deterministic extraction and author-confirmed binding of G04 values from the released benchmark summary; this record does not authorize manuscript application or activate a manuscript claim.",
+  "source": {
+    "path": "output/natcs_benchmarks/benchmark_summary.csv",
+    "sha256": "c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1",
+    "secondary_source": {
+      "path": "output/natcs_evidence/table1_simulation_benchmark.csv",
+      "sha256": "e339ccde8a2393d15a59e05857f6ca8b57eefb0a22565012f63854a53ed96c00"
+    },
+    "interpretive_qa_source": {
+      "path": "manuscript_src/natcs/ncs_figure3_python_redesign_qa_20260726.md",
+      "sha256": "5729a76d3f21a3cc007fe05ec6e293c36e824e3005e46f221e0f8ce37cb1b009"
+    }
+  },
+  "formula": {
+    "expression": "100 * (local_network_metric_median - cp_network_metric_median) / local_network_metric_median",
+    "statistic": "ratio of across-replication median errors",
+    "denominator": "local_network metric median for the same scenario and endpoint",
+    "replication_unit": "20 released replications for each N=15 and N=30 primary scenario",
+    "comparator": "local_network / Local rolling",
+    "candidate": "cp_network / CP-network"
+  },
+  "endpoint_mapping": {
+    "operator": {
+      "released_field": "coef_error_median",
+      "reader_facing_name": "effective-operator error",
+      "contract_endpoint_id": "effective_operator"
+    },
+    "response": {
+      "released_field": "girf_error_median",
+      "reader_facing_name": "finite-horizon unit-shock response error",
+      "contract_endpoint_id": "total_response"
+    }
+  },
+  "candidates": [
+    {
+      "id": "AIN-RESULT-OP-N15",
+      "scenario": "scale_n15",
+      "baseline_median": 624.6125531760274,
+      "cp_median": 40.274806941788114,
+      "relative_reduction_percent_unrounded": 93.55203369881073,
+      "relative_reduction_percent_display": 93.6
+    },
+    {
+      "id": "AIN-RESULT-OP-N30",
+      "scenario": "scale_n30",
+      "baseline_median": 1371.693631145596,
+      "cp_median": 44.38880771061946,
+      "relative_reduction_percent_unrounded": 96.76394154622214,
+      "relative_reduction_percent_display": 96.8
+    },
+    {
+      "id": "AIN-RESULT-RESP-N15",
+      "scenario": "scale_n15",
+      "baseline_median": 0.4103961733321335,
+      "cp_median": 0.07164372813883849,
+      "relative_reduction_percent_unrounded": 82.54278845800611,
+      "relative_reduction_percent_display": 82.5
+    },
+    {
+      "id": "AIN-RESULT-RESP-N30",
+      "scenario": "scale_n30",
+      "baseline_median": 0.3971572031343755,
+      "cp_median": 0.05035310489419762,
+      "relative_reduction_percent_unrounded": 87.32161861932515,
+      "relative_reduction_percent_display": 87.3
+    }
+  ],
+  "author_confirmation": {
+    "received_at": "2026-08-12",
+    "user_response": "同意，请继续",
+    "confirmed_scope": [
+      "ratio-of-medians formula",
+      "four AIN-RESULT values",
+      "one-decimal manuscript display",
+      "effective-operator and finite-horizon response endpoint mapping",
+      "local_network versus cp_network comparator mapping"
+    ],
+    "excluded_scope": [
+      "AIN-ALS",
+      "AIN-TOPOLOGY",
+      "AIN-SOURCE-OWNERSHIP",
+      "manuscript mutation authorization",
+      "formal-register mutation authorization"
+    ]
+  },
+  "authorization_boundary": {
+    "author_input_mutation": "PARTIAL_AIN_RESULT_RESPONSE_RECORDED",
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_execution": "NOT_RUN",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  }
+}

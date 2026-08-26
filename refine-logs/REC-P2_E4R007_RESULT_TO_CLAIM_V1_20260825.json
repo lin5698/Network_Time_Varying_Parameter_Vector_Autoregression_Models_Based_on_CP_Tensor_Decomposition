@@ -1,0 +1,275 @@
+{
+  "record_id": "REC-P2_E4R007_RESULT_TO_CLAIM_V1_20260825",
+  "record_class": "result_to_claim_review",
+  "generated": "2026-08-25",
+  "audit_timezone_basis": "Asia/Shanghai",
+  "authority": "Author decision D3 (RESCOPE_NOT_SCHEDULE), authorized 2026-08-24/25 per user 'agree D1/D2/D3, begin processing'.",
+  "purpose": "Independent result-to-claim review of E4-R007 against the frozen E4 r3 synthetic bytes, per NCS_E4_R3_EXPERIMENT_AUDIT_20260801 required next action #2. NO new execution. NO claim activation. Read-only.",
+  "inputs_consumed": [
+    {
+      "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json",
+      "sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+      "role": "frozen_r3_result"
+    },
+    {
+      "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+      "sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+      "role": "frozen_completion_marker"
+    },
+    {
+      "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+      "sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+      "role": "frozen_execution_manifest"
+    },
+    {
+      "path": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md",
+      "sha256": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5",
+      "role": "prior_independent_audit"
+    },
+    {
+      "path": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json",
+      "sha256": "60523c09126fca78f9e87c1ef4776a74b6f5025bbed19ad65ec1755838d77c68",
+      "role": "prior_independent_audit_machine"
+    },
+    {
+      "path": "refine-logs/EXPERIMENT_PLAN_20260731_115719.md",
+      "sha256": "777f77f753b78f18efdd4dedb58b37f20756007b1d942d4f6b9a1cd2e3db3867",
+      "role": "predeclaration_source"
+    }
+  ],
+  "r3_scope_measured": {
+    "interval_records_total": 160,
+    "interval_cells_total": 8,
+    "families": [
+      "family1",
+      "family2"
+    ],
+    "n_values": [
+      20,
+      50
+    ],
+    "horizons": [
+      4
+    ],
+    "methods": [
+      "fixed_rank_basis"
+    ],
+    "query_classes": [
+      "cross_generator",
+      "in_family_interpolation"
+    ],
+    "all_records_status_AVAILABLE": true,
+    "all_records_coverage_1_0": true,
+    "all_records_completed_replicates_80": true,
+    "all_records_requested_replicates_80": true,
+    "aggregated_bootstrap_status_counts": {
+      "AVAILABLE": 12800,
+      "NONCONVERGED": 0,
+      "NONFINITE": 0,
+      "OUTSIDE_TARGET": 0,
+      "UNSTABLE": 0
+    },
+    "non_available_bootstrap_count": 0
+  },
+  "per_cell_measured": [
+    {
+      "cell": "family1|20|cross_generator",
+      "family": "family1",
+      "n": 20,
+      "query_class": "cross_generator",
+      "available_interval_records": 20,
+      "declared_panel_records": 20,
+      "distinct_panels": 20,
+      "completed_bootstrap_replicates": 1600,
+      "coverage": 1.0,
+      "estimated_spectral_radius_max": 0.6185766323008319,
+      "truth_spectral_radius_max": 0.3701357466476577,
+      "mean_interval_width": 0.41580851822003445,
+      "raw_response_mse_mean": 1.0103543553906247e-05
+    },
+    {
+      "cell": "family1|20|in_family_interpolation",
+      "family": "family1",
+      "n": 20,
+      "query_class": "in_family_interpolation",
+      "available_interval_records": 20,
+      "declared_panel_records": 20,
+      "distinct_panels": 20,
+      "completed_bootstrap_replicates": 1600,
+      "coverage": 1.0,
+      "estimated_spectral_radius_max": 0.453360193812614,
+      "truth_spectral_radius_max": 0.34413309733199743,
+      "mean_interval_width": 0.3367475690323197,
+      "raw_response_mse_mean": 2.394499059165006e-06
+    },
+    {
+      "cell": "family1|50|cross_generator",
+      "family": "family1",
+      "n": 50,
+      "query_class": "cross_generator",
+      "available_interval_records": 20,
+      "declared_panel_records": 20,
+      "distinct_panels": 20,
+      "completed_bootstrap_replicates": 1600,
+      "coverage": 1.0,
+      "estimated_spectral_radius_max": 0.6703521075659041,
+      "truth_spectral_radius_max": 0.3957260071284894,
+      "mean_interval_width": 0.46063513207197715,
+      "raw_response_mse_mean": 2.7279247163854085e-06
+    },
+    {
+      "cell": "family1|50|in_family_interpolation",
+      "family": "family1",
+      "n": 50,
+      "query_class": "in_family_interpolation",
+      "available_interval_records": 20,
+      "declared_panel_records": 20,
+      "distinct_panels": 20,
+      "completed_bootstrap_replicates": 1600,
+      "coverage": 1.0,
+      "estimated_spectral_radius_max": 0.5234565712908336,
+      "truth_spectral_radius_max": 0.3339330818389718,
+      "mean_interval_width": 0.4459585591804586,
+      "raw_response_mse_mean": 6.481973207194756e-07
+    },
+    {
+      "cell": "family2|20|cross_generator",
+      "family": "family2",
+      "n": 20,
+      "query_class": "cross_generator",
+      "available_interval_records": 20,
+      "declared_panel_records": 20,
+      "distinct_panels": 20,
+      "completed_bootstrap_replicates": 1600,
+      "coverage": 1.0,
+      "estimated_spectral_radius_max": 0.47165318458584155,
+      "truth_spectral_radius_max": 0.36491750710655485,
+      "mean_interval_width": 0.09597272501445009,
+      "raw_response_mse_mean": 2.287620242107228e-06
+    },
+    {
+      "cell": "family2|20|in_family_interpolation",
+      "family": "family2",
+      "n": 20,
+      "query_class": "in_family_interpolation",
+      "available_interval_records": 20,
+      "declared_panel_records": 20,
+      "distinct_panels": 20,
+      "completed_bootstrap_replicates": 1600,
+      "coverage": 1.0,
+      "estimated_spectral_radius_max": 0.28225998211726944,
+      "truth_spectral_radius_max": 0.3193469327079011,
+      "mean_interval_width": 0.04874399742855581,
+      "raw_response_mse_mean": 1.8316170298538772e-07
+    },
+    {
+      "cell": "family2|50|cross_generator",
+      "family": "family2",
+      "n": 50,
+      "query_class": "cross_generator",
+      "available_interval_records": 20,
+      "declared_panel_records": 20,
+      "distinct_panels": 20,
+      "completed_bootstrap_replicates": 1600,
+      "coverage": 1.0,
+      "estimated_spectral_radius_max": 0.4464176916114558,
+      "truth_spectral_radius_max": 0.3787437773469519,
+      "mean_interval_width": 0.07434931660343912,
+      "raw_response_mse_mean": 3.159589149252948e-07
+    },
+    {
+      "cell": "family2|50|in_family_interpolation",
+      "family": "family2",
+      "n": 50,
+      "query_class": "in_family_interpolation",
+      "available_interval_records": 20,
+      "declared_panel_records": 20,
+      "distinct_panels": 20,
+      "completed_bootstrap_replicates": 1600,
+      "coverage": 1.0,
+      "estimated_spectral_radius_max": 0.3544116107573982,
+      "truth_spectral_radius_max": 0.3024961149293882,
+      "mean_interval_width": 0.059169752574197154,
+      "raw_response_mse_mean": 3.942291151315506e-08
+    }
+  ],
+  "terminal_provenance": {
+    "e3_results_promotion": "PROHIBITED_PENDING_DUPLICATE_AND_RESULT_TO_CLAIM_AUDIT",
+    "execution_complete_promotion": "PROHIBITED",
+    "execution_manifest_status": "RUNNING_QUARANTINE_ONLY",
+    "note": "execution-manifest.status = RUNNING_QUARANTINE_ONLY while execution-complete.status = COMPLETE_QUARANTINE_ONLY. This is the WARN-forecasting terminal-status mismatch recorded as D3-G3. The 160 AVAILABLE records and both markers are present; the mismatch is a provenance-label inconsistency, not a data-availability gap."
+  },
+  "claim_to_path_mapping": {
+    "E4-R007": {
+      "claim_text": "All 8 interval cells and 160 panel-level interval records are present; each panel requests and records 80 available bootstrap replicates; evidence based on 20 simulated panels per cell at horizon 4; does not support empirical calibration, broader uncertainty validity or other horizons.",
+      "activation": "BLOCKED_PENDING_THIS_REVIEW_AND_AUTHOR_WORDING_DECISION",
+      "ceiling": "simulation_only; h4; 20 panels per cell",
+      "mapping": [
+        {
+          "claim_fragment": "160 panel-level interval records present",
+          "frozen_path": "results.interval_records",
+          "measured": "len=160",
+          "verdict": "CONFIRMED"
+        },
+        {
+          "claim_fragment": "8 interval cells present",
+          "frozen_path": "results.interval_summary",
+          "measured": "8 keys",
+          "verdict": "CONFIRMED"
+        },
+        {
+          "claim_fragment": "each record status AVAILABLE",
+          "frozen_path": "results.interval_records[*].status",
+          "measured": "all AVAILABLE",
+          "verdict": "CONFIRMED"
+        },
+        {
+          "claim_fragment": "80 available bootstrap replicates per record",
+          "frozen_path": "results.interval_records[*].completed_replicates",
+          "measured": "all 80",
+          "verdict": "CONFIRMED"
+        },
+        {
+          "claim_fragment": "20 simulated panels per cell",
+          "frozen_path": "results.interval_summary[*].distinct_panels / declared_panel_records",
+          "measured": "all 20",
+          "verdict": "CONFIRMED"
+        },
+        {
+          "claim_fragment": "horizon 4",
+          "frozen_path": "results.interval_records[*].horizon",
+          "measured": "all [4]",
+          "verdict": "CONFIRMED"
+        },
+        {
+          "claim_fragment": "does not support other horizons",
+          "frozen_path": "results.interval_records[*].horizon",
+          "measured": "horizons observed = [4]",
+          "verdict": "CONFIRMED (no h!=4 present)"
+        },
+        {
+          "claim_fragment": "simulation_only ceiling",
+          "frozen_path": "authoritative audit evaluation_type",
+          "measured": "simulation_only",
+          "verdict": "CONFIRMED"
+        }
+      ]
+    }
+  },
+  "out_of_scope": {
+    "E4-R006": "STRUCTURALLY_FORECLOSED_ON_R3_BYTES — predeclared paired panel-level log error ratio and cell-level confidence interval are not serialized. No post-outcome metric substitution permitted by the prior audit. This review does not touch E4-R006.",
+    "RCEP_NYC": "All empirical RCEP/NYC artifacts remain under P3 quarantine; not addressed here."
+  },
+  "independence_disclosure": "This review was produced by the same party that synthesized the M5 patch and the P2 authorization drafts. It is a result-to-claim mapping over frozen bytes, NOT an independent external reviewer's receipt, and NOT a claim activation. Activation remains a separate author decision gated by the r3 audit's status invariants (PAPER_CLAIM_AUDIT BLOCKED, EMPIRICAL_IMPLEMENTATION_AUDIT FAIL).",
+  "verdict": {
+    "E4-R007_result_to_claim": "QUALIFIED_SUPPORTED",
+    "qualifier": "WARN-inherited terminal-status label mismatch (manifest RUNNING vs complete COMPLETE) is disclosed but does not affect data availability. All 160 records AVAILABLE, all coverage 1.0, all 80/80 bootstrap, 8 cells x 20 panels. Ceiling retained: simulation_only, h4, 20 panels/cell.",
+    "claim_activation": "NOT_ACTIVATED_BY_THIS_RECORD"
+  },
+  "fail_closed_notes": [
+    "No make target, test, or scientific entry was run.",
+    "No manuscript_src, formal register, generated TeX, or frozen record was modified.",
+    "git operations: 0.",
+    "P0 does not block this review: all consumed r3 bytes are materialized and readable."
+  ]
+}

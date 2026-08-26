@@ -1,0 +1,12 @@
+{
+  "schema_version": "e3-family2-proof-blind-review-v1",
+  "audit_skill": "proof-checker",
+  "verdict": "PASS",
+  "proof_packet_sha256": "72f3ae670ea82b89e513c48f06c15d0019ea9792d8b3472df43c6a1c6cdc1efd",
+  "reviewer_model": "gpt-5.6-terra",
+  "reviewer_reasoning": "xhigh",
+  "review_mode": "fresh_blind_read_only",
+  "scientific_execution": "NOT_AUTHORIZED",
+  "open_findings": [],
+  "generated_at": "2026-07-22T14:31:11Z"
+}

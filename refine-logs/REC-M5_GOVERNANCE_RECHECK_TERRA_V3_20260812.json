@@ -1,0 +1,149 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-governance-recheck-terra-v3",
+  "record_id": "REC-M5-governance-recheck-terra-v3-20260812",
+  "generated_at": "2026-08-12",
+  "phase": "M5-C",
+  "task_mode": "REVIEW_ONLY_RECORD_ONLY",
+  "verdict": "BLOCKED",
+  "result": "BLOCKED_V10_INPUT_NOT_MATERIALIZED",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "max",
+  "review_role": "governance-manifest",
+  "execution_constraints": {
+    "delegation": "NONE",
+    "cli": "PROHIBITED",
+    "qwen": "PROHIBITED",
+    "external_payload": "PROHIBITED"
+  },
+  "v10_target": {
+    "markdown": {
+      "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V10_20260812.md",
+      "present": false,
+      "sha256": null
+    },
+    "json": {
+      "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V10_20260812.json",
+      "present": false,
+      "sha256": null
+    },
+    "hash_chain_verifiable": false,
+    "semantic_payload_materialized": false,
+    "failure_policy": "MISSING_INPUT_OR_UNVERIFIABLE_RESULT_IS_NOT_PASS"
+  },
+  "terra_receipts": [
+    {
+      "role": "scientific-boundary",
+      "path": "refine-logs/REC-M5_SCIENTIFIC_RECHECK_TERRA_V1_20260812.md",
+      "sha256": "778833e44c849a48ddb4d2bb178f258365c372e053193dbb4b660cacf89f1e54",
+      "verdict": "BLOCKED"
+    },
+    {
+      "role": "scientific-boundary",
+      "path": "refine-logs/REC-M5_SCIENTIFIC_RECHECK_TERRA_V1_20260812.json",
+      "sha256": "5dda9ea9b4385215a745e032fe9c7223b4d6670b08c3e70508a355d62e97cf1c",
+      "verdict": "BLOCKED"
+    },
+    {
+      "role": "editorial-traceability",
+      "path": "refine-logs/REC-M5_EDITORIAL_RECHECK_TERRA_V1_20260812.md",
+      "sha256": "ec9a52eb9993a883b627298e90717116ebb67df77407823a9819af1c00c53c72",
+      "verdict": "BLOCKED"
+    },
+    {
+      "role": "editorial-traceability",
+      "path": "refine-logs/REC-M5_EDITORIAL_RECHECK_TERRA_V1_20260812.json",
+      "sha256": "9e22d031fdc34a9296c900781030481017e97649b69e57c356d13f0f6acbbd09",
+      "verdict": "BLOCKED"
+    },
+    {
+      "role": "governance-manifest",
+      "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_TERRA_V1_20260812.md",
+      "sha256": "d2a05cc123b8f0c6f3a74f3007fbb612a5fe35c9c329f59ec6df197139776488",
+      "verdict": "BLOCKED"
+    },
+    {
+      "role": "governance-manifest",
+      "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_TERRA_V1_20260812.json",
+      "sha256": "720eea9aa3f628fd94e4287fc1ccda0ba9182eb33c22d13e3f5946a59fceea7e",
+      "verdict": "BLOCKED"
+    }
+  ],
+  "current_core_inputs": [
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "sha256": "b95a09609cf45477bbdf9eac78be84021a4c177b5d4028228ed804fa22ba5891"
+    },
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "sha256": "8c0546a7011a82042661f3423ca68a4dbab19044261a4280037fd996279124de"
+    },
+    {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341"
+    },
+    {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "sha256": "c7664285eff125335e75c1f13f51b20d38a4b8a368c87db11079386f9e7c56f5"
+    }
+  ],
+  "checks": {
+    "package_readiness": "ready_for_independent_review",
+    "paragraph_units": {
+      "expected": 26,
+      "actual": 26,
+      "unique": 26,
+      "partition": {
+        "V1-026": 3,
+        "V1-033": 13,
+        "V1-045": 10
+      }
+    },
+    "g06": {
+      "disposition": "CANDIDATE_NOT_APPLIED",
+      "label": "AUTHOR_CONFIRMED_REVIEW_ONLY"
+    },
+    "g07": {
+      "disposition": "CANDIDATE_NOT_APPLIED",
+      "label": "AUTHOR_CONFIRMED_REVIEW_ONLY"
+    },
+    "placeholder_author_input": {
+      "placeholder_scan": "PASS_NO_DOUBLE_BRACE_TOKENS",
+      "author_input_needed": [],
+      "application_state": "NOT_APPLIED"
+    },
+    "deterministic_corroboration": {
+      "current_core_harness": "85/85 PASS",
+      "m4_allowlisted_validator": "247/247 PASS",
+      "interpretation": "DETERMINISTIC_ONLY_NOT_SEMANTIC_ACCEPTANCE",
+      "may_substitute_for_terra_pass": false
+    },
+    "authorization_boundary": {
+      "manuscript_source_mutation": "NOT_AUTHORIZED",
+      "formal_register_mutation": "NOT_AUTHORIZED",
+      "scientific_payload_mutation": "PROHIBITED",
+      "authorization_file_mutation": "PROHIBITED",
+      "generated_tex_mutation": "PROHIBITED",
+      "claim_activation": "NOT_AUTHORIZED",
+      "git_operations": "NONE"
+    }
+  },
+  "promotion_boundary": {
+    "m5_d": "NOT_PERMITTED",
+    "m5_f": "NOT_PERMITTED",
+    "required_next_condition": "Materialized current V10 artifact and verifiable Terra/max semantic result plus separate explicit authorizations"
+  },
+  "prohibited_path_policy": {
+    "e4_main_or_duplicate_final_paths_read": false,
+    "policy": "No previously prohibited E4 main or duplicate-final path was read."
+  },
+  "changed_paths": [
+    "refine-logs/REC-M5_GOVERNANCE_RECHECK_TERRA_V3_20260812.md",
+    "refine-logs/REC-M5_GOVERNANCE_RECHECK_TERRA_V3_20260812.json"
+  ],
+  "changed_paths_only": true,
+  "residual_risk": [
+    "The current V10 target was not materialized, so its hash chain cannot be verified.",
+    "No direct Terra/max semantic payload is auditable; BLOCKED cannot be promoted to PASS.",
+    "M5-D and M5-F remain closed pending later materialized semantic acceptance and separate authorization."
+  ]
+}

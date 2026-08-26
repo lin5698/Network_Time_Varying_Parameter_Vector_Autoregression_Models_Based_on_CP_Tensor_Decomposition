@@ -1,0 +1,265 @@
+{
+  "analysis_version": "cal-e01-75-independent-audit-v1",
+  "artifact_type": "independent_derived_read_only_audit",
+  "binding_checks": [
+    {
+      "details": "authorization schema is directly bound to v2",
+      "name": "authorization_schema_v2",
+      "status": "PASS"
+    },
+    {
+      "details": "exact current register item payload is hash-bound",
+      "name": "canonical_item_payload",
+      "status": "PASS"
+    },
+    {
+      "details": "results, manifest, completion, inventory, candidate, and workspace authorization are chained",
+      "name": "e4_input_chain",
+      "status": "PASS"
+    },
+    {
+      "details": "expected=c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2; observed=c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "name": "register_hash",
+      "status": "PASS"
+    },
+    {
+      "details": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+      "name": "frozen_result_hash",
+      "status": "PASS"
+    },
+    {
+      "details": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+      "name": "frozen_manifest_hash",
+      "status": "PASS"
+    },
+    {
+      "details": "CAL-E01:75 requested_action=NEW_ANALYSIS",
+      "name": "explicit_authorization",
+      "status": "PASS"
+    },
+    {
+      "details": "result_status=COMPLETE_QUARANTINE_ONLY; result_promotion=PROHIBITED_PENDING_DUPLICATE_AND_RESULT_TO_CLAIM_AUDIT; manifest_promotion=PROHIBITED",
+      "name": "quarantine_and_promotion_boundary",
+      "status": "PASS"
+    },
+    {
+      "details": "['RCEP', 'NYC', 'R006e', 'R006f']",
+      "name": "excluded_routes",
+      "status": "PASS"
+    },
+    {
+      "details": "manifest_status=RUNNING_QUARANTINE_ONLY; completion_marker_status=COMPLETE_QUARANTINE_ONLY",
+      "name": "execution_manifest_terminal_status",
+      "status": "WARN"
+    }
+  ],
+  "checks": [
+    {
+      "details": "registry methods=('causal_temporal_smoother', 'fixed_rank_basis', 'local_structured'); recovery methods=('causal_temporal_smoother', 'fixed_rank_basis', 'local_structured')",
+      "name": "comparator_registry_complete",
+      "status": "PASS"
+    },
+    {
+      "details": "method_cell_complete=True; endpoint_parity_complete=True",
+      "name": "same_endpoint_and_cell_coverage",
+      "status": "PASS"
+    },
+    {
+      "details": "expected seeds=20; target dates=48",
+      "name": "seed_and_replication_coverage",
+      "status": "PASS"
+    },
+    {
+      "details": "all declared status bins are retained in the frozen summaries and failure schema",
+      "name": "failure_status_retention",
+      "status": "PASS"
+    },
+    {
+      "details": "paired cells=32; all stored arrays independently matched=True",
+      "name": "raw_paired_difference_reconstruction",
+      "status": "PASS"
+    },
+    {
+      "details": "artifact builder is restricted to raw comparator, paired-difference, and status inventory fields",
+      "name": "m2_raw_payload_boundary",
+      "status": "PASS"
+    }
+  ],
+  "claim_activation": "BLOCKED",
+  "coverage": {
+    "expected_interval_cells": 8,
+    "expected_interval_records": 160,
+    "expected_paired_cells": 32,
+    "expected_recovery_records": 46080,
+    "expected_recovery_summary_cells": 48,
+    "families": [
+      "family1",
+      "family2"
+    ],
+    "horizons": [
+      4,
+      12
+    ],
+    "interval_cells": 8,
+    "interval_records": 160,
+    "methods": [
+      "local_structured",
+      "causal_temporal_smoother",
+      "fixed_rank_basis"
+    ],
+    "paired_cells": 32,
+    "queries": [
+      "in_family_interpolation",
+      "cross_generator"
+    ],
+    "recovery_records": 46080,
+    "recovery_summary_cells": 48,
+    "scales": [
+      20,
+      50
+    ],
+    "seeds": [
+      4101,
+      4102,
+      4103,
+      4104,
+      4105,
+      4106,
+      4107,
+      4108,
+      4109,
+      4110,
+      4111,
+      4112,
+      4113,
+      4114,
+      4115,
+      4116,
+      4117,
+      4118,
+      4119,
+      4120
+    ],
+    "target_times": [
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143
+    ]
+  },
+  "failure_unstable_nonfinite_records_retained": true,
+  "frozen_derived_payloads_present": false,
+  "frozen_result_mutated": false,
+  "input_sha256": {
+    "authorization": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+    "candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "comparator_registry": "4eb3905ecad9115abaf89e8e5cae65c19dde10e83e0a466e5070a384cbad758b",
+    "e4_audit": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5",
+    "execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+    "failure_metric_schema": "8557beef5369783bf0dba773c44aac11ef9a39a029c283ede72561f6bce8e2c2",
+    "manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "plan": "29618783ccb17773e88d737bebfed466d5a0bb57fffc1f55261c0e5a6fdf0292",
+    "register": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+    "workspace_authorization": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+  },
+  "register_key": "CAL-E01:75",
+  "serialized_predeclared_cell_ci": false,
+  "serialized_predeclared_log_ratio": false,
+  "status_inventory": {
+    "bootstrap_replicates": {
+      "AVAILABLE": 12800,
+      "NONCONVERGED": 0,
+      "NONFINITE": 0,
+      "OUTSIDE_TARGET": 0,
+      "UNSTABLE": 0
+    },
+    "failure_bins_present_in_summaries": true,
+    "interval_records": {
+      "AVAILABLE": 160,
+      "NONCONVERGED": 0,
+      "NONFINITE": 0,
+      "OUTSIDE_TARGET": 0,
+      "UNSTABLE": 0
+    },
+    "paired_candidate_records": {
+      "AVAILABLE": 30720,
+      "NONCONVERGED": 0,
+      "NONFINITE": 0,
+      "OUTSIDE_TARGET": 0,
+      "UNSTABLE": 0
+    },
+    "paired_comparator_records": {
+      "AVAILABLE": 30720,
+      "NONCONVERGED": 0,
+      "NONFINITE": 0,
+      "OUTSIDE_TARGET": 0,
+      "UNSTABLE": 0
+    },
+    "recovery_records": {
+      "AVAILABLE": 46080,
+      "NONCONVERGED": 0,
+      "NONFINITE": 0,
+      "OUTSIDE_TARGET": 0,
+      "UNSTABLE": 0
+    },
+    "retained_failure_records": {
+      "NONCONVERGED": 0,
+      "NONFINITE": 0,
+      "OUTSIDE_TARGET": 0,
+      "UNSTABLE": 0
+    }
+  },
+  "unsupported_boundaries": [
+    "the frozen result contains no serialized panel-level log-error-ratio summary",
+    "the frozen result contains no serialized cell-level CI for that metric",
+    "the exact predeclared CI construction and confidence level are not serialized",
+    "simulation_only evidence does not support empirical or universal claims"
+  ],
+  "verdict": "PASS"
+}

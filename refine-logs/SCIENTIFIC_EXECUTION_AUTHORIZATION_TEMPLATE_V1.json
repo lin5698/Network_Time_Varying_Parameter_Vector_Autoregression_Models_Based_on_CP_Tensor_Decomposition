@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "decision_id": "UNSET",
+  "decision": "NOT_AUTHORIZED",
+  "scientific_execution_authorized": false,
+  "authorized_by": "UNSET",
+  "authorized_at": "UNSET",
+  "action": "run_cp_empirical_pipeline",
+  "dataset": "UNSET",
+  "argv": {
+    "window": null,
+    "p": null,
+    "n_boot": null,
+    "block_size": null,
+    "cp_inits": null,
+    "cp_max_iter": null,
+    "cp_tol": null
+  },
+  "implementation_files": {
+    "scripts/run_cp_empirical_pipeline.py": "UNSET_AFTER_CODE_FREEZE",
+    "scripts/natcs_design_contract.py": "UNSET_AFTER_CODE_FREEZE"
+  },
+  "input_identity": {
+    "rcep_helper_repo": null,
+    "rcep_helper_manifest_sha256": null,
+    "rcep_input_files": {},
+    "nyc_dataset_dir": null,
+    "nyc_upstream_commit": null
+  },
+  "output_root": "UNSET",
+  "overwrite": "deny",
+  "r006e_outcome_authorized": false,
+  "r006f_outcome_authorized": false,
+  "downstream_builds_authorized": false,
+  "post_run_controls": {
+    "quarantine_outputs": true,
+    "freeze_inventory_sha256_before_value_review": true,
+    "independent_claim_audit_required": true,
+    "manuscript_promotion_authorized": false
+  }
+}

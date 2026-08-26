@@ -1,5 +1,27 @@
-# NCS Coauthor Action Request (Disabled)
+# NCS Coauthor Action Request
 
-Status, 2026-07-23: this is not a request to prepare or upload a Nature Computational Science submission. The current manuscript is source-only because `PAPER_CLAIM_AUDIT=BLOCKED` and `EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL`.
+Status, 2026-08-26: this request supersedes the earlier disabled note. Both independent audits returned `PASS` (reason-code family `rcep_nyc_value_audited_*`), which opens a narrow, bounded action list. Upload remains gated on the open confirmations below.
 
-The only current coauthor-facing decision is whether future work should seek the evidence required by `ncs_e3_manuscript_activation_map.md`. No one should confirm data release, code release, figure readiness, portal language, empirical interpretation or submission timing from the historic support materials.
+## What Is Settled By Governed Records
+
+- Controlled-benchmark results stand as the only active empirical numbers: effective-operator error reductions of 93.6% and 96.8% (N=15, N=30) and finite-horizon unit-shock response error reductions of 82.5% and 87.3% (N=15, N=30).
+- The title stands at "Query-certified operator learning for topology-indexed responses".
+- RCEP and NYC section drafts remain inactive audit-boundary drafts with template placeholders; quarantined values stay outside active text.
+- RC-1 (manuscript promotion) was recorded `NOT_GRANTED`.
+- RC-2 (claim activation) stays gated by `OPEN_CHARACTERIZATION_FLAGS_BLOCKING_ACTIVATION_NOT_BUILD`, carrying the RCEP F1/F2/F3 characterization flags plus the NYC characterization flags; the gate is evidential, with no build-side defect cited.
+
+## Positioning Commitment For Coauthor Edits
+
+Edits to shared text preserve the representation-level framing: query preservation for topology-substitution response queries anchors the contribution in the fitted object, with CP named as the implementation layer. A proposal that weakens this framing goes back for revision before it reaches any formal file.
+
+## Actions Requested
+
+| # | Action | Suggested owner | Status |
+| --- | --- | --- | --- |
+| A-1 | Confirm or correct the conservative raw-source access defaults block by block in `raw_source_access_decision_worksheet.md`. | Data-owning coauthors | OPEN — pending author confirmation |
+| A-2 | Schedule the Fig. 2 journal portal preview and archive the dated observation in `ncs_fig2_portal_preview_checklist.md`. | Submitting author | OPEN — pending author confirmation |
+| A-3 | Select the repository route, licence and access terms for acceptance-stage public release in `public_release_readiness_worksheet.md`. | Corresponding author | OPEN — pending author confirmation |
+| A-4 | Review the settled list above and raise any discrepancy with the corresponding author before the next freeze. | All coauthors | OPEN — pending author confirmation |
+| A-5 | Route any post-freeze evidence through the Post-Confirmation Update Checklist in `natcs_final_author_decision_sheet.md`, followed by a full rebuild and a final-gate rerun. | All coauthors | Standing rule |
+
+Drafted 2026-08-26 under author backlog authorization (item A); assistant-drafted from governed records; open items await author confirmation.

@@ -1,0 +1,108 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-governance-recheck-v5",
+  "record_id": "REC-M5-governance-recheck-v5-20260812",
+  "generated_at": "2026-08-12",
+  "phase": "M5-C",
+  "result": "CURRENT_PATCH_DETERMINISTIC_PASS_SOURCE_02_03_AUTHOR_DECISION_BLOCKED",
+  "acceptance_class": "GOVERNANCE_ARTIFACT_INTEGRITY_AND_CONFIRMED_AUTHOR_BINDINGS_ONLY",
+  "current_artifacts": {
+    "review_patch_markdown": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "sha256": "a8d481b2cf4b333893926ef8ccd42428f12f33683ec30bb9e66db20120342976"
+    },
+    "review_patch_manifest": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "sha256": "fd6826f2b9b635512f909b9bc1e506c05edee8f10e0c37b54a7a490139673634"
+    },
+    "author_input_request": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "sha256": "9f8f106e26dd66f0647352135bb9f3546696ea9de3476544c653cd030859e4c6"
+    },
+    "author_input_worksheet": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "sha256": "1ea3659c25877470a0ec6d940aa38fd5d54a10139bdb4d7214f98a625e0cb16e"
+    },
+    "result_binding": {
+      "path": "refine-logs/REC-M5_RESULT_CANDIDATE_EXTRACTION_V1_20260812.json",
+      "sha256": "48853866e02588d5833699b53ecd42843936cc3ec9d5a4d96faa587b4ed06f84"
+    },
+    "als_topology_binding": {
+      "path": "refine-logs/REC-M5_ALS_TOPOLOGY_CANDIDATE_EXTRACTION_V1_20260812.json",
+      "sha256": "778367b26bb2d770a5f4125144585731ac8b6a8106fdb3bc2f9a392655b45031"
+    }
+  },
+  "checks": {
+    "current_version_deterministic_harness": "84/84 PASS",
+    "patch_json_and_output_hash": "2/2 PASS",
+    "declared_input_hashes": "11/11 PASS",
+    "evidence_bundle_hashes": "16/16 PASS",
+    "protected_baseline_hashes": "12/12 PASS",
+    "pre_apply_anchor_hashes": "18/18 PASS",
+    "unit_coverage": "26/26 PASS; unique=26; all edit-group references valid",
+    "crosswalk_and_traceability_shape": "3/3 PASS",
+    "placeholder_gate": "PASS; zero double-brace tokens",
+    "author_request_source_references": "3/3 PASS",
+    "submitted_author_evidence_hashes": "7/7 PASS",
+    "topology_replication_coverage": "4/4 PASS",
+    "g04_numeric_recomputation": "4/4 PASS at absolute tolerance 1e-12",
+    "m4_allowlisted_validator": "247/247 PASS"
+  },
+  "confirmed_author_input": {
+    "resolved_groups": [
+      "AIN-RESULT",
+      "AIN-ALS",
+      "AIN-TOPOLOGY",
+      "AIN-SOURCE-01",
+      "AIN-SOURCE-04"
+    ],
+    "unresolved_fields": [
+      "AIN-SOURCE-02",
+      "AIN-SOURCE-03"
+    ],
+    "claim_activation": "NOT_AUTHORIZED"
+  },
+  "source_ownership_audit": {
+    "scope": "Canonical manuscript Markdown under manuscript_src/natcs plus manuscript_src/natcs/controlled_benchmark_contract.json",
+    "ain_source_02": {
+      "query": "spectral-radius wording",
+      "result": "NO_CANONICAL_SOURCE_MATCH_IDENTIFIED",
+      "recommended_author_decision": "MARK_UNAVAILABLE_UNLESS_AUTHOR_SUPPLIES_A_CANONICAL_PATH"
+    },
+    "ain_source_03": {
+      "query": "50% top-exposure attenuation wording",
+      "result": "NO_CANONICAL_SOURCE_MATCH_IDENTIFIED",
+      "near_match": "manuscript_src/natcs/supp_note3_propagation.md contains generic signed-attenuation language but no 50% top-exposure binding",
+      "recommended_author_decision": "MARK_UNAVAILABLE_UNLESS_AUTHOR_SUPPLIES_A_CANONICAL_PATH"
+    },
+    "generated_tex_policy": "Generated TeX is not accepted as a canonical ownership source"
+  },
+  "remaining_blockers": [
+    "AIN-SOURCE-02 requires an explicit author decision or a canonical source path.",
+    "AIN-SOURCE-03 requires an explicit author decision or a canonical source path.",
+    "A fresh GPT-5.6-Luna/max scientific and editorial semantic recheck is required after the final source decisions are bound.",
+    "M5-D manuscript mutation requires separate explicit authorization after all preceding gates pass.",
+    "M5-F formal-register mutation requires separate explicit authorization."
+  ],
+  "supersession": {
+    "REC-M5_GOVERNANCE_RECHECK_V2_20260812": "HISTORICAL_OLD_PATCH",
+    "REC-M5_GOVERNANCE_RECHECK_V3_20260812": "HISTORICAL_PRE_AIN_RESULT_CONFIRMATION",
+    "REC-M5_GOVERNANCE_RECHECK_V4_20260812": "HISTORICAL_PRE_ALS_TOPOLOGY_CONFIRMATION",
+    "this_receipt": "CURRENT_DETERMINISTIC_GOVERNANCE_RECEIPT"
+  },
+  "authorization_boundary": {
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_payload_mutation": "PROHIBITED",
+    "execution_authorization_mutation": "PROHIBITED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  },
+  "operation_policy": {
+    "record_only": true,
+    "manuscript_modified": false,
+    "formal_register_modified": false,
+    "scientific_payload_modified": false,
+    "authorization_modified": false,
+    "git_operations": "NONE"
+  }
+}

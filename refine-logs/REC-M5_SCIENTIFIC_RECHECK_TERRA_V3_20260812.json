@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.0",
+  "record_id": "REC-M5-scientific-recheck-terra-v3-20260812",
+  "generated_at": "2026-08-12T14:38:14+0800",
+  "phase": "M5-C",
+  "task_mode": "REVIEW_ONLY_RECORD_ONLY",
+  "reviewer": {
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "max",
+    "direct_self_adjudication": true,
+    "delegation": "NOT_USED",
+    "cli_model_calls": "NOT_USED",
+    "external_payloads": "NOT_USED"
+  },
+  "overall_disposition": "PASS",
+  "status_summary": {
+    "scientific_semantic_content": "PASS",
+    "patch_application": "BLOCKED",
+    "claim_activation": "BLOCKED",
+    "scientific_semantic_failures": []
+  },
+  "input_hashes": {
+    "review_patch_markdown": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "sha256": "b95a09609cf45477bbdf9eac78be84021a4c177b5d4028228ed804fa22ba5891",
+      "status": "PASS"
+    },
+    "review_patch_json": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "sha256": "8c0546a7011a82042661f3423ca68a4dbab19044261a4280037fd996279124de",
+      "status": "PASS"
+    },
+    "author_input_markdown": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341",
+      "status": "PASS"
+    },
+    "author_input_json": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "sha256": "c7664285eff125335e75c1f13f51b20d38a4b8a368c87db11079386f9e7c56f5",
+      "status": "PASS"
+    }
+  },
+  "bounded_evidence": {
+    "benchmark_script": {
+      "path": "scripts/natcs_benchmarks.mjs",
+      "sha256": "9cfe55a771f7434617bf67bbc78c22aadcd74fd528b4ea5d8b7762e0ad2b4633"
+    },
+    "benchmark_summary": {
+      "path": "output/natcs_benchmarks/benchmark_summary.csv",
+      "sha256": "c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1"
+    }
+  },
+  "checks": [
+    {
+      "id": "G04_PERCENTAGES_AND_STATISTIC",
+      "status": "PASS",
+      "finding": "The four primary-scale values recompute from benchmark_summary.csv as 93.55203369881073%, 96.76394154622214%, 82.54278845800611%, and 87.32161861932515%, which match the patch displays 93.6%, 96.8%, 82.5%, and 87.3% after one-decimal rounding.",
+      "formula": "100 * (local_network_metric_median - cp_network_metric_median) / local_network_metric_median",
+      "statistic": "ratio of across-replication medians",
+      "endpoint_fields": {
+        "operator": "coef_error_median",
+        "response": "girf_error_median"
+      },
+      "comparator": "local_network / Local rolling",
+      "candidate": "cp_network / CP-network",
+      "primary_replications": {
+        "scale_n15": {
+          "local_network": 20,
+          "cp_network": 20
+        },
+        "scale_n30": {
+          "local_network": 20,
+          "cp_network": 20
+        }
+      },
+      "claim_boundary": "Synthetic, declared-endpoint, declared-comparator, replicated N=15/N=30 evidence only."
+    },
+    {
+      "id": "G06_ALS_SEMANTICS",
+      "status": "PASS",
+      "finding": "The implementation defaults cpAls to 60 iterations and executes all loop iterations on normal completion. It does not compute or test an objective or residual, does not define a stopping tolerance or early-stop predicate, and uses 1e-6 only as Gram-system regularization. Exceptions are caught by the caller and recorded as reconstruction failures.",
+      "source_locator": "scripts/natcs_benchmarks.mjs:292-317,957-985",
+      "supported_semantics": {
+        "iterations": "fixed_count_60_on_normal_completion",
+        "monitored_quantity": null,
+        "stopping_tolerance": null,
+        "early_stop_predicate": null,
+        "gram_regularization": "1e-6"
+      },
+      "prohibited_interpretations": [
+        "convergence",
+        "convergence rate",
+        "global optimality",
+        "solver comparability beyond the declared implementation"
+      ]
+    },
+    {
+      "id": "G07_TOPOLOGY_BINDINGS",
+      "status": "PASS",
+      "finding": "The four candidate scenario bindings agree with SCENARIOS and the generation/observation transformations in the benchmark implementation.",
+      "scenarios": [
+        {
+          "id": "high_topology_vol",
+          "settings": {
+            "topologyVol": 0.18,
+            "sparsity": 0.15,
+            "wNoise": 0.0,
+            "wDrop": 0.0
+          },
+          "role": "truth.W generation",
+          "summary_coverage": "local_network=3; each other released method=20"
+        },
+        {
+          "id": "sparse_misspecified",
+          "settings": {
+            "topologyVol": 0.08,
+            "sparsity": 0.55,
+            "wNoise": 0.18,
+            "wDrop": 0.0
+          },
+          "role": "truth.W generation and WEst observation",
+          "summary_coverage": "each released method=3"
+        },
+        {
+          "id": "edge_missing",
+          "settings": {
+            "topologyVol": 0.06,
+            "sparsity": 0.15,
+            "wNoise": 0.0,
+            "wDrop": 0.3
+          },
+          "role": "WEst observation; missing nonzero off-diagonal edges",
+          "summary_coverage": "local_network=3; each other released method=20"
+        },
+        {
+          "id": "noisy_network",
+          "settings": {
+            "topologyVol": 0.06,
+            "sparsity": 0.15,
+            "wNoise": 0.35,
+            "wDrop": 0.0
+          },
+          "role": "WEst observation; noisy observed weights",
+          "summary_coverage": "local_network=3; each other released method=20"
+        }
+      ],
+      "coverage_interpretation": "Asymmetric coverage supports bounded diagnostics only and does not support a matched ranking or general topology-robustness claim."
+    },
+    {
+      "id": "CLAIM_CEILING",
+      "status": "PASS",
+      "finding": "The review patch explicitly confines reported error reductions to the declared synthetic DGP, endpoints, comparator, and primary replicated rows. It excludes independent empirical validation, fairness, broad/general superiority, native held-out recovery, cross-family generality, convergence, and global-optimality claims.",
+      "no_unsupported_claims_found": [
+        "empirical superiority",
+        "general superiority",
+        "convergence",
+        "global optimality",
+        "matched topology ranking",
+        "general topology robustness"
+      ]
+    },
+    {
+      "id": "AUTHORIZATION_SEPARATION",
+      "status": "BLOCKED",
+      "finding": "A scientific-semantic PASS for this review-only candidate patch does not authorize source application, scientific-payload change, claim activation, formal-register change, generated-TeX change, or Git operations."
+    }
+  ],
+  "findings": {
+    "pass": [
+      "All four supplied M5 input hashes match exactly.",
+      "G04 figures, formula, endpoint fields, comparator, and replication counts are source-bound.",
+      "G06 wording correctly reports implementation semantics and abstains from convergence/global-optimality claims.",
+      "G07 wording correctly binds the retained topology settings and preserves the asymmetric-coverage non-ranking limit.",
+      "The patch preserves the synthetic and endpoint-specific claim ceiling."
+    ],
+    "blocked": [
+      "Topology stress rows cannot support matched ranking or general topology-robustness claims.",
+      "No claim activation or artifact application is authorized by this record."
+    ],
+    "fail": []
+  },
+  "authorization_boundary": {
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_payload_mutation": "PROHIBITED",
+    "authorization_file_mutation": "PROHIBITED",
+    "generated_tex_mutation": "PROHIBITED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  },
+  "changed_paths": [
+    "refine-logs/REC-M5_SCIENTIFIC_RECHECK_TERRA_V3_20260812.md",
+    "refine-logs/REC-M5_SCIENTIFIC_RECHECK_TERRA_V3_20260812.json"
+  ]
+}

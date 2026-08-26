@@ -1,0 +1,388 @@
+{
+  "schema_version": "rec-m3-v1-026-claim-ledger-v2",
+  "generated_at": "2026-08-11T20:49:01+08:00",
+  "task": {
+    "id": "REC-M3",
+    "item_id": "V1-026",
+    "register_key": "CAL-E01:75",
+    "item_index": 75,
+    "mode": "read_only_text_contract_audit"
+  },
+  "delegation": {
+    "model": "gpt-5.6-luna",
+    "effort": "max",
+    "split": [
+      "local_structured",
+      "causal_temporal_smoother",
+      "fixed_rank_basis"
+    ],
+    "status": "workers_timed_out_and_closed; parent_used_frozen_evidence"
+  },
+  "register": {
+    "path": "output/ncs_review_corpus/v1_author_decision_register.json",
+    "key_path": "#/items/25",
+    "priority": "P0",
+    "action_class": "DIRECT_TEXT_REVISION",
+    "current_response": "PARTIAL",
+    "minimum_action": "Expose comparator roles, endpoint availability, replication coverage, failure/non-finite handling, outside-target marks, and bounded claims.",
+    "stop_condition": "No unavailable or unrun item is represented as zero error or missing data."
+  },
+  "evidence_boundary": {
+    "primary_artifact": "cal-e01-75-raw-audit",
+    "m2c_verdict": "PASS",
+    "scientific_execution": "NOT_RUN",
+    "claim_activation": "BLOCKED",
+    "claim_policy": "descriptive_audit_only",
+    "raw_scope": [
+      "raw_comparator",
+      "raw_paired_differences",
+      "status_inventory"
+    ],
+    "status_policy": "retain and count; never impute",
+    "ceiling": "May support role, endpoint/interface, coverage, retained status bins, and common-completion integrity only; may not support a new CI, superiority/equivalence/ranking claim, native-held-out/general performance claim, or activation/promotion."
+  },
+  "sources": {
+    "register": {
+      "path": "output/ncs_review_corpus/v1_author_decision_register.json",
+      "key": "#/items/25"
+    },
+    "manuscript": [
+      {
+        "path": "manuscript_src/natcs/methods_estimator.md",
+        "locations": [
+          5
+        ]
+      },
+      {
+        "path": "manuscript_src/natcs/results_validation.md",
+        "locations": [
+          3,
+          5,
+          7
+        ]
+      },
+      {
+        "path": "manuscript_src/natcs/supp_note4_benchmarks.md",
+        "locations": [
+          3,
+          13,
+          28
+        ]
+      },
+      {
+        "path": "manuscript_src/natcs/methods_data.md",
+        "locations": [
+          9,
+          11
+        ]
+      }
+    ],
+    "active_contract": {
+      "path": "manuscript_src/natcs/controlled_benchmark_contract.json",
+      "keys": [
+        "#/aggregation_contract/failure_handling",
+        "#/endpoint_availability/unavailable_sentinel",
+        "#/endpoint_availability/method_to_endpoint_ids",
+        "#/primary_scenarios",
+        "#/bounded_scale_stress/replication_coverage_by_method"
+      ]
+    },
+    "e01_contracts": [
+      {
+        "path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/comparator_registry.json",
+        "keys": [
+          "#/content/records",
+          "#/content/required_interface",
+          "#/content/ineligible_forms"
+        ]
+      },
+      {
+        "path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/failure_metric_schema.json",
+        "keys": [
+          "#/content/common_completion_rule",
+          "#/content/failure_retention",
+          "#/content/statuses"
+        ]
+      },
+      {
+        "path": "refine-logs/NCS_E3_FAMILY2_CANDIDATE_CONTRACT.md",
+        "keys": [
+          "#Same-Endpoint-Comparator-Contract",
+          "#Stop-Conditions"
+        ]
+      }
+    ],
+    "m2c": {
+      "coverage": {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_COVERAGE_V1_20260811_010147.json",
+        "key": "#/analyzer_coverage/CAL-E01:75"
+      },
+      "primary_root": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133",
+      "artifacts": [
+        "artifact-manifest.json",
+        "comparator-ledger.json",
+        "status-inventory.json",
+        "paired-differences.json"
+      ]
+    }
+  },
+  "comparator_audit": [
+    {
+      "id": "local_structured",
+      "role": "native_local_structured",
+      "parameterization": {
+        "windows": [
+          8,
+          12,
+          16
+        ]
+      },
+      "endpoint": "full_operator_and_finite_horizon_response via fit(...)->evaluate(fitted_state, W_q, H_max)->{G_1:p,R_1:H_max,status}",
+      "coverage": "16 cells = family1|family2 x N=20|N=50 x in_family_interpolation|cross_generator x H4|H12; 20 seeds x 48 target dates = 960 records/cell; 15,360 records/method",
+      "status": {
+        "AVAILABLE": 15360,
+        "NONCONVERGED": 0,
+        "NONFINITE": 0,
+        "OUTSIDE_TARGET": 0,
+        "UNSTABLE": 0
+      },
+      "matched_target": "Pair only identical family, N, query_class, horizon, seed, and target_time common-completion keys; not the active N=15/N=30 CP/Tucker/local comparison.",
+      "artifact_keys": [
+        "comparator_registry.json#/content/records",
+        "comparator-ledger.json#/method_cell_audits",
+        "paired-differences.json#/pairs",
+        "status-inventory.json#/inventory"
+      ],
+      "manuscript_finding": "Similar name to the active unrestricted-local row, but identity is not established; omission/ambiguity, not an active-contract contradiction.",
+      "scientific_ceiling": "Descriptive role/endpoint/coverage/status audit only; no CI, ranking, superiority, native-held-out, or activation."
+    },
+    {
+      "id": "causal_temporal_smoother",
+      "role": "causal_temporal_structured",
+      "parameterization": {
+        "alphas": [
+          0.25,
+          0.55,
+          0.85
+        ]
+      },
+      "endpoint": "full_operator_and_finite_horizon_response via fit(...)->evaluate(fitted_state, W_q, H_max)->{G_1:p,R_1:H_max,status}",
+      "coverage": "Same 16 cells, 20 seeds x 48 target dates, 960 records/cell, and 15,360 records/method as local_structured",
+      "status": {
+        "AVAILABLE": 15360,
+        "NONCONVERGED": 0,
+        "NONFINITE": 0,
+        "OUTSIDE_TARGET": 0,
+        "UNSTABLE": 0
+      },
+      "matched_target": "Pair only identical frozen cell and common endpoint key in fixed_rank_basis-vs-causal raw pairs; no cross-cell claim.",
+      "artifact_keys": [
+        "comparator_registry.json#/content/records",
+        "comparator-ledger.json#/endpoint_parity_audits",
+        "paired-differences.json#/pairs",
+        "status-inventory.json#/nonfinite_policy"
+      ],
+      "manuscript_finding": "Absent from the active hierarchy; omission, not evidence that the active contract evaluated it.",
+      "scientific_ceiling": "Descriptive role/endpoint/coverage/status audit only; no CI, ranking, superiority, native-held-out, or activation."
+    },
+    {
+      "id": "fixed_rank_basis",
+      "role": "fixed_low_rank_or_basis",
+      "parameterization": {
+        "ranks": [
+          1,
+          2,
+          3
+        ]
+      },
+      "endpoint": "full_operator_and_finite_horizon_response via fit(...)->evaluate(fitted_state, W_q, H_max)->{G_1:p,R_1:H_max,status}",
+      "coverage": "Same 16 cells, 20 seeds x 48 target dates, 960 records/cell, and 15,360 records/method as local_structured",
+      "status": {
+        "AVAILABLE": 15360,
+        "NONCONVERGED": 0,
+        "NONFINITE": 0,
+        "OUTSIDE_TARGET": 0,
+        "UNSTABLE": 0
+      },
+      "matched_target": "Candidate only in fixed_rank_basis-vs-local and fixed_rank_basis-vs-causal pairs, matched on the same frozen cell and common endpoint key; no method ordering.",
+      "artifact_keys": [
+        "comparator_registry.json#/content/records",
+        "comparator-ledger.json#/declared_methods",
+        "paired-differences.json#/pairs",
+        "artifact-manifest.json#/claim_activation"
+      ],
+      "manuscript_finding": "Must not be treated as the manuscript CP row or an activated alternative; current text does not make that mapping but does not state the separation.",
+      "scientific_ceiling": "Descriptive role/endpoint/coverage/status audit only; no CI, ranking, superiority, native-held-out, or activation."
+    }
+  ],
+  "cross_comparator": {
+    "endpoint_parity": {
+      "same_endpoint_set_across_methods": true,
+      "expected_keys_per_method_cell": 960,
+      "key": "comparator-ledger.json#/endpoint_parity_audits"
+    },
+    "paired_integrity": {
+      "pair_cells": 32,
+      "common_keys_per_pair": 960,
+      "audit_status": "AVAILABLE",
+      "raw_arrays_match": true,
+      "status_counts_match": true,
+      "key": "paired-differences.json#/pairs"
+    },
+    "inventory": {
+      "recovery": {
+        "AVAILABLE": 46080,
+        "NONCONVERGED": 0,
+        "NONFINITE": 0,
+        "OUTSIDE_TARGET": 0,
+        "UNSTABLE": 0
+      },
+      "paired_candidate": 30720,
+      "paired_comparator": 30720,
+      "interval_records": 160,
+      "bootstrap_replicates": 12800,
+      "key": "status-inventory.json#/inventory"
+    },
+    "boundary": [
+      "Within-cell common endpoint keys only.",
+      "Do not pool family, N, query class, horizon, or topology regimes.",
+      "E01 N=20/N=50 and H4/H12 do not become active N=15/N=30 headline evidence.",
+      "E01 full-operator/finite-horizon availability does not populate the active contract's six endpoint IDs automatically."
+    ]
+  },
+  "contract_decision": {
+    "status": "NO_CONTRACT_CHANGE",
+    "finding": "The active contract already defines failure/non-finite retention, OUTSIDE TARGET semantics, active endpoint maps, N=15/N=30 replication, and bounded N=50 coverage. E01 is a separate endpoint/interface contract; inserting its names into the active map would conflate protocols.",
+    "key_paths": [
+      "manuscript_src/natcs/controlled_benchmark_contract.json#/aggregation_contract/failure_handling",
+      "manuscript_src/natcs/controlled_benchmark_contract.json#/endpoint_availability/unavailable_sentinel",
+      "manuscript_src/natcs/controlled_benchmark_contract.json#/endpoint_availability/method_to_endpoint_ids",
+      "manuscript_src/natcs/controlled_benchmark_contract.json#/primary_scenarios",
+      "manuscript_src/natcs/controlled_benchmark_contract.json#/bounded_scale_stress/replication_coverage_by_method"
+    ]
+  },
+  "patch_proposals": [
+    {
+      "id": "P-001",
+      "register_item": "V1-026 / CAL-E01:75",
+      "manuscript_file": "manuscript_src/natcs/supp_note4_benchmarks.md",
+      "location": "line 3",
+      "current_sentence": "The declared comparator hierarchy is as follows.",
+      "suggested_sentence": "The active controlled benchmark comparator hierarchy is as follows; the separate CAL-E01:75 audit uses a frozen E4-r3 native-comparator registry and is not an additional active benchmark row.",
+      "artifact_key_paths": [
+        "comparator-ledger.json#/declared_methods",
+        "artifact-manifest.json#/claim_activation",
+        "artifact-manifest.json#/content_address_payload/raw_scope/claim_policy",
+        "comparator_registry.json#/content/records"
+      ],
+      "scientific_ceiling": "Protocol-separation disclosure only; no E01 ranking, CI, superiority/equivalence claim, or activation."
+    },
+    {
+      "id": "P-002",
+      "register_item": "V1-026 / CAL-E01:75",
+      "manuscript_file": "manuscript_src/natcs/methods_estimator.md",
+      "location": "line 5",
+      "current_sentence": "Comparator roles are assigned by the fitted object they return.",
+      "suggested_sentence": "Comparator roles are assigned by the fitted object they return; the separate CAL-E01:75 registry labels local_structured, causal_temporal_smoother, and fixed_rank_basis as native local-structured, causal-temporal-structured, and fixed low-rank/basis methods, respectively, and these labels are not aliases for the active CP, Tucker, or unrestricted-local rows.",
+      "artifact_key_paths": [
+        "comparator_registry.json#/content/records",
+        "comparator_registry.json#/content/required_interface",
+        "comparator-ledger.json#/declared_methods"
+      ],
+      "scientific_ceiling": "Role/interface disclosure only; do not map E01 endpoint shape to every active endpoint ID or infer ranking."
+    },
+    {
+      "id": "P-003",
+      "register_item": "V1-026 / CAL-E01:75",
+      "manuscript_file": "manuscript_src/natcs/results_validation.md",
+      "location": "line 7",
+      "current_sentence": "Across these analyses, availability is established before numerical ranking, and failure and stability records travel with the corresponding errors.",
+      "suggested_sentence": "Across the active benchmark analyses, availability is established before numerical comparison and failure and stability records travel with the corresponding errors; the separate CAL-E01:75 output is a raw descriptive audit with claim activation blocked and therefore does not add a new confidence interval, superiority comparison, or manuscript claim.",
+      "artifact_key_paths": [
+        "status-inventory.json#/nonfinite_policy",
+        "status-inventory.json#/inventory",
+        "paired-differences.json#/pairs",
+        "artifact-manifest.json#/claim_activation",
+        "controlled_benchmark_contract.json#/aggregation_contract/failure_handling"
+      ],
+      "scientific_ceiling": "Retain failure/non-finite/outside-target semantics; raw paired arrays are not a new CI, superiority result, or activated claim."
+    }
+  ],
+  "no_change": [
+    {
+      "location": "results_validation.md:3-5",
+      "finding": "Already bounds collapsed/projected diagnostics and the active claim to matched N=15/N=30 rows."
+    },
+    {
+      "location": "supp_note4_benchmarks.md:13",
+      "finding": "Already defines OUTSIDE TARGET as neither zero, missing data, nor failed estimate."
+    },
+    {
+      "location": "methods_data.md:9-11",
+      "finding": "Keep active replication language separate from the E01 N=20/N=50 audit grid."
+    }
+  ],
+  "protected_hashes": {
+    "before": {
+      "register": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "manuscript_tree": "150dbddfb99b1ed02954cc1759870e71312ac33a8b8da1802594f17117bc4c04",
+      "e4_candidate_tree": "7f7011c5d399c33a07e8b4192a95a6beed216384a551c2e978c7a248858d1d8b",
+      "e4_quarantine_tree": "d93f3f53852dfd8c7f13981b1b8a39ec3f23ede696e4a5878faeade81349ca8d",
+      "primary_artifact_manifest": "5767c635dab93ab86713c9b5e09280b0d861a175b553f8de7700b4c1a99e178d",
+      "primary_comparator_ledger": "8fef72efd9f1b547608323677dbf6e07e569ecb9090ea14928169882d5ebe069",
+      "primary_status_inventory": "8ac0390d12929bc2a31425f6b907f3eaedf91ae4648aa7d3f93f2d19bbfbfa3a",
+      "primary_paired_differences": "6d01447039edae222356b50e265440fd047c4887755c488de0202d70b817a583"
+    },
+    "after": {
+      "register": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "manuscript_tree": "150dbddfb99b1ed02954cc1759870e71312ac33a8b8da1802594f17117bc4c04",
+      "e4_candidate_tree": "7f7011c5d399c33a07e8b4192a95a6beed216384a551c2e978c7a248858d1d8b",
+      "e4_quarantine_tree": "d93f3f53852dfd8c7f13981b1b8a39ec3f23ede696e4a5878faeade81349ca8d",
+      "primary_artifact_manifest": "5767c635dab93ab86713c9b5e09280b0d861a175b553f8de7700b4c1a99e178d",
+      "primary_comparator_ledger": "8fef72efd9f1b547608323677dbf6e07e569ecb9090ea14928169882d5ebe069",
+      "primary_status_inventory": "8ac0390d12929bc2a31425f6b907f3eaedf91ae4648aa7d3f93f2d19bbfbfa3a",
+      "primary_paired_differences": "6d01447039edae222356b50e265440fd047c4887755c488de0202d70b817a583"
+    },
+    "status": "PASS"
+  },
+  "verification": {
+    "json_parse": "PASS",
+    "source_paths": "PASS",
+    "required_patch_fields": "PASS",
+    "forbidden_scope": {
+      "manuscript_modified": false,
+      "register_modified": false,
+      "e4_r3_modified": false,
+      "authorization_modified": false,
+      "git_operation_performed": false
+    },
+    "pointer_repair": {
+      "invalid_pointer_count_before": 3,
+      "invalid_pointer_count_after": 0,
+      "replacement_pointer_count": 3,
+      "replacement_pointer_resolves": true,
+      "status": "PASS"
+    }
+  },
+  "repair_audit": {
+    "revision": "R2",
+    "predecessor_path": "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811.json",
+    "predecessor_sha256": "0848136186cb244934c4fcccf5e53fca84fb2b9279c61294fa9d009e53a852e8",
+    "trigger_path": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V1_20260811.json",
+    "trigger_sha256": "673946c72c35d7beb21a91e4a6e00f06c5288210e616eaefff901597cd0d2716",
+    "failure_id": "REC-M4-V1-026-EVIDENCE-POINTER-001",
+    "replacement_count": 3,
+    "from": "comparator-ledger.json#/content/records",
+    "to": "comparator_registry.json#/content/records",
+    "semantic_basis": "The frozen comparator registry owns comparator role, parameterization, endpoint/interface definition, and source identity; the primary comparator ledger owns executed method-cell, parity, roster, and status audits.",
+    "independent_review_threads": [
+      "019ff0d1-6baa-7413-8b6c-5f1c39fda105",
+      "019ff0d1-6894-7e92-a8c8-d6fcd8550508"
+    ],
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "max",
+    "protected_scope_changed": false,
+    "scientific_finding_changed": false,
+    "claim_activation_changed": false
+  }
+}

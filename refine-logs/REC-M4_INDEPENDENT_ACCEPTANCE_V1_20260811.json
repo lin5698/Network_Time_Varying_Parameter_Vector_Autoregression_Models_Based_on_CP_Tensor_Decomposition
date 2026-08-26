@@ -1,0 +1,361 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m4-independent-unified-acceptance-v1",
+  "acceptance_id": "REC-M4-independent-unified-acceptance-20260811",
+  "generated_at": "2026-08-11T20:12:00+08:00",
+  "acceptance_result": "REC-M4_INDEPENDENT_ACCEPTANCE_FAIL",
+  "auditor_provenance": {
+    "role": "independent_REC-M4_unified_acceptance_auditor",
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "max",
+    "source_thread_id": "019fbdde-2c02-7662-b9d2-9dc2b70e1253",
+    "independence_rule": "M3 PASS labels were not accepted as evidence; current files, hashes, locators, pointers, JSONPaths, and scientific-state boundaries were revalidated."
+  },
+  "operation_policy": {
+    "record_only": true,
+    "written_files": [
+      "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V1_20260811.json"
+    ],
+    "manuscript_modified": false,
+    "formal_register_modified": false,
+    "e4_r3_modified": false,
+    "m2b_m2b2_authorization_modified": false,
+    "m3_outputs_modified": false,
+    "m3_acceptance_modified": false,
+    "manuscript_patch_application": "NOT_AUTHORIZED",
+    "git_operations": "NONE",
+    "forbidden_e4_r008_inputs": "e4_r008_primary_final and e4_r008_duplicate_final were not read, used, or compared."
+  },
+  "inputs": {
+    "required_m3_acceptance": {
+      "path": "refine-logs/REC-M3_ACCEPTANCE_V1_20260811.json",
+      "bytes": 8720,
+      "expected_sha256": "c8b17eef2a15912bbc4572b68cffdae87f8b75fb09fa9db0909b484ba32c7d8b",
+      "observed_sha256": "c8b17eef2a15912bbc4572b68cffdae87f8b75fb09fa9db0909b484ba32c7d8b",
+      "status": "PASS"
+    },
+    "m3_output_inventory": [
+      {
+        "path": "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811.json",
+        "bytes": 14315,
+        "sha256": "0848136186cb244934c4fcccf5e53fca84fb2b9279c61294fa9d009e53a852e8",
+        "status": "PASS"
+      },
+      {
+        "path": "refine-logs/REC-M3_V1_026_PATCH_PROPOSAL_20260811.md",
+        "bytes": 10613,
+        "sha256": "5dc82aed028b4cc87bc44050e2d42ffdd0b22b4a21f89b35174dbf513feb2ebb",
+        "status": "PASS"
+      },
+      {
+        "path": "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json",
+        "bytes": 15181,
+        "sha256": "68a841cb4c5f68916cd305eb354200030564079f2e6fedf4e33a346a35f7f443",
+        "status": "PASS"
+      },
+      {
+        "path": "refine-logs/REC-M3_V1_033_PATCH_PROPOSAL_20260811.md",
+        "bytes": 10169,
+        "sha256": "6d8fff0275be2bbeeefca33193656c397de494e3ad0812e521cd6d3a4551e6da",
+        "status": "PASS"
+      },
+      {
+        "path": "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json",
+        "bytes": 14990,
+        "sha256": "baee769a51c5861bfe04c7fcfc8e72608ea2bcd6f52fedcd909fca1bbb61ed33",
+        "status": "PASS"
+      },
+      {
+        "path": "refine-logs/REC-M3_V1_045_PATCH_PROPOSAL_20260811.md",
+        "bytes": 9907,
+        "sha256": "7eb9d17f3c670de2babcd4e0587bd6ba13ff6787abf38119e4c435dd1397a0a0",
+        "status": "PASS"
+      }
+    ]
+  },
+  "validator": {
+    "commands_and_methods": [
+      "node read-only validator: JSON parse, inventory byte and raw-SHA-256 checks, register binding checks, alias/file checks, line-locator bounds, JSON Pointer and JSONPath resolution, unit uniqueness, scientific-state checks, and proposal-only checks",
+      "sha256sum raw-byte verification for all seven required inputs and all recorded source/protected artifact hashes",
+      "Node protected-tree digest: UTF-8 sorted relative-path TAB bytes TAB raw-SHA-256 LF lines; symlinks counted separately",
+      "Markdown heading normalization for GitHub-style fragment anchors; the V1-033 current fields were treated as the required paragraph-level summaries, not verbatim replacement anchors"
+    ],
+    "counts": {
+      "checks": 563,
+      "passed": 560,
+      "failed": 3,
+      "referenced_paths_checked": 52,
+      "line_locators_checked": 91,
+      "json_pointer_jsonpath_evidence_keys_checked": 138,
+      "recorded_hashes_checked": 58,
+      "m3_outputs_checked": 6,
+      "protected_files_checked": 9,
+      "protected_trees_checked": 3,
+      "audit_units_checked": 26,
+      "unique_audit_units": 26
+    },
+    "result": "FAIL"
+  },
+  "formal_register_bindings": [
+    {
+      "item": "V1-026",
+      "calibration": "CAL-E01:75",
+      "register_pointer": "#/items/25",
+      "current_response_status": "PARTIAL",
+      "action_class": "DIRECT_TEXT_REVISION",
+      "status": "PASS"
+    },
+    {
+      "item": "V1-033",
+      "calibration": "CAL-E02:128",
+      "register_pointer": "#/items/32",
+      "current_response_status": "PARTIAL",
+      "action_class": "DIRECT_TEXT_REVISION",
+      "status": "PASS"
+    },
+    {
+      "item": "V1-045",
+      "calibration": "CAL-E03:164",
+      "register_pointer": "#/items/44",
+      "recorded_line_locator": "output/ncs_review_corpus/v1_author_decision_register.json:2023-2066",
+      "current_response_status": "PARTIAL",
+      "action_class": "DIRECT_TEXT_REVISION",
+      "status": "PASS"
+    }
+  ],
+  "source_and_locator_validation": {
+    "source_aliases": {
+      "V1-026": [
+        "register",
+        "active_contract",
+        "e01_contracts",
+        "m2c.coverage",
+        "m2c.primary_root",
+        "artifact-manifest.json",
+        "comparator-ledger.json",
+        "status-inventory.json",
+        "paired-differences.json"
+      ],
+      "V1-033": [
+        "reg",
+        "m2c",
+        "m2c_audit",
+        "e4",
+        "e4_md",
+        "e4_inventory"
+      ],
+      "V1-045": [
+        "register",
+        "contract",
+        "methods_data",
+        "methods_estimator",
+        "methods_uncertainty",
+        "supp_note4",
+        "supp_note7",
+        "supp_note8",
+        "main",
+        "compiled_supplement",
+        "m2c_analysis",
+        "m2c_resource",
+        "m2c_repro"
+      ]
+    },
+    "referenced_files": "52/52 exist",
+    "line_locators": {
+      "status": "PASS",
+      "checked": 91,
+      "V1-033_current_field_classification": "PARAGRAPH_LEVEL_CURRENT_SUMMARY",
+      "V1-033_current_field_line_locators_valid": true,
+      "V1-033_verbatim_substring_matches": 1,
+      "rule": "The current fields are not verbatim replacement anchors."
+    },
+    "json_pointer_jsonpath_evidence_keys": {
+      "checked": 138,
+      "passed": 135,
+      "failed": 3,
+      "markdown_anchor_normalization": {
+        "#Same-Endpoint-Comparator-Contract": "PASS",
+        "#Stop-Conditions": "PASS"
+      }
+    },
+    "recorded_source_hashes": {
+      "checked": 58,
+      "matches": 58,
+      "mismatches": [],
+      "status": "PASS"
+    }
+  },
+  "audit_units": {
+    "V1-026_CAL-E01_75": 3,
+    "V1-033_CAL-E02_128": 13,
+    "V1-045_CAL-E03_164": 10,
+    "total": 26,
+    "unique_ids": 26,
+    "status": "PASS"
+  },
+  "protected_hash_recheck": {
+    "file_hash_algorithm": "SHA-256 of raw bytes",
+    "tree_hash_algorithm": "SHA-256 of UTF-8 sorted relative-path TAB bytes TAB raw-SHA-256 LF lines; symlinks recorded separately",
+    "files": [
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json",
+        "bytes": 7074,
+        "sha256": "c012f7d1a40168b264027c55a3760424c7686cd0e7941cf6765d99c2629fd63f",
+        "status": "PASS"
+      },
+      {
+        "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+        "bytes": 3455,
+        "sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+        "status": "PASS"
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2A_REPAIR_RECEIPT_V1_20260810_222232.json",
+        "bytes": 13026,
+        "sha256": "b98f8a4dc6dd36ee28426182d9320d0696880867544a0cc05dd6c1fb5e943395",
+        "status": "PASS"
+      },
+      {
+        "path": "output/ncs_review_corpus/v1_author_decision_register.json",
+        "bytes": 110685,
+        "sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+        "status": "PASS"
+      },
+      {
+        "path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+        "bytes": 1822,
+        "sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+        "status": "PASS"
+      },
+      {
+        "path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+        "bytes": 2281,
+        "sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+        "status": "PASS"
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2_EXECUTION_AUTHORIZATION_V1_20260810_223606.json",
+        "bytes": 5715,
+        "sha256": "44677a44f01876bba8c96d924a69cf39a37f4642e00a004c1b03fb2dcbf4034c",
+        "status": "PASS"
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_PREFLIGHT_RECEIPT_V1_20260810_231758.json",
+        "bytes": 10995,
+        "sha256": "5918f4eac9e6b01a012bcf511afc50a357e07e005b99dea242b36eff816359df",
+        "status": "PASS"
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_TRACKER_V1_20260810_231758.md",
+        "bytes": 2947,
+        "sha256": "c35bf484768de70b0d64d2858f1328600d9cc5cc4efc7bb704729432336541eb",
+        "status": "PASS"
+      }
+    ],
+    "trees": [
+      {
+        "path": "manuscript_src/natcs",
+        "file_count": 72,
+        "symlink_count": 0,
+        "sha256": "21a1319b6f98e31804b7fd1766c66124553a2ad2904bdc2dcb655097e591a364",
+        "status": "PASS"
+      },
+      {
+        "path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3",
+        "file_count": 11,
+        "symlink_count": 0,
+        "sha256": "6859c367141f33e589fb2d536c96fbe763f40e406ca65bfa556d89b7536e00ec",
+        "status": "PASS"
+      },
+      {
+        "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3",
+        "file_count": 3,
+        "symlink_count": 0,
+        "sha256": "5398ec9a698ba0a7b878b0a8d25a7d8e9184ea6ff98af033f2b33f7165b1a83f",
+        "status": "PASS"
+      }
+    ],
+    "all_match": true
+  },
+  "proposal_only_boundaries": {
+    "V1-026": "PASS: no manuscript, register, E4-r3, authorization, or git mutation; claim activation remains BLOCKED.",
+    "V1-033": "PASS: no protected-scope mutation; patch units remain proposals only.",
+    "V1-045": "PASS: no manuscript, register, E4-r3, authorization, or git mutation; M2C does not activate a claim.",
+    "manuscript_patches_applied": false,
+    "status": "PASS"
+  },
+  "scientific_state_matrix": {
+    "V1-026_CAL-E01_75": {
+      "register": "PARTIAL",
+      "m2c": "PASS",
+      "scientific_execution": "NOT_RUN",
+      "claim_activation": "BLOCKED",
+      "decision": "E01 comparator names local_structured, causal_temporal_smoother, and fixed_rank_basis are not aliases for active local_network, cp_network, or tucker_network rows.",
+      "ceiling": "Descriptive comparator role, endpoint/interface, coverage, retained status, and common-completion integrity only. No CI, ranking, superiority, equivalence, native-held-out/general-performance, activation, or promotion claim.",
+      "status": "RETAINED"
+    },
+    "V1-033_CAL-E02_128": {
+      "register": "PARTIAL",
+      "m2c": "BLOCKED",
+      "m2c_data_sufficiency": "PARTIAL",
+      "scientific_execution": "NOT_RUN",
+      "evidence_type": "simulation_only",
+      "independent_empirical_ground_truth": "NOT_EVALUABLE",
+      "retained_gaps": [
+        "chronology",
+        "selection inputs",
+        "held-out query identity",
+        "endpoint signature",
+        "truth isolation"
+      ],
+      "outside_target": "RETAINED: not zero error, missing observation, or failed estimate.",
+      "native_endpoint_gate": "RETAINED NEGATIVE: M2C native_gate=PASS is classification-gate status only; the manuscript N=20 endpoint-aware gate has no promoted candidate and does not establish native recovery.",
+      "status": "RETAINED"
+    },
+    "V1-045_CAL-E03_164": {
+      "register": "PARTIAL",
+      "m2c": "PARTIAL",
+      "scope": "N=20/N=50 only",
+      "claim_activation": "NOT_AUTHORIZED",
+      "controlled_als": "60 iterations with no declared monitored quantity, tolerance, early-stop rule, or precedence.",
+      "compiled_settings": "Separate application/bootstrap settings remain 100 iterations with tolerance 1e-6 and 80 iterations with tolerance 1e-5.",
+      "topology_stress": "Exact stress amplitudes and full protocol bindings remain unbound; the compiled 50 percent application attenuation is not a CAL-E03 amplitude.",
+      "N100_N200": "NOT_RUN/ABSTAIN",
+      "resource_telemetry": "BLOCKED with wall_clock_seconds, cpu_time_seconds, peak_memory_bytes, peak_rss_bytes, gpu_time_seconds, and per_cell_runtime all null.",
+      "reproducibility": "One run with 20 seeds per cell is seed coverage, not repeated-run reproducibility; repeated-run reproducibility is NOT_ESTABLISHED.",
+      "status": "RETAINED"
+    },
+    "governance_scientific_separation": "A governance or artifact-integrity PASS never converts any scientific PARTIAL, BLOCKED, NOT_RUN, NOT_EVALUABLE, NOT_AUTHORIZED, or NOT_RUN/ABSTAIN state to PASS."
+  },
+  "failures": [
+    {
+      "failure_id": "REC-M4-V1-026-EVIDENCE-POINTER-001",
+      "item": "V1-026/CAL-E01:75",
+      "affected_audit_units": [
+        "local_structured",
+        "causal_temporal_smoother",
+        "fixed_rank_basis"
+      ],
+      "referenced_file": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/comparator-ledger.json",
+      "evidence_key": "comparator-ledger.json#/content/records",
+      "observed_top_level_keys": [
+        "actual_methods",
+        "analysis_version",
+        "declared_methods",
+        "endpoint_parity_audits",
+        "interval_cell_audits",
+        "method_cell_audits",
+        "register_key"
+      ],
+      "exact_failure": "The required JSON Pointer #/content/records is unresolved. The file has neither content nor records at that pointer.",
+      "effect": "Three required V1-026 audit-unit evidence-key checks fail. REC-M4 cannot accept M3 despite otherwise matching hashes, protected paths, locators, and retained scientific boundaries.",
+      "repair_action": "Not performed by REC-M4; this record does not repair M3."
+    }
+  ],
+  "progression_gate": {
+    "REC-M3": "GOVERNANCE_ACCEPTED_BUT_INDEPENDENTLY_REJECTED_AT_REC-M4_FOR_THREE_UNRESOLVED_REQUIRED_EVIDENCE_POINTERS",
+    "REC-M4": "REC-M4_INDEPENDENT_ACCEPTANCE_FAIL",
+    "REC-M5": "NOT_AUTHORIZED",
+    "m5_authorization_reason": "REC-M4 did not pass. Even a future REC-M4 PASS would not itself apply manuscript patches.",
+    "manuscript_patches_applied": false
+  }
+}

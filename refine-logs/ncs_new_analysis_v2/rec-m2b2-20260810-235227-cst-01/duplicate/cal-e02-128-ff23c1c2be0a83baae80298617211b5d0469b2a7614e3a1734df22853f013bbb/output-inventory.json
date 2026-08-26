@@ -1,0 +1,22 @@
+{
+  "files": [
+    {
+      "path": "analysis.json",
+      "sha256": "ae4289220a446f0e1a685e2336761475ab4d4f3c3a336be72a1eebb18d896d8e"
+    },
+    {
+      "path": "audit.md",
+      "sha256": "c6d3f670ba9db6c5e550094716835fd55eac852105c64881571a5218bfc468e9"
+    },
+    {
+      "path": "input-manifest.json",
+      "sha256": "db381c9c0151c20a6a9a42d8d9d75da4424459112e1cea9185419ecf7a5e543f"
+    },
+    {
+      "path": "retained-records.jsonl",
+      "sha256": "24f80cec271843356eb3a610c4fd58caeb10e0ae790ef24cb664175ee74ec379"
+    }
+  ],
+  "register_key": "CAL-E02:128",
+  "schema_version": "ncs-cal-e02-128-output-inventory-v1"
+}

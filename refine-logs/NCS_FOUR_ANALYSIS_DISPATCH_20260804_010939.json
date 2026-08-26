@@ -1,0 +1,39 @@
+{
+  "schema_version": "ncs-new-analysis-dispatch-v1",
+  "authorization_id": "ncs-four-analysis-20260804-010454-cst",
+  "dispatched_at": "2026-08-04T01:09:39+08:00",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "max",
+  "tasks": [
+    {
+      "register_key": "CAL-E01:75",
+      "thread_id": "019fc899-672b-7970-989a-a43d3d3da142",
+      "host_id": "local",
+      "worktree_id": "df05",
+      "status_at_receipt": "active"
+    },
+    {
+      "register_key": "CAL-E02:128",
+      "thread_id": "019fc899-672c-7a70-87d8-0c4abef9072f",
+      "host_id": "local",
+      "worktree_id": "c71f",
+      "status_at_receipt": "active"
+    },
+    {
+      "register_key": "CAL-E02:135",
+      "thread_id": "019fc899-672b-7970-989a-a45bb511e8e3",
+      "host_id": "local",
+      "worktree_id": "15b8",
+      "status_at_receipt": "active"
+    },
+    {
+      "register_key": "CAL-E03:164",
+      "thread_id": "019fc899-672c-7a70-87d8-0c2a8d916073",
+      "host_id": "local",
+      "worktree_id": "2f85",
+      "status_at_receipt": "active"
+    }
+  ],
+  "independent_acceptance_task": "BLOCKED_PENDING_ALL_FOUR_COMPLETION",
+  "manuscript_or_register_mutation_authorized": false
+}

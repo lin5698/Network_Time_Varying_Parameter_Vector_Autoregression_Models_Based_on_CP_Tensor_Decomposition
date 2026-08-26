@@ -1,0 +1,50 @@
+{
+  "audit_skill": "paper-claim-audit",
+  "verdict": "PASS",
+  "reason_code": "all_scoped_claims_match",
+  "summary": "All scoped quantitative, theorem-scope, endpoint, gate and figure-integration claims reconcile; Figure 3 whisker geometry remains outside this audit input set.",
+  "audited_input_hashes": {
+    "manuscript_src/natcs/abstract.md": "sha256:0c3ab7381bad79620e7151e7340c4c1206ebcc0633e7b8241cbbc9fa1eff9f0d",
+    "manuscript_src/natcs/introduction.md": "sha256:caf4f8e38fb122441cb0e55607f2ea4892cf1cbed95a4c997f36b2f88c4ffd01",
+    "manuscript_src/natcs/results_framework.md": "sha256:db2a5fa417d6e0ec949f5fb32c3c178f635558d9e4a935879aa75e14b5375794",
+    "manuscript_src/natcs/results_validation.md": "sha256:952ba9b8cf985be230cc0ed311ff4e1aeb71b3abe30dae4f72cf22b7f52052ba",
+    "manuscript_src/natcs/discussion.md": "sha256:ef62e9b124f206adf9862481d60edb7f3b0a047f15e84126a81e7645bed43908",
+    "manuscript_src/natcs/methods_data.md": "sha256:26e0a984ac5af6676466fba2f403882a1fc841832c221b83b06e8c0d01cf7a2d",
+    "manuscript_src/natcs/methods_estimator.md": "sha256:8f4cb0f7efdb1438fcfad1fe1a3441ed80877093077fe7c7b9f8ec56508cb25d",
+    "manuscript_src/natcs/methods_theory.md": "sha256:1e81d2d355dbf3846690dba232c4201ce3ae4775b043bc7f3ee7409afea45766",
+    "manuscript_src/natcs/methods_propagation.md": "sha256:3e8dbc5a056a06688944e191dc8c2cac7f00906401462778cd3d35ef7b4e3714",
+    "manuscript_src/natcs/methods_uncertainty.md": "sha256:2faf37836b9b274c9f2bd2cede54cbea9ce5c27a32bdc951ae7b1ee5e00f1601",
+    "manuscript_src/natcs/supp_note1_notation.md": "sha256:a97ba5e41923d07017d01779111ec3bcab5fead1a23a99dd50228c95a7bfe5b4",
+    "manuscript_src/natcs/supp_note2_estimator.md": "sha256:c4ccd5df962c0e458e728746d2fada1412d115ceacdf7bf5aa23409de40247a0",
+    "manuscript_src/natcs/supp_note3_propagation.md": "sha256:f3ab2e916a5a263ec97bb1f04330911891521655ff39e964ccd4b6e68ae4ab01",
+    "manuscript_src/natcs/supp_note4_benchmarks.md": "sha256:0bec42db15fd153c7480f42a68280111bef986e04496e72c35612af6a181939e",
+    "manuscript_src/natcs/supp_note8_scope.md": "sha256:1f8a02a810b372a479bc9e3f877613c2dd670bea4b1d9deffdec681b9933d8fa",
+    "manuscript_src/natcs/controlled_benchmark_contract.json": "sha256:95199a3c16e6f55a2cf94f7f67289a658bcac7ccb4e17ceee9efa5cc8d7934ba",
+    "manuscript_src/natcs/r006c_endpoint_gate.json": "sha256:979798438abc54d4439030eb3e2e1cb3d0ba3edbc8c62dba60540d266149cb7b",
+    "scripts/build_natcs_manuscript.mjs": "sha256:2d4405130c71bf0d8cce5b5705281787f44ee1e31e614cc97def45e0b7f85e66",
+    "scripts/build_natcs_framework_figure.py": "sha256:a2e0c4691f2e3ba2e25f60b5eb3dbc266ebf239a93ef38ea8046b6dac3c2b663",
+    "scripts/build_natcs_query_certificate_figure.py": "sha256:3a2a7de86ef7fefc7af3cf6cde3ca0bfd39b1ba0153b86d1fc514b45bcbee752",
+    "scripts/build_natcs_supported_regime_figure.py": "sha256:1c38b61176655c3bfded721cfa9736733a8090ebb3fe83c2638e491dbd64e077",
+    "output/natcs_assets/figure1_natcs_framework.svg": "sha256:25cd0001c13eba8d7620a2a15965acc2da8f645262521532c95788a8ec61897f",
+    "output/natcs_assets/figure2_natcs_query_certificate.svg": "sha256:7d1682cb7219949cbe3601cbbbeda1a9c950e855302a0af95d16ed7bf1cd2863",
+    "output/natcs_assets/figure3_natcs_supported_regime.svg": "sha256:a13f359fcf43a54282cee6b6fc8a5decdb9135979469573e645eb6d8dacc6648",
+    "output/natcs_benchmarks/benchmark_summary.csv": "sha256:c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1",
+    "output/natcs_benchmarks/benchmark_replications.csv": "sha256:b8c881dcbafee9ee04e8b344478367a17d3e6c5d353b15970c48e3d3783cd32e",
+    "output/high_impact_revision/r006c_endpoint_aware/r006c_results.json": "sha256:29660d01faa7f8c6db82232fde50bc5726ba420418357507c4f159e47f532c12"
+  },
+  "trace_path": ".aris/traces/paper-claim-audit/2026-07-31_run04/",
+  "thread_id": "/root/source_only_claim_audit_v4",
+  "reviewer_model": "gpt-5.6-terra",
+  "reviewer_reasoning": "xhigh",
+  "generated_at": "2026-07-30T19:44:06Z",
+  "details": {
+    "claim_families": 5,
+    "exact_match": 4,
+    "rounding_ok": 1,
+    "mismatches": [],
+    "residual_risks": [
+      "Figure 3 interval-export input was outside the declared audit set, so whisker geometry was not independently reconstructed."
+    ],
+    "scope_boundary": "Source-only claim fidelity only; no global audit, outcome, promotion or release status changes."
+  }
+}

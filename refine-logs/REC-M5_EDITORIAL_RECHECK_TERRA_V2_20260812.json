@@ -1,0 +1,206 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-editorial-recheck-terra-v2",
+  "record_id": "REC-M5-editorial-recheck-terra-v2-20260812",
+  "generated_at": "2026-08-12",
+  "phase": "M5-C",
+  "task_mode": "DIRECT_SELF_ADJUDICATED_REVIEW_ONLY",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "max",
+  "review_role": "editorial-traceability",
+  "direct_self_adjudication": true,
+  "verdict": "BLOCKED",
+  "result": "BLOCKED_AUTHOR_INPUT_RECORD_CONSISTENCY_DEFECT",
+  "service_status": {
+    "status": "DIRECT_SELF_ADJUDICATION_COMPLETED",
+    "external_model_call": "NOT_USED",
+    "external_payload": "NOT_USED",
+    "historical_service_failures_used_as_basis": false,
+    "pass_policy": "VERDICT_DERIVED_FROM_CURRENT_LIVE_CONTENTS_ONLY"
+  },
+  "provenance": {
+    "input_scope": "exactly_six_current_live_records",
+    "inputs": [
+      {
+        "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+        "sha256": "336c3cc4e25276ac6eeb56d597b3fd8486e8a90d02c7d977ace172048138c07d"
+      },
+      {
+        "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+        "sha256": "8d9b1d2a7536daa6a7f7cb3ade5bc0f5b0674d2087d5efeb2fd2a8dcbf3e603a"
+      },
+      {
+        "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+        "sha256": "d622854aba0b0e190ef8653fc87ab95324239be5257ff02d25478e2cdde571cd"
+      },
+      {
+        "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+        "sha256": "83197e8828f894cabf9b21fe108be0c61c751dc8c967bdca684dc1220dfe4913"
+      },
+      {
+        "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V8_20260812.md",
+        "sha256": "8c6620d60a5fcc31cd22d5dbb0abfb6c8104cdc57d1dadba4b0c1bb7913f435c"
+      },
+      {
+        "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V8_20260812.json",
+        "sha256": "ff4182a3e5e67a23c095e8aac69c4a92ee9abcf217d93cc431572bb9f292d966"
+      }
+    ],
+    "v8_role": "CURRENT_ARTIFACT_DETERMINISTIC_RECEIPT_ONLY_NOT_SEMANTIC_OVERRIDE"
+  },
+  "findings": [
+    {
+      "id": "TERRA-V2-E1",
+      "severity": "MEDIUM",
+      "status": "BLOCKING",
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "line": 108,
+      "json_pointer": "#/acceptance_gate/contradictions_reviewed",
+      "summary": "The Chinese AIN-RESULT checklist says remaining groups require supplementation, contradicting subsequent confirmed lines and the JSON complete/no-unresolved state; contradictions_reviewed is false.",
+      "required_resolution": "Make the worksheet's Chinese summary consistent with the confirmed groups and record the resolved contradiction before a fresh review."
+    },
+    {
+      "id": "TERRA-V2-A1",
+      "severity": "LOW",
+      "status": "ADVISORY",
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "line": 180,
+      "summary": "The G06 candidate phrase 'a fixed 60 alternating-least-squares iterations' needs a grammatical cleanup.",
+      "required_resolution": "Use 'a fixed count of 60 alternating-least-squares iterations' or equivalent when separately authorized to apply candidate prose."
+    }
+  ],
+  "checks": {
+    "ready_for_independent_review": {
+      "status": "PASS",
+      "evidence": [
+        "REC-M5_REVIEW_PATCH_V1_20260811.md:9",
+        "REC-M5_REVIEW_PATCH_V1_20260811.md:287",
+        "REC-M5_REVIEW_PATCH_V1_20260811.json#/package_readiness"
+      ]
+    },
+    "unit_and_paragraph_mapping": {
+      "status": "PASS",
+      "unit_count": 26,
+      "unique_unit_count": 26,
+      "groups": ["G01", "G02", "G03", "G04", "G05", "G06", "G07", "G08", "G09", "G10"],
+      "anchor_policy": "paragraph-aware anchors declared with fail_closed_on_drift=true",
+      "manifest_verification": "pre_apply_anchor_hashes=PASS"
+    },
+    "candidate_not_applied": {
+      "status": "PASS",
+      "all_group_dispositions": "CANDIDATE_NOT_APPLIED",
+      "application_rule": "No text may be applied before independent review passes and separate authorization is supplied."
+    },
+    "g06_review_only": {
+      "status": "PASS",
+      "label": "AUTHOR_CONFIRMED_REVIEW_ONLY",
+      "evidence": [
+        "REC-M5_REVIEW_PATCH_V1_20260811.md:48",
+        "REC-M5_REVIEW_PATCH_V1_20260811.md:174"
+      ]
+    },
+    "g07_review_only": {
+      "status": "PASS",
+      "label": "AUTHOR_CONFIRMED_REVIEW_ONLY",
+      "evidence": [
+        "REC-M5_REVIEW_PATCH_V1_20260811.md:49",
+        "REC-M5_REVIEW_PATCH_V1_20260811.md:198"
+      ]
+    },
+    "topology_disclosure": {
+      "status": "PASS",
+      "seed_policy": "deterministic scenario/replication seed rooted at 20260328",
+      "endpoint_policy": "per-method declared endpoints",
+      "scenario_count": 4,
+      "scenarios": [
+        {
+          "id": "high_topology_vol",
+          "settings": "topologyVol=0.18, sparsity=0.15, wNoise=0, wDrop=0",
+          "affected_object": "truth.W evolution",
+          "generation_or_observation": "generation",
+          "released_replications": "local=3; each other released method=20"
+        },
+        {
+          "id": "sparse_misspecified",
+          "settings": "topologyVol=0.08, sparsity=0.55, wNoise=0.18, wDrop=0",
+          "affected_object": "truth.W and WEst",
+          "generation_or_observation": "generation and observation",
+          "released_replications": "each released method=3"
+        },
+        {
+          "id": "edge_missing",
+          "settings": "topologyVol=0.06, sparsity=0.15, wNoise=0, wDrop=0.30",
+          "affected_object": "observed nonzero off-diagonal edges in WEst",
+          "generation_or_observation": "observation, with generation volatility 0.06",
+          "released_replications": "local=3; each other released method=20"
+        },
+        {
+          "id": "noisy_network",
+          "settings": "topologyVol=0.06, sparsity=0.15, wNoise=0.35, wDrop=0",
+          "affected_object": "observed weights in WEst",
+          "generation_or_observation": "observation, with generation volatility 0.06",
+          "released_replications": "local=3; each other released method=20"
+        }
+      ],
+      "interpretation_boundary": "Bounded diagnostics only; no matched ranking or general topology-robustness claim."
+    },
+    "source_unavailable_wording": {
+      "status": "PASS",
+      "unavailable_sources": [
+        "application/bootstrap 100/80 canonical Markdown wording",
+        "spectral-radius canonical wording",
+        "50% top-exposure attenuation canonical wording"
+      ],
+      "policy": "No inference of canonical ownership from another scenario, generated TeX, or an unbound source."
+    },
+    "generated_tex_prohibition": {
+      "status": "PASS",
+      "generated_outputs": ["main.tex", "supplementary.tex"],
+      "generator": "scripts/build_natcs_manuscript.mjs",
+      "policy": "Direct edit and ownership reconstruction are prohibited."
+    },
+    "placeholder_and_author_input": {
+      "status": "BLOCKED",
+      "author_input_needed": [],
+      "placeholder_scan": "PASS_NO_DOUBLE_BRACE_TOKENS; fail_closed=true",
+      "result_formula": "100 * (local_network_metric_median - cp_network_metric_median) / local_network_metric_median",
+      "result_binding": "ratio of across-replication medians; same-scenario local denominator; coef_error_median/girf_error_median; local_network versus cp_network; 20 replications",
+      "blocker": "Author-input Markdown/JSON readiness contradiction in TERRA-V2-E1."
+    },
+    "authorization_boundaries": {
+      "status": "PASS",
+      "manuscript_source_mutation": "NOT_AUTHORIZED",
+      "formal_register_mutation": "NOT_AUTHORIZED",
+      "scientific_payload_mutation": "PROHIBITED",
+      "execution_authorization_mutation": "PROHIBITED",
+      "claim_activation": "NOT_AUTHORIZED",
+      "generated_tex_mutation": "PROHIBITED",
+      "git_operations": "NONE"
+    }
+  },
+  "authorization_boundary": {
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_payload_mutation": "PROHIBITED",
+    "execution_authorization_mutation": "PROHIBITED",
+    "authorization_file_mutation": "PROHIBITED",
+    "generated_tex_mutation": "PROHIBITED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  },
+  "operation_policy": {
+    "review_only": true,
+    "manuscript_modified": false,
+    "formal_register_modified": false,
+    "scientific_payload_modified": false,
+    "authorization_modified": false,
+    "generated_tex_modified": false,
+    "git_operations": "NONE"
+  },
+  "changed_paths": [
+    "refine-logs/REC-M5_EDITORIAL_RECHECK_TERRA_V2_20260812.md",
+    "refine-logs/REC-M5_EDITORIAL_RECHECK_TERRA_V2_20260812.json"
+  ],
+  "changed_paths_only": true,
+  "next_gate_state": "M5_C_EDITORIAL_TRACEABILITY_BLOCKED_PENDING_AUTHOR_INPUT_RECORD_CONSISTENCY_REPAIR",
+  "promotion_effect": "No candidate prose may be applied and no M5-D/M5-F authorization is granted by this receipt."
+}

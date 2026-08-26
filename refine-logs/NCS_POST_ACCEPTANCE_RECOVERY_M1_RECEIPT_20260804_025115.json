@@ -1,0 +1,201 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m1-receipt-v1",
+  "receipt_id": "ncs-post-acceptance-recovery-m1-20260804-025115-cst",
+  "generated_at": "2026-08-04T02:51:15+08:00",
+  "provenance": {
+    "parent_task": "019fbdde-2c02-7662-b9d2-9dc2b70e1253",
+    "delegated_model": "gpt-5.6-luna",
+    "delegated_reasoning_effort": "max",
+    "m0_refreeze_receipt": {
+      "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M0_REFREEZE_RECEIPT_20260804_023813.json",
+      "sha256": "168b692d81591a9e50a32da6e90489ffc638a78fc06208744fa02291d5c7e3a9"
+    },
+    "authorization_v2": {
+      "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+      "sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59"
+    }
+  },
+  "scope": {
+    "stage": "REC-M1",
+    "restored_source_only": true,
+    "restored_historical_results": false,
+    "m2_scientific_analysis_executed": false,
+    "manuscript_mutation": false,
+    "register_decision_mutation": false,
+    "promotion_mutation": false,
+    "e4_r3_mutation": false,
+    "unrelated_dirty_worktree_changes_reverted": false
+  },
+  "session_resolution": [
+    {
+      "requested_path": "/Users/wuyilin/.codex/sessions/2026/08/04/rollout-2026-08-04T01-08-44-019fc899-672b-7970-989a-a43d3d3da142.jsonl",
+      "resolved_path": "/Users/wuyilin/.codex/archived_sessions/rollout-2026-08-04T01-08-44-019fc899-672b-7970-989a-a43d3d3da142.jsonl",
+      "sha256": "400fb2468a5cf0679c2674ebfaa4f5648510ea888f76a9d426fe292705ec3c58",
+      "requested_path_present": false,
+      "resolved_path_present": true
+    },
+    {
+      "requested_path": "/Users/wuyilin/.codex/sessions/2026/08/04/rollout-2026-08-04T01-08-44-019fc899-672c-7a70-87d8-0c4abef9072f.jsonl",
+      "resolved_path": "/Users/wuyilin/.codex/archived_sessions/rollout-2026-08-04T01-08-44-019fc899-672c-7a70-87d8-0c4abef9072f.jsonl",
+      "sha256": "91e13fc2e15adc1985d2ccdb13c0060ff1ffe811372227bfe61f89655e87a3b6",
+      "requested_path_present": false,
+      "resolved_path_present": true
+    },
+    {
+      "requested_path": "/Users/wuyilin/.codex/sessions/2026/08/04/rollout-2026-08-04T01-08-44-019fc899-672b-7970-989a-a45bb511e8e3.jsonl",
+      "resolved_path": "/Users/wuyilin/.codex/archived_sessions/rollout-2026-08-04T01-08-44-019fc899-672b-7970-989a-a45bb511e8e3.jsonl",
+      "sha256": "b79486865e9a49949982b4e3a267f49b03684d167597b49374e9363a795d5a67",
+      "requested_path_present": false,
+      "resolved_path_present": true
+    },
+    {
+      "requested_path": "/Users/wuyilin/.codex/sessions/2026/08/04/rollout-2026-08-04T01-08-44-019fc899-672c-7a70-87d8-0c2a8d916073.jsonl",
+      "resolved_path": "/Users/wuyilin/.codex/archived_sessions/rollout-2026-08-04T01-08-44-019fc899-672c-7a70-87d8-0c2a8d916073.jsonl",
+      "sha256": "a40c5246f012d018b01c9514b6e91b621bd7169f33c089a04029e495bf910cef",
+      "requested_path_present": false,
+      "resolved_path_present": true
+    }
+  ],
+  "reconstruction_method": {
+    "source_event": "structured patch_apply_end.changes from JSONL",
+    "base_event": "one complete add/content event per target file",
+    "update_application": "ordered unified diffs with line-number and context verification in memory",
+    "natural_language_final_answers_used": false,
+    "truncated_console_text_used": false,
+    "old_worktree_output_restored_as_result_evidence": false,
+    "unique_reconstruction_gate": "PASS",
+    "target_file_count": 8
+  },
+  "recovered_files": [
+    {
+      "item": "V1-026",
+      "register_key": "CAL-E01:75",
+      "recovery_path": "scripts/experiments/analyze_cal_e01_75.py",
+      "source_path_in_trace": "/Users/wuyilin/.codex/worktrees/df05/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/scripts/experiments/analyze_cal_e01_75.py",
+      "original_worktree": "/Users/wuyilin/.codex/worktrees/df05/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition",
+      "base_content_event": {"turn_id": "019fc899-6cba-7320-b3d6-83c810afe8c7", "change_type": "add", "content_bytes": 57007},
+      "last_content_event": {"turn_id": "019fc899-6cba-7320-b3d6-83c810afe8c7", "change_type": "update", "update_events": 7},
+      "bytes": 61912,
+      "sha256": "60fbce6ba07a8395cd16dd260ccce3abaf7422cc4feb3ed8c8b25da9b17aa3de"
+    },
+    {
+      "item": "V1-026",
+      "register_key": "CAL-E01:75",
+      "recovery_path": "scripts/experiments/test_analyze_cal_e01_75.py",
+      "source_path_in_trace": "/Users/wuyilin/.codex/worktrees/df05/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/scripts/experiments/test_analyze_cal_e01_75.py",
+      "original_worktree": "/Users/wuyilin/.codex/worktrees/df05/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition",
+      "base_content_event": {"turn_id": "019fc899-6cba-7320-b3d6-83c810afe8c7", "change_type": "add", "content_bytes": 3340},
+      "last_content_event": {"turn_id": "019fc899-6cba-7320-b3d6-83c810afe8c7", "change_type": "update", "update_events": 4},
+      "bytes": 4766,
+      "sha256": "1dddfe08f47e598b75f926270918d0b8d2974a91796bb34212215505a451983d"
+    },
+    {
+      "item": "V1-033",
+      "register_key": "CAL-E02:128",
+      "recovery_path": "scripts/experiments/analyze_cal_e02_128.py",
+      "source_path_in_trace": "/Users/wuyilin/.codex/worktrees/c71f/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/scripts/experiments/analyze_cal_e02_128.py",
+      "original_worktree": "/Users/wuyilin/.codex/worktrees/c71f/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition",
+      "base_content_event": {"turn_id": "019fc899-6b64-7d92-a032-ce1d720eb40d", "change_type": "add", "content_bytes": 53833},
+      "last_content_event": {"turn_id": "019fc899-6b64-7d92-a032-ce1d720eb40d", "change_type": "update", "update_events": 3},
+      "bytes": 53819,
+      "sha256": "cf7d21dfc577ac54900adbeb21ce60d56fec9fc3121020c799aa80bac22de9a4"
+    },
+    {
+      "item": "V1-033",
+      "register_key": "CAL-E02:128",
+      "recovery_path": "scripts/experiments/test_analyze_cal_e02_128.py",
+      "source_path_in_trace": "/Users/wuyilin/.codex/worktrees/c71f/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/scripts/experiments/test_analyze_cal_e02_128.py",
+      "original_worktree": "/Users/wuyilin/.codex/worktrees/c71f/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition",
+      "base_content_event": {"turn_id": "019fc899-6b64-7d92-a032-ce1d720eb40d", "change_type": "add", "content_bytes": 4718},
+      "last_content_event": {"turn_id": "019fc899-6b64-7d92-a032-ce1d720eb40d", "change_type": "update", "update_events": 3},
+      "bytes": 5682,
+      "sha256": "682704d48da341ff66b65948cda6d2f9ac4f64a464b4b9d951c2142c39ef9930"
+    },
+    {
+      "item": "V1-035",
+      "register_key": "CAL-E02:135",
+      "recovery_path": "scripts/experiments/analyze_cal_e02_135.py",
+      "source_path_in_trace": "/Users/wuyilin/.codex/worktrees/15b8/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/scripts/experiments/analyze_cal_e02_135.py",
+      "original_worktree": "/Users/wuyilin/.codex/worktrees/15b8/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition",
+      "base_content_event": {"turn_id": "019fc899-6992-74c1-a967-5cc43158fd53", "change_type": "add", "content_bytes": 52524},
+      "last_content_event": {"turn_id": "019fc899-6992-74c1-a967-5cc43158fd53", "change_type": "update", "update_events": 3},
+      "bytes": 52976,
+      "sha256": "7e34dbefe304132df7fa3b0861cc850a1814568356bd0db0c536f7f76438f50e"
+    },
+    {
+      "item": "V1-035",
+      "register_key": "CAL-E02:135",
+      "recovery_path": "scripts/experiments/test_analyze_cal_e02_135.py",
+      "source_path_in_trace": "/Users/wuyilin/.codex/worktrees/15b8/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/scripts/experiments/test_analyze_cal_e02_135.py",
+      "original_worktree": "/Users/wuyilin/.codex/worktrees/15b8/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition",
+      "base_content_event": {"turn_id": "019fc899-6992-74c1-a967-5cc43158fd53", "change_type": "add", "content_bytes": 7846},
+      "last_content_event": {"turn_id": "019fc899-6992-74c1-a967-5cc43158fd53", "change_type": "update", "update_events": 1},
+      "bytes": 8739,
+      "sha256": "9c7256386406ed0ac9372bff1e3a7ed90dc5706ec352ef9bf8a94b5f6e5990fa"
+    },
+    {
+      "item": "V1-045",
+      "register_key": "CAL-E03:164",
+      "recovery_path": "scripts/experiments/analyze_cal_e03_164.py",
+      "source_path_in_trace": "/Users/wuyilin/.codex/worktrees/2f85/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/scripts/experiments/analyze_cal_e03_164.py",
+      "original_worktree": "/Users/wuyilin/.codex/worktrees/2f85/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition",
+      "base_content_event": {"turn_id": "019fc899-6b9e-7b60-adeb-3a5101d71df9", "change_type": "add", "content_bytes": 55924},
+      "last_content_event": {"turn_id": "019fc899-6b9e-7b60-adeb-3a5101d71df9", "change_type": "add", "update_events": 0},
+      "bytes": 55924,
+      "sha256": "2a29f0870bef6a5a538ffc952e4cbf1f7810898187a36d0e84b2d6c075d9a4a5"
+    },
+    {
+      "item": "V1-045",
+      "register_key": "CAL-E03:164",
+      "recovery_path": "tests/test_analyze_cal_e03_164.py",
+      "source_path_in_trace": "/Users/wuyilin/.codex/worktrees/2f85/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/tests/test_analyze_cal_e03_164.py",
+      "original_worktree": "/Users/wuyilin/.codex/worktrees/2f85/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition",
+      "base_content_event": {"turn_id": "019fc899-6b9e-7b60-adeb-3a5101d71df9", "change_type": "add", "content_bytes": 13562},
+      "last_content_event": {"turn_id": "019fc899-6b9e-7b60-adeb-3a5101d71df9", "change_type": "add", "update_events": 0},
+      "bytes": 13562,
+      "sha256": "96d396d7af14114c75c5171e93914161942f98e1e9e993cf4df6f81ea161ba34"
+    }
+  ],
+  "verification": {
+    "py_compile": {
+      "command": "python3 -m py_compile scripts/experiments/analyze_cal_e01_75.py scripts/experiments/test_analyze_cal_e01_75.py scripts/experiments/analyze_cal_e02_128.py scripts/experiments/test_analyze_cal_e02_128.py scripts/experiments/analyze_cal_e02_135.py scripts/experiments/test_analyze_cal_e02_135.py scripts/experiments/analyze_cal_e03_164.py tests/test_analyze_cal_e03_164.py",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "fixture_tests": [
+      {"command": "PYTHONPATH=. python3 scripts/experiments/test_analyze_cal_e01_75.py", "tests": 5, "status": "PASS", "exit_code": 0},
+      {"command": "PYTHONPATH=. python3 scripts/experiments/test_analyze_cal_e02_128.py", "tests": 4, "status": "PASS", "exit_code": 0},
+      {"command": "PYTHONPATH=. python3 -m unittest scripts.experiments.test_analyze_cal_e02_135", "tests": 4, "status": "PASS", "exit_code": 0},
+      {"command": "PYTHONPATH=. python3 tests/test_analyze_cal_e03_164.py", "tests": 4, "status": "PASS", "exit_code": 0}
+    ],
+    "total_tests": 17,
+    "initial_import_path_issue": "Direct file invocation without PYTHONPATH was not counted; rerun with PYTHONPATH=. passed.",
+    "real_analyzer_cli_invoked": false,
+    "formal_output_roots_present": [],
+    "scientific_outputs_created": false
+  },
+  "frozen_input_recheck": {
+    "register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "e4_r3_results_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "e4_r3_execution_manifest_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "e4_r3_execution_complete_sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+    "e4_r3_terminal_inventory_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+    "all_match": true
+  },
+  "gate": {
+    "unique_reconstruction": "PASS",
+    "source_files_present": "PASS",
+    "py_compile": "PASS",
+    "read_only_fixture_tests": "PASS",
+    "no_overwrite_and_manifest_coverage": "PASS",
+    "frozen_inputs_unchanged": "PASS",
+    "m2_scientific_execution": "BLOCKED_BY_TASK_BOUNDARY",
+    "overall": "PASS"
+  },
+  "result": "REC-M1_PASS",
+  "unresolved": [
+    "REC-M2 remains BLOCKED and was not started.",
+    "Independent unified acceptance REC-M4 has not started.",
+    "The four requested session paths were absent; archived session paths were used and hashed as the unique resolved sources."
+  ]
+}

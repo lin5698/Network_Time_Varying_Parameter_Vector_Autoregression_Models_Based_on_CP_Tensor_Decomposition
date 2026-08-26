@@ -1,0 +1,77 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-governance-recheck-v3",
+  "record_id": "REC-M5-governance-recheck-v3-20260812",
+  "generated_at": "2026-08-12T01:08:00+08:00",
+  "phase": "M5-C",
+  "result": "CURRENT_PATCH_DETERMINISTIC_PASS_AUTHOR_INPUT_BLOCKED",
+  "acceptance_class": "GOVERNANCE_AND_ARTIFACT_INTEGRITY_ONLY",
+  "scope": "Fresh exact-path recheck of the current M5-B review-only patch; no manuscript, register, scientific payload, authorization or git mutation.",
+  "current_artifacts": {
+    "review_patch_markdown": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "sha256": "ae6c010ee90654fbd6cf33e709157acda3aac8b83fe0175d980b66da96cd52c5"
+    },
+    "review_patch_manifest": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "sha256": "7eff176afbe0b2f69d4a90db10c2a344be9c5a8a5e419b1a4fe4050e15b8e47b"
+    },
+    "author_input_request": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "sha256": "f1ea501fc6234d9c8a925014dc3b597b84ca4336058f5df63d45b4750ce1a9e5"
+    },
+    "author_input_worksheet": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "sha256": "81e3a2e22277a08e487d760b1321815394b55e471bd6f515a7dbd755d8c9b915"
+    },
+    "editorial_recheck": {
+      "path": "refine-logs/REC-M5_EDITORIAL_RECHECK_V2_20260812.md",
+      "sha256": "332bedf26d1d06387d9a6a00dc1e5d9f0eea5f7ef02a454b6748a67b9760212d"
+    }
+  },
+  "checks": {
+    "json_parse": "PASS",
+    "current_patch_markdown_hash": "PASS",
+    "declared_input_hashes": "9/9 PASS",
+    "evidence_bundle_hashes": "9/9 PASS",
+    "protected_baseline_hashes": "12/12 PASS",
+    "pre_apply_anchor_hashes": "18/18 PASS",
+    "unit_coverage": "26/26 PASS; unique=26",
+    "placeholder_gate": "PASS_DRAFT_ONLY_4_ALLOWED_TOKENS",
+    "editorial_receipt_hash": "PASS",
+    "author_request_references": "PASS",
+    "author_input_gate": "BLOCKED_AS_DESIGNED",
+    "m4_allowlisted_validator": "247/247 PASS"
+  },
+  "stale_receipt_detection": {
+    "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V2_20260812.json",
+    "status": "STALE_FOR_CURRENT_PATCH",
+    "recorded_patch_markdown_sha256": "8a08f84db4edef500a7645854c499b937e0f5278fab15e345901677d369ae5da",
+    "current_patch_markdown_sha256": "ae6c010ee90654fbd6cf33e709157acda3aac8b83fe0175d980b66da96cd52c5",
+    "recorded_patch_manifest_sha256": "b5f0f90b6f2bdf2ca9bcf0dbaee58b5f3aa7d8c9e84f7f7e5e9f7c60b44f5cc4",
+    "current_patch_manifest_sha256": "7eff176afbe0b2f69d4a90db10c2a344be9c5a8a5e419b1a4fe4050e15b8e47b",
+    "interpretation": "V2 remains historical evidence for the earlier patch and is not a current-version acceptance receipt."
+  },
+  "blocking_residuals": [
+    "AIN-RESULT: four gain values, formula, denominator and endpoint/comparator evidence locators are unresolved.",
+    "AIN-ALS: fixed-versus-maximum semantics, monitored quantity, tolerance, stopping predicate, precedence and canonical source ownership are unresolved.",
+    "AIN-TOPOLOGY: row-level amplitudes, affected objects, generation-versus-observation roles, seeds, endpoints and replication counts are unresolved.",
+    "AIN-SOURCE-OWNERSHIP: canonical Markdown ownership for 100/80 iterations, spectral-radius wording and 50% attenuation is unresolved.",
+    "Luna/max final semantic service recheck is still required after author intake."
+  ],
+  "authorization_boundary": {
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_payload_mutation": "PROHIBITED",
+    "execution_authorization_mutation": "PROHIBITED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  },
+  "operation_policy": {
+    "record_only": true,
+    "manuscript_modified": false,
+    "formal_register_modified": false,
+    "scientific_payload_modified": false,
+    "authorization_modified": false,
+    "git_operations": "NONE"
+  }
+}

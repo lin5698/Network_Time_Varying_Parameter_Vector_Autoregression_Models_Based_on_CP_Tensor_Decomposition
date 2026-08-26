@@ -1,0 +1,218 @@
+- generic [ref=f12e1]:
+  - text: mq1200
+  - dialog [ref=f12e2]:
+    - generic [ref=f12e4]:
+      - heading "Your privacy, your choice" [level=2] [ref=f12e6]
+      - generic [ref=f12e8]:
+        - paragraph [ref=f12e9]: We use essential cookies to make sure the site can function. We also use optional cookies for advertising, personalisation of content, usage analysis, and social media, as well as to allow video information to be shared for both marketing, analytics and editorial purposes.
+        - paragraph [ref=f12e10]: By accepting optional cookies, you consent to the processing of your personal data - including transfers to third parties. Some third parties are outside of the European Economic Area, with varying standards of data protection.
+        - paragraph [ref=f12e11]:
+          - text: See our
+          - link "privacy policy" [ref=f12e12] [cursor=pointer]:
+            - /url: https://www.nature.com/info/privacy
+          - text: for more information on the use of your personal data.
+        - paragraph [ref=f12e13]:
+          - button "Manage preferences" [ref=f12e14] [cursor=pointer]
+          - text: for further information and to change your choices.
+      - generic [ref=f12e15]:
+        - button "Accept all cookies" [ref=f12e16] [cursor=pointer]
+        - button "Reject optional cookies" [ref=f12e17] [cursor=pointer]
+  - generic [ref=f12e18]:
+    - link "Skip to main content" [ref=f12e19] [cursor=pointer]:
+      - /url: "#content"
+    - complementary [ref=f12e20]
+    - banner [ref=f12e22]:
+      - generic [ref=f12e25]:
+        - link [ref=f12e27] [cursor=pointer]:
+          - /url: /srep
+          - img "Scientific Reports" [ref=f12e29]
+        - list [ref=f12e30]:
+          - listitem [ref=f12e31]:
+            - link "View all journals" [ref=f12e32] [cursor=pointer]:
+              - /url: https://www.nature.com/siteindex
+          - listitem [ref=f12e34]:
+            - link "Saved research" [ref=f12e35] [cursor=pointer]:
+              - /url: /saved-research
+          - listitem [ref=f12e39]:
+            - button "Search" [ref=f12e40] [cursor=pointer]
+          - listitem [ref=f12e44]:
+            - link "Log in" [ref=f12e45] [cursor=pointer]:
+              - /url: https://idp.nature.com/auth/personal/springernature?redirect_uri=https://www.nature.com/srep/aims
+      - generic [ref=f12e49]:
+        - list [ref=f12e50]:
+          - listitem [ref=f12e51]:
+            - button "Explore content" [ref=f12e52] [cursor=pointer]
+          - listitem [ref=f12e56]:
+            - button "About the journal" [ref=f12e57] [cursor=pointer]
+          - listitem [ref=f12e61]:
+            - button "Publish with us" [ref=f12e62] [cursor=pointer]
+        - list [ref=f12e66]:
+          - listitem [ref=f12e67]:
+            - link "Sign up for alerts" [ref=f12e68] [cursor=pointer]:
+              - /url: https://journal-alerts.springernature.com/subscribe?journal_id=41598
+          - listitem [ref=f12e72]:
+            - link "RSS feed" [ref=f12e73] [cursor=pointer]:
+              - /url: https://www.nature.com/srep.rss
+  - navigation "breadcrumbs" [ref=f12e75]:
+    - list [ref=f12e77]:
+      - listitem [ref=f12e78]:
+        - link "nature" [ref=f12e79] [cursor=pointer]:
+          - /url: /
+      - listitem [ref=f12e82]: scientific reports
+  - main [ref=f12e83]:
+    - heading "Page not found" [level=1] [ref=f12e86]
+    - paragraph [ref=f12e90]: Sorry, the page you requested is unavailable. The link you requested might be broken, or no longer exist.
+  - contentinfo [ref=f12e91]:
+    - generic [ref=f12e95]:
+      - paragraph [ref=f12e96]: Scientific Reports (Sci Rep)
+      - paragraph [ref=f12e97]: ISSN 2045-2322 (online)
+    - generic [ref=f12e98]:
+      - generic [ref=f12e99]:
+        - heading "nature.com footer links" [level=2] [ref=f12e100]
+        - generic [ref=f12e102]:
+          - generic [ref=f12e103]:
+            - heading "About Nature Portfolio" [level=3] [ref=f12e104]
+            - list [ref=f12e105]:
+              - listitem [ref=f12e106]:
+                - link "About us" [ref=f12e107] [cursor=pointer]:
+                  - /url: https://www.nature.com/npg_/company_info/index.html
+              - listitem [ref=f12e108]:
+                - link "Press releases" [ref=f12e109] [cursor=pointer]:
+                  - /url: https://www.nature.com/npg_/press_room/press_releases.html
+              - listitem [ref=f12e110]:
+                - link "Press office" [ref=f12e111] [cursor=pointer]:
+                  - /url: https://press.nature.com/
+              - listitem [ref=f12e112]:
+                - link "Contact us" [ref=f12e113] [cursor=pointer]:
+                  - /url: https://support.nature.com/support/home
+          - generic [ref=f12e114]:
+            - heading "Discover content" [level=3] [ref=f12e115]
+            - list [ref=f12e116]:
+              - listitem [ref=f12e117]:
+                - link "Journals A-Z" [ref=f12e118] [cursor=pointer]:
+                  - /url: https://www.nature.com/siteindex
+              - listitem [ref=f12e119]:
+                - link "Articles by subject" [ref=f12e120] [cursor=pointer]:
+                  - /url: https://www.nature.com/subjects
+              - listitem [ref=f12e121]:
+                - link "protocols.io" [ref=f12e122] [cursor=pointer]:
+                  - /url: https://www.protocols.io/
+              - listitem [ref=f12e123]:
+                - link "Nature Index" [ref=f12e124] [cursor=pointer]:
+                  - /url: https://www.natureindex.com/
+          - generic [ref=f12e125]:
+            - heading "Publishing policies" [level=3] [ref=f12e126]
+            - list [ref=f12e127]:
+              - listitem [ref=f12e128]:
+                - link "Nature portfolio policies" [ref=f12e129] [cursor=pointer]:
+                  - /url: https://www.nature.com/authors/editorial_policies
+              - listitem [ref=f12e130]:
+                - link "Open access" [ref=f12e131] [cursor=pointer]:
+                  - /url: https://www.nature.com/nature-research/open-access
+          - generic [ref=f12e132]:
+            - heading "Author & Researcher services" [level=3] [ref=f12e133]
+            - list [ref=f12e134]:
+              - listitem [ref=f12e135]:
+                - link "Reprints & permissions" [ref=f12e136] [cursor=pointer]:
+                  - /url: https://www.nature.com/reprints
+              - listitem [ref=f12e137]:
+                - link "Research data" [ref=f12e138] [cursor=pointer]:
+                  - /url: https://www.springernature.com/gp/authors/research-data
+              - listitem [ref=f12e139]:
+                - link "Language editing" [ref=f12e140] [cursor=pointer]:
+                  - /url: https://authorservices.springernature.com/language-editing/
+              - listitem [ref=f12e141]:
+                - link "Scientific editing" [ref=f12e142] [cursor=pointer]:
+                  - /url: https://authorservices.springernature.com/scientific-editing/
+              - listitem [ref=f12e143]:
+                - link "Nature Masterclasses" [ref=f12e144] [cursor=pointer]:
+                  - /url: https://masterclasses.nature.com/
+              - listitem [ref=f12e145]:
+                - link "Research Solutions" [ref=f12e146] [cursor=pointer]:
+                  - /url: https://solutions.springernature.com/
+          - generic [ref=f12e147]:
+            - heading "Libraries & institutions" [level=3] [ref=f12e148]
+            - list [ref=f12e149]:
+              - listitem [ref=f12e150]:
+                - link "Librarian service & tools" [ref=f12e151] [cursor=pointer]:
+                  - /url: https://www.springernature.com/gp/librarians/tools-services
+              - listitem [ref=f12e152]:
+                - link "Librarian portal" [ref=f12e153] [cursor=pointer]:
+                  - /url: https://www.springernature.com/gp/librarians/manage-your-account/librarianportal
+              - listitem [ref=f12e154]:
+                - link "Open research" [ref=f12e155] [cursor=pointer]:
+                  - /url: https://www.nature.com/openresearch/about-open-access/information-for-institutions
+              - listitem [ref=f12e156]:
+                - link "Recommend to library" [ref=f12e157] [cursor=pointer]:
+                  - /url: https://www.springernature.com/gp/librarians/recommend-to-your-library
+          - generic [ref=f12e158]:
+            - heading "Advertising & partnerships" [level=3] [ref=f12e159]
+            - list [ref=f12e160]:
+              - listitem [ref=f12e161]:
+                - link "Advertising" [ref=f12e162] [cursor=pointer]:
+                  - /url: https://partnerships.nature.com/product/digital-advertising/
+              - listitem [ref=f12e163]:
+                - link "Partnerships & Services" [ref=f12e164] [cursor=pointer]:
+                  - /url: https://partnerships.nature.com/
+              - listitem [ref=f12e165]:
+                - link "Media kits" [ref=f12e166] [cursor=pointer]:
+                  - /url: https://partnerships.nature.com/media-kits/
+              - listitem [ref=f12e167]:
+                - link "Branded content" [ref=f12e168] [cursor=pointer]:
+                  - /url: https://partnerships.nature.com/product/branded-content-native-advertising/
+          - generic [ref=f12e169]:
+            - heading "Professional development" [level=3] [ref=f12e170]
+            - list [ref=f12e171]:
+              - listitem [ref=f12e172]:
+                - link "Nature Awards" [ref=f12e173] [cursor=pointer]:
+                  - /url: https://www.nature.com/immersive/natureawards/index.html
+              - listitem [ref=f12e174]:
+                - link "Nature Careers" [ref=f12e175] [cursor=pointer]:
+                  - /url: https://www.nature.com/naturecareers/
+              - listitem [ref=f12e176]:
+                - link "Nature Conferences" [ref=f12e177] [cursor=pointer]:
+                  - /url: https://conferences.nature.com
+          - generic [ref=f12e179]:
+            - heading "Regional websites" [level=3] [ref=f12e180]
+            - list [ref=f12e181]:
+              - listitem [ref=f12e182]:
+                - link "Nature Africa" [ref=f12e183] [cursor=pointer]:
+                  - /url: https://www.nature.com/natafrica
+              - listitem [ref=f12e184]:
+                - link "Nature China" [ref=f12e185] [cursor=pointer]:
+                  - /url: http://www.naturechina.com
+              - listitem [ref=f12e186]:
+                - link "Nature India" [ref=f12e187] [cursor=pointer]:
+                  - /url: https://www.nature.com/nindia
+              - listitem [ref=f12e188]:
+                - link "Nature Japan" [ref=f12e189] [cursor=pointer]:
+                  - /url: https://www.natureasia.com/ja-jp
+              - listitem [ref=f12e190]:
+                - link "Nature Middle East" [ref=f12e191] [cursor=pointer]:
+                  - /url: https://www.nature.com/nmiddleeast
+        - list [ref=f12e193]:
+          - listitem [ref=f12e194]:
+            - link "Privacy Policy" [ref=f12e195] [cursor=pointer]:
+              - /url: https://www.nature.com/info/privacy
+          - listitem [ref=f12e196]:
+            - link "Use of cookies" [ref=f12e197] [cursor=pointer]:
+              - /url: https://www.nature.com/info/cookies
+          - listitem [ref=f12e198]:
+            - button "Your privacy choices/Manage cookies" [ref=f12e199] [cursor=pointer]
+          - listitem [ref=f12e200]:
+            - link "Legal notice" [ref=f12e201] [cursor=pointer]:
+              - /url: https://www.nature.com/info/legal-notice
+          - listitem [ref=f12e202]:
+            - link "Accessibility statement" [ref=f12e203] [cursor=pointer]:
+              - /url: https://www.nature.com/info/accessibility-statement
+          - listitem [ref=f12e204]:
+            - link "Terms & Conditions" [ref=f12e205] [cursor=pointer]:
+              - /url: https://www.nature.com/info/terms-and-conditions
+          - listitem [ref=f12e206]:
+            - link "Your US state privacy rights" [ref=f12e207] [cursor=pointer]:
+              - /url: https://www.springernature.com/ccpa
+      - generic [ref=f12e208]:
+        - link [ref=f12e209] [cursor=pointer]:
+          - /url: https://www.springernature.com/
+          - img "Springer Nature" [ref=f12e210]
+        - paragraph [ref=f12e211]: © 2026 Springer Nature Limited

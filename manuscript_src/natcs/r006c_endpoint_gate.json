@@ -1,0 +1,53 @@
+{
+  "schema_version": "natcs-r006c-endpoint-gate-v2",
+  "protocol": "R006c endpoint-aware post-remediation gate",
+  "evidence_status": "frozen_v1_audited",
+  "scientific_outcome": "fail",
+  "scope": {
+    "n": 20,
+    "t": 200,
+    "fitted_rank": 3,
+    "head_rank": 3,
+    "response_horizon": 8,
+    "required_cells_per_candidate": 16,
+    "matched_cells_per_candidate": 8,
+    "native_cells_per_candidate": 8,
+    "layers": ["matched", "native"],
+    "required_endpoints_per_cell": ["w_ref", "w_alt_main"],
+    "seeds_per_cell": 10,
+    "seed_ids": [240100, 240101, 240102, 240103, 240104, 240105, 240106, 240107, 240108, 240109]
+  },
+  "promotion_rule": {
+    "cell_requires_every_recorded_endpoint_to_pass": true,
+    "candidate_requires_every_required_cell_to_pass": true,
+    "candidate_switching_across_cells": false
+  },
+  "candidates": {
+    "cp": {
+      "source_candidate_id": "anchor_split_cp3",
+      "reader_label": "CP anchor split, rank 3",
+      "rank": 3,
+      "passed_cells": 0,
+      "passed_matched_cells": 0,
+      "passed_native_cells": 0,
+      "promoted": false
+    },
+    "tucker": {
+      "source_candidate_id": "anchor_split_tucker333",
+      "reader_label": "Tucker anchor split, rank (3,3,3)",
+      "rank": [3, 3, 3],
+      "passed_cells": 6,
+      "passed_matched_cells": 6,
+      "passed_native_cells": 0,
+      "promoted": false
+    }
+  },
+  "promoted_candidate": null,
+  "source": {
+    "path": "output/high_impact_revision/r006c_endpoint_aware/r006c_results.json",
+    "sha256": "29660d01faa7f8c6db82232fde50bc5726ba420418357507c4f159e47f532c12",
+    "generated_at": "2026-07-15T13:10:57.799580+00:00",
+    "declared_protocol_path": "refine-logs/R006C_ENDPOINT_AWARE_ESTIMATOR_DESIGN_20260715.md",
+    "declared_protocol_sha256": "2bed0940b306fa5db913ab9138f56f6d8b608e8f4e57450f02e58313692743b9"
+  }
+}

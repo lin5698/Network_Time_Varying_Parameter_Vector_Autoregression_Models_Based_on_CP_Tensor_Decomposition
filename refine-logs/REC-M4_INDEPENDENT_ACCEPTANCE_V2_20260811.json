@@ -1,0 +1,472 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m4-independent-unified-acceptance-v2",
+  "version": "2.0",
+  "acceptance_id": "REC-M4-independent-acceptance-v2-20260811",
+  "generated_at": "2026-08-11T21:13:19+08:00",
+  "acceptance_result": "REC-M4_INDEPENDENT_ACCEPTANCE_PASS",
+  "auditor_provenance": {
+    "model": "gpt-5.6-luna",
+    "reasoning": "max",
+    "thread": "019fbdde-2c02-7662-b9d2-9dc2b70e1253",
+    "method": "independent_reparse_and_recomputation",
+    "m3_pass_label_used_as_evidence": false,
+    "read_only_cross_check": {
+      "agent_id": "019ff0e3-866e-71a1-b771-4bc8c336bb20",
+      "model": "gpt-5.6-luna",
+      "reasoning": "max",
+      "status": "completed",
+      "writes": []
+    }
+  },
+  "operation_policy": {
+    "root_acceptance_record_only": true,
+    "allowed_write_paths": [
+      "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V2_20260811.json"
+    ],
+    "manuscript_patch_application": "NOT_AUTHORIZED",
+    "formal_register_mutation": false,
+    "protected_artifact_mutation": false,
+    "authorization_mutation": false,
+    "git_operations": "NONE",
+    "claim_activation": "NOT_AUTHORIZED",
+    "m5_authorization": "NOT_AUTHORIZED_BY_THIS_RECORD",
+    "prohibited_scope_accessed": false,
+    "broad_refine_logs_traversal": false,
+    "record_write_method": "apply_patch"
+  },
+  "inputs": {
+    "m3_v2_acceptance": {
+      "path": "refine-logs/REC-M3_ACCEPTANCE_V2_20260811.json",
+      "bytes": 10510,
+      "sha256": "9fd8976112f55a8f055d2bc7c7636c762cb2ba00c423da7f9f303a4d35dcebdd",
+      "role": "reparsed_input_only"
+    },
+    "r2_claim_ledger": {
+      "path": "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811_R2.json",
+      "bytes": 17223,
+      "sha256": "dd03ce5369dff3c54b53910e4ab9368d07195f5294d5e9a3c130fb8456c145ca",
+      "role": "reparsed_input_and_primary_ledger"
+    },
+    "m4_v1_history_trigger": {
+      "path": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V1_20260811.json",
+      "bytes": 14616,
+      "sha256": "673946c72c35d7beb21a91e4a6e00f06c5288210e616eaefff901597cd0d2716",
+      "role": "fail_history_and_repair_trigger_only",
+      "acceptance_result": "REC-M4_INDEPENDENT_ACCEPTANCE_FAIL",
+      "current_historical_failure_id": "REC-M4-V1-026-EVIDENCE-POINTER-001"
+    },
+    "m3_label_disposition": "not_used_as_acceptance_evidence"
+  },
+  "output_inventory": [
+    {
+      "path": "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811_R2.json",
+      "bytes": 17223,
+      "sha256": "dd03ce5369dff3c54b53910e4ab9368d07195f5294d5e9a3c130fb8456c145ca",
+      "observed_bytes": 17223,
+      "observed_sha256": "dd03ce5369dff3c54b53910e4ab9368d07195f5294d5e9a3c130fb8456c145ca",
+      "bytes_match": true,
+      "sha256_match": true
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_026_PATCH_PROPOSAL_20260811.md",
+      "bytes": 10613,
+      "sha256": "5dc82aed028b4cc87bc44050e2d42ffdd0b22b4a21f89b35174dbf513feb2ebb",
+      "observed_bytes": 10613,
+      "observed_sha256": "5dc82aed028b4cc87bc44050e2d42ffdd0b22b4a21f89b35174dbf513feb2ebb",
+      "bytes_match": true,
+      "sha256_match": true
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json",
+      "bytes": 15181,
+      "sha256": "68a841cb4c5f68916cd305eb354200030564079f2e6fedf4e33a346a35f7f443",
+      "observed_bytes": 15181,
+      "observed_sha256": "68a841cb4c5f68916cd305eb354200030564079f2e6fedf4e33a346a35f7f443",
+      "bytes_match": true,
+      "sha256_match": true
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_033_PATCH_PROPOSAL_20260811.md",
+      "bytes": 10169,
+      "sha256": "6d8fff0275be2bbeeefca33193656c397de494e3ad0812e521cd6d3a4551e6da",
+      "observed_bytes": 10169,
+      "observed_sha256": "6d8fff0275be2bbeeefca33193656c397de494e3ad0812e521cd6d3a4551e6da",
+      "bytes_match": true,
+      "sha256_match": true
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json",
+      "bytes": 14990,
+      "sha256": "baee769a51c5861bfe04c7fcfc8e72608ea2bcd6f52fedcd909fca1bbb61ed33",
+      "observed_bytes": 14990,
+      "observed_sha256": "baee769a51c5861bfe04c7fcfc8e72608ea2bcd6f52fedcd909fca1bbb61ed33",
+      "bytes_match": true,
+      "sha256_match": true
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_045_PATCH_PROPOSAL_20260811.md",
+      "bytes": 9907,
+      "sha256": "7eb9d17f3c670de2babcd4e0587bd6ba13ff6787abf38119e4c435dd1397a0a0",
+      "observed_bytes": 9907,
+      "observed_sha256": "7eb9d17f3c670de2babcd4e0587bd6ba13ff6787abf38119e4c435dd1397a0a0",
+      "bytes_match": true,
+      "sha256_match": true
+    }
+  ],
+  "validator_commands_and_counts": {
+    "commands": [
+      "jq -c on the exact M3 V2, R2, V1-033, and V1-045 JSON inputs",
+      "shasum -a 256 on the three fixed acceptance inputs",
+      "Node.js JSON.parse and raw-byte SHA-256 inventory validator",
+      "Node.js protected-tree validator using UTF-8 byte sorting with Buffer.compare and separate symlink counts",
+      "rg -n ATX heading scan on the three explicit M3 proposal Markdown files"
+    ],
+    "raw_summary_validator_run": {
+      "checks_attempted": 285,
+      "checks_reported_passed": 282,
+      "aggregate_assertions_reported_failed": 3,
+      "actual_acceptance_failures": 0
+    },
+    "validator_tool_incidents": [
+      {
+        "incident_id": "REC-M4-V2-TOOL-001",
+        "classification": "validator_tool_incident",
+        "detail": "The required-interface aggregate used order-sensitive JSON.stringify; the registry mapping is semantically equal and all three per-comparator fit/evaluate interface checks passed.",
+        "effect_on_acceptance": "none"
+      },
+      {
+        "incident_id": "REC-M4-V2-TOOL-002",
+        "classification": "validator_tool_incident",
+        "detail": "The aggregate locator-count assertion expected 28 instead of the observed 30; all individual V1-045 source and line locator checks passed.",
+        "observed_corrected_count": 30,
+        "effect_on_acceptance": "none"
+      },
+      {
+        "incident_id": "REC-M4-V2-TOOL-003",
+        "classification": "validator_tool_incident",
+        "detail": "The aggregate proposal-heading assertion was inconsistent with the exact ATX heading scan; 41 proposal headings were enumerated with GitHub-style levels.",
+        "effect_on_acceptance": "none"
+      }
+    ],
+    "recomputed_counts": {
+      "input_files": 3,
+      "inventory_entries": 6,
+      "inventory_other_outputs": 5,
+      "r2_comparator_audits": 3,
+      "shared_registry_pointers": 3,
+      "primary_method_cells": 48,
+      "primary_endpoint_parity_cells": 16,
+      "primary_pair_cells": 32,
+      "audit_units_total": 26,
+      "v1_033_current_summary_fields": 13,
+      "v1_033_verbatim_matches_nonbinding": 1,
+      "v1_045_line_locators": 30,
+      "proposal_headings": 41,
+      "protected_files": 9,
+      "protected_trees": 3,
+      "declared_source_hashes": 13
+    }
+  },
+  "failures": [],
+  "historical_failure_register": [
+    {
+      "failure_id": "REC-M4-V1-026-EVIDENCE-POINTER-001",
+      "status": "historical_repair_trigger_only",
+      "old_record_sha256": "673946c72c35d7beb21a91e4a6e00f06c5288210e616eaefff901597cd0d2716",
+      "r2_repair": "three comparator registry pointers resolve; primary-ledger pointers are retained separately"
+    }
+  ],
+  "formal_register_bindings": {
+    "V1-026_CAL-E01_75": {
+      "register_path": "output/ncs_review_corpus/v1_author_decision_register.json",
+      "json_pointer": "#/items/25",
+      "item_id": "V1-026",
+      "item_index": 75,
+      "response_status": "PARTIAL",
+      "action_class": "DIRECT_TEXT_REVISION"
+    },
+    "V1-033_CAL-E02_128": {
+      "register_path": "output/ncs_review_corpus/v1_author_decision_register.json",
+      "json_pointer": "#/items/32",
+      "item_id": "V1-033",
+      "item_index": 128,
+      "response_status": "PARTIAL",
+      "action_class": "DIRECT_TEXT_REVISION"
+    },
+    "V1-045_CAL-E03_164": {
+      "register_path": "output/ncs_review_corpus/v1_author_decision_register.json",
+      "line_locator": "2023-2066",
+      "item_id": "V1-045",
+      "item_index": 164,
+      "response_status": "PARTIAL",
+      "action_class": "DIRECT_TEXT_REVISION"
+    }
+  },
+  "source_and_locator_validation": {
+    "source_paths_checked": 28,
+    "source_paths_exist_and_read": true,
+    "json_pointer_groups_checked": 36,
+    "json_pointer_groups_passed": 36,
+    "jsonpath_groups_checked": 2,
+    "jsonpath_groups_passed": 2,
+    "individual_source_locator_checks_passed": true,
+    "v1_045_line_locator_count": 30,
+    "v1_033_current_field_policy": "paragraph_level_summary_only",
+    "v1_033_verbatim_replacement_anchor_required": false,
+    "v1_033_current_fields_checked": 13,
+    "v1_033_nonbinding_verbatim_matches": 1,
+    "markdown_heading_normalization": {
+      "style": "GitHub ATX heading normalization",
+      "heading_count": 41,
+      "anchors_checked": [
+        "Same-Endpoint-Comparator-Contract",
+        "Stop-Conditions"
+      ],
+      "passed": true
+    },
+    "source_hash_validation": {
+      "r2_primary_artifacts": [
+        {
+          "path": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/artifact-manifest.json",
+          "sha256": "5767c635dab93ab86713c9b5e09280b0d861a175b553f8de7700b4c1a99e178d",
+          "match": true
+        },
+        {
+          "path": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/comparator-ledger.json",
+          "sha256": "8fef72efd9f1b547608323677dbf6e07e569ecb9090ea14928169882d5ebe069",
+          "match": true
+        },
+        {
+          "path": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/status-inventory.json",
+          "sha256": "8ac0390d12929bc2a31425f6b907f3eaedf91ae4648aa7d3f93f2d19bbfbfa3a",
+          "match": true
+        },
+        {
+          "path": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/paired-differences.json",
+          "sha256": "6d01447039edae222356b50e265440fd047c4887755c488de0202d70b817a583",
+          "match": true
+        }
+      ],
+      "v1_033_artifacts": [
+        {
+          "path": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e02-128-ff23c1c2be0a83baae80298617211b5d0469b2a7614e3a1734df22853f013bbb/analysis.json",
+          "sha256": "ae4289220a446f0e1a685e2336761475ab4d4f3c3a336be72a1eebb18d896d8e",
+          "match": true
+        },
+        {
+          "path": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e02-128-ff23c1c2be0a83baae80298617211b5d0469b2a7614e3a1734df22853f013bbb/audit.md",
+          "sha256": "c6d3f670ba9db6c5e550094716835fd55eac852105c64881571a5218bfc468e9",
+          "match": true
+        },
+        {
+          "path": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json",
+          "sha256": "60523c09126fca78f9e87c1ef4776a74b6f5025bbed19ad65ec1755838d77c68",
+          "match": true
+        },
+        {
+          "path": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md",
+          "sha256": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5",
+          "match": true
+        },
+        {
+          "path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+          "sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+          "match": true
+        }
+      ],
+      "coverage_hash": {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_COVERAGE_V1_20260811_010147.json",
+        "observed_sha256": "b9c60b13015167f7d9f483d49d76f05d41d2fa3a83e6a18b8b20b8ea4d470f51",
+        "expected_sha256_declared_in_r2": null,
+        "hash_anchor_status": "SOURCE_PRESENT_UNANCHORED_IN_R2"
+      }
+    }
+  },
+  "comparator_audit_units": {
+    "shared_registry_pointer": "comparator_registry.json#/content/records",
+    "registry_state": "FROZEN",
+    "registry_records": [
+      {
+        "comparator_id": "local_structured",
+        "role": "native_local_structured",
+        "parameterization": {"windows": [8, 12, 16]},
+        "endpoint_shape": "full_operator_and_finite_horizon_response",
+        "fit_interface": "fit(training_histories, observed_training_topologies, frozen_hyperparameters)",
+        "evaluate_interface": "evaluate(fitted_state, W_q, H_max)->{G_1:p,R_1:H_max,status}"
+      },
+      {
+        "comparator_id": "causal_temporal_smoother",
+        "role": "causal_temporal_structured",
+        "parameterization": {"alphas": [0.25, 0.55, 0.85]},
+        "endpoint_shape": "full_operator_and_finite_horizon_response",
+        "fit_interface": "fit(training_histories, observed_training_topologies, frozen_hyperparameters)",
+        "evaluate_interface": "evaluate(fitted_state, W_q, H_max)->{G_1:p,R_1:H_max,status}"
+      },
+      {
+        "comparator_id": "fixed_rank_basis",
+        "role": "fixed_low_rank_or_basis",
+        "parameterization": {"ranks": [1, 2, 3]},
+        "endpoint_shape": "full_operator_and_finite_horizon_response",
+        "fit_interface": "fit(training_histories, observed_training_topologies, frozen_hyperparameters)",
+        "evaluate_interface": "evaluate(fitted_state, W_q, H_max)->{G_1:p,R_1:H_max,status}"
+      }
+    ],
+    "units": [
+      {
+        "unit_id": "V1-026_CAL-E01_75_local_structured",
+        "comparator_id": "local_structured",
+        "registry_pointer": "comparator_registry.json#/content/records",
+        "primary_ledger_pointers": [
+          "comparator-ledger.json#/method_cell_audits",
+          "paired-differences.json#/pairs",
+          "status-inventory.json#/inventory"
+        ],
+        "validation": "PASS"
+      },
+      {
+        "unit_id": "V1-026_CAL-E01_75_causal_temporal_smoother",
+        "comparator_id": "causal_temporal_smoother",
+        "registry_pointer": "comparator_registry.json#/content/records",
+        "primary_ledger_pointers": [
+          "comparator-ledger.json#/endpoint_parity_audits",
+          "paired-differences.json#/pairs",
+          "status-inventory.json#/nonfinite_policy"
+        ],
+        "validation": "PASS"
+      },
+      {
+        "unit_id": "V1-026_CAL-E01_75_fixed_rank_basis",
+        "comparator_id": "fixed_rank_basis",
+        "registry_pointer": "comparator_registry.json#/content/records",
+        "primary_ledger_pointers": [
+          "comparator-ledger.json#/declared_methods",
+          "paired-differences.json#/pairs",
+          "artifact-manifest.json#/claim_activation"
+        ],
+        "validation": "PASS"
+      }
+    ],
+    "primary_ledger_recheck": {
+      "method_cell_audits": {"cells": 48, "cells_per_method": 16, "records_per_cell": 960, "validation": "PASS"},
+      "endpoint_parity_audits": {"cells": 16, "endpoint_keys_per_method_cell": 960, "validation": "PASS"},
+      "declared_methods": {"methods": ["local_structured", "causal_temporal_smoother", "fixed_rank_basis"], "validation": "PASS"},
+      "paired_differences": {"pair_cells": 32, "common_keys_per_pair": 960, "raw_arrays_match": true, "status_counts_match": true, "validation": "PASS"},
+      "status_inventory": {"recovery_available": 46080, "paired_candidate_available": 30720, "paired_comparator_available": 30720, "interval_available": 160, "bootstrap_available": 12800, "policy": "retain and count; never impute", "validation": "PASS"},
+      "manifest": {"claim_activation": "BLOCKED", "scientific_execution": "NOT_RUN", "validation": "PASS"}
+    }
+  },
+  "audit_units": {
+    "V1-026_CAL-E01_75": {
+      "unit_count": 3,
+      "status": "PASS",
+      "scientific_ceiling": "descriptive comparator role, endpoint, coverage, status, and common-completion integrity only"
+    },
+    "V1-033_CAL-E02_128": {
+      "unit_count": 13,
+      "unit_ids": [
+        "V1-033-M01", "V1-033-M02", "V1-033-M03", "V1-033-R01", "V1-033-R02", "V1-033-R03", "V1-033-R04", "V1-033-R05", "V1-033-S01", "V1-033-S02", "V1-033-S03", "V1-033-S04", "V1-033-S05"
+      ],
+      "current_field_policy": "paragraph_level_summary_only; verbatim replacement anchors not required",
+      "status": "PASS"
+    },
+    "V1-045_CAL-E03_164": {
+      "unit_count": 10,
+      "unit_ids": [
+        "V1-045-RANK", "V1-045-WINDOW", "V1-045-ALS", "V1-045-TOPOLOGY", "V1-045-STABILITY", "V1-045-FAILURE", "V1-045-REPLICATION", "V1-045-SCOPE", "V1-045-UNRUN", "V1-045-RESOURCE"
+      ],
+      "status": "PASS"
+    },
+    "total_units": 26,
+    "unique_units": 26
+  },
+  "protected_hash_recheck": {
+    "file_hash_algorithm": "SHA-256 of raw bytes",
+    "tree_hash_algorithm": "SHA-256 of UTF-8 byte-sorted relative-path TAB bytes TAB raw-SHA-256 LF lines; symlinks counted separately; Node Buffer.compare",
+    "locale_compare_used": false,
+    "protected_files_checked": 9,
+    "protected_file_matches": 9,
+    "files": [
+      {"path":"refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json","bytes":7074,"sha256":"c012f7d1a40168b264027c55a3760424c7686cd0e7941cf6765d99c2629fd63f","match":true},
+      {"path":"refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json","bytes":3455,"sha256":"7d65768118f5517b76a01acef3b7f15390a60ed0e7941cf6765d99c2629fd63f","match":true},
+      {"path":"refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2A_REPAIR_RECEIPT_V1_20260810_222232.json","bytes":13026,"sha256":"b98f8a4dc6dd36ee28426182d9320d0696880867544a0cc05dd6c1fb5e943395","match":true},
+      {"path":"output/ncs_review_corpus/v1_author_decision_register.json","bytes":110685,"sha256":"c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2","match":true},
+      {"path":"refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json","bytes":1822,"sha256":"73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6","match":true},
+      {"path":"refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json","bytes":2281,"sha256":"5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046","match":true},
+      {"path":"refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2_EXECUTION_AUTHORIZATION_V1_20260810_223606.json","bytes":5715,"sha256":"44677a44f01876bba8c96d924a69cf39a37f4642e00a004c1b03fb2dcbf4034c","match":true},
+      {"path":"refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_PREFLIGHT_RECEIPT_V1_20260810_231758.json","bytes":10995,"sha256":"5918f4eac9e6b01a012bcf511afc50a357e07e005b99dea242b36eff816359df","match":true},
+      {"path":"refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_TRACKER_V1_20260810_231758.md","bytes":2947,"sha256":"c35bf484768de70b0d64d2858f1328600d9cc5cc4efc7bb704729432336541eb","match":true}
+    ],
+    "protected_trees_checked": 3,
+    "protected_tree_matches": 3,
+    "trees": [
+      {"path":"manuscript_src/natcs","file_count":72,"symlink_count":0,"sha256":"21a1319b6f98e31804b7fd1766c66124553a2ad2904bdc2dcb655097e591a364","match":true},
+      {"path":"refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3","file_count":11,"symlink_count":0,"sha256":"6859c367141f33e589fb2d536c96fbe763f40e406ca65bfa556d89b7536e00ec","match":true},
+      {"path":"refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3","file_count":3,"symlink_count":0,"sha256":"5398ec9a698ba0a7b878b0a8d25a7d8e9184ea6ff98af033f2b33f7165b1a83f","match":true}
+    ],
+    "all_match": true
+  },
+  "scientific_state_matrix": {
+    "V1-026_CAL-E01_75": {
+      "governance": "PASS",
+      "m2c": "PASS",
+      "scientific_execution": "NOT_RUN",
+      "claim_activation": "BLOCKED",
+      "evidence_mode": "descriptive_only",
+      "contract_change": "NO_CONTRACT_CHANGE"
+    },
+    "V1-033_CAL-E02_128": {
+      "register": "PARTIAL",
+      "m2c": "BLOCKED",
+      "data_sufficiency": "PARTIAL",
+      "scientific_execution": "NOT_RUN",
+      "evidence_type": "simulation_only",
+      "independent_empirical_ground_truth": "NOT_EVALUABLE",
+      "provenance_gaps": ["chronology", "selection inputs", "held-out query identity", "endpoint signature", "truth isolation"],
+      "e4_r3": "WARN; activation and promotion blocked"
+    },
+    "V1-045_CAL-E03_164": {
+      "register": "PARTIAL",
+      "m2c": "PARTIAL",
+      "scope": "N=20/N=50 only",
+      "N100_N200": "NOT_RUN/ABSTAIN",
+      "resource_telemetry": "BLOCKED/null",
+      "runs": 1,
+      "seeds_per_cell": 20,
+      "repeated_run_reproducibility": "NOT_ESTABLISHED",
+      "ALS_stopping": "60 stopping semantics unresolved",
+      "compiled_application_iterations": 100,
+      "compiled_bootstrap_iterations": 80,
+      "compiled_settings_relation": "separate from controlled CAL-E03",
+      "topology_amplitudes": "UNBOUND",
+      "claim_activation": "NOT_AUTHORIZED"
+    },
+    "global": {
+      "claim_activation": "NOT_AUTHORIZED",
+      "promotion": "NOT_AUTHORIZED",
+      "new_scientific_experiment": "NOT_RUN",
+      "manuscript_patches_applied": false,
+      "M5": "NOT_AUTHORIZED_BY_THIS_RECORD"
+    }
+  },
+  "proposal_only_boundaries": {
+    "v1_026_patch_proposals": 3,
+    "v1_033_patch_units": 13,
+    "v1_045_contract_items": 10,
+    "all_proposal_only": true,
+    "no_manuscript_mutation": true,
+    "no_register_mutation": true,
+    "no_authorization_mutation": true,
+    "no_git_operations": true,
+    "no_scientific_claim_activation": true,
+    "M5": "NOT_AUTHORIZED_BY_THIS_RECORD"
+  },
+  "progression_gate": {
+    "REC-M3": "GOVERNANCE_ACCEPTED_V2",
+    "REC-M4_V1": "FAIL_RETAINED_AS_HISTORY",
+    "REC-M4_V2": "PASS",
+    "REC-M5": "NOT_AUTHORIZED_BY_THIS_RECORD",
+    "m4_pass_applies_manuscript_patch": false,
+    "m4_pass_activates_scientific_claim": false,
+    "manuscript_patches_applied": false
+  }
+}

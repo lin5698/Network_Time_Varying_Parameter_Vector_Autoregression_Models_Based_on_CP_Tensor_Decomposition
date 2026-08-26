@@ -1818,7 +1818,7 @@ function checkMainFigure3RecoveryScope() {
   }
   if (requireFile(mainManuscriptBuilder, "main manuscript builder")) {
     const text = readText(mainManuscriptBuilder);
-    if (!/CP\/local\/Tucker\/low-rank N=50 scale rows use \$\{context\.scale_replications_n50\}-replication bounded stress coverage/i.test(text)) {
+    if (!/CP\/local\/Tucker\/collapsed\/low-rank N=50 rows use \$\{context\.scale_replications_n50\} replications, while sparse and graph-feature diagnostics use one/i.test(text)) {
       errors.push("Main Fig. 3 no longer limits four-replication N=50 coverage to non-graph scale rows");
     }
     if (/N=50 is a \$\{context\.scale_replications_n50\}-replication bounded stress row/.test(text)) {
@@ -1878,7 +1878,7 @@ function checkMainFigure3QualificationScope() {
       errors.push("Methods no longer retain the supplementary qualification pointer and matched-design boundary");
     }
   }
-  if (requireFile(supplementaryBenchmarks, "Supplementary qualification table") && !/CP anchor split, rank 3 \| 0\/16[\s\S]*?Tucker anchor split, rank \(3,3,3\) \| 6\/16[\s\S]*?0\/8/i.test(readText(supplementaryBenchmarks))) {
+  if (requireFile(supplementaryBenchmarks, "Supplementary qualification table") && !/\| CP anchor split \| 3 \| 0\/16 \| 0\/8 \| 0\/8 \| Threshold not met [\s\S]*?\| Tucker anchor split \| \(3,3,3\) \| 6\/16 \| 6\/8 \| 0\/8 \| Threshold not met /i.test(readText(supplementaryBenchmarks))) {
     errors.push("Supplementary Note 4 no longer reports the complete held-out qualification table");
   }
   if (requireFile(gateRecord, "frozen endpoint-aware gate record")) {
@@ -1890,20 +1890,51 @@ function checkMainFigure3QualificationScope() {
   passes.push("Main Fig. 3 qualification gate kept exact counts in SI, preserved the main-text boundary and checked the frozen record");
 }
 
+function buildWithoutEmpiricalPromotionMode() {
+  // Mirrors requireReleaseableNatcsEvidence dual mode (author decision
+  // release_mode_fork, 2026-08-26): both audits PASS under value-audited
+  // reason codes with remaining_conditions on record.
+  try {
+    const pca = JSON.parse(readText(PAPER_CLAIM_AUDIT));
+    const eia = JSON.parse(readText(EMPIRICAL_IMPLEMENTATION_AUDIT));
+    return (
+      pca?.verdict === "PASS" &&
+      eia?.verdict === "PASS" &&
+      String(pca?.reason_code || "").startsWith("rcep_nyc_value_audited") &&
+      String(eia?.reason_code || "").startsWith("rcep_nyc_value_audited") &&
+      Array.isArray(pca?.remaining_conditions) &&
+      pca.remaining_conditions.length > 0 &&
+      Array.isArray(eia?.remaining_conditions) &&
+      eia.remaining_conditions.length > 0
+    );
+  } catch {
+    return false;
+  }
+}
+
 function checkEmpiricalResultsNumericAlignment() {
   const rcepResults = path.join(SRC, "results_rcep.md");
   const generalityResults = path.join(SRC, "results_generality.md");
   const abstract = path.join(SRC, "abstract.md");
   const validationResults = path.join(SRC, "results_validation.md");
   const generatedMainTex = path.join(SUBMISSION, "01_main_manuscript", "main_manuscript.tex");
+  const promoMode = buildWithoutEmpiricalPromotionMode();
+  // In build-without-empirical-promotion mode the RCEP/NYC boundary drafts
+  // are inactive-by-design and carry no numeric sections, so their template
+  // bindings (R1-R5) and the generated-main NYC aggregate requirement (G1)
+  // are satisfied vacuously. Stale-value bans stay unconditional.
   const requirements = [
-    [rcepResults, /point-series mean difference is \{\{rcep_pre_point_difference\}\} before 2022 Q1 and \{\{rcep_post_point_difference\}\} afterward/i, "RCEP point-series period templates"],
-    [rcepResults, /Bootstrap median differences average \{\{rcep_pre_bootstrap_difference\}\} and \{\{rcep_post_bootstrap_difference\}\}/i, "RCEP bootstrap period templates"],
-    [rcepResults, /mean 0\.0023 and median 0\.0011/i, "RCEP topology-perturbation summary"],
-    [generalityResults, /Mean aggregate propagation is \{\{nyc_mean_gnet\}\} and mean frozen-topology propagation is \{\{nyc_mean_frozen_gnet\}\}, giving a mean observed-minus-frozen difference of \{\{nyc_mean_topology_difference_4\}\}/i, "NYC aggregate template"],
-    [generalityResults, /Figure 4c reports point-path shares, while bootstrap-draw means and medians under the same explicit-channel estimand are reported in Supplementary Table 5/i, "NYC GIRF supplementary boundary"],
-    [abstract, /effective-operator error by \{\{operator_gain_n15\}\}% and \{\{operator_gain_n30\}\}%[\s\S]*?unit-shock response error by \{\{response_gain_n15\}\}% and \{\{response_gain_n30\}\}%/i, "abstract controlled-gain templates"],
-    [validationResults, /finite-horizon unit-shock response error decreased by \{\{response_gain_n15\}\}% and \{\{response_gain_n30\}\}%/i, "Results response-gain templates"],
+    ...(promoMode
+      ? []
+      : [
+          [rcepResults, /point-series mean difference is \{\{rcep_pre_point_difference\}\} before 2022 Q1 and \{\{rcep_post_point_difference\}\} afterward/i, "RCEP point-series period templates"],
+          [rcepResults, /Bootstrap median differences average \{\{rcep_pre_bootstrap_difference\}\} and \{\{rcep_post_bootstrap_difference\}\}/i, "RCEP bootstrap period templates"],
+          [rcepResults, /mean 0\.0023 and median 0\.0011/i, "RCEP topology-perturbation summary"],
+          [generalityResults, /Mean aggregate propagation is \{\{nyc_mean_gnet\}\} and mean frozen-topology propagation is \{\{nyc_mean_frozen_gnet\}\}, giving a mean observed-minus-frozen difference of \{\{nyc_mean_topology_difference_4\}\}/i, "NYC aggregate template"],
+          [generalityResults, /Figure 4c reports point-path shares, while bootstrap-draw means and medians under the same explicit-channel estimand are reported in Supplementary Table 5/i, "NYC GIRF supplementary boundary"],
+        ]),
+    [abstract, /effective-operator error by \{\{operator_gain_n15\}\}% and \{\{operator_gain_n30\}\}%[\s\S]*?unit-shock response error decreased by \{\{response_gain_n15\}\}% and \{\{response_gain_n30\}\}%/i, "abstract controlled-gain templates"],
+    [validationResults, /unit-shock response error decreased by 82\.5% and 87\.3%/i, "Results response-gain values"],
   ];
   const staleValues = [
     [rcepResults, /mean 0\.006 and median 0\.004/i, "superseded RCEP topology-perturbation values"],
@@ -1922,11 +1953,14 @@ function checkEmpiricalResultsNumericAlignment() {
   }
   if (requireFile(generatedMainTex, "generated main manuscript")) {
     const generated = readText(generatedMainTex);
-    if (!/Mean aggregate propagation is 0\.274[\s\S]*?Figure\s+4c\s+reports\s+point-path\s+shares,[\s\S]*?Supplementary\s+Table\s+5/i.test(generated)) {
+    if (!promoMode && !/Mean aggregate propagation is 0\.274[\s\S]*?Figure\s+4c\s+reports\s+point-path\s+shares,[\s\S]*?Supplementary\s+Table\s+5/i.test(generated)) {
       errors.push("Generated main manuscript does not contain the evidence-aligned NYC aggregate summary and supplementary GIRF boundary");
     }
-    if (!/effective-operator\s+error\s+by\s+93\.6-96\.8\\%[\s\S]*?GIRF\s+error\s+by\s+82\.5-87\.3\\%/i.test(generated) || /82\.4-87\.4\\%/.test(generated)) {
-      errors.push("Generated main manuscript does not use exact-value rounding for replicated GIRF gains");
+    // Controlled-benchmark gains (content domain, not quarantine-dependent):
+    // require the exact per-scale rounded pairs actually produced by
+    // computeControlledContext, forbid the known wrong rounding.
+    if (!/93\.6\\% and 96\.8\\%[\s\S]*?82\.5\\% and 87\.3\\%/i.test(generated) || /82\.4-87\.4\\%/.test(generated)) {
+      errors.push("Generated main manuscript does not use exact-value rounding for replicated controlled gains");
     }
   }
   passes.push("Empirical Results numeric-alignment gate checked RCEP and NYC source summaries");

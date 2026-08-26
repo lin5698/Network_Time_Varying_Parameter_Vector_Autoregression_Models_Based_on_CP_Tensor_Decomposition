@@ -1,0 +1,1580 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-07-19",
+  "audit_type": "read_only_candidate_preflight",
+  "contract_source": "scripts/run_cp_empirical_pipeline.py",
+  "production_trust_schema_version": 2,
+  "candidate_selection_made": false,
+  "production_trust_granted": false,
+  "scientific_execution_authorized": false,
+  "r006e_outcome_authorized": false,
+  "r006f_outcome_authorized": false,
+  "limitations": [
+    "Static AST inspection does not prove runtime correctness or scientific validity.",
+    "Secret scanning is pattern-based and cannot establish that a checkout is credential-free.",
+    "A candidate preflight cannot substitute for author confirmation of ownership, licence and permitted use."
+  ],
+  "candidates": [
+    {
+      "candidate_id": "C1",
+      "supplied_path": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock/repo",
+      "path_is_symlink": false,
+      "path_is_directory": true,
+      "production_trust_granted": false,
+      "resolved_path": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock/repo",
+      "git": {
+        "is_repository": true,
+        "root": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock",
+        "head_commit": "d0e398b896848f26413cf9aa9dfca15fb4e7ce64",
+        "status_readable": true,
+        "worktree_clean": false,
+        "dirty_entry_count": 7008,
+        "dirty_status_sha256": "a24571b489f55e6cc4e354ffcad437912169822ad10c8eafaedaf1cb62bd988d",
+        "dirty_entries_sample": [
+          "M README.md",
+          " D data_acquisition/data/EVAD_February2015.csv",
+          " D data_acquisition/data/trade_1988_2021.csv",
+          " M repo/config.py",
+          " M repo/research_additional_requested_outputs.py",
+          " M repo/research_fig_absorber_reranking.py",
+          " M repo/research_fig_resilience_credible.py",
+          " M repo/research_fig_reverse_shock_resilience.py",
+          " M repo/research_network_tvp_var.py",
+          " M repo/research_output/girf_bootstrap_data.json",
+          " M repo/research_output/nature_figures/Fig_Absorber_Reranking_H12_TV.pdf",
+          " M repo/research_output/nature_figures/Fig_Absorber_Reranking_H12_TV.png",
+          " M repo/research_output/nature_figures/Fig_Absorber_Reranking_H8_FixedPre.pdf",
+          " M repo/research_output/nature_figures/Fig_Absorber_Reranking_H8_FixedPre.png",
+          " M repo/research_output/nature_figures/Fig_Absorber_Reranking_H8_TV.pdf",
+          " M repo/research_output/nature_figures/Fig_Absorber_Reranking_H8_TV.png",
+          " M repo/research_output/nature_figures/Fig_Alternative_Absorber_Position_Measures.pdf",
+          " M repo/research_output/nature_figures/Fig_Alternative_Absorber_Position_Measures.png",
+          " M repo/research_output/nature_figures/Fig_Resilience_Measures_Intervals.pdf",
+          " M repo/research_output/nature_figures/Fig_Resilience_Measures_Intervals.png",
+          " M repo/research_output/nature_figures/Fig_Reverse_Shock_Resilience.pdf",
+          " M repo/research_output/nature_figures/Fig_Reverse_Shock_Resilience.png",
+          " M repo/research_output/pairwise_rolling_metrics.csv",
+          " M repo/research_output/rolling_resilience_bootstrapped.csv",
+          " M repo/research_output/rolling_resilience_metrics.csv",
+          " M repo/research_tvp_var_bootstrap.py",
+          "?? .mplconfig/fontlist-v390.json",
+          "?? data_acquisition/data/raw/tariff_line_official/NZL_2024_Imports_HS10_by_Country.zip",
+          "?? repo/AGENTS.md",
+          "?? repo/data/external_quarterly_validation/AUSGDPRQPSMEI.csv",
+          "?? repo/data/external_quarterly_validation/IDNGDPRQPSMEI.csv",
+          "?? repo/data/external_quarterly_validation/JPNGDPRQPSMEI.csv",
+          "?? repo/data/external_quarterly_validation/KORGDPRQPSMEI.csv",
+          "?? repo/data/external_quarterly_validation/PRINTO01CNQ663N.csv",
+          "?? repo/fetch_comtrade_preview_p0.py",
+          "?? repo/research_jie_actualized_status.py",
+          "?? repo/research_jie_asean_first_workflow_guard.py",
+          "?? repo/research_jie_asean_national_tariff_line_source_audit.py",
+          "?? repo/research_jie_asean_official_import_status.py",
+          "?? repo/research_jie_asean_official_import_status_config.py",
+          "?? repo/research_jie_asean_remaining_inventory_rollup.py",
+          "?? repo/research_jie_asean_remaining_inventory_rollup_config.py",
+          "?? repo/research_jie_asean_remaining_request_control.py",
+          "?? repo/research_jie_asean_remaining_request_control_config.py",
+          "?? repo/research_jie_asean_remaining_route_scan.py",
+          "?? repo/research_jie_asean_remaining_route_scan_config.py",
+          "?? repo/research_jie_asean_response_adapter_support.py",
+          "?? repo/research_jie_asean_response_gate_precheck.py",
+          "?? repo/research_jie_asean_response_intake_to_import_panel.py",
+          "?? repo/research_jie_asean_strict_vs_source_ready_audit.py",
+          "?? repo/research_jie_asean_tariff_line_route_audit.py",
+          "?? repo/research_jie_brunei_deps_attachment_inventory.py",
+          "?? repo/research_jie_brunei_deps_attachment_summarize_inventory.py",
+          "?? repo/research_jie_brunei_deps_attachment_summary_config.py",
+          "?? repo/research_jie_cambodia_gdce_deep_probe_config.py",
+          "?? repo/research_jie_cambodia_gdce_deep_probe_fetch.py",
+          "?? repo/research_jie_cambodia_gdce_deep_probe_summarize.py",
+          "?? repo/research_jie_cambodia_gdce_endpoint_inventory.py",
+          "?? repo/research_jie_cambodia_gdce_endpoint_inventory_support.py",
+          "?? repo/research_jie_cambodia_gdce_endpoint_summarize.py",
+          "?? repo/research_jie_common_support_scope_expansion.py",
+          "?? repo/research_jie_core_recompute.py",
+          "?? repo/research_jie_data_gap_diagnostics.py",
+          "?? repo/research_jie_indonesia_bps_tariff_line_import_probe.py",
+          "?? repo/research_jie_japan_estat_official_fetch_inventory.py",
+          "?? repo/research_jie_japan_estat_official_inventory_config.py",
+          "?? repo/research_jie_japan_estat_official_summarize_inventory.py",
+          "?? repo/research_jie_japan_tariff_line_import_probe.py",
+          "?? repo/research_jie_korea_kcs_official_fetch_inventory.py",
+          "?? repo/research_jie_korea_kcs_official_inventory_config.py",
+          "?? repo/research_jie_korea_kcs_official_summarize_inventory.py",
+          "?? repo/research_jie_lao_moic_target_period_fetch_inventory.py",
+          "?? repo/research_jie_lao_moic_target_period_inventory_config.py",
+          "?? repo/research_jie_lao_moic_target_period_summarize_inventory.py",
+          "?? repo/research_jie_major_nonasean_official_deferred_summary.py",
+          "?? repo/research_jie_major_nonasean_official_deferred_summary_config.py",
+          "?? repo/research_jie_major_nonasean_official_request_config.py",
+          "?? repo/research_jie_major_nonasean_official_request_packet.py",
+          "?? repo/research_jie_major_nonasean_official_response_intake.py",
+          "?? repo/research_jie_major_nonasean_request_control.py",
+          "?? repo/research_jie_major_nonasean_request_control_config.py",
+          "?? repo/research_jie_major_nonasean_tariff_line_route_audit.py",
+          "?? repo/research_jie_malaysia_mymets_tariff_line_import_probe.py",
+          "?? repo/research_jie_malaysia_tariff_line_source_audit.py",
+          "?? repo/research_jie_myanmar_official_source_common.py",
+          "?? repo/research_jie_myanmar_official_source_cso.py",
+          "?? repo/research_jie_myanmar_official_source_fetch_inventory.py",
+          "?? repo/research_jie_myanmar_official_source_inventory_config.py",
+          "?? repo/research_jie_myanmar_official_source_summarize_inventory.py",
+          "?? repo/research_jie_myanmar_official_source_web_routes.py",
+          "?? repo/research_jie_nz_stats_official_fetch_inventory.py",
+          "?? repo/research_jie_nz_stats_official_inventory_config.py",
+          "?? repo/research_jie_nz_stats_official_summarize_inventory.py",
+          "?? repo/research_jie_nz_tariff_line_import_probe.py",
+          "?? repo/research_jie_official_gap_queue.py",
+          "?? repo/research_jie_official_gap_queue_config.py",
+          "?? repo/research_jie_official_tariff_line_source_probe.py",
+          "?? repo/research_jie_p5_deferred_manifest_validation.py",
+          "?? repo/research_jie_philippines_tariff_line_import_probe.py",
+          "?? repo/research_jie_phl_pscc_mapping_validation.py"
+        ],
+        "dirty_entries_truncated": true
+      },
+      "files": {
+        "research_data_construction.py": {
+          "exists_as_file": true,
+          "is_symlink": false,
+          "sha256": "a88245fdbe451a368358af5776722802ab10bb3b03a4e8cf1ab3e24d9d1d836d",
+          "size_bytes": 15550,
+          "git_tracked": true,
+          "git_status": "",
+          "syntax_valid": true,
+          "bound_names": [
+            "DATA_DIR",
+            "DATA_DIR_LOCAL",
+            "OUTPUT_DIR",
+            "Path",
+            "QUARTERLY_DATES",
+            "RCEP_COUNTRIES",
+            "RCEP_LIST",
+            "SAMPLE_END",
+            "SAMPLE_START",
+            "build_tariff_relief_tc",
+            "build_trade_network_w",
+            "chow_lin_quarterly_vax",
+            "load_quarterly_macro_and_bilateral",
+            "logger",
+            "logging",
+            "np",
+            "pca_external_factors",
+            "pd",
+            "quality_control_missing",
+            "quality_control_outliers",
+            "quarterly_panel_alignment",
+            "run_full_construction",
+            "stationarity_transform_and_test",
+            "stats",
+            "sys"
+          ],
+          "callable_names": [
+            "DATA_DIR",
+            "Path",
+            "RCEP_COUNTRIES",
+            "build_tariff_relief_tc",
+            "build_trade_network_w",
+            "chow_lin_quarterly_vax",
+            "load_quarterly_macro_and_bilateral",
+            "pca_external_factors",
+            "quality_control_missing",
+            "quality_control_outliers",
+            "quarterly_panel_alignment",
+            "run_full_construction",
+            "stationarity_transform_and_test",
+            "stats"
+          ],
+          "local_imports": [
+            {
+              "source_file": "research_data_construction.py",
+              "line": 16,
+              "module": "config",
+              "dependency_file": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock/repo/config.py",
+              "bound_by_current_manifest": true
+            }
+          ],
+          "absolute_path_indicators": [],
+          "credential_indicators": [],
+          "top_level_calls": [
+            {
+              "file": "research_data_construction.py",
+              "line": 15,
+              "call": "Path"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 15,
+              "call": "str"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 15,
+              "call": "sys.path.insert"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 18,
+              "call": "logging.basicConfig"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 19,
+              "call": "logging.getLogger"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 24,
+              "call": "pd.date_range"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 25,
+              "call": "Path"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 26,
+              "call": "Path"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 27,
+              "call": "OUTPUT_DIR.mkdir"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 29,
+              "call": "RCEP_COUNTRIES.keys"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 29,
+              "call": "list"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 333,
+              "call": "run_full_construction"
+            }
+          ],
+          "top_level_side_effect_indicators": [
+            {
+              "file": "research_data_construction.py",
+              "line": 15,
+              "call": "sys.path.insert"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 27,
+              "call": "OUTPUT_DIR.mkdir"
+            }
+          ]
+        },
+        "research_network_tvp_var.py": {
+          "exists_as_file": true,
+          "is_symlink": false,
+          "sha256": "7378bf12e1a3ae72ce584577437aa99ef3b025f6228ac5a8ed88d55ada402ecd",
+          "size_bytes": 10831,
+          "git_tracked": true,
+          "git_status": "M repo/research_network_tvp_var.py",
+          "syntax_valid": true,
+          "bound_names": [
+            "OUTPUT_DIR",
+            "Path",
+            "RCEP_COUNTRIES",
+            "RCEP_LIST",
+            "counterfactual_direct",
+            "cumulative_response_magnitude",
+            "defaultdict",
+            "estimate_rolling_network_var",
+            "girf_one",
+            "half_life_approx",
+            "load_constructed_data",
+            "logger",
+            "logging",
+            "moving_average_coefficients",
+            "net_absorber_position",
+            "network_amplification_share",
+            "np",
+            "pd",
+            "resilience_index",
+            "run_network_tvp_var_and_counterfactual",
+            "sys",
+            "var_ols"
+          ],
+          "callable_names": [
+            "Path",
+            "RCEP_COUNTRIES",
+            "counterfactual_direct",
+            "cumulative_response_magnitude",
+            "defaultdict",
+            "estimate_rolling_network_var",
+            "girf_one",
+            "half_life_approx",
+            "load_constructed_data",
+            "moving_average_coefficients",
+            "net_absorber_position",
+            "network_amplification_share",
+            "resilience_index",
+            "run_network_tvp_var_and_counterfactual",
+            "var_ols"
+          ],
+          "local_imports": [
+            {
+              "source_file": "research_network_tvp_var.py",
+              "line": 16,
+              "module": "config",
+              "dependency_file": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock/repo/config.py",
+              "bound_by_current_manifest": true
+            },
+            {
+              "source_file": "research_network_tvp_var.py",
+              "line": 28,
+              "module": "research_data_construction",
+              "dependency_file": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock/repo/research_data_construction.py",
+              "bound_by_current_manifest": true
+            }
+          ],
+          "absolute_path_indicators": [],
+          "credential_indicators": [],
+          "top_level_calls": [
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 15,
+              "call": "Path"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 15,
+              "call": "str"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 15,
+              "call": "sys.path.insert"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 18,
+              "call": "logging.basicConfig"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 19,
+              "call": "logging.getLogger"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 21,
+              "call": "RCEP_COUNTRIES.keys"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 21,
+              "call": "list"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 22,
+              "call": "Path"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 23,
+              "call": "OUTPUT_DIR.mkdir"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 290,
+              "call": "run_network_tvp_var_and_counterfactual"
+            }
+          ],
+          "top_level_side_effect_indicators": [
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 15,
+              "call": "sys.path.insert"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 23,
+              "call": "OUTPUT_DIR.mkdir"
+            }
+          ]
+        },
+        "config.py": {
+          "exists_as_file": true,
+          "is_symlink": false,
+          "sha256": "80f8e8f43a4bb87d0941056fd8a90571a90d34b50f852b386ec256e9a0d9a6cd",
+          "size_bytes": 5368,
+          "git_tracked": true,
+          "git_status": "M repo/config.py",
+          "syntax_valid": true,
+          "bound_names": [
+            "ADB_MRIO_URL",
+            "BASE_DIR",
+            "BRI_COUNTRIES",
+            "BRI_ISO2",
+            "CEPII_GRAVITY_URL",
+            "COMTRADE_API_KEY",
+            "COMTRADE_API_URL",
+            "COMTRADE_RATE_LIMIT_DELAY",
+            "DATA_DIR",
+            "DEFAULT_FORMAT",
+            "END_YEAR",
+            "HS_LEVELS",
+            "ISIC_REV4_SECTORS",
+            "LOG_FILE",
+            "LOG_LEVEL",
+            "MACRO_INDICATORS",
+            "MAX_RETRIES",
+            "MIN_COVERAGE_YEARS",
+            "MIN_TRADE_VALUE",
+            "MODEL_BASED_END_YEAR",
+            "NETWORK_TYPES",
+            "NETWORK_WEIGHT_THRESHOLD",
+            "OBSERVED_END_YEAR",
+            "OECD_API_KEY",
+            "OECD_API_URL",
+            "OUTPUT_FORMATS",
+            "Path",
+            "RATE_LIMIT_DELAY",
+            "RCEP_COUNTRIES",
+            "RCEP_ISO2",
+            "RECENT_YEAR",
+            "REQUEST_TIMEOUT",
+            "START_YEAR",
+            "TARIFF_INDICATORS",
+            "WB_API_KEY",
+            "WIOD_URL",
+            "WITS_API_KEY",
+            "WITS_API_URL",
+            "os"
+          ],
+          "callable_names": [
+            "Path"
+          ],
+          "local_imports": [],
+          "absolute_path_indicators": [],
+          "credential_indicators": [],
+          "top_level_calls": [
+            {
+              "file": "config.py",
+              "line": 12,
+              "call": "Path"
+            },
+            {
+              "file": "config.py",
+              "line": 14,
+              "call": "DATA_DIR.mkdir"
+            },
+            {
+              "file": "config.py",
+              "line": 102,
+              "call": "os.getenv"
+            },
+            {
+              "file": "config.py",
+              "line": 103,
+              "call": "os.getenv"
+            },
+            {
+              "file": "config.py",
+              "line": 104,
+              "call": "os.getenv"
+            },
+            {
+              "file": "config.py",
+              "line": 105,
+              "call": "os.getenv"
+            },
+            {
+              "file": "config.py",
+              "line": 164,
+              "call": "print"
+            }
+          ],
+          "top_level_side_effect_indicators": [
+            {
+              "file": "config.py",
+              "line": 14,
+              "call": "DATA_DIR.mkdir"
+            }
+          ]
+        }
+      },
+      "api_contract": {
+        "required_data_bindings": [
+          "RCEP_LIST",
+          "build_tariff_relief_tc",
+          "chow_lin_quarterly_vax",
+          "load_quarterly_macro_and_bilateral",
+          "quality_control_missing",
+          "quality_control_outliers"
+        ],
+        "required_network_callables": [
+          "girf_one",
+          "moving_average_coefficients"
+        ],
+        "missing_data_bindings": [],
+        "missing_network_callables": [],
+        "static_contract_pass": true
+      },
+      "dependency_scan": {
+        "local_imports": [
+          {
+            "source_file": "research_data_construction.py",
+            "line": 16,
+            "module": "config",
+            "dependency_file": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock/repo/config.py",
+            "bound_by_current_manifest": true
+          },
+          {
+            "source_file": "research_network_tvp_var.py",
+            "line": 16,
+            "module": "config",
+            "dependency_file": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock/repo/config.py",
+            "bound_by_current_manifest": true
+          },
+          {
+            "source_file": "research_network_tvp_var.py",
+            "line": 28,
+            "module": "research_data_construction",
+            "dependency_file": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock/repo/research_data_construction.py",
+            "bound_by_current_manifest": true
+          }
+        ],
+        "unbound_local_dependencies": [],
+        "unbound_dependency_files": []
+      },
+      "safety_scan": {
+        "absolute_path_indicators": [],
+        "credential_indicators": [],
+        "import_time_side_effect_indicators": [
+          {
+            "file": "research_data_construction.py",
+            "line": 15,
+            "call": "sys.path.insert"
+          },
+          {
+            "file": "research_data_construction.py",
+            "line": 27,
+            "call": "OUTPUT_DIR.mkdir"
+          },
+          {
+            "file": "research_network_tvp_var.py",
+            "line": 15,
+            "call": "sys.path.insert"
+          },
+          {
+            "file": "research_network_tvp_var.py",
+            "line": 23,
+            "call": "OUTPUT_DIR.mkdir"
+          },
+          {
+            "file": "config.py",
+            "line": 14,
+            "call": "DATA_DIR.mkdir"
+          }
+        ],
+        "dependency_absolute_path_indicators": [],
+        "dependency_credential_indicators": [],
+        "dependency_import_time_side_effect_indicators": []
+      },
+      "governance_files": {
+        "license_files": [],
+        "readme_files": [
+          "README.md"
+        ]
+      },
+      "failures": [
+        "required_file_differs_from_head:config.py",
+        "required_file_differs_from_head:research_network_tvp_var.py"
+      ],
+      "warnings": [
+        "git_worktree_is_dirty",
+        "import_time_side_effect_indicator_present",
+        "no_top_level_license_file"
+      ],
+      "preflight_status": "FAIL"
+    },
+    {
+      "candidate_id": "C2",
+      "supplied_path": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock_v2/repo",
+      "path_is_symlink": false,
+      "path_is_directory": true,
+      "production_trust_granted": false,
+      "resolved_path": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock_v2/repo",
+      "git": {
+        "is_repository": true,
+        "root": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock_v2",
+        "head_commit": "d0e398b896848f26413cf9aa9dfca15fb4e7ce64",
+        "status_readable": true,
+        "worktree_clean": false,
+        "dirty_entry_count": 16,
+        "dirty_status_sha256": "39e79c26ac84d66406d5cccf6c5de820f40d975989468e115785d9c11d557287",
+        "dirty_entries_sample": [
+          "D data_acquisition/data/EVAD_February2015.csv",
+          " D data_acquisition/data/large_files/world_development_indicators.csv.part-000",
+          " D data_acquisition/data/large_files/world_development_indicators.csv.part-001",
+          " D data_acquisition/data/large_files/world_development_indicators.csv.part-002",
+          " D data_acquisition/data/tariff_database_2025.txt",
+          " D data_acquisition/data/tariff_database_2025.xlsx",
+          " D data_acquisition/data/trade_1988_2021.csv",
+          " D repo/data/archive/EVAD_February2015.csv",
+          " D repo/data/archive/trade_1988_2021.csv",
+          " D repo/data/master_quarterly_bilateral_2005_2024.csv",
+          " M repo/research_additional_requested_outputs.py",
+          " M repo/research_fig_absorber_reranking.py",
+          " M repo/research_fig_resilience_credible.py",
+          " M repo/research_fig_reverse_shock_resilience.py",
+          " M repo/research_network_tvp_var.py",
+          " M repo/research_tvp_var_bootstrap.py"
+        ],
+        "dirty_entries_truncated": false
+      },
+      "files": {
+        "research_data_construction.py": {
+          "exists_as_file": true,
+          "is_symlink": false,
+          "sha256": "a88245fdbe451a368358af5776722802ab10bb3b03a4e8cf1ab3e24d9d1d836d",
+          "size_bytes": 15550,
+          "git_tracked": true,
+          "git_status": "",
+          "syntax_valid": true,
+          "bound_names": [
+            "DATA_DIR",
+            "DATA_DIR_LOCAL",
+            "OUTPUT_DIR",
+            "Path",
+            "QUARTERLY_DATES",
+            "RCEP_COUNTRIES",
+            "RCEP_LIST",
+            "SAMPLE_END",
+            "SAMPLE_START",
+            "build_tariff_relief_tc",
+            "build_trade_network_w",
+            "chow_lin_quarterly_vax",
+            "load_quarterly_macro_and_bilateral",
+            "logger",
+            "logging",
+            "np",
+            "pca_external_factors",
+            "pd",
+            "quality_control_missing",
+            "quality_control_outliers",
+            "quarterly_panel_alignment",
+            "run_full_construction",
+            "stationarity_transform_and_test",
+            "stats",
+            "sys"
+          ],
+          "callable_names": [
+            "DATA_DIR",
+            "Path",
+            "RCEP_COUNTRIES",
+            "build_tariff_relief_tc",
+            "build_trade_network_w",
+            "chow_lin_quarterly_vax",
+            "load_quarterly_macro_and_bilateral",
+            "pca_external_factors",
+            "quality_control_missing",
+            "quality_control_outliers",
+            "quarterly_panel_alignment",
+            "run_full_construction",
+            "stationarity_transform_and_test",
+            "stats"
+          ],
+          "local_imports": [
+            {
+              "source_file": "research_data_construction.py",
+              "line": 16,
+              "module": "config",
+              "dependency_file": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock_v2/repo/config.py",
+              "bound_by_current_manifest": true
+            }
+          ],
+          "absolute_path_indicators": [],
+          "credential_indicators": [],
+          "top_level_calls": [
+            {
+              "file": "research_data_construction.py",
+              "line": 15,
+              "call": "Path"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 15,
+              "call": "str"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 15,
+              "call": "sys.path.insert"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 18,
+              "call": "logging.basicConfig"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 19,
+              "call": "logging.getLogger"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 24,
+              "call": "pd.date_range"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 25,
+              "call": "Path"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 26,
+              "call": "Path"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 27,
+              "call": "OUTPUT_DIR.mkdir"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 29,
+              "call": "RCEP_COUNTRIES.keys"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 29,
+              "call": "list"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 333,
+              "call": "run_full_construction"
+            }
+          ],
+          "top_level_side_effect_indicators": [
+            {
+              "file": "research_data_construction.py",
+              "line": 15,
+              "call": "sys.path.insert"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 27,
+              "call": "OUTPUT_DIR.mkdir"
+            }
+          ]
+        },
+        "research_network_tvp_var.py": {
+          "exists_as_file": true,
+          "is_symlink": false,
+          "sha256": "7378bf12e1a3ae72ce584577437aa99ef3b025f6228ac5a8ed88d55ada402ecd",
+          "size_bytes": 10831,
+          "git_tracked": true,
+          "git_status": "M repo/research_network_tvp_var.py",
+          "syntax_valid": true,
+          "bound_names": [
+            "OUTPUT_DIR",
+            "Path",
+            "RCEP_COUNTRIES",
+            "RCEP_LIST",
+            "counterfactual_direct",
+            "cumulative_response_magnitude",
+            "defaultdict",
+            "estimate_rolling_network_var",
+            "girf_one",
+            "half_life_approx",
+            "load_constructed_data",
+            "logger",
+            "logging",
+            "moving_average_coefficients",
+            "net_absorber_position",
+            "network_amplification_share",
+            "np",
+            "pd",
+            "resilience_index",
+            "run_network_tvp_var_and_counterfactual",
+            "sys",
+            "var_ols"
+          ],
+          "callable_names": [
+            "Path",
+            "RCEP_COUNTRIES",
+            "counterfactual_direct",
+            "cumulative_response_magnitude",
+            "defaultdict",
+            "estimate_rolling_network_var",
+            "girf_one",
+            "half_life_approx",
+            "load_constructed_data",
+            "moving_average_coefficients",
+            "net_absorber_position",
+            "network_amplification_share",
+            "resilience_index",
+            "run_network_tvp_var_and_counterfactual",
+            "var_ols"
+          ],
+          "local_imports": [
+            {
+              "source_file": "research_network_tvp_var.py",
+              "line": 16,
+              "module": "config",
+              "dependency_file": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock_v2/repo/config.py",
+              "bound_by_current_manifest": true
+            },
+            {
+              "source_file": "research_network_tvp_var.py",
+              "line": 28,
+              "module": "research_data_construction",
+              "dependency_file": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock_v2/repo/research_data_construction.py",
+              "bound_by_current_manifest": true
+            }
+          ],
+          "absolute_path_indicators": [],
+          "credential_indicators": [],
+          "top_level_calls": [
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 15,
+              "call": "Path"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 15,
+              "call": "str"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 15,
+              "call": "sys.path.insert"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 18,
+              "call": "logging.basicConfig"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 19,
+              "call": "logging.getLogger"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 21,
+              "call": "RCEP_COUNTRIES.keys"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 21,
+              "call": "list"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 22,
+              "call": "Path"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 23,
+              "call": "OUTPUT_DIR.mkdir"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 290,
+              "call": "run_network_tvp_var_and_counterfactual"
+            }
+          ],
+          "top_level_side_effect_indicators": [
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 15,
+              "call": "sys.path.insert"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 23,
+              "call": "OUTPUT_DIR.mkdir"
+            }
+          ]
+        },
+        "config.py": {
+          "exists_as_file": true,
+          "is_symlink": false,
+          "sha256": "13aac959b623fb3e569b37f680c2f1b72b3ad0bad6d3b09d01bef36eae5e991f",
+          "size_bytes": 5315,
+          "git_tracked": true,
+          "git_status": "",
+          "syntax_valid": true,
+          "bound_names": [
+            "ADB_MRIO_URL",
+            "BASE_DIR",
+            "BRI_COUNTRIES",
+            "BRI_ISO2",
+            "CEPII_GRAVITY_URL",
+            "COMTRADE_API_KEY",
+            "COMTRADE_API_URL",
+            "COMTRADE_RATE_LIMIT_DELAY",
+            "DATA_DIR",
+            "DEFAULT_FORMAT",
+            "END_YEAR",
+            "HS_LEVELS",
+            "ISIC_REV4_SECTORS",
+            "LOG_FILE",
+            "LOG_LEVEL",
+            "MACRO_INDICATORS",
+            "MAX_RETRIES",
+            "MIN_COVERAGE_YEARS",
+            "MIN_TRADE_VALUE",
+            "NETWORK_TYPES",
+            "NETWORK_WEIGHT_THRESHOLD",
+            "OECD_API_KEY",
+            "OECD_API_URL",
+            "OUTPUT_FORMATS",
+            "Path",
+            "RATE_LIMIT_DELAY",
+            "RCEP_COUNTRIES",
+            "RCEP_ISO2",
+            "RECENT_YEAR",
+            "REQUEST_TIMEOUT",
+            "START_YEAR",
+            "TARIFF_INDICATORS",
+            "WB_API_KEY",
+            "WIOD_URL",
+            "WITS_API_KEY",
+            "WITS_API_URL",
+            "os"
+          ],
+          "callable_names": [
+            "Path"
+          ],
+          "local_imports": [],
+          "absolute_path_indicators": [],
+          "credential_indicators": [],
+          "top_level_calls": [
+            {
+              "file": "config.py",
+              "line": 12,
+              "call": "Path"
+            },
+            {
+              "file": "config.py",
+              "line": 14,
+              "call": "DATA_DIR.mkdir"
+            },
+            {
+              "file": "config.py",
+              "line": 100,
+              "call": "os.getenv"
+            },
+            {
+              "file": "config.py",
+              "line": 101,
+              "call": "os.getenv"
+            },
+            {
+              "file": "config.py",
+              "line": 102,
+              "call": "os.getenv"
+            },
+            {
+              "file": "config.py",
+              "line": 103,
+              "call": "os.getenv"
+            },
+            {
+              "file": "config.py",
+              "line": 162,
+              "call": "print"
+            }
+          ],
+          "top_level_side_effect_indicators": [
+            {
+              "file": "config.py",
+              "line": 14,
+              "call": "DATA_DIR.mkdir"
+            }
+          ]
+        }
+      },
+      "api_contract": {
+        "required_data_bindings": [
+          "RCEP_LIST",
+          "build_tariff_relief_tc",
+          "chow_lin_quarterly_vax",
+          "load_quarterly_macro_and_bilateral",
+          "quality_control_missing",
+          "quality_control_outliers"
+        ],
+        "required_network_callables": [
+          "girf_one",
+          "moving_average_coefficients"
+        ],
+        "missing_data_bindings": [],
+        "missing_network_callables": [],
+        "static_contract_pass": true
+      },
+      "dependency_scan": {
+        "local_imports": [
+          {
+            "source_file": "research_data_construction.py",
+            "line": 16,
+            "module": "config",
+            "dependency_file": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock_v2/repo/config.py",
+            "bound_by_current_manifest": true
+          },
+          {
+            "source_file": "research_network_tvp_var.py",
+            "line": 16,
+            "module": "config",
+            "dependency_file": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock_v2/repo/config.py",
+            "bound_by_current_manifest": true
+          },
+          {
+            "source_file": "research_network_tvp_var.py",
+            "line": 28,
+            "module": "research_data_construction",
+            "dependency_file": "/Users/wuyilin/Desktop/translation/谁是冲击的吸收者？——RCEP关税分期减让与亚太贸易网络逆向冲击韧性/repo_rcep_shock_v2/repo/research_data_construction.py",
+            "bound_by_current_manifest": true
+          }
+        ],
+        "unbound_local_dependencies": [],
+        "unbound_dependency_files": []
+      },
+      "safety_scan": {
+        "absolute_path_indicators": [],
+        "credential_indicators": [],
+        "import_time_side_effect_indicators": [
+          {
+            "file": "research_data_construction.py",
+            "line": 15,
+            "call": "sys.path.insert"
+          },
+          {
+            "file": "research_data_construction.py",
+            "line": 27,
+            "call": "OUTPUT_DIR.mkdir"
+          },
+          {
+            "file": "research_network_tvp_var.py",
+            "line": 15,
+            "call": "sys.path.insert"
+          },
+          {
+            "file": "research_network_tvp_var.py",
+            "line": 23,
+            "call": "OUTPUT_DIR.mkdir"
+          },
+          {
+            "file": "config.py",
+            "line": 14,
+            "call": "DATA_DIR.mkdir"
+          }
+        ],
+        "dependency_absolute_path_indicators": [],
+        "dependency_credential_indicators": [],
+        "dependency_import_time_side_effect_indicators": []
+      },
+      "governance_files": {
+        "license_files": [],
+        "readme_files": [
+          "README.md"
+        ]
+      },
+      "failures": [
+        "required_file_differs_from_head:research_network_tvp_var.py"
+      ],
+      "warnings": [
+        "git_worktree_is_dirty",
+        "import_time_side_effect_indicator_present",
+        "no_top_level_license_file"
+      ],
+      "preflight_status": "FAIL"
+    },
+    {
+      "candidate_id": "C3",
+      "supplied_path": "/Users/wuyilin/Desktop/2026学科竞赛/谁在托底中国新能源关键中间品供应链？——基于RCEP—“一带一路”多层贸易网络的逆向冲击韧性研究/external/Who-Absorbs-the-Shock/repo",
+      "path_is_symlink": false,
+      "path_is_directory": true,
+      "production_trust_granted": false,
+      "resolved_path": "/Users/wuyilin/Desktop/2026学科竞赛/谁在托底中国新能源关键中间品供应链？——基于RCEP—“一带一路”多层贸易网络的逆向冲击韧性研究/external/Who-Absorbs-the-Shock/repo",
+      "git": {
+        "is_repository": true,
+        "root": "/Users/wuyilin/Desktop/2026学科竞赛/谁在托底中国新能源关键中间品供应链？——基于RCEP—“一带一路”多层贸易网络的逆向冲击韧性研究/external/Who-Absorbs-the-Shock",
+        "head_commit": "d0e398b896848f26413cf9aa9dfca15fb4e7ce64",
+        "status_readable": true,
+        "worktree_clean": true,
+        "dirty_entry_count": 0,
+        "dirty_status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "dirty_entries_sample": [],
+        "dirty_entries_truncated": false
+      },
+      "files": {
+        "research_data_construction.py": {
+          "exists_as_file": true,
+          "is_symlink": false,
+          "sha256": "a88245fdbe451a368358af5776722802ab10bb3b03a4e8cf1ab3e24d9d1d836d",
+          "size_bytes": 15550,
+          "git_tracked": true,
+          "git_status": "",
+          "syntax_valid": true,
+          "bound_names": [
+            "DATA_DIR",
+            "DATA_DIR_LOCAL",
+            "OUTPUT_DIR",
+            "Path",
+            "QUARTERLY_DATES",
+            "RCEP_COUNTRIES",
+            "RCEP_LIST",
+            "SAMPLE_END",
+            "SAMPLE_START",
+            "build_tariff_relief_tc",
+            "build_trade_network_w",
+            "chow_lin_quarterly_vax",
+            "load_quarterly_macro_and_bilateral",
+            "logger",
+            "logging",
+            "np",
+            "pca_external_factors",
+            "pd",
+            "quality_control_missing",
+            "quality_control_outliers",
+            "quarterly_panel_alignment",
+            "run_full_construction",
+            "stationarity_transform_and_test",
+            "stats",
+            "sys"
+          ],
+          "callable_names": [
+            "DATA_DIR",
+            "Path",
+            "RCEP_COUNTRIES",
+            "build_tariff_relief_tc",
+            "build_trade_network_w",
+            "chow_lin_quarterly_vax",
+            "load_quarterly_macro_and_bilateral",
+            "pca_external_factors",
+            "quality_control_missing",
+            "quality_control_outliers",
+            "quarterly_panel_alignment",
+            "run_full_construction",
+            "stationarity_transform_and_test",
+            "stats"
+          ],
+          "local_imports": [
+            {
+              "source_file": "research_data_construction.py",
+              "line": 16,
+              "module": "config",
+              "dependency_file": "/Users/wuyilin/Desktop/2026学科竞赛/谁在托底中国新能源关键中间品供应链？——基于RCEP—“一带一路”多层贸易网络的逆向冲击韧性研究/external/Who-Absorbs-the-Shock/repo/config.py",
+              "bound_by_current_manifest": true
+            }
+          ],
+          "absolute_path_indicators": [],
+          "credential_indicators": [],
+          "top_level_calls": [
+            {
+              "file": "research_data_construction.py",
+              "line": 15,
+              "call": "Path"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 15,
+              "call": "str"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 15,
+              "call": "sys.path.insert"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 18,
+              "call": "logging.basicConfig"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 19,
+              "call": "logging.getLogger"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 24,
+              "call": "pd.date_range"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 25,
+              "call": "Path"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 26,
+              "call": "Path"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 27,
+              "call": "OUTPUT_DIR.mkdir"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 29,
+              "call": "RCEP_COUNTRIES.keys"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 29,
+              "call": "list"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 333,
+              "call": "run_full_construction"
+            }
+          ],
+          "top_level_side_effect_indicators": [
+            {
+              "file": "research_data_construction.py",
+              "line": 15,
+              "call": "sys.path.insert"
+            },
+            {
+              "file": "research_data_construction.py",
+              "line": 27,
+              "call": "OUTPUT_DIR.mkdir"
+            }
+          ]
+        },
+        "research_network_tvp_var.py": {
+          "exists_as_file": true,
+          "is_symlink": false,
+          "sha256": "ea6568b0509ed62c62ab12189570576b31251fd921f59e1849a8c2e34b4fbc63",
+          "size_bytes": 10658,
+          "git_tracked": true,
+          "git_status": "",
+          "syntax_valid": true,
+          "bound_names": [
+            "OUTPUT_DIR",
+            "Path",
+            "RCEP_COUNTRIES",
+            "RCEP_LIST",
+            "counterfactual_direct",
+            "cumulative_response_magnitude",
+            "defaultdict",
+            "estimate_rolling_network_var",
+            "girf_one",
+            "half_life_approx",
+            "load_constructed_data",
+            "logger",
+            "logging",
+            "moving_average_coefficients",
+            "net_absorber_position",
+            "network_amplification_share",
+            "np",
+            "pd",
+            "resilience_index",
+            "run_network_tvp_var_and_counterfactual",
+            "sys",
+            "var_ols"
+          ],
+          "callable_names": [
+            "Path",
+            "RCEP_COUNTRIES",
+            "counterfactual_direct",
+            "cumulative_response_magnitude",
+            "defaultdict",
+            "estimate_rolling_network_var",
+            "girf_one",
+            "half_life_approx",
+            "load_constructed_data",
+            "moving_average_coefficients",
+            "net_absorber_position",
+            "network_amplification_share",
+            "resilience_index",
+            "run_network_tvp_var_and_counterfactual",
+            "var_ols"
+          ],
+          "local_imports": [
+            {
+              "source_file": "research_network_tvp_var.py",
+              "line": 16,
+              "module": "config",
+              "dependency_file": "/Users/wuyilin/Desktop/2026学科竞赛/谁在托底中国新能源关键中间品供应链？——基于RCEP—“一带一路”多层贸易网络的逆向冲击韧性研究/external/Who-Absorbs-the-Shock/repo/config.py",
+              "bound_by_current_manifest": true
+            },
+            {
+              "source_file": "research_network_tvp_var.py",
+              "line": 28,
+              "module": "research_data_construction",
+              "dependency_file": "/Users/wuyilin/Desktop/2026学科竞赛/谁在托底中国新能源关键中间品供应链？——基于RCEP—“一带一路”多层贸易网络的逆向冲击韧性研究/external/Who-Absorbs-the-Shock/repo/research_data_construction.py",
+              "bound_by_current_manifest": true
+            }
+          ],
+          "absolute_path_indicators": [],
+          "credential_indicators": [],
+          "top_level_calls": [
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 15,
+              "call": "Path"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 15,
+              "call": "str"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 15,
+              "call": "sys.path.insert"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 18,
+              "call": "logging.basicConfig"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 19,
+              "call": "logging.getLogger"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 21,
+              "call": "RCEP_COUNTRIES.keys"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 21,
+              "call": "list"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 22,
+              "call": "Path"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 23,
+              "call": "OUTPUT_DIR.mkdir"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 287,
+              "call": "run_network_tvp_var_and_counterfactual"
+            }
+          ],
+          "top_level_side_effect_indicators": [
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 15,
+              "call": "sys.path.insert"
+            },
+            {
+              "file": "research_network_tvp_var.py",
+              "line": 23,
+              "call": "OUTPUT_DIR.mkdir"
+            }
+          ]
+        },
+        "config.py": {
+          "exists_as_file": true,
+          "is_symlink": false,
+          "sha256": "13aac959b623fb3e569b37f680c2f1b72b3ad0bad6d3b09d01bef36eae5e991f",
+          "size_bytes": 5315,
+          "git_tracked": true,
+          "git_status": "",
+          "syntax_valid": true,
+          "bound_names": [
+            "ADB_MRIO_URL",
+            "BASE_DIR",
+            "BRI_COUNTRIES",
+            "BRI_ISO2",
+            "CEPII_GRAVITY_URL",
+            "COMTRADE_API_KEY",
+            "COMTRADE_API_URL",
+            "COMTRADE_RATE_LIMIT_DELAY",
+            "DATA_DIR",
+            "DEFAULT_FORMAT",
+            "END_YEAR",
+            "HS_LEVELS",
+            "ISIC_REV4_SECTORS",
+            "LOG_FILE",
+            "LOG_LEVEL",
+            "MACRO_INDICATORS",
+            "MAX_RETRIES",
+            "MIN_COVERAGE_YEARS",
+            "MIN_TRADE_VALUE",
+            "NETWORK_TYPES",
+            "NETWORK_WEIGHT_THRESHOLD",
+            "OECD_API_KEY",
+            "OECD_API_URL",
+            "OUTPUT_FORMATS",
+            "Path",
+            "RATE_LIMIT_DELAY",
+            "RCEP_COUNTRIES",
+            "RCEP_ISO2",
+            "RECENT_YEAR",
+            "REQUEST_TIMEOUT",
+            "START_YEAR",
+            "TARIFF_INDICATORS",
+            "WB_API_KEY",
+            "WIOD_URL",
+            "WITS_API_KEY",
+            "WITS_API_URL",
+            "os"
+          ],
+          "callable_names": [
+            "Path"
+          ],
+          "local_imports": [],
+          "absolute_path_indicators": [],
+          "credential_indicators": [],
+          "top_level_calls": [
+            {
+              "file": "config.py",
+              "line": 12,
+              "call": "Path"
+            },
+            {
+              "file": "config.py",
+              "line": 14,
+              "call": "DATA_DIR.mkdir"
+            },
+            {
+              "file": "config.py",
+              "line": 100,
+              "call": "os.getenv"
+            },
+            {
+              "file": "config.py",
+              "line": 101,
+              "call": "os.getenv"
+            },
+            {
+              "file": "config.py",
+              "line": 102,
+              "call": "os.getenv"
+            },
+            {
+              "file": "config.py",
+              "line": 103,
+              "call": "os.getenv"
+            },
+            {
+              "file": "config.py",
+              "line": 162,
+              "call": "print"
+            }
+          ],
+          "top_level_side_effect_indicators": [
+            {
+              "file": "config.py",
+              "line": 14,
+              "call": "DATA_DIR.mkdir"
+            }
+          ]
+        }
+      },
+      "api_contract": {
+        "required_data_bindings": [
+          "RCEP_LIST",
+          "build_tariff_relief_tc",
+          "chow_lin_quarterly_vax",
+          "load_quarterly_macro_and_bilateral",
+          "quality_control_missing",
+          "quality_control_outliers"
+        ],
+        "required_network_callables": [
+          "girf_one",
+          "moving_average_coefficients"
+        ],
+        "missing_data_bindings": [],
+        "missing_network_callables": [],
+        "static_contract_pass": true
+      },
+      "dependency_scan": {
+        "local_imports": [
+          {
+            "source_file": "research_data_construction.py",
+            "line": 16,
+            "module": "config",
+            "dependency_file": "/Users/wuyilin/Desktop/2026学科竞赛/谁在托底中国新能源关键中间品供应链？——基于RCEP—“一带一路”多层贸易网络的逆向冲击韧性研究/external/Who-Absorbs-the-Shock/repo/config.py",
+            "bound_by_current_manifest": true
+          },
+          {
+            "source_file": "research_network_tvp_var.py",
+            "line": 16,
+            "module": "config",
+            "dependency_file": "/Users/wuyilin/Desktop/2026学科竞赛/谁在托底中国新能源关键中间品供应链？——基于RCEP—“一带一路”多层贸易网络的逆向冲击韧性研究/external/Who-Absorbs-the-Shock/repo/config.py",
+            "bound_by_current_manifest": true
+          },
+          {
+            "source_file": "research_network_tvp_var.py",
+            "line": 28,
+            "module": "research_data_construction",
+            "dependency_file": "/Users/wuyilin/Desktop/2026学科竞赛/谁在托底中国新能源关键中间品供应链？——基于RCEP—“一带一路”多层贸易网络的逆向冲击韧性研究/external/Who-Absorbs-the-Shock/repo/research_data_construction.py",
+            "bound_by_current_manifest": true
+          }
+        ],
+        "unbound_local_dependencies": [],
+        "unbound_dependency_files": []
+      },
+      "safety_scan": {
+        "absolute_path_indicators": [],
+        "credential_indicators": [],
+        "import_time_side_effect_indicators": [
+          {
+            "file": "research_data_construction.py",
+            "line": 15,
+            "call": "sys.path.insert"
+          },
+          {
+            "file": "research_data_construction.py",
+            "line": 27,
+            "call": "OUTPUT_DIR.mkdir"
+          },
+          {
+            "file": "research_network_tvp_var.py",
+            "line": 15,
+            "call": "sys.path.insert"
+          },
+          {
+            "file": "research_network_tvp_var.py",
+            "line": 23,
+            "call": "OUTPUT_DIR.mkdir"
+          },
+          {
+            "file": "config.py",
+            "line": 14,
+            "call": "DATA_DIR.mkdir"
+          }
+        ],
+        "dependency_absolute_path_indicators": [],
+        "dependency_credential_indicators": [],
+        "dependency_import_time_side_effect_indicators": []
+      },
+      "governance_files": {
+        "license_files": [],
+        "readme_files": [
+          "README.md"
+        ]
+      },
+      "failures": [],
+      "warnings": [
+        "import_time_side_effect_indicator_present",
+        "no_top_level_license_file"
+      ],
+      "preflight_status": "WARN"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "schema_version": "ncs-four-analysis-acceptance-v1",
+  "checkpoint_id": "NCS-NA-AUDIT-20260804-021934-CST",
+  "audited_at": "2026-08-04T02:19:34+08:00",
+  "status": "FAIL",
+  "score": 38,
+  "independent_audit": {
+    "thread_id": "019fc8c4-0124-7a83-8b3c-12bc503ce1d2",
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "max",
+    "mode": "read_only_review_and_reject"
+  },
+  "gate_results": {
+    "authorization_register_binding": "FAIL",
+    "e4_r3_frozen_integrity": "PASS_WITH_WARNING",
+    "historical_task_execution_trace": "PASS",
+    "current_artifact_persistence": "FAIL",
+    "current_reproducibility": "FAIL",
+    "failure_nonfinite_unstable_retention": "NOT_REVERIFIABLE_CURRENTLY",
+    "manuscript_or_claim_activation": "BLOCKED"
+  },
+  "register_binding": {
+    "authorization_register_sha256": "3e1aa7086ff11dfed27057db6376618147bcbb40bdc9b5d92b0a69f6d6817625",
+    "current_register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "current_register_mtime": "2026-08-04T01:08:25+08:00",
+    "task_start_time_approx": "2026-08-04T01:08:44+08:00",
+    "verdict": "FAIL",
+    "current_item_mapping": [
+      {
+        "register_key": "CAL-E01:75",
+        "item_id": "V1-026",
+        "authorized_priority": "P0",
+        "authorized_action": "NEW_ANALYSIS",
+        "current_priority": "P0",
+        "current_action_class": "DIRECT_TEXT_REVISION"
+      },
+      {
+        "register_key": "CAL-E02:128",
+        "item_id": "V1-033",
+        "authorized_priority": "P0",
+        "authorized_action": "NEW_ANALYSIS",
+        "current_priority": "P0",
+        "current_action_class": "DIRECT_TEXT_REVISION"
+      },
+      {
+        "register_key": "CAL-E02:135",
+        "item_id": "V1-035",
+        "authorized_priority": "P0",
+        "authorized_action": "ROBUSTNESS_CHECK",
+        "current_priority": "P1",
+        "current_action_class": "NEW_ANALYSIS_OR_EXPERIMENT"
+      },
+      {
+        "register_key": "CAL-E03:164",
+        "item_id": "V1-045",
+        "authorized_priority": "P1",
+        "authorized_action": "NEW_ANALYSIS",
+        "current_priority": "P0",
+        "current_action_class": "DIRECT_TEXT_REVISION"
+      }
+    ]
+  },
+  "frozen_e4_r3": {
+    "results_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "execution_manifest_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "execution_complete_sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+    "terminal_inventory_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+    "candidate_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "status": "COMPLETE_QUARANTINE_ONLY",
+    "promotion": "PROHIBITED",
+    "integrity": "UNCHANGED",
+    "warning": "The execution manifest remains RUNNING_QUARANTINE_ONLY and the predeclared panel-level log-error-ratio/CI is not serialized."
+  },
+  "historical_coverage": {
+    "recovery_records": 46080,
+    "recovery_cells": 48,
+    "paired_cells": 32,
+    "interval_records": 160,
+    "interval_cells": 8,
+    "bootstrap_records": 12800,
+    "seeds": 20,
+    "note": "Counts are corroborated by frozen inputs and historical task traces, but task-specific outputs are not currently present."
+  },
+  "artifact_persistence": {
+    "expected_task_worktrees": [
+      "df05",
+      "c71f",
+      "15b8",
+      "2f85"
+    ],
+    "expected_worktrees_currently_present": 0,
+    "analyzers_found_in_main_or_existing_codex_worktrees": 0,
+    "tests_found_in_main_or_existing_codex_worktrees": 0,
+    "content_addressed_output_directories_found": 0,
+    "verdict": "FAIL"
+  },
+  "item_verdicts": [
+    {
+      "register_key": "CAL-E01:75",
+      "status": "PARTIAL_BLOCKED",
+      "supported": [
+        "raw comparator coverage",
+        "32 paired raw-difference cells"
+      ],
+      "blocked": [
+        "predeclared log-ratio and CI activation",
+        "current artifact reproduction",
+        "register binding"
+      ]
+    },
+    {
+      "register_key": "CAL-E02:128",
+      "status": "PARTIAL_BLOCKED",
+      "supported": [
+        "simulation truth provenance",
+        "bounded native-gate evidence"
+      ],
+      "blocked": [
+        "independent empirical ground truth",
+        "record-level leakage and split provenance",
+        "current artifact reproduction",
+        "register binding"
+      ]
+    },
+    {
+      "register_key": "CAL-E02:135",
+      "status": "PARTIAL_BLOCKED",
+      "supported": [
+        "descriptive cross-seed and cross-scenario sensitivity"
+      ],
+      "blocked": [
+        "stopping-rule and validation-trajectory inference",
+        "generalization claim",
+        "independent endpoint provenance",
+        "current artifact reproduction",
+        "register binding"
+      ]
+    },
+    {
+      "register_key": "CAL-E03:164",
+      "status": "PARTIAL_BLOCKED",
+      "supported": [
+        "descriptive N=20 and N=50 grid"
+      ],
+      "blocked": [
+        "resource telemetry",
+        "repeated-run reproducibility",
+        "N=100 or N=200 extrapolation",
+        "current artifact reproduction",
+        "register binding"
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "issue": "The execution authorization is bound to an obsolete decision-register hash and schema.",
+      "location": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_20260804_010454.json",
+      "required_fix": "Refreeze the final V1 register mapping and authorization before any rerun."
+    },
+    {
+      "issue": "The four analyzers, tests and content-addressed outputs are absent from all currently readable project/worktree paths.",
+      "location": "main project and /Users/wuyilin/.codex/worktrees",
+      "required_fix": "Rematerialize into a persistent path and rerun from a clean readable worktree."
+    },
+    {
+      "issue": "The task-specific failure/non-finite/unstable retention claims cannot be independently reverified from current artifacts.",
+      "location": "historical task traces only",
+      "required_fix": "Regenerate machine-readable outputs and independently audit their manifests."
+    }
+  ],
+  "warnings": [
+    "CAL-E01:75 contains post-outcome CI-definition risk; no CI may be used until its protocol is predeclared.",
+    "CAL-E02:128 remains simulation-only and does not establish independent empirical fairness.",
+    "CAL-E02:135 has no stopping/checkpoint/patience trajectory sufficient for a generalization claim.",
+    "CAL-E03:164 lacks wall-time, CPU, memory, GPU and per-cell runtime telemetry."
+  ],
+  "required_repair_order": [
+    "Refreeze the current final V1 register and exact four-item authorization.",
+    "Persistently rematerialize analyzers, tests and output roots.",
+    "Independently rerun all four analyses from a readable clean worktree.",
+    "Predeclare the CAL-E01:75 log-ratio/CI protocol before computing it.",
+    "Add independent-truth and record-level leakage provenance for CAL-E02:128.",
+    "Create and pre-outcome-freeze a stopping-variant candidate for CAL-E02:135.",
+    "Capture real resource telemetry for CAL-E03:164 and abstain on unrun N=100/200 scales.",
+    "Repeat independent unified acceptance before changing manuscript, register decisions or promotion."
+  ],
+  "release_decision": {
+    "update_author_decision_register": false,
+    "modify_manuscript": false,
+    "activate_claims": false,
+    "change_promotion": false
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "artifacts": [
+    {
+      "bytes": 541738,
+      "path": "analysis.json",
+      "sha256": "8438619a0c03b817d116b6f2a5edbce914bb1c42ba93ac2146483639681a7136"
+    },
+    {
+      "bytes": 148,
+      "path": "coverage.csv",
+      "sha256": "cce2a5134e9b3d003e1fc89ec32a1556c2272ffd16772a754ce88979733fb338"
+    },
+    {
+      "bytes": 7226,
+      "path": "input-binding.json",
+      "sha256": "62c05f8a529bf7d51fe1eddc29bb779e148608905d30e9139d7f5d75afda7090"
+    },
+    {
+      "bytes": 39779,
+      "path": "paired-comparison.csv",
+      "sha256": "316f5a982236ad7c17744bfa310c58414298cf44beaa91600b4d4059a9785809"
+    },
+    {
+      "bytes": 3093,
+      "path": "report.md",
+      "sha256": "fb681a8955c6d684756f1b211dab3c105f32fcbde9c962f98a383c8c1753e854"
+    },
+    {
+      "bytes": 55262,
+      "path": "reproducibility.csv",
+      "sha256": "7938c947c477909f105749bc941349fad1314778f3f42fbc5edbcb709100f3a5"
+    },
+    {
+      "bytes": 7777,
+      "path": "resource-audit.json",
+      "sha256": "2c43c0af09633f0bedbc567c59efdb51d8da07d2dcb5f6d626b32cf9e88b390a"
+    },
+    {
+      "bytes": 12180,
+      "path": "stability.csv",
+      "sha256": "9f0169980e7183426aee30c8dfe642436582623286edabe579949c3be70d497f"
+    },
+    {
+      "bytes": 39079,
+      "path": "stress-comparison.csv",
+      "sha256": "f0a5198ef8ece513a635ab1715efe0d9eec87d297fc5f0c11b0b0d953d6f92a9"
+    }
+  ],
+  "content_addressed_directory": "cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991",
+  "input_bundle_sha256": "47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991",
+  "register_key": "CAL-E03:164",
+  "schema_version": "cal-e03-164-output-manifest-v1",
+  "verdict": {
+    "authorization_binding": "PASS",
+    "cross_scale_scope": "PARTIAL",
+    "failure_and_nonfinite_retention": "SUPPORTED",
+    "overall": "PARTIAL",
+    "resource_telemetry": "BLOCKED",
+    "scoped_grid_coverage": "SUPPORTED",
+    "stability_summary": "SUPPORTED"
+  },
+  "write_policy": {
+    "decision_register_modified": false,
+    "frozen_quarantine_modified": false,
+    "manuscript_modified": false,
+    "new_protocol_or_candidate_created": false,
+    "source_inputs_modified": false
+  }
+}

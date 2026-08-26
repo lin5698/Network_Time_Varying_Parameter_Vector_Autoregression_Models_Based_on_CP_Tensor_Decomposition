@@ -1,0 +1,25 @@
+{
+  "authorized_scope": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "backlog_f": {
+    "count": 7,
+    "family": "joint_ridge_response_notation_theory_bindings",
+    "requires": "separate author authorization + scientific lane"
+  },
+  "commits_pending": true,
+  "gate_error_family": "theory_bindings_backlog_F",
+  "gate_errors_remaining": 7,
+  "protected_tree": {
+    "files": 73,
+    "sha256": "0f418fc7202fb2bbc89cdc6fbf01a05b1e9a1f408252f414624d0167776e9b75"
+  },
+  "record": "REC-P3S4_FINAL_PIPELINE_CONSOLIDATION_20260826_190000",
+  "self_sha256": "f4316e4ac4a15316daf86b32506feb99cbc868429d5143f78035e0d793d13c14",
+  "timestamp": "2026-08-26T19:00:00+08:00",
+  "validator": "246/247"
+}

@@ -1,0 +1,576 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m4-independent-deterministic-acceptance-v4",
+  "version": "4.0",
+  "acceptance_id": "REC-M4-independent-deterministic-acceptance-v4-20260811",
+  "generated_at": "2026-08-11T22:16:29+08:00",
+  "acceptance_result": "REC-M4_INDEPENDENT_ACCEPTANCE_PASS",
+  "acceptance_class": "GOVERNANCE_AND_ARTIFACT_INTEGRITY_ONLY",
+  "auditor_provenance": {
+    "primary_gate": {
+      "kind": "deterministic_allowlisted_validator",
+      "script_path": "scripts/validate_rec_m4_v4.mjs",
+      "script_sha256": "617821e2520a139d005577e57b7db4d5dea825877c1cd5c5f6ba677bee2855a9",
+      "root_thread_id": "019fbdde-2c02-7662-b9d2-9dc2b70e1253",
+      "model_verdict_used_as_gate": false,
+      "m3_pass_label_used_as_evidence": false,
+      "result": {
+        "checked": 247,
+        "passed": 247,
+        "failed": 0
+      }
+    },
+    "completed_semantic_reviews": [
+      {
+        "task_thread_id": "019ff0d1-6baa-7413-8b6c-5f1c39fda105",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "max",
+        "scope": "V1-026 pointer semantics",
+        "result": "comparator_registry.json#/content/records is the correct shared definition pointer"
+      },
+      {
+        "task_thread_id": "019ff0d1-6894-7e92-a8c8-d6fcd8550508",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "max",
+        "scope": "M3/M4 versioned re-signing and semantic reconciliation",
+        "result": "versioned R2/M3 V2 chain required; M4 V1 retained"
+      }
+    ],
+    "unavailable_final_model_adjudicators": [
+      {
+        "task_thread_id": "019ff128-0533-72b0-bce2-6a99897e5c6f",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "max",
+        "attempts": 2,
+        "status": "HTTP_503_BEFORE_TASK_EXECUTION"
+      },
+      {
+        "cli_session_id": "019ff12a-3d15-7b80-9eab-af8bd08e2ccf",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "max",
+        "status": "HTTP_502_503_BEFORE_TASK_EXECUTION_AFTER_RETRIES"
+      },
+      {
+        "model": "qwen3.7-plus",
+        "purpose": "stability fallback adjudication only",
+        "status": "INVALID_API_KEY_BLOCKED_BEFORE_MODEL_RESPONSE"
+      }
+    ],
+    "provenance_rule": "Unavailable model calls are transport/service incidents only. They are not scientific evidence and are not represented as completed adjudications."
+  },
+  "operation_policy": {
+    "acceptance_phase_written_files": [
+      "scripts/validate_rec_m4_v4.mjs",
+      "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V4_20260811.json"
+    ],
+    "prior_repair_phase_written_files": [
+      "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811_R2.json",
+      "refine-logs/REC-M3_ACCEPTANCE_V2_20260811.json"
+    ],
+    "manuscript_modified": false,
+    "formal_register_modified": false,
+    "e4_r3_modified": false,
+    "authorization_modified": false,
+    "protected_artifact_modified": false,
+    "git_operations": "NONE",
+    "manuscript_patch_application": "NOT_AUTHORIZED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "m5_authorization": "NOT_AUTHORIZED_BY_THIS_RECORD",
+    "v4_path_discovery": "NONE_EXACT_ALLOWLIST_ONLY",
+    "prohibited_scope_accessed_by_v4": false,
+    "record_write_method": "apply_patch"
+  },
+  "predecessors": {
+    "m4_v1": {
+      "path": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V1_20260811.json",
+      "sha256": "673946c72c35d7beb21a91e4a6e00f06c5288210e616eaefff901597cd0d2716",
+      "disposition": "VALID_FAIL_RETAINED; unresolved V1-026 pointers"
+    },
+    "m4_v2": {
+      "path": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V2_20260811.json",
+      "sha256": "1753c765f6cac417c85bc68ede595c384806f7f8d6f5257bedfb98bb016c769b",
+      "disposition": "INVALID_PASS_RETAINED",
+      "exact_failures": [
+        "Recorded protected authorization hash did not match raw file bytes while match=true.",
+        "auditor provenance recorded the source/root thread instead of the actual M4 V2 task thread."
+      ]
+    },
+    "m4_v3": {
+      "path": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V3_20260811.json",
+      "sha256": "2476d5d2ce32969a8f40714972d4554c8d1778af3a89ce1490ff2851dae95429",
+      "disposition": "VALID_FAIL_CLOSED_RETAINED; prohibited pathnames enumerated by broad rg --files"
+    }
+  },
+  "inputs": {
+    "m3_v2_acceptance": {
+      "path": "refine-logs/REC-M3_ACCEPTANCE_V2_20260811.json",
+      "bytes": 10510,
+      "sha256": "9fd8976112f55a8f055d2bc7c7636c762cb2ba00c423da7f9f303a4d35dcebdd"
+    },
+    "r2_claim_ledger": {
+      "path": "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811_R2.json",
+      "bytes": 17223,
+      "sha256": "dd03ce5369dff3c54b53910e4ab9368d07195f5294d5e9a3c130fb8456c145ca"
+    },
+    "validator": {
+      "path": "scripts/validate_rec_m4_v4.mjs",
+      "sha256": "617821e2520a139d005577e57b7db4d5dea825877c1cd5c5f6ba677bee2855a9"
+    }
+  },
+  "output_inventory": [
+    {
+      "path": "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811_R2.json",
+      "bytes": 17223,
+      "sha256": "dd03ce5369dff3c54b53910e4ab9368d07195f5294d5e9a3c130fb8456c145ca",
+      "match": true
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_026_PATCH_PROPOSAL_20260811.md",
+      "bytes": 10613,
+      "sha256": "5dc82aed028b4cc87bc44050e2d42ffdd0b22b4a21f89b35174dbf513feb2ebb",
+      "match": true
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json",
+      "bytes": 15181,
+      "sha256": "68a841cb4c5f68916cd305eb354200030564079f2e6fedf4e33a346a35f7f443",
+      "match": true
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_033_PATCH_PROPOSAL_20260811.md",
+      "bytes": 10169,
+      "sha256": "6d8fff0275be2bbeeefca33193656c397de494e3ad0812e521cd6d3a4551e6da",
+      "match": true
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json",
+      "bytes": 14990,
+      "sha256": "baee769a51c5861bfe04c7fcfc8e72608ea2bcd6f52fedcd909fca1bbb61ed33",
+      "match": true
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_045_PATCH_PROPOSAL_20260811.md",
+      "bytes": 9907,
+      "sha256": "7eb9d17f3c670de2babcd4e0587bd6ba13ff6787abf38119e4c435dd1397a0a0",
+      "match": true
+    }
+  ],
+  "validator": {
+    "command": "node scripts/validate_rec_m4_v4.mjs",
+    "file_hash_algorithm": "SHA-256 of raw bytes",
+    "tree_hash_algorithm": "SHA-256 of UTF-8 byte-sorted relative-path TAB bytes TAB raw-SHA-256 LF lines; Buffer.compare; symlinks counted separately",
+    "path_policy": "exact allowlist only; no rg/find/path discovery",
+    "summary": {
+      "checked": 247,
+      "passed": 247,
+      "failed": 0
+    },
+    "categories": {
+      "history": {
+        "checked": 5,
+        "passed": 5,
+        "failed": 0
+      },
+      "history-adjudication": {
+        "checked": 3,
+        "passed": 3,
+        "failed": 0
+      },
+      "m3": {
+        "checked": 2,
+        "passed": 2,
+        "failed": 0
+      },
+      "inventory": {
+        "checked": 6,
+        "passed": 6,
+        "failed": 0
+      },
+      "protected-file": {
+        "checked": 9,
+        "passed": 9,
+        "failed": 0
+      },
+      "protected-tree": {
+        "checked": 3,
+        "passed": 3,
+        "failed": 0
+      },
+      "v1026": {
+        "checked": 3,
+        "passed": 3,
+        "failed": 0
+      },
+      "v1026-pointer": {
+        "checked": 26,
+        "passed": 26,
+        "failed": 0
+      },
+      "v1026-semantic": {
+        "checked": 18,
+        "passed": 18,
+        "failed": 0
+      },
+      "locator": {
+        "checked": 58,
+        "passed": 58,
+        "failed": 0
+      },
+      "science": {
+        "checked": 11,
+        "passed": 11,
+        "failed": 0
+      },
+      "v1033-hash": {
+        "checked": 5,
+        "passed": 5,
+        "failed": 0
+      },
+      "v1033-evidence": {
+        "checked": 50,
+        "passed": 50,
+        "failed": 0
+      },
+      "v1033": {
+        "checked": 3,
+        "passed": 3,
+        "failed": 0
+      },
+      "v1045-evidence": {
+        "checked": 44,
+        "passed": 44,
+        "failed": 0
+      },
+      "v1045": {
+        "checked": 1,
+        "passed": 1,
+        "failed": 0
+      }
+    },
+    "failures": [],
+    "exact_paths_read": [
+      "main.tex",
+      "manuscript_src/natcs/controlled_benchmark_contract.json",
+      "manuscript_src/natcs/methods_data.md",
+      "manuscript_src/natcs/methods_estimator.md",
+      "manuscript_src/natcs/methods_uncertainty.md",
+      "manuscript_src/natcs/results_validation.md",
+      "manuscript_src/natcs/supp_note4_benchmarks.md",
+      "manuscript_src/natcs/supp_note7_repro.md",
+      "manuscript_src/natcs/supp_note8_scope.md",
+      "output/ncs_review_corpus/v1_author_decision_register.json",
+      "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+      "refine-logs/NCS_E3_FAMILY2_CANDIDATE_CONTRACT.md",
+      "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json",
+      "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md",
+      "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2A_REPAIR_RECEIPT_V1_20260810_222232.json",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_PREFLIGHT_RECEIPT_V1_20260810_231758.json",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_TRACKER_V1_20260810_231758.md",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_COVERAGE_V1_20260811_010147.json",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2_EXECUTION_AUTHORIZATION_V1_20260810_223606.json",
+      "refine-logs/REC-M3_ACCEPTANCE_V2_20260811.json",
+      "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811_R2.json",
+      "refine-logs/REC-M3_V1_026_PATCH_PROPOSAL_20260811.md",
+      "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json",
+      "refine-logs/REC-M3_V1_033_PATCH_PROPOSAL_20260811.md",
+      "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json",
+      "refine-logs/REC-M3_V1_045_PATCH_PROPOSAL_20260811.md",
+      "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V1_20260811.json",
+      "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V2_20260811.json",
+      "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V3_20260811.json",
+      "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/comparator_registry.json",
+      "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/failure_metric_schema.json",
+      "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/artifact-manifest.json",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/comparator-ledger.json",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/paired-differences.json",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/status-inventory.json",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e02-128-ff23c1c2be0a83baae80298617211b5d0469b2a7614e3a1734df22853f013bbb/analysis.json",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e02-128-ff23c1c2be0a83baae80298617211b5d0469b2a7614e3a1734df22853f013bbb/audit.md",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/analysis.json",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/reproducibility.csv",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/resource-audit.json",
+      "supplementary.tex"
+    ]
+  },
+  "failures": [],
+  "formal_register_bindings": {
+    "V1-026_CAL-E01_75": {
+      "register_path": "output/ncs_review_corpus/v1_author_decision_register.json",
+      "pointer": "#/items/25",
+      "response_status": "PARTIAL",
+      "action_class": "DIRECT_TEXT_REVISION",
+      "status": "PASS"
+    },
+    "V1-033_CAL-E02_128": {
+      "register_path": "output/ncs_review_corpus/v1_author_decision_register.json",
+      "pointer": "#/items/32",
+      "response_status": "PARTIAL",
+      "action_class": "DIRECT_TEXT_REVISION",
+      "status": "PASS"
+    },
+    "V1-045_CAL-E03_164": {
+      "register_path": "output/ncs_review_corpus/v1_author_decision_register.json",
+      "line_locator": "2023-2066",
+      "response_status": "PARTIAL",
+      "action_class": "DIRECT_TEXT_REVISION",
+      "status": "PASS"
+    }
+  },
+  "source_and_locator_validation": {
+    "exact_paths_read_count": 44,
+    "exact_paths_read": [
+      "main.tex",
+      "manuscript_src/natcs/controlled_benchmark_contract.json",
+      "manuscript_src/natcs/methods_data.md",
+      "manuscript_src/natcs/methods_estimator.md",
+      "manuscript_src/natcs/methods_uncertainty.md",
+      "manuscript_src/natcs/results_validation.md",
+      "manuscript_src/natcs/supp_note4_benchmarks.md",
+      "manuscript_src/natcs/supp_note7_repro.md",
+      "manuscript_src/natcs/supp_note8_scope.md",
+      "output/ncs_review_corpus/v1_author_decision_register.json",
+      "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+      "refine-logs/NCS_E3_FAMILY2_CANDIDATE_CONTRACT.md",
+      "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json",
+      "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md",
+      "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2A_REPAIR_RECEIPT_V1_20260810_222232.json",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_PREFLIGHT_RECEIPT_V1_20260810_231758.json",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_TRACKER_V1_20260810_231758.md",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_COVERAGE_V1_20260811_010147.json",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2_EXECUTION_AUTHORIZATION_V1_20260810_223606.json",
+      "refine-logs/REC-M3_ACCEPTANCE_V2_20260811.json",
+      "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811_R2.json",
+      "refine-logs/REC-M3_V1_026_PATCH_PROPOSAL_20260811.md",
+      "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json",
+      "refine-logs/REC-M3_V1_033_PATCH_PROPOSAL_20260811.md",
+      "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json",
+      "refine-logs/REC-M3_V1_045_PATCH_PROPOSAL_20260811.md",
+      "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V1_20260811.json",
+      "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V2_20260811.json",
+      "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V3_20260811.json",
+      "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/comparator_registry.json",
+      "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/failure_metric_schema.json",
+      "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/artifact-manifest.json",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/comparator-ledger.json",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/paired-differences.json",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/status-inventory.json",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e02-128-ff23c1c2be0a83baae80298617211b5d0469b2a7614e3a1734df22853f013bbb/analysis.json",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e02-128-ff23c1c2be0a83baae80298617211b5d0469b2a7614e3a1734df22853f013bbb/audit.md",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/analysis.json",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/reproducibility.csv",
+      "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/resource-audit.json",
+      "supplementary.tex"
+    ],
+    "line_locator_checks": {
+      "checked": 58,
+      "passed": 58,
+      "failed": 0
+    },
+    "v1_026_pointer_checks": {
+      "checked": 26,
+      "passed": 26,
+      "failed": 0
+    },
+    "v1_026_semantic_checks": {
+      "checked": 18,
+      "passed": 18,
+      "failed": 0
+    },
+    "v1_033_hash_checks": {
+      "checked": 5,
+      "passed": 5,
+      "failed": 0
+    },
+    "v1_033_evidence_checks": {
+      "checked": 50,
+      "passed": 50,
+      "failed": 0
+    },
+    "v1_033_current_field_policy": "PARAGRAPH_LEVEL_SUMMARY; verbatim replacement anchor not required",
+    "v1_045_evidence_checks": {
+      "checked": 44,
+      "passed": 44,
+      "failed": 0
+    },
+    "markdown_heading_policy": "GitHub-style normalized ATX headings",
+    "status": "PASS"
+  },
+  "audit_units": {
+    "V1-026_CAL-E01_75": {
+      "unit_count": 3,
+      "status": "PASS"
+    },
+    "V1-033_CAL-E02_128": {
+      "unit_count": 13,
+      "status": "PASS"
+    },
+    "V1-045_CAL-E03_164": {
+      "unit_count": 10,
+      "status": "PASS"
+    },
+    "total": 26,
+    "unique": 26
+  },
+  "protected_hash_recheck": {
+    "file_hash_algorithm": "SHA-256 of raw bytes",
+    "tree_hash_algorithm": "SHA-256 of UTF-8 sorted relative-path TAB bytes TAB raw-SHA-256 LF lines; symlinks recorded separately",
+    "files": [
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json",
+        "bytes": 7074,
+        "sha256": "c012f7d1a40168b264027c55a3760424c7686cd0e7941cf6765d99c2629fd63f",
+        "match": true
+      },
+      {
+        "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+        "bytes": 3455,
+        "sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+        "match": true
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2A_REPAIR_RECEIPT_V1_20260810_222232.json",
+        "bytes": 13026,
+        "sha256": "b98f8a4dc6dd36ee28426182d9320d0696880867544a0cc05dd6c1fb5e943395",
+        "match": true
+      },
+      {
+        "path": "output/ncs_review_corpus/v1_author_decision_register.json",
+        "bytes": 110685,
+        "sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+        "match": true
+      },
+      {
+        "path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+        "bytes": 1822,
+        "sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+        "match": true
+      },
+      {
+        "path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+        "bytes": 2281,
+        "sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+        "match": true
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2_EXECUTION_AUTHORIZATION_V1_20260810_223606.json",
+        "bytes": 5715,
+        "sha256": "44677a44f01876bba8c96d924a69cf39a37f4642e00a004c1b03fb2dcbf4034c",
+        "match": true
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_PREFLIGHT_RECEIPT_V1_20260810_231758.json",
+        "bytes": 10995,
+        "sha256": "5918f4eac9e6b01a012bcf511afc50a357e07e005b99dea242b36eff816359df",
+        "match": true
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_TRACKER_V1_20260810_231758.md",
+        "bytes": 2947,
+        "sha256": "c35bf484768de70b0d64d2858f1328600d9cc5cc4efc7bb704729432336541eb",
+        "match": true
+      }
+    ],
+    "trees": [
+      {
+        "path": "manuscript_src/natcs",
+        "file_count": 72,
+        "symlink_count": 0,
+        "sha256": "21a1319b6f98e31804b7fd1766c66124553a2ad2904bdc2dcb655097e591a364",
+        "match": true
+      },
+      {
+        "path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3",
+        "file_count": 11,
+        "symlink_count": 0,
+        "sha256": "6859c367141f33e589fb2d536c96fbe763f40e406ca65bfa556d89b7536e00ec",
+        "match": true
+      },
+      {
+        "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3",
+        "file_count": 3,
+        "symlink_count": 0,
+        "sha256": "5398ec9a698ba0a7b878b0a8d25a7d8e9184ea6ff98af033f2b33f7165b1a83f",
+        "match": true
+      }
+    ],
+    "protected_files_checked": 9,
+    "protected_file_matches": 9,
+    "protected_trees_checked": 3,
+    "protected_tree_matches": 3,
+    "all_match": true
+  },
+  "scientific_state_matrix": {
+    "V1-026_CAL-E01_75": {
+      "governance": "PASS",
+      "m2c": "PASS",
+      "scientific_execution": "NOT_RUN",
+      "claim_activation": "BLOCKED",
+      "contract_change": "NO_CONTRACT_CHANGE",
+      "ceiling": "Descriptive comparator role, endpoint, coverage, status, and common-completion integrity only."
+    },
+    "V1-033_CAL-E02_128": {
+      "governance": "PASS",
+      "register": "PARTIAL",
+      "m2c": "BLOCKED",
+      "data_sufficiency": "PARTIAL",
+      "scientific_execution": "NOT_RUN",
+      "evidence_type": "simulation_only",
+      "independent_empirical_ground_truth": "NOT_EVALUABLE",
+      "provenance_gaps": [
+        "chronology",
+        "selection inputs",
+        "held-out query identity",
+        "endpoint signature",
+        "truth isolation"
+      ]
+    },
+    "V1-045_CAL-E03_164": {
+      "governance": "PASS",
+      "register": "PARTIAL",
+      "m2c": "PARTIAL",
+      "scope": "N=20/N=50 only",
+      "N100_N200": "NOT_RUN/ABSTAIN",
+      "resource_telemetry": "BLOCKED/null",
+      "runs": 1,
+      "seeds_per_cell": 20,
+      "repeated_run_reproducibility": "NOT_ESTABLISHED",
+      "unresolved_contracts": [
+        "CAL-E03 controlled ALS declares 60 iterations without stopping semantics; compiled application/bootstrap settings remain separate at 100/80 iterations.",
+        "Topology stress categories remain unbound to exact amplitudes and full protocol details."
+      ]
+    },
+    "claim_activation": "NOT_AUTHORIZED",
+    "promotion": "NOT_AUTHORIZED",
+    "new_scientific_experiment": "NOT_RUN",
+    "e4_r008_reuse": "NOT_USED",
+    "governance_scientific_separation": "This governance/artifact-integrity PASS does not convert PARTIAL, BLOCKED, NOT_RUN, NOT_EVALUABLE, NOT_AUTHORIZED, or NOT_RUN/ABSTAIN into scientific PASS."
+  },
+  "proposal_only_boundaries": {
+    "v1_026_patch_proposals": 3,
+    "v1_033_patch_units": 13,
+    "v1_045_contract_items": 10,
+    "all_proposal_only": true,
+    "manuscript_patches_applied": false,
+    "no_register_mutation": true,
+    "no_e4_r3_mutation": true,
+    "no_authorization_mutation": true,
+    "no_git_operations": true,
+    "no_scientific_claim_activation": true
+  },
+  "progression_gate": {
+    "REC-M3": "GOVERNANCE_ACCEPTED_V2",
+    "REC-M4_V1": "FAIL_RETAINED_AS_HISTORY",
+    "REC-M4_V2": "INVALID_PASS_RETAINED_AS_HISTORY",
+    "REC-M4_V3": "FAIL_CLOSED_RETAINED_AS_HISTORY",
+    "REC-M4_V4": "DETERMINISTIC_INDEPENDENT_ACCEPTANCE_PASS",
+    "REC-M5": "NOT_AUTHORIZED_BY_THIS_RECORD",
+    "m4_pass_applies_manuscript_patch": false,
+    "m4_pass_activates_scientific_claim": false,
+    "manuscript_patches_applied": false
+  }
+}

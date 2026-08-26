@@ -1,0 +1,9 @@
+{
+  "schema_version": 2,
+  "helper_git_commit": "d0e398b896848f26413cf9aa9dfca15fb4e7ce64",
+  "files": {
+    "config.py": "13aac959b623fb3e569b37f680c2f1b72b3ad0bad6d3b09d01bef36eae5e991f",
+    "research_data_construction.py": "a88245fdbe451a368358af5776722802ab10bb3b03a4e8cf1ab3e24d9d1d836d",
+    "research_network_tvp_var.py": "ea6568b0509ed62c62ab12189570576b31251fd921f59e1849a8c2e34b4fbc63"
+  }
+}

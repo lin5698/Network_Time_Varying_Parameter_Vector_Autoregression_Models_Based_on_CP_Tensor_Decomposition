@@ -1,61 +1,43 @@
 # Figure 2 Query-Certificate Contract
 
-Date: 2026-07-26
+Date: contract fixed 2026-07-26; status refreshed 2026-08-26.
 
-Status: source-only figure contract implemented in Python. This record and its
-exports do not change `PAPER_CLAIM_AUDIT=BLOCKED` or
-`EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL`, authorize a manuscript build, or
-activate E3, RCEP or NYC evidence.
+Status: source-only figure contract implemented in Python. The 2026-08-26 audit chain (both controlling audits PASS under `rcep_nyc_value_audited` reason codes) authorizes the downstream rebuild chain alone. This record changes no governance verdict, promotes no quarantined evidence, activates no E3/RCEP/NYC outcome and authorizes no portal action; portal-preview status is governed separately by `ncs_fig2_portal_preview_checklist.md`.
 
-## Core conclusion
+Serves: novelty / rigour / clarity / generality / visual communication.
 
-A requested topology-indexed operator is callable from a retained
-representation exactly when the query factors through that representation;
-the unrestricted one-hop class gives an exact negative construction, while
-the diagonal class supplies a constructive rowwise inverse under its stated
-row condition.
+## Core Conclusion
 
-## Figure contract
+A requested topology-indexed operator is callable from a retained representation exactly when the query factors through that representation. The unrestricted one-hop class yields an exact negative construction, while the diagonal class supplies a constructive rowwise inverse under its stated row condition.
+
+## Figure Contract
 
 - Archetype: asymmetric schematic-led theorem figure.
-- Backend: Python/Matplotlib only for drawing, export, preview and QA.
-- Target: Nature Computational Science, double-column width (183 mm).
+- Backend: Python/Matplotlib only, for drawing, export, preview and QA.
+- Target: Nature Computational Science double-column width (183 mm).
 - Exports: editable SVG, Type 42/Type 0 PDF and 600 dpi PNG.
-- Palette: warm orange for the callable query, cool teal for the verified
-  structured inverse and neutral greys for context or unsupported endpoints.
+- Palette: warm orange for the callable query, cool teal for the verified structured inverse, neutral greys for context or unsupported endpoints.
 
 Panel map:
 
-- **a, hero:** the factorization diagram and the certificate
-  `Q(W1) = h(W1) o T(W0)`.
-- **b:** the exact unrestricted construction `(0,0)` versus `(-W0,I)`, which
-  shares `D=0` at `W0` and disagrees at `W1` when `W1 != W0`.
-- **c:** the diagonal structured inverse for zero-diagonal `W0`, including the
-  nonzero-row formula and the full zero-row compatibility condition.
-- **d:** categorical endpoint availability for separated CP, separated Tucker,
-  collapsed-total and no-network representations. A grey dash is outside
-  target and is not a numerical value.
+- **a, hero:** the factorization diagram with the certificate `Q(W1) = h(W1) o T(W0)`.
+- **b:** the exact unrestricted construction, pair `(0,0)` against `(-W0,I)`: the two cases share the zero diagonal at `W0` while their supplied topologies `W1` differ from it.
+- **c:** the diagonal structured inverse for a zero-diagonal `W0`, showing the nonzero-row formula together with the full zero-row compatibility condition.
+- **d:** categorical endpoint availability across separated CP, separated Tucker, collapsed-total and no-network representations. A grey dash marks outside-target status and never encodes a numerical value.
 
-## Evidence boundary
+## Evidence Boundary
 
-Panels a-c trace only to Proposition 1, Corollary 1 and Supplementary Note 1.
-Panel d traces to the frozen fitted-object/endpoint definitions in
-Supplementary Note 4 and the manuscript-facing benchmark data dictionary. It
-contains no recovery value, uncertainty interval or application result.
+Panels a-c trace only to Proposition 1, Corollary 1 and Supplementary Note 1. Panel d traces to the frozen fitted-object/endpoint definitions in Supplementary Note 4 and the manuscript-facing benchmark data dictionary. It contains no recovery value, uncertainty interval or application result.
 
-Family-2 is excluded from the manuscript figure because its proof and E3
-artifacts remain source-governed and do not change the released evidence set.
-RCEP, NYC and E3 outcomes are absent.
+The Family-2 construction stays excluded from the manuscript figure because its proof and E3 artifacts remain source-governed and add nothing to the released evidence set. RCEP, NYC and E3 outcomes are absent by design; quarantined-candidate values remain activation-gated under RC-2 regardless of any future rebuild.
 
-## Reviewer-risk controls
+## Reviewer-Risk Controls
 
-- The unrestricted negative and diagonal positive routes are adjacent, so the
-  theorem cannot be read as a non-identification result for the implemented
-  diagonal estimator.
-- The positive factorization statement is the dominant visual memory point;
-  the counterexample is evidence, not a large failure badge.
-- Endpoint availability is explicitly separated from numerical recovery.
-- The figure does not imply estimator consistency, finite-sample recovery,
-  uncertainty calibration or cross-family generality.
+- The unrestricted negative route and the diagonal positive route sit adjacent, so the theorem cannot be misread as a non-identification result for the implemented diagonal estimator.
+- The positive factorization statement is the dominant visual memory point; the counterexample serves as evidence, never as a large failure badge.
+- Endpoint availability stays explicitly separated from numerical recovery.
+- The figure implies nothing about estimator consistency, finite-sample recovery, uncertainty calibration or cross-family generality.
 
-Serves: novelty / rigour / clarity / generality / visual communication.
+---
+
+Drafted 2026-08-26 under author backlog authorization (item A); assistant-drafted from governed records; open items await author confirmation.

@@ -1,0 +1,34 @@
+{
+  "audit_skill": "proof-checker",
+  "verdict": "PASS",
+  "reason_code": "all_source_only_proof_obligations_complete",
+  "summary": "The finite-basis kernel and row-space certificate, endpoint equivalence, strict two-hop extension and exact fixtures pass two fresh blind reviews.",
+  "audited_input_hashes": {
+    "refine-logs/NCS_FINITE_BASIS_QUERY_CERTIFICATE_PROOF_20260731.md": "sha256:a5366286a3bf58a121bb11935039de50cd721a47b183e7c4a0ce7db401b4ed2d",
+    "paper_rewriting_output/finite_basis_proof_skeleton_20260731.md": "sha256:19781ea0b83654109ff5b6dda859b73d60c5c8065f7902672a33e45d0d08ae28"
+  },
+  "trace_path": "paper_rewriting_output/finite_basis_proof_audit_20260731.md",
+  "thread_id": "agent:/root/finite_basis_proof_rereview",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_reasoning": "xhigh",
+  "generated_at": "2026-07-30T17:55:26Z",
+  "details": {
+    "theorems_audited": 2,
+    "corollaries_audited": 3,
+    "review_rounds": 2,
+    "issues_fixed": [
+      {
+        "id": "FB-NE-1",
+        "severity": "MAJOR",
+        "category": "scope_overclaim",
+        "location": "finite-basis proof Section 6",
+        "fix_strategy": "ADD_DERIVATION",
+        "note": "Replaced an insufficient affine-function witness with the direct row-span obstruction that proves strict inclusion of the row-separable function classes."
+      }
+    ],
+    "open_issues": [],
+    "counterexample_attempts": 7,
+    "acceptance_gate": "PASS",
+    "empirical_scope": "not_reviewed_not_claimed"
+  }
+}

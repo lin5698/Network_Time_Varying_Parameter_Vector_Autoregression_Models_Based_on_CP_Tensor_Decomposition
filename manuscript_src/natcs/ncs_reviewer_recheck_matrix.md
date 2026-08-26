@@ -1,15 +1,20 @@
 # NCS Reviewer Re-check Matrix
 
-> **Current-status supersession, 2026-07-23.** This historical reviewer matrix
-> is disabled. `PAPER_CLAIM_AUDIT=BLOCKED` and
-> `EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL` invalidate every row that treats RCEP,
-> NYC, an evidence package or a reproducibility archive as current evidence.
-> Use `ncs_desk_rejection_rereview_20260722.md` and the claim ledger for the
-> current source-only assessment.
+> **Current-status refresh, 2026-08-26.** Rows written against the 2026-07-07
+> audit date predate the completed value-audit wave. As of 2026-08-26 both
+> controlling audits record PASS (`PAPER_CLAIM_AUDIT.json` reason code
+> `rcep_nyc_value_audited_no_active_stale_citations`;
+> `EMPIRICAL_IMPLEMENTATION_AUDIT.json` reason code
+> `rcep_nyc_value_audited_downstream_build_authorized`). Quarantined RCEP/NYC
+> values remain deactivated pending RC-1 promotion authorization (NOT_GRANTED)
+> and RC-2 activation clearance (RCEP flags F1/F2/F3 plus NYC characterization
+> flags), so every row below stays evidence-bound to the active
+> controlled-benchmark record; the inactive audit-boundary drafts remain the
+> only sanctioned home for quarantine-candidate numbers.
 
 Purpose: simulate the first external-review pass after the current Nature Computational Science-oriented revision. This is a working submission-support artifact for author preparation, portal wording and response planning. It is not manuscript text and adds no new evidence.
 
-Audit date: 2026-07-07.
+Audit date: 2026-07-07. Recheck refresh: 2026-08-26 under author backlog authorization (item A); controlling-audit state verified directly against `PAPER_CLAIM_AUDIT.json` and `EMPIRICAL_IMPLEMENTATION_AUDIT.json`.
 
 Boundary: this memo uses only evidence visible in the current manuscript package. It does not assume new experiments, hidden reviewer views, full raw-source redistributability, journal portal rendering, public DOI assignment, native temporal-GNN benchmarking or causal RCEP identification.
 
@@ -125,5 +130,9 @@ Tags: visual communication / rigour.
 1. Fig. 2 journal-portal preview result or screenshot using `ncs_fig2_portal_preview_checklist.md`.
 2. Author sign-off for each raw-source block in `raw_source_access_decision_worksheet.md`.
 3. Author sign-off for public-release route, licence and embargo plan in `public_release_readiness_worksheet.md`.
-4. Decision on whether to keep the current title or switch to the query-preservation title variant.
+4. Title settled as "Query-certified operator learning for topology-indexed responses" (64 characters); recheck any portal field or draft that still cites a retired working-title variant.
 5. Confirmation that the empirical claim remains "bounded operator readout" and will not be strengthened to RCEP policy causality.
+
+## Provenance
+
+Drafted 2026-08-26 under author backlog authorization (item A); assistant-drafted from governed records; open items await author confirmation.

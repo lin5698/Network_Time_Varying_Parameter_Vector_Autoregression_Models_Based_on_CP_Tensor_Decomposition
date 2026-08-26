@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ncs_review_corpus/model_call_receipt.schema.json",
+  "title": "Privacy-preserving model call receipt",
+  "description": "An append-only receipt containing metadata and digests, never call bodies or paths.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "provider",
+    "model",
+    "reasoning",
+    "task_id",
+    "thread_id",
+    "invoked_at",
+    "completed_at",
+    "input_file_hashes",
+    "prompt_sha256",
+    "schema_sha256",
+    "output_sha256",
+    "validator",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "provider": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"},
+    "model": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"},
+    "reasoning": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"},
+    "task_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"},
+    "thread_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"},
+    "invoked_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?Z$"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?Z$"
+    },
+    "input_file_hashes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "sha256"],
+        "properties": {
+          "label": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    },
+    "prompt_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "schema_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "output_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "validator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "status", "error_count"],
+      "properties": {
+        "name": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"},
+        "status": {"enum": ["PASS", "FAIL"]},
+        "error_count": {"type": "integer", "minimum": 0},
+        "codes": {
+          "type": "array",
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[A-Z][A-Z0-9_.:-]{0,63}$"}
+        }
+      }
+    },
+    "status": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{0,31}$"}
+  }
+}

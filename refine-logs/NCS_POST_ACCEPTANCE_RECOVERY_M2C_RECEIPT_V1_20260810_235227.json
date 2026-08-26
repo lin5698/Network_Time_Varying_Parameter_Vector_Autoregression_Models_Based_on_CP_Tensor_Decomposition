@@ -1,0 +1,238 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m2c-receipt-v1",
+  "receipt_id": "ncs-post-acceptance-recovery-m2c-20260810-235227-cst-01",
+  "result": "REC-M2C_PASS",
+  "governance_status": "REC-M2C_PASS",
+  "scientific_status": "READ_ONLY_DERIVED_OUTPUTS_ONLY_NO_CLAIM_ACTIVATION",
+  "authorization": {
+    "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json",
+    "raw_sha256": "c012f7d1a40168b264027c55a3760424c7686cd0e7941cf6765d99c2629fd63f",
+    "status": "PLANNED_PENDING_INDEPENDENT_PREFLIGHT_ACCEPTANCE",
+    "execution_id": "rec-m2b2-20260810-235227-cst-01"
+  },
+  "source_authorization_v2": {
+    "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+    "raw_sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+    "m2_scientific_analysis": "BLOCKED_IN_THIS_TASK"
+  },
+  "execution": {
+    "run_order": [
+      "primary:CAL-E01:75",
+      "primary:CAL-E02:128",
+      "primary:CAL-E02:135",
+      "primary:CAL-E03:164",
+      "duplicate:CAL-E01:75",
+      "duplicate:CAL-E02:128",
+      "duplicate:CAL-E02:135",
+      "duplicate:CAL-E03:164"
+    ],
+    "successful_analyzer_writes": 8,
+    "pre_writer_invocation_event": {
+      "command": "python3 scripts/experiments/analyze_cal_e02_128.py ...",
+      "result": "ModuleNotFoundError: No module named 'scripts'",
+      "output_root_created": false,
+      "scientific_analysis_executed": false,
+      "retry_counted_as_run": false
+    },
+    "execution_commands": {
+      "e01": "python3 scripts/experiments/analyze_cal_e01_75.py ...",
+      "e02_128": "python3 -m scripts.experiments.analyze_cal_e02_128 ...",
+      "e02_135": "python3 -m scripts.experiments.analyze_cal_e02_135 ...",
+      "e03_164": "python3 -m scripts.experiments.analyze_cal_e03_164 ..."
+    },
+    "primary_and_duplicate_layout_valid": true,
+    "command_log": [
+      {
+        "sequence": "pre_writer",
+        "command": "python3 scripts/experiments/analyze_cal_e02_128.py --repo-root . --decision-register output/ncs_review_corpus/v1_author_decision_register.json --execution-authorization refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json --run-id primary --output-parent refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01",
+        "exit_code": 1,
+        "result": "ModuleNotFoundError: No module named scripts",
+        "output_root_created": false,
+        "counted_as_analyzer_run": false
+      },
+      {
+        "sequence": "primary:CAL-E01:75",
+        "command": "python3 scripts/experiments/analyze_cal_e01_75.py --results refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json --manifest refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json --authorization refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json --register output/ncs_review_corpus/v1_author_decision_register.json --candidate refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json --comparator-registry refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/comparator_registry.json --failure-metric-schema refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/failure_metric_schema.json --plan refine-logs/NCS_FOUR_ANALYSIS_PLAN_20260804_010454.md --e4-audit refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md --execution-complete refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json --terminal-inventory refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json --workspace-authorization refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json --output-parent refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary --execution-authorization refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json --run-id primary --artifact-mode raw",
+        "exit_code": 0
+      },
+      {
+        "sequence": "primary:CAL-E02:128",
+        "command": "python3 -m scripts.experiments.analyze_cal_e02_128 --repo-root . --decision-register output/ncs_review_corpus/v1_author_decision_register.json --execution-authorization refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json --run-id primary --output-parent refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01",
+        "exit_code": 0,
+        "verdict": "BLOCKED"
+      },
+      {
+        "sequence": "primary:CAL-E02:135",
+        "command": "python3 -m scripts.experiments.analyze_cal_e02_135 --register output/ncs_review_corpus/v1_author_decision_register.json --output-base refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01 --execution-authorization refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json --run-id primary",
+        "exit_code": 0,
+        "verdict": "PARTIAL"
+      },
+      {
+        "sequence": "primary:CAL-E03:164",
+        "command": "python3 -m scripts.experiments.analyze_cal_e03_164 --decision-register output/ncs_review_corpus/v1_author_decision_register.json --authorization refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json --plan refine-logs/NCS_FOUR_ANALYSIS_PLAN_20260804_010454.md --audit-markdown refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md --results refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json --execution-manifest refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json --project-root . --inventory refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json --execution-complete refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json --candidate refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json --workspace-authorization refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json --terminal-inventory refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json --execution-authorization refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json --run-id primary --output-parent refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01",
+        "exit_code": 0,
+        "verdict": "PARTIAL"
+      },
+      {
+        "sequence": "duplicate:CAL-E01:75",
+        "command": "python3 scripts/experiments/analyze_cal_e01_75.py --results refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json --manifest refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json --authorization refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json --register output/ncs_review_corpus/v1_author_decision_register.json --candidate refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json --comparator-registry refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/comparator_registry.json --failure-metric-schema refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/failure_metric_schema.json --plan refine-logs/NCS_FOUR_ANALYSIS_PLAN_20260804_010454.md --e4-audit refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md --execution-complete refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json --terminal-inventory refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json --workspace-authorization refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json --output-parent refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/duplicate --execution-authorization refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json --run-id duplicate --artifact-mode raw",
+        "exit_code": 0
+      },
+      {
+        "sequence": "duplicate:CAL-E02:128",
+        "command": "python3 -m scripts.experiments.analyze_cal_e02_128 --repo-root . --decision-register output/ncs_review_corpus/v1_author_decision_register.json --execution-authorization refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json --run-id duplicate --output-parent refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01",
+        "exit_code": 0,
+        "verdict": "BLOCKED"
+      },
+      {
+        "sequence": "duplicate:CAL-E02:135",
+        "command": "python3 -m scripts.experiments.analyze_cal_e02_135 --register output/ncs_review_corpus/v1_author_decision_register.json --output-base refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01 --execution-authorization refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json --run-id duplicate",
+        "exit_code": 0,
+        "verdict": "PARTIAL"
+      },
+      {
+        "sequence": "duplicate:CAL-E03:164",
+        "command": "python3 -m scripts.experiments.analyze_cal_e03_164 --decision-register output/ncs_review_corpus/v1_author_decision_register.json --authorization refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json --plan refine-logs/NCS_FOUR_ANALYSIS_PLAN_20260804_010454.md --audit-markdown refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md --results refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json --execution-manifest refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json --project-root . --inventory refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json --execution-complete refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json --candidate refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json --workspace-authorization refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json --terminal-inventory refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json --execution-authorization refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json --run-id duplicate --output-parent refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01",
+        "exit_code": 0,
+        "verdict": "PARTIAL"
+      }
+    ]
+  },
+  "verification": {
+    "py_compile": {
+      "exit_code": 0,
+      "file_count": 8
+    },
+    "suites": [
+      {
+        "name": "test_analyze_cal_e01_75",
+        "tests": 16,
+        "exit_code": 0
+      },
+      {
+        "name": "test_analyze_cal_e02_128",
+        "tests": 7,
+        "exit_code": 0
+      },
+      {
+        "name": "test_analyze_cal_e02_135",
+        "tests": 6,
+        "exit_code": 0
+      },
+      {
+        "name": "test_analyze_cal_e03_164",
+        "tests": 6,
+        "exit_code": 0
+      }
+    ],
+    "total_tests": 35,
+    "direct_primary_authorization_validation": {
+      "validations": 4,
+      "exit_code": 0,
+      "permanent_write_performed": false
+    },
+    "primary_artifact_count": 27,
+    "duplicate_artifact_count": 27,
+    "byte_identical_comparison": true
+  },
+  "records": {
+    "coverage_ledger": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_COVERAGE_LEDGER_V1_20260810_235227.json",
+    "run_inventory": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_RUN_INVENTORY_V1_20260810_235227.json",
+    "comparison": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_COMPARISON_V1_20260810_235227.json",
+    "tracker": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_TRACKER_V1_20260810_235227.md"
+  },
+  "protected_nonmutation": {
+    "tree_snapshot_method": "SHA-256 of sorted raw-file hash plus workspace-relative-path lines; symlinks counted separately",
+    "before": {
+      "manuscript_src/natcs": {
+        "file_count": 72,
+        "symlink_count": 0,
+        "sha256": "3f01679702070917fb0b324dcd0c54721c0a39ec90237ea0c7aed598d63a76af"
+      },
+      "e4_r3_candidate_tree": {
+        "file_count": 11,
+        "symlink_count": 0,
+        "sha256": "7f7011c5d399c33a07e8b4192a95a6beed216384a551c2e978c7a248858d1d8b"
+      },
+      "e4_r3_quarantine_tree": {
+        "file_count": 3,
+        "symlink_count": 0,
+        "sha256": "d93f3f53852dfd8c7f13981b1b8a39ec3f23ede696e4a5878faeade81349ca8d"
+      }
+    },
+    "after": {
+      "manuscript_src/natcs": {
+        "file_count": 72,
+        "symlink_count": 0,
+        "sha256": "3f01679702070917fb0b324dcd0c54721c0a39ec90237ea0c7aed598d63a76af"
+      },
+      "e4_r3_candidate_tree": {
+        "file_count": 11,
+        "symlink_count": 0,
+        "sha256": "7f7011c5d399c33a07e8b4192a95a6beed216384a551c2e978c7a248858d1d8b"
+      },
+      "e4_r3_quarantine_tree": {
+        "file_count": 3,
+        "symlink_count": 0,
+        "sha256": "d93f3f53852dfd8c7f13981b1b8a39ec3f23ede696e4a5878faeade81349ca8d"
+      }
+    },
+    "files": {
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json": {
+        "sha256": "c012f7d1a40168b264027c55a3760424c7686cd0e7941cf6765d99c2629fd63f",
+        "bytes": 7074,
+        "unchanged": true
+      },
+      "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json": {
+        "sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+        "bytes": 3455,
+        "unchanged": true
+      },
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2A_REPAIR_RECEIPT_V1_20260810_222232.json": {
+        "sha256": "b98f8a4dc6dd36ee28426182d9320d0696880867544a0cc05dd6c1fb5e943395",
+        "bytes": 13026,
+        "unchanged": true
+      },
+      "output/ncs_review_corpus/v1_author_decision_register.json": {
+        "sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+        "bytes": 110685,
+        "unchanged": true
+      },
+      "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json": {
+        "sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+        "bytes": 1822,
+        "unchanged": true
+      },
+      "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json": {
+        "sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+        "bytes": 2281,
+        "unchanged": true
+      },
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2_EXECUTION_AUTHORIZATION_V1_20260810_223606.json": {
+        "sha256": "44677a44f01876bba8c96d924a69cf39a37f4642e00a004c1b03fb2dcbf4034c",
+        "bytes": 5715,
+        "unchanged": true
+      },
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_PREFLIGHT_RECEIPT_V1_20260810_231758.json": {
+        "sha256": "5918f4eac9e6b01a012bcf511afc50a357e07e005b99dea242b36eff816359df",
+        "bytes": 10995,
+        "unchanged": true
+      },
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_TRACKER_V1_20260810_231758.md": {
+        "sha256": "c35bf484768de70b0d64d2858f1328600d9cc5cc4efc7bb704729432336541eb",
+        "bytes": 2947,
+        "unchanged": true
+      }
+    }
+  },
+  "boundaries": {
+    "claim_activation": "NOT_AUTHORIZED",
+    "promotion": "NOT_AUTHORIZED",
+    "rcep_nyc": "NOT_AUTHORIZED",
+    "s1_s4": "NOT_AUTHORIZED",
+    "n100_n200": "NOT_RUN_OR_ABSTAIN",
+    "manuscript_mutation": false,
+    "register_mutation": false,
+    "e4_r3_mutation": false
+  }
+}

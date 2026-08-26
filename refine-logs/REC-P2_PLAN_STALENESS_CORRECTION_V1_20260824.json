@@ -1,0 +1,372 @@
+{
+  "record_id": "REC-P2_PLAN_STALENESS_CORRECTION_V1_20260824",
+  "record_class": "plan_document_staleness_correction_record",
+  "generated": "2026-08-24",
+  "audit_timezone_basis": "Asia/Shanghai",
+  "status": "CORRECTION_APPLIED_PROVENANCE_PARTIALLY_UNVERIFIABLE",
+  "decision": "NOT_AUTHORIZED",
+  "scientific_execution_authorized": false,
+  "claim_activation_authorized": false,
+  "manuscript_promotion_authorized": false,
+  "purpose": "计划文档 §P2 的过时事实更正已落地，但其引用的更正记录此前不存在，形成悬空引用。本记录闭合该引用：逐条核对更正后的事实陈述、留档前后哈希、并说明哪一项无法核对。",
+  "authorization": {
+    "granted_by": "author",
+    "granted_in": "conversation turn 2026-08-24",
+    "verbatim": "授权更改",
+    "interpreted_scope": "仅授权更正计划文档 §P2 中「E4 网格未运行」这一过时说法，以及 D3 处随之而来的表述。",
+    "explicitly_not_authorized": [
+      "签发 D1 / D2 / D3 任何一份授权草案",
+      "开启 E4-R007 的独立 result-to-claim 复核",
+      "更正 EXPERIMENT_AUDIT.md 第 34 行",
+      "任何 manuscript_src、formal register、generated TeX 或授权文件改动",
+      "任何 git 操作、make 目标、测试套件或 scientific entry"
+    ]
+  },
+  "change_provenance": {
+    "applied_at": "2026-08-24 14:31:13",
+    "applied_by": "ACTOR_OUTSIDE_THIS_SESSION",
+    "how_established": "本会话在该时刻处于等待作者输入状态，未发出任何写操作；本会话当轮的写入只有 14:05 的 REC-P2 两份文件。90 分钟窗口内全仓（排除 .git）仅三个文件被修改：REC-P2 两份（14:05，本会话）与本计划文档（14:31）。",
+    "in_document_authorization_claim": "更正记录（2026-08-24，经作者授权）。",
+    "hazard": "更正段在作者实际授权之前即自称「经作者授权」，且引用了一份当时并不存在的记录。作者授权现已给出，引用亦由本记录闭合，但这一先后顺序本身应被看到：它意味着有第二个行为者在同一工作副本上写入。",
+    "concurrency_recommendation": "在 P0 闭合前避免多会话并行写同一工作副本。git 不可解析时没有任何写冲突检测，哈希冻结记录会被静默失配。"
+  },
+  "target_document": {
+    "path": "docs/superpowers/plans/2026-08-23-followup-work-plan.md",
+    "pre_correction": {
+      "bytes": 12393,
+      "sha256": "f61a0e2ec75a0f4be887d781928d61c610f632a2b753d3c37037db7b15c8ae82",
+      "source_of_record": "refine-logs/REC-P2_AUTHORIZATION_DRAFTS_V1_20260824.json measured_inputs",
+      "re_measurable": false
+    },
+    "post_correction": {
+      "bytes": 15009,
+      "sha256": "f962cfd132cde2c00f0c20308cb32bf26a6a5549935bfbfad4637b1d0d2e054e",
+      "state": "MATERIALIZED",
+      "re_measurable": true
+    },
+    "byte_delta": 2616
+  },
+  "dangling_reference_closed": {
+    "cited_at": "docs/superpowers/plans/2026-08-23-followup-work-plan.md line 98",
+    "cited_path": "refine-logs/REC-P2_PLAN_STALENESS_CORRECTION_V1_20260824.md",
+    "state_before_this_record": "ABSENT",
+    "state_after_this_record": "MATERIALIZED"
+  },
+  "corrected_statement_checks": [
+    {
+      "claim_id": "C-1",
+      "statement": "E4 r3 已于 2026-08-01 完成并经独立审计；48 recovery / 32 paired-comparison / 8 interval cell 与 46080 条 recovery record、160 条 interval record 齐备",
+      "locator": "docs/superpowers/plans/2026-08-23-followup-work-plan.md line 96",
+      "measured_evidence": {
+        "source": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json",
+        "scope_counts": {
+          "recovery_cells": 48,
+          "paired_comparison_cells": 32,
+          "interval_cells": 8,
+          "recovery_records": 46080,
+          "interval_records": 160,
+          "panel_seeds_per_cell": 20,
+          "bootstrap_replicates_per_interval": 80
+        },
+        "overall_verdict": "warn",
+        "evaluation_type": "simulation_only"
+      },
+      "verdict": "SUPPORTED"
+    },
+    {
+      "claim_id": "C-2",
+      "statement": "check A/B/C/E/F/G/H/I 为 PASS，唯一 WARN 为 check D",
+      "locator": "docs/superpowers/plans/2026-08-23-followup-work-plan.md line 96",
+      "measured_evidence": {
+        "source": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json",
+        "checks": {
+          "ground_truth_provenance": "pass",
+          "score_normalization": "pass",
+          "result_existence_traceability": "pass",
+          "reachability_declared_metrics": "warn",
+          "scope": "pass",
+          "evaluation_classification": "pass",
+          "isolation_parity_retention": "pass",
+          "bootstrap_implementation": "pass",
+          "terminal_provenance": "pass"
+        },
+        "warn_keys": [
+          "reachability_declared_metrics"
+        ],
+        "d_position_1_indexed": 4
+      },
+      "verdict": "SUPPORTED"
+    },
+    {
+      "claim_id": "C-3",
+      "statement": "r2 quarantine root 存在，但仅含 execution-manifest.json（408 字节，status RUNNING_QUARANTINE_ONLY），无结果字节",
+      "locator": "docs/superpowers/plans/2026-08-23-followup-work-plan.md line 96",
+      "measured_evidence": {
+        "root_state": "PRESENT",
+        "entries": [
+          "execution-manifest.json"
+        ],
+        "manifest_status": "RUNNING_QUARANTINE_ONLY",
+        "manifest_bytes": 408,
+        "result_bytes_present": false
+      },
+      "verdict": "SUPPORTED"
+    },
+    {
+      "claim_id": "C-4",
+      "statement": "r3 root 下 e3-results.json、execution-complete.json、execution-manifest.json 三者齐备，但 manifest 仍为 RUNNING_QUARANTINE_ONLY 而 completion marker 为 COMPLETE_QUARANTINE_ONLY，终态证据落在 marker 而非 manifest 上",
+      "locator": "docs/superpowers/plans/2026-08-23-followup-work-plan.md line 96",
+      "measured_evidence": {
+        "entries": [
+          "e3-results.json",
+          "execution-complete.json",
+          "execution-manifest.json"
+        ],
+        "manifest_status": "RUNNING_QUARANTINE_ONLY",
+        "completion_marker_status": "COMPLETE_QUARANTINE_ONLY"
+      },
+      "verdict": "SUPPORTED"
+    },
+    {
+      "claim_id": "C-5",
+      "statement": "被更正的原说法源自 EXPERIMENT_AUDIT.md 第 34 行，且该行逐字为 \"The E4 grid was not run and the r2 quarantine root remains absent.\"",
+      "locator": "docs/superpowers/plans/2026-08-23-followup-work-plan.md line 98",
+      "measured_evidence": {
+        "source": "EXPERIMENT_AUDIT.md",
+        "line": 34,
+        "quoted": "E4-R009. The E4 grid was not run and the r2 quarantine root remains absent.",
+        "source_file_sha256": "8897901c3ebb0d239766e979e72b4614dfe678e369113614b152d2a6172addcc"
+      },
+      "verdict": "SUPPORTED"
+    },
+    {
+      "claim_id": "C-6",
+      "statement": "EXPERIMENT_PLAN 第 72 行预声明 paired panel-level log error ratio，第 74 行预声明等权 cell-level 置信区间",
+      "locator": "docs/superpowers/plans/2026-08-23-followup-work-plan.md line 104",
+      "measured_evidence": {
+        "source": "refine-logs/EXPERIMENT_PLAN_20260731_115719.md",
+        "line_72": "**Primary metrics**：response MSE、operator MSE、status/failure rate、paired panel-level log error ratio；prediction loss 仅作为 selection record。",
+        "line_74": "**Secondary evidence**：operator MSE 与 response MSE 方向一致；等权 cell-level paired log-ratio 置信区间；runtime/selection/failure inventory。",
+        "confidence_level_tokens_in_file": []
+      },
+      "verdict": "SUPPORTED"
+    },
+    {
+      "claim_id": "C-7",
+      "statement": "E4-R006 activation blocked、E4-R007 activation blocked-pending-result-to-claim，与更正段「R006 结构性封闭 / R007 只需复核」的切分一致",
+      "locator": "docs/superpowers/plans/2026-08-23-followup-work-plan.md line 104",
+      "measured_evidence": {
+        "source": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json",
+        "claims": [
+          {
+            "id": "E4-R006",
+            "impact": "qualified",
+            "activation": "blocked",
+            "ceiling": "declared-synthetic-dgp-only"
+          },
+          {
+            "id": "E4-R007",
+            "impact": "qualified",
+            "activation": "blocked-pending-result-to-claim",
+            "ceiling": "simulation-only-h4-20-panels-per-cell"
+          }
+        ]
+      },
+      "verdict": "SUPPORTED"
+    },
+    {
+      "claim_id": "C-8",
+      "statement": "本次更改仅限 §P2 事实段与 D3 表述；D1、D2 两行未动",
+      "locator": "docs/superpowers/plans/2026-08-23-followup-work-plan.md line 98",
+      "measured_evidence": {
+        "reason": "pre-correction bytes are not retained anywhere reachable: git is unresolvable under P0, no backup or ' 2.' conflict copy of this file exists, and the session transcript is outside the reachable filesystem",
+        "only_surviving_pre_state": {
+          "bytes": 12393,
+          "sha256": "f61a0e2ec75a0f4be887d781928d61c610f632a2b753d3c37037db7b15c8ae82",
+          "source": "REC-P2 measured_inputs"
+        }
+      },
+      "verdict": "NOT_VERIFIABLE_NO_PRE_CORRECTION_BYTES"
+    }
+  ],
+  "checks_summary": {
+    "total": 8,
+    "supported": 7,
+    "not_verifiable": 1
+  },
+  "outstanding_imprecisions": [
+    {
+      "id": "I-1",
+      "severity": "LOW_WORDING",
+      "locator": "docs/superpowers/plans/2026-08-23-followup-work-plan.md line 96",
+      "finding": "更正段写「r3 同名 root」，但两个 root 名并不相同（…-quarantine-r2 与 …-quarantine-r3）。指称对象正确，措辞会让读者误以为是同一目录。",
+      "action": "留档，不改。改它属于第二次改动，超出本次授权范围。"
+    },
+    {
+      "id": "I-2",
+      "severity": "MEDIUM_MISREADS_AS_MEASURED",
+      "locator": "docs/superpowers/plans/2026-08-23-followup-work-plan.md line 96",
+      "finding": "该行为 primary root 的两个文件给出 SHA-256，读起来像本地实测值；实测这两个文件均为 iCloud 未落地占位符（blocks=0，读取失败），因此那两个摘要只能是冻结 checklist 的记录值，在 P0 闭合前不可核对。REC-P2 已将同族摘要判为 NOT_VERIFIABLE_DATALESS。",
+      "action": "留档并提请作者注意。这是更正之前就存在的问题，不由本次更改引入。"
+    },
+    {
+      "id": "I-3",
+      "severity": "BY_DESIGN",
+      "locator": "EXPERIMENT_AUDIT.md line 34",
+      "finding": "原始过时句仍留在 EXPERIMENT_AUDIT.md 第 34 行，未更正。",
+      "action": "刻意不动。它是既有审计记录，在其记录日期（2026-07-31）为真；改它需要另一次授权。更正段已显式声明这一点。"
+    }
+  ],
+  "relation_to_rec_p2": {
+    "superseded_field": "decisions.D3.plan_statement_correction.correction_status",
+    "superseded_value": "PLAN_NOT_YET_CORRECTED_SEPARATE_AUTHORIZATION_REQUIRED",
+    "now_reads": "PLAN_CORRECTED_2026-08-24_SEE_REC-P2_PLAN_STALENESS_CORRECTION_V1",
+    "rec_p2_bytes_unchanged": {
+      "json": "31baa95f68b173624c1df0806730a2a78eacd1fcd25847aa185c89666110bbc6",
+      "md": "5119ae1ede20ce82c2fc8cc0fda7e8a6dcf44d423a21447549f9cde54698d600"
+    },
+    "method": "append-only：不改动已冻结的 REC-P2 字节，改由本记录取代该字段。REC-P2 中 docs/superpowers/plans/2026-08-23-followup-work-plan.md 的实测摘要指的是更正前字节。",
+    "rec_p2_recommendations_unaffected": "D1 DO_NOT_SIGN、D2 MAINTAIN_ABSTENTION、D3 RESCOPE_NOT_SCHEDULE 三项建议不因本次更正而改变；本次更正只消除了 D3-G1 这一项前置缺口。",
+    "gap_closed": "D3-G1",
+    "gaps_still_open": [
+      "D3-G2",
+      "D3-G3"
+    ]
+  },
+  "measured_inputs": {
+    "docs/superpowers/plans/2026-08-23-followup-work-plan.md": {
+      "path": "docs/superpowers/plans/2026-08-23-followup-work-plan.md",
+      "bytes": 15009,
+      "sha256": "f962cfd132cde2c00f0c20308cb32bf26a6a5549935bfbfad4637b1d0d2e054e",
+      "state": "MATERIALIZED",
+      "mtime": "2026-08-24 14:31:13",
+      "read_errno": null
+    },
+    "EXPERIMENT_AUDIT.md": {
+      "path": "EXPERIMENT_AUDIT.md",
+      "bytes": 11064,
+      "sha256": "8897901c3ebb0d239766e979e72b4614dfe678e369113614b152d2a6172addcc",
+      "state": "MATERIALIZED",
+      "mtime": "2026-08-12 13:41:40",
+      "read_errno": null
+    },
+    "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md": {
+      "path": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md",
+      "bytes": 4785,
+      "sha256": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5",
+      "state": "MATERIALIZED",
+      "mtime": "2026-08-12 13:41:40",
+      "read_errno": null
+    },
+    "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json": {
+      "path": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json",
+      "bytes": 1736,
+      "sha256": "60523c09126fca78f9e87c1ef4776a74b6f5025bbed19ad65ec1755838d77c68",
+      "state": "MATERIALIZED",
+      "mtime": "2026-08-12 13:41:40",
+      "read_errno": null
+    },
+    "refine-logs/EXPERIMENT_PLAN_20260731_115719.md": {
+      "path": "refine-logs/EXPERIMENT_PLAN_20260731_115719.md",
+      "bytes": 10228,
+      "sha256": "777f77f753b78f18efdd4dedb58b37f20756007b1d942d4f6b9a1cd2e3db3867",
+      "state": "MATERIALIZED",
+      "mtime": "2026-08-12 13:41:40",
+      "read_errno": null
+    },
+    "refine-logs/REC-P2_AUTHORIZATION_DRAFTS_V1_20260824.json": {
+      "path": "refine-logs/REC-P2_AUTHORIZATION_DRAFTS_V1_20260824.json",
+      "bytes": 44276,
+      "sha256": "31baa95f68b173624c1df0806730a2a78eacd1fcd25847aa185c89666110bbc6",
+      "state": "MATERIALIZED",
+      "mtime": "2026-08-24 14:05:30",
+      "read_errno": null
+    },
+    "refine-logs/REC-P2_AUTHORIZATION_DRAFTS_V1_20260824.md": {
+      "path": "refine-logs/REC-P2_AUTHORIZATION_DRAFTS_V1_20260824.md",
+      "bytes": 23318,
+      "sha256": "5119ae1ede20ce82c2fc8cc0fda7e8a6dcf44d423a21447549f9cde54698d600",
+      "state": "MATERIALIZED",
+      "mtime": "2026-08-24 14:05:30",
+      "read_errno": null
+    },
+    "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r2/execution-manifest.json": {
+      "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r2/execution-manifest.json",
+      "bytes": 408,
+      "sha256": "6a9109b410536d66c0cf08a2d1dee20f70ea2f3f9f31fc8c2eafb69a03cb4a7a",
+      "state": "MATERIALIZED",
+      "mtime": "2026-08-12 13:41:40",
+      "read_errno": null
+    },
+    "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json": {
+      "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+      "bytes": 408,
+      "sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+      "state": "MATERIALIZED",
+      "mtime": "2026-08-12 13:41:40",
+      "read_errno": null
+    },
+    "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json": {
+      "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+      "bytes": 301,
+      "sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+      "state": "MATERIALIZED",
+      "mtime": "2026-08-12 13:41:40",
+      "read_errno": null
+    }
+  },
+  "primary_root_state": {
+    "path": "output/high_impact_revision/r006e_native_supported_recovery_v2",
+    "state": "PRESENT",
+    "entries": [
+      {
+        "name": "construction_gate_preoutcome.json",
+        "bytes": 10295332,
+        "blocks": 0,
+        "readable": false
+      },
+      {
+        "name": "construction_manifest.sha256",
+        "bytes": 5383,
+        "blocks": 0,
+        "readable": false
+      }
+    ]
+  },
+  "carried_forward_constraints": {
+    "P0-C1": "不得删除 `manuscript_src/natcs/discussion 2.md`",
+    "P0-C2": "不得删除 `refine-logs` 中哈希冻结 `REC` 记录的 `' 2.'` 副本",
+    "P0-C3": "不得把 `ORPHAN_NO_BASE` 副本视为冗余",
+    "P0-C4": "落地完成前不得运行任何 `make` 目标、测试套件或科学入口",
+    "P0-C5": "git 未解析前，`tracked/clean`、`247/247`、`85/85`、`145/145` 一律报 `NOT_VERIFIABLE`"
+  },
+  "verification_not_performed": [
+    "未运行任何 make 目标、测试套件或 scientific entry",
+    "未执行任何 git 操作",
+    "未读取 R006e / R006f 的未落地产物字节（记录为 placeholder，不推断内容）",
+    "未重建更正前字节，故未做逐字 diff"
+  ],
+  "manuscript_non_mutation_evidence": {
+    "md_files_total": 64,
+    "md_files_readable": 63,
+    "non_materialized_placeholders": [
+      {
+        "path": "manuscript_src/natcs/_archives/superseded_text_before_20260618_2140/abstract_2.md",
+        "bytes": 1565,
+        "blocks": 0,
+        "read_errno": 35
+      }
+    ],
+    "newest_mtime": "2026-08-12 13:41:40",
+    "newest_file": "manuscript_src/natcs/ncs_source_only_rereview_20260723.md",
+    "basis": "非变更结论取自 mtime 与 90 分钟窗口的全仓 find，不取自聚合摘要比对。",
+    "prior_aggregate_digest": "b9989a7f36d60468671e3f31592557d6da00e193f497a2835f5d455c1c309b33",
+    "prior_aggregate_comparison": "NOT_COMPARABLE_METHOD_NOT_RECORDED",
+    "prior_aggregate_note": "此前记录的 63 文件聚合摘要未同时记录聚合方法（拼接字节 / 摘要串接 / 含路径的清单行三种都试过，均不重现该取值），故按 fail-closed 记为不可比对，不记为 PASS，也不记为 MISMATCH。文件集一致：64 个 md 中 63 个可读，1 个为 iCloud 未落地占位符。"
+  },
+  "changed_paths": [
+    "refine-logs/REC-P2_PLAN_STALENESS_CORRECTION_V1_20260824.json",
+    "refine-logs/REC-P2_PLAN_STALENESS_CORRECTION_V1_20260824.md"
+  ],
+  "unchanged_assertion": "manuscript_src、formal register、所有既有冻结记录（含 REC-P2 两份）、所有授权文件与生成的 TeX 均未改动。未执行 git 操作、make 目标、测试套件或 scientific entry。scientific execution 与 claim activation 仍为 NOT_AUTHORIZED。"
+}

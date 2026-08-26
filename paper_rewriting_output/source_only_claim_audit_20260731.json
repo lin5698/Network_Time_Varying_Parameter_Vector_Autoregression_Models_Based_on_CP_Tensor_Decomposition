@@ -1,0 +1,44 @@
+{
+  "audit_skill": "paper-claim-audit",
+  "audit_scope": "active source-only manuscript and released controlled benchmark artifacts",
+  "controlling_release_audit": false,
+  "verdict": "PASS",
+  "reason_code": "all_scoped_numbers_and_contracts_match",
+  "summary": "A fresh zero-context reviewer reconciled the active controlled claims, design constants, endpoint terminology and qualification counts to the released CSV, implementation and versioned contracts.",
+  "audited_input_hashes": {
+    "manuscript_src/natcs/abstract.md": "sha256:6d46e855795c0b528da25e186bf02d24839b0a18d49cd93bf7b1b013b6f0e06b",
+    "manuscript_src/natcs/results_validation.md": "sha256:ee711bf8c1ba755439296ddbb295ba704858331c9b3203211d53a7de13ccc3de",
+    "manuscript_src/natcs/methods_data.md": "sha256:d8f667f78c2cdfe4eb4a744f4069025ceb51acab6bf99b5c592a65ae86b182f8",
+    "manuscript_src/natcs/methods_estimator.md": "sha256:33d2fd33ffda517e8bf28ad6bba4be228cd1a6504fcb2faa0b679309f081e109",
+    "manuscript_src/natcs/methods_uncertainty.md": "sha256:8f751df563dd1e896eebc1aeefff30427f827994701b4618bb21ed470496c95d",
+    "manuscript_src/natcs/supp_note4_benchmarks.md": "sha256:5a7ed2414d77deb9de435f58f2b14d30c58395f7581f6a000e589dfb114c68e1",
+    "manuscript_src/natcs/controlled_benchmark_contract.json": "sha256:da777f4967e03f01be3717fd1aea5fb51a6b1e398a39378abd9e0d4626dd0ebb",
+    "manuscript_src/natcs/r006c_endpoint_gate.json": "sha256:78f2d4d00a58fbe2cae663568b8e2c8858e0d2527417076580c480098eb3ca31",
+    "scripts/build_natcs_manuscript.mjs": "sha256:a38b493e668f0c81af0924e4ff5c835528475d162289191eb91f7ddfdcd79ca4",
+    "scripts/build_natcs_supplementary_source_only.mjs": "sha256:9d9f218789cc297376deb8738b90e2516604149259afeb812acee437865bef79",
+    "scripts/natcs_benchmark_contract_tables.mjs": "sha256:0c0ab169668c0d50486ee5e368dcf20574b7ab2951d31a7e2b74adb585bee0cd",
+    "scripts/natcs_benchmarks.mjs": "sha256:9cfe55a771f7434617bf67bbc78c22aadcd74fd528b4ea5d8b7762e0ad2b4633",
+    "output/natcs_benchmarks/benchmark_summary.csv": "sha256:c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1",
+    "output/natcs_benchmarks/benchmark_replications.csv": "sha256:b8c881dcbafee9ee04e8b344478367a17d3e6c5d353b15970c48e3d3783cd32e"
+  },
+  "trace_path": "collaboration:/root/source_only_claim_reaudit",
+  "thread_id": "/root/source_only_claim_reaudit",
+  "reviewer_model": "runtime-managed fresh reviewer",
+  "reviewer_reasoning": "independent zero-context source-to-artifact reconciliation",
+  "generated_at": "2026-07-31T01:37:10+08:00",
+  "details": {
+    "headline_gains": {
+      "scale_n15_operator_pct": 93.6,
+      "scale_n30_operator_pct": 96.8,
+      "scale_n15_response_pct": 82.5,
+      "scale_n30_response_pct": 87.3
+    },
+    "released_replications": {
+      "scale_n15": 20,
+      "scale_n30": 20,
+      "scale_n50_primary_rows": 4
+    },
+    "mismatches": [],
+    "residual_risk": "Benchmark generation was not rerun; this receipt verifies source-to-artifact consistency, not regeneration."
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "analyzer_coverage": {
+    "CAL-E01:75": {
+      "artifact_boundary": "raw_comparator/raw_paired_differences/status_inventory",
+      "failure_records": [],
+      "nonfinite_policy": "retain and count; never impute",
+      "status_inventory": {
+        "bootstrap_replicates": {
+          "AVAILABLE": 12800,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "failure_bins_present_in_summaries": true,
+        "interval_records": {
+          "AVAILABLE": 160,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "paired_candidate_records": {
+          "AVAILABLE": 30720,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "paired_comparator_records": {
+          "AVAILABLE": 30720,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "recovery_records": {
+          "AVAILABLE": 46080,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "retained_failure_records": {
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        }
+      }
+    },
+    "CAL-E02:128": {
+      "blocking_gaps": [
+        "Independent empirical ground truth is absent from the synthetic-only frozen route.",
+        "Recovery records lack serialized chronology, truth, query, endpoint, and selection-input provenance fields."
+      ],
+      "interval_status_counts": {
+        "AVAILABLE": 160,
+        "NONCONVERGED": 0,
+        "NONFINITE": 0,
+        "OUTSIDE_TARGET": 0,
+        "UNSTABLE": 0
+      },
+      "paired_common_completion_status": "PASS",
+      "recovery_status_counts": {
+        "AVAILABLE": 46080,
+        "NONCONVERGED": 0,
+        "NONFINITE": 0,
+        "OUTSIDE_TARGET": 0,
+        "UNSTABLE": 0
+      },
+      "required_cell_statuses": [
+        {
+          "cell": null,
+          "status": "PASS"
+        },
+        {
+          "cell": null,
+          "status": "NOT_EVALUABLE"
+        },
+        {
+          "cell": null,
+          "status": "WARN"
+        },
+        {
+          "cell": null,
+          "status": "WARN"
+        },
+        {
+          "cell": null,
+          "status": "WARN"
+        },
+        {
+          "cell": null,
+          "status": "WARN"
+        },
+        {
+          "cell": null,
+          "status": "WARN"
+        },
+        {
+          "cell": null,
+          "status": "PASS"
+        },
+        {
+          "cell": null,
+          "status": "PASS"
+        }
+      ],
+      "scientific_execution": "NOT_RUN",
+      "verdict": "BLOCKED"
+    },
+    "CAL-E02:135": {
+      "derived_sensitivity_verdict": "SUPPORTED",
+      "full_overfitting_and_stopping_sensitivity_verdict": "BLOCKED",
+      "governance_gate": "V2_BOUND_DESCRIPTIVE_AUDIT_ONLY",
+      "independent_endpoint_audit_verdict": "PARTIAL",
+      "new_grid_execution_status": "NOT_RUN_DESCRIPTIVE_ONLY",
+      "register_key": "CAL-E02:135",
+      "unresolved_boundaries": [
+        "No stopping variants or iteration/checkpoint trajectories in frozen E4-r3 records.",
+        "No record-level split labels or independent endpoint provenance receipt.",
+        "Only descriptive seed/scenario sensitivity is licensed by this repair route.",
+        "No new stopping-variant grid was executed.",
+        "No manuscript, author decision register, RCEP, NYC, or E4-r3 quarantine file was modified."
+      ],
+      "verdict": "PARTIAL"
+    },
+    "CAL-E03:164": {
+      "allowed_scales": [
+        20,
+        50
+      ],
+      "coverage_csv_rows": [
+        {
+          "expected_cells": "48",
+          "layer": "recovery",
+          "missing_cells": "[]",
+          "observed_cells": "48",
+          "record_count": "46080",
+          "unexpected_cells": "[]"
+        },
+        {
+          "expected_cells": "8",
+          "layer": "interval",
+          "missing_cells": "[]",
+          "observed_cells": "8",
+          "record_count": "160",
+          "unexpected_cells": "[]"
+        },
+        {
+          "expected_cells": "",
+          "layer": "paired",
+          "missing_cells": "[]",
+          "observed_cells": "32",
+          "record_count": "",
+          "unexpected_cells": "[]"
+        }
+      ],
+      "new_experiment": {
+        "fresh_payloads_created": false,
+        "n100_n200_status": "NOT_RUN/ABSTAIN",
+        "started": false
+      },
+      "resource_audit": {
+        "missing_telemetry": [
+          "wall_clock_seconds",
+          "cpu_time_seconds",
+          "peak_memory_bytes",
+          "peak_rss_bytes",
+          "gpu_time_seconds",
+          "per_cell_runtime"
+        ],
+        "verdict": "BLOCKED"
+      },
+      "status_totals": {
+        "bootstrap": {
+          "AVAILABLE": 12800,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "interval": {
+          "AVAILABLE": 160,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        },
+        "recovery": {
+          "AVAILABLE": 46080,
+          "NONCONVERGED": 0,
+          "NONFINITE": 0,
+          "OUTSIDE_TARGET": 0,
+          "UNSTABLE": 0
+        }
+      },
+      "verdicts": {
+        "authorization_binding": "PASS",
+        "cross_scale_scope": "PARTIAL",
+        "failure_and_nonfinite_retention": "SUPPORTED",
+        "overall": "PARTIAL",
+        "resource_telemetry": "BLOCKED",
+        "scoped_grid_coverage": "SUPPORTED",
+        "stability_summary": "SUPPORTED"
+      }
+    }
+  },
+  "execution_id": "rec-m2b2-20260810-235227-cst-01",
+  "preservation_assertions": {
+    "evidence_paths": [
+      "primary/cal-e01-75-2400b0f538932133/status-inventory.json",
+      "primary/cal-e02-128-ff23c1c2be0a83baae80298617211b5d0469b2a7614e3a1734df22853f013bbb/analysis.json",
+      "primary/cal-e02-135-dd118064bc799a73/analysis.json",
+      "primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/analysis.json"
+    ],
+    "failure_states_preserved": true,
+    "no_imputation_claimed": true,
+    "nonfinite_states_preserved": true,
+    "not_run_states_preserved": true,
+    "unstable_states_preserved": true
+  },
+  "run_ids": [
+    "primary",
+    "duplicate"
+  ],
+  "run_parity": true,
+  "schema_version": "ncs-post-acceptance-recovery-m2c-coverage-v1"
+}

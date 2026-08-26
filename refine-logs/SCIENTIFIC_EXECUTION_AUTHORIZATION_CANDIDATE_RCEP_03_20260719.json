@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "decision_id": "psa-20260719-rcep-03",
+  "decision": "AUTHORIZED",
+  "scientific_execution_authorized": true,
+  "authorized_by": "PENDING_EXACT_SHA_APPROVAL",
+  "authorized_at": "2026-07-19T04:00:00Z",
+  "action": "run_cp_empirical_pipeline",
+  "dataset": "rcep",
+  "argv": {
+    "window": 40,
+    "p": 2,
+    "n_boot": 500,
+    "block_size": 4,
+    "cp_inits": 6,
+    "cp_max_iter": 100,
+    "cp_tol": 1e-06
+  },
+  "implementation_files": {
+    "scripts/run_cp_empirical_pipeline.py": "647f35cd433d0fb12b8d7ae903ad09bdf874a8fe01421b47c7fb1b22a371c31e",
+    "scripts/natcs_design_contract.py": "45e14cb8fdaf10e2f4b07e7a27c630841e968994cd246e44d0e27c017a58388b"
+  },
+  "input_identity": {
+    "rcep_helper_repo": "/Users/wuyilin/Desktop/2026学科竞赛/谁在托底中国新能源关键中间品供应链？——基于RCEP—“一带一路”多层贸易网络的逆向冲击韧性研究/external/Who-Absorbs-the-Shock/repo",
+    "rcep_helper_manifest_sha256": "02b151473116bbea39e1dc200f7299cd1d1a3451f8e430bc4d59392eb2525256",
+    "rcep_input_files": {
+      "/Users/wuyilin/Desktop/2026学科竞赛/谁在托底中国新能源关键中间品供应链？——基于RCEP—“一带一路”多层贸易网络的逆向冲击韧性研究/external/Who-Absorbs-the-Shock/repo/data/master_quarterly_macro_2005_2024.csv": "27a3dbb7ddae8dfac4f45b8061178260b3876c7b27912c1005d95b0598d518ae",
+      "/Users/wuyilin/Desktop/2026学科竞赛/谁在托底中国新能源关键中间品供应链？——基于RCEP—“一带一路”多层贸易网络的逆向冲击韧性研究/external/Who-Absorbs-the-Shock/repo/data/master_quarterly_bilateral_2005_2024.csv": "2dfa09cc01875d44528d503cf13e0d40d370f79f75035be564e4e98f02370598"
+    },
+    "nyc_dataset_dir": null,
+    "nyc_upstream_commit": null
+  },
+  "output_root": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/output/natcs_empirical_cp_authorized_runs/psa-20260719-rcep-03/rcep",
+  "overwrite": "deny",
+  "r006e_outcome_authorized": false,
+  "r006f_outcome_authorized": false,
+  "downstream_builds_authorized": false,
+  "post_run_controls": {
+    "quarantine_outputs": true,
+    "freeze_inventory_sha256_before_value_review": true,
+    "independent_claim_audit_required": true,
+    "manuscript_promotion_authorized": false
+  }
+}

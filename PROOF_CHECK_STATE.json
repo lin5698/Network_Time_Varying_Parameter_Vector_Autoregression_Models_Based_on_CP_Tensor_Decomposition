@@ -1,0 +1,18 @@
+{
+  "status": "completed",
+  "rounds": 2,
+  "reviewers": [
+    "agent:/root/active_finite_basis_proof_audit",
+    "agent:/root/active_proof_critical_fix_blind"
+  ],
+  "fatal_open": 0,
+  "critical_open": 0,
+  "major_open": 0,
+  "minor_open": 0,
+  "cosmetic_open": 0,
+  "acceptance_gate": "PASS",
+  "exact_hash_verification": "PASS",
+  "submission_status": "BLOCKED",
+  "submission_reason_code": "controlling_empirical_and_release_audits_remain_closed",
+  "timestamp": "2026-07-30T19:01:36Z"
+}
