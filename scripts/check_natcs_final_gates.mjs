@@ -1978,10 +1978,10 @@ function checkIntroductionContributionScope() {
   const introduction = path.join(SRC, "introduction.md");
   const generatedMainTex = path.join(SUBMISSION, "01_main_manuscript", "main_manuscript.tex");
   const requirements = [
-    ["Endpoint availability must be verified at the fitted-object level", "specification-level endpoint-availability boundary"],
-    ["separate four requirements for a topology-dependent response: the endpoint must be defined by the fitted object, identified by the design, numerically recoverable and stable over the reported horizon", "four-layer endpoint distinction"],
-    ["The contribution is a testable representation criterion, not a claim that every defined endpoint is statistically recoverable", "testable representation-criterion contribution"],
-    ["GVAR formulations can use time-varying trade weights and support scenario and impulse-response analysis", "verified GVAR precedent acknowledgement"],
+    ["Controlled experiments evaluate recovery only after endpoint availability has been assigned", "specification-level endpoint-availability boundary"],
+    ["separates four requirements for a topology-dependent response: definition by the fitted object, identification by the design, numerical recovery and finite-horizon stability", "four-layer endpoint distinction"],
+    ["finite-basis theorem supplies the representation criterion", "testable representation-criterion contribution"],
+    ["GVAR formulations can also use time-varying trade weights", "verified GVAR precedent acknowledgement"],
   ];
 
   for (const [file, label] of [

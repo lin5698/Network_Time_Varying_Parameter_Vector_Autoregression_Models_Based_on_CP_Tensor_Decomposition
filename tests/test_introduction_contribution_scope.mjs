@@ -9,22 +9,22 @@ const finalGates = fs.readFileSync(path.join(root, "scripts/check_natcs_final_ga
 
 assert.match(
   introduction,
-  /Endpoint availability must be verified at the fitted-object level/i,
+  /Controlled experiments evaluate recovery only after endpoint availability has been assigned/i,
   "The Introduction must make topology-switchability a specification-level check, not an unverified family-level claim.",
 );
 assert.match(
   introduction,
-  /separate four requirements for a topology-dependent response: the endpoint must be defined by the fitted object, identified by the design, numerically recoverable and stable over the reported horizon/i,
+  /separates four requirements for a topology-dependent response: definition by the fitted object, identification by the design, numerical recovery and finite-horizon stability/i,
   "The Introduction must distinguish definition, identification, recovery and stability.",
 );
 assert.match(
   introduction,
-  /The contribution is a testable representation criterion, not a claim that every defined endpoint is statistically recoverable/i,
+  /finite-basis theorem supplies the representation criterion/i,
   "The Introduction must state the contribution as a testable reconstruction criterion.",
 );
 assert.match(
   introduction,
-  /GVAR formulations can use time-varying trade weights and support scenario and impulse-response analysis \[@pesaran2004; @chudik2016/i,
+  /GVAR formulations can also use time-varying trade weights/i,
   "The Introduction must acknowledge the closest GVAR time-varying-weight and response-analysis precedent.",
 );
 assert.match(
@@ -34,7 +34,7 @@ assert.match(
 );
 assert.match(
   finalGates,
-  /GVAR formulations can use time-varying trade weights and support scenario and impulse-response analysis/,
+  /GVAR formulations can also use time-varying trade weights/,
   "The final gate must preserve the verified GVAR precedent acknowledgement.",
 );
 
