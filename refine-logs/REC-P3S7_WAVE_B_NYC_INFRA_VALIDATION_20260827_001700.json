@@ -1,0 +1,32 @@
+{
+  "equivalence": {
+    "different_pdf_bytes": 5,
+    "identical_scientific_artifacts": 13,
+    "missing": 0,
+    "new_only": [
+      "run_metadata.json"
+    ],
+    "pdf_difference_class": "font_subsetting_metadata_only; paired PNG byte-identical"
+  },
+  "implementation_sha256": {
+    "scripts/natcs_design_contract.py": "45e14cb8fdaf10e2f4b07e7a27c630841e968994cd246e44d0e27c017a58388b",
+    "scripts/run_cp_empirical_pipeline.py": "111f21307a247dfd03a29cefecca6276749d56e64d741ee5707e43d41de2f952"
+  },
+  "inventory_sha256": "41eb3fa8a203f6f3dac117edf874ea7a20817fcc3400c85caa28b69bb30b3314",
+  "record": "REC-P3S7_WAVE_B_NYC_INFRA_VALIDATION_20260827_001700",
+  "run": {
+    "dataset": "nyc_taxi",
+    "decision_id": "wave-b-nyc-20260826-230000-01",
+    "exit_code": 0,
+    "seed_root": 20260328
+  },
+  "runtime_authorization_sha256": "a5dcdfdec9c02d059c79b519ae11caaeffe1b2be6523533f54d11e63a99626c7",
+  "scope": {
+    "f2_f3_executed": false,
+    "new_empirical_values": false,
+    "nyc_infrastructure_validated": true,
+    "rcep_helper_origin": "pending_author"
+  },
+  "self_sha256": "325639c89477291ee2352c16c5d95f1cb5ae402e4dd060e18cf7a8294465c3b9",
+  "timestamp": "2026-08-27T00:17:00+08:00"
+}
