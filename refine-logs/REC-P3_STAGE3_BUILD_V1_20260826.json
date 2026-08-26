@@ -1,0 +1,46 @@
+{
+  "record_class": "p3_stage3_build_record",
+  "record_id": "REC-P3_STAGE3_BUILD_V1_20260826",
+  "generated": "2026-08-26",
+  "timezone_basis": "Asia/Shanghai",
+  "wave_md_sha256": "e149aad58d1310f2091498d9103f142f572486d1a208f15c67e67c0a5b7a5ddc",
+  "readjudications": {
+    "eia": {
+      "verdict": "PASS",
+      "reason_code": "rcep_nyc_value_audited_downstream_build_authorized"
+    },
+    "pca": {
+      "verdict": "PASS",
+      "reason_code": "rcep_nyc_value_audited_no_active_stale_citations"
+    }
+  },
+  "gate_dual_mode": "build_without_empirical_promotion accepted when audits PASS under rcep_nyc_value_audited* with remaining_conditions present",
+  "builder_fixes": [
+    "pandoc header-includes mathrsfs+placeins",
+    "figure-source-package import fix"
+  ],
+  "draft_refresh": [
+    "results_rcep.md",
+    "results_generality.md"
+  ],
+  "verification": {
+    "source_only": "PASS 25/25",
+    "safety": "PASS",
+    "final_gates": "FAIL 170 passes, ~120 errors, no FATAL/CRITICAL",
+    "rec_m4_v4": "242/247, 5 locator-drift failures"
+  },
+  "backlog_categories": [
+    "A_authored_support_documents",
+    "B_positioning_bindings",
+    "C_empirical_mode_awareness_or_promotion",
+    "D_docx_regeneration_flow",
+    "E_v1_locator_reanchoring"
+  ],
+  "remaining_conditions_status": {
+    "RC-1_manuscript_promotion": "NOT_GRANTED",
+    "RC-2_claim_activation": "GATED_BY_FLAGS",
+    "RC-3": "carried"
+  },
+  "activated_claims": [],
+  "promoted_trees": []
+}

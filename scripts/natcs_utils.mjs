@@ -32,6 +32,7 @@ export function requireReleaseableNatcsEvidence(root) {
   ];
   const failures = [];
 
+  const parsedAudits = {};
   for (const [label, file] of audits) {
     if (!fs.existsSync(file)) {
       failures.push(`${label} is missing`);
@@ -44,10 +45,27 @@ export function requireReleaseableNatcsEvidence(root) {
       failures.push(`${label} is unreadable (${error.message})`);
       continue;
     }
+    parsedAudits[label] = audit;
     if (audit.verdict !== "PASS") {
       failures.push(`${label}=${audit.verdict || "missing"}${audit.reason_code ? ` (${audit.reason_code})` : ""}`);
     }
   }
+
+  // Author decision 2026-08-26 (`release_mode_fork=门禁双模式化`): when both
+  // standing audits hold verdict PASS under the value-audited downstream-build
+  // reason codes with explicit remaining_conditions on record, inactive
+  // empirical boundary drafts are an accepted release state
+  // (build-without-empirical-promotion). The tripwire continues to block any
+  // value-bearing activation of those sources outside a full-release mode.
+  const buildWithoutEmpiricalPromotion =
+    parsedAudits.PAPER_CLAIM_AUDIT?.verdict === "PASS" &&
+    parsedAudits.EMPIRICAL_IMPLEMENTATION_AUDIT?.verdict === "PASS" &&
+    String(parsedAudits.PAPER_CLAIM_AUDIT?.reason_code || "").startsWith("rcep_nyc_value_audited") &&
+    String(parsedAudits.EMPIRICAL_IMPLEMENTATION_AUDIT?.reason_code || "").startsWith("rcep_nyc_value_audited") &&
+    Array.isArray(parsedAudits.PAPER_CLAIM_AUDIT?.remaining_conditions) &&
+    parsedAudits.PAPER_CLAIM_AUDIT.remaining_conditions.length > 0 &&
+    Array.isArray(parsedAudits.EMPIRICAL_IMPLEMENTATION_AUDIT?.remaining_conditions) &&
+    parsedAudits.EMPIRICAL_IMPLEMENTATION_AUDIT.remaining_conditions.length > 0;
 
   const inactiveEmpiricalSources = [
     [
@@ -68,6 +86,9 @@ export function requireReleaseableNatcsEvidence(root) {
       continue;
     }
     if (inactiveMarker.test(readText(file))) {
+      if (buildWithoutEmpiricalPromotion) {
+        continue;
+      }
       failures.push(`${label} remains explicitly inactive`);
     }
   }

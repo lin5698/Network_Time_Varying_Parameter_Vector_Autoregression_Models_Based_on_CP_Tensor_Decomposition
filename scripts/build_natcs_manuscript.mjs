@@ -383,6 +383,13 @@ function buildPandoc(markdownFile, outFile, meta) {
       args.push("--reference-doc", referenceDocx);
     }
   }
+  if (outFile.endsWith(".tex")) {
+    // methods_theory.md and supp_note1_notation.md use \mathscr (script
+    // roundhand R); pandoc's default LaTeX template loads amssymb but not
+    // mathrsfs. Generated section flow emits \FloatBarrier, which lives in
+    // placeins. Both are absent from the default template preamble.
+    args.push("--variable", "header-includes:\\usepackage{mathrsfs}\\usepackage{placeins}");
+  }
   runCommand("pandoc", args, { cwd: ROOT });
 }
 
