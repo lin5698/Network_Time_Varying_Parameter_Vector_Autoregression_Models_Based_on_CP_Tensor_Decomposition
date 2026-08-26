@@ -1,0 +1,170 @@
+{
+  "record_class": "scientific_boundary_recheck_receipt",
+  "receipt_id": "REC-M5_SCIENTIFIC_RECHECK_V6_20260826",
+  "date": "2026-08-26",
+  "timezone": "Asia/Shanghai",
+  "lane": "SCIENTIFIC-BOUNDARY recheck, independent read-only reviewer",
+  "candidate": {
+    "path": "refine-logs/REC-M5_REVIEW_PATCH_V2_20260826.md",
+    "label": "REC-M5_REVIEW_PATCH_V2_20260826",
+    "claim_under_test": "editorial E-T3 textual remediation; zero semantic change on the scientific-boundary dimension vs frozen V1"
+  },
+  "prior_receipt_non_transferability": "SCIENTIFIC_RECHECK_TERRA_V5_20260812 is hash-bound to V1 bytes and cannot transfer to V2",
+  "producing_agent_model": "ox-alpha (DeepSeek Harness)",
+  "environment_and_instrumentation": {
+    "bash": "NOT_EXECUTABLE (spawn bash ENOENT on every attempt)",
+    "sha256_measurement": "NOT_EXECUTABLE",
+    "diff_tool": "NOT_EXECUTABLE",
+    "glob_grep_ripgrep": "NOT_EXECUTABLE (launcher failure)",
+    "read_filesystem_tool": "WORKING (used for all inspection)",
+    "substitute_method_for_st1": "full-content literal read of both files with line-by-line paired comparison and constant-offset accounting across all section anchors",
+    "residual_risk": "whitespace-only or invisible-character differences inside otherwise matching lines cannot be excluded without a byte-level diff tool"
+  },
+  "inputs_hash_table": [
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "expected_sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd",
+      "measured_sha256": null,
+      "measured": false,
+      "result": "UNVERIFIED",
+      "corroboration": "V2 JSON v2_revision.supersedes_bytes.sha256 and legacy output.sha256 both declare the same expected value for this file (third-party bookkeeping, not a measurement)"
+    },
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V2_20260826.md",
+      "expected_sha256": "8a9bf747ea18e997387fdbbc6f8c486bb0a7ee76721c4f2264ffa853b641bdf0",
+      "measured_sha256": null,
+      "measured": false,
+      "result": "UNVERIFIED"
+    },
+    {
+      "path": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md",
+      "expected_sha256": null,
+      "measured_sha256": null,
+      "measured": false,
+      "result": "UNMEASURED_NO_EXPECTATION_STATED"
+    }
+  ],
+  "files_opened": [
+    "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md (full, 286 lines)",
+    "refine-logs/REC-M5_REVIEW_PATCH_V2_20260826.md (full, 298 lines)",
+    "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md (full, 86 lines)",
+    "refine-logs/REC-M5_REVIEW_PATCH_V2_20260826.json (lines 1-80 only; permitted v2_revision metadata confirmation)"
+  ],
+  "v2_json_metadata_confirmation": {
+    "semantic_ceiling_changes": "none; restatements preserve boundary meanings verbatim",
+    "confirmed": true
+  },
+  "line_arithmetic": {
+    "v1_lines": 286,
+    "v2_lines": 298,
+    "balance": "+14 inserted revision-log block, -2 deleted C1 duplicated label + blank; closes exactly"
+  },
+  "tasks": {
+    "input_hash_verification": {
+      "verdict": "BLOCKED",
+      "reason": "mandated SHA-256 measurement not executable in this environment; no hash-capable tool available"
+    },
+    "S_T1_mechanical_diff": {
+      "verdict": "BLOCKED",
+      "reason": "mandated diff unavailable; substituted full-content literal inspection performed",
+      "contiguous_diff_regions": 14,
+      "unmapped_changes_found_by_inspection": 0,
+      "offset_anchors_v1_to_v2": [[18,32],[27,41],[35,49],[39,53],[54,68],[82,96],[102,116],[117,131],[129,141],[155,167],[170,182],[194,206],[213,225],[223,235],[233,245],[244,256],[264,276],[277,289],[286,298]]
+    },
+    "S_T2_semantic_equivalence": {
+      "verdict": "PASS",
+      "condition": "content-level judgment; conditional on input identity verification",
+      "weakened_boundaries": [],
+      "extended_boundaries": [],
+      "special_attention": {
+        "R1_non_execution_no_own_claim_non_extension": "preserved categorically; machine codes retained at manifest layer (G05-B internal record, ceilings, response summary)",
+        "R2_topology_rows": "fixed documented amplitudes; asymmetric coverage => bounded diagnostics only; no matched ranking / general robustness negations verbatim-identical at both sites",
+        "R4_abstention_resources": "N=100/N=200 non-evaluation + abstention preserved explicitly; resource unavailability preserved; codes retained in manifest-only state record",
+        "F5_decision_rule_vocabulary": "both candidates remain failed-by-rule: 'Threshold not met' x2, 'No candidate met the pre-registered decision rule'; no softer outcome introduced; pre-registered == prespecified strength"
+      }
+    },
+    "S_T3_ceilings_inventory": {
+      "verdict": "PASS",
+      "condition": "content-level byte-visibly identical via read tool; zero hunks in all protected structures",
+      "structures_verified_identical": [
+        "Scientific ceilings table (V1 L27-33 / V2 L41-47)",
+        "Source ownership section (V1 L35-37 / V2 L49-51)",
+        "Response strategy summary bullets (V1 L20-25 / V2 L34-39)",
+        "G06 full section incl. contract fields and source binding SHA (V1 L170-192 / V2 L182-204)",
+        "G07 full section incl. amplitude table and source bindings (V1 L194-211 / V2 L206-223)",
+        "Unit coverage + crosswalk (V1 L244-262 / V2 L256-274)",
+        "Manuscript change checklist (V1 L264-275 / V2 L276-287)",
+        "Missing information and risk flags, all 8 items, positions unchanged (V1 L279-286 / V2 L291-298)",
+        "All other proposed paragraphs not named in the revision log (G01, G02+boundary, G03, G04-P2, G04-P3, G05-B quote + internal record with retained codes, G05-C, G05-E, G05-F second paragraph, G08, G09 proposed text)"
+      ]
+    },
+    "S_T4_boundary_negation_sweep": {
+      "verdict": "PASS",
+      "groups_swept": ["package_status","G01","G02","G03","G04-P1","G04-P2","G04-P3","G04-P4","G05-A","G05-B","G05-C","G05-D","G05-E","G05-F","G06","G07","G08","G09","G10","risk_flags"],
+      "boundary_statements_absent_or_weakened_in_v2": [],
+      "new_evaluative_sentences_in_proposed_manuscript_text": [],
+      "new_non_manuscript_sentences": [
+        "revision-log section (meta, self-describing)",
+        "supersedes/freeze clause in header (meta, protective)",
+        "three additions of '; do not apply as manuscript text' to manifest-only notes (restrictive direction)"
+      ]
+    },
+    "S_T5_standing_invariants_consistency": {
+      "verdict": "PASS",
+      "reference": "NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md: simulation_only ceiling; E4-R006/E4-R007 QUALIFIED NOT ACTIVATED; PAPER_CLAIM_AUDIT BLOCKED; EMPIRICAL_IMPLEMENTATION_AUDIT FAIL",
+      "asserts_empirical_calibration": false,
+      "asserts_cross_domain_validity": false,
+      "asserts_convergence_or_global_optimality": false,
+      "asserts_repeated_run_reproducibility": false,
+      "promotes_any_endpoint_aware_candidate": false
+    }
+  },
+  "hunk_to_log_mapping": [
+    {"hunk":"H1","v1_line":1,"v2_line":1,"change":"title Patch V1 -> Patch V2","md_log_entry":"headers/provenance (implicit)","json_finding":"record_version","semantic":"EQUIVALENT"},
+    {"hunk":"H2","v1_line":3,"v2_line":3,"change":"generated timestamp -> date + supersedes-freeze sentence","md_log_entry":"headers/provenance (implicit)","json_finding":"v2_revision.generated/supersedes_bytes","semantic":"EQUIVALENT"},
+    {"hunk":"H3","v1_line":null,"v2_lines":[18,31],"change":"insert ## V2 revision log section","md_log_entry":"log insertion","json_finding":"v2_revision block","semantic":"EQUIVALENT (meta-documentation)"},
+    {"hunk":"H4","v1_line":88,"v2_line":102,"change":"G04-P1 formula clause; CSV field ids removed, metrics named verbally","md_log_entry":"R3","json_finding":"F3","semantic":"EQUIVALENT"},
+    {"hunk":"H5a","v1_line":100,"v2_line":114,"change":"'author-confirmed amplitudes' -> 'fixed, separately documented amplitudes'","md_log_entry":"R2a","json_finding":"F2a","semantic":"EQUIVALENT"},
+    {"hunk":"H5b","v1_line":100,"v2_line":114,"change":"NOT_RUN/BLOCKED status sentence -> plain non-execution, no-own-claim, non-extension","md_log_entry":"R1","json_finding":"F1","semantic":"EQUIVALENT"},
+    {"hunk":"H6","v1_line":115,"v2_line":129,"change":"G05-A row 4: 'Separate gate'x3 -> 'Separate design'; evidence role -> qualification under pre-registered decision rule","md_log_entry":"R5a-e (G05-A share)","json_finding":"F5a (+F5e aggregate)","semantic":"EQUIVALENT"},
+    {"hunk":"H7","v1_lines":[121,122],"v2_line":null,"change":"delete duplicated 'Proposed text:' label + blank","md_log_entry":"C1","json_finding":"C1","semantic":"EQUIVALENT (formatting)"},
+    {"hunk":"H8","v1_line":145,"v2_line":157,"change":"'author-confirmed amplitudes' -> 'fixed, separately documented amplitudes' (second occurrence)","md_log_entry":"R2b","json_finding":"F2b","semantic":"EQUIVALENT"},
+    {"hunk":"H9","v1_line":161,"v2_line":173,"change":"'Promotion status' -> 'Rule outcome'","md_log_entry":"R5a-e (table share)","json_finding":"F5b","semantic":"EQUIVALENT"},
+    {"hunk":"H10","v1_lines":[163,164],"v2_lines":[175,176],"change":"'Not promoted' x2 -> 'Threshold not met'","md_log_entry":"R5a-e (collective)","json_finding":"F5c/F5d","semantic":"EQUIVALENT"},
+    {"hunk":"H11","v1_line":166,"v2_line":178,"change":"'prespecified promotion rule' -> 'pre-registered decision rule'","md_log_entry":"R5a-e (prose share)","json_finding":"F5e","semantic":"EQUIVALENT"},
+    {"hunk":"H12","v1_line":231,"v2_line":243,"change":"G09 manifest note adds '; do not apply as manuscript text'","md_log_entry":"C2a","json_finding":"C2a","semantic":"EQUIVALENT (restrictive)"},
+    {"hunk":"H13","v1_line":239,"v2_line":251,"change":"NOT_RUN/ABSTAIN and BLOCKED/null codes -> plain abstention/unavailability wording in proposed text","md_log_entry":"R4","json_finding":"F4","semantic":"EQUIVALENT"},
+    {"hunk":"H14","v1_lines":[241,242],"v2_lines":[253,254],"change":"G10 manifest notes add '; do not apply as manuscript text'; codes retained verbatim","md_log_entry":"C2b","json_finding":"C2b","semantic":"EQUIVALENT (restrictive)"}
+  ],
+  "mapping_completeness": "every region maps to >=1 log entry; every log entry (R1, R2a/R2b, R3, R4, R5a-e, C1, C2a/C2b, headers, log insertion) maps to >=1 region; sub-letter granularity of R5a-e not decomposed in md log, five atomic governance-vocabulary edits observed, count-consistent with F5a-F5e all applied per JSON",
+  "per_task_verdicts": {
+    "input_hash_verification": "BLOCKED",
+    "S_T1": "BLOCKED",
+    "S_T2": "PASS",
+    "S_T3": "PASS",
+    "S_T4": "PASS",
+    "S_T5": "PASS"
+  },
+  "overall_verdict": "BLOCKED",
+  "overall_rationale": "fail-closed: the two mandated mechanical verifications (SHA-256 input measurement, byte-level diff) were not executable in this session because process spawning is broken environment-wide; content-level review found zero substantive contradictions and is recorded in full so a shell-capable sha256sum+diff re-run can upgrade OVERALL to PASS if hashes match expectations and the diff confirms exactly the mapped hunk set",
+  "upgrade_path": "re-run sha256sum on inputs 1-3 and diff V1 vs V2 in a shell-capable environment; if measured hashes equal expected values and diff shows exactly hunks H1-H14 above, S-T1 converts to PASS on the recorded mapping and OVERALL becomes PASS",
+  "independence_and_provenance_disclosure": {
+    "producing_agent_model": "ox-alpha (DeepSeek Harness)",
+    "self_adjudication": "this receipt is authored and adjudicated by the same agent instance within one session; no second independent model or out-of-band reviewer checked this adjudication",
+    "independence_scope": "independence is from the orchestrator party that synthesized V2, and holds only within this shared environment (same filesystem and toolchain); mechanical verification instruments were degraded here, further limiting certification strength relative to a shell-capable session",
+    "participation_in_v2_generation": "none; candidate received as frozen artifact",
+    "authorization_source": "delegating lane definition referencing author structured decision et3_remediation=V2 patch re-review, 2026-08-26; this reviewer issued no authorization of its own"
+  },
+  "not_done_statements": [
+    "only this receipt pair (REC-M5_SCIENTIFIC_RECHECK_V6_20260826.md/.json) was written",
+    "no manuscript, contract, formal-register or generated-TeX file was edited",
+    "no make/test/scientific entry point was executed",
+    "no SHA-256 was measured and no byte-level diff was produced (environment incapable)",
+    "no ' 2.' duplicate copies were opened",
+    "V2 JSON opened only for the permitted semantic_ceiling_changes metadata confirmation",
+    "no subagents were used",
+    "no authorization was issued",
+    "no claim was activated",
+    "package readiness remains ready_for_independent_review"
+  ]
+}

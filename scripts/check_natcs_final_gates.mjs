@@ -1804,7 +1804,7 @@ function checkMainFigure3RecoveryScope() {
 
   if (requireFile(validationResults, "main Results validation source")) {
     const text = readText(validationResults);
-    if (!/Projected graph-feature diagnostics.*Supplementary Note 4.*not used as a main-text ranking/i.test(text)) {
+    if (!/Projected graph-feature diagnostics.*Supplementary Note 4 protocol diagnostics.*not native same-endpoint comparisons.*do not license fairness or superiority ranking/i.test(text)) {
       errors.push("Main Results no longer directs projected graph-feature diagnostics to Supplementary Note 4");
     }
   }
@@ -1866,7 +1866,7 @@ function checkMainFigure3QualificationScope() {
       errors.push(`${label} promotes the held-out qualification counts into the headline narrative`);
     }
   }
-  if (requireFile(validationResults, "controlled Results claim-inheritance boundary") && !/separate endpoint-aware qualification[\s\S]*?is not used to extend these gains beyond the matched controlled design/i.test(readText(validationResults))) {
+  if (requireFile(validationResults, "controlled Results claim-inheritance boundary") && !/separate simulation-only endpoint-aware qualification[\s\S]*?is not used to extend these gains/i.test(readText(validationResults))) {
     errors.push("Controlled Results no longer retain the concise held-out claim-inheritance boundary");
   }
   if (requireFile(uncertaintyMethods, "Methods qualification boundary")) {

@@ -18,3 +18,5 @@ The interpretation sequence is therefore as follows.
 6. Treat fixed-path topology contrasts and generated-regressor associations as descriptive unless an independent causal design is supplied.
 
 Under this sequence, query certification is a scoped computational reporting and design rule. The finite-basis theorem establishes representation sufficiency only under its stated kernel condition. It does not establish empirical transfer or numerical recovery outside the one-hop controlled evidence.
+
+In a separate descriptive audit, $N=100$ and $N=200$ were not evaluated, and we abstain from any claim at either scale. No performance, failure, resource or scalability conclusion is made for either scale. Wall-clock time, CPU time, peak memory or RSS, GPU time and per-cell runtime were unavailable for this audit; exit status, process state, record counts and log presence are not substitutes for resource measurements, and measurements reported for other scenario tables do not fill these fields.

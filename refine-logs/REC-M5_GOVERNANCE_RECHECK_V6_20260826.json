@@ -1,0 +1,205 @@
+{
+  "record_class": "governance_recheck_receipt",
+  "record_id": "REC-M5-governance-recheck-v6-20260826",
+  "schema_version": "ncs-post-acceptance-recovery-m5-governance-recheck-v6",
+  "generated": "2026-08-26",
+  "generated_at_local": "2026-08-26T11:47:05+08:00",
+  "timezone": "Asia/Shanghai",
+  "lane": "governance_manifest_independent_readonly_reviewer",
+  "patch_generation_under_review": {
+    "generation": "REC-M5_REVIEW_PATCH_V2_20260826",
+    "revision": "V2",
+    "purpose": "editorial E-T3 remediation",
+    "author_authorization": "author structured decision et3_remediation=V2 patch re-review, 2026-08-26",
+    "synthesis_party_disclosure": "V2 was synthesized by the orchestrator party; this lane verified the V2 bytes and bindings independently"
+  },
+  "prior_receipt_context": {
+    "path_stem": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V5_20260823",
+    "verdict_on_v1_bytes": "PASSED",
+    "anchors": "20/20",
+    "protected_baseline": "12/12",
+    "receipts_field": "1 historical entry"
+  },
+  "overall_verdict": "PASS",
+  "per_task_verdicts": {
+    "G-T1_authoritative_input_hashes": "PASS",
+    "G-T2_recheck_v10_absence_role_discharge_nonmutation": "PASS",
+    "G-T3_independent_review_receipts_and_v2_revision_metadata": "PASS",
+    "G-T4_anchor_recomputation_10_groups_20_segments": "PASS",
+    "G-T5_protected_baseline_failclosed_measurement": "PASS",
+    "G-T6_no_mutation_verification": "PASS",
+    "G-T7_gate_items_current_facts": "PASS",
+    "G-T8_generation_declaration": "PASS"
+  },
+  "g_t1_inputs_measured": [
+    {"path": "refine-logs/REC-M5_REVIEW_PATCH_V2_20260826.md", "measured_sha256": "8a9bf747ea18e997387fdbbc6f8c486bb0a7ee76721c4f2264ffa853b641bdf0", "expected_sha256": "8a9bf747ea18e997387fdbbc6f8c486bb0a7ee76721c4f2264ffa853b641bdf0", "size_bytes": 29083, "result": "MATCH"},
+    {"path": "refine-logs/REC-M5_REVIEW_PATCH_V2_20260826.json", "measured_sha256": "5e1697d22ac847825e37c4090ee2e28af0385c3015ecc1d8a048bb3cbda5f2ce", "expected_sha256": "5e1697d22ac847825e37c4090ee2e28af0385c3015ecc1d8a048bb3cbda5f2ce", "size_bytes": 31204, "result": "MATCH"},
+    {"path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md", "measured_sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341", "expected_sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341", "size_bytes": 10097, "result": "MATCH"},
+    {"path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json", "measured_sha256": "ebb639ed613520ac643ee1ac21b53c9420e4bbf3a010af1f130a8e3d3b12d8b6", "expected_sha256": "ebb639ed613520ac643ee1ac21b53c9420e4bbf3a010af1f130a8e3d3b12d8b6", "size_bytes": 15091, "result": "MATCH"},
+    {"path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.md", "measured_sha256": "dfd4385fd1f6f027e7a9ba12fc91f8e710e059edbe38179606898264e3d00539", "expected_sha256": "dfd4385fd1f6f027e7a9ba12fc91f8e710e059edbe38179606898264e3d00539", "size_bytes": 1467, "result": "MATCH"},
+    {"path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.json", "measured_sha256": "94668a914aeba43dc2d8ca34e7639cb4930e34b2abbe8211980a77bf4adfd3ee", "expected_sha256": "94668a914aeba43dc2d8ca34e7639cb4930e34b2abbe8211980a77bf4adfd3ee", "size_bytes": 2987, "result": "MATCH"}
+  ],
+  "g_t1_result": "6/6 MATCH; no deviation",
+  "g_t2": {
+    "recheck_v10_absent_on_disk": true,
+    "recheck_v10_absent_in_git_ls_files": true,
+    "role_discharged_by": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.{md,json}",
+    "baseline_result_field": "CURRENT_HASH_CHAIN_READY_FOR_TERRA_MAX_DIRECT_REVIEW",
+    "v10_nonmutation_evidence": "measured hashes equal authoritative expected values (see g_t1_inputs_measured rows 5-6)"
+  },
+  "g_t3": {
+    "independent_review_receipts_count": 1,
+    "independent_review_receipts_exact_contents": [
+      {
+        "path": "refine-logs/REC-M5_EDITORIAL_RECHECK_V2_20260812.md",
+        "sha256": "332bedf26d1d06387d9a6a00dc1e5d9f0eea5f7ef02a454b6748a67b9760212d",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "max",
+        "verdict": "BLOCKED_PENDING_EDITORIAL_REVISIONS",
+        "revisions_applied": true,
+        "final_recheck": "SERVICE_INTERRUPTED",
+        "current_version_applicability": "HISTORICAL_ONLY_PATCH_CHANGED_AFTER_ALL_AUTHOR_INPUT_CONFIRMATIONS"
+      }
+    ],
+    "current_byte_receipt_for_any_lane_on_v2": false,
+    "matches_expected_inherited_single_historical_only_entry": true,
+    "v2_revision_block": {
+      "present": true,
+      "generated": "2026-08-26",
+      "timezone_basis": "Asia/Shanghai",
+      "authorization": "author structured decision et3_remediation=V2 patch re-review, 2026-08-26",
+      "basis_receipt": "refine-logs/REC-M5_EDITORIAL_RECHECK_V4_20260823.md (E-T3 FAIL, F1-F5)",
+      "revisions_applied": ["F1", "F2a", "F2b", "F3", "F4", "F5a", "F5b", "F5c", "F5d", "F5e", "C1", "C2a", "C2b"],
+      "semantic_ceiling_changes": "none; restatements preserve boundary meanings verbatim",
+      "supersedes_path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "supersedes_sha256_declared": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd",
+      "supersedes_hash_equals_recorded_v1_md_value_69888df4_prefix": true,
+      "corroboration_without_opening_v1": "GOVERNANCE_BASELINE_V10 current-artifacts table records the identical full hash for REC-M5_REVIEW_PATCH_V1_20260811.md"
+    }
+  },
+  "g_t4_anchor_recomputation": {
+    "algorithm_recorded": "SHA-256 of UTF-8 paragraph fragments after CRLF normalization and trimEnd; paragraph numbering follows blank-line splitting",
+    "fail_closed_on_drift": true,
+    "method": "reviewer-independent Python reimplementation; expected values parsed programmatically from the authoritative V2 JSON",
+    "group_anchors_total": 10,
+    "paragraph_segments_total": 20,
+    "segments_recomputed_equal_to_recorded": 20,
+    "mismatches": 0,
+    "anchors": [
+      {"group": "G01", "target": "manuscript_src/natcs/methods_estimator.md", "paragraphs": [3], "recomputed_sha256": ["6ea69844ccd957cb53ae04a8ee91715a1b2ef2d6d1da2e0b705f9a075bc7853d"], "result": "MATCH"},
+      {"group": "G02", "target": "manuscript_src/natcs/methods_estimator.md", "paragraphs": [5], "recomputed_sha256": ["00fc2f0136720fd021658ebf5baa46459c65d0cbe2e7c5f2593564d7cfe0c71d"], "result": "MATCH"},
+      {"group": "G03", "target": "manuscript_src/natcs/methods_estimator.md", "paragraphs": [4], "recomputed_sha256": ["6119a2fae8cf48d4aeb30c0e440cead32b0da9b902f200c62c7d0e38651f0933"], "result": "MATCH"},
+      {"group": "G04", "target": "manuscript_src/natcs/results_validation.md", "paragraphs": [1, 2, 3, 4], "recomputed_sha256": ["444a38bcf59dde43cc425bd6e8ea1bceb8818c5009584f3e646326660d264468", "2722adfe458c759aa449c707e65ab20f3f9ee286fb2c5a8be61f103383141d6b", "db8937fac634420ef220ac231d68529e877ae0de4fde2d2b7000ee1ed960a265", "c0ffcc7c0fbb5d8f4923238556ef11e6e4adcd70fd0d7946a97fbeb03b70ebdb"], "result": "4/4 MATCH"},
+      {"group": "G05", "target": "manuscript_src/natcs/supp_note4_benchmarks.md", "paragraphs": [1, 2, 4, 5, 6, 8, 9, 10], "recomputed_sha256": ["ccf0b74830e983794fc55a841091bc53643abd0eae7a6505e93225483f99268a", "9f4678c98470b14780da63c17cabd16a1da0602856be41261c4068e4fe76a778", "a85b0cb6f9a8084f2dac2c3dce3fb982f7985fe1493aea2bca51d423c2c7afff", "5a56b9311724a97da964edbb18c90fbc76d61751c38253115d99242e222c2526", "f99c544b7ab4505ac74495ee075755b120fb2a8e3389e1d72748ec63238118d8", "b70faebee53dd4532953fb18984ef96b0a3d63b67d56437532fe12db05bb851e", "0ada4ae5361dc9649fa9ebdf4e8e85f7f779ba3794f1971d51c11c1cf61c9567", "348e6b96f5842bf719fae734a4d9e9dde5d45d5cf0ce7d7af9036823361eabde"], "result": "8/8 MATCH"},
+      {"group": "G06", "target": "manuscript_src/natcs/methods_estimator.md", "paragraphs": [2], "recomputed_sha256": ["3c924d1da145ab5e840a4892df3853390db6eeb21c1a23751496524ec01f58ef"], "result": "MATCH"},
+      {"group": "G07", "target": "manuscript_src/natcs/methods_data.md", "paragraphs": [5], "recomputed_sha256": ["352d74189d598706ce2034e27fc16525ebf814ea2b2fe1e7cb7cec65b99d8c0c"], "result": "MATCH"},
+      {"group": "G08", "target": "manuscript_src/natcs/methods_uncertainty.md", "paragraphs": [2], "recomputed_sha256": ["36ae766e672c84154389c3f5bfdf9f32c9146b589198c43c33e786f6e0dddda1"], "result": "MATCH"},
+      {"group": "G09", "target": "manuscript_src/natcs/supp_note7_repro.md", "paragraphs": [4], "recomputed_sha256": ["5d5ebb7a8ed67aa34eda6619189baace8faaa3303dbe5a89e3e2a74adbc8770e"], "result": "MATCH"},
+      {"group": "G10", "target": "manuscript_src/natcs/supp_note8_scope.md", "paragraphs": [8], "recomputed_sha256": ["2f42751ca0ef001d91c0cd8f05079dffc1137340bc4d6e47e89ec42052abbb1a"], "result": "MATCH"}
+    ],
+    "line_range_convention_note": {
+      "advisory_only": true,
+      "affected_segments": ["G02 para5 recorded 9-10 vs content 9", "G04 para4 recorded 7-8 vs content 7", "G05 para10 recorded 28-29 vs content 28", "G09 para4 recorded 7-8 vs content 7", "G10 para8 recorded 20-21 vs content 20"],
+      "verified_cause": "each affected segment is the final paragraph of its file; the recorded end bound counts the file's terminal-newline empty element (confirmed by direct line inspection)",
+      "start_lines_agree": "20/20",
+      "hashes_agree": "20/20",
+      "classification": "METADATA_CONVENTION_NOTE_NOT_DRIFT"
+    }
+  },
+  "g_t5_protected_baseline": {
+    "comparison_policy": "Exact-path SHA-256 only; no broad refine-logs traversal",
+    "entries_total": 12,
+    "match_count": 12,
+    "rows": [
+      {"path": "manuscript_src/natcs/methods_estimator.md", "measured_sha256": "8f4cb0f7efdb1438fcfad1fe1a3441ed80877093077fe7c7b9f8ec56508cb25d", "result": "MATCH"},
+      {"path": "manuscript_src/natcs/results_validation.md", "measured_sha256": "746567db7d4087c2335c65768e35a1a9e8b275791095c896afefd632d8278bb3", "result": "MATCH"},
+      {"path": "manuscript_src/natcs/supp_note4_benchmarks.md", "measured_sha256": "0bec42db15fd153c7480f42a68280111bef986e04496e72c35612af6a181939e", "result": "MATCH"},
+      {"path": "manuscript_src/natcs/methods_data.md", "measured_sha256": "26e0a984ac5af6676466fba2f403882a1fc841832c221b83b06e8c0d01cf7a2d", "result": "MATCH"},
+      {"path": "manuscript_src/natcs/methods_uncertainty.md", "measured_sha256": "2faf37836b9b274c9f2bd2cede54cbea9ce5c27a32bdc951ae7b1ee5e00f1601", "result": "MATCH"},
+      {"path": "manuscript_src/natcs/supp_note7_repro.md", "measured_sha256": "c33c63370a55ae4afe7abb2e1fb4deef47988585b411d03fa5f54809f6337230", "result": "MATCH"},
+      {"path": "manuscript_src/natcs/supp_note8_scope.md", "measured_sha256": "1f8a02a810b372a479bc9e3f877613c2dd670bea4b1d9deffdec681b9933d8fa", "result": "MATCH"},
+      {"path": "manuscript_src/natcs/controlled_benchmark_contract.json", "measured_sha256": "95199a3c16e6f55a2cf94f7f67289a658bcac7ccb4e17ceee9efa5cc8d7934ba", "result": "MATCH"},
+      {"path": "output/ncs_review_corpus/v1_author_decision_register.json", "measured_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2", "expected_since_p0_closure": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2", "materialized": true, "result": "MATCH"},
+      {"path": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json", "measured_sha256": "60523c09126fca78f9e87c1ef4776a74b6f5025bbed19ad65ec1755838d77c68", "result": "MATCH"},
+      {"path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json", "measured_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046", "result": "MATCH"},
+      {"path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json", "measured_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6", "result": "MATCH"}
+    ],
+    "every_row_individually_reported": true
+  },
+  "g_t6_no_mutation": {
+    "output_applied": false,
+    "output_submission_ready": false,
+    "edit_groups_total": 10,
+    "all_groups_disposition": "CANDIDATE_NOT_APPLIED",
+    "unit_coverage_rows": 26,
+    "unit_coverage_unique_unit_ids": 26,
+    "unit_coverage_unique_source_item_unit_id_pairs": 26,
+    "units_per_source_item": {"V1-026": 3, "V1-033": 13, "V1-045": 10},
+    "placeholder_tokens_in_v2_payload": 0,
+    "placeholder_scan_method": "mechanical count-only regex scan ({{...}}) of refine-logs/REC-M5_REVIEW_PATCH_V2_20260826.md",
+    "manifest_placeholder_scan_self_report": "PASS_NO_DOUBLE_BRACE_TOKENS",
+    "manuscript_targets_byte_equal_to_frozen_bindings": true,
+    "binding_evidence": "G-T4 20/20 anchor hashes over current target bytes + G-T5 12/12 protected_baseline exact-path hashes",
+    "not_verifiable_by_binding": [
+      "main.tex (generated output; no binding in this manifest)",
+      "supplementary.tex (generated output; no binding in this manifest)",
+      "formal register adjudication (separate M5-F authorization)"
+    ],
+    "legacy_pointer_observation": {
+      "advisory_only": true,
+      "detail": "V2-generation JSON retains legacy fields bound to superseded V1 bytes under the explicit v2_revision.supersedes_bytes declaration: record_id=REC-M5-review-patch-v1-20260811, generated_at=2026-08-11T23:06:28+08:00, output.path/output.sha256 and placeholder_scan.targets reference REC-M5_REVIEW_PATCH_V1_20260811.md (=69888df4...). Consistent with declared supersession; flagged so output.path is not misread as the V2 payload location.",
+      "classification": "SCHEMA_LEGACY_POINTER_NOTE_NOT_A_BINDING_FAILURE"
+    }
+  },
+  "g_t7_gate_items": {
+    "git_head_measured": "53f63f0fdf632b72d62aa497f6d9e6c9287dc029",
+    "git_branch": "codex/m5-current-luna-science-recheck",
+    "git_status_porcelain_uno_count": 0,
+    "tracked_tree_clean": true,
+    "tracked_tree_clean_basis": "MEASURED at HEAD 53f63f0 (untracked entries outside tracking exist; -uno count is 0)",
+    "suite_counts": {
+      "m4_allowlist_validator": {"claim": "247/247", "status": "NOT_VERIFIABLE", "reason": "no suite run; forbidden pre-M5-D; JSON strings are historical V1-era self-reports"},
+      "second_suite": {"claim": "85/85", "status": "NOT_VERIFIABLE", "reason": "no suite run; forbidden pre-M5-D"},
+      "third_suite": {"claim": "145/145", "status": "NOT_VERIFIABLE", "reason": "no suite run; forbidden pre-M5-D"}
+    },
+    "anything_upgraded_to_pass_without_measurement": false
+  },
+  "g_t8_generation_declaration": {
+    "files_opened_with_hashes": [
+      {"path": "refine-logs/REC-M5_REVIEW_PATCH_V2_20260826.md", "access": "content_opened_and_hashed", "sha256": "8a9bf747ea18e997387fdbbc6f8c486bb0a7ee76721c4f2264ffa853b641bdf0"},
+      {"path": "refine-logs/REC-M5_REVIEW_PATCH_V2_20260826.json", "access": "content_opened_and_hashed", "sha256": "5e1697d22ac847825e37c4090ee2e28af0385c3015ecc1d8a048bb3cbda5f2ce"},
+      {"path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md", "access": "hashed_content_not_consumed", "sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341"},
+      {"path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json", "access": "hashed_content_not_consumed", "sha256": "ebb639ed613520ac643ee1ac21b53c9420e4bbf3a010af1f130a8e3d3b12d8b6"},
+      {"path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.md", "access": "content_opened_and_hashed", "sha256": "dfd4385fd1f6f027e7a9ba12fc91f8e710e059edbe38179606898264e3d00539"},
+      {"path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.json", "access": "content_opened_and_hashed", "sha256": "94668a914aeba43dc2d8ca34e7639cb4930e34b2abbe8211980a77bf4adfd3ee"}
+    ],
+    "additional_byte_reads_for_measurement_only": "12 protected_baseline paths; anchor-target manuscript paragraphs (G-T4); directory listings; git queries; count-only placeholder regex on V2 md",
+    "superseded_generation_copies_exist": false,
+    "superseded_generation_copies_consumed": false,
+    "spot_check_detail": "no ' 2.' filenames anywhere in refine-logs/; whole-tree search finds exactly one copy per input basename family; consistent with REC-M5_CONFLICT_DISPOSITION_V1_20260826.json deletion record (context only)",
+    "v1_byte_access": "NONE — REC-M5_REVIEW_PATCH_V1_20260811.{md,json} never opened, hashed, or scanned; supersedes check satisfied against recorded values"
+  },
+  "independence_and_provenance": {
+    "producing_agent_model": "ox-alpha (stealth model via DeepSeek Harness), independent delegated read-only reviewer",
+    "self_adjudication_disclosure": "verdicts adjudicated by the producing agent against pre-stated expected values; no second independent agent cross-check within this session",
+    "synthesis_party_disclosure": "the reviewed V2 patch generation was synthesized by the orchestrator party; V2 producer and review coordinator are not independent of each other",
+    "environment_note": "intermittent transient harness shell-spawn failures (spawn bash ENOENT) occurred; every affected command retried successfully; no measurement derives from a failed invocation",
+    "writes_made": [
+      "refine-logs/REC-M5_GOVERNANCE_RECHECK_V6_20260826.md",
+      "refine-logs/REC-M5_GOVERNANCE_RECHECK_V6_20260826.json"
+    ]
+  },
+  "not_done_statements": [
+    "No files other than the two receipt files were written; nothing else created, modified, or deleted.",
+    "No make, test, build, or scientific execution was run by this lane.",
+    "No authorization was issued or implied; applied=false and submission_ready=false remain operative.",
+    "No claim activated; all scientific ceilings intact.",
+    "No V1-byte access; V1-to-V2 diff owned by its designated lane.",
+    "Suites NOT_VERIFIABLE and forbidden pre-M5-D; main.tex/supplementary.tex state and formal register NOT_VERIFIABLE-by-binding."
+  ],
+  "notable_findings": [
+    "Five recorded anchor line_ranges use a terminal-newline-inclusive end-line convention on final paragraphs; all 20 segment hashes match; advisory metadata note only.",
+    "V2 JSON retains legacy V1-bound schema pointers beneath the explicit v2_revision.supersedes_bytes declaration; advisory only.",
+    "No current-byte independent-review receipt exists yet for any lane on the V2 bytes; Terra/max semantic reviews remain outstanding gates."
+  ]
+}

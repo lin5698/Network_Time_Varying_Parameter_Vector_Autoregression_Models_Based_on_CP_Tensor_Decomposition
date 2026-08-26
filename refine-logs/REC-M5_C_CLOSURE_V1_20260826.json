@@ -1,0 +1,55 @@
+{
+  "record_class": "m5c_closure",
+  "record_id": "REC-M5_C_CLOSURE_V1_20260826",
+  "generated": "2026-08-26",
+  "timezone_basis": "Asia/Shanghai",
+  "closure_md_sha256": "e16f74c1afbd69a4a438aa216475397ca8b2abd6a7112f3b2546428e56adbf1a",
+  "patch_generation": "V2",
+  "lanes": {
+    "scientific_boundary": {
+      "verdict": "PASS_WITH_ORCHESTRATOR_INSTRUMENTATION_DISCLOSURE",
+      "receipts": [
+        "REC-M5_SCIENTIFIC_RECHECK_V6_20260826.{md,json}",
+        "REC-M5_SCIENTIFIC_RECHECK_V6_20260826_INSTRUMENTATION_ADDENDUM.{md,json}"
+      ]
+    },
+    "editorial_traceability": {
+      "verdict": "PASS",
+      "receipts": [
+        "REC-M5_EDITORIAL_RECHECK_V5_20260826.{md,json}"
+      ],
+      "basis": "four fragment receipts consolidated without alteration; supersedes V4 FAIL(E-T3)"
+    },
+    "governance_manifest": {
+      "verdict": "PASS",
+      "receipts": [
+        "REC-M5_GOVERNANCE_RECHECK_V6_20260826.{md,json}"
+      ]
+    }
+  },
+  "registration": {
+    "field": "independent_review_receipts in refine-logs/REC-M5_REVIEW_PATCH_V2_20260826.json",
+    "pre_sha256": "5e1697d22ac847825e37c4090ee2e28af0385c3015ecc1d8a048bb3cbda5f2ce",
+    "post_sha256": "7ebf7b8321d36e50055fb541297cc13bfe5d2d5bd43b4fc9ee6bdb5a8c09b44d",
+    "structural_proof_other_keys_equal": true,
+    "array_entries_before": 1,
+    "array_entries_after": 4,
+    "historical_entry_preserved": true,
+    "backup": "tmp/v2_json_preregistration_backup.json"
+  },
+  "provenance_deviations": [
+    "all V2-cycle receipts produced by ox-alpha (DeepSeek Harness), not gpt-5.6-terra/max as requested by dispatch",
+    "scientific-lane mechanical instrumentation executed by orchestrator party, adjudicated by reviewer against pre-registered expectations and its own independent reads",
+    "editorial lane executed as four read-only fragment instances + one consolidation instance after repeated environmental spawn failures"
+  ],
+  "state_after_closure": {
+    "m5c": "CLOSED for patch V2",
+    "applied": false,
+    "submission_ready": false,
+    "claim_activation": "NOT_ACTIVATED anywhere incl. E4-R007 (deferred by author)",
+    "suites": "247/247, 85/85, 145/145 NOT_VERIFIABLE (never run)",
+    "rcep_nyc": "quarantines untouched; PAPER_CLAIM_AUDIT BLOCKED; EMPIRICAL_IMPLEMENTATION_AUDIT FAIL until P3",
+    "formal_register": "requires separate M5-F authorization"
+  },
+  "next_gate": "M5-D application of G01–G10 from patch V2 + anchor prechecks + rebuild + gate reruns — requires explicit author authorization"
+}
