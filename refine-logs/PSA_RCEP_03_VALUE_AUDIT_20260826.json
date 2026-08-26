@@ -1,0 +1,169 @@
+{
+  "record_class": "p3_value_audit_receipt",
+  "audit_date_local": "2026-08-26",
+  "timezone": "Asia/Shanghai",
+  "auditor_model": "ox-alpha",
+  "developing_organization": "undisclosed",
+  "self_adjudicated": true,
+  "activation_performed": false,
+  "first_completed_value_review_of_these_bytes": true,
+  "ceiling": "self_supervised_proxy",
+  "run_under_audit": {
+    "decision_id": "psa-20260719-rcep-03",
+    "dataset": "rcep",
+    "status_at_inventory_time": "completed_quarantined_unreviewed",
+    "value_review_performed_before_this_audit": false,
+    "helper_git_commit_echo": "d0e398b896848f26413cf9aa9dfca15fb4e7ce64"
+  },
+  "lineage": {
+    "prior_auditor": "died before any write; zero prior receipt bytes existed at audit start (task-authority assertion, no contrary evidence)",
+    "leads_treated_as_hypotheses": [
+      "quarantined stability unstable rate ~0.53 vs stale all-stable",
+      "spectral-radius bands ~0.45-1.45 vs ~0.21-0.75"
+    ],
+    "leads_outcome": "BOTH CONFIRMED by direct measurement (see V-T4)"
+  },
+  "environment_disclosure": {
+    "bash_tool": "FAILED spawn ENOENT twice (initial + mandated retry); re-probed at addendum time and failed twice more (echo probe + shasum command); no shell ever",
+    "glob_tool": "FAILED ripgrep launch twice; unavailable",
+    "grep_tool": "FAILED ripgrep launch; unavailable",
+    "consequence": "sha256 recomputation, byte-size stat, symlink lstat, exhaustive dir enumeration were UNMEASURED fail-closed during the original pass; later covered by orchestrator-executed instrumentation adjudicated in instrumentation_addendum",
+    "root_path_note": "reads used /Users/wuyilin/work/... prefix successfully; inventory output_root cites /Users/wuyilin/Desktop/translation/... prefix; prefix equivalence unproven (no lstat)"
+  },
+  "receipt_status": "FINAL_AMENDED_2026-08-26_VT1_REOPENED",
+  "instrumentation_addendum": {
+    "spawn_failure_history": "bash spawn ENOENT at original audit (initial+retry) AND again at addendum time (probe + shasum verification attempt); glob/grep ripgrep-launch failures; auditor never had shell",
+    "orchestrator_measurement_disclosure": "hash pass executed by ORCHESTRATOR outside auditor process; raw output tmp/rcep_vt1_measurement_20260826.json read in full by auditor; method: base auto-resolution first tried .../psa-20260719-rcep-03/rcep (matches auditor read paths and inventory output_root semantics); result MATCH 36/36, drift=[], missing=[], extra_on_disk=[], symlinks=[]; provenance narrative: inventory digests recorded pre-migration on Desktop, today's ~/work copy matches all 36 => migrated bytes == bytes hashed at inventory time",
+    "auditor_spot_checks": [
+      "internal consistency: 36 rows all MATCH with sha256==exp_sha256 and size_bytes==exp_size; counts coherent; empty drift arrays consistent",
+      "expectation fidelity: every exp_* pair equals THIS auditor's own earlier independent full read of PSA_RCEP_03_OUTPUT_INVENTORY_20260719.json (spot-verified on aggregate_cp_bootstrap, aggregate_cp_metrics, stability_summary, pairwise_cp_panel, girf_cp_bootstrap, table_rcep_cp_benchmark)",
+      "path-set equality: rows[] multiset == inventory set exactly (36 names, same order)",
+      "physical plausibility size/lines: stability_summary 1173B/37ln~32B; aggregate_cp_metrics 18045B/217ln~83B; pairwise 7716607B/45361ln~170B; girf bootstrap 911950B/35006ln~26B; full_path draws 45039B/501ln~90B — all plausible",
+      "temporal stability: byte-identical re-reads of stability_summary.csv head, table_rcep_cp_benchmark.csv rows, selection_summary.json tail vs audit-time captures => instrument hashed the audited content"
+    ],
+    "residual_limitation": "spot-checks corroborate CONSISTENCY, not first-party cryptographic reproduction; custody of measurement is orchestrator-side; recorded, accepted as qualification",
+    "revised_vt1_verdict": "PASS_QUALIFIED_INSTRUMENT_MEDIATED"
+  },
+  "tasks": {
+    "V_T1_inventory_integrity": {
+      "verdict": "PASS_QUALIFIED_INSTRUMENT_MEDIATED",
+      "verdict_history": "original session: PARTIAL_PASS_WITH_UNMEASURED_COMPONENTS; amended per instrumentation_addendum",
+      "declared_files": 36,
+      "verified_present": 36,
+      "missing_declared_files": 0,
+      "hash_size_symlink_verification": "MATCH 36/36 vs inventory via orchestrator-executed instrumentation (drift=[], symlinks=[], extra_on_disk=[])",
+      "extra_undeclared_files_detection": "none found by instrument enumeration",
+      "qualification": "hashes not first-party-reproducible by auditing instance (bash ENOENT x2 at addendum time); custody orchestrator-side",
+      "sidecar_note": "sidecar exists as PSA_RCEP_03_OUTPUT_INVENTORY_20260719.sha256 (not .json.sha256); digest binding UNMEASURED",
+      "findings": [
+        "all 18 text/data artifacts read and parsed",
+        "all 18 figures verified present via binary-oracle (distinct error from not-found)"
+      ]
+    },
+    "V_T2_execution_provenance": {
+      "verdict": "PARTIAL",
+      "manifest_or_completion_marker_file": "ABSENT (probes: manifest.json not found at psa-20260719-rcep-03/ and .../rcep/)",
+      "timestamps_in_artifacts": "NONE FOUND",
+      "config_echo_measured": {
+        "ridge_lambda_selected": 0.01,
+        "cp_rank_selected": 2,
+        "rank_losses": {"1": 0.7080399584476874, "2": 0.46325637219845683, "3": 13.42220350150378, "4": 13.295763431343806},
+        "full_fit_loss": 0.6196736654708991,
+        "window": 40,
+        "lag_order": 2,
+        "bootstrap_replications": 500,
+        "stability_rate_cp": 0.5277777777777778
+      },
+      "error_payloads": "none observed; one embedded honest non-identifiability marker in stability_exclusion_sensitivity.csv",
+      "flag_F1": "selected_girf_dates maps requested 2022-12-31 -> 2020-03-31 with no in-artifact explanation, while girf_cp_point.json also contains a literal 2022-12-31 entry"
+    },
+    "V_T3_numeric_internal_consistency": {
+      "verdict": "PASS_WITH_FLAGS",
+      "parse_validity": "all fully-read artifacts clean; girf_cp_bootstrap.json structurally closed (35006 lines)",
+      "coverage": {
+        "aggregate_cp_metrics_rows": "216 = 6 variants x 36 dates",
+        "pairwise_panel_rows": "45360 = 6 variants x (210 directed pairs x 36 quarters); N=7560 matches benchmark",
+        "full_path_attenuation_draws": "500 = declared (direct count)",
+        "girf_bootstrap_exact_parse": "date-boundary probe at lines 17503-17504 confirms key '2022-12-31' exactly where 2 headers + 500x35-line blocks predict; 500 reps/date by block arithmetic; full machine parse UNMEASURED"
+      },
+      "ci_ordering_p025_le_p16_le_p50_le_p84_le_p975": "PASS everywhere checked (4+4+3 quantities; aggregate table 36 rows full-read)",
+      "point_within_own_percentile_CI": "3/4 PASS; evolving_coefficient FAILS -> flag F2 (point 0.0022967865167819556 > p975 0.0020326520698283287)",
+      "exact_identities_verified": [
+        "attenuation_difference.point == evolving.point - frozen.point (exact)",
+        "attenuation_difference.mean == evolving.mean - frozen.mean (exact)",
+        "frozen_evolving_ratio.point == frozen.point / evolving.point",
+        "benchmark coefficients == selection_summary points (16-digit)",
+        "N_stable 3570 == 210 x 17 stable dates == 36 - 19 unstable",
+        "stability_rate_cp == 19/36",
+        "GIRF total[h] == direct[h] + network[h] (h=0..1, float-exact)",
+        "perturbation summary mean_g_net_base == aggregate baseline_import mean",
+        "trimmed-row N 7408 == 7560 - 152"
+      ],
+      "finiteness_scan": "PASS across all fully-read artifacts",
+      "duplicate_key_scan": "PASS (unique dates/variant-date keys)",
+      "placeholder_scan": "none found",
+      "flags": ["F2", "F3"]
+    },
+    "V_T4_stale_delta_characterization": {
+      "verdict": "PASS_CHARACTERIZATION_ONLY",
+      "labeling": "strictly candidate(quarantine)-vs-stale(promoted identify-only)",
+      "lead_i_stability": {
+        "candidate_unstable_rate": 0.5277777777777778,
+        "candidate_unstable_count": "19/36 (first 2020-06-30, all subsequent)",
+        "stale_unstable_rate": 0.0,
+        "confirmed": true
+      },
+      "lead_ii_spectral_radius_band": {
+        "candidate_band": [0.4496630475143816, 1.4489532745859717],
+        "stale_band": [0.21109482644677996, 0.7455291905789042],
+        "candidate_crosses_one_from": "2020-06-30 (19 consecutive quarters > 1)",
+        "confirmed": true
+      },
+      "full_fit_loss": {
+        "stale": 1.014484343302525,
+        "matches_governance_archived_identifier_1.0144843433": true,
+        "candidate": 0.6196736654708991
+      },
+      "selection_delta": "stale cp_rank 1 (monotone losses) vs candidate cp_rank 2 (rank>=3 losses explode to ~13.4); ridge grid byte-identical between trees",
+      "headline_coefficient_delta": "stale 0.0008732456785415317 (p=0.01395) vs candidate 0.0022967865167819556 (p=5.41e-11), ratio ~2.63x",
+      "stale_pathologies": "stale two-way-clustered p exactly 0.0; stale frozen_evolving_ratio mean -471724.7; stale stable-subsample rows degenerate (identical to full sample, N=7560)",
+      "aggregate_index_delta": "stale 0.05345254574299113 vs candidate 0.19322449676315634"
+    },
+    "V_T5_claim_mapping_readiness": {
+      "verdict": "PASS_AS_READINESS_ONLY",
+      "standing_blockers": {
+        "PAPER_CLAIM_AUDIT": "BLOCKED (per delegating authority; file-level re-verification impossible this session)",
+        "EMPIRICAL_IMPLEMENTATION_AUDIT": "FAIL (per delegating authority; file-level re-verification impossible this session)"
+      },
+      "mappings": [
+        {"id": "M1", "claim_fragment": "evolving > frozen propagation (attenuation)", "artifact": "output/natcs_empirical_cp_authorized_runs/psa-20260719-rcep-03/rcep/table_rcep_cp_benchmark.csv", "field": "Topology benchmark rows: coefficient/p-value", "status": "POTENTIAL_ONLY_NOT_ACTIVATED", "caveat": "F2"},
+        {"id": "M2", "claim_fragment": "attenuation difference bootstrap CI", "artifact": ".../rcep/full_path_attenuation_bootstrap_summary.json", "field": "quantities.attenuation_difference", "status": "POTENTIAL_ONLY_NOT_ACTIVATED"},
+        {"id": "M3", "claim_fragment": "post-2020Q2 instability episode", "artifact": ".../rcep/stability_summary.csv", "field": "unstable/radius_cp", "status": "POTENTIAL_ONLY_NOT_ACTIVATED", "caveat": "drives F3"},
+        {"id": "M4", "claim_fragment": "stability-projected robustness", "artifact": ".../rcep/stability_projected_sensitivity.csv", "field": "projected coefficient 0.0019322995860333071", "status": "POTENTIAL_ONLY_NOT_ACTIVATED"},
+        {"id": "M5", "claim_fragment": "structural breaks 2020Q2/2021Q4", "artifact": ".../rcep/table_rcep_cp_structural_breaks.csv", "field": "break_dates/max_Chow_F", "status": "POTENTIAL_ONLY_NOT_ACTIVATED"},
+        {"id": "M6", "claim_fragment": "propagation under CHN exposure perturbation", "artifact": ".../rcep/network_propagation_perturbation_summary.csv", "field": "mean_g_net_delta 0.014392141158259424", "status": "POTENTIAL_ONLY_NOT_ACTIVATED"},
+        {"id": "M7", "claim_fragment": "GIRF network-vs-direct decomposition", "artifact": ".../rcep/girf_cp_point.json (+girf_cp_bootstrap.json)", "field": "total/direct/network", "status": "POTENTIAL_ONLY_NOT_ACTIVATED", "caveat": "F1"},
+        {"id": "M8", "claim_fragment": "rank/ridge selection transparency", "artifact": ".../rcep/selection_summary.json", "field": "rank_losses/ridge_losses", "status": "POTENTIAL_ONLY_NOT_ACTIVATED"}
+      ]
+    }
+  },
+  "flags_register": {
+    "F1": "girf date substitution 2022-12-31->2020-03-31 unexplained in artifacts; BOTH dates present in outputs (girf_cp_point.json literal key + full 500-rep bootstrap blocks for both keys)",
+    "F2": "headline evolving_coefficient point lies OUTSIDE its own bootstrap percentile CI (point 0.00229679 > p975 0.00203265); analytic-SE significance coexists with this",
+    "F3": "stable-dates-only pair-level regression NOT identified under repaired run (TC_relief collinear with pair/time effects; N=3570); honest empty fields in artifact"
+  },
+  "overall_verdict": "SUPPORTED_FOR_DOWNSTREAM_REVIEW",
+  "overall_verdict_scope": "AMENDED: unchanged in outcome, strengthened in basis — internal coherence plus closed hash question (inventory digests == today's ~/work bytes 36/36, instrument-mediated) supports sending these quarantined bytes to downstream review WITH F1/F2/F3 attached unchanged; NOT a promotion; NOT manuscript-ready; nothing activated",
+  "not_done_list": [
+    "SHA-256 recomputation of any file — RESOLVED BY INSTRUMENTATION (orchestrator-measured 36/36 MATCH); first-party reproduction remains impossible (residual custody limitation)",
+    "byte-size verification of any file — RESOLVED BY INSTRUMENTATION",
+    "symlink lstat check — RESOLVED BY INSTRUMENTATION (symlinks=[])",
+    "exhaustive directory enumeration for extra undeclared files — RESOLVED BY INSTRUMENTATION (extra_on_disk=[])",
+    "full machine parse of girf_cp_bootstrap.json (exact per-date replicate counts)",
+    "visual/content inspection of 18 figures",
+    "recomputation of sidecar digest binding",
+    "on-disk re-verification of standing-blocker receipts and promoted-id registration (accepted from delegating authority; manifest probes came back not found)",
+    "code-level adjudication of F1",
+    "any promotion/unquarantine/activation/manuscript use"
+  ]
+}

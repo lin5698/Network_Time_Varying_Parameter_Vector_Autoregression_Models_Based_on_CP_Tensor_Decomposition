@@ -1,0 +1,279 @@
+{
+  "record_class": "p3_value_audit_receipt",
+  "date": "2026-08-26",
+  "timezone": "Asia/Shanghai",
+  "audit_tier": "P3_value_level_audit",
+  "decision_id_under_audit": "psa-20260719-nyc-01",
+  "dataset": "nyc_taxi",
+  "ceiling": "self_supervised_proxy",
+  "audited_root": "/Users/wuyilin/work/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/output/natcs_empirical_cp_authorized_runs/psa-20260719-nyc-01/nyc_taxi",
+  "inventory_reference": "refine-logs/PSA_NYC_OUTPUT_INVENTORY_20260719.json",
+  "runtime_disclosure": {
+    "bash": {"status": "FAILED", "detail": "Error: spawn bash ENOENT; failed on initial call and on sanctioned single retry"},
+    "glob": {"status": "FAILED", "detail": "ripgrep launch failed"},
+    "grep": {"status": "FAILED", "detail": "ripgrep launch failed; confirmed once"},
+    "read_image": {"status": "UNAVAILABLE", "detail": "model 'stealth/ox-alpha' does not declare image input; PNG/PDF decode verification impossible"},
+    "pure_fs_read_write": {"status": "OK", "detail": "all evidence gathered exclusively via read/write file tools"},
+    "fallback_declared": true,
+    "fallback_consequence": [
+      "python3/shasum recomputation impossible: every sha256/size measurement marked UNMEASURED, not MATCH",
+      "directory enumeration unavailable: absence-of-extra-files unprovable",
+      "symlink lstat unavailable: inventory symlink_count=0 left unverified",
+      "girf_cp_bootstrap.json audited by structural line-arithmetic plus 5 sampled windows (~0.6% of lines), not exhaustive byte scan"
+    ]
+  },
+  "vt1_inventory_integrity": {
+    "verdict": "PASS",
+    "initial_verdict": "BLOCKED",
+    "verdict_basis": "instrumented measurement adjudicated 2026-08-26; see instrumentation_addendum; qualified by row-12 auditor-transcription incident (disclosed, resolved to current-authoritative literals); zero evidence of byte drift in any file",
+    "existence_probe": {
+      "declared_files": 18,
+      "found_on_disk": 18,
+      "missing": 0,
+      "extras_detection": "NOT_DETERMINABLE_NO_DIRECTORY_LISTING"
+    },
+    "symlink_check": "NOT_PERFORMABLE",
+    "match_drift_determination": "UNDECIDABLE_THIS_SESSION",
+    "instrumented_measurement_addendum": {
+      "source_file": "tmp/nyc_vt1_measurement_20260826.json",
+      "executed_by": "orchestrator (full tooling); auditor lacks spawn capability — disclosed reliance",
+      "adjudicated_by": "ox-alpha, same session, read-in-full plus cross-checks",
+      "corrected_base": "output/natcs_empirical_cp_authorized_runs/psa-20260719-nyc-01/nyc_taxi",
+      "result": {"match": 18, "drift": 0, "missing": 0, "extra_on_disk": 0, "symlinks": 0},
+      "base_correction_claim": "ACCEPTED as path-base artifact, not drift: inventory keys are nyc_taxi-relative so a base one level up yields exactly the reported all-missing/extra=18 signature; first pass itself attested in prose only (not in measurements file) — disclosed",
+      "string_crosscheck_vs_inventory": "17/18 rows identical outright; row 12 incident resolved per instrumentation_addendum.row12_incident",
+      "extras_and_symlink_gaps": "closed by instrumented extra_on_disk=[] and symlinks=[] under corrected base"
+    },
+    "path_root_discrepancy_finding": "inventory.output_root, authorization.output_root and preflight.dataset_path reference /Users/wuyilin/Desktop/translation/... while mandated audit ROOT is /Users/wuyilin/work/...; work-tree copy audited; byte-equivalence of the two trees unverifiable without hashing",
+    "per_file_table": [
+      {"path": "acquisition_info.json", "declared_size_bytes": 277, "declared_sha256": "7ffbfd7e9a29f2467e10399a1605d5fb0f1a1bb7bc2b4b433d46e73c63d1a312", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "text, 6 lines, full read"},
+      {"path": "aggregate_cp_bootstrap.csv", "declared_size_bytes": 31772, "declared_sha256": "346b39aeb31d058bf8f1838e0486f627060e152fa8159fe78f9ec9cfe384c74e", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "text, 70 lines, full read"},
+      {"path": "aggregate_cp_metrics.csv", "declared_size_bytes": 18894, "declared_sha256": "a536787391f41c6dcec311e56e00745d6e30986191def825a9f19587bf9f4179", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "text, 208 lines, full read"},
+      {"path": "derived_monthly_panel.csv", "declared_size_bytes": 32026, "declared_sha256": "0d73011189253688f0cf50bcd580c61b68635fe19183e09367cbbdf1286c7bdb", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "text, 110 lines, full read"},
+      {"path": "figures/fig_cp_aggregate_intervals.pdf", "declared_size_bytes": 26972, "declared_sha256": "e1ab7f81c6740435c158f86df29aa3eb7e27f6de1ae50dd5c31f858dabd7ec9a", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "binary-file signal; decode unverifiable"},
+      {"path": "figures/fig_cp_aggregate_intervals.png", "declared_size_bytes": 1006208, "declared_sha256": "478f50d2dbf60067ef24c8c4b50c73fe096405d8cc4fb6f3002d6b489b63bfab", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "binary-file signal; decode unverifiable"},
+      {"path": "figures/fig_cp_fixed_vs_tv.pdf", "declared_size_bytes": 24702, "declared_sha256": "c0f03e6fcc23cfc422b02186c0c8444b9af6689ba2bb66ab44b7b3c8e436a596", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "binary-file signal; decode unverifiable"},
+      {"path": "figures/fig_cp_fixed_vs_tv.png", "declared_size_bytes": 415317, "declared_sha256": "04331dfe0b8458d6cf3940c33ea0d472b80bacedfc08cfe0b32f3b4df385455d", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "binary-file signal; decode unverifiable"},
+      {"path": "figures/fig_cp_girf_intervals.pdf", "declared_size_bytes": 22373, "declared_sha256": "d32de3e773aaed17919bad776f0415ef56a2ae6f65c040ccad78f21476e815fb", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "binary-file signal; decode unverifiable"},
+      {"path": "figures/fig_cp_girf_intervals.png", "declared_size_bytes": 1152388, "declared_sha256": "b433abc5111dc2a99eb7dd00f560bddcc3199641791637587d04b1b2dfb21257", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "binary-file signal; decode unverifiable"},
+      {"path": "figures/fig_cp_mobility_illustration.pdf", "declared_size_bytes": 42264, "declared_sha256": "f34227ebf5e34f2afb97a6d1b2ec160bc01c3a674b66d98d070ec3458e410270", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "binary-file signal; decode unverifiable"},
+      {"path": "figures/fig_cp_mobility_illustration.png", "declared_size_bytes": 1165324, "declared_sha256": "914ee3a79686a007b02c349883f2b82f655c1c1f9867c68fb3429d26c78ed91f", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "binary-file signal; decode unverifiable", "note": "declared literal corrected 2026-08-26 in instrumentation_addendum (auditor transcription incident; see there)"},
+      {"path": "figures/fig_cp_stability.pdf", "declared_size_bytes": 21770, "declared_sha256": "77fa76fe796f15cb2111680cf880cb80f03bd5d1e6b210f49f021b45997373f7", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "binary-file signal; decode unverifiable"},
+      {"path": "figures/fig_cp_stability.png", "declared_size_bytes": 425647, "declared_sha256": "31037ba6bd083228d832012ce37b0d1378d4acabb3ac7f3aaeac3a31b949fb11", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "binary-file signal; decode unverifiable"},
+      {"path": "girf_cp_bootstrap.json", "declared_size_bytes": 878069, "declared_sha256": "efa2f03a65065989367b8834e64d734986d856cf2852fa5976a7333157e40774", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "text, 35006 lines, structural sampling (head/boundary/2 interior/tail)"},
+      {"path": "girf_cp_point.json", "declared_size_bytes": 1683, "declared_sha256": "18282581bfbfeac1929af6649e5a04d9247c40a3e2d19c8e1bfee46ec471c95f", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "text, 72 lines, full read"},
+      {"path": "selection_summary.json", "declared_size_bytes": 1386, "declared_sha256": "d3ebd73a96883bed15668c5479e96f7b50b8e12f93247be1767c7adc9058b5db", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "text, 57 lines, full read"},
+      {"path": "stability_summary.csv", "declared_size_bytes": 2220, "declared_sha256": "9cfa291a85bdeb8bd5a64d56a643235ce382dd04c37e39ac39e34b9946dace88", "measured_sha256": null, "measured_size_bytes": null, "hash_verdict": "UNMEASURED_RUNTIME_SPAWN_FAILURE", "existence": "EXISTS", "content_signal": "text, 70 lines, full read"}
+    ]
+  },
+  "vt2_execution_provenance": {
+    "verdict": "PASS",
+    "acquisition_info_verbatim": {
+      "source_repository": "xinychen/vars",
+      "commit": "7e63ba9734021171eaf49edb92be8a7e7e8802eb",
+      "dataset_path": "datasets/NYC-taxi",
+      "construction": "Monthly log trip activity for the 15 highest-flow mobility units with rolling 12-month OD trip-share network matrices."
+    },
+    "error_payloads_present": false,
+    "error_payload_note": "no error payloads exist in any run artifact; absence reported as the measurement",
+    "data_window": {"panel_start": "2012-12-31", "panel_end": "2021-12-31", "panel_months": 109, "units": 15},
+    "panel_shape_echo": {"rows_x_cols": "109 x (date + 15 zones)", "zone_columns": ["Zone-26","Zone-33","Zone-20","Zone-42","Zone-34","Zone-32","Zone-44","Zone-39","Zone-31","Zone-53","Zone-23","Zone-30","Zone-38","Zone-18","Zone-48"]},
+    "config_echo": {
+      "window": 40, "requested_window": 40, "window_fallback_occurred": false,
+      "lag_order": 2, "bootstrap_replications": 500, "bootstrap_block_size": 4,
+      "cp_inits": 6, "cp_max_iter": 100, "cp_tol": 1e-06,
+      "ridge_lambda_selected": 0.01,
+      "cp_rank_selected": 4,
+      "full_fit_loss": 0.13612272962909133,
+      "stability_rate_cp": 0.6956521739130435,
+      "available_origins": 69,
+      "evaluated_origins_by_rank": {"1": 66, "2": 66, "3": 66, "4": 66}
+    },
+    "explicit_nulls": ["helper_git_commit", "coef_bootstrap_summary"],
+    "rng_seed_field_present_in_outputs": false,
+    "rng_seed_note": "no RNG seed recorded in any output artifact; reproducibility caveat",
+    "girf_date_handling": {
+      "requested_girf_dates": ["2019-12-31", "2021-12-31"],
+      "selected_girf_dates": {"2019-12-31": "2020-03-31", "2021-12-31": "2020-04-30"},
+      "remapping_rule_documented": false,
+      "note": "both requested month-ends exist in panel yet were remapped to COVID-onset months; rule undocumented in outputs"
+    },
+    "provenance_records": {
+      "preflight_status": "PASS",
+      "preflight_commit_matches_acquisition_commit": true,
+      "authorization_decision": "AUTHORIZED",
+      "authorized_by": "workspace-author-via-explicit-user-instruction",
+      "authorized_at": "2026-07-19T03:01:12Z",
+      "argv_matches_selection_summary_config_exactly": true,
+      "overwrite_policy": "deny",
+      "post_run_controls": {
+        "quarantine_outputs": true,
+        "freeze_inventory_sha256_before_value_review": true,
+        "independent_claim_audit_required": true,
+        "manuscript_promotion_authorized": false
+      },
+      "r006e_outcome_authorized": false,
+      "r006f_outcome_authorized": false,
+      "downstream_builds_authorized": false,
+      "authorization_sidecar": {
+        "tasked_name_exists": false,
+        "actual_name": "SCIENTIFIC_EXECUTION_AUTHORIZATION_CANDIDATE_NYC_20260719.sha256",
+        "declared_digest": "4155bbed29b18be0fcd6d7c052439e26e946fcc37c47f6170862a1a0c3a8bd5d",
+        "digest_recomputed": false
+      }
+    }
+  },
+  "vt3_numeric_internal_consistency": {
+    "verdict": "PASS",
+    "scan_coverage_limits": [
+      "CSVs and small JSONs read line-complete (100%)",
+      "girf_cp_bootstrap.json coverage ~0.6% via structural line arithmetic plus head/boundary/two-interior/tail windows; exhaustive byte scan impossible without search tools"
+    ],
+    "parse_validity": "all JSON well-formed; all CSV well-formed, uniform columns, no ragged rows observed",
+    "counts": {
+      "derived_monthly_panel": "109 data rows x 16 cols (date + 15 zones)",
+      "aggregate_cp_metrics": "207 data rows = 69 months x 3 variant_key blocks (baseline_mobility H=8, baseline_h12 H=12, fixed_pre H=8); (date,variant_key) unique",
+      "aggregate_cp_bootstrap": "69 rows x 24 numeric cols",
+      "stability_summary": "69 rows x 3 cols",
+      "girf_cp_point": "2 dates x 3 keys x 9 lags",
+      "girf_cp_bootstrap": "2 dates x exactly 500 replicates x 3 arrays x 9 lags (line arithmetic 35006 = 6 structural + 2*500*35, boundary-confirmed)"
+    },
+    "replicate_coverage_vs_declared": "500/500 both GIRF dates; 69/69 aggregate & stability months; 109/109 panel months",
+    "ci_ordering_lower_le_point_le_upper": "PASS: all percentile quintets monotonically ordered on all 69 rows in all four families (g_net, g_net_fixed, g_net_diff, hl); candidate point estimates inside [p025,p975] on sampled dates",
+    "finiteness": "no NaN/Infinity/null-in-numeric-array tokens observed in any read content",
+    "duplicate_keys": "none observed in any JSON or CSV date dimension",
+    "derived_monthly_panel_coherence": {
+      "month_continuity_strict": true,
+      "leap_months_correct": ["2016-02-29", "2020-02-29"],
+      "duplicate_panel_month_keys": 0,
+      "all_cells_finite_positive": true
+    },
+    "cross_artifact_agreement_exact": [
+      "stability_rate_cp == unstable share of stability_summary.csv (48/69 = 0.6956521739130435); unstable=1 iff radius_cp>1 on every row",
+      "authorization argv == selection_summary config field-for-field",
+      "acquisition_info commit == preflight git_commit",
+      "girf point identities total[0]==direct[0], network[0]==0, total==direct+network hold exactly at sampled horizons both dates",
+      "girf bootstrap replicates satisfy same identities at every sampled replicate including first and last",
+      "aggregate bootstrap row identity g_net_diff_mean == g_net_mean - g_net_fixed_mean exact on recomputed rows spanning early/mid/late",
+      "panel arithmetic 109 - window 40 == available_origins 69"
+    ],
+    "placeholder_token_scan": "no TODO/FIXME/TBD/placeholder/sentinel tokens observed in any read content; exhaustive scan impossible (disclosed)",
+    "observations_not_defects": [
+      {"id": "a", "note": "stability_rate_cp numerically equals the UNSTABLE share (radius>1 fraction), a semantics/labeling question for pipeline owners"},
+      {"id": "b", "note": "requested GIRF dates remapped to 2020-03-31/2020-04-30 although requested month-ends exist in-panel; rule undocumented; stale tree honored requested dates identically - behavioral divergence needs explanation before any claim uses GIRF shock dates"},
+      {"id": "c", "note": "evaluated origins 66 < available 69 uniformly across ranks in BOTH trees; unexplained constant shortfall of 3, pipeline-level"},
+      {"id": "d", "note": "late-period g_net point estimates negative (baseline_mobility -0.376..-0.696 for 2021-05..2021-12; baseline_h12 to -4.353 at 2021-06); finite and internally echoed by bootstrap medians near/below 0"},
+      {"id": "e", "note": "half_life pinned at cap H (=8 or 12) through 2020-05..2021-04 in all variants"},
+      {"id": "f", "note": "bootstrap means differ materially from full-sample point estimates in several months (e.g. 2021-12-31 g_net point -0.3817 vs mean -0.2440 vs median +0.0389) - skew, internally consistent"}
+    ]
+  },
+  "vt4_stale_delta_characterization": {
+    "verdict": "PASS",
+    "labeling_rule": "strictly candidate-vs-STALE; no currency or correctness assertion; promotes nothing",
+    "stale_tree_path": "output/natcs_empirical_cp/nyc_taxi/",
+    "identify_only_hash_verification": {
+      "mandated_hash": "d204627f2bdd83bbc9c361e0644f7362e504aacb5f5bd03cad688f13882f751f",
+      "recomputed": false,
+      "reason": "spawn failure; no hashing capability",
+      "identity_basis_instead": "path + value corroboration: stale selection_summary.full_fit_loss == 0.7194454937345255 matches archived cited value 0.7194454937"
+    },
+    "candidate_vs_stale": {
+      "full_fit_loss": {"candidate": 0.13612272962909133, "stale": 0.7194454937345255, "delta_candidate_minus_stale": -0.58332276410543417},
+      "selected_cp_rank": {"candidate": 4, "stale": 1},
+      "rank_validation_losses_1to4": {"candidate": [23.159694248708437, 1.7129450637151769, 0.3234590143698836, 0.24095530765437415], "stale": [4.254242197448629, 48.25039089590272, 7.717903183925698, 5.983907834240024]},
+      "fit_losses_1to4": {"candidate": [0.31200105175415094, 0.17232519046335132, 0.1104303913758069, 0.07288353160376564], "stale": [0.3648345048102231, 0.5380686782977576, 0.44600480586020996, 0.4390202435771084]},
+      "stability_rate_cp": {"candidate": 0.6956521739130435, "stale": 0.0},
+      "selected_girf_dates": {"candidate": "REMAPPED to 2020-03-31 / 2020-04-30", "stale": "IDENTITY (requested dates honored)"},
+      "intercept_policy_field": {"candidate": "origin-specific fitted local intercept", "stale": "ABSENT"},
+      "shared_constants_identical": ["ridge grid + lambda*=0.01", "window 40", "lag_order 2", "bootstrap 500 x block 4", "cp_inits 6", "cp_max_iter 100", "cp_tol 1e-06", "evaluated origins 66 per rank"],
+      "acquisition_info_content_identical": true,
+      "stale_girf_point_examples": {"h8_total_2019_12_31": {"stale": 9.13447054352989e-05, "candidate": 0.0030548288757898333}, "h0_total_2021_12_31": {"stale": 0.0447248271778948, "candidate": 0.007939530379371349}}
+    }
+  },
+  "vt5_claim_mapping_readiness": {
+    "verdict": "PASS",
+    "activation_status_of_every_mapping": "POTENTIAL_ONLY_NOT_ACTIVATED",
+    "standing_blockers_as_mandated": [
+      {"name": "PAPER_CLAIM_AUDIT", "status": "BLOCKED"},
+      {"name": "EMPIRICAL_IMPLEMENTATION_AUDIT", "status": "FAIL"}
+    ],
+    "blocker_artifact_location": "NOT_LOCATED_BY_NAME_PROBING (search/enumeration tools down); statuses carried from governing audit context, not independently re-verified this session",
+    "enumerations": [
+      {"fragment": "Rank-4 TV/CP specification reconstructs one-step-ahead out-of-sample better than lower ranks", "artifact": "output/natcs_empirical_cp_authorized_runs/psa-20260719-nyc-01/nyc_taxi/selection_summary.json", "fields": ["cp_rank", "rank_losses", "rank_validation"], "status": "POTENTIAL_ONLY_NOT_ACTIVATED"},
+      {"fragment": "Full-fit reconstruction loss differs from previously archived fit", "artifact": "selection_summary.json (candidate) vs output/natcs_empirical_cp/nyc_taxi/selection_summary.json", "fields": ["full_fit_loss"], "status": "POTENTIAL_ONLY_NOT_ACTIVATED", "label_constraint": "candidate-vs-STALE only"},
+      {"fragment": "Aggregate network dependence g_net shifted upward through the 2020-2021 mobility regime", "artifact": "aggregate_cp_metrics.csv", "fields": ["g_net @ variant_key=baseline_mobility"], "status": "POTENTIAL_ONLY_NOT_ACTIVATED"},
+      {"fragment": "Monthly g_net estimates with bootstrap uncertainty bands", "artifact": "aggregate_cp_bootstrap.csv", "fields": ["g_net_p025", "g_net_p16", "g_net_p50", "g_net_p84", "g_net_p975"], "status": "POTENTIAL_ONLY_NOT_ACTIVATED"},
+      {"fragment": "Time-varying vs frozen-topology network-effect differential (TV minus fixed)", "artifact": "aggregate_cp_metrics.csv + aggregate_cp_bootstrap.csv", "fields": ["baseline_mobility vs fixed_pre", "g_net_diff_*"], "status": "POTENTIAL_ONLY_NOT_ACTIVATED"},
+      {"fragment": "Dynamic-multiplier decomposition: network share of cumulative impulse response rises with horizon", "artifact": "girf_cp_point.json + girf_cp_bootstrap.json", "fields": ["network[h]/total[h]", "500-replicate spread"], "status": "POTENTIAL_ONLY_NOT_ACTIVATED"},
+      {"fragment": "Parameter-instability episode concentrated 2020-05 to 2021-12", "artifact": "stability_summary.csv", "fields": ["radius_cp", "unstable"], "status": "POTENTIAL_ONLY_NOT_ACTIVATED"},
+      {"fragment": "Half-life of network effects capped at horizon bound H during pandemic months", "artifact": "aggregate_cp_metrics.csv", "fields": ["half_life @ H=8/H=12"], "status": "POTENTIAL_ONLY_NOT_ACTIVATED"}
+    ],
+    "ceiling_reminder": "self_supervised_proxy; no external ground truth for any readout; activation requires blocked upstream audits to clear"
+  },
+  "per_task_verdicts": {
+    "VT1_inventory_integrity": "PASS",
+    "VT2_execution_provenance": "PASS",
+    "VT3_numeric_internal_consistency": "PASS",
+    "VT4_stale_delta_characterization": "PASS",
+    "VT5_claim_mapping_readiness": "PASS"
+  },
+  "overall": "SUPPORTED_FOR_DOWNSTREAM_REVIEW",
+  "overall_history": {
+    "initial_verdict": "BLOCKED",
+    "initial_rationale": "Fail-closed: V-T1's core deliverable (independent sha256/size/symlink/extras recomputation over all 18 quarantined files) was unperformable because every process-spawning tool failed (bash ENOENT twice; ripgrep launch failures). Incomplete integrity pass blocks the value-audit hand-off regardless of content findings. BLOCKED meant audit evidence was incomplete, NOT that the values were defective."
+  },
+  "overall_rationale": "Revised 2026-08-26 after adjudicating orchestrator-executed V-T1 instrumentation (see instrumentation_addendum): 18/18 MATCH with empty drift/missing/extra_on_disk/symlinks under the corrected base; base-correction accepted as a path-base artifact; 17/18 rows string-identical to the frozen inventory outright; row-12 auditor-transcription incident disclosed and resolved to current-authoritative literals; four content-stability spot-checks passed against the auditor's own morning full reads. Verdict supports downstream review ONLY: no promotion, no claim activation; standing blockers (PAPER_CLAIM_AUDIT=BLOCKED, EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL) and self_supervised_proxy ceiling unchanged; all content findings stand.",
+  "remediation_status": "SUPERSEDED_BY_ADDENDUM — original remediation ('re-execute V-T1 with shell access') fulfilled via disclosed orchestrator instrumentation; optional certainty follow-ups for row 12 named in instrumentation_addendum.row12_incident.decisive_followups",
+  "instrumentation_addendum": {
+    "date": "2026-08-26",
+    "scope": "re-opened V-T1 only; V-T2..V-T5 untouched",
+    "spawn_failure_history_recap": "bash ENOENT x2; glob/grep ripgrep launch failures; read_image unavailable; original V-T1 BLOCKED with all hashes UNMEASURED",
+    "orchestrator_measurement_disclosure": {
+      "source_file_read_in_full": "tmp/nyc_vt1_measurement_20260826.json",
+      "executed_by": "orchestrator with full tooling; auditor could not reproduce digests (disclosed reliance boundary)",
+      "corrected_base": ".../psa-20260719-nyc-01/nyc_taxi",
+      "reported": {"declared_count": 18, "measured_count": 18, "match": 18, "drift": [], "missing": [], "extra_on_disk": [], "symlinks": []}
+    },
+    "base_correction_adjudication": "ACCEPTED: inventory keys are nyc_taxi-relative, so first-pass base .../psa-20260719-nyc-01 necessarily yields 0/18 all-missing + extra=18 — a path-base artifact, not drift; prose-attested only (no record inside measurements file), disclosed",
+    "row12_incident": {
+      "file": "figures/fig_cp_mobility_illustration.png",
+      "auditor_session_earlier_rendering_and_receipt_transcriptions": "914ee3a79686a007b02c349883f2b82f655c1c1f9877c68fb3429d26c78ed91f",
+      "current_inventory_line68_and_instrumentation_sha256_and_exp_sha256": "914ee3a79686a007b02c349883f2b82f655c1c1f9867c68fb3429d26c78ed91f",
+      "size_agreement_all_sources": 1165324,
+      "adjudication": "dominant explanation: auditor-side single-character transcription error at original read/render time (63/64 hex pairs across other rows copied perfectly twice each; programmatic inventory generation makes an original freezer digit-slip unlikely; deliberate mid-session mutation has no visible motive or trace); mid-session mutation NOT strictly excludable with session tools",
+      "decisive_followups": ["git log/diff of refine-logs/PSA_NYC_OUTPUT_INVENTORY_20260719.json", "fresh raw shasum echo of the PNG beside the inventory line", "inventory mtime vs 2026-07-19 freeze"],
+      "resolution_applied": "both receipts' row-12 literals corrected to current-authoritative inventory value; correction documented here (no silent rewrite)"
+    },
+    "spot_checks": [
+      {"artifact": "acquisition_info.json", "result": "IDENTICAL to morning full read", "lines": 6, "size_bytes": 277, "bytes_per_line_coherent": true},
+      {"artifact": "stability_summary.csv", "result": "head values IDENTICAL + line count 70 stable", "lines": 70, "size_bytes": 2220, "bytes_per_line_coherent": true},
+      {"artifact": "selection_summary.json", "result": "head incl. five ridge losses and cp_rank IDENTICAL", "lines": 57, "size_bytes": 1386, "bytes_per_line_coherent": true},
+      {"artifact": "girf_cp_point.json", "result": "total[2019-12-31] array identical to 16-17 significant digits", "lines": 72, "size_bytes": 1683, "bytes_per_line_coherent": true}
+    ],
+    "spot_check_interpretation": "any byte change since morning would have falsified instrumented MATCH; none observed; byte-level size verification beyond session tooling (disclosed)",
+    "provenance_chain_ruling": "ACCEPTED as closing the migration-leg integrity question (pre-migration Desktop digests == today's ~/work bytes): unconditional for 17/18 rows; row 12 subject to the qualified ruling above; Desktop output_root explained as pre-migration provenance metadata",
+    "revised_task_verdicts": {"VT1_inventory_integrity": "PASS (qualified)", "VT2_execution_provenance": "PASS (unchanged)", "VT3_numeric_internal_consistency": "PASS (unchanged)", "VT4_stale_delta_characterization": "PASS (unchanged)", "VT5_claim_mapping_readiness": "PASS (unchanged)"},
+    "supersedes": ["runtime_disclosure.fallback_consequence (measurement availability only)", "vt1 initial BLOCKED statuses", "per-task and OVERALL verdicts as recorded above"]
+  },
+  "independence_and_provenance_disclosure": {
+    "auditor_model": "ox-alpha (stealth/ox-alpha)",
+    "developer_disclosure": "undisclosed organization",
+    "adjudication": "self-adjudicated within mandate fail-closed rules",
+    "subagents_used": false,
+    "first_value_review_of_these_bytes": true,
+    "corroboration": "inventory value_review_performed=false predates this audit and was left false (no mutation)",
+    "scope": "delegated independent read-only auditor; activation authority explicitly withheld"
+  },
+  "not_done": [
+    "no promotion of any artifact, value, or tree",
+    "no mutation of the inventory or of its value_review_performed flag",
+    "no claim activation; all mappings remain POTENTIAL_ONLY_NOT_ACTIVATED",
+    "no manuscript edits",
+    "no make/test/scientific execution of any kind",
+    "no writes outside refine-logs/PSA_NYC_01_VALUE_AUDIT_20260826.md and .json"
+  ],
+  "writes_performed": [
+    "refine-logs/PSA_NYC_01_VALUE_AUDIT_20260826.md",
+    "refine-logs/PSA_NYC_01_VALUE_AUDIT_20260826.json"
+  ]
+}
