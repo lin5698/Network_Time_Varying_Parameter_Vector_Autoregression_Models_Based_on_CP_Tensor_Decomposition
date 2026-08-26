@@ -1199,7 +1199,7 @@ function checkJointRidgeAndResponseNotation() {
     [supplementFile, /\\Phi_h\(t,W\)=J\\mathcal\{C\}_t\(W\)\^hJ'/, "moving-average notation"],
     [supplementFile, /R_h\(t,W\)=\\Phi_h\(t,W\)S_t/, "normalized-response notation"],
     [supplementFile, /\\delta=10\^\{-12\}/, "GIRF normalization floor"],
-    [supplementFile, /\\epsilon=10\^\{-10\}>0/, "positive ratio floor"],
+    [supplementFile, /\\epsilon=10\^\{-12\}>0/, "positive ratio floor"],
   ];
   for (const [file, regex, label] of required) {
     if (!fs.existsSync(file) || !regex.test(readText(file))) {

@@ -1,0 +1,27 @@
+{
+  "epsilon_adjudication": {
+    "gate_before": "10^-10",
+    "resolution": "checker rebound to 10^-12 (implementation identity)",
+    "text_and_code": "10^-12"
+  },
+  "files_touched": [
+    "manuscript_src/natcs/methods_theory.md",
+    "manuscript_src/natcs/methods_estimator.md",
+    "manuscript_src/natcs/supp_note3_propagation.md",
+    "scripts/check_natcs_final_gates.mjs"
+  ],
+  "gates": {
+    "errors": 0,
+    "passes": 220,
+    "warnings_allowlisted": 4
+  },
+  "method": "faithful restoration from reviewer-archive governed generation",
+  "protected_tree": {
+    "files": 73,
+    "sha256": "dd11c790b8d1ce4318e43ba00d264d9ce5731317873f49c8d11012a03e95c4ca"
+  },
+  "record": "REC-P3S5_BACKLOG_F_THEORY_RESTORATION_20260826_200000",
+  "self_sha256": "8902c54760f5a258d8d6a94470b935d301859afca3a995298fd88c0fe66691fe",
+  "timestamp": "2026-08-26T20:00:00+08:00",
+  "validator": "246/247"
+}
