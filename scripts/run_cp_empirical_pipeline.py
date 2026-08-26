@@ -1668,6 +1668,36 @@ def fit_panel(df, dep="s_net_clip", cluster="pair", fe="pair_time", allow_uniden
     }
 
 
+def fit_panel_stable_subsample(panel_df, dep="s_net_clip", stable_dates=None):
+    """Wave B F3: complete the absorption variant for the stable-subsample check.
+
+    Primary path mirrors the published pair_time rank-check diagnostic. When the
+    retained stable sample is collinear with pair/time effects (reported as
+    not_identified), the absorption variant re-fits through the two-way
+    origin/destination AbsorbingLS path and returns whichever result is
+    identified. The Variant field records which path produced the row.
+    """
+    sample = panel_df if stable_dates is None else panel_df[panel_df["date"].isin(stable_dates)]
+    primary = fit_panel(sample, dep=dep, cluster="pair", fe="pair_time", allow_unidentified=True)
+    primary["Variant"] = "pair_time_rank_check"
+    out = primary
+    attempts = {"pair_time_rank_check": dict(primary)}
+    if primary.get("Status") == "not_identified":
+        try:
+            variant = fit_panel(sample, dep=dep, cluster="pair", fe="origin_dest")
+            variant["Variant"] = "origin_dest_absorbing_two_way"
+            attempts["origin_dest_absorbing_two_way"] = dict(variant)
+            if variant.get("Status") == "identified":
+                out = variant
+        except (AbsorbingEffectError, ValueError, KeyError) as exc:
+            attempts["origin_dest_absorbing_two_way"] = {
+                "Status": "not_identified",
+                "Identification": f"absorption variant raised: {exc}",
+                "Variant": "origin_dest_absorbing_two_way",
+            }
+    return out, attempts
+
+
 def moving_block_indices(n, rng, block_size=4):
     if not isinstance(n, (int, np.integer)) or n < 1:
         raise ValueError("moving-block bootstrap requires at least one residual row")
@@ -2324,22 +2354,23 @@ def aggregate_topology_summary(agg_df: pd.DataFrame, agg_fix_df: pd.DataFrame, a
 def stability_exclusion_summary(panel_df: pd.DataFrame, agg_df: pd.DataFrame, agg_fix_df: pd.DataFrame, stability_df: pd.DataFrame, dep="s_net_clip") -> pd.DataFrame:
     stable_dates = set(pd.to_datetime(stability_df.loc[stability_df["unstable"] == 0, "date"]))
     reg_full = fit_panel(panel_df, dep=dep, cluster="pair", fe="pair_time")
-    reg_stable = fit_panel(
-        panel_df[panel_df["date"].isin(stable_dates)],
+    reg_full["Variant"] = "pair_time_rank_check"
+    reg_stable, stable_attempts = fit_panel_stable_subsample(
+        panel_df,
         dep=dep,
-        cluster="pair",
-        fe="pair_time",
-        allow_unidentified=True,
+        stable_dates=stable_dates,
     )
     rows = [
-        {"Statistic": "Pair-level coefficient", "Sample": "Full sample", "Value": reg_full["Coefficient"], "Std.Err": reg_full["Std.Err"], "p-value": reg_full["p-value"], "N": reg_full["N"], "Status": reg_full["Status"], "Identification": reg_full["Identification"]},
-        {"Statistic": "Pair-level coefficient", "Sample": "Stable dates only", "Value": reg_stable["Coefficient"], "Std.Err": reg_stable["Std.Err"], "p-value": reg_stable["p-value"], "N": reg_stable["N"], "Status": reg_stable["Status"], "Identification": reg_stable["Identification"]},
+        {"Statistic": "Pair-level coefficient", "Sample": "Full sample", "Value": reg_full["Coefficient"], "Std.Err": reg_full["Std.Err"], "p-value": reg_full["p-value"], "N": reg_full["N"], "Status": reg_full["Status"], "Identification": reg_full["Identification"], "Variant": reg_full["Variant"]},
+        {"Statistic": "Pair-level coefficient", "Sample": "Stable dates only", "Value": reg_stable["Coefficient"], "Std.Err": reg_stable["Std.Err"], "p-value": reg_stable["p-value"], "N": reg_stable["N"], "Status": reg_stable["Status"], "Identification": reg_stable["Identification"], "Variant": reg_stable["Variant"]},
     ]
     for item in aggregate_topology_summary(agg_df, agg_fix_df):
         rows.append({**item, "Sample": "Full sample", "Std.Err": np.nan, "p-value": np.nan, "Status": "identified", "Identification": "descriptive aggregate"})
     for item in aggregate_topology_summary(agg_df, agg_fix_df, stable_dates):
         rows.append({**item, "Sample": "Stable dates only", "Std.Err": np.nan, "p-value": np.nan, "Status": "identified", "Identification": "descriptive aggregate"})
-    return pd.DataFrame(rows)
+    result = pd.DataFrame(rows)
+    result.attrs["stable_attempts"] = stable_attempts
+    return result
 
 
 def project_cp_results(cp_results: list[dict], target_radius=0.98, max_iter=8):
@@ -2738,6 +2769,23 @@ def run(args):
         write_output_csv(data["level_panel"], out_dir / "derived_monthly_panel.csv")
         write_output_json(data["acquisition_info"], out_dir / "acquisition_info.json")
 
+    # Wave B seed echo: provenance header for the run tree.
+    run_metadata = {
+        "schema_version": 1,
+        "authorization_id": authorization.get("decision_id"),
+        "seed_root": 20260328,
+        "doc_stages": {
+            "cp_fit_multi_init": "default_rng(seed) per cp_fit call; seed passed as cp_fit seed arg (20260328 + b per bootstrap draw)",
+            "bootstrap_cp_pipeline": "default_rng(20260328)",
+            "selection_ridge_rank": "deterministic; no stochastic draws",
+        },
+        "implementation_files": dict(authorization.get("implementation_files", {})),
+        "input_identity": {k: (v if not isinstance(v, dict) else {kk: (str(vv)[:16] + "...") for kk, vv in v.items()}) for k, v in authorization.get("input_identity", {}).items()},
+        "argv": dict(authorization.get("argv", {})),
+        "output_root": str(authorized_output_root),
+    }
+    write_output_json(run_metadata, out_dir / "run_metadata.json")
+
     lambda_ridge, lambda_losses = select_global_ridge_lambda(Y, base_w_list, dates, p=args.p, window=effective_window)
     logger.info("[%s] Selected ridge lambda=%s", args.dataset, lambda_ridge)
 
@@ -2891,6 +2939,25 @@ def run(args):
         for quantity, point in points.items():
             if quantity in coef_summary.get("quantities", {}):
                 coef_summary["quantities"][quantity]["point"] = None if point is None else float(point)
+        # Wave B F2: promote an interval-supported summary and disclose skew.
+        for quantity, row in coef_summary.get("quantities", {}).items():
+            point_value = row.get("point")
+            lower = row.get("p025")
+            upper = row.get("p975")
+            median_value = row.get("p50")
+            if point_value is None or lower is None or upper is None or median_value is None:
+                row["promoted_summary"] = "none"
+                row["interval_support"] = "unavailable"
+                row["skew_disclosure"] = "bootstrap summary unavailable for this quantity"
+                continue
+            supported = (lower <= point_value <= upper) or (median_value is not None and point_value <= upper and point_value >= lower)
+            row["interval_support"] = "inside" if supported else "outside"
+            row["promoted_summary"] = "bootstrap_median" if not supported else "point"
+            row["skew_disclosure"] = (
+                "point estimate lies outside the 95% percentile interval; bootstrap median is promoted and must be reported alongside the point with an explicit skew note"
+                if not supported
+                else "point estimate lies within the 95% percentile interval"
+            )
 
     selection = {
         "dataset": args.dataset,
@@ -3002,6 +3069,10 @@ def run(args):
 
         exclusion_df = stability_exclusion_summary(panel_lookup["baseline_import"], aggregate_lookup["baseline_import"], aggregate_lookup["fixed_pre"], stability_df)
         write_output_csv(exclusion_df, out_dir / "stability_exclusion_sensitivity.csv")
+        write_output_json(
+            {"attempts": exclusion_df.attrs.get("stable_attempts", {})},
+            out_dir / "stable_subsample_absorption_variant.json",
+        )
 
         projected_results = project_cp_results(cp_results, target_radius=0.98)
         projected_pair, projected_agg, _ = build_pair_panel(
