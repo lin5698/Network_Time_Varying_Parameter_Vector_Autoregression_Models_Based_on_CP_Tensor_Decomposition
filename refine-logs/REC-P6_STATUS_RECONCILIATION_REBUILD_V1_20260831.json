@@ -1,0 +1,47 @@
+{
+  "record_id": "REC-P6_STATUS_RECONCILIATION_REBUILD_V1_20260831",
+  "date": "2026-08-31",
+  "scope": "status_reconciliation_and_rebuild",
+  "scientific_experiments_rerun": false,
+  "external_markers_closed": false,
+  "git_snapshot_created": false,
+  "current_posture": {
+    "RC-1": "ACTIVATED",
+    "RC-2": "ACTIVATED_WITH_LIMITATIONS",
+    "RCEP_F3": "not_identified"
+  },
+  "focused_tests": {
+    "passed": 8,
+    "failed": 0,
+    "run_before_final_rebuild": true
+  },
+  "final_rebuild": {
+    "status": "PASS",
+    "targets": [
+      "natcs-evidence",
+      "natcs-manuscript",
+      "natcs-reviewer-archive",
+      "natcs-submission-materials",
+      "natcs-upload-freeze-manifest"
+    ],
+    "submission_inventory_entries": 27,
+    "upload_freeze_artifacts": 11,
+    "reviewer_archive_files": 342,
+    "packaged_register_matches_source": true
+  },
+  "verification": {
+    "final_gate_status": "PASS_WITH_WARNINGS_ALLOWED",
+    "final_gate_passes": 225,
+    "final_gate_errors": 0,
+    "release_safety_blockers": 0,
+    "release_safety_warnings": 0,
+    "release_safety_files_scanned": 425,
+    "git_diff_check": "PASS"
+  },
+  "open_external_gates": {
+    "author_decision_markers": 4,
+    "fig2_portal_markers": 5,
+    "raw_source_access_markers": 42,
+    "public_release_markers": 25
+  }
+}

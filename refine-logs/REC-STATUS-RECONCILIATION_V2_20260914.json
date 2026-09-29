@@ -1,0 +1,136 @@
+{
+  "receipt_id": "REC-STATUS-RECONCILIATION_V2_20260914",
+  "date": "2026-09-14",
+  "task": "A1_current_status_vs_historical_audit_mapping",
+  "controlling_plan": "docs/superpowers/plans/2026-09-13-long-term-delegation-plan.md",
+  "lineage": [
+    "REC-STATUS_RECONCILIATION_V1_20260829",
+    "REC-P6_STATUS_RECONCILIATION_REBUILD_V1_20260831"
+  ],
+  "release_baseline": {
+    "receipts": [
+      "refine-logs/REC-P6_POST_DECISION_REBUILD_V1_20260903.md",
+      "refine-logs/REC-P6_WEEKLY_MAINTENANCE_V1_20260903.md"
+    ],
+    "focused_suite": "8/8",
+    "final_gate": "PASS_WITH_WARNINGS_ALLOWED (225 passes / 0 errors)",
+    "release_safety": "0 blockers / 0 warnings (425 files scanned)",
+    "inventories": {
+      "submission_materials": 27,
+      "upload_freeze_artifacts": 11,
+      "reviewer_archive_files": 342
+    }
+  },
+  "audit_map": [
+    {
+      "gate": "historical_experiment_audit",
+      "artifact": "EXPERIMENT_AUDIT.json",
+      "jq_paths": [
+        ".overall_verdict",
+        ".integrity_status",
+        ".scientific_outcome",
+        ".e4_preoutcome_audit.overall_verdict"
+      ],
+      "verdict": "FAIL",
+      "verdict_values": {
+        ".overall_verdict": "fail",
+        ".integrity_status": "fail",
+        ".scientific_outcome": "fail",
+        ".e4_preoutcome_audit.overall_verdict": "pass"
+      },
+      "scope": "original 2026-07-19 execution-readiness scope plus preserved R006c negative method gate; E4 2026-07-31 addendum is local pre-outcome only and does not supersede the overall FAIL",
+      "condition": "historical FAIL preserved; must not be rewritten to overall PASS"
+    },
+    {
+      "gate": "empirical_implementation_readjudication",
+      "artifact": "EMPIRICAL_IMPLEMENTATION_AUDIT.json",
+      "jq_paths": [
+        ".verdict",
+        ".reason_code",
+        ".remaining_conditions"
+      ],
+      "verdict": "PASS",
+      "verdict_values": {
+        ".verdict": "PASS",
+        ".reason_code": "rcep_nyc_value_audited_downstream_build_authorized"
+      },
+      "scope": "releases only the authorized downstream rebuild gate; promotes nothing, activates nothing",
+      "condition": "audit-time RC-1 NOT_GRANTED and RC-2 REQUIRES_SEPARATE_AUTHORIZATION; current posture superseded by author decisions D-2/D-3, not by this audit"
+    },
+    {
+      "gate": "paper_claim_readjudication",
+      "artifact": "PAPER_CLAIM_AUDIT.json",
+      "jq_paths": [
+        ".verdict",
+        ".reason_code",
+        ".release_condition"
+      ],
+      "verdict": "PASS",
+      "verdict_values": {
+        ".verdict": "PASS",
+        ".reason_code": "rcep_nyc_value_audited_no_active_stale_citations"
+      },
+      "scope": "fail-closed re-adjudication; no active manuscript source binds to stale promoted or quarantined values in the audited active source set",
+      "condition": "re-audit required if any boundary-draft marker is removed, the evidence-build gate is rewired, or any ledger fence is edited; grants no promotion"
+    },
+    {
+      "gate": "mathematical_proof_audit",
+      "artifact": "PROOF_AUDIT.json",
+      "jq_paths": [
+        ".verdict",
+        ".reason_code"
+      ],
+      "verdict": "PASS",
+      "verdict_values": {
+        ".verdict": "PASS",
+        ".reason_code": "all_active_source_only_proof_obligations_complete"
+      },
+      "scope": "source-only mathematical claims on three hashed manuscript files; non-controlling for release",
+      "condition": "covers no empirical application, estimator superiority, rank recovery, calibration or release conclusion"
+    }
+  ],
+  "current_posture": {
+    "author_decisions": {
+      "artifact": "manuscript_src/natcs/natcs_final_author_decision_sheet.md",
+      "rc1": "ACTIVATED",
+      "rc2": "ACTIVATED_WITH_LIMITATIONS",
+      "rcep_f3": "not_identified",
+      "open_author_confirmation_items": 4
+    },
+    "external_gates_open": {
+      "final_author_decision": 4,
+      "fig2_portal_preview": 5,
+      "raw_source_access": 42,
+      "public_release_readiness": 25
+    },
+    "experiment_tracker": {
+      "artifact": "refine-logs/EXPERIMENT_TRACKER.md",
+      "E4-R006": "BLOCKED",
+      "E4-R007": "BLOCKED",
+      "E4-R008": "PASS_artifact_level_descriptive_use_only",
+      "E4-R009": "BLOCKED"
+    },
+    "recovery_tracker": {
+      "artifact": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_TRACKER.md",
+      "REC-M0": "PASS",
+      "REC-M1": "PASS",
+      "REC-M2": "BLOCKED",
+      "REC-M3": "BLOCKED",
+      "REC-M4": "BLOCKED",
+      "REC-M5": "BLOCKED"
+    },
+    "frozen_r006c_endpoint_qualification": {
+      "cp": "0/16",
+      "tucker": "6/16",
+      "tucker_native": "0/8",
+      "promoted_candidates": 0
+    },
+    "strongest_active_claim": "query-preserving representation/estimand principle; not CP estimator superiority"
+  },
+  "reconciliation_conclusion": "readiness maintenance with external gates open; historical EXPERIMENT_AUDIT FAIL retained; RC-3 post-regeneration review not yet run on any currently rebuilt package",
+  "scientific_execution_performed": false,
+  "manuscript_sources_changed": false,
+  "claims_promoted": false,
+  "external_markers_closed": 0,
+  "git_snapshot_created": false
+}

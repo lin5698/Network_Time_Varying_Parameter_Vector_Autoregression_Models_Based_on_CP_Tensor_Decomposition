@@ -1,0 +1,37 @@
+{
+  "receipt_id": "REC-STATUS_RECONCILIATION_V1_20260829",
+  "date": "2026-08-29",
+  "scope": "historical_and_current_audit_status_reconciliation",
+  "historical_experiment_audit": {
+    "artifact": "EXPERIMENT_AUDIT.json",
+    "state": "FAIL",
+    "effect": "preserved_original_scope"
+  },
+  "current_gate_states": {
+    "empirical_implementation": {
+      "artifact": "EMPIRICAL_IMPLEMENTATION_AUDIT.json",
+      "state": "PASS",
+      "effect": "downstream_rebuild_gate_only"
+    },
+    "paper_claim": {
+      "artifact": "PAPER_CLAIM_AUDIT.json",
+      "state": "PASS",
+      "effect": "no_active_stale_citations_under_scoped_audit"
+    },
+    "proof": {
+      "artifact": "PROOF_AUDIT.json",
+      "state": "PASS",
+      "effect": "source_only_mathematical_scope"
+    },
+    "post_regeneration_review": {
+      "state": "OPEN",
+      "condition": "RC-3"
+    }
+  },
+  "promotion_authorization": "NOT_GRANTED",
+  "empirical_claim_activation": "NOT_ACTIVATED",
+  "open_characterization_flags": "BLOCKING_AFFECTED_FRAGMENTS",
+  "scientific_execution_performed": false,
+  "manuscript_sources_changed": false,
+  "claims_promoted": false
+}
