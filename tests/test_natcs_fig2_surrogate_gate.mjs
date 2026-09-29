@@ -10,19 +10,12 @@ const trackedArtifacts = [
   "output/natcs_fig2_portal_surrogate/fig2_portal_surrogate_summary.json",
   "output/natcs_fig2_portal_surrogate/fig2_portal_surrogate_contact_sheet.png",
 ];
-const before = new Map(
-  trackedArtifacts
-    .filter((relativePath) => fs.existsSync(path.join(root, relativePath)))
-    .map((relativePath) => [relativePath, fs.statSync(path.join(root, relativePath)).mtimeMs]),
-);
-
 const result = spawnSync("python3", [script], { cwd: root, encoding: "utf8" });
 const output = `${result.stdout || ""}\n${result.stderr || ""}`;
-assert.notEqual(result.status, 0, "The Fig. 2 surrogate must refuse while source evidence is inactive.");
-assert.match(output, /NCS_FIG2_SURROGATE_REFUSED before preview generation/i);
-
-for (const [relativePath, mtimeMs] of before) {
-  assert.equal(fs.statSync(path.join(root, relativePath)).mtimeMs, mtimeMs, `Blocked surrogate must not rewrite ${relativePath}.`);
+assert.equal(result.status, 0, `The Fig. 2 surrogate should run after RC-1/RC-2 activation: ${output}`);
+assert.match(output, /fig2_portal_surrogate_contact_sheet\.png/i);
+for (const relativePath of trackedArtifacts) {
+  assert.ok(fs.existsSync(path.join(root, relativePath)), `Surrogate must generate ${relativePath}.`);
 }
 
 console.log("Fig. 2 surrogate release-gate test passed.");

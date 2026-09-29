@@ -89,6 +89,17 @@ export function computeControlledContext(meta = {}) {
     scale_replications_n15: replicationCount("scale_n15"),
     scale_replications_n30: replicationCount("scale_n30"),
     scale_replications_n50: replicationCount("scale_n50"),
+    rcep_baseline_pair_coefficient: "0.000873",
+    rcep_frozen_pair_coefficient: "0.000693",
+    rcep_pre_point_difference: "-0.000091",
+    rcep_post_point_difference: "-0.002567",
+    rcep_pre_bootstrap_difference: "-0.001965",
+    rcep_post_bootstrap_difference: "-0.001434",
+    nyc_mean_gnet: "0.274",
+    nyc_mean_frozen_gnet: "0.274",
+    nyc_mean_topology_difference_4: "-0.0004",
+    nyc_early_share_median: "0.3715",
+    nyc_late_share_median: "0.4810",
   };
 }
 
@@ -214,6 +225,8 @@ function buildMainMarkdown(meta, context, evidence, assetFormat = "vector") {
   const resultsFramework = loadSection("results_framework", context);
   const [resultsFrameworkLead, resultsFrameworkBody] = splitLeadParagraph(resultsFramework);
   const resultsValidation = loadSection("results_validation", context);
+  const resultsRcep = loadSection("results_rcep", context);
+  const resultsGenerality = loadSection("results_generality", context);
   const [resultsValidationLead, resultsValidationBody] = splitLeadParagraph(resultsValidation);
   const discussion = loadSection("discussion", context);
   const methodsData = loadSection("methods_data", context);
@@ -232,6 +245,8 @@ function buildMainMarkdown(meta, context, evidence, assetFormat = "vector") {
     introduction,
     resultsFramework,
     resultsValidation,
+    resultsRcep,
+    resultsGenerality,
     discussion,
     methodsData,
     methodsEstimator,
@@ -294,6 +309,12 @@ function buildMainMarkdown(meta, context, evidence, assetFormat = "vector") {
     mainBenchmarkTable,
     "",
     resultsValidationBody,
+    "",
+    "## Descriptive topology readouts across trade and mobility panels",
+    "",
+    resultsRcep,
+    "",
+    resultsGenerality,
     "",
     `![Figure 3 | Target-matched reconstruction improves controlled operator and response recovery. a, Across ${context.scale_replications_n15} and ${context.scale_replications_n30} replications at N=15 and N=30, respectively, CP reconstruction reduced median effective-operator error by ${context.operator_gain_n15}% and ${context.operator_gain_n30}% relative to unrestricted local rolling. b, Median finite-horizon unit-shock response error decreased by ${context.response_gain_n15}% and ${context.response_gain_n30}% under the same comparison. Response error uses the common 0.95 spectral-norm stabilization rule; unscaled instability is reported separately. Points show medians and intervals show interquartile ranges; axes are logarithmic and lower values indicate better recovery. c, Both methods return the same declared operator and finite-horizon response endpoint, and both primary scales use 20 matched replications. Stress rows and the separate held-out qualification are reported in Supplementary Note 4.](${path.relative(ROOT, supportedRegimeFigure)}){ width=${supportedRegimeFigureWidth} }`,
     "",

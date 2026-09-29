@@ -6,6 +6,8 @@ Boundary: this register does not strengthen any Data availability, Code availabi
 
 Register date: 2026-08-26 refresh against the current governance records.
 
+Current controlling status, 2026-08-31: the 2026-08-26 `RC-1 = NOT_GRANTED` and `POTENTIAL_ONLY_NOT_ACTIVATED` entries below are retained as historical gate context. The subsequent author-approved activation record controls the current package: `RC-1 = ACTIVATED`, `RC-2 = ACTIVATED_WITH_LIMITATIONS`, and `RCEP F3 = not_identified`. This status update does not close the author-controlled raw-source or public-release rows and does not imply that an external Fig. 2 portal observation exists.
+
 Serves: rigour / reproducibility / clarity / visual communication.
 
 ## Executive Gate Table

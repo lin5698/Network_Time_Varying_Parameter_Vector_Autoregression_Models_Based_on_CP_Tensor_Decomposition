@@ -26,6 +26,8 @@ function checkReaderFacingBoundary() {
     "introduction.md",
     "results_framework.md",
     "results_validation.md",
+    "results_rcep.md",
+    "results_generality.md",
     "discussion.md",
     "methods_data.md",
     "methods_estimator.md",
@@ -48,7 +50,7 @@ function checkReaderFacingBoundary() {
     if (checkFile(file, `active source ${name}`)) texts.push(read(file));
   }
   const joined = texts.join("\n");
-  const blocked = /PAPER_CLAIM_AUDIT|EMPIRICAL_IMPLEMENTATION_AUDIT|\bRCEP\b|\bNYC\b|quarantin|scientific execution authorization/i;
+  const blocked = /PAPER_CLAIM_AUDIT|EMPIRICAL_IMPLEMENTATION_AUDIT|quarantin|scientific execution authorization|Inactive audit-boundary draft/i;
   if (blocked.test(joined)) errors.push("Active reader-facing source graph contains inactive application or internal-governance wording");
   else passes.push("Active reader-facing source graph is source-only");
 }

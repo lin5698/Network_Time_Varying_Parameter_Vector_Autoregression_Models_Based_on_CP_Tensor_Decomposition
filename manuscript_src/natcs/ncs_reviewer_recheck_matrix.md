@@ -5,12 +5,12 @@
 > controlling audits record PASS (`PAPER_CLAIM_AUDIT.json` reason code
 > `rcep_nyc_value_audited_no_active_stale_citations`;
 > `EMPIRICAL_IMPLEMENTATION_AUDIT.json` reason code
-> `rcep_nyc_value_audited_downstream_build_authorized`). Quarantined RCEP/NYC
-> values remain deactivated pending RC-1 promotion authorization (NOT_GRANTED)
-> and RC-2 activation clearance (RCEP flags F1/F2/F3 plus NYC characterization
-> flags), so every row below stays evidence-bound to the active
-> controlled-benchmark record; the inactive audit-boundary drafts remain the
-> only sanctioned home for quarantine-candidate numbers.
+> `rcep_nyc_value_audited_downstream_build_authorized`). On 2026-08-30 the
+> author activated RC-1 (`ACTIVATED`) and RC-2 (`ACTIVATED_WITH_LIMITATIONS`;
+> REC-P3). RCEP and NYC values appear in active text only as descriptive
+> readouts with their limitations disclosed (RCEP F3 `not_identified`, NYC
+> 66/69 evaluated origins, no RNG seed); performance rows below stay bound to
+> the controlled-benchmark record.
 
 Purpose: simulate the first external-review pass after the current Nature Computational Science-oriented revision. This is a working submission-support artifact for author preparation, portal wording and response planning. It is not manuscript text and adds no new evidence.
 
@@ -52,7 +52,7 @@ Local action taken in this memo: turn those risks into reviewer-specific re-chec
 | CP-network improves benchmark recovery. | Useful as evidence, not as the headline. | Strong for replicated N=15/N=30 effective-operator and GIRF rows. | Secondary. | Supported by Table 1, Results validation and numeric evidence check. | Do not generalize beyond reported metrics and replication scope. |
 | The collapsed-map ablation does not supply topology-substitution endpoints. | Strong conceptual ablation. | Strong if described as target loss with a structured-inverse exception, not universal impossibility. | Clear if tied to response-query availability. | Supported by Fig. 1, Fig. 2, Methods theory and Supplementary Note 1. | The tested ablation retains total responses and estimates no inverse to separated blocks; a separately identified inverse would define another reconstruction contract. |
 | RCEP demonstrates topology-sensitive readouts. | Useful empirical anchor. | Acceptable as fixed-path evaluation plus re-estimation boundary. | Main risk: causal/policy overread. | Supported by Fig. 3, Table 2 and robustness notes. | Descriptive conditional propagation under supplied topology matrices. |
-| NYC supports same-operator execution outside trade. | Helpful for breadth. | Useful reproducible second-domain check. | Moderate, because near-null contrast limits scientific discovery claim. | Supported by Fig. 4, Supplementary Table 5 and public data route. | Not broad cross-domain validation. |
+| NYC supports same-operator execution outside trade. | Helpful for breadth. | Useful reproducible second-domain check. | Moderate, because near-null contrast limits scientific discovery claim. | Supported by the NYC descriptive readout in Results and the public data route. | Not broad cross-domain validation. |
 | The package is reproducible enough for review. | Strong if precise. | Strong for derived evidence; incomplete for raw source. | Medium. | Supported by reviewer archive, cleanroom check, manifest and Data/Code availability. | Do not claim fully self-contained raw-to-derived rebuild. |
 
 ## 4. Highest-Priority Revision Guardrails

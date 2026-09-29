@@ -15,7 +15,7 @@ const controlledEnd = builder.indexOf("function buildMainBenchmarkTable", contro
 assert.ok(controlledStart >= 0 && controlledEnd > controlledStart, "Controlled context function must be independently inspectable.");
 const controlledContext = builder.slice(controlledStart, controlledEnd);
 assert.match(controlledContext, /benchmark_summary\.csv/, "Controlled context must read the frozen benchmark summary.");
-assert.doesNotMatch(controlledContext, /summary_metrics|RCEP|NYC|empirical/i, "Controlled context must not read mixed or application evidence.");
+assert.doesNotMatch(controlledContext, /summary_metrics|empirical_output|quarantine/i, "Controlled context must not read mixed or quarantined evidence.");
 assert.match(controlledContext, /replication contract is unmatched/, "Controlled context must fail closed on unmatched comparator coverage.");
 
 const syncStart = builder.indexOf("function syncSourceOnlySubmissionPackage");
@@ -47,8 +47,8 @@ assert.match(activeEntry, /computeControlledContext\(meta\)/, "The active entry 
 assert.match(activeEntry, /syncSourceOnlySubmissionPackage/, "The active entry point must use the source-only package synchronizer.");
 assert.doesNotMatch(
   activeEntry,
-  /buildNatcsEvidence|summary_metrics|computeContext\(|syncLegacyEmpiricalSubmissionPackage|buildNatcsReviewerArchive|build_natcs_fig2_portal_surrogate|RCEP|NYC/i,
-  "The active call graph must not touch mixed evidence, application support or historical portal artifacts.",
+  /buildNatcsEvidence|summary_metrics|computeContext\(|syncLegacyEmpiricalSubmissionPackage|buildNatcsReviewerArchive|build_natcs_fig2_portal_surrogate/i,
+  "The active call graph must not touch mixed evidence or historical portal artifacts.",
 );
 
 for (const removedLegacyFunction of [
@@ -70,15 +70,22 @@ for (const removedLegacyFunction of [
   assert.doesNotMatch(builder, new RegExp(`function ${removedLegacyFunction}\\b`), `Active builder must not retain legacy function ${removedLegacyFunction}.`);
 }
 
-const archivedLegacyBuilder = read("scripts/_archives/legacy_empirical_submission_support_builder_20260731.mjs");
-assert.match(archivedLegacyBuilder, /ARCHIVED LEGACY EMPIRICAL SUBMISSION SUPPORT/);
-assert.match(archivedLegacyBuilder, /throw new Error\(/, "Archived empirical support must fail closed on import or execution.");
+// scripts/_archives/ is gitignored, so a clean checkout has no archived
+// builder. When a local copy exists it must still fail closed.
+const archivedLegacyRelative = "scripts/_archives/legacy_empirical_submission_support_builder_20260731.mjs";
+if (fs.existsSync(path.join(root, archivedLegacyRelative))) {
+  const archivedLegacyBuilder = read(archivedLegacyRelative);
+  assert.match(archivedLegacyBuilder, /ARCHIVED LEGACY EMPIRICAL SUBMISSION SUPPORT/);
+  assert.match(archivedLegacyBuilder, /throw new Error\(/, "Archived empirical support must fail closed on import or execution.");
+}
 
 const activeReaderSources = [
   "abstract.md",
   "introduction.md",
   "results_framework.md",
   "results_validation.md",
+  "results_rcep.md",
+  "results_generality.md",
   "discussion.md",
   "methods_data.md",
   "methods_estimator.md",
@@ -96,7 +103,7 @@ const activeReaderSources = [
   "code_availability.md",
 ].map((name) => read(path.join("manuscript_src/natcs", name))).join("\n");
 
-assert.doesNotMatch(activeReaderSources, /PAPER_CLAIM_AUDIT|EMPIRICAL_IMPLEMENTATION_AUDIT|\bRCEP\b|\bNYC\b|quarantin|scientific execution authorization/i, "Reader-facing active sources must not expose internal governance or inactive applications.");
+assert.doesNotMatch(activeReaderSources, /PAPER_CLAIM_AUDIT|EMPIRICAL_IMPLEMENTATION_AUDIT|quarantin|scientific execution authorization|Inactive audit-boundary draft/i, "Reader-facing active sources must not expose internal governance or inactive applications.");
 
 for (const pattern of [
   /\bE4-R008\b/i,

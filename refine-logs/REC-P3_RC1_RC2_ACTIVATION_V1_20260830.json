@@ -1,0 +1,21 @@
+{
+  "record_type": "author_activation_decision",
+  "recorded": "2026-08-30",
+  "rc1_manuscript_promotion": "ACTIVATED",
+  "rc2_empirical_claim_activation": "ACTIVATED_WITH_LIMITATIONS",
+  "scientific_experiments_rerun": false,
+  "activated_claim_scope": "descriptive_reproducible_empirical_readouts_only",
+  "excluded_claims": ["policy causality", "endogenous network formation", "mechanism identification", "broad empirical generality", "latent-network recovery"],
+  "limitations": {
+    "rcep_f1_girf_date_substitution": "accepted_limitation_no_date_specific_girf_claim",
+    "rcep_f2_point_outside_bootstrap_interval": "accepted_limitation_descriptive_readouts_only",
+    "rcep_f3_stable_dates regression": "not_identified",
+    "nyc_stability_rate_semantics": "accepted_limitation",
+    "nyc_girf_date_mapping": "accepted_limitation_no_date_specific_girf_claim",
+    "nyc_origins": "66 evaluated of 69 available reported",
+    "nyc_negative_late_g_net": "accepted_limitation_descriptive_only",
+    "missing_rng_seed": "accepted_reproducibility_limitation"
+  },
+  "historical_audits_changed": false,
+  "scientific_execution_authorized": false
+}
