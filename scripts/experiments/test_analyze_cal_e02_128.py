@@ -17,9 +17,7 @@ from scripts.experiments.test_analyze_cal_e01_75 import (
 
 ROOT = Path(__file__).resolve().parents[2]
 QUARANTINE = ROOT / "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3"
-REGISTER = Path(
-    "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/output/ncs_review_corpus/v1_author_decision_register.json"
-)
+REGISTER = ROOT / "output/ncs_review_corpus/v1_author_decision_register.json"
 AUTHORIZATION_V2 = ROOT / "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json"
 FROZEN_PATHS = {
     "results": QUARANTINE / "e3-results.json",
