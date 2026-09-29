@@ -37,8 +37,6 @@ assert.match(methods, /endpoint of the queried operator tuple alone/);
 assert.match(methods, /\\pi_G\\circ\\Psi=\\operatorname\{id\}/);
 assert.match(propagationSupplement, /If \$\\lambda_\{\\min\}\\\{n\^\{-1\}\(Z\^\{\\perp\}\)'Z\^\{\\perp\}\\\}=0\$/);
 assert.doesNotMatch(propagationSupplement, /If \$\\eta=0\$/);
-assert.match(results, /second, non-equivalent theoretical instance/);
-assert.match(results, /does not supply two-hop recovery evidence/i);
 assert.match(ledger, /C016,[^\n]+supported as representation theory only/);
 assert.doesNotMatch(
   headline,

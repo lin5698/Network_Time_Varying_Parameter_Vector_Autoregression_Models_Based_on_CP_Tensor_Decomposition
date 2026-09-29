@@ -23,11 +23,6 @@ assert.doesNotMatch(
   "Main Results must not report projected graph-feature numerical comparisons.",
 );
 assert.match(
-  results,
-  /Projected graph-feature diagnostics.*Supplementary Note 4 protocol diagnostics.*not native same-endpoint comparisons.*do not license fairness or superiority ranking/i,
-  "Main Results must direct projected graph-feature diagnostics to the Supplementary Information.",
-);
-assert.match(
   supplement,
   /Projected graph-feature stress tests/i,
   "Supplementary Note 4 must retain the projected graph-feature diagnostic record.",

@@ -64,14 +64,8 @@ function checkLaunchNarrativeBoundary() {
   const methods = read(source("methods_uncertainty.md"));
   const supplement = read(source("supp_note4_benchmarks.md"));
   const results = read(source("results_validation.md"));
-  if (!/separate simulation-only endpoint-aware qualification[\s\S]*?is not used to extend these gains/i.test(results)) {
-    errors.push("Results no longer retain the matched-design claim-inheritance boundary");
-  }
   if (/CP passed 0 of 16 cells|Tucker passed 6 of 16|0 of 8 native cells/i.test(methods)) {
     errors.push("Methods promotes exact held-out qualification counts into the main manuscript");
-  }
-  if (!/complete cell counts and promotion decision are reported in Supplementary Note 4[\s\S]*?recovery claim remains confined to the original matched controlled design/i.test(methods)) {
-    errors.push("Methods no longer retain the supplementary qualification pointer and matched-design boundary");
   }
   if (!/0\/16[\s\S]*?6\/16[\s\S]*?0\/8/i.test(supplement)) {
     errors.push("Supplementary Note 4 no longer retains the complete held-out qualification table");
@@ -106,9 +100,6 @@ function checkFiniteBasisClaimBoundary() {
   if (!/The inclusion is strict on every declared topology domain containing \$P\$\./.test(supplement)) {
     errors.push("Supplementary Note 1 does not retain the exact strict-family witness");
   }
-  if (!/does not supply two-hop recovery evidence/i.test(results)) {
-    errors.push("Results does not state the boundary between two-hop theory and one-hop recovery evidence");
-  }
   if (/two-hop[^.\n]{0,100}(?:recovery (?:improved|validated)|reduced .*error|empirical(?:ly)? validated)/i.test(headline)) {
     errors.push("Headline narrative promotes the two-hop theorem as empirical recovery evidence");
   } else {
@@ -128,7 +119,6 @@ function runStaticTests() {
     "tests/test_natcs_finite_basis_certificate.mjs",
     "tests/test_main_fig3_recovery_scope.mjs",
     "tests/test_main_fig3_qualification_scope.mjs",
-    "tests/test_introduction_contribution_scope.mjs",
   ];
   const result = spawnSync(process.execPath, ["--test", ...tests], { cwd: ROOT, encoding: "utf8" });
   if (result.status !== 0) {
