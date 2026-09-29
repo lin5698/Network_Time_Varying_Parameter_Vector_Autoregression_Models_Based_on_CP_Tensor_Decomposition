@@ -1,0 +1,56 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-semantic-recheck-service-incident-v2",
+  "record_id": "REC-M5-semantic-recheck-service-incident-v2-20260812",
+  "generated_at": "2026-08-12",
+  "phase": "M5-C",
+  "result": "RETRY_WAVE_SERVICE_BLOCKED",
+  "required_model": "gpt-5.6-luna",
+  "required_reasoning_effort": "max",
+  "current_patch": {
+    "markdown_sha256": "336c3cc4e25276ac6eeb56d597b3fd8486e8a90d02c7d977ace172048138c07d",
+    "manifest_sha256": "8d9b1d2a7536daa6a7f7cb3ade5bc0f5b0674d2087d5efeb2fd2a8dcbf3e603a"
+  },
+  "retry_attempts": [
+    {
+      "role": "scientific-boundary",
+      "thread_id": "019ff358-e63f-7ca0-815a-807df53e6d59",
+      "status": "SERVICE_INTERRUPTED",
+      "error": "503 Service Unavailable",
+      "duration_ms": 217674,
+      "usable_receipt": false
+    },
+    {
+      "role": "editorial-traceability",
+      "thread_id": "019ff358-e282-7ee3-af04-2e1848395c76",
+      "status": "SERVICE_INTERRUPTED",
+      "error": "503 Service Unavailable",
+      "duration_ms": 245439,
+      "usable_receipt": false
+    },
+    {
+      "role": "governance-manifest",
+      "thread_id": "019ff358-dec4-74f2-9e24-b3d74157c5b5",
+      "status": "SERVICE_INTERRUPTED",
+      "error": "503 Service Unavailable",
+      "duration_ms": 225321,
+      "usable_receipt": false
+    }
+  ],
+  "post_attempt_verification": {
+    "patch_hashes_unchanged": true,
+    "author_input_hashes_unchanged": true,
+    "target_semantic_receipts_created": 0,
+    "m4_allowlisted_validator": "247/247 PASS"
+  },
+  "adjudication": {
+    "overall": "BLOCKED_NOT_PASS",
+    "reason": "All current-version retry tasks ended with service failure and produced no semantic receipt."
+  },
+  "retry_policy": "Wave exhausted; do not retry again until a later continuation or verified service recovery.",
+  "authorization_boundary": {
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  }
+}

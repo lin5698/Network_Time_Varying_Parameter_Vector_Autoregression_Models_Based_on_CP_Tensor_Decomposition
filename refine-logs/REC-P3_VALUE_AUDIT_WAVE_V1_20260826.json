@@ -1,0 +1,60 @@
+{
+  "record_class": "p3_wave_consolidation_record",
+  "record_id": "REC-P3_VALUE_AUDIT_WAVE_V1_20260826",
+  "generated": "2026-08-26",
+  "timezone_basis": "Asia/Shanghai",
+  "wave_md_sha256": "b36dfc0bcd42b3a62844f95532fe7f0867ea44a526556c2cdabe9d964c44a6da",
+  "lanes": {
+    "nyc_01": {
+      "overall": "SUPPORTED_FOR_DOWNSTREAM_REVIEW",
+      "receipts": [
+        "refine-logs/PSA_NYC_01_VALUE_AUDIT_20260826.md",
+        "refine-logs/PSA_NYC_01_VALUE_AUDIT_20260826.json"
+      ],
+      "vt1": "PASS_qualified",
+      "measurement_file": "tmp/nyc_vt1_measurement_20260826.json",
+      "match": "18/18"
+    },
+    "rcep_03": {
+      "overall": "SUPPORTED_FOR_DOWNSTREAM_REVIEW",
+      "receipts": [
+        "refine-logs/PSA_RCEP_03_VALUE_AUDIT_20260826.md",
+        "refine-logs/PSA_RCEP_03_VALUE_AUDIT_20260826.json"
+      ],
+      "vt1": "PASS_qualified_instrument_mediated",
+      "measurement_file": "tmp/rcep_vt1_measurement_20260826.json",
+      "match": "36/36"
+    }
+  },
+  "instrumentation_topology": "orchestrator-executed V-T1 hashing; lane-party adjudication; spawn failures disclosed by both lanes",
+  "row12_incident": "CLOSED_transcription_error",
+  "row12_closure_checks": {
+    "git_history_today_changes": 0,
+    "inventory_mtime": "2026-08-12T13:41:40",
+    "fresh_png_sha256": "914ee3a79686a007b02c349883f2b82f655c1c1f9867c68fb3429d26c78ed91f"
+  },
+  "flags_carried_forward": [
+    "RCEP_F1_girf_date_substitution_undocumented",
+    "RCEP_F2_point_outside_bootstrap_CI",
+    "RCEP_F3_stable_dates_not_identified",
+    "NYC_stability_rate_semantics",
+    "NYC_girf_date_remap",
+    "NYC_origins_66_of_69",
+    "NYC_negative_late_g_net",
+    "no_rng_seed_recorded_both_trees"
+  ],
+  "standing_blockers": [
+    "PAPER_CLAIM_AUDIT=BLOCKED",
+    "EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL"
+  ],
+  "ceiling": "self_supervised_proxy",
+  "activated_claims": [],
+  "stage2_dispatched": "p3_paper_to_evidence_audit",
+  "not_done": [
+    "promotion",
+    "evidence mutation",
+    "claim activation",
+    "manuscript edit",
+    "make/test/scientific execution"
+  ]
+}

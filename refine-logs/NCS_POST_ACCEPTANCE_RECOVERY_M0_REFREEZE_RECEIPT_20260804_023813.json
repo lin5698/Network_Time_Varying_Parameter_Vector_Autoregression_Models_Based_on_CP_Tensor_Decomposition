@@ -1,0 +1,120 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m0-refreeze-receipt-v1",
+  "receipt_id": "ncs-post-acceptance-recovery-m0-refreeze-20260804-023813-cst",
+  "generated_at": "2026-08-04T02:38:13+08:00",
+  "provenance": {
+    "parent_task": "019fbdde-2c02-7662-b9d2-9dc2b70e1253",
+    "delegated_model": "gpt-5.6-luna",
+    "delegated_reasoning_effort": "max",
+    "execution_mode": "recovery_governance_only"
+  },
+  "scope": {
+    "stage": "REC-M0",
+    "register_decision_mutation": false,
+    "manuscript_mutation": false,
+    "promotion_mutation": false,
+    "frozen_e4_r3_mutation": false,
+    "scientific_analysis_executed": false,
+    "m2_execution_in_this_task": false
+  },
+  "canonicalization": {
+    "algorithm": "recursive_object_key_sort_then_JSON.stringify_utf8_no_whitespace",
+    "input": "structured JSON item object parsed from register.items",
+    "array_order": "preserved",
+    "number_policy": "JSON parser/stringifier finite JSON numbers only",
+    "string_encoding": "UTF-8",
+    "string_slicing": false
+  },
+  "frozen_register": {
+    "path": "output/ncs_review_corpus/v1_author_decision_register.json",
+    "schema_version": "ncs-author-decision-register-v1",
+    "sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "expected_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2"
+  },
+  "current_v1_items": {
+    "V1-026": {
+      "register_key": "CAL-E01:75",
+      "item_index": 75,
+      "priority": "P0",
+      "action_class": "DIRECT_TEXT_REVISION",
+      "canonical_json_bytes": 2111,
+      "canonical_sha256": "eb30214e8c353b27d446c1c77242bd6b2dd246841150205c8f339ddafc8f7e20",
+      "mapping_match": true
+    },
+    "V1-033": {
+      "register_key": "CAL-E02:128",
+      "item_index": 128,
+      "priority": "P0",
+      "action_class": "DIRECT_TEXT_REVISION",
+      "canonical_json_bytes": 2094,
+      "canonical_sha256": "79937fd8b053e2bc7fd9abb864938b35a72134ecf93f5f621d7c8088fd383630",
+      "mapping_match": true
+    },
+    "V1-035": {
+      "register_key": "CAL-E02:135",
+      "item_index": 135,
+      "priority": "P1",
+      "action_class": "NEW_ANALYSIS_OR_EXPERIMENT",
+      "canonical_json_bytes": 2152,
+      "canonical_sha256": "c9b9c201f94a7fd37b2049bfc44220258947f22483e769b39c19253a37e55ee8",
+      "mapping_match": true
+    },
+    "V1-045": {
+      "register_key": "CAL-E03:164",
+      "item_index": 164,
+      "priority": "P0",
+      "action_class": "DIRECT_TEXT_REVISION",
+      "canonical_json_bytes": 2281,
+      "canonical_sha256": "25cd8fbf2e623cfd2fbcdc163f50959f1beb8e8cb1b59322da78d191e802cf82",
+      "mapping_match": true
+    }
+  },
+  "audit_and_frozen_input_hashes": {
+    "acceptance_json": {
+      "path": "refine-logs/NCS_FOUR_ANALYSIS_ACCEPTANCE_20260804_021934.json",
+      "sha256": "122b62010a7ea67eb230a224dc9b88a5098cddb19565f15c0255835253f87691"
+    },
+    "acceptance_markdown": {
+      "path": "refine-logs/NCS_FOUR_ANALYSIS_ACCEPTANCE_20260804_021934.md",
+      "sha256": "2f18eee4146d2f13c8077f6ac9e134ffff582cd30c665c0e0be6bd88357f9989"
+    },
+    "prior_authorization": {
+      "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_20260804_010454.json",
+      "sha256": "bade9161de7236348c07097f36c8d7a163ead87173ae4d388946b17864c0f85e"
+    },
+    "e4_r3_results": {
+      "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json",
+      "sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032"
+    },
+    "e4_r3_execution_manifest": {
+      "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+      "sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d"
+    },
+    "e4_r3_execution_complete": {
+      "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+      "sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b"
+    },
+    "e4_r3_terminal_inventory": {
+      "path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+      "sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+    },
+    "e4_r3_candidate": {
+      "path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json",
+      "sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6"
+    },
+    "e4_r3_workspace_authorization": {
+      "path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+      "sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+    }
+  },
+  "gate": {
+    "register_file_sha256_match": true,
+    "register_schema_match": true,
+    "item_mapping_match": true,
+    "item_payload_hashes_present": true,
+    "overall": "PASS",
+    "failure_action": "STOP_BEFORE_M1_IF_ANY_FALSE"
+  },
+  "result": "REC-M0_PASS",
+  "next_stage": "REC-M1_AUTHORIZED_BY_SEPARATE_VERSIONED_AUTHORIZATION_V2"
+}

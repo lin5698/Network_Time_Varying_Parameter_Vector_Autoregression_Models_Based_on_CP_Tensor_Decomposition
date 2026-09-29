@@ -1,0 +1,42 @@
+{
+  "blockers": [
+    "No serialized endpoint provenance or independent endpoint audit receipt.",
+    "No explicit record-level train/validation/evaluation partition label."
+  ],
+  "endpoint_scope": "results.results.recovery_records",
+  "field_presence_counts": {
+    "estimated_spectral_radius": 46080,
+    "horizon": 46080,
+    "operator_mse": 46080,
+    "query_class": 46080,
+    "response_mse": 46080,
+    "status": 46080,
+    "target_time": 46080,
+    "truth_spectral_radius": 46080
+  },
+  "finite_metric_counts": {
+    "estimated_spectral_radius": 46080,
+    "operator_mse": 46080,
+    "response_mse": 46080,
+    "truth_spectral_radius": 46080
+  },
+  "independent_endpoint_verdict": "PARTIAL",
+  "independent_provenance_fields_present": [],
+  "interpretation": "Metric presence is auditable; endpoint independence is not established by metric names alone.",
+  "metric_presence_verdict": "SUPPORTED",
+  "record_count": 46080,
+  "record_level_separation_fields_present": [
+    "validation_loss"
+  ],
+  "required_endpoint_fields": [
+    "operator_mse",
+    "response_mse",
+    "estimated_spectral_radius",
+    "truth_spectral_radius",
+    "query_class",
+    "horizon",
+    "target_time",
+    "status"
+  ],
+  "schema_version": "ncs-cal-e02-135-independent-endpoint-audit-v1"
+}

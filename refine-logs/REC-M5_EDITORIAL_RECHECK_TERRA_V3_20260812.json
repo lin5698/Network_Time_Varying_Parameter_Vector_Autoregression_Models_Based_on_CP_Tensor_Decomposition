@@ -1,0 +1,99 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-editorial-recheck-terra-v3",
+  "record_id": "REC-M5-editorial-recheck-terra-v3-20260812",
+  "generated_at": "2026-08-12",
+  "phase": "M5-C",
+  "task_mode": "DIRECT_SELF_ADJUDICATED_REVIEW_ONLY",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "max",
+  "direct_self_adjudication": true,
+  "service_status": "DIRECT_SELF_ADJUDICATION_COMPLETED",
+  "external_model_call": "NOT_USED",
+  "external_payload": "NOT_USED",
+  "verdict": "BLOCKED",
+  "result": "BLOCKED_INTERNAL_G04_PROCESS_NOTE",
+  "inputs": [
+    {
+      "path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.md",
+      "sha256": "d8d56ff58c0663a3326eb50df1dc6640ef620c0ae59ea2b5c59ef4eaeb65f3e6",
+      "role": "V10 baseline"
+    },
+    {
+      "path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.json",
+      "sha256": "3e1d41edebe46af78421a2e8be12eb7c6f0684af893155208df977ae5915b184",
+      "role": "V10 baseline manifest"
+    },
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "sha256": "b95a09609cf45477bbdf9eac78be84021a4c177b5d4028228ed804fa22ba5891",
+      "role": "current review patch Markdown"
+    },
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "sha256": "8c0546a7011a82042661f3423ca68a4dbab19044261a4280037fd996279124de",
+      "role": "current review patch JSON"
+    },
+    {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341",
+      "role": "current author-input Markdown"
+    },
+    {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "sha256": "c7664285eff125335e75c1f13f51b20d38a4b8a368c87db11079386f9e7c56f5",
+      "role": "current author-input JSON"
+    }
+  ],
+  "checks": {
+    "v10_exists_and_hashes_match": "PASS",
+    "patch_json_parse": "PASS",
+    "author_input_json_parse": "PASS",
+    "unit_count": "PASS_26",
+    "unit_uniqueness": "PASS_26_UNIQUE",
+    "all_candidates_not_applied": "PASS",
+    "author_input_needed_empty": "PASS",
+    "author_input_still_unresolved_empty": "PASS",
+    "all_required_fields_resolved": "PASS",
+    "contradictions_reviewed": "PASS",
+    "placeholder_scan": "PASS_ZERO_DOUBLE_BRACE_TOKENS",
+    "g06_grammar": "PASS_FIXED_COUNT_OF_60",
+    "pre_apply_anchor_groups": "PASS_10_OF_10",
+    "source_unavailable_boundaries": "PASS_SOURCE_01_02_03_EXPLICIT",
+    "generated_tex_prohibition": "PASS",
+    "no_application_authorization": "PASS",
+    "service_failure": "NONE"
+  },
+  "finding": {
+    "id": "TERRA-V3-E1",
+    "severity": "HIGH",
+    "status": "BLOCKING",
+    "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+    "line": 90,
+    "summary": "Unmarked AIN-RESULT process note sits between proposed G04 reader paragraphs, names a partial M5-A response and stale remaining-author-input state, and could be copied into manuscript prose.",
+    "required_resolution": "Move the note to an explicitly manifest-only traceability section or remove it before the next Terra/max review."
+  },
+  "authorization_boundary": {
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_execution": "NOT_AUTHORIZED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "authorization_file_mutation": "PROHIBITED",
+    "generated_tex_mutation": "PROHIBITED",
+    "git_operations": "NONE"
+  },
+  "changed_paths": [
+    "refine-logs/REC-M5_EDITORIAL_RECHECK_TERRA_V3_20260812.md",
+    "refine-logs/REC-M5_EDITORIAL_RECHECK_TERRA_V3_20260812.json"
+  ],
+  "operation_policy": {
+    "review_only": true,
+    "existing_files_modified": false,
+    "manuscript_modified": false,
+    "register_modified": false,
+    "author_input_modified": false,
+    "patch_modified": false,
+    "authorization_modified": false,
+    "git_operations": "NONE"
+  },
+  "next_gate": "BLOCKED_PENDING_G04_PROCESS_NOTE_RELOCATION_OR_REMOVAL_AND_FRESH_TERRA_MAX_REVIEW"
+}

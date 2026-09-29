@@ -1,0 +1,235 @@
+{
+  "checks": [
+    {
+      "check_id": "seed_scenario_records",
+      "details": "All serialized recovery records are included in the cross-seed/scenario audit; no cell is selected by stability or outcome.",
+      "evidence": [
+        "results.results.recovery_records",
+        "results.results.recovery_summary",
+        "results.results.paired_common_completion"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "check_id": "train_validation_evaluation_separation",
+      "details": "Chronological partitions and a validation loss are declared externally, but record-level split labels and a serialized reconstruction/response separation audit are absent.",
+      "evidence": [
+        "candidate.bindings.configuration.split_policy",
+        "tuning_split.content.chronological_partitions",
+        "results.results.recovery_records[*].validation_loss",
+        "results.results.recovery_records[*].response_mse"
+      ],
+      "protocol_level_partition_paths": [
+        "bindings.configuration.bootstrap_refit_history.evaluation_target_times",
+        "bindings.configuration.split_policy",
+        "bindings.preoutcome_artifacts.authorization_gate_tests",
+        "bindings.preoutcome_artifacts.authorization_gate_tests.path",
+        "bindings.preoutcome_artifacts.authorization_gate_tests.sha256",
+        "bindings.preoutcome_artifacts.tuning_split_manifest",
+        "bindings.preoutcome_artifacts.tuning_split_manifest.path",
+        "bindings.preoutcome_artifacts.tuning_split_manifest.sha256",
+        "bindings.source_hashes./Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/scripts/experiments/test_e3_family2_authorized_executor.py",
+        "bindings.source_hashes./Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/scripts/experiments/test_e3_family2_candidate_package.py",
+        "bindings.source_hashes./Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/scripts/experiments/test_e3_family2_gate_receipt.py",
+        "bindings.source_hashes./Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/scripts/experiments/test_e3_family2_preoutcome.py",
+        "bindings.source_hashes./Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/scripts/experiments/test_e3_family2_synthetic_runner.py",
+        "bindings.source_hashes./Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/scripts/experiments/test_e3_synthetic_core.py",
+        "content.bootstrap_refit_history.evaluation_target_times",
+        "content.chronological_partitions",
+        "content.chronological_partitions.evaluation",
+        "content.chronological_partitions.evaluation.start_inclusive",
+        "content.chronological_partitions.evaluation.stop_exclusive",
+        "content.chronological_partitions.train",
+        "content.chronological_partitions.train.start_inclusive",
+        "content.chronological_partitions.train.stop_exclusive",
+        "content.chronological_partitions.validation",
+        "content.chronological_partitions.validation.start_inclusive",
+        "content.chronological_partitions.validation.stop_exclusive"
+      ],
+      "record_level_partition_fields": [
+        "selection_validation_loss",
+        "validation_loss"
+      ],
+      "status": "PARTIAL"
+    },
+    {
+      "check_id": "selection_provenance",
+      "details": "Selected values and validation losses are repeated in endpoint records and the candidate lists/tie-break are frozen, but candidate-wise loss vectors and per-record selection events are not serialized.",
+      "evidence": [
+        "results.results.recovery_records[*].selected_hyperparameter",
+        "results.results.recovery_records[*].validation_loss",
+        "tuning_split.content.candidate_lists",
+        "tuning_split.content.selection_loss",
+        "tuning_split.content.tie_break"
+      ],
+      "protocol_level_selection_paths": [
+        "bindings.configuration.bootstrap_procedure.parameter_selection",
+        "bindings.configuration.cross_generator_failure_boundary.stable_cell_selection",
+        "content.bootstrap_procedure.parameter_selection",
+        "content.candidate_lists",
+        "content.candidate_lists.causal_temporal_smoother",
+        "content.candidate_lists.fixed_rank_basis",
+        "content.candidate_lists.local_structured",
+        "content.maximum_budget",
+        "content.selection_loss",
+        "content.tie_break"
+      ],
+      "record_level_selection_fields": [
+        "selected_hyperparameter",
+        "selected_hyperparameter",
+        "selection_status",
+        "selection_validation_loss",
+        "validation_loss"
+      ],
+      "status": "PARTIAL"
+    },
+    {
+      "check_id": "stopping_rule_variants",
+      "details": "No stopping variant, checkpoint, iteration trajectory, patience, or early-stopping field is serialized. No conclusion about absence of overfitting is licensed.",
+      "evidence": [
+        "results.results.recovery_records[*]",
+        "results.results.interval_records[*]",
+        "tuning_split.content"
+      ],
+      "protocol_level_stopping_paths": [],
+      "record_level_stopping_fields": [],
+      "status": "BLOCKED"
+    },
+    {
+      "check_id": "independent_endpoint_provenance",
+      "details": "Operator and response endpoint metrics are present, but the frozen records do not carry independent endpoint source/provenance or a separate endpoint audit receipt.",
+      "endpoint_provenance_fields": [],
+      "evidence": [
+        "results.results.recovery_records[*].operator_mse",
+        "results.results.recovery_records[*].response_mse",
+        "results.results.recovery_records[*].query_class",
+        "results.results.recovery_records[*].target_time"
+      ],
+      "status": "PARTIAL"
+    },
+    {
+      "check_id": "failure_and_nonfinite_retention",
+      "details": "All status classes remain auditable. The observed frozen result happens to contain zero non-AVAILABLE recovery/interval/bootstrap outcomes; zero is reported explicitly.",
+      "evidence": [
+        "candidate.bindings.configuration.cross_generator_failure_boundary",
+        "candidate.bindings.configuration.bootstrap_procedure.failure_retention",
+        "results.results.recovery_records[*].status",
+        "results.results.interval_records[*].bootstrap_status_counts"
+      ],
+      "status": "SUPPORTED"
+    },
+    {
+      "check_id": "frozen_input_integrity",
+      "details": "E4-r3 result, manifest, candidate and authorization hashes are checked. The formal register observed on the external read-only path is compared separately and must not be silently treated as the declared frozen register.",
+      "e4_r3_hashes_match": true,
+      "evidence": [
+        "authorization.frozen_e4_r3_inputs",
+        "input-manifest.json"
+      ],
+      "register_sha256_matches": true,
+      "status": "PARTIAL"
+    }
+  ],
+  "derived_seed_scenario_sensitivity": "SUPPORTED",
+  "execution_manifest_status": "RUNNING_QUARANTINE_ONLY",
+  "formal_register_item": {
+    "action_class": "NEW_ANALYSIS_OR_EXPERIMENT",
+    "applicability": "ANALOGICAL",
+    "applicability_rationale_zh": "\u5f53\u524d benchmark \u6ca1\u6709\u516c\u5f00 validation-loss trajectory \u6216 early-stopping selection\uff1b\u8fd9\u4e0e V1-032 \u7684\u4e00\u822c optimizer sensitivity \u4e0d\u540c\uff0c\u5f53\u524d\u9879\u4e13\u95e8\u5bf9\u5e94\u8bad\u7ec3\u8fc7\u7a0b\u8bc1\u636e\uff0c\u4e0d\u80fd\u5047\u88c5\u5df2\u6709\u3002",
+    "author_approval_required": true,
+    "author_decision": "PENDING",
+    "calibration_concern_domain": "STATISTICS_UNCERTAINTY",
+    "calibration_cost_level": "MEDIUM",
+    "calibration_issue_ids": [
+      "CAL-E02-I11"
+    ],
+    "calibration_requested_action": "ROBUSTNESS_CHECK",
+    "calibration_source": {
+      "calibration_id": "CAL-E02",
+      "doi": "10.1038/s43588-024-00698-1",
+      "title": "Toward subtask-decomposition-based learning and benchmarking for predicting genetic perturbation outcomes and beyond"
+    },
+    "cost_level": "MEDIUM",
+    "current_response_status": "PARTIAL",
+    "item_id": "V1-035",
+    "item_index": 135,
+    "manuscript_risk_status": "NO_VALIDATION_LOSS_CLAIM",
+    "minimum_action_zh": "\u4e0d\u8865\u5199\u4e0d\u5b58\u5728\u7684 validation-loss evidence\uff1b\u5728 methods_estimator.md \u548c supp_note6_robustness.md \u660e\u786e headline claim \u4e0d\u4f9d\u8d56 early-stopping \u6216 test-loss trajectory\u3002",
+    "new_analysis_or_experiment_requires_author_approval": true,
+    "priority": "P1",
+    "public_evidence": {
+      "paragraph_ids": [
+        "CAL-E02-PR-P0002-003",
+        "CAL-E02-PR-P0058-002",
+        "CAL-E02-PR-P0060-007"
+      ],
+      "source_type": "PUBLIC_REVIEW_EVIDENCE"
+    },
+    "reviewer_worry_zh": "\u9a8c\u8bc1\u635f\u5931\u6301\u7eed\u4e0a\u5347\u53ef\u80fd\u63d0\u793a\u8fc7\u62df\u5408\uff0c\u5e94\u89e3\u91ca\u6d4b\u8bd5\u6027\u80fd\u53ca\u6b63\u5219\u5316/early stopping\u3002",
+    "source_matrix_disposition": "ACCEPT_B",
+    "source_residual_limit_zh": "\u6700\u4f73 checkpoint \u9009\u62e9\u4e0d\u80fd\u8bc1\u660e\u6ca1\u6709\u8fc7\u62df\u5408\uff1b\u516c\u5f00\u6750\u6599\u672a\u663e\u793a\u5b8c\u6574 early-stopping \u6d88\u878d",
+    "stop_condition_zh": "\u7a3f\u4ef6\u4e0d\u4f7f\u7528 validation-loss trend \u652f\u6301\u7ed3\u8bba\uff1b\u56fa\u5b9a ALS contract \u4e0e observed failure/stability records \u8db3\u4ee5\u652f\u6491\u5f53\u524d bounded claim\u3002",
+    "strong_evidence_action_zh": "\u4ec5\u5728\u4f5c\u8005\u6279\u51c6\u540e\uff0c\u8bb0\u5f55\u8bad\u7ec3/\u91cd\u6784\u8fed\u4ee3\u8f68\u8ff9\u5e76\u8bbe\u8ba1 frozen validation/early-stopping comparison\uff1b\u4e0d\u80fd\u628a\u7ed3\u679c\u81ea\u52a8\u5347\u7ea7\u4e3a generalization proof\u3002",
+    "target_manuscript_files": [
+      "manuscript_src/natcs/methods_estimator.md",
+      "manuscript_src/natcs/supp_note6_robustness.md",
+      "manuscript_src/natcs/supp_note8_scope.md"
+    ]
+  },
+  "frozen_result_metadata": {
+    "promotion": "PROHIBITED_PENDING_DUPLICATE_AND_RESULT_TO_CLAIM_AUDIT",
+    "schema_version": "e3-family2-synthetic-quarantine-results-v3",
+    "status": "COMPLETE_QUARANTINE_ONLY"
+  },
+  "full_overfitting_or_stopping_claim": "BLOCKED",
+  "overall_verdict": "PARTIAL",
+  "record_level_fields": {
+    "interval_records": [
+      "bootstrap_retune_attempts",
+      "bootstrap_status_counts",
+      "completed_replicates",
+      "coverage",
+      "estimated_spectral_radius",
+      "family",
+      "horizon",
+      "mean_interval_width",
+      "method",
+      "n",
+      "query_class",
+      "raw_response_mse",
+      "requested_replicates",
+      "seed",
+      "selected_hyperparameter",
+      "selection_status",
+      "selection_validation_loss",
+      "stability_qualified_response_mse",
+      "status",
+      "target_time",
+      "truth_spectral_radius"
+    ],
+    "recovery_records": [
+      "estimated_spectral_radius",
+      "family",
+      "horizon",
+      "method",
+      "n",
+      "operator_mse",
+      "query_class",
+      "response_mse",
+      "seed",
+      "selected_hyperparameter",
+      "status",
+      "target_time",
+      "truth_spectral_radius",
+      "validation_loss"
+    ],
+    "result_partition_key_names": [
+      "selection_validation_loss",
+      "validation_loss"
+    ]
+  },
+  "register_key": "CAL-E02:135",
+  "register_sha256_expected": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+  "register_sha256_observed": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+  "schema_version": "ncs-cal-e02-135-sufficiency-audit-v1"
+}

@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import { spawnSync } from "child_process";
+import { requireReleaseableNatcsEvidence } from "./natcs_utils.mjs";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const SUBMISSION_MATERIALS = path.join(ROOT, "output", "submission_package", "natcs_current", "03_submission_materials");
@@ -113,6 +114,10 @@ function markdownTable(rows) {
 }
 
 function main() {
+  // Fail closed while the controlling audits are blocked: the freeze manifest
+  // certifies upload-facing artifact hashes and may not be produced from
+  // stale blocked evidence.
+  requireReleaseableNatcsEvidence(ROOT);
   runReleaseSafetyAudit();
   const stampedUploadZip = newestStampedUploadZip();
   const reviewerArchive = path.join(ROOT, "output", "reviewer_archive", "natcs_reviewer_archive");

@@ -1,0 +1,802 @@
+- generic [ref=f19e1]:
+  - generic [ref=f19e2]: Loading [MathJax]/jax/output/HTML-CSS/config.js
+  - dialog [ref=f19e3]:
+    - generic [ref=f19e5]:
+      - heading "Your privacy, your choice" [level=2] [ref=f19e7]
+      - generic [ref=f19e9]:
+        - paragraph [ref=f19e10]: We use essential cookies to make sure the site can function. We also use optional cookies for advertising, personalisation of content, usage analysis, and social media, as well as to allow video information to be shared for both marketing, analytics and editorial purposes.
+        - paragraph [ref=f19e11]: By accepting optional cookies, you consent to the processing of your personal data - including transfers to third parties. Some third parties are outside of the European Economic Area, with varying standards of data protection.
+        - paragraph [ref=f19e12]:
+          - text: See our
+          - link "privacy policy" [ref=f19e13] [cursor=pointer]:
+            - /url: https://www.nature.com/info/privacy
+          - text: for more information on the use of your personal data.
+        - paragraph [ref=f19e14]:
+          - button "Manage preferences" [ref=f19e15] [cursor=pointer]
+          - text: for further information and to change your choices.
+      - generic [ref=f19e16]:
+        - button "Accept all cookies" [ref=f19e17] [cursor=pointer]
+        - button "Reject optional cookies" [ref=f19e18] [cursor=pointer]
+  - generic [ref=f19e19]:
+    - link "Skip to main content" [ref=f19e20] [cursor=pointer]:
+      - /url: "#content"
+    - complementary [ref=f19e21]:
+      - generic [ref=f19e22]:
+        - paragraph [ref=f19e23]: Advertisement
+        - iframe [ref=f19e26]:
+          - link [ref=f22e2] [cursor=pointer]:
+            - /url: https://pagead2.googlesyndication.com/pcs/click?xai=AKAOjsud8JF8AcBMxFE9LwfiAehFIa91uyV2qN8phu4N3Bkgy1bJZ9u22GxTdSFZyfAO8Q-uxLQEsVFc7FKIoUGgf67_nWBgNWtEhzN9e8OD_zSv35_fkFW-VnFxWBF1A6QvinMdl0SxClI_TidpR7-joBKSZx5MnDr1SVej-unMs4-A3pbyJL8aNcxR04yN6By1_F0kBIsXDcXklppUYaqCmNPCiAtvUpQFXXQrVCRFRCViopZpeagamYo79HkMmrOlq756JZ3DIRcC8KuaBPT3E4BSTuP6TKI8xZhF0QR1fRSwqNsHP76h2_L26H7VBJ9j188OAWE0G4UY9OsaDYcsD9aAQwPdRnYAeo7LIKDzUFkeyFr6COHi4NZgD8xeQjmRgJ2fPdi34DNFLAP-UG7ZU8uF_tGuDxLDP-okjYuINDHIyLSc82ECMXWKLQ&sig=Cg0ArKJSzI4IRks-PFXY&fbs_aeid=%5Bgw_fbsaeid%5D&adurl=https://www.nature.com/naturecareers/employer/865a2008-fe1d-40de-bdc0-970d0836d21c/ellison-institute-of-technology/hub%3Futm_medium%3Dinternal_display%26utm_source%3Dnature%26utm_content%3Dleaderboard_NATCARAWAJOBS%26utm_term%3Dnull%26utm_campaign%3DCONR_NCARS_ATT1_GL_PB2B_06X9T_KJ-EMPHUB
+            - 'img "Advertisement from Springer Nature : Thinking of your next career move? Find out more about EIT Oxford" [ref=f22e3]'
+    - banner [ref=f19e27]:
+      - generic [ref=f19e30]:
+        - heading [level=1] [ref=f19e31]:
+          - link [ref=f19e32] [cursor=pointer]:
+            - /url: /srep
+            - img "Scientific Reports" [ref=f19e34]
+        - list [ref=f19e35]:
+          - listitem [ref=f19e36]:
+            - link "View all journals" [ref=f19e37] [cursor=pointer]:
+              - /url: https://www.nature.com/siteindex
+          - listitem [ref=f19e39]:
+            - link "Saved research" [ref=f19e40] [cursor=pointer]:
+              - /url: /saved-research
+          - listitem [ref=f19e44]:
+            - button "Search" [ref=f19e45] [cursor=pointer]
+          - listitem [ref=f19e49]:
+            - link "Log in" [ref=f19e50] [cursor=pointer]:
+              - /url: https://idp.nature.com/auth/personal/springernature?redirect_uri=https://www.nature.com/srep/
+      - generic [ref=f19e54]:
+        - list [ref=f19e55]:
+          - listitem [ref=f19e56]:
+            - button "Explore content" [ref=f19e57] [cursor=pointer]
+          - listitem [ref=f19e61]:
+            - button "About the journal" [ref=f19e62] [cursor=pointer]
+          - listitem [ref=f19e66]:
+            - button "Publish with us" [ref=f19e67] [cursor=pointer]
+        - list [ref=f19e71]:
+          - listitem [ref=f19e72]:
+            - link "Sign up for alerts" [ref=f19e73] [cursor=pointer]:
+              - /url: https://journal-alerts.springernature.com/subscribe?journal_id=41598
+          - listitem [ref=f19e77]:
+            - link "RSS feed" [ref=f19e78] [cursor=pointer]:
+              - /url: https://www.nature.com/srep.rss
+  - navigation "breadcrumbs" [ref=f19e80]:
+    - list [ref=f19e82]:
+      - listitem [ref=f19e83]:
+        - link "nature" [ref=f19e84] [cursor=pointer]:
+          - /url: /
+      - listitem [ref=f19e87]: scientific reports
+  - main [ref=f19e88]:
+    - article [ref=f19e89]:
+      - generic [ref=f19e91]:
+        - img "Aerial view of ocean water that blends out into wavy lines of digital art mimicking water" [ref=f19e94]
+        - generic [ref=f19e95]:
+          - heading [level=2] [ref=f19e96]:
+            - link "Your hub for global discovery" [ref=f19e97] [cursor=pointer]:
+              - /url: https://www.nature.com/srep/about
+          - paragraph [ref=f19e98]: An open access Nature Portfolio journal publishing research from the natural sciences, psychology, medicine, and engineering. We offer authors a trustworthy, highly respected home for their research.
+    - generic [ref=f19e100]:
+      - heading "Announcements" [level=2] [ref=f19e102]
+      - list [ref=f19e103]:
+        - listitem [ref=f19e104]:
+          - article [ref=f19e105]:
+            - generic [ref=f19e106]:
+              - img "Icon of metrics." [ref=f19e109]
+              - generic [ref=f19e110]:
+                - heading [level=3] [ref=f19e111]:
+                  - link "Journal Metrics" [ref=f19e112] [cursor=pointer]:
+                    - /url: https://www.nature.com/srep/about
+                - generic [ref=f19e113]:
+                  - paragraph [ref=f19e114]: "Scientific Reports has a 2-year impact factor: 4.9 (2025), and is the 2nd most-cited journal in the world, with more than 1,061,414 citations in 2025*."
+                  - listitem [ref=f19e115]: "*2025 Journal Citation Reports® Science Edition (Clarivate Analytics, 2026)."
+        - listitem [ref=f19e116]:
+          - article [ref=f19e117]:
+            - generic [ref=f19e118]:
+              - img "Icon of a megaphone, indicating the Call for Papers page." [ref=f19e121]
+              - generic [ref=f19e122]:
+                - heading [level=3] [ref=f19e123]:
+                  - link "Calls for Papers" [ref=f19e124] [cursor=pointer]:
+                    - /url: https://www.nature.com/srep/guestedited
+                - generic [ref=f19e125]:
+                  - paragraph [ref=f19e126]: Highlight your research and enhance its visibility to your field by submitting to one of our Guest Edited Collections, led by our expert Editorial Board Members.
+                  - listitem [ref=f19e127]: The median time from submission to acceptance for papers submitted to our Guest Edited Collections is 102 days.
+        - listitem [ref=f19e128]:
+          - article [ref=f19e129]:
+            - generic [ref=f19e130]:
+              - img "Icon of an article with a star icon" [ref=f19e133]
+              - generic [ref=f19e134]:
+                - heading [level=3] [ref=f19e135]:
+                  - link "Top 100 Collections" [ref=f19e136] [cursor=pointer]:
+                    - /url: https://www.nature.com/srep/highlights/top-articles
+                - generic [ref=f19e137]:
+                  - paragraph [ref=f19e138]: Explore subject area specific Collections of the most downloaded* papers from Scientific Reports in 2024.
+                  - listitem [ref=f19e139]: "*Data obtained from SN Insights which is based on Digital Science's Dimensions."
+        - listitem [ref=f19e140]:
+          - article [ref=f19e141]:
+            - generic [ref=f19e142]:
+              - img "Icon of cogs, indicating the Engineering scope expansion announcement." [ref=f19e145]
+              - generic [ref=f19e146]:
+                - heading [level=3] [ref=f19e147]:
+                  - link "Engineering" [ref=f19e148] [cursor=pointer]:
+                    - /url: https://www.nature.com/srep/announcements/engineering
+                - paragraph [ref=f19e150]: We are delighted to welcome submissions from all engineering disciplines.
+    - search [ref=f19e153]:
+      - generic [ref=f19e154]: Search Scientific Reports
+      - generic [ref=f19e155]:
+        - searchbox "Search Scientific Reports" [ref=f19e157]
+        - generic [ref=f19e158]:
+          - generic [ref=f19e159]: Subject
+          - combobox "Subject" [ref=f19e160]:
+            - option "All Subjects" [selected]
+            - option "Biochemistry"
+            - option "Biological techniques"
+            - option "Biophysics"
+            - option "Biotechnology"
+            - option "Cancer"
+            - option "Cell biology"
+            - option "Chemical biology"
+            - option "Computational biology and bioinformatics"
+            - option "Developmental biology"
+            - option "Drug discovery"
+            - option "Ecology"
+            - option "Evolution"
+            - option "Genetics"
+            - option "Immunology"
+            - option "Microbiology"
+            - option "Molecular biology"
+            - option "Neuroscience"
+            - option "Physiology"
+            - option "Plant sciences"
+            - option "Psychology"
+            - option "Stem cells"
+            - option "Structural biology"
+            - option "Systems biology"
+            - option "Zoology"
+            - option "Biogeochemistry"
+            - option "Climate sciences"
+            - option "Ecology"
+            - option "Environmental sciences"
+            - option "Environmental social sciences"
+            - option "Hydrology"
+            - option "Limnology"
+            - option "Natural hazards"
+            - option "Ocean sciences"
+            - option "Planetary science"
+            - option "Solid Earth sciences"
+            - option "Space physics"
+            - option "Anatomy"
+            - option "Biomarkers"
+            - option "Cardiology"
+            - option "Diseases"
+            - option "Endocrinology"
+            - option "Gastroenterology"
+            - option "Health care"
+            - option "Health occupations"
+            - option "Medical research"
+            - option "Molecular medicine"
+            - option "Nephrology"
+            - option "Neurology"
+            - option "Oncology"
+            - option "Pathogenesis"
+            - option "Rheumatology"
+            - option "Risk factors"
+            - option "Signs and symptoms"
+            - option "Urology"
+            - option "Astronomy and planetary science"
+            - option "Chemistry"
+            - option "Energy science and technology"
+            - option "Engineering"
+            - option "Materials science"
+            - option "Mathematics and computing"
+            - option "Nanoscience and technology"
+            - option "Optics and photonics"
+            - option "Physics"
+        - button "Search" [ref=f19e162] [cursor=pointer]
+    - generic [ref=f19e169]:
+      - heading "Browse articles" [level=2] [ref=f19e171]
+      - heading [level=3] [ref=f19e173]:
+        - link "Physical sciences" [ref=f19e174] [cursor=pointer]:
+          - /url: /subjects/physical-sciences/srep
+      - list [ref=f19e177]:
+        - listitem [ref=f19e178]:
+          - article [ref=f19e179]:
+            - generic [ref=f19e181]:
+              - heading [level=3] [ref=f19e182]:
+                - link [ref=f19e183] [cursor=pointer]:
+                  - /url: /articles/s41598-026-64521-9
+                  - text: Machine learning and deep learning for predicting photocatalytic degradation efficiency of metronidazole via TiO
+                  - subscript [ref=f19e184]: "2"
+                  - text: "/ZnO nanocomposites: a response surface methodology approach"
+              - list [ref=f19e185]:
+                - listitem [ref=f19e186]: Navid Safari
+                - listitem [ref=f19e187]: ", Seyed Ghasem Rezvannasab"
+                - listitem [ref=f19e188]: ... Abdol Mohammad Ghaedi
+            - generic [ref=f19e189]:
+              - generic [ref=f19e190]: Article
+              - generic [ref=f19e191]: Open Access
+              - time [ref=f19e192]: 31 Jul 2026
+        - listitem [ref=f19e193]:
+          - article [ref=f19e194]:
+            - generic [ref=f19e196]:
+              - heading [level=3] [ref=f19e197]:
+                - link "Reconstructing overall competitiveness efficiency using the SCP paradigm with evidence from Saudi Arabian construction contractors" [ref=f19e198] [cursor=pointer]:
+                  - /url: /articles/s41598-026-64501-z
+              - list [ref=f19e199]:
+                - listitem [ref=f19e200]: Haian Yu
+                - listitem [ref=f19e201]: ", Zufeng Shang"
+                - listitem [ref=f19e202]: "& Fenglai Wang"
+            - generic [ref=f19e203]:
+              - generic [ref=f19e204]: Article
+              - generic [ref=f19e205]: Open Access
+              - time [ref=f19e206]: 31 Jul 2026
+        - listitem [ref=f19e207]:
+          - article [ref=f19e208]:
+            - generic [ref=f19e210]:
+              - heading [level=3] [ref=f19e211]:
+                - link "Nonlinear dynamic transitions and equilibrium topology of a beam under sequential moving masses" [ref=f19e212] [cursor=pointer]:
+                  - /url: /articles/s41598-026-64773-5
+              - list [ref=f19e213]:
+                - listitem [ref=f19e214]: Ali M. Mohsen
+                - listitem [ref=f19e215]: ", Rashid Mjheid Fadwi"
+                - listitem [ref=f19e216]: ... Hani Sahramaneshi
+            - generic [ref=f19e217]:
+              - generic [ref=f19e218]: Article
+              - generic [ref=f19e219]: Open Access
+              - time [ref=f19e220]: 31 Jul 2026
+        - listitem [ref=f19e221]:
+          - article [ref=f19e222]:
+            - generic [ref=f19e224]:
+              - heading [level=3] [ref=f19e225]:
+                - link "Understanding the Markov decision process for reinforcement learning in robotics perception" [ref=f19e226] [cursor=pointer]:
+                  - /url: /articles/s41598-026-64605-6
+              - list [ref=f19e227]:
+                - listitem [ref=f19e228]: Ravi Raj
+                - listitem [ref=f19e229]: "& Andrzej Kos"
+            - generic [ref=f19e230]:
+              - generic [ref=f19e231]: Article
+              - generic [ref=f19e232]: Open Access
+              - time [ref=f19e233]: 31 Jul 2026
+        - listitem [ref=f19e234]:
+          - article [ref=f19e235]:
+            - generic [ref=f19e237]:
+              - heading [level=3] [ref=f19e238]:
+                - link "Simulation of fusion neutron spectra from D-D and D-T thermonuclear fusion" [ref=f19e239] [cursor=pointer]:
+                  - /url: /articles/s41598-026-49325-1
+              - list [ref=f19e240]:
+                - listitem [ref=f19e241]: A. Youssef
+            - generic [ref=f19e242]:
+              - generic [ref=f19e243]: Article
+              - generic [ref=f19e244]: Open Access
+              - time [ref=f19e245]: 31 Jul 2026
+      - heading "Subjects within Physical sciences" [level=4] [ref=f19e247]
+      - list [ref=f19e248]:
+        - listitem [ref=f19e249]:
+          - link "Astronomy and planetary science" [ref=f19e250] [cursor=pointer]:
+            - /url: /subjects/astronomy-and-planetary-science/srep
+        - listitem [ref=f19e251]:
+          - link "Chemistry" [ref=f19e252] [cursor=pointer]:
+            - /url: /subjects/chemistry/srep
+        - listitem [ref=f19e253]:
+          - link "Energy science and technology" [ref=f19e254] [cursor=pointer]:
+            - /url: /subjects/energy-science-and-technology/srep
+        - listitem [ref=f19e255]:
+          - link "Engineering" [ref=f19e256] [cursor=pointer]:
+            - /url: /subjects/engineering/srep
+        - listitem [ref=f19e257]:
+          - link "Materials science" [ref=f19e258] [cursor=pointer]:
+            - /url: /subjects/materials-science/srep
+      - heading [level=3] [ref=f19e260]:
+        - link "Earth and environmental sciences" [ref=f19e261] [cursor=pointer]:
+          - /url: /subjects/earth-and-environmental-sciences/srep
+      - list [ref=f19e264]:
+        - listitem [ref=f19e265]:
+          - article [ref=f19e266]:
+            - generic [ref=f19e268]:
+              - heading [level=3] [ref=f19e269]:
+                - link "A scalable explainable deep learning framework for predictive analysis and interpretability of CO\\(_2\\) emissions patterns" [ref=f19e270] [cursor=pointer]:
+                  - /url: /articles/s41598-026-61829-4
+              - list [ref=f19e271]:
+                - listitem [ref=f19e272]: Debyanshu Tiwari
+                - listitem [ref=f19e273]: ", Sandeep Saharan"
+                - listitem [ref=f19e274]: ... Pinky Yadav
+            - generic [ref=f19e275]:
+              - generic [ref=f19e276]: Article
+              - generic [ref=f19e277]: Open Access
+              - time [ref=f19e278]: 31 Jul 2026
+        - listitem [ref=f19e279]:
+          - article [ref=f19e280]:
+            - generic [ref=f19e282]:
+              - heading [level=3] [ref=f19e283]:
+                - link "Explainable ensemble machine learning for dissolved oxygen prediction in a reservoir using SHAP and chord diagram analysis" [ref=f19e284] [cursor=pointer]:
+                  - /url: /articles/s41598-026-64406-x
+              - list [ref=f19e285]:
+                - listitem [ref=f19e286]: Omid Yazdan Panah
+                - listitem [ref=f19e287]: "& Motahareh Saadatpour"
+            - generic [ref=f19e288]:
+              - generic [ref=f19e289]: Article
+              - generic [ref=f19e290]: Open Access
+              - time [ref=f19e291]: 31 Jul 2026
+        - listitem [ref=f19e292]:
+          - article [ref=f19e293]:
+            - generic [ref=f19e295]:
+              - heading [level=3] [ref=f19e296]:
+                - link "Acoustic iso-propagation vortices for robust underwater communications" [ref=f19e297] [cursor=pointer]:
+                  - /url: /articles/s41598-026-64865-2
+              - list [ref=f19e298]:
+                - listitem [ref=f19e299]: Jianyu Hua
+                - listitem [ref=f19e300]: ", Chenzhe Wang"
+                - listitem [ref=f19e301]: ... Chengzhi Shi
+            - generic [ref=f19e302]:
+              - generic [ref=f19e303]: Article
+              - generic [ref=f19e304]: Open Access
+              - time [ref=f19e305]: 31 Jul 2026
+        - listitem [ref=f19e306]:
+          - article [ref=f19e307]:
+            - generic [ref=f19e309]:
+              - heading [level=3] [ref=f19e310]:
+                - link "Leaching mechanism and behavior of rare earth elements from roasted coal gangue using citric acid" [ref=f19e311] [cursor=pointer]:
+                  - /url: /articles/s41598-026-61534-2
+              - list [ref=f19e312]:
+                - listitem [ref=f19e313]: Lei Zhang
+                - listitem [ref=f19e314]: ", Jinhe Pan"
+                - listitem [ref=f19e315]: ... Jinpeng Feng
+            - generic [ref=f19e316]:
+              - generic [ref=f19e317]: Article
+              - generic [ref=f19e318]: Open Access
+              - time [ref=f19e319]: 31 Jul 2026
+        - listitem [ref=f19e320]:
+          - article [ref=f19e321]:
+            - generic [ref=f19e323]:
+              - heading [level=3] [ref=f19e324]:
+                - link [ref=f19e325] [cursor=pointer]:
+                  - /url: /articles/s41598-026-64521-9
+                  - text: Machine learning and deep learning for predicting photocatalytic degradation efficiency of metronidazole via TiO
+                  - subscript [ref=f19e326]: "2"
+                  - text: "/ZnO nanocomposites: a response surface methodology approach"
+              - list [ref=f19e327]:
+                - listitem [ref=f19e328]: Navid Safari
+                - listitem [ref=f19e329]: ", Seyed Ghasem Rezvannasab"
+                - listitem [ref=f19e330]: ... Abdol Mohammad Ghaedi
+            - generic [ref=f19e331]:
+              - generic [ref=f19e332]: Article
+              - generic [ref=f19e333]: Open Access
+              - time [ref=f19e334]: 31 Jul 2026
+      - heading "Subjects within Earth and environmental sciences" [level=4] [ref=f19e336]
+      - list [ref=f19e337]:
+        - listitem [ref=f19e338]:
+          - link "Biogeochemistry" [ref=f19e339] [cursor=pointer]:
+            - /url: /subjects/biogeochemistry/srep
+        - listitem [ref=f19e340]:
+          - link "Climate sciences" [ref=f19e341] [cursor=pointer]:
+            - /url: /subjects/climate-sciences/srep
+        - listitem [ref=f19e342]:
+          - link "Ecology" [ref=f19e343] [cursor=pointer]:
+            - /url: /subjects/ecology/srep
+        - listitem [ref=f19e344]:
+          - link "Environmental sciences" [ref=f19e345] [cursor=pointer]:
+            - /url: /subjects/environmental-sciences/srep
+        - listitem [ref=f19e346]:
+          - link "Environmental social sciences" [ref=f19e347] [cursor=pointer]:
+            - /url: /subjects/environmental-social-sciences/srep
+      - heading [level=3] [ref=f19e349]:
+        - link "Biological sciences" [ref=f19e350] [cursor=pointer]:
+          - /url: /subjects/biological-sciences/srep
+      - list [ref=f19e353]:
+        - listitem [ref=f19e354]:
+          - article [ref=f19e355]:
+            - generic [ref=f19e357]:
+              - heading [level=3] [ref=f19e358]:
+                - 'link "Nicotinamide mononucleotide enhances semen quality during chilled storage of maguan hornless goat: mitigating oxidative damage at 4 °C" [ref=f19e359] [cursor=pointer]':
+                  - /url: /articles/s41598-026-63678-7
+              - list [ref=f19e360]:
+                - listitem [ref=f19e361]: Yonghong Ju
+                - listitem [ref=f19e362]: ", Maosheng Cao"
+                - listitem [ref=f19e363]: ... Xiang Chen
+            - generic [ref=f19e364]:
+              - generic [ref=f19e365]: Article
+              - generic [ref=f19e366]: Open Access
+              - time [ref=f19e367]: 31 Jul 2026
+        - listitem [ref=f19e368]:
+          - article [ref=f19e369]:
+            - generic [ref=f19e371]:
+              - heading [level=3] [ref=f19e372]:
+                - link "Nanobionic enhancement of plant growth via copper nanoclusters in Raphanus sativus" [ref=f19e373] [cursor=pointer]:
+                  - /url: /articles/s41598-026-63859-4
+              - list [ref=f19e374]:
+                - listitem [ref=f19e375]: Konstantinos T. Kotoulas
+                - listitem [ref=f19e376]: ", Thomas Hinton"
+                - listitem [ref=f19e377]: ... Ming Xie
+            - generic [ref=f19e378]:
+              - generic [ref=f19e379]: Article
+              - generic [ref=f19e380]: Open Access
+              - time [ref=f19e381]: 31 Jul 2026
+        - listitem [ref=f19e382]:
+          - article [ref=f19e383]:
+            - generic [ref=f19e385]:
+              - heading [level=3] [ref=f19e386]:
+                - link "Morpho-physical and biochemical traits associated with potato (Solanum tuberosum L.) genotypes conferring resistance to potato tuber moth, Phthorimaea operculella (Zeller)" [ref=f19e387] [cursor=pointer]:
+                  - /url: /articles/s41598-026-63676-9
+              - list [ref=f19e388]:
+                - listitem [ref=f19e389]: Shashikumar E. Shivannanavara
+                - listitem [ref=f19e390]: ", Kennedy Ningthoujam"
+                - listitem [ref=f19e391]: ... Dwipendra Thakuria
+            - generic [ref=f19e392]:
+              - generic [ref=f19e393]: Article
+              - generic [ref=f19e394]: Open Access
+              - time [ref=f19e395]: 31 Jul 2026
+        - listitem [ref=f19e396]:
+          - article [ref=f19e397]:
+            - generic [ref=f19e399]:
+              - heading [level=3] [ref=f19e400]:
+                - link "Leaf photosynthetic characteristics and fruit quality of Actinidia arguta as affected by slope aspect and gradient" [ref=f19e401] [cursor=pointer]:
+                  - /url: /articles/s41598-026-64942-6
+              - list [ref=f19e402]:
+                - listitem [ref=f19e403]: Yu Zhou
+                - listitem [ref=f19e404]: ", Yue Shi"
+                - listitem [ref=f19e405]: ... Wei Gao
+            - generic [ref=f19e406]:
+              - generic [ref=f19e407]: Article
+              - generic [ref=f19e408]: Open Access
+              - time [ref=f19e409]: 31 Jul 2026
+        - listitem [ref=f19e410]:
+          - article [ref=f19e411]:
+            - generic [ref=f19e413]:
+              - heading [level=3] [ref=f19e414]:
+                - link "Metal-dependent inhibition of germination and seedling growth in two onion cultivars under in vitro conditions" [ref=f19e415] [cursor=pointer]:
+                  - /url: /articles/s41598-026-63897-y
+              - list [ref=f19e416]:
+                - listitem [ref=f19e417]: Ecem Kara
+            - generic [ref=f19e418]:
+              - generic [ref=f19e419]: Article
+              - generic [ref=f19e420]: Open Access
+              - time [ref=f19e421]: 31 Jul 2026
+      - heading "Subjects within Biological sciences" [level=4] [ref=f19e423]
+      - list [ref=f19e424]:
+        - listitem [ref=f19e425]:
+          - link "Biochemistry" [ref=f19e426] [cursor=pointer]:
+            - /url: /subjects/biochemistry/srep
+        - listitem [ref=f19e427]:
+          - link "Biological techniques" [ref=f19e428] [cursor=pointer]:
+            - /url: /subjects/biological-techniques/srep
+        - listitem [ref=f19e429]:
+          - link "Biophysics" [ref=f19e430] [cursor=pointer]:
+            - /url: /subjects/biophysics/srep
+        - listitem [ref=f19e431]:
+          - link "Biotechnology" [ref=f19e432] [cursor=pointer]:
+            - /url: /subjects/biotechnology/srep
+        - listitem [ref=f19e433]:
+          - link "Cancer" [ref=f19e434] [cursor=pointer]:
+            - /url: /subjects/cancer/srep
+      - heading [level=3] [ref=f19e436]:
+        - link "Health sciences" [ref=f19e437] [cursor=pointer]:
+          - /url: /subjects/health-sciences/srep
+      - list [ref=f19e440]:
+        - listitem [ref=f19e441]:
+          - article [ref=f19e442]:
+            - generic [ref=f19e444]:
+              - heading [level=3] [ref=f19e445]:
+                - link "Dimensional psychopathology explains functional disability better than ICD-10 categories" [ref=f19e446] [cursor=pointer]:
+                  - /url: /articles/s41598-026-63692-9
+              - list [ref=f19e447]:
+                - listitem [ref=f19e448]: Pauline Maria Nagel
+                - listitem [ref=f19e449]: ", Kornelius Winds"
+                - listitem [ref=f19e450]: ... Lisa Kronbichler
+            - generic [ref=f19e451]:
+              - generic [ref=f19e452]: Article
+              - generic [ref=f19e453]: Open Access
+              - time [ref=f19e454]: 31 Jul 2026
+        - listitem [ref=f19e455]:
+          - article [ref=f19e456]:
+            - generic [ref=f19e458]:
+              - heading [level=3] [ref=f19e459]:
+                - link "Dynamic thermography used to support the diagnosis of diabetic foot with the assessment of balance and foot positioning" [ref=f19e460] [cursor=pointer]:
+                  - /url: /articles/s41598-026-64843-8
+              - list [ref=f19e461]:
+                - listitem [ref=f19e462]: Agnieszka Lisowska-Lis
+                - listitem [ref=f19e463]: ", Katarzyna Wódka"
+                - listitem [ref=f19e464]: ... Agnieszka Jankowicz-Szymańska
+            - generic [ref=f19e465]:
+              - generic [ref=f19e466]: Article
+              - generic [ref=f19e467]: Open Access
+              - time [ref=f19e468]: 31 Jul 2026
+        - listitem [ref=f19e469]:
+          - article [ref=f19e470]:
+            - generic [ref=f19e472]:
+              - heading [level=3] [ref=f19e473]:
+                - link "Associations of sustainable and healthy nutrition, perceived stress, and brain fog with academic performance among university students" [ref=f19e474] [cursor=pointer]:
+                  - /url: /articles/s41598-026-64879-w
+              - list [ref=f19e475]:
+                - listitem [ref=f19e476]: Gokce Cakmak Kafadar
+            - generic [ref=f19e477]:
+              - generic [ref=f19e478]: Article
+              - generic [ref=f19e479]: Open Access
+              - time [ref=f19e480]: 31 Jul 2026
+        - listitem [ref=f19e481]:
+          - article [ref=f19e482]:
+            - generic [ref=f19e484]:
+              - heading [level=3] [ref=f19e485]:
+                - link "Effect of modeling liquid and glycerin application protocols on the surface roughness and microhardness of one shade resin composites" [ref=f19e486] [cursor=pointer]:
+                  - /url: /articles/s41598-026-64825-w
+              - list [ref=f19e487]:
+                - listitem [ref=f19e488]: Merve Şahin
+                - listitem [ref=f19e489]: ", Merve Kocuk"
+                - listitem [ref=f19e490]: "& Ezgi Erden Kayalıdere"
+            - generic [ref=f19e491]:
+              - generic [ref=f19e492]: Article
+              - generic [ref=f19e493]: Open Access
+              - time [ref=f19e494]: 31 Jul 2026
+        - listitem [ref=f19e495]:
+          - article [ref=f19e496]:
+            - generic [ref=f19e498]:
+              - heading [level=3] [ref=f19e499]:
+                - link "Deep learning driven early detection of lung cancer from CT images using transfer learning approaches" [ref=f19e500] [cursor=pointer]:
+                  - /url: /articles/s41598-026-64739-7
+              - list [ref=f19e501]:
+                - listitem [ref=f19e502]: Vishwas V. Patange
+                - listitem [ref=f19e503]: ", Jagadish B. Jadhav"
+                - listitem [ref=f19e504]: ... Priyanka V. Deshmukh
+            - generic [ref=f19e505]:
+              - generic [ref=f19e506]: Article
+              - generic [ref=f19e507]: Open Access
+              - time [ref=f19e508]: 31 Jul 2026
+      - heading "Subjects within Health sciences" [level=4] [ref=f19e510]
+      - list [ref=f19e511]:
+        - listitem [ref=f19e512]:
+          - link "Anatomy" [ref=f19e513] [cursor=pointer]:
+            - /url: /subjects/anatomy/srep
+        - listitem [ref=f19e514]:
+          - link "Biomarkers" [ref=f19e515] [cursor=pointer]:
+            - /url: /subjects/biomarkers/srep
+        - listitem [ref=f19e516]:
+          - link "Cardiology" [ref=f19e517] [cursor=pointer]:
+            - /url: /subjects/cardiology/srep
+        - listitem [ref=f19e518]:
+          - link "Diseases" [ref=f19e519] [cursor=pointer]:
+            - /url: /subjects/diseases/srep
+        - listitem [ref=f19e520]:
+          - link "Endocrinology" [ref=f19e521] [cursor=pointer]:
+            - /url: /subjects/endocrinology/srep
+    - generic [ref=f19e523]:
+      - heading "Trending - Altmetric" [level=2] [ref=f19e525]
+      - list [ref=f19e526]:
+        - listitem [ref=f19e527]:
+          - article [ref=f19e528]:
+            - link [ref=f19e529] [cursor=pointer]:
+              - /url: http://dx.doi.org/10.1038/s41598-026-61756-4
+              - img "Score 910" [ref=f19e530]
+              - heading "Major intensification of fire weather across southern Europe in recent decades" [level=3] [ref=f19e531]
+        - listitem [ref=f19e532]:
+          - article [ref=f19e533]:
+            - link [ref=f19e534] [cursor=pointer]:
+              - /url: http://dx.doi.org/10.1038/s41598-026-60835-w
+              - img "Score 313" [ref=f19e535]
+              - heading "Enhanced HGF with increased receptor affinity and nitration-dysfunction resistance through interaction with lipoic acid trisulfide" [level=3] [ref=f19e536]
+        - listitem [ref=f19e537]:
+          - article [ref=f19e538]:
+            - link [ref=f19e539] [cursor=pointer]:
+              - /url: http://dx.doi.org/10.1038/s41598-026-54315-4
+              - img "Score 244" [ref=f19e540]
+              - heading "Surprising cryptic cavefish diversity in a long-studied karst cave ecosystem of northern Alabama" [level=3] [ref=f19e541]
+        - listitem [ref=f19e542]:
+          - article [ref=f19e543]:
+            - link [ref=f19e544] [cursor=pointer]:
+              - /url: http://dx.doi.org/10.1038/s41598-025-95619-1
+              - img "Score 164" [ref=f19e545]
+              - heading "Children engage neural reward structures for creative musical improvisation" [level=3] [ref=f19e546]
+    - generic [ref=f19e547]:
+      - heading [level=2] [ref=f19e549]:
+        - img "Nature Careers" [ref=f19e550]
+      - generic [ref=f19e553]:
+        - heading [level=3] [ref=f19e554]:
+          - link "Science jobs" [ref=f19e555] [cursor=pointer]:
+            - /url: https://www.nature.com/naturecareers/?TrackID=62&utm_source=widget&utm_medium=referral&utm_campaign=62
+        - list [ref=f19e559]:
+          - listitem [ref=f19e560]:
+            - generic [ref=f19e561]:
+              - heading [level=4] [ref=f19e562]:
+                - link "Assistant Professor in Neuroimmunology at The Salk Institute for Biological Studies" [ref=f19e563] [cursor=pointer]:
+                  - /url: https://www.nature.com/naturecareers/job/12862202/assistant-professor-in-neuroimmunology-at-the-salk-institute-for-biological-studies/?TrackID=62&utm_source=widget&utm_medium=referral&utm_campaign=62
+              - generic [ref=f19e564]:
+                - paragraph [ref=f19e565]: The Salk invites candidates with a Ph.D and/or M.D. degree to apply for an Assistant Professor position in Neuroimmunology.
+                - paragraph [ref=f19e566]: La Jolla, California
+                - paragraph [ref=f19e567]: Salk Institute for Biological Studies - CFO Office
+          - listitem [ref=f19e569]:
+            - generic [ref=f19e570]:
+              - heading [level=4] [ref=f19e571]:
+                - link "Faculty Positions at Institute of Physics (IOP), Chinese Academy of Sciences" [ref=f19e572] [cursor=pointer]:
+                  - /url: https://www.nature.com/naturecareers/job/12858728/faculty-positions-at-institute-of-physics-iop-chinese-academy-of-sciences/?TrackID=62&utm_source=widget&utm_medium=referral&utm_campaign=62
+              - generic [ref=f19e573]:
+                - paragraph [ref=f19e574]: IOP is China's premier research institution in condensed matter physics and related fields.
+                - paragraph [ref=f19e575]: Beijing (CN)
+                - paragraph [ref=f19e576]: Institute of Physics (IOP), Chinese Academy of Sciences (CAS)
+          - listitem [ref=f19e578]:
+            - generic [ref=f19e579]:
+              - heading [level=4] [ref=f19e580]:
+                - link "Research Software Engineer for Translational Biomedical AI" [ref=f19e581] [cursor=pointer]:
+                  - /url: https://www.nature.com/naturecareers/job/12862161/research-software-engineer-for-translational-biomedical-ai/?TrackID=62&utm_source=widget&utm_medium=referral&utm_campaign=62
+              - generic [ref=f19e582]:
+                - paragraph [ref=f19e583]: Research Software Engineer for Translational Biomedical AI at Human Technopole, Milan- Italy.
+                - paragraph [ref=f19e584]: Milan (IT)
+                - paragraph [ref=f19e585]: Human Technopole
+          - listitem [ref=f19e587]:
+            - generic [ref=f19e588]:
+              - heading [level=4] [ref=f19e589]:
+                - link "Postdoctoral Fellowships in Computational Biology" [ref=f19e590] [cursor=pointer]:
+                  - /url: https://www.nature.com/naturecareers/job/12862160/postdoctoral-fellowships-in-computational-biology-/?TrackID=62&utm_source=widget&utm_medium=referral&utm_campaign=62
+              - generic [ref=f19e591]:
+                - paragraph [ref=f19e592]: Houston, Texas (US)
+                - paragraph [ref=f19e593]: The University of Texas MD Anderson Cancer Center
+          - listitem [ref=f19e595]:
+            - generic [ref=f19e596]:
+              - heading [level=4] [ref=f19e597]:
+                - link "Faculty Positions at SUSTech Department of Biomedical Engineering" [ref=f19e598] [cursor=pointer]:
+                  - /url: https://www.nature.com/naturecareers/job/12853107/faculty-positions-at-sustech-department-of-biomedical-engineering/?TrackID=62&utm_source=widget&utm_medium=referral&utm_campaign=62
+              - generic [ref=f19e599]:
+                - paragraph [ref=f19e600]: We seek outstanding applicants for full-time tenure-track/tenured faculty positions. Positions are available for both junior and senior-level.
+                - paragraph [ref=f19e601]: Shenzhen, Guangdong, China
+                - paragraph [ref=f19e602]: Southern University of Science and Technology (Biomedical Engineering)
+    - list [ref=f19e607]:
+      - listitem [ref=f19e608]:
+        - link [ref=f19e609] [cursor=pointer]:
+          - /url: http://publicationethics.org/
+          - img "Committee on Publication Ethics" [ref=f19e610]
+        - paragraph [ref=f19e611]: This journal is a member of and subscribes to the principles of the Committee on Publication Ethics.
+      - listitem [ref=f19e612]:
+        - link [ref=f19e613] [cursor=pointer]:
+          - /url: http://www.ithenticate.com/
+          - img "Ithenticate Plagiarism Detection" [ref=f19e614]
+  - contentinfo [ref=f19e615]:
+    - paragraph [ref=f19e618]: "Top headline image: Springer Nature"
+    - generic [ref=f19e622]:
+      - paragraph [ref=f19e623]: Scientific Reports (Sci Rep)
+      - paragraph [ref=f19e624]: ISSN 2045-2322 (online)
+    - generic [ref=f19e625]:
+      - generic [ref=f19e626]:
+        - heading "nature.com footer links" [level=2] [ref=f19e627]
+        - generic [ref=f19e629]:
+          - generic [ref=f19e630]:
+            - heading "About Nature Portfolio" [level=3] [ref=f19e631]
+            - list [ref=f19e632]:
+              - listitem [ref=f19e633]:
+                - link "About us" [ref=f19e634] [cursor=pointer]:
+                  - /url: https://www.nature.com/npg_/company_info/index.html
+              - listitem [ref=f19e635]:
+                - link "Press releases" [ref=f19e636] [cursor=pointer]:
+                  - /url: https://www.nature.com/npg_/press_room/press_releases.html
+              - listitem [ref=f19e637]:
+                - link "Press office" [ref=f19e638] [cursor=pointer]:
+                  - /url: https://press.nature.com/
+              - listitem [ref=f19e639]:
+                - link "Contact us" [ref=f19e640] [cursor=pointer]:
+                  - /url: https://support.nature.com/support/home
+          - generic [ref=f19e641]:
+            - heading "Discover content" [level=3] [ref=f19e642]
+            - list [ref=f19e643]:
+              - listitem [ref=f19e644]:
+                - link "Journals A-Z" [ref=f19e645] [cursor=pointer]:
+                  - /url: https://www.nature.com/siteindex
+              - listitem [ref=f19e646]:
+                - link "Articles by subject" [ref=f19e647] [cursor=pointer]:
+                  - /url: https://www.nature.com/subjects
+              - listitem [ref=f19e648]:
+                - link "protocols.io" [ref=f19e649] [cursor=pointer]:
+                  - /url: https://www.protocols.io/
+              - listitem [ref=f19e650]:
+                - link "Nature Index" [ref=f19e651] [cursor=pointer]:
+                  - /url: https://www.natureindex.com/
+          - generic [ref=f19e652]:
+            - heading "Publishing policies" [level=3] [ref=f19e653]
+            - list [ref=f19e654]:
+              - listitem [ref=f19e655]:
+                - link "Nature portfolio policies" [ref=f19e656] [cursor=pointer]:
+                  - /url: https://www.nature.com/authors/editorial_policies
+              - listitem [ref=f19e657]:
+                - link "Open access" [ref=f19e658] [cursor=pointer]:
+                  - /url: https://www.nature.com/nature-research/open-access
+          - generic [ref=f19e659]:
+            - heading "Author & Researcher services" [level=3] [ref=f19e660]
+            - list [ref=f19e661]:
+              - listitem [ref=f19e662]:
+                - link "Reprints & permissions" [ref=f19e663] [cursor=pointer]:
+                  - /url: https://www.nature.com/reprints
+              - listitem [ref=f19e664]:
+                - link "Research data" [ref=f19e665] [cursor=pointer]:
+                  - /url: https://www.springernature.com/gp/authors/research-data
+              - listitem [ref=f19e666]:
+                - link "Language editing" [ref=f19e667] [cursor=pointer]:
+                  - /url: https://authorservices.springernature.com/language-editing/
+              - listitem [ref=f19e668]:
+                - link "Scientific editing" [ref=f19e669] [cursor=pointer]:
+                  - /url: https://authorservices.springernature.com/scientific-editing/
+              - listitem [ref=f19e670]:
+                - link "Nature Masterclasses" [ref=f19e671] [cursor=pointer]:
+                  - /url: https://masterclasses.nature.com/
+              - listitem [ref=f19e672]:
+                - link "Research Solutions" [ref=f19e673] [cursor=pointer]:
+                  - /url: https://solutions.springernature.com/
+          - generic [ref=f19e674]:
+            - heading "Libraries & institutions" [level=3] [ref=f19e675]
+            - list [ref=f19e676]:
+              - listitem [ref=f19e677]:
+                - link "Librarian service & tools" [ref=f19e678] [cursor=pointer]:
+                  - /url: https://www.springernature.com/gp/librarians/tools-services
+              - listitem [ref=f19e679]:
+                - link "Librarian portal" [ref=f19e680] [cursor=pointer]:
+                  - /url: https://www.springernature.com/gp/librarians/manage-your-account/librarianportal
+              - listitem [ref=f19e681]:
+                - link "Open research" [ref=f19e682] [cursor=pointer]:
+                  - /url: https://www.nature.com/openresearch/about-open-access/information-for-institutions
+              - listitem [ref=f19e683]:
+                - link "Recommend to library" [ref=f19e684] [cursor=pointer]:
+                  - /url: https://www.springernature.com/gp/librarians/recommend-to-your-library
+          - generic [ref=f19e685]:
+            - heading "Advertising & partnerships" [level=3] [ref=f19e686]
+            - list [ref=f19e687]:
+              - listitem [ref=f19e688]:
+                - link "Advertising" [ref=f19e689] [cursor=pointer]:
+                  - /url: https://partnerships.nature.com/product/digital-advertising/
+              - listitem [ref=f19e690]:
+                - link "Partnerships & Services" [ref=f19e691] [cursor=pointer]:
+                  - /url: https://partnerships.nature.com/
+              - listitem [ref=f19e692]:
+                - link "Media kits" [ref=f19e693] [cursor=pointer]:
+                  - /url: https://partnerships.nature.com/media-kits/
+              - listitem [ref=f19e694]:
+                - link "Branded content" [ref=f19e695] [cursor=pointer]:
+                  - /url: https://partnerships.nature.com/product/branded-content-native-advertising/
+          - generic [ref=f19e696]:
+            - heading "Professional development" [level=3] [ref=f19e697]
+            - list [ref=f19e698]:
+              - listitem [ref=f19e699]:
+                - link "Nature Awards" [ref=f19e700] [cursor=pointer]:
+                  - /url: https://www.nature.com/immersive/natureawards/index.html
+              - listitem [ref=f19e701]:
+                - link "Nature Careers" [ref=f19e702] [cursor=pointer]:
+                  - /url: https://www.nature.com/naturecareers/
+              - listitem [ref=f19e703]:
+                - link "Nature Conferences" [ref=f19e704] [cursor=pointer]:
+                  - /url: https://conferences.nature.com
+          - generic [ref=f19e706]:
+            - heading "Regional websites" [level=3] [ref=f19e707]
+            - list [ref=f19e708]:
+              - listitem [ref=f19e709]:
+                - link "Nature Africa" [ref=f19e710] [cursor=pointer]:
+                  - /url: https://www.nature.com/natafrica
+              - listitem [ref=f19e711]:
+                - link "Nature China" [ref=f19e712] [cursor=pointer]:
+                  - /url: http://www.naturechina.com
+              - listitem [ref=f19e713]:
+                - link "Nature India" [ref=f19e714] [cursor=pointer]:
+                  - /url: https://www.nature.com/nindia
+              - listitem [ref=f19e715]:
+                - link "Nature Japan" [ref=f19e716] [cursor=pointer]:
+                  - /url: https://www.natureasia.com/ja-jp
+              - listitem [ref=f19e717]:
+                - link "Nature Middle East" [ref=f19e718] [cursor=pointer]:
+                  - /url: https://www.nature.com/nmiddleeast
+        - list [ref=f19e720]:
+          - listitem [ref=f19e721]:
+            - link "Privacy Policy" [ref=f19e722] [cursor=pointer]:
+              - /url: https://www.nature.com/info/privacy
+          - listitem [ref=f19e723]:
+            - link "Use of cookies" [ref=f19e724] [cursor=pointer]:
+              - /url: https://www.nature.com/info/cookies
+          - listitem [ref=f19e725]:
+            - button "Your privacy choices/Manage cookies" [ref=f19e726] [cursor=pointer]
+          - listitem [ref=f19e727]:
+            - link "Legal notice" [ref=f19e728] [cursor=pointer]:
+              - /url: https://www.nature.com/info/legal-notice
+          - listitem [ref=f19e729]:
+            - link "Accessibility statement" [ref=f19e730] [cursor=pointer]:
+              - /url: https://www.nature.com/info/accessibility-statement
+          - listitem [ref=f19e731]:
+            - link "Terms & Conditions" [ref=f19e732] [cursor=pointer]:
+              - /url: https://www.nature.com/info/terms-and-conditions
+          - listitem [ref=f19e733]:
+            - link "Your US state privacy rights" [ref=f19e734] [cursor=pointer]:
+              - /url: https://www.springernature.com/ccpa
+      - generic [ref=f19e735]:
+        - link [ref=f19e736] [cursor=pointer]:
+          - /url: https://www.springernature.com/
+          - img "Springer Nature" [ref=f19e737]
+        - paragraph [ref=f19e738]: © 2026 Springer Nature Limited

@@ -1,11 +1,5 @@
-This supplementary note expands `Results > RCEP case study` in the main manuscript and the benchmark panel collected in Supplementary Table 4. The empirical construction uses four data blocks already summarized in the main manuscript: quarterly macro inputs from IMF IFS and national statistical offices, annual MRIO-derived trade inputs converted to quarter-end series by country-year proportional allocation using the available quarterly indicator, official RCEP tariff schedules, and bilateral trade data used to form lagged network matrices. The pair-level tariff-relief regressor is stored as an absolute reduction magnitude multiplied by 100 before entering the panel regressions.
+This is an inactive audit-boundary protocol record, not a supplementary empirical-results note. `PAPER_CLAIM_AUDIT=BLOCKED` and `EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL` prevent the RCEP execution candidate from entering a manuscript build, figure, table, portal field or availability statement.
 
-The effective sample size in the baseline pair-level regression is 7560 observations. This follows mechanically from 210 ordered non-self country pairs and 36 post-burn-in dates after the rolling window has been imposed on the differenced quarterly panel. The baseline panel regression uses the bounded pair-level contribution with pair and quarter fixed effects and pair-clustered standard errors; Supplementary Table 4 also reports the untruncated raw-metric sensitivity, the 1st-99th percentile trimmed raw-metric sensitivity, and a two-way clustered variance sensitivity.
+The protocol would construct a response panel from quarterly macro inputs, annual multi-regional input-output inputs, tariff schedules and bilateral trade data, then form lagged predetermined exposure matrices. It would evaluate a fixed reconstructed coefficient path at an observed topology and at a predeclared frozen topology. Any pair-level second-stage analysis would be descriptive because it uses a generated propagation summary and does not identify policy effects, network formation or a causal mechanism.
 
-All frozen-topology empirical outputs use the same comparator,
-
-$$
-W_{pre} = \frac{1}{16}\sum_{t \in \text{2016 Q1--2019 Q4}} W_t,
-$$
-
-that is, the average import-share matrix over 2016 Q1-2019 Q4. The regression benchmark, aggregate-series figure and frozen-topology comparison use one unified fixed-window benchmark matrix.
+No sample size, selected tuning value, coefficient, interval, ratio, aggregate response, stability result, topology association, figure or table is released in this note. The stored inputs and hash-frozen output candidates are not evidence. A future manuscript revision would require a fresh authorised execution, an independent value-and-claim audit, a released claim ledger and a separately reviewed application section.

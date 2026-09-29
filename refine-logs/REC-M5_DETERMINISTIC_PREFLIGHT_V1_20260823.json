@@ -1,0 +1,522 @@
+{
+  "record": "REC-M5_DETERMINISTIC_PREFLIGHT_V1_20260823",
+  "generated": "2026-08-23",
+  "timezone_basis": "Asia/Shanghai",
+  "record_class": "deterministic_preflight_readonly",
+  "result": "PREFLIGHT_PASS_INDEPENDENT_SEMANTIC_REVIEW_STILL_REQUIRED",
+  "not_a_receipt": {
+    "is_independent_review_receipt": false,
+    "is_governance_pass": false,
+    "authorizes_manuscript_mutation": false,
+    "authorizes_claim_activation": false,
+    "satisfies_m5_c": false,
+    "statement": "This record is a mechanical recomputation of hash and structural facts on current bytes. It is produced by the same party that synthesized the patch and therefore cannot discharge the M5-C independent-review requirement for any lane."
+  },
+  "naming_deviation": {
+    "planned_name": "REC-M5_GOVERNANCE_RECHECK_V11_20260823",
+    "chosen_name": "REC-M5_DETERMINISTIC_PREFLIGHT_V1_20260823",
+    "reason": "The BASELINE/RECHECK name collision is the root cause of the TERRA_V4 BLOCKED verdict. Reusing GOVERNANCE_RECHECK for a non-receipt would extend that ambiguity."
+  },
+  "checks": {
+    "C1_frozen_input_hashes": {
+      "verdict": "PASS",
+      "total": 6,
+      "passed": 5,
+      "reference_record": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.json",
+      "rows": [
+        {
+          "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+          "bytes": 27202,
+          "actual_sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd",
+          "v10_records_this_hash": true,
+          "verdict": "PASS",
+          "note": null
+        },
+        {
+          "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+          "bytes": 28217,
+          "actual_sha256": "938e5218280fcdf25ffb206040d420e2420851a3483e1cc7c282dabf0c01e0e6",
+          "v10_records_this_hash": true,
+          "verdict": "PASS",
+          "note": null
+        },
+        {
+          "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+          "bytes": 10097,
+          "actual_sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341",
+          "v10_records_this_hash": true,
+          "verdict": "PASS",
+          "note": null
+        },
+        {
+          "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+          "bytes": 15091,
+          "actual_sha256": "ebb639ed613520ac643ee1ac21b53c9420e4bbf3a010af1f130a8e3d3b12d8b6",
+          "v10_records_this_hash": true,
+          "verdict": "PASS",
+          "note": null
+        },
+        {
+          "path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.md",
+          "bytes": 1467,
+          "actual_sha256": "dfd4385fd1f6f027e7a9ba12fc91f8e710e059edbe38179606898264e3d00539",
+          "v10_records_this_hash": false,
+          "verdict": "MISMATCH",
+          "note": null
+        },
+        {
+          "path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.json",
+          "bytes": 2987,
+          "actual_sha256": "94668a914aeba43dc2d8ca34e7639cb4930e34b2abbe8211980a77bf4adfd3ee",
+          "v10_records_this_hash": false,
+          "verdict": "PASS",
+          "note": "self-referential: a record cannot contain its own hash"
+        }
+      ]
+    },
+    "C2_protected_baseline": {
+      "verdict": "PASS_WITH_NOT_VERIFIABLE",
+      "total": 12,
+      "passed": 11,
+      "mismatch": 0,
+      "not_verifiable": 1,
+      "gating_note": "The single NOT_VERIFIABLE row is a P0 availability failure, not a content mismatch.",
+      "rows": [
+        {
+          "path": "manuscript_src/natcs/methods_estimator.md",
+          "expected_sha256": "8f4cb0f7efdb1438fcfad1fe1a3441ed80877093077fe7c7b9f8ec56508cb25d",
+          "actual_sha256": "8f4cb0f7efdb1438fcfad1fe1a3441ed80877093077fe7c7b9f8ec56508cb25d",
+          "verdict": "PASS"
+        },
+        {
+          "path": "manuscript_src/natcs/results_validation.md",
+          "expected_sha256": "746567db7d4087c2335c65768e35a1a9e8b275791095c896afefd632d8278bb3",
+          "actual_sha256": "746567db7d4087c2335c65768e35a1a9e8b275791095c896afefd632d8278bb3",
+          "verdict": "PASS"
+        },
+        {
+          "path": "manuscript_src/natcs/supp_note4_benchmarks.md",
+          "expected_sha256": "0bec42db15fd153c7480f42a68280111bef986e04496e72c35612af6a181939e",
+          "actual_sha256": "0bec42db15fd153c7480f42a68280111bef986e04496e72c35612af6a181939e",
+          "verdict": "PASS"
+        },
+        {
+          "path": "manuscript_src/natcs/methods_data.md",
+          "expected_sha256": "26e0a984ac5af6676466fba2f403882a1fc841832c221b83b06e8c0d01cf7a2d",
+          "actual_sha256": "26e0a984ac5af6676466fba2f403882a1fc841832c221b83b06e8c0d01cf7a2d",
+          "verdict": "PASS"
+        },
+        {
+          "path": "manuscript_src/natcs/methods_uncertainty.md",
+          "expected_sha256": "2faf37836b9b274c9f2bd2cede54cbea9ce5c27a32bdc951ae7b1ee5e00f1601",
+          "actual_sha256": "2faf37836b9b274c9f2bd2cede54cbea9ce5c27a32bdc951ae7b1ee5e00f1601",
+          "verdict": "PASS"
+        },
+        {
+          "path": "manuscript_src/natcs/supp_note7_repro.md",
+          "expected_sha256": "c33c63370a55ae4afe7abb2e1fb4deef47988585b411d03fa5f54809f6337230",
+          "actual_sha256": "c33c63370a55ae4afe7abb2e1fb4deef47988585b411d03fa5f54809f6337230",
+          "verdict": "PASS"
+        },
+        {
+          "path": "manuscript_src/natcs/supp_note8_scope.md",
+          "expected_sha256": "1f8a02a810b372a479bc9e3f877613c2dd670bea4b1d9deffdec681b9933d8fa",
+          "actual_sha256": "1f8a02a810b372a479bc9e3f877613c2dd670bea4b1d9deffdec681b9933d8fa",
+          "verdict": "PASS"
+        },
+        {
+          "path": "manuscript_src/natcs/controlled_benchmark_contract.json",
+          "expected_sha256": "95199a3c16e6f55a2cf94f7f67289a658bcac7ccb4e17ceee9efa5cc8d7934ba",
+          "actual_sha256": "95199a3c16e6f55a2cf94f7f67289a658bcac7ccb4e17ceee9efa5cc8d7934ba",
+          "verdict": "PASS"
+        },
+        {
+          "path": "output/ncs_review_corpus/v1_author_decision_register.json",
+          "expected_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+          "actual_sha256": null,
+          "verdict": "NOT_VERIFIABLE_DATALESS",
+          "errno": 35
+        },
+        {
+          "path": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json",
+          "expected_sha256": "60523c09126fca78f9e87c1ef4776a74b6f5025bbed19ad65ec1755838d77c68",
+          "actual_sha256": "60523c09126fca78f9e87c1ef4776a74b6f5025bbed19ad65ec1755838d77c68",
+          "verdict": "PASS"
+        },
+        {
+          "path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+          "expected_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+          "actual_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+          "verdict": "PASS"
+        },
+        {
+          "path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+          "expected_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+          "actual_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+          "verdict": "PASS"
+        }
+      ]
+    },
+    "C3_pre_apply_anchors": {
+      "verdict": "PASS",
+      "algorithm": "SHA-256 of UTF-8 paragraph fragments after CRLF normalization and trimEnd; paragraph numbering follows blank-line splitting",
+      "fail_closed_on_drift": true,
+      "groups_total": 10,
+      "groups_pass": 10,
+      "segments_total": 20,
+      "segments_pass": 20,
+      "interpretation": "All 10 group anchor records reproduce exactly against current manuscript_src bytes. The 26-unit patch is still applicable; no manuscript drift has occurred since 2026-08-11.",
+      "groups": [
+        {
+          "group": "G01",
+          "target": "manuscript_src/natcs/methods_estimator.md",
+          "segments_total": 1,
+          "segments_pass": 1,
+          "verdict": "PASS",
+          "segments": [
+            {
+              "paragraph": 3,
+              "expected_sha256": "6ea69844ccd957cb53ae04a8ee91715a1b2ef2d6d1da2e0b705f9a075bc7853d",
+              "actual_sha256": "6ea69844ccd957cb53ae04a8ee91715a1b2ef2d6d1da2e0b705f9a075bc7853d",
+              "verdict": "PASS"
+            }
+          ]
+        },
+        {
+          "group": "G02",
+          "target": "manuscript_src/natcs/methods_estimator.md",
+          "segments_total": 1,
+          "segments_pass": 1,
+          "verdict": "PASS",
+          "segments": [
+            {
+              "paragraph": 5,
+              "expected_sha256": "00fc2f0136720fd021658ebf5baa46459c65d0cbe2e7c5f2593564d7cfe0c71d",
+              "actual_sha256": "00fc2f0136720fd021658ebf5baa46459c65d0cbe2e7c5f2593564d7cfe0c71d",
+              "verdict": "PASS"
+            }
+          ]
+        },
+        {
+          "group": "G03",
+          "target": "manuscript_src/natcs/methods_estimator.md",
+          "segments_total": 1,
+          "segments_pass": 1,
+          "verdict": "PASS",
+          "segments": [
+            {
+              "paragraph": 4,
+              "expected_sha256": "6119a2fae8cf48d4aeb30c0e440cead32b0da9b902f200c62c7d0e38651f0933",
+              "actual_sha256": "6119a2fae8cf48d4aeb30c0e440cead32b0da9b902f200c62c7d0e38651f0933",
+              "verdict": "PASS"
+            }
+          ]
+        },
+        {
+          "group": "G04",
+          "target": "manuscript_src/natcs/results_validation.md",
+          "segments_total": 4,
+          "segments_pass": 4,
+          "verdict": "PASS",
+          "segments": [
+            {
+              "paragraph": 1,
+              "expected_sha256": "444a38bcf59dde43cc425bd6e8ea1bceb8818c5009584f3e646326660d264468",
+              "actual_sha256": "444a38bcf59dde43cc425bd6e8ea1bceb8818c5009584f3e646326660d264468",
+              "verdict": "PASS"
+            },
+            {
+              "paragraph": 2,
+              "expected_sha256": "2722adfe458c759aa449c707e65ab20f3f9ee286fb2c5a8be61f103383141d6b",
+              "actual_sha256": "2722adfe458c759aa449c707e65ab20f3f9ee286fb2c5a8be61f103383141d6b",
+              "verdict": "PASS"
+            },
+            {
+              "paragraph": 3,
+              "expected_sha256": "db8937fac634420ef220ac231d68529e877ae0de4fde2d2b7000ee1ed960a265",
+              "actual_sha256": "db8937fac634420ef220ac231d68529e877ae0de4fde2d2b7000ee1ed960a265",
+              "verdict": "PASS"
+            },
+            {
+              "paragraph": 4,
+              "expected_sha256": "c0ffcc7c0fbb5d8f4923238556ef11e6e4adcd70fd0d7946a97fbeb03b70ebdb",
+              "actual_sha256": "c0ffcc7c0fbb5d8f4923238556ef11e6e4adcd70fd0d7946a97fbeb03b70ebdb",
+              "verdict": "PASS"
+            }
+          ]
+        },
+        {
+          "group": "G05",
+          "target": "manuscript_src/natcs/supp_note4_benchmarks.md",
+          "segments_total": 8,
+          "segments_pass": 8,
+          "verdict": "PASS",
+          "segments": [
+            {
+              "paragraph": 1,
+              "expected_sha256": "ccf0b74830e983794fc55a841091bc53643abd0eae7a6505e93225483f99268a",
+              "actual_sha256": "ccf0b74830e983794fc55a841091bc53643abd0eae7a6505e93225483f99268a",
+              "verdict": "PASS"
+            },
+            {
+              "paragraph": 2,
+              "expected_sha256": "9f4678c98470b14780da63c17cabd16a1da0602856be41261c4068e4fe76a778",
+              "actual_sha256": "9f4678c98470b14780da63c17cabd16a1da0602856be41261c4068e4fe76a778",
+              "verdict": "PASS"
+            },
+            {
+              "paragraph": 4,
+              "expected_sha256": "a85b0cb6f9a8084f2dac2c3dce3fb982f7985fe1493aea2bca51d423c2c7afff",
+              "actual_sha256": "a85b0cb6f9a8084f2dac2c3dce3fb982f7985fe1493aea2bca51d423c2c7afff",
+              "verdict": "PASS"
+            },
+            {
+              "paragraph": 5,
+              "expected_sha256": "5a56b9311724a97da964edbb18c90fbc76d61751c38253115d99242e222c2526",
+              "actual_sha256": "5a56b9311724a97da964edbb18c90fbc76d61751c38253115d99242e222c2526",
+              "verdict": "PASS"
+            },
+            {
+              "paragraph": 6,
+              "expected_sha256": "f99c544b7ab4505ac74495ee075755b120fb2a8e3389e1d72748ec63238118d8",
+              "actual_sha256": "f99c544b7ab4505ac74495ee075755b120fb2a8e3389e1d72748ec63238118d8",
+              "verdict": "PASS"
+            },
+            {
+              "paragraph": 8,
+              "expected_sha256": "b70faebee53dd4532953fb18984ef96b0a3d63b67d56437532fe12db05bb851e",
+              "actual_sha256": "b70faebee53dd4532953fb18984ef96b0a3d63b67d56437532fe12db05bb851e",
+              "verdict": "PASS"
+            },
+            {
+              "paragraph": 9,
+              "expected_sha256": "0ada4ae5361dc9649fa9ebdf4e8e85f7f779ba3794f1971d51c11c1cf61c9567",
+              "actual_sha256": "0ada4ae5361dc9649fa9ebdf4e8e85f7f779ba3794f1971d51c11c1cf61c9567",
+              "verdict": "PASS"
+            },
+            {
+              "paragraph": 10,
+              "expected_sha256": "348e6b96f5842bf719fae734a4d9e9dde5d45d5cf0ce7d7af9036823361eabde",
+              "actual_sha256": "348e6b96f5842bf719fae734a4d9e9dde5d45d5cf0ce7d7af9036823361eabde",
+              "verdict": "PASS"
+            }
+          ]
+        },
+        {
+          "group": "G06",
+          "target": "manuscript_src/natcs/methods_estimator.md",
+          "segments_total": 1,
+          "segments_pass": 1,
+          "verdict": "PASS",
+          "segments": [
+            {
+              "paragraph": 2,
+              "expected_sha256": "3c924d1da145ab5e840a4892df3853390db6eeb21c1a23751496524ec01f58ef",
+              "actual_sha256": "3c924d1da145ab5e840a4892df3853390db6eeb21c1a23751496524ec01f58ef",
+              "verdict": "PASS"
+            }
+          ]
+        },
+        {
+          "group": "G07",
+          "target": "manuscript_src/natcs/methods_data.md",
+          "segments_total": 1,
+          "segments_pass": 1,
+          "verdict": "PASS",
+          "segments": [
+            {
+              "paragraph": 5,
+              "expected_sha256": "352d74189d598706ce2034e27fc16525ebf814ea2b2fe1e7cb7cec65b99d8c0c",
+              "actual_sha256": "352d74189d598706ce2034e27fc16525ebf814ea2b2fe1e7cb7cec65b99d8c0c",
+              "verdict": "PASS"
+            }
+          ]
+        },
+        {
+          "group": "G08",
+          "target": "manuscript_src/natcs/methods_uncertainty.md",
+          "segments_total": 1,
+          "segments_pass": 1,
+          "verdict": "PASS",
+          "segments": [
+            {
+              "paragraph": 2,
+              "expected_sha256": "36ae766e672c84154389c3f5bfdf9f32c9146b589198c43c33e786f6e0dddda1",
+              "actual_sha256": "36ae766e672c84154389c3f5bfdf9f32c9146b589198c43c33e786f6e0dddda1",
+              "verdict": "PASS"
+            }
+          ]
+        },
+        {
+          "group": "G09",
+          "target": "manuscript_src/natcs/supp_note7_repro.md",
+          "segments_total": 1,
+          "segments_pass": 1,
+          "verdict": "PASS",
+          "segments": [
+            {
+              "paragraph": 4,
+              "expected_sha256": "5d5ebb7a8ed67aa34eda6619189baace8faaa3303dbe5a89e3e2a74adbc8770e",
+              "actual_sha256": "5d5ebb7a8ed67aa34eda6619189baace8faaa3303dbe5a89e3e2a74adbc8770e",
+              "verdict": "PASS"
+            }
+          ]
+        },
+        {
+          "group": "G10",
+          "target": "manuscript_src/natcs/supp_note8_scope.md",
+          "segments_total": 1,
+          "segments_pass": 1,
+          "verdict": "PASS",
+          "segments": [
+            {
+              "paragraph": 8,
+              "expected_sha256": "2f42751ca0ef001d91c0cd8f05079dffc1137340bc4d6e47e89ec42052abbb1a",
+              "actual_sha256": "2f42751ca0ef001d91c0cd8f05079dffc1137340bc4d6e47e89ec42052abbb1a",
+              "verdict": "PASS"
+            }
+          ]
+        }
+      ]
+    },
+    "C4_unit_coverage": {
+      "verdict": "PASS",
+      "entries": 26,
+      "unique_source_unit_pairs": 26,
+      "duplicates": 0,
+      "by_source_item": {
+        "V1-026": 3,
+        "V1-033": 13,
+        "V1-045": 10
+      },
+      "all_unapplied": true
+    },
+    "C5_process_text_residue": {
+      "verdict": "PASS",
+      "finding_under_test": "TERRA-V3-E1",
+      "original_finding": "Unmarked AIN-RESULT binding process note interleaved between G04 Proposed paragraph 1 and Proposed paragraph 2, at risk of being written into results_validation.md.",
+      "bare_prose_lines_between_proposed_paragraphs": 0,
+      "per_group_bare_prose": {
+        "G01": 0,
+        "G02": 0,
+        "G03": 0,
+        "G04": 0,
+        "G05": 0,
+        "G06": 0,
+        "G07": 0,
+        "G08": 0,
+        "G09": 0,
+        "G10": 0
+      },
+      "g04_block_lines": "82..101",
+      "g04_structure": "Target line, then 4 Proposed paragraph labels each followed only by a blockquote. Zero interleaved prose.",
+      "characteristic_strings": {
+        "AIN-RESULT binding": 0,
+        "partial M5-A response": 0,
+        "remaining author inputs": 0,
+        "AUTHOR_INPUT_NEEDED": 0
+      },
+      "placeholder_tokens": 0,
+      "manifest_only_labels": {
+        "count": 4,
+        "lines": [
+          127,
+          231,
+          241,
+          242
+        ]
+      },
+      "relocation_evidence": {
+        "current_location_of_g04_ain_statement": "line 283",
+        "containing_section": "## Missing information and risk flags (line 277)",
+        "section_class": "record_level_status_section_not_manuscript_target",
+        "corroborating_label": "line 284 explicitly labels the G04 traceability content as Manifest-only"
+      },
+      "scaffolding_disambiguation": "Target:/Boundary: lines are uniform record scaffolding present across groups and sit before the Proposed paragraph run, never inside it. They are not TERRA-V3-E1 class residue.",
+      "caveat": "Structural remediation only. Whether the relocated wording is editorially adequate is a semantic judgment reserved to the editorial lane."
+    },
+    "C6_governance_input_path_resolution": {
+      "verdict": "CONFIRMED_NAME_MISMATCH",
+      "rows": [
+        {
+          "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V10_20260812.md",
+          "role": "cited_by_TERRA_V4",
+          "exists": false,
+          "actual_sha256": null,
+          "verdict": "UNRESOLVED_NAME_DOES_NOT_EXIST"
+        },
+        {
+          "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V10_20260812.json",
+          "role": "cited_by_TERRA_V4",
+          "exists": false,
+          "actual_sha256": null,
+          "verdict": "UNRESOLVED_NAME_DOES_NOT_EXIST"
+        },
+        {
+          "path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.md",
+          "role": "actual_on_disk",
+          "exists": true,
+          "actual_sha256": "dfd4385fd1f6f027e7a9ba12fc91f8e710e059edbe38179606898264e3d00539",
+          "verdict": "RESOLVED"
+        },
+        {
+          "path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.json",
+          "role": "actual_on_disk",
+          "exists": true,
+          "actual_sha256": "94668a914aeba43dc2d8ca34e7639cb4930e34b2abbe8211980a77bf4adfd3ee",
+          "verdict": "RESOLVED"
+        }
+      ],
+      "conclusion": "TERRA_V4 attempted to verify REC-M5_GOVERNANCE_RECHECK_V10_20260812.{md,json}, which do not exist under any materialization state. The actual records are REC-M5_GOVERNANCE_BASELINE_V10_20260812.{md,json}. TERRA_V4 BLOCKED is a path-naming failure, not a substantive governance finding.",
+      "required_control": "Dispatch must carry exact paths plus expected SHA-256 and require the reviewer to report measured hashes. Do not edit the V10 baseline: its hashes dfd4385f… and 94668a91… are bound inside the SCIENTIFIC_RECHECK_TERRA_V5 PASS receipt."
+    }
+  },
+  "m5_c_closure_state": {
+    "lanes_required": 3,
+    "scientific_boundary": {
+      "receipt": "REC-M5_SCIENTIFIC_RECHECK_TERRA_V5_20260812.md",
+      "verdict": "PASS",
+      "applies_to_current_bytes": true
+    },
+    "editorial_traceability": {
+      "receipt": "REC-M5_EDITORIAL_RECHECK_TERRA_V3_20260812.md",
+      "verdict": "BLOCKED",
+      "applies_to_current_bytes": false,
+      "reason": "reviewed superseded bytes"
+    },
+    "governance_manifest": {
+      "receipt": "REC-M5_GOVERNANCE_RECHECK_TERRA_V4_20260812.md",
+      "verdict": "BLOCKED",
+      "applies_to_current_bytes": false,
+      "reason": "unresolved input paths"
+    },
+    "outstanding": "2 independent receipts on current bytes",
+    "next_gate": "M5-D manuscript mutation authorization, requested only after both receipts PASS"
+  },
+  "blocking_constraints_carried_forward": [
+    "P0-C1 do not delete manuscript_src/natcs/discussion 2.md",
+    "P0-C2 do not delete refine-logs ' 2.' copies of hash-frozen REC records",
+    "P0-C3 do not treat ORPHAN_NO_BASE copies as redundant",
+    "P0-C4 no make target, test suite or scientific entry before materialization completes",
+    "P0-C5 report tracked/clean, 247/247, 85/85, 145/145 as NOT_VERIFIABLE until git resolves"
+  ],
+  "authorization_boundary": {
+    "files_created": [
+      "refine-logs/REC-M5_DETERMINISTIC_PREFLIGHT_V1_20260823.json",
+      "refine-logs/REC-M5_DETERMINISTIC_PREFLIGHT_V1_20260823.md"
+    ],
+    "files_modified": [],
+    "files_deleted": [],
+    "manuscript_src_touched": false,
+    "formal_register_touched": false,
+    "frozen_records_touched": false,
+    "authorization_files_touched": false,
+    "generated_tex_touched": false,
+    "git_operations": 0,
+    "make_targets": 0,
+    "tests": 0,
+    "scientific_entries": 0,
+    "scientific_execution": "NOT_AUTHORIZED",
+    "claim_activation": "NOT_AUTHORIZED"
+  }
+}

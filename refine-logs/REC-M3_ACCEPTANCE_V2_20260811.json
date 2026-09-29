@@ -1,0 +1,248 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m3-root-acceptance-v2",
+  "acceptance_id": "REC-M3-root-acceptance-v2-20260811",
+  "generated_at": "2026-08-11T20:50:57+08:00",
+  "acceptance_result": "REC-M3_GOVERNANCE_ACCEPTANCE_PASS",
+  "operation_policy": {
+    "root_acceptance_record_only": true,
+    "protected_manuscript_mutation": false,
+    "protected_register_mutation": false,
+    "protected_e4_r3_mutation": false,
+    "protected_authorization_mutation": false,
+    "manuscript_patch_application": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  },
+  "repair_audit": {
+    "revision": "R2",
+    "trigger_failure_id": "REC-M4-V1-026-EVIDENCE-POINTER-001",
+    "trigger_path": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V1_20260811.json",
+    "trigger_sha256": "673946c72c35d7beb21a91e4a6e00f06c5288210e616eaefff901597cd0d2716",
+    "owned_files": [
+      "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811_R2.json",
+      "refine-logs/REC-M3_ACCEPTANCE_V2_20260811.json"
+    ],
+    "repairs": [
+      "Created a versioned V1-026 R2 ledger; the predecessor ledger remains unchanged.",
+      "Replaced exactly three unresolved comparator-ledger.json#/content/records keys with comparator_registry.json#/content/records.",
+      "Retained each audit unit's distinct primary-ledger key for method-cell, endpoint-parity, or declared-method evidence."
+    ],
+    "independent_review_threads": [
+      "019ff0d1-6baa-7413-8b6c-5f1c39fda105",
+      "019ff0d1-6894-7e92-a8c8-d6fcd8550508"
+    ],
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "max",
+    "protected_scope_changed": false,
+    "scientific_finding_changed": false
+  },
+  "output_inventory": [
+    {
+      "path": "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811_R2.json",
+      "bytes": 17223,
+      "sha256": "dd03ce5369dff3c54b53910e4ab9368d07195f5294d5e9a3c130fb8456c145ca"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_026_PATCH_PROPOSAL_20260811.md",
+      "bytes": 10613,
+      "sha256": "5dc82aed028b4cc87bc44050e2d42ffdd0b22b4a21f89b35174dbf513feb2ebb"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json",
+      "bytes": 15181,
+      "sha256": "68a841cb4c5f68916cd305eb354200030564079f2e6fedf4e33a346a35f7f443"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_033_PATCH_PROPOSAL_20260811.md",
+      "bytes": 10169,
+      "sha256": "6d8fff0275be2bbeeefca33193656c397de494e3ad0812e521cd6d3a4551e6da"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json",
+      "bytes": 14990,
+      "sha256": "baee769a51c5861bfe04c7fcfc8e72608ea2bcd6f52fedcd909fca1bbb61ed33"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_045_PATCH_PROPOSAL_20260811.md",
+      "bytes": 9907,
+      "sha256": "7eb9d17f3c670de2babcd4e0587bd6ba13ff6787abf38119e4c435dd1397a0a0"
+    }
+  ],
+  "fresh_root_validation": {
+    "validator": "Node.js structured JSON, JSON Pointer, Markdown anchor, file/line, raw SHA-256, UTF-8 byte-sorted tree, semantic registry-to-ledger, and scientific-boundary validator",
+    "checks": 114,
+    "passed": 114,
+    "failed": 0,
+    "status": "PASS",
+    "audit_units": {
+      "V1-026_CAL-E01_75": 3,
+      "V1-033_CAL-E02_128": 13,
+      "V1-045_CAL-E03_164": 10,
+      "total": 26,
+      "unique_ids": 26
+    },
+    "repaired_surface": {
+      "item": "V1-026 / CAL-E01:75",
+      "invalid_pointer_count_before": 3,
+      "invalid_pointer_count_after": 0,
+      "replacement_pointer": "comparator_registry.json#/content/records",
+      "replacement_pointer_resolves": true,
+      "semantic_mapping": "registry=role/parameterization/endpoint-interface definition; primary comparator ledger=executed cell/parity/roster/status audit"
+    },
+    "verified_surfaces": [
+      "R2 and predecessor JSON parsing, schema identifiers, hashes, repair provenance, and exact three-to-zero pointer replacement",
+      "formal-register binding, manuscript source existence and line locators, active-contract pointers, E01 contract pointers/anchors, M2C coverage pointer, comparator-audit pointers, proposal pointers, and contract-decision pointers",
+      "three comparator registry records, role labels, parameterization grids, and endpoint shapes",
+      "V1-026 scientific execution NOT_RUN, claim activation BLOCKED, descriptive-only ceiling, and NO_CONTRACT_CHANGE",
+      "nine protected files and three protected trees using UTF-8 byte-order path sorting",
+      "unchanged V1-033 and V1-045 output hashes retained from the predecessor inventory; full independent REC-M4 V2 remains mandatory"
+    ],
+    "nonblocking_locator_note": {
+      "item": "V1-033 / CAL-E02:128",
+      "classification": "PARAGRAPH_LEVEL_CURRENT_SUMMARY",
+      "verbatim_substring_matches": 1,
+      "unit_count": 13,
+      "file_and_line_locators_valid": true,
+      "effect": "Non-blocking for REC-M3 governance acceptance; independent REC-M4 V2 must retain this note and must not treat the current fields as verbatim replacement anchors."
+    }
+  },
+  "protected_hash_recheck": {
+    "file_hash_algorithm": "SHA-256 of raw bytes",
+    "tree_hash_algorithm": "SHA-256 of UTF-8 sorted relative-path TAB bytes TAB raw-SHA-256 LF lines; symlinks recorded separately",
+    "protected_files_checked": 9,
+    "protected_file_matches": 9,
+    "protected_trees_checked": 3,
+    "protected_tree_matches": 3,
+    "all_match": true,
+    "files": [
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json",
+        "bytes": 7074,
+        "sha256": "c012f7d1a40168b264027c55a3760424c7686cd0e7941cf6765d99c2629fd63f"
+      },
+      {
+        "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+        "bytes": 3455,
+        "sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59"
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2A_REPAIR_RECEIPT_V1_20260810_222232.json",
+        "bytes": 13026,
+        "sha256": "b98f8a4dc6dd36ee28426182d9320d0696880867544a0cc05dd6c1fb5e943395"
+      },
+      {
+        "path": "output/ncs_review_corpus/v1_author_decision_register.json",
+        "bytes": 110685,
+        "sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2"
+      },
+      {
+        "path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+        "bytes": 1822,
+        "sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+      },
+      {
+        "path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+        "bytes": 2281,
+        "sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2_EXECUTION_AUTHORIZATION_V1_20260810_223606.json",
+        "bytes": 5715,
+        "sha256": "44677a44f01876bba8c96d924a69cf39a37f4642e00a004c1b03fb2dcbf4034c"
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_PREFLIGHT_RECEIPT_V1_20260810_231758.json",
+        "bytes": 10995,
+        "sha256": "5918f4eac9e6b01a012bcf511afc50a357e07e005b99dea242b36eff816359df"
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_TRACKER_V1_20260810_231758.md",
+        "bytes": 2947,
+        "sha256": "c35bf484768de70b0d64d2858f1328600d9cc5cc4efc7bb704729432336541eb"
+      }
+    ],
+    "trees": [
+      {
+        "path": "manuscript_src/natcs",
+        "file_count": 72,
+        "symlink_count": 0,
+        "sha256": "21a1319b6f98e31804b7fd1766c66124553a2ad2904bdc2dcb655097e591a364"
+      },
+      {
+        "path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3",
+        "file_count": 11,
+        "symlink_count": 0,
+        "sha256": "6859c367141f33e589fb2d536c96fbe763f40e406ca65bfa556d89b7536e00ec"
+      },
+      {
+        "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3",
+        "file_count": 3,
+        "symlink_count": 0,
+        "sha256": "5398ec9a698ba0a7b878b0a8d25a7d8e9184ea6ff98af033f2b33f7165b1a83f"
+      }
+    ]
+  },
+  "scientific_scope": {
+    "V1-026_CAL-E01_75": {
+      "governance": "PASS",
+      "m2c": "PASS",
+      "scientific_execution": "NOT_RUN",
+      "claim_activation": "BLOCKED",
+      "contract_change": "NO_CONTRACT_CHANGE",
+      "ceiling": "Descriptive comparator role, endpoint, coverage, status, and common-completion integrity only."
+    },
+    "V1-033_CAL-E02_128": {
+      "governance": "PASS",
+      "register": "PARTIAL",
+      "m2c": "BLOCKED",
+      "data_sufficiency": "PARTIAL",
+      "scientific_execution": "NOT_RUN",
+      "evidence_type": "simulation_only",
+      "independent_empirical_ground_truth": "NOT_EVALUABLE",
+      "provenance_gaps": [
+        "chronology",
+        "selection inputs",
+        "held-out query identity",
+        "endpoint signature",
+        "truth isolation"
+      ]
+    },
+    "V1-045_CAL-E03_164": {
+      "governance": "PASS",
+      "register": "PARTIAL",
+      "m2c": "PARTIAL",
+      "scope": "N=20/N=50 only",
+      "N100_N200": "NOT_RUN/ABSTAIN",
+      "resource_telemetry": "BLOCKED/null",
+      "runs": 1,
+      "seeds_per_cell": 20,
+      "repeated_run_reproducibility": "NOT_ESTABLISHED",
+      "unresolved_contracts": [
+        "CAL-E03 controlled ALS declares 60 iterations without stopping semantics; compiled application/bootstrap settings remain separate at 100/80 iterations.",
+        "Topology stress categories remain unbound to exact amplitudes and full protocol details."
+      ]
+    },
+    "claim_activation": "NOT_AUTHORIZED",
+    "promotion": "NOT_AUTHORIZED",
+    "new_scientific_experiment": "NOT_RUN",
+    "e4_r008_reuse": "NOT_USED"
+  },
+  "progression_gate": {
+    "REC-M3": "GOVERNANCE_ACCEPTED_V2",
+    "REC-M4_V1": "FAIL_RETAINED_AS_HISTORY",
+    "REC-M4_V2": "REQUIRED_INDEPENDENT_UNIFIED_ACCEPTANCE",
+    "REC-M5": "NOT_AUTHORIZED_UNTIL_REC-M4_V2_PASS",
+    "manuscript_patches_applied": false
+  },
+  "predecessors": {
+    "m3_acceptance_v1": {
+      "path": "refine-logs/REC-M3_ACCEPTANCE_V1_20260811.json",
+      "sha256": "c8b17eef2a15912bbc4572b68cffdae87f8b75fb09fa9db0909b484ba32c7d8b",
+      "disposition": "SUPERSEDED_FOR_V1_026_POINTER_REPAIR; RETAINED_AS_IMMUTABLE_HISTORY"
+    },
+    "m4_fail_v1": {
+      "path": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V1_20260811.json",
+      "sha256": "673946c72c35d7beb21a91e4a6e00f06c5288210e616eaefff901597cd0d2716",
+      "disposition": "RETAINED_AS_IMMUTABLE_FAIL_CLOSED_HISTORY"
+    }
+  }
+}

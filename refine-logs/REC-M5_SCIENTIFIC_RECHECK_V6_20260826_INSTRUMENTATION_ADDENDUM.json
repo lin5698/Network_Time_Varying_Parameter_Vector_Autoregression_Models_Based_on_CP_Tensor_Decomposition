@@ -1,0 +1,89 @@
+{
+  "record_class": "scientific_boundary_recheck_receipt_instrumentation_addendum",
+  "receipt_id": "REC-M5_SCIENTIFIC_RECHECK_V6_20260826_INSTRUMENTATION_ADDENDUM",
+  "parent_receipt": "REC-M5_SCIENTIFIC_RECHECK_V6_20260826",
+  "date": "2026-08-26",
+  "timezone": "Asia/Shanghai",
+  "disclosed_deviation": {
+    "statement": "INSTRUMENTATION EXECUTED BY THE ORCHESTRATOR PARTY (the party that synthesized V2); adjudicated by the reviewer. Not reviewer-executed.",
+    "reviewer_remeasurement_attempt": "FAILED AGAIN during this addendum (spawn bash ENOENT); process layer remains incapable",
+    "mitigations": [
+      "reported hashes compared against expectation values pre-registered in the lane definition before measurement reporting",
+      "diff artifact verified line-by-line by the reviewer against its own independent full-content reads of both files; a fabricated or divergent diff could not pass verification without matching true bytes of both files"
+    ],
+    "residual_exposure": "reviewer cannot exclude environment-level manipulation upstream of its read tool; fully independent re-measurement in a shell-capable session remains recommended gold standard for the archive",
+    "citation_rule": "any citation of the upgraded verdict must carry this disclosure"
+  },
+  "hash_adjudication": [
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "orchestrator_measured_sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd",
+      "pre_registered_expected_sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd",
+      "adjudication": "MATCH"
+    },
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V2_20260826.md",
+      "orchestrator_measured_sha256": "8a9bf747ea18e997387fdbbc6f8c486bb0a7ee76721c4f2264ffa853b641bdf0",
+      "pre_registered_expected_sha256": "8a9bf747ea18e997387fdbbc6f8c486bb0a7ee76721c4f2264ffa853b641bdf0",
+      "adjudication": "MATCH"
+    },
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "orchestrator_measured_sha256": "938e5218280fcdf25ffb206040d420e2420851a3483e1cc7c282dabf0c01e0e6",
+      "pre_registered_expected_sha256": null,
+      "adjudication": "RECORDED_NOT_ADJUDICABLE_OUTSIDE_LANE_SCOPE; consistent with no-collateral-change claim"
+    }
+  ],
+  "diff_artifact_verification": {
+    "artifact": "tmp/v1_v2_unified.diff",
+    "lines": 114,
+    "verified_by_reviewer_against_own_independent_reads": true,
+    "hunk_count_matches_reported": true,
+    "rc_interpretation": "rc=1 correct for differing files",
+    "no_newline_markers": "none; both files end with final newline, EOF bytes correspond",
+    "byte_level_consequence": "unified diff emits output only for differing lines, so all bytes outside the 9 hunks are byte-identical between V1 and V2; closes the V6 whitespace residual-risk disclosure and strengthens S-T3 to true byte-level identity",
+    "v1_mtime_in_artifact": "2026-08-12 15:11:03 (consistent with V1 frozen since 2026-08-12)",
+    "v2_mtime_in_artifact": "2026-08-26 11:35:00"
+  },
+  "hunk_reconciliation": [
+    {"hunk":"@@ -1,6 +1,6 @@","v6_regions":["H1","H2"],"log_entries":["headers/provenance"],"verified_content":"title V1->V2; Generated timestamp -> date + supersedes-freeze sentence"},
+    {"hunk":"@@ -15,6 +15,20 @@","v6_regions":["H3"],"log_entries":["log insertion"],"verified_content":"14 added lines: V2 revision log heading, basis paragraph, 7-row table + spacing"},
+    {"hunk":"@@ -85,7 +99,7 @@","v6_regions":["H4"],"log_entries":["R3/F3"],"verified_content":"G04-P1 formula clause; coef_error_median/girf_error_median removed, metrics named verbally"},
+    {"hunk":"@@ -97,7 +111,7 @@","v6_regions":["H5a","H5b"],"log_entries":["R2a/F2a","R1/F1"],"verified_content":"single physical G04-P4 line carries both spans: amplitude phrase swap AND NOT_RUN/BLOCKED sentence -> plain non-execution/no-own-claim/non-extension"},
+    {"hunk":"@@ -112,13 +126,11 @@","v6_regions":["H6","H7"],"log_entries":["R5a-e (G05-A share)","C1"],"verified_content":"qualification row Separate gate x3 -> Separate design + evidence role -> qualification under pre-registered decision rule; deletion of exactly two lines: empty line then duplicated 'Proposed text:' label (old side ends V1 L124, delta -2 closes exactly)"},
+    {"hunk":"@@ -142,7 +154,7 @@","v6_regions":["H8"],"log_entries":["R2b/F2b"],"verified_content":"G05-D amplitude phrase swap; all negations byte-identical"},
+    {"hunk":"@@ -158,12 +170,12 @@","v6_regions":["H9","H10","H11"],"log_entries":["R5a-e/F5b-e"],"verified_content":"Promotion status->Rule outcome; Not promoted x2 -> Threshold not met x2; prespecified promotion rule -> pre-registered decision rule; bounding sentences byte-identical"},
+    {"hunk":"@@ -228,7 +240,7 @@","v6_regions":["H12"],"log_entries":["C2a"],"verified_content":"G09 manifest note adds '; do not apply as manuscript text'"},
+    {"hunk":"@@ -236,10 +248,10 @@","v6_regions":["H13","H14"],"log_entries":["R4/F4","C2b"],"verified_content":"G10 proposed text codes -> plain abstention/unavailability wording; traceability note + state record suffixes added with NOT_RUN/ABSTAIN and BLOCKED/null codes retained verbatim"}
+  ],
+  "coverage_equality": {
+    "confirmed": true,
+    "regions_union": ["H1","H2","H3","H4","H5a","H5b","H6","H7","H8","H9","H10","H11","H12","H13","H14"],
+    "all_logged_revisions_present": true,
+    "unmapped_diff_content": [],
+    "coalescing_explanation": "adjacency only: two header changes share one hunk; R2a+R1 share one physical paragraph line; G05-A row + C1 deletion within one context window; three G05-F edits within five lines; two G10 note edits share one window",
+    "precision_refinement": "C1 deletion exact order was empty line THEN 'Proposed text:' label (V1 L120-121), refining V6's 'label + blank'; substance unchanged"
+  },
+  "verdicts": {
+    "input_hash_verification": "PASS_ORCHESTRATOR_EXECUTED_DISCLOSED",
+    "S_T1": "PASS_ORCHESTRATOR_EXECUTED_DISCLOSED",
+    "S_T2": "PASS_UNCHANGED",
+    "S_T3": "PASS_STRENGTHENED_TO_BYTE_LEVEL",
+    "S_T4": "PASS_UNCHANGED",
+    "S_T5": "PASS_UNCHANGED",
+    "overall": "PASS_WITH_CARRIED_DISCLOSURE"
+  },
+  "upgrade_path_conditions_from_v6": {
+    "hashes_match_expectations": true,
+    "diff_shows_exactly_recorded_hunk_set_with_coverage_equality": true,
+    "both_satisfied": true
+  },
+  "not_done_statements_this_turn": [
+    "only this addendum pair (…_INSTRUMENTATION_ADDENDUM.md/.json) was written",
+    "no manuscript, contract, formal-register or generated-TeX edit",
+    "no make/test/scientific execution",
+    "no independent hash measurement achieved and no independent diff run (process layer still incapable)",
+    "no ' 2.' copies opened; no subagents used",
+    "no authorization issued; no claim activated; application gate untouched; package readiness remains ready_for_independent_review"
+  ]
+}

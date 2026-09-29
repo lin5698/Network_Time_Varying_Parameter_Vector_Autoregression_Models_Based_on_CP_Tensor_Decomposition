@@ -1,0 +1,175 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-scientific-recheck-terra-v5",
+  "record_id": "REC-M5-SCIENTIFIC-RECHECK-TERRA-V5-20260812",
+  "date": "2026-08-12",
+  "overall_verdict": "PASS",
+  "reviewer_provenance": {
+    "reviewer_route": "gpt-5.6-terra",
+    "reasoning_effort": "max",
+    "adjudication_mode": "DIRECT_SELF_ADJUDICATION",
+    "delegation": "NOT_USED",
+    "cli_adjudicator": "NOT_USED",
+    "qwen": "NOT_USED",
+    "external_payload": "NOT_USED",
+    "scope": "Only the six frozen current M5 inputs listed in input_hashes were read for adjudication.",
+    "prohibited_e4_paths_read": 0
+  },
+  "input_hashes": [
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "expected_sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd",
+      "actual_sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd",
+      "result": "PASS"
+    },
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "expected_sha256": "938e5218280fcdf25ffb206040d420e2420851a3483e1cc7c282dabf0c01e0e6",
+      "actual_sha256": "938e5218280fcdf25ffb206040d420e2420851a3483e1cc7c282dabf0c01e0e6",
+      "result": "PASS"
+    },
+    {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "expected_sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341",
+      "actual_sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341",
+      "result": "PASS"
+    },
+    {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "expected_sha256": "ebb639ed613520ac643ee1ac21b53c9420e4bbf3a010af1f130a8e3d3b12d8b6",
+      "actual_sha256": "ebb639ed613520ac643ee1ac21b53c9420e4bbf3a010af1f130a8e3d3b12d8b6",
+      "result": "PASS"
+    },
+    {
+      "path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.md",
+      "expected_sha256": "dfd4385fd1f6f027e7a9ba12fc91f8e710e059edbe38179606898264e3d00539",
+      "actual_sha256": "dfd4385fd1f6f027e7a9ba12fc91f8e710e059edbe38179606898264e3d00539",
+      "result": "PASS"
+    },
+    {
+      "path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.json",
+      "expected_sha256": "94668a914aeba43dc2d8ca34e7639cb4930e34b2abbe8211980a77bf4adfd3ee",
+      "actual_sha256": "94668a914aeba43dc2d8ca34e7639cb4930e34b2abbe8211980a77bf4adfd3ee",
+      "result": "PASS"
+    }
+  ],
+  "adjudication": {
+    "G04": {
+      "result": "PASS",
+      "ratio_of_medians": {
+        "expression": "100 * (local_network_metric_median - cp_network_metric_median) / local_network_metric_median",
+        "statistic": "ratio of across-replication medians",
+        "denominator": "local_network metric median for the same scenario and endpoint",
+        "operator_field": "coef_error_median",
+        "response_field": "girf_error_median",
+        "comparator": "local_network / Local rolling",
+        "candidate": "cp_network / CP-network",
+        "replications_per_primary_scenario": 20,
+        "values": {
+          "operator_N15_percent": {
+            "unrounded": 93.55203369881073,
+            "display": 93.6
+          },
+          "operator_N30_percent": {
+            "unrounded": 96.76394154622214,
+            "display": 96.8
+          },
+          "response_N15_percent": {
+            "unrounded": 82.54278845800611,
+            "display": 82.5
+          },
+          "response_N30_percent": {
+            "unrounded": 87.32161861932515,
+            "display": 87.3
+          }
+        }
+      },
+      "scientific_ceiling": "Declared synthetic-DGP, declared endpoint, local-versus-CP N=15/N=30 statement only. Not independent empirical validation, fairness, broad superiority, native held-out recovery, cross-family generality, or N=50 headline evidence.",
+      "review_limit": "The frozen binding and wording boundary were reviewed; no out-of-scope raw-artifact recomputation was performed."
+    },
+    "G06": {
+      "result": "PASS",
+      "fixed_60_semantics": {
+        "normal_completion": "fixed count of 60 ALS iterations",
+        "monitored_quantity": null,
+        "stopping_tolerance": null,
+        "early_stop_predicate": null,
+        "gram_regularizer": "1e-6",
+        "exception_rule": "abort call and record reconstruction failure"
+      },
+      "ceiling": "No convergence, global-optimality, or solver-comparability claim. Application/bootstrap 100/80 wording remains separate because its canonical Markdown owner is unavailable."
+    },
+    "G07": {
+      "result": "PASS",
+      "topology_rows": [
+        {
+          "scenario": "high_topology_vol",
+          "settings": "topologyVol=0.18, sparsity=0.15, wNoise=0, wDrop=0",
+          "role": "generation of truth.W",
+          "released_coverage": "local_network=3; each other released method=20"
+        },
+        {
+          "scenario": "sparse_misspecified",
+          "settings": "topologyVol=0.08, sparsity=0.55, wNoise=0.18, wDrop=0",
+          "role": "generation of truth.W and observation in WEst",
+          "released_coverage": "each released method=3"
+        },
+        {
+          "scenario": "edge_missing",
+          "settings": "topologyVol=0.06, sparsity=0.15, wNoise=0, wDrop=0.30",
+          "role": "observation in WEst, with generation volatility 0.06",
+          "released_coverage": "local_network=3; each other released method=20"
+        },
+        {
+          "scenario": "noisy_network",
+          "settings": "topologyVol=0.06, sparsity=0.15, wNoise=0.35, wDrop=0",
+          "role": "observation in WEst, with generation volatility 0.06",
+          "released_coverage": "local_network=3; each other released method=20"
+        }
+      ],
+      "scientific_ceiling": "Bounded diagnostics only; no matched ranking and no general topology-robustness claim."
+    },
+    "G08_source_ownership": {
+      "result": "PASS",
+      "controlled_metric_boundary": "The controlled benchmark's spectral-norm and unscaled-instability thresholds are not interchangeable with separately reported spectral-radius diagnostics.",
+      "unavailable_canonical_owners": [
+        "application/bootstrap 100/80-iteration wording",
+        "spectral-radius wording",
+        "50% top-exposure attenuation"
+      ],
+      "generated_tex": "Not a canonical ownership source and not editable.",
+      "cal_e03_boundary": "No imported spectral-radius mapping; 50% attenuation remains outside CAL-E03."
+    },
+    "claim_ceilings": {
+      "result": "PASS",
+      "V1-026": "scientific execution NOT_RUN; claim activation BLOCKED; descriptive role/interface/coverage/status accounting only",
+      "V1-033": "simulation-only; independent empirical ground truth NOT_EVALUABLE; chronology, selection inputs, held-out query identity, endpoint signature, and truth isolation unresolved",
+      "V1-045": "PARTIAL; N=20/N=50 only; N=100/N=200 NOT_RUN/ABSTAIN; resource telemetry BLOCKED/null; one execution is not repeated-run reproducibility"
+    }
+  },
+  "authorization_boundary": {
+    "review_result": "PASS_REVIEW_ONLY",
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_execution": "NOT_AUTHORIZED",
+    "scientific_payload_mutation": "PROHIBITED",
+    "authorization_file_mutation": "PROHIBITED",
+    "generated_tex_mutation": "PROHIBITED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE",
+    "future_authorizations_required": [
+      "Separate M5-D authorization before manuscript mutation",
+      "Separate M5-F authorization before formal-register mutation"
+    ]
+  },
+  "failure_policy": {
+    "service_failure": "BLOCKED",
+    "missing_input": "BLOCKED",
+    "hash_mismatch": "BLOCKED",
+    "rule": "A service, missing-input, or hash failure is never PASS.",
+    "observed_failures": []
+  },
+  "changed_paths": [
+    "refine-logs/REC-M5_SCIENTIFIC_RECHECK_TERRA_V5_20260812.md",
+    "refine-logs/REC-M5_SCIENTIFIC_RECHECK_TERRA_V5_20260812.json"
+  ]
+}

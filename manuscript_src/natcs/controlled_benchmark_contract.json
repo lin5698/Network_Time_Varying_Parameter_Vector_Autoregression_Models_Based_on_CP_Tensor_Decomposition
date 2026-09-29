@@ -1,0 +1,235 @@
+{
+  "schema_version": "natcs-controlled-benchmark-contract-v2",
+  "artifact_role": "machine-readable semantic and execution contract for the released synthetic benchmark",
+  "source_implementations": {
+    "benchmark": "scripts/natcs_benchmarks.mjs",
+    "weak_separation_diagnostic": "scripts/natcs_weak_separation.py"
+  },
+  "released_artifacts": {
+    "summary": "output/natcs_benchmarks/benchmark_summary.csv",
+    "replications": "output/natcs_benchmarks/benchmark_replications.csv"
+  },
+  "operator_generation": {
+    "lag_order": 1,
+    "latent_temporal_rank": 2,
+    "target_effective_operator_spectral_norm_max": 0.78,
+    "innovation_distribution": "Gaussian",
+    "innovation_marginal_scale": 0.03,
+    "topology": {
+      "diagonal": "zero",
+      "entries": "non-negative",
+      "row_normalization": "unit row sum after every generation, evolution and observation perturbation step",
+      "initialization": "newly generated weighted graph",
+      "evolution": "row-normalized convex mixture of the previous topology and a newly generated weighted graph",
+      "mixing_weight_field": "topology_mixing_weight"
+    }
+  },
+  "estimator_configuration": {
+    "local_ridge_normal_equation_regularizer": 1e-06,
+    "cp_als_gram_regularizer": 1e-06,
+    "cp_als_iterations": 60,
+    "cp_factor_normalization": "normalize the first two factor-matrix columns after each ALS iteration and transfer their scale to the temporal factor",
+    "cp_als_iteration_semantics": "fixed_count_on_normal_completion",
+    "cp_als_monitored_quantity": null,
+    "cp_als_stopping_tolerance": null,
+    "cp_als_early_stop_predicate": null,
+    "cp_als_exception_rule": "abort_call_and_record_reconstruction_failure"
+  },
+  "aggregation_contract": {
+    "within_replication": "mean over evaluated target dates unless the metric definition states otherwise",
+    "across_replications": "median and type-7 interquartile range",
+    "failure_handling": "failed or non-finite reconstructions remain flagged and are not converted to favourable errors"
+  },
+  "metric_dictionary": {
+    "coef_error": {
+      "released_field_prefix": "coef_error_",
+      "reader_facing_name": "effective-operator error",
+      "definition": "target-date mean of the relative Frobenius error between reconstructed and true A_t + B_t W_t"
+    },
+    "share_error": {
+      "released_field_prefix": "share_error_",
+      "reader_facing_name": "raw pair-level network-share error",
+      "definition": "target-date mean absolute error in the unbounded network share formed from total and direct-only cumulative responses"
+    },
+    "girf_error": {
+      "released_field_prefix": "girf_error_",
+      "reader_facing_name": "finite-horizon unit-shock response error",
+      "definition": "target-date mean L1 response-path error over all unit shocks and horizons under the common stabilization rule"
+    },
+    "network_component_error": {
+      "released_field_prefix": "network_component_error_",
+      "reader_facing_name": "finite-horizon network-component response error",
+      "definition": "target-date mean absolute error in total-minus-direct response paths over shocks, horizons and receivers"
+    },
+    "frozen_counterfactual_error": {
+      "released_field_prefix": "frozen_counterfactual_error_",
+      "reader_facing_name": "frozen-topology response error",
+      "definition": "finite-horizon unit-shock response error after both true and reconstructed blocks are evaluated at the same pre-period topology"
+    },
+    "prediction_error": {
+      "released_field_prefix": "prediction_error_",
+      "reader_facing_name": "one-step prediction root-mean-square error",
+      "definition": "target-date mean cross-node root-mean-square error for the next observed state"
+    },
+    "instability_rate": {
+      "released_field_prefix": "instability_rate_",
+      "reader_facing_name": "unscaled instability rate",
+      "definition": "fraction of evaluated target dates whose unrepaired reconstructed effective operator reaches the declared instability threshold"
+    },
+    "failure_rate": {
+      "released_field": "failure_rate",
+      "reader_facing_name": "reconstruction failure rate",
+      "definition": "fraction of released replication rows flagged as failed"
+    }
+  },
+  "endpoint_availability": {
+    "unavailable_sentinel": {
+      "released_csv_value": "NaN",
+      "reader_facing_label": "OUTSIDE TARGET",
+      "meaning": "the fitted object does not return the declared endpoint; this is neither zero error nor a successful missing-value imputation"
+    },
+    "endpoint_ids": [
+      "effective_operator",
+      "total_response",
+      "direct_only_response",
+      "network_component_response",
+      "frozen_topology_response",
+      "one_step_prediction"
+    ],
+    "method_to_endpoint_ids": {
+      "local_network": [
+        "effective_operator",
+        "total_response",
+        "direct_only_response",
+        "network_component_response",
+        "frozen_topology_response",
+        "one_step_prediction"
+      ],
+      "cp_network": [
+        "effective_operator",
+        "total_response",
+        "direct_only_response",
+        "network_component_response",
+        "frozen_topology_response",
+        "one_step_prediction"
+      ],
+      "tucker_network": [
+        "effective_operator",
+        "total_response",
+        "direct_only_response",
+        "network_component_response",
+        "frozen_topology_response",
+        "one_step_prediction"
+      ],
+      "sparse_network": [
+        "effective_operator",
+        "total_response",
+        "direct_only_response",
+        "network_component_response",
+        "frozen_topology_response",
+        "one_step_prediction"
+      ],
+      "graph_filter": [
+        "effective_operator",
+        "total_response",
+        "direct_only_response",
+        "network_component_response",
+        "frozen_topology_response",
+        "one_step_prediction"
+      ],
+      "graph_neural_var": [
+        "effective_operator",
+        "total_response",
+        "direct_only_response",
+        "network_component_response",
+        "frozen_topology_response",
+        "one_step_prediction"
+      ],
+      "diffusion_graph_var": [
+        "effective_operator",
+        "total_response",
+        "direct_only_response",
+        "network_component_response",
+        "frozen_topology_response",
+        "one_step_prediction"
+      ],
+      "recurrent_graph_filter": [
+        "effective_operator",
+        "total_response",
+        "direct_only_response",
+        "network_component_response",
+        "frozen_topology_response",
+        "one_step_prediction"
+      ],
+      "collapsed_operator_cp": [
+        "effective_operator",
+        "total_response",
+        "one_step_prediction"
+      ],
+      "cp_nonnetwork": [
+        "effective_operator",
+        "total_response",
+        "one_step_prediction"
+      ]
+    }
+  },
+  "primary_scenarios": [
+    {
+      "scenario": "scale_n15",
+      "N": 15,
+      "T": 160,
+      "rolling_window": 40,
+      "topology_mixing_weight": 0.04,
+      "true_rank": 2,
+      "fitted_rank": 2,
+      "response_horizon": 4,
+      "released_replications": 20
+    },
+    {
+      "scenario": "scale_n30",
+      "N": 30,
+      "T": 200,
+      "rolling_window": 48,
+      "topology_mixing_weight": 0.05,
+      "true_rank": 2,
+      "fitted_rank": 2,
+      "response_horizon": 4,
+      "released_replications": 20
+    }
+  ],
+  "bounded_scale_stress": {
+    "scenario": "scale_n50",
+    "N": 50,
+    "T": 240,
+    "rolling_window": 56,
+    "topology_mixing_weight": 0.05,
+    "true_rank": 2,
+    "fitted_rank": 2,
+    "response_horizon": 4,
+    "replication_coverage_by_method": {
+      "local_network": 4,
+      "cp_network": 4,
+      "tucker_network": 4,
+      "collapsed_operator_cp": 4,
+      "cp_nonnetwork": 4,
+      "sparse_network": 1,
+      "graph_filter": 1,
+      "graph_neural_var": 1,
+      "diffusion_graph_var": 1,
+      "recurrent_graph_filter": 1
+    }
+  },
+  "response_evaluation": {
+    "shock_map": "identity",
+    "spectral_norm_stabilization_trigger": 0.95,
+    "spectral_norm_stabilization_target": 0.95,
+    "unscaled_instability_threshold": 0.98
+  },
+  "weak_separation_diagnostic": {
+    "residualized_gram_rank_tolerance": 1e-12,
+    "minimum_eigenvalue_flag_threshold": 1e-08,
+    "rank_deficiency_always_flags": true,
+    "reader_boundary": "a numerical singularity screen, not proof of sufficient excitation or statistical identification"
+  },
+  "qualification_record": "manuscript_src/natcs/r006c_endpoint_gate.json"
+}

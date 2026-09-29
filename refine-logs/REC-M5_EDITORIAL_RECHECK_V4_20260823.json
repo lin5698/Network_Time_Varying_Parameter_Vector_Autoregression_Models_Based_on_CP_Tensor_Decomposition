@@ -1,0 +1,153 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-editorial-recheck-v4",
+  "record_class": "editorial_recheck_receipt",
+  "record_id": "REC-M5-editorial-recheck-v4-20260823",
+  "generated_date": "2026-08-26",
+  "timezone_basis": "Asia/Shanghai",
+  "lane": "A_editorial_traceability",
+  "dispatch_packet": {
+    "path": "refine-logs/REC-M5_RECHECK_DISPATCH_V1_20260823.md",
+    "sha256_measured": "45326339fea28f83333bdd9aa540af97830e51ef806abfcbe69282157a7b5220"
+  },
+  "supersedes": {
+    "record": "REC-M5_EDITORIAL_RECHECK_TERRA_V3_20260812",
+    "prior_verdict": "BLOCKED",
+    "note": "Prior finding TERRA-V3-E1 referenced superseded input hashes b95a0960…, 8c0546a7…, c7664285…; its finding text was read as context only and its hashes were not adopted."
+  },
+  "files_opened": [
+    {"path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md", "role": "authoritative_input", "measured_bytes": 27202, "measured_sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd", "expected_sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd", "match": true},
+    {"path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json", "role": "authoritative_input", "measured_bytes": 28217, "measured_sha256": "938e5218280fcdf25ffb206040d420e2420851a3483e1cc7c282dabf0c01e0e6", "expected_sha256": "938e5218280fcdf25ffb206040d420e2420851a3483e1cc7c282dabf0c01e0e6", "match": true},
+    {"path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md", "role": "authoritative_input", "measured_bytes": 10097, "measured_sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341", "expected_sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341", "match": true},
+    {"path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json", "role": "authoritative_input", "measured_bytes": 15091, "measured_sha256": "ebb639ed613520ac643ee1ac21b53c9420e4bbf3a010af1f130a8e3d3b12d8b6", "expected_sha256": "ebb639ed613520ac643ee1ac21b53c9420e4bbf3a010af1f130a8e3d3b12d8b6", "match": true},
+    {"path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.md", "role": "authoritative_input", "measured_bytes": 1467, "measured_sha256": "dfd4385fd1f6f027e7a9ba12fc91f8e710e059edbe38179606898264e3d00539", "expected_sha256": "dfd4385fd1f6f027e7a9ba12fc91f8e710e059edbe38179606898264e3d00539", "match": true},
+    {"path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.json", "role": "authoritative_input", "measured_bytes": 2987, "measured_sha256": "94668a914aeba43dc2d8ca34e7639cb4930e34b2abbe8211980a77bf4adfd3ee", "expected_sha256": "94668a914aeba43dc2d8ca34e7639cb4930e34b2abbe8211980a77bf4adfd3ee", "match": true},
+    {"path": "refine-logs/REC-M5_RECHECK_DISPATCH_V1_20260823.md", "role": "instruction_source", "measured_bytes": 9924, "measured_sha256": "45326339fea28f83333bdd9aa540af97830e51ef806abfcbe69282157a7b5220", "expected_sha256": null, "match": null},
+    {"path": "refine-logs/REC-M5_EDITORIAL_RECHECK_TERRA_V3_20260812.md", "role": "prior_receipt_context_only", "measured_bytes": 3898, "measured_sha256": "2a83385f4f07b03199ce77cb9666e8593484c26ebd2a2cf54ecaa98523261202", "expected_sha256": null, "match": null},
+    {"path": "refine-logs/REC-M5_DETERMINISTIC_PREFLIGHT_V1_20260823.md", "role": "advisory_not_evidence", "measured_bytes": 8596, "measured_sha256": "d768bc973faf552be2284a8cf8b373d63b736cbb51d6083aaa976fd9e56fef2f", "expected_sha256": "d768bc97… (dispatch-declared prefix)", "match": true},
+    {"path": "refine-logs/REC-M5_DETERMINISTIC_PREFLIGHT_V1_20260823.json", "role": "advisory_not_evidence", "measured_bytes": 21753, "measured_sha256": "dfc8ac5ece1dd3a2387b511355b10528eab3a84b4987374eb6368d15bcb2a0c3", "expected_sha256": "dfc8ac5e… (dispatch-declared prefix)", "match": true},
+    {"path": "refine-logs/REC-P0_WORKING_COPY_INTEGRITY_V1_20260823.md", "role": "advisory_not_evidence", "measured_bytes": 7666, "measured_sha256": "e57d61afbe36e5ea807480f527f784cb73eed2fb7f274b8c586028724edfeb86", "expected_sha256": null, "match": null}
+  ],
+  "authoritative_hash_comparison": {
+    "total": 6,
+    "matched": 6,
+    "mismatched": 0,
+    "missing": 0,
+    "conflict_copy_resolved": false
+  },
+  "tasks": {
+    "E-T1": {
+      "verdict": "PASS",
+      "summary": "TERRA-V3-E1 closed on current bytes. G04 proposed-paragraph run (patch md lines 82-100) contains zero interleaved process statements; residue strings 'AIN-RESULT binding', 'partial M5-A response', 'remaining author inputs', 'AUTHOR_INPUT_NEEDED' each return 0 matches; the sole 'AIN-' occurrence is line 283 under the record-level '## Missing information and risk flags' (line 277), with adjacent manifest-only clarification at line 284.",
+      "adequacy_judgment": "Relocation is an adequate remedy, not mere displacement: the statement is unreachable by paragraph-level application (absent from clause_traceability, edit-group payloads and blockquotes), its wording no longer contradicts the author-input machine state, and it matches the remedy prescribed by the V3 finding itself.",
+      "scope_caveat": "Closure covers process-note placement only. Governance codes inside G04 Proposed paragraph 4 are a distinct defect reported under E-T3."
+    },
+    "E-T2": {
+      "verdict": "PASS",
+      "unit_count": 26,
+      "duplicate_unit_ids": 0,
+      "orphans": 0,
+      "distribution_by_source_item": {"V1-026": 3, "V1-033": 13, "V1-045": 10},
+      "distribution_by_group": {"G01": 1, "G02": 2, "G03": 1, "G04": 6, "G05": 9, "G06": 1, "G07": 1, "G08": 1, "G09": 2, "G10": 2},
+      "cross_checks": {
+        "traceability_source_units_vs_unit_coverage": "no missing, no extra",
+        "clause_traceability_coverage": "every unit referenced by at least one clause; no clause references unknown units",
+        "markdown_patch_index_vs_json": "consistent"
+      },
+      "violations": []
+    },
+    "E-T3": {
+      "verdict": "FAIL",
+      "findings": [
+        {"id": "F1", "severity": "major", "location": "patch md line 100 (G04 Proposed paragraph 4)", "text": "'its scientific execution is `NOT_RUN`, its claim activation is `BLOCKED`' — internal execution/verdict codes and governance concept 'claim activation' in results-section manuscript prose"},
+        {"id": "F2", "severity": "moderate", "location": "patch md lines 100 and 145 (G04-P4, G05-D)", "text": "'author-confirmed amplitudes … roles' — process-provenance vocabulary inappropriate in published text"},
+        {"id": "F3", "severity": "moderate", "location": "patch md line 88 (G04 Proposed paragraph 1)", "text": "raw data-schema field identifiers `coef_error_median` and `girf_error_median` printed in main-text results prose"},
+        {"id": "F4", "severity": "moderate", "location": "patch md line 239 (G10 proposed insertion)", "text": "status codes `NOT_RUN/ABSTAIN` and `BLOCKED/null` in supplementary scope prose"},
+        {"id": "F5", "severity": "minor", "location": "patch md lines 110-115 (G05-A table) and 161-166 (G05-F)", "text": "project-internal gate vocabulary ('Simulation-only promotion gate', 'Promotion status … Not promoted', 'prespecified promotion rule') in reader-facing tables"}
+      ],
+      "borderline_not_scored": [
+        "`OUTSIDE TARGET` mark acceptable: introduced and defined inline as paper terminology (G03, G04-P2, G05-C)",
+        "registry labels `local_structured` / `causal_temporal_smoother` / `fixed_rank_basis` (G05-B line 125): borderline machine identifiers retained for disambiguation",
+        "'explicitly bound field' phrasing (G02 line 70) leans contract-language"
+      ],
+      "hash_in_blockquotes": "none found (only long hex in file is the G06 source binding at line 192, outside blockquotes, REVIEW_ONLY group)",
+      "remediation_note": "Rewrites must preserve E-T5 ceilings in meaning (plain-English restatement, not deletion); lane must be re-dispatched on revised bytes."
+    },
+    "E-T4": {
+      "verdict": "PASS",
+      "label_positions_verified": [127, 231, 241, 242],
+      "unambiguous_exclusion": true,
+      "reachable_by_paragraph_level_applier": false,
+      "reachability_basis": "None of the four notes appears in any clause_traceability key or blockquote; JSON edit_groups carry no text payloads; application anchors are defined over target-file paragraphs.",
+      "residual_advisories": [
+        "Lines 231/241/242 lack the spelled-out 'do not apply as manuscript text' phrase present at line 127",
+        "All four notes sit physically adjacent to proposed text inside their group sections",
+        "G05-B carries duplicated labels 'Proposed text:' / 'Proposed reader-facing text:' (lines 121-123)"
+      ]
+    },
+    "E-T5": {
+      "verdict": "PASS",
+      "V1_026": "descriptive preserved; NOT_RUN/BLOCKED intact; forbidden list (CI, ranking, superiority, equivalence, native-held-out, promotion) intact",
+      "V1_033": "simulation-only and NOT_EVALUABLE preserved; five retained gaps restated unresolved; negative gate explicitly not a universal failure theorem",
+      "V1_045": "N=20/N=50 scope only; N=100/N=200 NOT_RUN/ABSTAIN; resource_telemetry BLOCKED/null; single execution distinguished from repeated-run reproducibility",
+      "G06_G07": "AUTHOR_CONFIRMED_REVIEW_ONLY and CANDIDATE_NOT_APPLIED; G06 text negates convergence/global optimality; G07 boundary negates matched ranking and general topology robustness; unowned 100/80 and 50%-attenuation wording barred from import"
+    },
+    "E-T6": {
+      "verdict": "PASS",
+      "percentages": {
+        "AIN-RESULT-OP-N15": {"unrounded": 93.55203369881073, "display": 93.6},
+        "AIN-RESULT-OP-N30": {"unrounded": 96.76394154622214, "display": 96.8},
+        "AIN-RESULT-RESP-N15": {"unrounded": 82.54278845800611, "display": 82.5},
+        "AIN-RESULT-RESP-N30": {"unrounded": 87.32161861932515, "display": 87.3},
+        "rounding_checked": true,
+        "display_values_match_patch_line_88": true
+      },
+      "formula": {
+        "author_expression": "100 * (local_network_metric_median - cp_network_metric_median) / local_network_metric_median",
+        "statistic": "ratio of across-replication medians",
+        "patch_rendering": "100 x (m_local - m_CP) / m_local",
+        "denominator": "local_network metric median for the same scenario and endpoint (= m_local)"
+      },
+      "endpoint_comparator_replications": "coef_error_median / girf_error_median; local_network vs cp_network; 20 replications per primary scenario",
+      "evidence_hash": {
+        "value": "c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1",
+        "identical_across": ["author-input md line 38", "author-input JSON submitted_evidence", "patch JSON evidence_bundle_hashes"],
+        "bound_artifact": "output/natcs_benchmarks/benchmark_summary.csv"
+      },
+      "unavailable_sources_honored": "application/bootstrap 100/80, spectral-radius, 50%-attenuation recorded Unavailable with generated TeX excluded; patch reconstructs none of them; generated TeX never opened during this review",
+      "cosmetic_note": "Topology evidence_path_key locator strings differ by one range endpoint between author-input md (…442-482) and JSON (…442-483); bound values identical."
+    },
+    "E-T7": {
+      "verdict": "PASS",
+      "byte_generation_consumed": "current generation of all six authoritative inputs, proven by exact-path resolution plus measured-hash equality",
+      "conflict_copy_encountered": false,
+      "conflict_copies_present_but_not_opened": [
+        "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811 2.md",
+        "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811 2.json",
+        "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812 2.md",
+        "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812 2.json"
+      ]
+    }
+  },
+  "overall_verdict": "FAIL",
+  "overall_rationale": "Editorial clearance withheld solely by E-T3 reader-facing register violations inside CANDIDATE_NOT_APPLIED proposal text. All six authoritative inputs matched expected hashes exactly (no BLOCKED condition); traceability, ceilings, manifest-only containment, author-input binding and TERRA-V3-E1 closure all PASS. Per dispatch closure condition, this lane does not clear M5-C until E-T3 revisions are made and re-reviewed on revised bytes.",
+  "independence_and_provenance_disclosure": {
+    "producing_agent_model": "ox-alpha (DeepSeek Harness agent runtime)",
+    "mode": "direct_self_adjudication",
+    "self_adjudicated": true,
+    "external_model_used": false,
+    "subagents_spawned": false,
+    "route_deviation_disclosure": "Dispatch requests provenance gpt-5.6-terra/max; reviewer is ox-alpha, so that provenance preference is not satisfied and is disclosed rather than concealed.",
+    "preflight_use": "Advisory context only; no preflight structural PASS adopted as this lane's finding.",
+    "p0_context_note": "Orchestrator-supplied P0 update (repair closed 2026-08-26; HEAD e7ce60c…; git fsck exit 0; 76 modified tracked files) recorded as received context, NOT independently measured because git execution is prohibited for this lane."
+  },
+  "not_done": [
+    "No file created, modified, moved or deleted except this receipt pair (REC-M5_EDITORIAL_RECHECK_V4_20260823.md and .json)",
+    "No git command executed",
+    "No make target executed",
+    "No test suite executed",
+    "No scientific entry point executed",
+    "No claim activated",
+    "No manuscript source, formal register, authorization file, frozen record or generated TeX edited or regenerated; generated TeX never read",
+    "No authorization granted or implied; M5-D and M5-F remain separately required; all 26 candidates remain CANDIDATE_NOT_APPLIED"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "title": "When reconstructed network models retain topology-dependent responses",
+  "title": "Predictive fit does not certify topology-indexed network responses",
   "authors": [
     "Yilin Wu"
   ],
@@ -8,11 +8,12 @@
   ],
   "correspondence": "Correspondence should be addressed to Y.W.",
   "keywords": [
-    "time-varying parameter VAR",
-    "tensor decomposition",
-    "network econometrics",
-    "generalized impulse responses",
-    "trade networks"
+    "query-certified operator learning",
+    "query preservation",
+    "topology-indexed queries",
+    "network reconstruction",
+    "identifiability",
+    "time-varying autoregression"
   ],
   "jel_classification": [
     "C32",

@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "decision_id": "psa-20260719-nyc-01",
+  "dataset": "nyc_taxi",
+  "output_root": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/output/natcs_empirical_cp_authorized_runs/psa-20260719-nyc-01/nyc_taxi",
+  "file_count": 18,
+  "symlink_count": 0,
+  "value_review_performed": false,
+  "files": [
+    {
+      "path": "acquisition_info.json",
+      "size_bytes": 277,
+      "sha256": "7ffbfd7e9a29f2467e10399a1605d5fb0f1a1bb7bc2b4b433d46e73c63d1a312"
+    },
+    {
+      "path": "aggregate_cp_bootstrap.csv",
+      "size_bytes": 31772,
+      "sha256": "346b39aeb31d058bf8f1838e0486f627060e152fa8159fe78f9ec9cfe384c74e"
+    },
+    {
+      "path": "aggregate_cp_metrics.csv",
+      "size_bytes": 18894,
+      "sha256": "a536787391f41c6dcec311e56e00745d6e30986191def825a9f19587bf9f4179"
+    },
+    {
+      "path": "derived_monthly_panel.csv",
+      "size_bytes": 32026,
+      "sha256": "0d73011189253688f0cf50bcd580c61b68635fe19183e09367cbbdf1286c7bdb"
+    },
+    {
+      "path": "figures/fig_cp_aggregate_intervals.pdf",
+      "size_bytes": 26972,
+      "sha256": "e1ab7f81c6740435c158f86df29aa3eb7e27f6de1ae50dd5c31f858dabd7ec9a"
+    },
+    {
+      "path": "figures/fig_cp_aggregate_intervals.png",
+      "size_bytes": 1006208,
+      "sha256": "478f50d2dbf60067ef24c8c4b50c73fe096405d8cc4fb6f3002d6b489b63bfab"
+    },
+    {
+      "path": "figures/fig_cp_fixed_vs_tv.pdf",
+      "size_bytes": 24702,
+      "sha256": "c0f03e6fcc23cfc422b02186c0c8444b9af6689ba2bb66ab44b7b3c8e436a596"
+    },
+    {
+      "path": "figures/fig_cp_fixed_vs_tv.png",
+      "size_bytes": 415317,
+      "sha256": "04331dfe0b8458d6cf3940c33ea0d472b80bacedfc08cfe0b32f3b4df385455d"
+    },
+    {
+      "path": "figures/fig_cp_girf_intervals.pdf",
+      "size_bytes": 22373,
+      "sha256": "d32de3e773aaed17919bad776f0415ef56a2ae6f65c040ccad78f21476e815fb"
+    },
+    {
+      "path": "figures/fig_cp_girf_intervals.png",
+      "size_bytes": 1152388,
+      "sha256": "b433abc5111dc2a99eb7dd00f560bddcc3199641791637587d04b1b2dfb21257"
+    },
+    {
+      "path": "figures/fig_cp_mobility_illustration.pdf",
+      "size_bytes": 42264,
+      "sha256": "f34227ebf5e34f2afb97a6d1b2ec160bc01c3a674b66d98d070ec3458e410270"
+    },
+    {
+      "path": "figures/fig_cp_mobility_illustration.png",
+      "size_bytes": 1165324,
+      "sha256": "914ee3a79686a007b02c349883f2b82f655c1c1f9867c68fb3429d26c78ed91f"
+    },
+    {
+      "path": "figures/fig_cp_stability.pdf",
+      "size_bytes": 21770,
+      "sha256": "77fa76fe796f15cb2111680cf880cb80f03bd5d1e6b210f49f021b45997373f7"
+    },
+    {
+      "path": "figures/fig_cp_stability.png",
+      "size_bytes": 425647,
+      "sha256": "31037ba6bd083228d832012ce37b0d1378d4acabb3ac7f3aaeac3a31b949fb11"
+    },
+    {
+      "path": "girf_cp_bootstrap.json",
+      "size_bytes": 878069,
+      "sha256": "efa2f03a65065989367b8834e64d734986d856cf2852fa5976a7333157e40774"
+    },
+    {
+      "path": "girf_cp_point.json",
+      "size_bytes": 1683,
+      "sha256": "18282581bfbfeac1929af6649e5a04d9247c40a3e2d19c8e1bfee46ec471c95f"
+    },
+    {
+      "path": "selection_summary.json",
+      "size_bytes": 1386,
+      "sha256": "d3ebd73a96883bed15668c5479e96f7b50b8e12f93247be1767c7adc9058b5db"
+    },
+    {
+      "path": "stability_summary.csv",
+      "size_bytes": 2220,
+      "sha256": "9cfa291a85bdeb8bd5a64d56a643235ce382dd04c37e39ac39e34b9946dace88"
+    }
+  ]
+}

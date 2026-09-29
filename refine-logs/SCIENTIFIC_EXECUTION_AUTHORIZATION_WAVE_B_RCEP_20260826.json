@@ -1,0 +1,44 @@
+{
+  "action": "run_cp_empirical_pipeline",
+  "argv": {
+    "block_size": 4,
+    "cp_inits": 6,
+    "cp_max_iter": 100,
+    "cp_tol": 1e-06,
+    "n_boot": 500,
+    "p": 2,
+    "window": 40
+  },
+  "authorized_at": "2026-08-27T01:05:00+08:00",
+  "authorized_by": "yilin-wu",
+  "dataset": "rcep",
+  "decision": "AUTHORIZED",
+  "decision_id": "wave-b-rcep-20260826-230000-01",
+  "downstream_builds_authorized": false,
+  "implementation_files": {
+    "scripts/natcs_design_contract.py": "45e14cb8fdaf10e2f4b07e7a27c630841e968994cd246e44d0e27c017a58388b",
+    "scripts/run_cp_empirical_pipeline.py": "111f21307a247dfd03a29cefecca6276749d56e64d741ee5707e43d41de2f952"
+  },
+  "input_identity": {
+    "nyc_dataset_dir": null,
+    "nyc_upstream_commit": null,
+    "rcep_helper_manifest_sha256": "02b151473116bbea39e1dc200f7299cd1d1a3451f8e430bc4d59392eb2525256",
+    "rcep_helper_repo": "/Users/wuyilin/Desktop/2026\u5b66\u79d1\u7ade\u8d5b/\u8c01\u5728\u6258\u5e95\u4e2d\u56fd\u65b0\u80fd\u6e90\u5173\u952e\u4e2d\u95f4\u54c1\u4f9b\u5e94\u94fe\uff1f\u2014\u2014\u57fa\u4e8eRCEP\u2014\u201c\u4e00\u5e26\u4e00\u8def\u201d\u591a\u5c42\u8d38\u6613\u7f51\u7edc\u7684\u9006\u5411\u51b2\u51fb\u97e7\u6027\u7814\u7a76/external/Who-Absorbs-the-Shock/repo",
+    "rcep_input_files": {
+      "/Users/wuyilin/Desktop/2026\u5b66\u79d1\u7ade\u8d5b/\u8c01\u5728\u6258\u5e95\u4e2d\u56fd\u65b0\u80fd\u6e90\u5173\u952e\u4e2d\u95f4\u54c1\u4f9b\u5e94\u94fe\uff1f\u2014\u2014\u57fa\u4e8eRCEP\u2014\u201c\u4e00\u5e26\u4e00\u8def\u201d\u591a\u5c42\u8d38\u6613\u7f51\u7edc\u7684\u9006\u5411\u51b2\u51fb\u97e7\u6027\u7814\u7a76/external/Who-Absorbs-the-Shock/repo/data/master_quarterly_bilateral_2005_2024.csv": "2dfa09cc01875d44528d503cf13e0d40d370f79f75035be564e4e98f02370598",
+      "/Users/wuyilin/Desktop/2026\u5b66\u79d1\u7ade\u8d5b/\u8c01\u5728\u6258\u5e95\u4e2d\u56fd\u65b0\u80fd\u6e90\u5173\u952e\u4e2d\u95f4\u54c1\u4f9b\u5e94\u94fe\uff1f\u2014\u2014\u57fa\u4e8eRCEP\u2014\u201c\u4e00\u5e26\u4e00\u8def\u201d\u591a\u5c42\u8d38\u6613\u7f51\u7edc\u7684\u9006\u5411\u51b2\u51fb\u97e7\u6027\u7814\u7a76/external/Who-Absorbs-the-Shock/repo/data/master_quarterly_macro_2005_2024.csv": "27a3dbb7ddae8dfac4f45b8061178260b3876c7b27912c1005d95b0598d518ae"
+    }
+  },
+  "output_root": "/Users/wuyilin/work/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/output/natcs_empirical_cp_authorized_runs/wave-b-rcep-20260826-230000-01/rcep",
+  "overwrite": "deny",
+  "post_run_controls": {
+    "freeze_inventory_sha256_before_value_review": true,
+    "independent_claim_audit_required": true,
+    "manuscript_promotion_authorized": false,
+    "quarantine_outputs": true
+  },
+  "r006e_outcome_authorized": false,
+  "r006f_outcome_authorized": false,
+  "schema_version": 1,
+  "scientific_execution_authorized": true
+}

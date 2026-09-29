@@ -1,0 +1,44 @@
+{
+  "schema_version": "e3-family2-synthetic-execution-authorization-v3",
+  "decision_id": "e4-r2-workspace-author-decision-20260731",
+  "decision": "AUTHORIZED",
+  "scientific_execution_authorized": true,
+  "authorized_by": "workspace-author-via-thread-confirmation-20260731",
+  "authorized_at": "2026-07-31T04:45:16Z",
+  "action": "run_e3_family2_synthetic",
+  "candidate_sha256": "9213cec8e947a4919aa8ca603ba5514471e7e6293136051826f234c66fbce964",
+  "candidate_id": "e4-domain-stable-v4-20260731-candidate-r2",
+  "execution": {
+    "excluded_routes": [
+      "RCEP",
+      "NYC",
+      "R006e",
+      "R006f"
+    ],
+    "input_route": "synthetic_only",
+    "invocation_limit": 1,
+    "prohibitions": [
+      "outcome_promotion",
+      "downstream_builds",
+      "manuscript_promotion",
+      "audit_status_changes"
+    ]
+  },
+  "bindings": {
+    "source_hashes_sha256": "fe08b96574db9ca32740425fe5ccc39d964b88368f5f46b53ef76bfb51348f64",
+    "dependency_hashes_sha256": "51f41fd8c88434c29b01e4a7e9c32eb9d26a0506ccff57c0c7d5a79f3c690236",
+    "configuration_sha256": "26d8cf5df8dfda443153d1ffe26d06bd7fa4681397008f896a7cb7533db8c4c8",
+    "preoutcome_artifacts_sha256": "11e2f92f59766199097cd5b0ea6a160f7e5e8ad4340a1045eaae39dbb5bbb17a"
+  },
+  "output_root": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r2",
+  "overwrite": "deny",
+  "r006e_outcome_authorized": false,
+  "r006f_outcome_authorized": false,
+  "downstream_builds_authorized": false,
+  "post_run_controls": {
+    "quarantine_outputs": true,
+    "freeze_inventory_sha256_before_value_review": true,
+    "independent_claim_audit_required": true,
+    "manuscript_promotion_authorized": false
+  }
+}

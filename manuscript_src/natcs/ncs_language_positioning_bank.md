@@ -2,7 +2,9 @@
 
 Purpose: provide evidence-bound wording that can be reused in abstracts, cover letters, portal fields, response letters and figure captions without drifting into overclaim. This is a working writing aid, not manuscript text.
 
-Boundary: use only statements whose evidence appears in the current manuscript package. Do not use stronger variants until new data, raw-source permissions, DOI records or portal-preview evidence exist.
+Status, 2026-08-26: **reactivated for backlog drafting under author backlog authorization (item A).** `PAPER_CLAIM_AUDIT.json` verdict PASS (reason code `rcep_nyc_value_audited_no_active_stale_citations`) and `EMPIRICAL_IMPLEMENTATION_AUDIT.json` verdict PASS (reason code `rcep_nyc_value_audited_downstream_build_authorized`) supersede the 2026-07-23 disabled banner. Entries below remain evidence-bound: controlled-benchmark rows carry the only active numbers (93.6/96.8/82.5/87.3); RCEP/NYC readout rows stay bounded-readout wording pending RC-2 activation clearance; quarantine-candidate values remain excluded, and RC-1 promotion authorization stays NOT_GRANTED.
+
+Boundary: use only statements whose evidence appears in the current audited manuscript package. Do not use stronger variants until new data, raw-source permissions, DOI records or portal-preview evidence exist.
 
 Serves: novelty / significance / rigour / clarity / generality / reproducibility / visual communication.
 
@@ -22,7 +24,7 @@ Use when opening the Abstract, Introduction, cover letter or significance statem
 | Option | Safe wording | Evidence anchor | Avoid saying | Tags |
 | --- | --- | --- | --- | --- |
 | Gap A | Evolving weighted networks raise response questions in which shocks, horizons and fitted coefficients stay fixed while the supplied exposure topology changes. | Abstract; Introduction; Fig. 1 | "Networks co-evolve, so causal topology effects can be isolated." | novelty / clarity |
-| Gap B | A collapsed dynamic map can return a total response, but it no longer exposes the topology argument needed for matched topology substitution. | Fig. 1; Results validation | "Existing low-rank methods cannot model dynamic networks." | novelty / rigour |
+| Gap B | A collapsed dynamic map can return a total response while no longer exposing the topology argument needed for matched topology substitution. | Fig. 1; Results validation | "Existing low-rank methods cannot model dynamic networks." | novelty / rigour |
 | Gap C | The computational issue is endpoint availability after temporal smoothing: the fitted object determines which response queries remain measurable. | Introduction; Methods theory | "The main challenge is prediction accuracy." | novelty / significance |
 
 ## 2. Methodological Contribution
@@ -136,3 +138,7 @@ Use these when a journal field has tight word limits.
 - "policy intervention"
 - "latent-network recovery"
 - "complete asymptotic theory"
+
+## Provenance
+
+Drafted 2026-08-26 under author backlog authorization (item A); assistant-drafted from governed records; open items await author confirmation.

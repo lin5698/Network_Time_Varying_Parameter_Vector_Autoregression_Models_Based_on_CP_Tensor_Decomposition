@@ -9,7 +9,8 @@ const finalGates = fs.readFileSync(path.join(root, "scripts/check_natcs_final_ga
 assert.match(finalGates, /function checkFigureSourceEditability\(\)/, "Final gate must verify editable Fig. 1/2 SVG source files.");
 for (const file of [
   "output/natcs_assets/figure1_natcs_framework.svg",
-  "output/natcs_evidence/fig_validation_recovery.svg",
+  "output/natcs_assets/figure2_natcs_query_certificate.svg",
+  "output/natcs_assets/figure3_natcs_supported_regime.svg",
 ]) {
   const svg = fs.readFileSync(path.join(root, file), "utf8");
   assert.match(svg, /<text(?:\s|>)/, `${file} must retain text elements for editable source-figure inspection.`);

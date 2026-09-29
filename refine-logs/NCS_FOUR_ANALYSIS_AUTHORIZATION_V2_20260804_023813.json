@@ -1,0 +1,74 @@
+{
+  "schema_version": "ncs-four-analysis-authorization-v2",
+  "authorization_id": "ncs-four-analysis-recovery-20260804-023813-cst-v2",
+  "authorized_at": "2026-08-04T02:38:13+08:00",
+  "authorization_source": "author_in_current_codex_thread",
+  "provenance": {
+    "parent_task": "019fbdde-2c02-7662-b9d2-9dc2b70e1253",
+    "delegated_model": "gpt-5.6-luna",
+    "delegated_reasoning_effort": "max"
+  },
+  "status": "AUTHORIZED_TO_RESTORE_AND_AUDIT_ONLY",
+  "binding": {
+    "decision_register_path": "output/ncs_review_corpus/v1_author_decision_register.json",
+    "decision_register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "refreeze_receipt": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M0_REFREEZE_RECEIPT_20260804_023813.json",
+    "item_payload_sha256_algorithm": "recursive_object_key_sort_then_JSON.stringify_utf8_no_whitespace",
+    "item_payloads": {
+      "V1-026": "eb30214e8c353b27d446c1c77242bd6b2dd246841150205c8f339ddafc8f7e20",
+      "V1-033": "79937fd8b053e2bc7fd9abb864938b35a72134ecf93f5f621d7c8088fd383630",
+      "V1-035": "c9b9c201f94a7fd37b2049bfc44220258947f22483e769b39c19253a37e55ee8",
+      "V1-045": "25cd8fbf2e623cfd2fbcdc163f50959f1beb8e8cb1b59322da78d191e802cf82"
+    }
+  },
+  "authorized_scope": {
+    "REC_M0": [
+      "hash_current_register_and_exact_item_payloads",
+      "hash_acceptance_report_and_frozen_e4_r3_inputs",
+      "write_versioned_refreeze_and_authorization_receipts"
+    ],
+    "REC_M1": [
+      "restore_analyzer_and_test_source_from_archived_structured_patch_apply_end_changes",
+      "run_py_compile",
+      "run_read_only_fixture_and_provenance_tests",
+      "write_recovery_receipt_and_versioned_tracker_snapshot"
+    ],
+    "REC_M2": [
+      "run_read_only_derived_analysis_after_m1_and_separate_go_gate",
+      "write_new_versioned_content_addressed_outputs"
+    ],
+    "REC_M4": [
+      "run_independent_unified_acceptance",
+      "write_acceptance_receipt"
+    ]
+  },
+  "current_task_limits": {
+    "m2_scientific_analysis": "BLOCKED_IN_THIS_TASK",
+    "s1_s4": "NOT_AUTHORIZED",
+    "manuscript": "NOT_AUTHORIZED",
+    "register_decision": "NOT_AUTHORIZED",
+    "promotion": "NOT_AUTHORIZED",
+    "rcep_nyc_activation": "NOT_AUTHORIZED",
+    "e4_r3_mutation": "NOT_AUTHORIZED",
+    "claim_or_promotion_state_change": "NOT_AUTHORIZED",
+    "old_authorization_reuse": "PROHIBITED"
+  },
+  "source_recovery_constraints": {
+    "allowed_sources": "the four archived session JSONL structured patch_apply_end changes only",
+    "forbidden_sources": [
+      "natural_language_final_answers",
+      "truncated_console_text",
+      "old_worktree_outputs_as_result_evidence"
+    ],
+    "required_final_content_event": "last complete structured content/diff sequence per target file",
+    "failure_mode": "FAIL_CLOSED_IF_ANY_TARGET_FILE_IS_NOT_UNIQUELY_RECONSTRUCTABLE"
+  },
+  "frozen_e4_r3_inputs": {
+    "results_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "execution_manifest_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "execution_complete_sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+    "terminal_inventory_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+    "candidate_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6"
+  },
+  "result": "AUTHORIZED_FOR_RECOVERY_M0_M1_AND_LATER_READ_ONLY_M2_M4_ONLY"
+}

@@ -1,0 +1,36 @@
+{
+  "equivalence": {
+    "base_stability_table_equal": true,
+    "identical_reference_artifacts": 23,
+    "new_only": [
+      "run_metadata.json",
+      "stable_subsample_absorption_variant.json"
+    ]
+  },
+  "f2": {
+    "interval_support": "outside",
+    "p025": -0.0010370999135430404,
+    "p50": 0.0007330858716416624,
+    "p975": 0.0020326520698283287,
+    "point": 0.0022967865167819556,
+    "promoted_summary": "bootstrap_median",
+    "status": "CLOSED_WITH_SKEW_DISCLOSURE"
+  },
+  "f3": {
+    "N": 3570,
+    "origin_dest_absorbing_two_way": "not_identified",
+    "pair_time": "not_identified",
+    "status": "CLOSED_AS_CONFIRMED_NOT_IDENTIFIED"
+  },
+  "next": "independent value audit -> EIA/PCA re-adjudication -> author RC-1 decision",
+  "record": "REC-P3S8_WAVE_B_RCEP_METHOD_REMEDIATION_20260827_011000",
+  "run": {
+    "dataset": "rcep",
+    "decision_id": "wave-b-rcep-20260826-230000-01",
+    "exit_code": 0,
+    "inventory_sha256": "4bf4af2aaee71b45ad23c673ea721f62ef1a3781c4857ed40c14cf961921ccbb",
+    "seed_root": 20260328
+  },
+  "self_sha256": "abe4ff89c397e1ca46019b6ce954c62cbc962eb5b4af5f01f7a2155377152606",
+  "timestamp": "2026-08-27T01:10:00+08:00"
+}

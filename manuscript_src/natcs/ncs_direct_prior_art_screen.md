@@ -2,6 +2,10 @@
 
 Purpose: record a narrow, evidence-limited screen of the closest dynamic spatial/network autoregression candidates for the present manuscript's contribution. This is a positioning record, not manuscript text and not a proof that no equivalent prior method exists.
 
+## Scope Status (2026-07-22)
+
+This record contains sources outside the current author-approved whitelist of Nature, Nature Reviews, Nature disciplinary journals and Nature Communications. It is retained as excluded historical background only. It must not set current NCS positioning, novelty wording, literature tasks or manuscript claims. No additional screening may be added to this record unless the author explicitly authorizes an expanded source corpus.
+
 ## Question Screened
 
 For each candidate, the relevant question is whether the paper documents all four elements below:
@@ -37,4 +41,4 @@ This wording serves `novelty / rigour / clarity`: it states the tested contribut
 
 ## Next Most Valuable Modification
 
-Obtain and inspect the full text of three additional close candidates: a dynamic spatial panel model with time-varying weights, a GVAR response-analysis paper using alternative exposure matrices, and a temporally regularized network-VAR model. Then extend this screen row by row against the four-question checklist. A comparative novelty claim should be considered only after that screen is complete.
+No current action is authorized. A broader full-text screen of dynamic spatial, GVAR or network-VAR candidates requires an explicit author instruction to expand the source corpus; until then, this record cannot support a comparative novelty claim.

@@ -1,0 +1,199 @@
+{
+  "schema_version": "ncs-e4-r007-independent-result-to-claim-v1",
+  "record_class": "independent_result_to_claim_review",
+  "date": "2026-08-26",
+  "date_timezone": "Asia/Shanghai",
+  "review_lane": "lane_c_e4r007_independent_result_to_claim",
+  "authorization": "author-authorized independent result-to-claim review, 2026-08-26",
+  "reviewed_object": {
+    "decision_id": "e4-r3-workspace-author-decision-20260731",
+    "candidate_id": "e4-domain-stable-v4-20260731-candidate-r3",
+    "candidate_sha256_recorded": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "authorization_sha256_recorded": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+    "results_root_read": "/Users/wuyilin/work/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3"
+  },
+  "independence": {
+    "barred_records_not_opened": [
+      "refine-logs/REC-P2_E4R007_RESULT_TO_CLAIM_V1_20260825.md",
+      "refine-logs/REC-P2_E4R007_RESULT_TO_CLAIM_V1_20260825.json",
+      "refine-logs/REC-P2_AUTHORIZATION_DRAFTS_V1_20260824.*",
+      "refine-logs/REC-P2_D1D2D3_DECISION_CLOSURE_V1_20260825.*"
+    ],
+    "barred_records_confirmed_unopened": true,
+    "further_agents_spawned": false
+  },
+  "reviewer_environment_tooling_limitation": {
+    "bash": "spawn bash ENOENT (4 attempts) - shell unavailable",
+    "glob_grep": "ripgrep launch failed - search tools unavailable",
+    "read_tool_line_cap_chars": 2000,
+    "consequences": [
+      "SHA-256 recomputation impossible; recorded-at-freeze hashes reported instead, labeled as such",
+      "full enumeration of single-line e3-results.json impossible beyond readable prefix; aggregate quantities reported as secondary-corroborated (SHA-bound inventory + prior independent audit), never as this reviewer's own counts",
+      "zero contradictions observed between direct observations and secondary values"
+    ]
+  },
+  "e4_r007_requirements_from_prior_audit": {
+    "source": ["refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md", "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json"],
+    "prior_impact": "qualified",
+    "prior_activation_state": "blocked-pending-result-to-claim",
+    "required_action": "independent result-to-claim review against the scoped integrity verdict before drafting any E4 sentence",
+    "ceiling_declared_by_audit": "simulation-only-h4-20-panels-per-cell",
+    "status_invariants": {
+      "paper_claim_audit": "blocked",
+      "empirical_implementation_audit": "fail",
+      "manuscript_build": "not_authorized",
+      "manuscript_promotion": "not_authorized",
+      "excluded_routes_unaffected": ["RCEP", "NYC", "R006e", "R006f"]
+    },
+    "predeclaration_baseline": {
+      "source": "refine-logs/EXPERIMENT_PLAN_20260731_115719.md",
+      "line_72": "paired panel-level log error ratio predeclared as primary metric",
+      "line_74": "equal-weight cell-level paired log-ratio confidence interval predeclared as secondary evidence, WITHOUT serialized CI construction/confidence level",
+      "effect": "forecloses E4-R006 on r3 bytes; post-outcome metric substitution audit-forbidden",
+      "b5_uncertainty_procedure": "H=4; 20 panels per family x scale x query cell; 80 recursive residual moving-block bootstrap replicates per panel with full retune/refit on same envelope; report simultaneous coverage, mean width, all bootstrap statuses; any failed replicate invalidates interval",
+      "b5_promotion_gate": "isolated-duplicate determinism AND fresh result-to-claim reviewer confirming no number inflation, no common-completion bias, no cross-cell pooling"
+    }
+  },
+  "measurements": {
+    "tier_a_direct": {
+      "top_level": {
+        "schema_version": "e3-family2-synthetic-quarantine-results-v3",
+        "promotion": "PROHIBITED_PENDING_DUPLICATE_AND_RESULT_TO_CLAIM_AUDIT",
+        "candidate_authorization_sha_string_equality_across_artifacts": true,
+        "artifacts_checked_for_sha_string_equality": ["e3-results.json", "execution-manifest.json", "execution-complete.json", "com.openai.codex.natcs-e4-r3.plist", "e4-r3-workspace-author-authorization-20260731.json", "E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json"]
+      },
+      "fixture_report": {
+        "f1_negative": "OUTSIDE_TARGET",
+        "f2_diagonal_negative": "OUTSIDE_TARGET",
+        "f2_unrestricted_negative": "OUTSIDE_TARGET",
+        "f2_diagonal_positive": "AVAILABLE (row_ranks=[3,3,3])",
+        "non_equivalence": "DISTINCT_FAMILY (all three breakers true)"
+      },
+      "interval_record_schema_field_count": 21,
+      "interval_record_status_buckets": ["AVAILABLE", "NONCONVERGED", "NONFINITE", "OUTSIDE_TARGET", "UNSTABLE"],
+      "interval_records_fully_or_partially_read": 2,
+      "record_0": {
+        "family": "family1", "horizon": 4, "n": 20, "method": "fixed_rank_basis",
+        "query_class": "in_family_interpolation", "seed": 4101, "target_time": 143,
+        "status": "AVAILABLE", "selection_status": "AVAILABLE",
+        "requested_replicates": 80, "completed_replicates": 80, "bootstrap_retune_attempts": 80,
+        "bootstrap_status_counts": {"AVAILABLE": 80, "NONCONVERGED": 0, "NONFINITE": 0, "OUTSIDE_TARGET": 0, "UNSTABLE": 0},
+        "coverage": 1.0, "mean_interval_width": 0.4071224851313297,
+        "estimated_spectral_radius": 0.29154319179131816, "truth_spectral_radius": 0.31689325853242095,
+        "selected_hyperparameter": 1, "selection_validation_loss": 0.0063432119970750446,
+        "raw_response_mse": 2.2255602867231413e-07,
+        "stability_qualified_response_mse": 2.2255602867231413e-07,
+        "raw_equals_stability_qualified_mse": true
+      },
+      "record_1_partial": {
+        "family": "family1", "horizon": 4, "n": 20, "method": "fixed_rank_basis",
+        "query_class": "cross_generator", "coverage": 1.0,
+        "mean_interval_width": 0.36339585326490054,
+        "estimated_spectral_radius": 0.30099854037631096,
+        "raw_response_mse": 1.815231217257811e-07
+      },
+      "provenance_artifacts": {
+        "execution_manifest": {"status": "RUNNING_QUARANTINE_ONLY", "promotion": "PROHIBITED", "scientific_execution": "AUTHORIZED_SYNTHETIC_ONLY"},
+        "execution_complete": {"status": "COMPLETE_QUARANTINE_ONLY", "promotion": "PROHIBITED"},
+        "stdout_log": {"lines": 1, "status": "COMPLETE_QUARANTINE_ONLY"},
+        "stderr_log": {"bytes": 0, "verified_empty": true, "recorded_sha256_is_empty_string_sha": true},
+        "plist": {"keepalive": false, "run_at_load": true, "module": "scripts.experiments.e3_family2_authorized_executor", "launchd_label": "com.openai.codex.natcs-e4-r3"},
+        "frozen_inventory_contract": {"runs": 1, "last_exit_code": 0, "process_state": "not_running", "stdout_status": "COMPLETE_QUARANTINE_ONLY", "stderr_empty": true, "execution_failure_absent": true},
+        "authorization_input": {"decision": "AUTHORIZED", "input_route": "synthetic_only", "invocation_limit": 1, "independent_claim_audit_required": true}
+      }
+    },
+    "tier_b_secondary_corroborated": {
+      "total_interval_records": 160,
+      "distinct_interval_cells": 8,
+      "cell_definition": "2 families x 2 scales (N=20/50) x 2 query classes at H=4",
+      "panels_per_cell_declared": 20,
+      "panels_per_cell_available": 20,
+      "panel_seed_range": [4101, 4120],
+      "bootstrap_replicates_requested_per_record": 80,
+      "bootstrap_replicates_completed_per_record": 80,
+      "per_record_status_distribution_recorded": "all AVAILABLE across all 160 records (audit); zero failures retained-bucket nonzero nowhere recorded",
+      "families_observed": ["family1", "family2"],
+      "n_values": [20, 50],
+      "horizons_in_interval_records": [4],
+      "query_classes_observed": ["in_family_interpolation", "cross_generator"],
+      "methods_observed_in_interval_rows": ["fixed_rank_basis"],
+      "method_set_enumeration_caveat": "160=20x8 arithmetic leaves no room for additional per-panel method rows; exhaustive enumeration not performed",
+      "coverage_distribution": "coverage=1.0 wherever directly readable (2 of 160 records); no aggregate coverage value present in accessible artifacts",
+      "context_scope_counts_from_audit": {"recovery_cells": 48, "paired_comparison_cells": 32, "recovery_records": 46080},
+      "sources": ["NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json scope_counts", "EXPERIMENT_PLAN_20260731_115719.md B5"],
+      "contradictions_with_tier_a": 0
+    }
+  },
+  "claim_fragments": [
+    {"id": "FR1", "fragment": "all 8 declared interval cells present (family x scale x query @ H=4)", "paths": ["$.results.interval_records[*].family", "$.results.interval_records[*].n", "$.results.interval_records[*].query_class", "$.results.interval_records[*].horizon"], "measured": "cells=8 recorded; prefix shows family1/N20/{interpolation,cross_generator}/h4", "verdict": "CONFIRMED", "evidence_basis": "secondary-corroborated + prefix-direct"},
+    {"id": "FR2", "fragment": "160 panel-level records = 20 panels/cell, seed lineage 4101-4120", "paths": ["$.results.interval_records (array length)", "$.results.interval_records[*].seed"], "measured": "160 recorded; seed 4101 observed; 20/cell recorded", "verdict": "CONFIRMED", "evidence_basis": "secondary-corroborated + prefix-direct"},
+    {"id": "FR3", "fragment": "each panel requests and completes 80 AVAILABLE replicates; summarizer does not condition on a successful subset", "paths": ["$.results.interval_records[*].requested_replicates", "$.results.interval_records[*].completed_replicates", "$.results.interval_records[*].bootstrap_retune_attempts", "$.results.interval_records[*].bootstrap_status_counts"], "measured": "80/80/80 with {AVAILABLE:80, others 0} in every readable record; audit records all panels 80 available, unconditional summarizer", "verdict": "CONFIRMED", "evidence_basis": "prefix-direct + secondary-corroborated"},
+    {"id": "FR4", "fragment": "per-panel simultaneous coverage, mean width and all bootstrap statuses serialized per plan B5 report spec", "paths": ["$.results.interval_records[*].coverage", "$.results.interval_records[*].mean_interval_width", "$.results.interval_records[*].bootstrap_status_counts", "$.results.interval_records[*].status"], "measured": "coverage=1.0; widths 0.4071224851313297 / 0.36339585326490054; five-bucket status maps; status=AVAILABLE", "verdict": "CONFIRMED", "evidence_basis": "direct"},
+    {"id": "FR5", "fragment": "simulation-only synthetic-DGP evaluation-type invariant preserved", "paths": ["$.promotion", "authorization $.execution.input_route", "audit $.evaluation_type"], "measured": "synthetic_only/simulation_only everywhere; negative controls OUTSIDE_TARGET; DISTINCT_FAMILY true; truth_spectral_radius per record", "verdict": "CONFIRMED", "evidence_basis": "direct multi-artifact"},
+    {"id": "FR6", "fragment": "B5 gate screen: no number inflation, no common-completion bias, no cross-cell pooling", "paths": ["$.results.interval_records[*].raw_response_mse", "$.results.interval_records[*].stability_qualified_response_mse", "$.results.interval_records[*].seed", "$.results.interval_records[*].target_time"], "measured": "raw==stability-qualified MSE in readable record; distinct seed/target_time per panel; per-panel granularity retained; exhaustive scan of all 160 rows not performed (tooling)", "verdict": "CONFIRMED", "evidence_basis": "screen-limited prefix-direct + structural consistency; limitation disclosed"},
+    {"id": "FR7", "fragment": "terminal provenance and content binding (SHA string equality, runs=1, exit 0, empty stderr)", "paths": ["$.candidate_sha256", "$.authorization_sha256", "inventory $.execution_contract"], "measured": "identical SHA strings across six artifacts; runs=1; exit 0; stderr 0 bytes verified; process not_running", "verdict": "CONFIRMED", "evidence_basis": "direct cross-artifact string equality; hashes recorded-at-freeze, NOT reviewer-recomputed"},
+    {"id": "FR8", "fragment": "execution-manifest terminal-state label consistency", "paths": ["execution-manifest.json $.status", "execution-complete.json $.status"], "measured": "manifest RUNNING_QUARANTINE_ONLY vs three independent COMPLETE_QUARANTINE_ONLY / exit-0 attestations", "verdict": "DISCREPANT", "adjudication": "stale launch-time label, provenance-label inconsistency, NOT a data-availability gap; must be carried forward, never silently normalized", "evidence_basis": "direct"},
+    {"id": "FR9a", "fragment": "uncertainty reporting matches B5 predeclared procedure/report", "paths": ["$.results.interval_records[*] fields per FR3/FR4"], "measured": "procedure and report fields match plan L82-83", "verdict": "CONFIRMED", "evidence_basis": "direct + plan text"},
+    {"id": "FR9b", "fragment": "predeclared paired panel-level log-error-ratio summary and equal-weight cell-level CI serialized in r3 bytes", "paths": ["absent from $.results.*"], "measured": "not found in frozen result; audit Check D = warn", "verdict": "NOT_FOUND", "note": "expected absence; forecloses E4-R006 on these bytes only; substitution forbidden", "evidence_basis": "direct structural absence + audit"},
+    {"id": "FR10", "fragment": "activation gating honored", "paths": ["audit $.status_invariants", "$.promotion", "authorization $.execution.invocation_limit"], "measured": "paper_claim_audit=blocked; empirical_implementation_audit=fail; builds unauthorized; promotion names pending duplicate+result-to-claim audits; invocation_limit=1 makes duplicate gate un-dischargeable from these bytes", "verdict": "CONFIRMED", "evidence_basis": "direct multi-artifact"}
+  ],
+  "terminal_provenance_adjudication": {
+    "results_promotion": "PROHIBITED_PENDING_DUPLICATE_AND_RESULT_TO_CLAIM_AUDIT",
+    "execution_complete_status": "COMPLETE_QUARANTINE_ONLY",
+    "execution_manifest_status": "RUNNING_QUARANTINE_ONLY",
+    "tension": "manifest RUNNING vs completion marker COMPLETE",
+    "ruling": "provenance-label inconsistency (stale launch-time manifest never rewritten at termination), NOT a data-availability gap",
+    "completion_attested_by": ["execution-complete.json marker", "executor stdout terminal line", "frozen inventory execution contract (runs=1, exit 0, empty stderr, process not_running)"],
+    "disposition": "carried as disclosed blemish FR8=DISCREPANT; content binding unaffected (recorded artifact hashes string-identical across six artifacts)"
+  },
+  "scope_ceiling": {
+    "supported": [
+      "simulation_only uncertainty result on declared synthetic DGP",
+      "horizon 4 only",
+      "20 panels per interval cell (seeds 4101-4120)",
+      "80 requested = 80 completed AVAILABLE bootstrap replicates per panel with full retune",
+      "per-panel simultaneous coverage and mean-width serialization with five-bucket failure accounting",
+      "single authorized execution only (invocation_limit=1): NO repeated-run reproducibility claim possible from these bytes"
+    ],
+    "not_supported": [
+      "empirical calibration or real-data validity (empirical_implementation_audit=fail)",
+      "broader uncertainty validity beyond the declared DGP/cells",
+      "other horizons (no H=12 interval evidence)",
+      "E4-R006 activation: predeclared log-error-ratio summary and equal-weight cell-level CI not serialized; CI construction/confidence level never predeclared; substitution forbidden",
+      "manuscript or package build/promotion"
+    ]
+  },
+  "overall_verdict": "QUALIFIED_SUPPORTED",
+  "qualifier": "Supported strictly as a simulation-only, horizon-4, 20-panels-per-cell, 80-available-replicates-per-panel synthetic uncertainty result of a SINGLE authorized execution, with per-panel coverage/width/status reporting intact and no inflation/bias/pooling found on the verifiable surface. Riders: (i) standing status invariants remain in force; (ii) duplicate-determinism promotion gate un-discharged and un-dischargeable from these bytes; (iii) FR8 manifest/completion label inconsistency carried forward as disclosed blemish; (iv) aggregate counts rest on SHA-bound recorded provenance plus the prior independent audit rather than this reviewer's own enumeration (tooling limitation), with zero contradictions observed.",
+  "claim_activation": "NOT_ACTIVATED_BY_THIS_RECORD",
+  "disclosures": {
+    "producing_chain": "executor scripts.experiments.e3_family2_authorized_executor under launchd label com.openai.codex.natcs-e4-r3 (Codex-operated agent tooling); authorization workspace-author-via-exact-r3-sha-instruction-20260731 at 2026-07-31T07:49:21Z; prior experiment audit by independent Codex reviewer",
+    "this_receipt_provenance": "model ox-alpha, DeepSeek Harness delegated subagent, lane lane_c_e4r007_independent_result_to_claim, author-authorized 2026-08-26; independent external receipt relative to the patch-synthesizing party (REC-P2 records barred and untouched); self-adjudicated within this environment (no out-of-band verification channel)",
+    "location_migration_note": "plist/stdout/authorization record execution-time tree under /Users/wuyilin/Desktop/translation/<project>/ while this review read frozen bytes under /Users/wuyilin/work/<project>/ per task ROOT; content binding rests on recorded SHA-256 values",
+    "files_opened": [
+      {"path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json", "sha256_status": "recorded 09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032 (inventory); interior candidate/auth hashes matched by direct read; NOT reviewer-recomputed"},
+      {"path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json", "sha256_status": "recorded 18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b (inventory); NOT reviewer-recomputed"},
+      {"path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json", "sha256_status": "recorded 42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d (inventory); NOT reviewer-recomputed"},
+      {"path": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md", "sha256_status": "no recorded hash available to reviewer"},
+      {"path": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json", "sha256_status": "no recorded hash available to reviewer"},
+      {"path": "refine-logs/EXPERIMENT_PLAN_20260731_115719.md", "sha256_status": "no recorded hash available to reviewer (lines 55-94 read)"},
+      {"path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json", "sha256_status": "self-referenced 5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046 via audit; NOT recomputed"},
+      {"path": "refine-logs/E4_R3_CLOCK_PROVENANCE_20260801.json", "sha256_status": "no recorded hash available to reviewer"},
+      {"path": "refine-logs/e3_family2_runtime/e4-r3.stdout.log", "sha256_status": "recorded c13a534058b771a7229636f4ae4d624f1cdf413f62efa593d06131ad209faad0 (inventory); NOT reviewer-recomputed"},
+      {"path": "refine-logs/e3_family2_runtime/e4-r3.stderr.log", "sha256_status": "recorded e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 (equals empty-string SHA); verified 0 lines"},
+      {"path": "refine-logs/e3_family2_runtime/com.openai.codex.natcs-e4-r3.plist", "sha256_status": "recorded 54597700bc3250d7dc6d5b801b05554de94388045bd22641595b9e43aa08dc5a (inventory); NOT reviewer-recomputed"},
+      {"path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json", "sha256_status": "recorded 73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6; asserted interior to four frozen artifacts"}
+    ],
+    "not_done": [
+      "no new experiment execution; no duplicate run attempted or authorized",
+      "no file edits except creating this receipt pair (two new files)",
+      "no git operations, no make, no tests",
+      "no claim activation, no status-invariant changes, no manuscript/package build",
+      "no REC-P2_* barred records opened",
+      "no further agents spawned; no sandbox escalation attempted",
+      "SHA-256 recomputation of opened files NOT performed (impossible this session)",
+      "full-byte enumeration of e3-results.json NOT performed (single-line file vs 2000-char reader cap)",
+      "no CI construction or confidence-level assertion for E4-R006 purposes"
+    ]
+  }
+}

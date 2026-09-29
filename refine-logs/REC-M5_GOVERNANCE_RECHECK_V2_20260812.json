@@ -1,0 +1,140 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-governance-recheck-v2",
+  "record_id": "REC-M5-governance-recheck-v2-20260812",
+  "generated_at": "2026-08-12T00:20:00+08:00",
+  "phase": "M5-C",
+  "result": "GOVERNANCE_PASS_M5_NOT_AUTHORIZED",
+  "acceptance_class": "GOVERNANCE_AND_ARTIFACT_INTEGRITY_ONLY",
+  "scope": "Independent recheck of the M5-B review-only patch and its exact-path governance boundary; no manuscript, register, scientific payload or authorization mutation.",
+  "inputs": [
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "sha256": "b5f0f90b6f2bdf2ca9bcf0dbaee58b5f3aa7d8c9e84f7f7e5e9f7c60b44f5cc4"
+    },
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "sha256": "8a08f84db4edef500a7645854c499b937e0f5278fab15e345901677d369ae5da"
+    },
+    {
+      "path": "refine-logs/REC-M5_PREFLIGHT_PLAN_V1_20260811.json",
+      "sha256": "ae85f98ac07123c676645ab5deb6b995ecd84716ae9b4084ed0b4b2bb7b4b218"
+    },
+    {
+      "path": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V4_20260811.json",
+      "sha256": "c68fe23299eca1697d979ea0e72f9845af0e4793b58aed96a9029ed2a94d7fdc"
+    }
+  ],
+  "checks": {
+    "json_parse": {
+      "status": "PASS",
+      "records": [
+        "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+        "refine-logs/REC-M5_PREFLIGHT_PLAN_V1_20260811.json"
+      ]
+    },
+    "review_patch_output_hash": {
+      "status": "PASS",
+      "expected": "8a08f84db4edef500a7645854c499b937e0f5278fab15e345901677d369ae5da",
+      "actual": "8a08f84db4edef500a7645854c499b937e0f5278fab15e345901677d369ae5da"
+    },
+    "declared_input_hashes": {
+      "status": "PASS",
+      "checked": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    "evidence_bundle_hashes": {
+      "status": "PASS",
+      "checked": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    "protected_baseline_hashes": {
+      "status": "PASS",
+      "checked": 12,
+      "passed": 12,
+      "failed": 0,
+      "policy": "Exact-path SHA-256 only; no broad refine-logs traversal."
+    },
+    "pre_apply_anchors": {
+      "status": "PASS",
+      "groups_checked": 10,
+      "paragraph_fragments_checked": 18,
+      "passed": 18,
+      "failed": 0,
+      "algorithm": "SHA-256 of UTF-8 paragraph fragments after CRLF normalization and trimEnd; paragraph numbering follows blank-line splitting."
+    },
+    "unit_coverage": {
+      "status": "PASS",
+      "expected": 26,
+      "actual": 26,
+      "unique": 26,
+      "duplicates": []
+    },
+    "m4_allowlisted_validator": {
+      "status": "PASS",
+      "command": "node scripts/validate_rec_m4_v4.mjs",
+      "checked": 247,
+      "passed": 247,
+      "failed": 0,
+      "path_policy": "Exact allowlist only; no path discovery."
+    },
+    "authorization_boundary": {
+      "status": "PASS",
+      "m5_phase": "M5-B",
+      "m5_status": "DRAFT_REVISED_INDEPENDENT_RE_REVIEW_PENDING",
+      "package_readiness": "needs_author_input",
+      "manuscript_source_mutation": "NOT_AUTHORIZED",
+      "formal_register_mutation": "NOT_AUTHORIZED",
+      "scientific_payload_mutation": "PROHIBITED",
+      "execution_authorization_mutation": "PROHIBITED",
+      "claim_activation": "NOT_AUTHORIZED",
+      "git_operations": "NONE"
+    },
+    "scientific_state_separation": {
+      "status": "PASS",
+      "claim_activation": "NOT_AUTHORIZED",
+      "scientific_execution": "NOT_RUN_OR_BOUND_BY_SOURCE_ITEM",
+      "partial_blocked_not_evaluable_states_preserved": true,
+      "unresolved_author_inputs_preserved": [
+        "AIN-ALS",
+        "AIN-TOPOLOGY",
+        "AIN-SOURCE-OWNERSHIP",
+        "AIN-RESULT-TEMPLATES"
+      ]
+    },
+    "placeholder_gate": {
+      "status": "BLOCKED_AS_DESIGNED",
+      "matched_tokens": 6,
+      "unresolved_gain_placeholders": 4,
+      "application_allowed": false,
+      "reason": "G04 gain values and evidence locators remain author-supplied; the review patch explicitly fails closed while placeholders remain."
+    }
+  },
+  "findings": [],
+  "blocking_residuals": [
+    "M5-C review does not authorize manuscript mutation, formal-register mutation, scientific execution or claim activation.",
+    "G06 ALS stopping semantics and canonical source ownership remain unresolved.",
+    "G07 topology-stress amplitudes and row-level bindings remain unresolved.",
+    "G04 contains four unresolved gain placeholders and requires exact endpoint/comparator evidence locators."
+  ],
+  "operation_policy": {
+    "record_only": true,
+    "written_files": [
+      "refine-logs/REC-M5_GOVERNANCE_RECHECK_V2_20260812.json",
+      "refine-logs/REC-M5_GOVERNANCE_RECHECK_V2_20260812.md"
+    ],
+    "manuscript_modified": false,
+    "formal_register_modified": false,
+    "scientific_payload_modified": false,
+    "authorization_modified": false,
+    "git_operations": "NONE"
+  },
+  "progression_gate": {
+    "REC-M4": "REC-M4_INDEPENDENT_ACCEPTANCE_PASS_GOVERNANCE_ONLY",
+    "REC-M5": "NOT_AUTHORIZED_UNTIL_EXPLICIT_MANUSCRIPT_AND_REGISTER_AUTHORIZATIONS",
+    "m4_pass_applies_manuscript_patch": false,
+    "m4_pass_activates_scientific_claim": false,
+    "m5_patch_applied": false
+  }
+}

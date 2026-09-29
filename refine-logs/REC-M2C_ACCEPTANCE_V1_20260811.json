@@ -1,0 +1,258 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m2c-independent-acceptance-v1",
+  "acceptance_id": "REC-M2C-independent-20260811",
+  "generated_at": "2026-08-11T19:03:40+08:00",
+  "acceptance_result": "REC-M2C_INDEPENDENT_ACCEPTANCE_PASS",
+  "operation_policy": {
+    "independent_record_only": true,
+    "protected_manuscript_mutation": false,
+    "protected_register_mutation": false,
+    "protected_authorization_mutation": false,
+    "git_operations": "NONE"
+  },
+  "fresh_execution": {
+    "py_compile": {
+      "command": "python3 -m py_compile scripts/experiments/analyze_cal_e01_75.py scripts/experiments/test_analyze_cal_e01_75.py scripts/experiments/analyze_cal_e02_128.py scripts/experiments/test_analyze_cal_e02_128.py scripts/experiments/analyze_cal_e02_135.py scripts/experiments/test_analyze_cal_e02_135.py scripts/experiments/analyze_cal_e03_164.py tests/test_analyze_cal_e03_164.py",
+      "files_checked": 8,
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    "test_suites": [
+      {
+        "command": "python3 -m unittest scripts.experiments.test_analyze_cal_e01_75",
+        "name": "CAL-E01:75",
+        "tests": 16,
+        "exit_code": 0,
+        "status": "PASS"
+      },
+      {
+        "command": "python3 -m unittest scripts.experiments.test_analyze_cal_e02_128",
+        "name": "CAL-E02:128",
+        "tests": 7,
+        "exit_code": 0,
+        "status": "PASS"
+      },
+      {
+        "command": "python3 -m unittest scripts.experiments.test_analyze_cal_e02_135",
+        "name": "CAL-E02:135",
+        "tests": 6,
+        "exit_code": 0,
+        "status": "PASS"
+      },
+      {
+        "command": "python3 -m unittest tests.test_analyze_cal_e03_164",
+        "name": "CAL-E03:164",
+        "tests": 6,
+        "exit_code": 0,
+        "status": "PASS"
+      }
+    ],
+    "total_tests": 35,
+    "all_checks_pass": true
+  },
+  "source_test_hash_binding": {
+    "authorization": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json",
+    "authorization_sha256": "c012f7d1a40168b264027c55a3760424c7686cd0e7941cf6765d99c2629fd63f",
+    "files_checked": 8,
+    "all_bytes_match": true,
+    "all_sha256_match": true,
+    "authorized_files": [
+      "scripts/experiments/analyze_cal_e01_75.py",
+      "scripts/experiments/test_analyze_cal_e01_75.py",
+      "scripts/experiments/analyze_cal_e02_128.py",
+      "scripts/experiments/test_analyze_cal_e02_128.py",
+      "scripts/experiments/analyze_cal_e02_135.py",
+      "scripts/experiments/test_analyze_cal_e02_135.py",
+      "scripts/experiments/analyze_cal_e03_164.py",
+      "tests/test_analyze_cal_e03_164.py"
+    ],
+    "mismatches": []
+  },
+  "primary_duplicate_output_comparison": {
+    "execution_parent": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01",
+    "comparison_unit": "run-relative output path, byte length, raw bytes, and SHA-256",
+    "primary_file_count": 27,
+    "duplicate_file_count": 27,
+    "relative_path_union_count": 27,
+    "entries_compared": 27,
+    "missing_paths": [],
+    "byte_length_mismatches": [],
+    "raw_byte_mismatches": [],
+    "sha256_mismatches": [],
+    "all_27_path_bytes_sha_equal": true,
+    "relative_path_set_sha256": "bb18407e9f3bfd6481ddfdb2d50c2194b33ffdc8f0bdd1b65ee59d2995e4bf1b",
+    "pair_table_sha256": "d6ef4ff185420026fbea2c56406fcab6e469bea97d82ce845cce2eef4fa86244",
+    "recorded_comparison_mismatches": {
+      "comparison": [],
+      "manifest": [],
+      "run_inventory": []
+    },
+    "full_27_entry_detail": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_MANIFEST_V1_20260811_010147.json"
+  },
+  "protected_hash_recheck": {
+    "authorization_current_sha256": "c012f7d1a40168b264027c55a3760424c7686cd0e7941cf6765d99c2629fd63f",
+    "protected_files_checked": 9,
+    "all_protected_file_hashes_match": true,
+    "protected_file_mismatches": [],
+    "protected_files": [
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json",
+        "bytes": 7074,
+        "sha256": "c012f7d1a40168b264027c55a3760424c7686cd0e7941cf6765d99c2629fd63f"
+      },
+      {
+        "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+        "bytes": 3455,
+        "sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59"
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2A_REPAIR_RECEIPT_V1_20260810_222232.json",
+        "bytes": 13026,
+        "sha256": "b98f8a4dc6dd36ee28426182d9320d0696880867544a0cc05dd6c1fb5e943395"
+      },
+      {
+        "path": "output/ncs_review_corpus/v1_author_decision_register.json",
+        "bytes": 110685,
+        "sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2"
+      },
+      {
+        "path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+        "bytes": 1822,
+        "sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+      },
+      {
+        "path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+        "bytes": 2281,
+        "sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2_EXECUTION_AUTHORIZATION_V1_20260810_223606.json",
+        "bytes": 5715,
+        "sha256": "44677a44f01876bba8c96d924a69cf39a37f4642e00a004c1b03fb2dcbf4034c"
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_PREFLIGHT_RECEIPT_V1_20260810_231758.json",
+        "bytes": 10995,
+        "sha256": "5918f4eac9e6b01a012bcf511afc50a357e07e005b99dea242b36eff816359df"
+      },
+      {
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_TRACKER_V1_20260810_231758.md",
+        "bytes": 2947,
+        "sha256": "c35bf484768de70b0d64d2858f1328600d9cc5cc4efc7bb704729432336541eb"
+      }
+    ],
+    "tree_algorithm": "SHA-256 of UTF-8 sorted relative-path,bytes,raw-SHA-256 lines; symlinks recorded separately",
+    "trees": [
+      {
+        "path": "manuscript_src/natcs",
+        "file_count": 72,
+        "symlink_count": 0,
+        "m2b2_standard_sha256": "21a1319b6f98e31804b7fd1766c66124553a2ad2904bdc2dcb655097e591a364",
+        "legacy_sha256_sha_path": "150dbddfb99b1ed02954cc1759870e71312ac33a8b8da1802594f17117bc4c04",
+        "main_receipt_recorded_sha256": "3f01679702070917fb0b324dcd0c54721c0a39ec90237ea0c7aed598d63a76af",
+        "m2b2_standard_match": true,
+        "legacy_match": true,
+        "main_receipt_digest_note": "The main receipt manuscript digest uses a third summary-concatenation format and is retained without numeric comparison to either listing digest."
+      },
+      {
+        "path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3",
+        "file_count": 11,
+        "symlink_count": 0,
+        "m2b2_standard_sha256": "6859c367141f33e589fb2d536c96fbe763f40e406ca65bfa556d89b7536e00ec",
+        "legacy_sha256_sha_path": "7f7011c5d399c33a07e8b4192a95a6beed216384a551c2e978c7a248858d1d8b",
+        "main_receipt_recorded_sha256": "7f7011c5d399c33a07e8b4192a95a6beed216384a551c2e978c7a248858d1d8b",
+        "m2b2_standard_match": true,
+        "legacy_match": true
+      },
+      {
+        "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3",
+        "file_count": 3,
+        "symlink_count": 0,
+        "m2b2_standard_sha256": "5398ec9a698ba0a7b878b0a8d25a7d8e9184ea6ff98af033f2b33f7165b1a83f",
+        "legacy_sha256_sha_path": "d93f3f53852dfd8c7f13981b1b8a39ec3f23ede696e4a5878faeade81349ca8d",
+        "main_receipt_recorded_sha256": "d93f3f53852dfd8c7f13981b1b8a39ec3f23ede696e4a5878faeade81349ca8d",
+        "m2b2_standard_match": true,
+        "legacy_match": true
+      }
+    ],
+    "all_m2b2_standard_tree_hashes_match": true,
+    "all_legacy_tree_hashes_match": true
+  },
+  "m2c_record_audit": {
+    "primary_record_set": {
+      "role": "primary",
+      "receipt": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_RECEIPT_V1_20260810_235227.json",
+      "receipt_sha256": "e796c477b15aa7c58cf5e780dd621d75ce5c0706cbe85a7c0fadb5a92a5ee2f9",
+      "result": "REC-M2C_PASS",
+      "governance_status": "REC-M2C_PASS",
+      "scientific_status": "READ_ONLY_DERIVED_OUTPUTS_ONLY_NO_CLAIM_ACTIVATION",
+      "linked_records": [
+        "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_COVERAGE_LEDGER_V1_20260810_235227.json",
+        "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_RUN_INVENTORY_V1_20260810_235227.json",
+        "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_COMPARISON_V1_20260810_235227.json",
+        "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_TRACKER_V1_20260810_235227.md"
+      ],
+      "internal_checks": {
+        "py_compile": "8 files, exit 0",
+        "tests": 35,
+        "primary_duplicate_artifacts": "27 / 27",
+        "comparison": "PASS",
+        "coverage_ledger": "REC-M2C_PASS",
+        "run_inventory": "27 / 27"
+      },
+      "first_e02_128_module_not_found_event": {
+        "command": "python3 scripts/experiments/analyze_cal_e02_128.py ...",
+        "result": "ModuleNotFoundError: No module named 'scripts'",
+        "output_root_created": false,
+        "scientific_analysis_executed": false,
+        "retry_counted_as_run": false
+      }
+    },
+    "cross_confirmation_record_set": {
+      "role": "cross-confirmation",
+      "receipt": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_RECEIPT_V1_20260811_010147.json",
+      "receipt_sha256": "98e3ce8baafce73db4ec0826572a250d2e8500265645f31adf5f98b761082830",
+      "result": "REC-M2C_PASS",
+      "final_status": "REC-M2C PASS",
+      "linked_records": [
+        "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_COVERAGE_V1_20260811_010147.json",
+        "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_MANIFEST_V1_20260811_010147.json",
+        "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_TRACKER_V1_20260811_010147.md"
+      ],
+      "internal_checks": {
+        "py_compile_exactly_eight": "PASS",
+        "tests": {
+          "CAL-E01:75": 16,
+          "CAL-E02:128": 7,
+          "CAL-E02:135": 6,
+          "CAL-E03:164": 6,
+          "total": 35
+        },
+        "path_bytes_sha": "PASS, 27 / 27",
+        "run_parity": true,
+        "failure_nonfinite_unstable_not_run_preserved": true,
+        "no_imputation_claimed": true
+      }
+    }
+  },
+  "scientific_scope": {
+    "status": "READ_ONLY_DERIVED_OUTPUTS_ONLY_NO_CLAIM_ACTIVATION",
+    "claim_activation": "NOT_AUTHORIZED",
+    "promotion": "NOT_AUTHORIZED",
+    "manuscript_mutation": false,
+    "register_mutation": false,
+    "e4_r3_mutation": false,
+    "new_scientific_experiment": "NOT_RUN",
+    "e4_r008_reuse": "NOT_USED",
+    "rcep_nyc": "NOT_AUTHORIZED",
+    "s1_s4": "NOT_AUTHORIZED",
+    "n100_n200": "NOT_AUTHORIZED"
+  },
+  "state_preservation": {
+    "failure_states_preserved": true,
+    "nonfinite_states_preserved": true,
+    "unstable_states_preserved": true,
+    "not_run_states_preserved": true,
+    "coverage_record": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2C_COVERAGE_V1_20260811_010147.json"
+  }
+}

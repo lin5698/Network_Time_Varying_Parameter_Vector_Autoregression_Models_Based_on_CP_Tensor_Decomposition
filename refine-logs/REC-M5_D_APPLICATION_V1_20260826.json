@@ -1,0 +1,109 @@
+{
+  "record_class": "m5d_application_record",
+  "record_id": "REC-M5_D_APPLICATION_V1_20260826",
+  "generated": "2026-08-26",
+  "timezone_basis": "Asia/Shanghai",
+  "closure_md_sha256": "38d1a33fde2f5bbd2ae3bd67e842d70fe56a1a907270d6c569ad2e58360d5a25",
+  "authorization": {
+    "m5d": "full G01-G10",
+    "post_apply_commit": "auto-commit after gates (amended by gate_disposition=fixed-guards-then-commit)"
+  },
+  "patch_generation": "V2",
+  "operation_journal": [
+    "anchor prechecks 20/20 MATCH (fail-closed) before any edit",
+    "G01 methods_estimator.md P3 replaced (comparator roles; native-comparator audit boundary)",
+    "G02 methods_estimator.md P5 replaced (simulation truth semantics)",
+    "G03 methods_estimator.md P4 last-two-sentences replaced (OUTSIDE TARGET definition)",
+    "G04 results_validation.md all four paragraphs replaced (93.6/96.8/82.5/87.3 via ratio-of-medians; gain tokens eliminated)",
+    "G05-A supp_note4 parameter table inserted after P1",
+    "G05-B supp_note4 comparator-hierarchy paragraph replaced (native-comparator registry non-alias note)",
+    "G05-C supp_note4 outside-target paragraph replaced + denominator paragraph added",
+    "G05-D supp_note4 original-benchmark paragraph replaced (DGP simulation-truth framing; topology rows bounded diagnostics)",
+    "G05-E supp_note4 graph-feature paragraph replaced (pre-freeze requirements)",
+    "G05-F supp_note4 gate section table+text replaced (Rank column; Rule outcome; Threshold not met x2; pre-registered decision rule)",
+    "G06 methods_estimator.md ALS sentence replaced (fixed-60/no-monitoring/no-tolerance semantics)",
+    "G06 controlled_benchmark_contract.json estimator_configuration += cp_als_iteration_semantics/cp_als_monitored_quantity/cp_als_stopping_tolerance/cp_als_early_stop_predicate/cp_als_exception_rule",
+    "G07 methods_data.md scenario table + non-ranking boundary inserted after topology-stress paragraph",
+    "G08 methods_uncertainty.md stability paragraph appended (spectral-norm qualification; spectral-radius non-interchangeability)",
+    "G09 supp_note7_repro.md appended (N=20/N=50 seed coverage descriptive; no repeated-run reproducibility)",
+    "G10 supp_note8_scope.md appended (N=100/200 abstention; telemetry unavailable)"
+  ],
+  "stale_guard_maintenance": [
+    {
+      "file": "tests/test_main_fig3_qualification_scope.mjs",
+      "line": 22,
+      "change": "bind /separate simulation-only endpoint-aware qualification ... is not used to extend these gains/ (was: ... beyond the matched controlled design)"
+    },
+    {
+      "file": "tests/test_main_fig3_qualification_scope.mjs",
+      "line": 25,
+      "change": "bind new G05-F table layout (| CP anchor split | 3 | 0/16 | 0/8 | 0/8 | Threshold not met / | Tucker anchor split | (3,3,3) | 6/16 | 6/8 | 0/8 | Threshold not met)"
+    },
+    {
+      "file": "tests/test_main_fig3_recovery_scope.mjs",
+      "line": 27,
+      "change": "bind /Projected graph-feature diagnostics ... Supplementary Note 4 protocol diagnostics ... not native same-endpoint comparisons ... do not license fairness or superiority ranking/"
+    },
+    {
+      "file": "scripts/check_natcs_source_only_gates.mjs",
+      "line": 67,
+      "change": "same qualification-binding update as test line 22"
+    },
+    {
+      "file": "scripts/check_natcs_final_gates.mjs",
+      "line": 1869,
+      "change": "same qualification-binding update"
+    },
+    {
+      "file": "scripts/check_natcs_final_gates.mjs",
+      "line": 1807,
+      "change": "same graph-feature-binding update"
+    }
+  ],
+  "gate_state": {
+    "anchors": "20/20 MATCH (fail-closed prechecks)",
+    "release_safety_audit": {
+      "status": "PASS",
+      "blockers": 0,
+      "warnings": 0,
+      "files_seen": 411
+    },
+    "validate_rec_m4_v4": {
+      "rc": 0
+    },
+    "source_only_gate": {
+      "status": "FAIL",
+      "passes": 24,
+      "failing": [
+        "tests/test_introduction_contribution_scope.mjs"
+      ],
+      "attribution": "PRE_EXISTING: expected sentence 'Endpoint availability must be verified at the fitted-object level' absent from HEAD (git show) AND working introduction.md; introduction.md untouched by M5-D; recorded separately per author instruction"
+    },
+    "natcs_manuscript_build": {
+      "status": "NCS_BUILD_REFUSED",
+      "reason": "PAPER_CLAIM_AUDIT=BLOCKED + EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL (rcep_nyc quarantines unreviewed) — designed fail-closed evidence gate; deferred to P3"
+    },
+    "final_gates": {
+      "status": "BLOCKED",
+      "blocks": [
+        "EMPIRICAL_IMPLEMENTATION_AUDIT FAIL",
+        "PAPER_CLAIM_AUDIT BLOCKED"
+      ],
+      "note": "only standing P3 blocks remain after stale-guard maintenance; deferred to P3"
+    }
+  },
+  "files_mutated": [
+    "manuscript_src/natcs/methods_estimator.md",
+    "manuscript_src/natcs/results_validation.md",
+    "manuscript_src/natcs/supp_note4_benchmarks.md",
+    "manuscript_src/natcs/methods_data.md",
+    "manuscript_src/natcs/methods_uncertainty.md",
+    "manuscript_src/natcs/supp_note7_repro.md",
+    "manuscript_src/natcs/supp_note8_scope.md",
+    "manuscript_src/natcs/controlled_benchmark_contract.json",
+    "tests/test_main_fig3_qualification_scope.mjs",
+    "tests/test_main_fig3_recovery_scope.mjs",
+    "scripts/check_natcs_source_only_gates.mjs",
+    "scripts/check_natcs_final_gates.mjs"
+  ]
+}

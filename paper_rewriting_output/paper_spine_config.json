@@ -1,0 +1,22 @@
+{
+  "workflow": "rewrite_existing",
+  "scene": "journal",
+  "tier": "pro",
+  "output_language": "en",
+  "target_name": "Nature Computational Science Article",
+  "materials_dir": ".",
+  "draft_path": "manuscript_src/natcs",
+  "user_motivation": "Treat the manuscript as an academic launch: make query-certified operator learning the lead value; organize only around evidence-supported advantages; keep CP as an implementation layer and audit mechanics outside the reader-facing spine.",
+  "official_urls": [
+    "https://www.nature.com/natcomputsci/"
+  ],
+  "special_requirements": [
+    "Nature/Nature Reviews/Nature disciplinary journals/Nature Communications only; exclude Scientific-series journals",
+    "Do not fabricate results, baselines, statistics, code availability, applications, or references",
+    "Do not promote blocked E3/RCEP/NYC outcomes; separate internal audit from manuscript rhetoric",
+    "Apply the launch-event principle to title, abstract, Introduction, Results, figures, Discussion, and Conclusion"
+  ],
+  "word_output": "none",
+  "translation_package": "zh",
+  "ui_language": "zh"
+}

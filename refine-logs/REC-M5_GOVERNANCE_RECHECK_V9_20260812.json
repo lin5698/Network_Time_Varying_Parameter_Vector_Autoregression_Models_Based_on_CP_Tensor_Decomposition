@@ -1,0 +1,215 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-governance-recheck-v9",
+  "record_id": "REC-M5-governance-recheck-v9-20260812",
+  "phase": "M5-C",
+  "generated_at": "2026-08-12T08:49:55+08:00",
+  "task_mode": "REVIEW_ONLY_RECORD_ONLY",
+  "overall_result": "BLOCKED",
+  "requested_review": {
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "max",
+    "required_roles": [
+      "scientific-boundary",
+      "governance-manifest",
+      "editorial-traceability"
+    ],
+    "service_failure_policy": "SERVICE_INTERRUPTED_OR_FAILED_IS_NOT_PASS"
+  },
+  "service_provenance": {
+    "dispatch": {
+      "agent_id": "019ff35b-065e-7f90-a698-0f445581de48",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "max",
+      "service_tier": "priority",
+      "status": "DISPATCH_ACCEPTED"
+    },
+    "terminal_signal": {
+      "status": "completed",
+      "payload": null
+    },
+    "followup": {
+      "submission_id": "019ff36e-abdd-74f0-ae37-c1bab8a0058f",
+      "status": "NO_MATERIALIZED_ARTIFACT_OR_FINAL_PAYLOAD"
+    },
+    "materialized_luna_output": false,
+    "service_status": "UNVERIFIABLE_COMPLETION_WITHOUT_ARTIFACT_OR_FINAL_PAYLOAD",
+    "verdict": "BLOCKED",
+    "pass_prohibited": true
+  },
+  "current_input_hashes": {
+    "review_patch_manifest": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "sha256": "8d9b1d2a7536daa6a7f7cb3ade5bc0f5b0674d2087d5efeb2fd2a8dcbf3e603a"
+    },
+    "review_patch_markdown": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "sha256": "336c3cc4e25276ac6eeb56d597b3fd8486e8a90d02c7d977ace172048138c07d"
+    },
+    "author_input_request": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "sha256": "83197e8828f894cabf9b21fe108be0c61c751dc8c967bdca684dc1220dfe4913"
+    },
+    "author_input_worksheet": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "sha256": "d622854aba0b0e190ef8653fc87ab95324239be5257ff02d25478e2cdde571cd"
+    },
+    "v7_manifest": {
+      "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V7_20260812.json",
+      "sha256": "5f4538d6b44042dbe6f78035582284bea2f06dfa5d515aa2f6f511f5bc6e91f0"
+    },
+    "v7_markdown": {
+      "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V7_20260812.md",
+      "sha256": "123ebc80e9036d88854ab075416e5dc2a6d15dcca4d01b3382425ea8574f593f"
+    },
+    "m4_v4_receipt": {
+      "path": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V4_20260811.json",
+      "sha256": "c68fe23299eca1697d979ea0e72f9845af0e4793b58aed96a9029ed2a94d7fdc"
+    },
+    "m4_validator": {
+      "path": "scripts/validate_rec_m4_v4.mjs",
+      "sha256": "617821e2520a139d005577e57b7db4d5dea825877c1cd5c5f6ba677bee2855a9"
+    }
+  },
+  "deterministic_recheck": {
+    "author_fields": {
+      "status": "PASS",
+      "current_patch_author_input_needed": [],
+      "current_patch_resolved_binding_count": 6,
+      "v7_resolved_group_count": 7,
+      "v7_author_input_status": "AUTHOR_INPUT_COMPLETE_PENDING_INDEPENDENT_REVIEW"
+    },
+    "patch_input_hashes": {
+      "status": "PASS",
+      "checked": 11,
+      "matched": 11,
+      "failed": 0,
+      "algorithm": "SHA-256 of raw bytes"
+    },
+    "protected_baseline_hashes": {
+      "status": "PASS",
+      "checked": 12,
+      "matched": 12,
+      "failed": 0,
+      "algorithm": "SHA-256 of raw bytes",
+      "policy": "Exact-path SHA-256 only; no broad refine-logs traversal"
+    },
+    "evidence_bundle_hashes": {
+      "status": "PASS",
+      "checked": 16,
+      "matched": 16,
+      "failed": 0,
+      "algorithm": "SHA-256 of raw bytes"
+    },
+    "pre_apply_anchors": {
+      "status": "PASS",
+      "checked": 18,
+      "matched": 18,
+      "failed": 0,
+      "algorithm": "SHA-256 of UTF-8 paragraph fragments after CRLF normalization and trimEnd"
+    },
+    "unit_coverage": {
+      "status": "PASS",
+      "checked": 26,
+      "unique": 26,
+      "duplicates": 0,
+      "V1-026": 3,
+      "V1-033": 13,
+      "V1-045": 10
+    },
+    "m4_validator": {
+      "status": "PASS",
+      "command": "node scripts/validate_rec_m4_v4.mjs",
+      "checked": 247,
+      "passed": 247,
+      "failed": 0,
+      "receipt_hash_match": true,
+      "validator_hash_match": true
+    }
+  },
+  "v7_current_artifact_reference_recheck": {
+    "status": "FAIL_STALE_CURRENT_ARTIFACT_REFERENCES",
+    "checked": 4,
+    "matched": 1,
+    "failed": 3,
+    "entries": [
+      {
+        "field": "review_patch_markdown",
+        "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+        "v7_sha256": "6837bbe5fe4e7f9549553b9749ebf49b0870a0a1045678234beea873f5ba8c06",
+        "current_sha256": "336c3cc4e25276ac6eeb56d597b3fd8486e8a90d02c7d977ace172048138c07d",
+        "match": false
+      },
+      {
+        "field": "review_patch_manifest",
+        "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+        "v7_sha256": "cacd0e6ec75760601c6e3ed3229e122bf70810d6f5c26dec7c9435d1c304ae7b",
+        "current_sha256": "8d9b1d2a7536daa6a7f7cb3ade5bc0f5b0674d2087d5efeb2fd2a8dcbf3e603a",
+        "match": false
+      },
+      {
+        "field": "author_input_request",
+        "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+        "v7_sha256": "a0890f4c956853c2564478f1f205be93d3694562aefde8b0068bedb4e2dc0018",
+        "current_sha256": "83197e8828f894cabf9b21fe108be0c61c751dc8c967bdca684dc1220dfe4913",
+        "match": false
+      },
+      {
+        "field": "author_input_worksheet",
+        "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+        "v7_sha256": "d622854aba0b0e190ef8653fc87ab95324239be5257ff02d25478e2cdde571cd",
+        "current_sha256": "d622854aba0b0e190ef8653fc87ab95324239be5257ff02d25478e2cdde571cd",
+        "match": true
+      }
+    ]
+  },
+  "semantic_role_outcomes": {
+    "scientific-boundary": {
+      "status": "BLOCKED",
+      "reason": "Required Luna max result is not verifiable from a materialized artifact or final payload."
+    },
+    "governance-manifest": {
+      "status": "BLOCKED",
+      "reason": "V7 has three stale current-artifact hashes, and required Luna max result is not verifiable."
+    },
+    "editorial-traceability": {
+      "status": "BLOCKED",
+      "reason": "Required Luna max result is not verifiable from a materialized artifact or final payload."
+    }
+  },
+  "status_consistency": {
+    "status": "FAIL",
+    "contradiction": "V7 declares itself current while 3 of 4 current-artifact SHA-256 references do not bind the on-disk current artifacts."
+  },
+  "authorization_boundary": {
+    "claim_activation": "NOT_AUTHORIZED",
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_payload_mutation": "PROHIBITED",
+    "authorization_file_mutation": "PROHIBITED",
+    "generated_tex_mutation": "PROHIBITED",
+    "git_operations": "NONE"
+  },
+  "record_only_boundary": {
+    "status": "PASS",
+    "preexisting_dirty_worktree": "PRESERVED",
+    "manuscript_modified_by_this_review": false,
+    "formal_register_modified_by_this_review": false,
+    "scientific_payload_modified_by_this_review": false,
+    "authorization_modified_by_this_review": false,
+    "generated_tex_modified_by_this_review": false,
+    "git_operations": "NONE"
+  },
+  "blockers": [
+    "V7 current-artifact recheck is 1/4 PASS: three SHA-256 references are stale.",
+    "The required GPT-5.6-Luna max semantic review has no materialized output or final payload and is therefore unverifiable."
+  ],
+  "required_before_pass": [
+    "Bind the governance receipt to the current review-patch and author-record SHA-256 values.",
+    "Obtain a verifiable GPT-5.6-Luna max result for scientific-boundary, governance-manifest, and editorial-traceability roles.",
+    "Keep the process record-only; separate M5-D and M5-F authorizations remain required."
+  ],
+  "changed_paths": [
+    "refine-logs/REC-M5_GOVERNANCE_RECHECK_V9_20260812.md",
+    "refine-logs/REC-M5_GOVERNANCE_RECHECK_V9_20260812.json"
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "schema_version": "1.0",
+  "record_id": "REC-M5-scientific-recheck-terra-v1-20260812",
+  "generated_at": "2026-08-12T03:45:05Z",
+  "phase": "M5-C current-version scientific-boundary semantic review",
+  "task_mode": "review_only",
+  "verdict": "BLOCKED",
+  "readiness": "NOT_READY_FOR_SEMANTIC_ACCEPTANCE_OR_M5-D",
+  "decision_basis": "The requested Terra service produced no usable semantic review payload or receipt after one initial attempt and one same-lineage retry. Verified local evidence bindings are recorded as preflight only and cannot be promoted to a Terra PASS.",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "max",
+  "provenance": {
+    "agent_lineage": "019ff40a-0cd5-79e1-8c57-1a38589a2d34",
+    "invocation_type": "native_subagent_worker",
+    "initial_attempt": {
+      "status": "NO_FINAL_RESPONSE_OR_RECEIPT_AFTER_BOUNDED_WAITS",
+      "usable_review": false
+    },
+    "retry_attempt": {
+      "status": "NO_FINAL_RESPONSE_OR_RECEIPT_AFTER_BOUNDED_WAITS",
+      "usable_review": false
+    },
+    "terminal_action": "WORKER_STOPPED_AFTER_RETRY_NO_PROGRESS",
+    "service_status": "UNUSABLE_COMPLETION_WITHOUT_FINAL_PAYLOAD_OR_RECEIPT",
+    "service_failure_is_pass": false,
+    "semantic_adjudication_available": false,
+    "fallback_scope": "parent_local_evidence_preflight_only"
+  },
+  "inputs": {
+    "review_patch_markdown": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "sha256": "336c3cc4e25276ac6eeb56d597b3fd8486e8a90d02c7d977ace172048138c07d"
+    },
+    "review_patch_json": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "sha256": "8d9b1d2a7536daa6a7f7cb3ade5bc0f5b0674d2087d5efeb2fd2a8dcbf3e603a"
+    },
+    "author_input_markdown": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "sha256": "d622854aba0b0e190ef8653fc87ab95324239be5257ff02d25478e2cdde571cd"
+    },
+    "author_input_json": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "sha256": "83197e8828f894cabf9b21fe108be0c61c751dc8c967bdca684dc1220dfe4913"
+    },
+    "governance_v8_markdown": {
+      "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V8_20260812.md",
+      "sha256": "8c6620d60a5fcc31cd22d5dbb0abfb6c8104cdc57d1dadba4b0c1bb7913f435c"
+    },
+    "governance_v8_json": {
+      "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V8_20260812.json",
+      "sha256": "ff4182a3e5e67a23c095e8aac69c4a92ee9abcf217d93cc431572bb9f292d966"
+    }
+  },
+  "declared_evidence": {
+    "result_extraction_json": {
+      "path": "refine-logs/REC-M5_RESULT_CANDIDATE_EXTRACTION_V1_20260812.json",
+      "sha256": "48853866e02588d5833699b53ecd42843936cc3ec9d5a4d96faa587b4ed06f84"
+    },
+    "als_topology_extraction_json": {
+      "path": "refine-logs/REC-M5_ALS_TOPOLOGY_CANDIDATE_EXTRACTION_V1_20260812.json",
+      "sha256": "778367b26bb2d770a5f4125144585731ac8b6a8106fdb3bc2f9a392655b45031"
+    },
+    "benchmark_script": {
+      "path": "scripts/natcs_benchmarks.mjs",
+      "sha256": "9cfe55a771f7434617bf67bbc78c22aadcd74fd528b4ea5d8b7762e0ad2b4633"
+    },
+    "benchmark_summary": {
+      "path": "output/natcs_benchmarks/benchmark_summary.csv",
+      "sha256": "c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1"
+    },
+    "prior_service_incident_v1": {
+      "path": "refine-logs/REC-M5_SEMANTIC_RECHECK_SERVICE_INCIDENT_V1_20260812.json",
+      "sha256": "d264581fd93daf7dfbd7835886ced8fa4d999e383eaf2e652a7ce4b129024dde4"
+    },
+    "prior_service_incident_v2": {
+      "path": "refine-logs/REC-M5_SEMANTIC_RECHECK_SERVICE_INCIDENT_V2_20260812.json",
+      "sha256": "2c91c8ecf9c9bd6b409ede6d9173e3b760a90a8e7330b46e798bf6d4acd8e76a"
+    }
+  },
+  "v8_recheck": {
+    "record_id": "REC-M5-governance-recheck-v8-20260812",
+    "result": "DETERMINISTIC_PASS_SEMANTIC_RECHECK_SERVICE_BLOCKED",
+    "current_artifact_hash_binding": "PASS",
+    "current_version_core_deterministic_harness": "85/85 PASS",
+    "m4_allowlisted_validator": "247/247 PASS",
+    "author_input_completeness": "PASS; unresolved=[]",
+    "semantic_gate": "BLOCKED_NOT_PASS",
+    "semantic_incident": "3/3 prior current-version Luna tasks returned 503 and produced no usable receipt"
+  },
+  "evidence_preflight": {
+    "status": "PARTIAL_PASS_NOT_TERRA_ADJUDICATION",
+    "g04": {
+      "formula": "100 * (local_network_metric_median - cp_network_metric_median) / local_network_metric_median",
+      "statistic": "ratio of across-replication median errors",
+      "denominator": "local_network metric median for the same scenario and endpoint",
+      "comparator": "local_network / Local rolling",
+      "candidate": "cp_network / CP-network",
+      "endpoint_mapping": {
+        "coef_error_median": "effective_operator",
+        "girf_error_median": "total_response"
+      },
+      "replication_unit": "20 released replications for each N=15 and N=30 primary scenario",
+      "values": {
+        "AIN-RESULT-OP-N15": {
+          "unrounded_percent": 93.55203369881073,
+          "display_percent": 93.6,
+          "recomputed": true
+        },
+        "AIN-RESULT-OP-N30": {
+          "unrounded_percent": 96.76394154622214,
+          "display_percent": 96.8,
+          "recomputed": true
+        },
+        "AIN-RESULT-RESP-N15": {
+          "unrounded_percent": 82.54278845800611,
+          "display_percent": 82.5,
+          "recomputed": true
+        },
+        "AIN-RESULT-RESP-N30": {
+          "unrounded_percent": 87.32161861932515,
+          "display_percent": 87.3,
+          "recomputed": true
+        }
+      }
+    },
+    "als": {
+      "implementation_locator": "scripts/natcs_benchmarks.mjs:292-317",
+      "normal_completion_semantics": "fixed 60 iterations",
+      "monitored_quantity": null,
+      "stopping_tolerance": null,
+      "early_stop_predicate": null,
+      "exception_rule": "abort call and record reconstruction failure",
+      "regularizer": "1e-6 Gram-system regularization, not a stopping tolerance",
+      "scientific_ceiling": "Does not establish convergence or global optimality."
+    },
+    "topology": {
+      "seed_policy": "Deterministic scenario/replication seed rooted at 20260328; CP initialization uses simSeed + 1001 + zero-based replication index; seeds are not serialized in released CSV.",
+      "rows": [
+        {
+          "scenario_id": "high_topology_vol",
+          "parameters": {"topologyVol": 0.18, "sparsity": 0.15, "wNoise": 0.0, "wDrop": 0.0},
+          "role": "generation",
+          "affected_object": "truth.W evolution",
+          "coverage": "local_network 3; each other released method 20"
+        },
+        {
+          "scenario_id": "sparse_misspecified",
+          "parameters": {"topologyVol": 0.08, "sparsity": 0.55, "wNoise": 0.18, "wDrop": 0.0},
+          "role": "generation and observation",
+          "affected_object": "truth.W generation and WEst observation",
+          "coverage": "each released method 3"
+        },
+        {
+          "scenario_id": "edge_missing",
+          "parameters": {"topologyVol": 0.06, "sparsity": 0.15, "wNoise": 0.0, "wDrop": 0.30},
+          "role": "observation, with generation volatility 0.06",
+          "affected_object": "observed nonzero off-diagonal edges in WEst",
+          "coverage": "local_network 3; each other released method 20"
+        },
+        {
+          "scenario_id": "noisy_network",
+          "parameters": {"topologyVol": 0.06, "sparsity": 0.15, "wNoise": 0.35, "wDrop": 0.0},
+          "role": "observation, with generation volatility 0.06",
+          "affected_object": "observed weights in WEst",
+          "coverage": "local_network 3; each other released method 20"
+        }
+      ],
+      "scientific_ceiling": "Asymmetric released coverage supports bounded diagnostics only; no matched ranking or general topology-robustness claim."
+    }
+  },
+  "source_unavailable_decisions": [
+    {
+      "id": "AIN-SOURCE-01",
+      "decision": "Canonical Markdown ownership for application/bootstrap 100/80 iteration wording is unavailable.",
+      "generated_tex": "excluded_as_canonical_source"
+    },
+    {
+      "id": "AIN-SOURCE-02",
+      "decision": "Canonical spectral-radius wording source is unavailable; do not reconstruct or import a metric mapping.",
+      "generated_tex": "excluded_as_canonical_source"
+    },
+    {
+      "id": "AIN-SOURCE-03",
+      "decision": "Canonical 50% top-exposure attenuation source is unavailable; operation remains outside CAL-E03.",
+      "generated_tex": "excluded_as_canonical_source"
+    },
+    {
+      "id": "AIN-SOURCE-04",
+      "decision": "Generated TeX is not the canonical ownership source.",
+      "result": "RETAINED"
+    }
+  ],
+  "overclaim_ceilings": [
+    "G04 remains simulation-only for declared N=15/N=30 rows and cannot support native-held-out, empirical, fairness, ranking, equivalence, superiority, cross-family generality, or application-performance claims.",
+    "Fixed-60 ALS semantics cannot support convergence or global-optimality claims.",
+    "Asymmetric topology stress coverage cannot support matched ranking or general topology-robustness claims.",
+    "V1-026 scientific execution remains NOT_RUN and claim activation remains BLOCKED.",
+    "V1-033 chronology, selection inputs, held-out query identity, endpoint signature, and truth isolation remain unresolved; independent empirical ground truth is not evaluable.",
+    "V1-045 remains N=20/N=50 only; N=100/N=200 remain NOT_RUN/ABSTAIN; resource telemetry remains BLOCKED/null; repeated-run reproducibility is false.",
+    "No claim activation or manuscript/formal-register mutation is authorized."
+  ],
+  "check_results": [
+    {
+      "id": "evidence_bounded_claims",
+      "result": "BLOCKED",
+      "finding": "Evidence artifacts and deterministic bindings are present, but the required Terra semantic adjudication is unavailable."
+    },
+    {
+      "id": "G04_formula",
+      "result": "BLOCKED",
+      "finding": "Formula, denominator, comparator, endpoints and four values are explicitly bound and recomputed; semantic acceptance remains blocked."
+    },
+    {
+      "id": "fixed_60_ALS",
+      "result": "BLOCKED",
+      "finding": "Source loop confirms fixed 60 normal-completion iterations, no convergence monitor/tolerance/early stop, and exception failure recording."
+    },
+    {
+      "id": "topology_amplitudes_roles_coverage",
+      "result": "BLOCKED",
+      "finding": "Four exact rows, roles, deterministic seed policy and asymmetric coverage are declared; only bounded diagnostics are allowed."
+    },
+    {
+      "id": "source_unavailable_decisions",
+      "result": "BLOCKED",
+      "finding": "All four source-ownership decisions remain explicit; generated TeX is excluded."
+    },
+    {
+      "id": "current_readiness",
+      "result": "BLOCKED",
+      "finding": "V8 is current and deterministic-only; semantic gate remains BLOCKED_NOT_PASS."
+    },
+    {
+      "id": "overclaim_ceilings",
+      "result": "BLOCKED",
+      "finding": "All listed scientific and governance ceilings remain binding pending a usable Terra semantic review."
+    }
+  ],
+  "authorization_boundary": {
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_payload_mutation": "PROHIBITED",
+    "authorization_file_mutation": "PROHIBITED",
+    "generated_tex_mutation": "NOT_AUTHORIZED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  },
+  "changed_paths": [
+    "refine-logs/REC-M5_SCIENTIFIC_RECHECK_TERRA_V1_20260812.md",
+    "refine-logs/REC-M5_SCIENTIFIC_RECHECK_TERRA_V1_20260812.json"
+  ]
+}

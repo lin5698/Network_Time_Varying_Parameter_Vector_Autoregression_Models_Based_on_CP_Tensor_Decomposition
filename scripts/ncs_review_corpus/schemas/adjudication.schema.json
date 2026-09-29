@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NCS public review adjudication result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "calibration_id",
+    "model",
+    "reasoning_effort",
+    "source_packet_sha256",
+    "adjudications",
+    "paper_level_editor_priorities_zh",
+    "paper_level_reviewer_worries_zh",
+    "paper_level_limitations_zh"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "calibration_id": {
+      "enum": [
+        "CAL-D01",
+        "CAL-D02",
+        "CAL-D03",
+        "CAL-E01",
+        "CAL-E02",
+        "CAL-E03"
+      ]
+    },
+    "model": {
+      "const": "gpt-5.6-luna"
+    },
+    "reasoning_effort": {
+      "const": "max"
+    },
+    "source_packet_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "adjudications": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "item_index",
+          "kind",
+          "disposition",
+          "canonical_issue_ids",
+          "canonical_fields",
+          "canonical_summary_zh",
+          "rationale_zh",
+          "unresolved_or_unobserved_zh"
+        ],
+        "properties": {
+          "item_index": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "kind": {
+            "enum": [
+              "MATCHED_FIELD_DIFFERENCE",
+              "UNMATCHED_A",
+              "UNMATCHED_B"
+            ]
+          },
+          "disposition": {
+            "enum": [
+              "ACCEPT_A",
+              "ACCEPT_B",
+              "MERGE",
+              "KEEP_SEPARATE",
+              "DROP_DUPLICATE",
+              "DROP_UNSUPPORTED"
+            ]
+          },
+          "canonical_issue_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "canonical_fields": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "required": [
+              "actor_role",
+              "issue_type",
+              "concern_domain",
+              "requested_action",
+              "response_status",
+              "cost_level"
+            ],
+            "properties": {
+              "actor_role": {
+                "enum": [
+                  "EDITOR",
+                  "REVIEWER",
+                  "AUTHOR",
+                  "UNKNOWN"
+                ]
+              },
+              "issue_type": {
+                "description": "QUESTION is normalized to OTHER and DECISION_SIGNAL is normalized to DECISION before adjudication output.",
+                "enum": [
+                  "PRAISE",
+                  "CONCERN",
+                  "REQUEST",
+                  "CONDITION",
+                  "RESPONSE",
+                  "DECISION",
+                  "OTHER"
+                ]
+              },
+              "concern_domain": {
+                "enum": [
+                  "NOVELTY_SIGNIFICANCE",
+                  "SCOPE_POSITIONING",
+                  "CORRECTNESS_THEORY",
+                  "METHOD_MODEL",
+                  "DATA_PROVENANCE",
+                  "EXPERIMENT_VALIDATION",
+                  "STATISTICS_UNCERTAINTY",
+                  "BASELINE_COMPARATOR",
+                  "REPRODUCIBILITY",
+                  "CLARITY_FIGURES",
+                  "ETHICS_COMPLIANCE",
+                  "WRITING_FORMAT",
+                  "OTHER"
+                ]
+              },
+              "requested_action": {
+                "enum": [
+                  "CLARIFY",
+                  "TEXT_EDIT",
+                  "CORRECT_ERROR",
+                  "NEW_ANALYSIS",
+                  "NEW_EXPERIMENT",
+                  "NEW_BASELINE",
+                  "ROBUSTNESS_CHECK",
+                  "DATA_SOURCE",
+                  "CODE_REPRODUCTION",
+                  "SCOPE_REDUCTION",
+                  "NO_ACTION_EXPLICIT",
+                  "UNKNOWN"
+                ]
+              },
+              "response_status": {
+                "enum": [
+                  "NO_RESPONSE",
+                  "ACKNOWLEDGED_ONLY",
+                  "CLARIFIED",
+                  "PARTIAL",
+                  "FULLY_ADDRESSED",
+                  "CONTRADICTED",
+                  "DEFERRED",
+                  "DECLINED_WITH_REASON",
+                  "UNRESOLVED",
+                  "NOT_APPLICABLE"
+                ]
+              },
+              "cost_level": {
+                "enum": [
+                  "LOW",
+                  "MEDIUM",
+                  "HIGH",
+                  "UNKNOWN"
+                ]
+              }
+            }
+          },
+          "canonical_summary_zh": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rationale_zh": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unresolved_or_unobserved_zh": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "required": [
+                "disposition"
+              ],
+              "properties": {
+                "disposition": {
+                  "enum": [
+                    "DROP_DUPLICATE",
+                    "DROP_UNSUPPORTED"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "canonical_issue_ids": {
+                  "const": []
+                },
+                "canonical_fields": {
+                  "type": "null"
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "canonical_issue_ids": {
+                  "minItems": 1
+                },
+                "canonical_fields": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "paper_level_editor_priorities_zh": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "paper_level_reviewer_worries_zh": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "paper_level_limitations_zh": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

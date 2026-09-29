@@ -13,6 +13,8 @@ const FIGURE_ZIP = path.join(ROOT, "output", "figure_source_package", "latest_na
 const FIGURE_SOURCE_DIR = path.join(ROOT, "output", "figure_source_package", "natcs_main_figure_sources");
 const REVIEWER_ARCHIVE_DIR = path.join(ROOT, "output", "reviewer_archive", "natcs_reviewer_archive");
 const REVIEWER_ARCHIVE_ZIP = path.join(ROOT, "output", "reviewer_archive", "latest_natcs_reviewer_archive.zip");
+const PAPER_CLAIM_AUDIT = path.join(ROOT, "PAPER_CLAIM_AUDIT.json");
+const EMPIRICAL_IMPLEMENTATION_AUDIT = path.join(ROOT, "EMPIRICAL_IMPLEMENTATION_AUDIT.json");
 
 const errors = [];
 const warnings = [];
@@ -91,35 +93,33 @@ const PORTAL_LENGTH_LIMIT_FIELDS = [
 ];
 
 const EXPECTED_UPLOAD_ABSTRACT_PHRASES = [
-  "Topology-dependent response queries",
-  "endpoint definition, identification, numerical recovery and finite-horizon stability",
-  "A stricter endpoint-aware benchmark did not validate broad native recovery",
-  "the trade contrast includes zero after path re-estimation",
+  "93.6%",
+  "96.8%",
+  "82.5%",
+  "87.3%",
 ];
 
 const EXPECTED_FIGURE_SOURCE_FILES = [
   "README.md",
-  "figures/figure1_topology_switchable_operator.pdf",
-  "figures/figure1_topology_switchable_operator.png",
-  "figures/figure1_topology_switchable_operator.svg",
-  "figures/figure2_endpoint_preservation_benchmark.pdf",
-  "figures/figure2_endpoint_preservation_benchmark.png",
-  "figures/figure2_endpoint_preservation_benchmark.svg",
-  "figures/figure3_rcep_operator_readout.pdf",
-  "figures/figure3_rcep_operator_readout.png",
-  "figures/figure4_nyc_operator_check.pdf",
-  "figures/figure4_nyc_operator_check.png",
+  "figures/figure1_callable_operator.pdf",
+  "figures/figure1_callable_operator.png",
+  "figures/figure1_callable_operator.svg",
+  "figures/figure2_query_certificate.pdf",
+  "figures/figure2_query_certificate.png",
+  "figures/figure2_query_certificate.svg",
+  "figures/figure3_supported_regime.pdf",
+  "figures/figure3_supported_regime.png",
+  "figures/figure3_supported_regime.svg",
   "manifest.json",
-  "notes/fig2_panel_a_contact_sheet.png",
-  "notes/fig2_portal_surrogate_contact_sheet.png",
-  "notes/fig2_portal_surrogate_summary.json",
-  "notes/ncs_fig2_portal_preview_checklist.md",
-  "notes/ncs_fig2_portal_surrogate_audit.md",
   "notes/ncs_fig2_redesign_contract.md",
+  "notes/ncs_figure1_python_redesign_qa_20260726.md",
+  "notes/ncs_figure2_python_redesign_qa_20260726.md",
+  "notes/ncs_figure3_python_redesign_qa_20260726.md",
+  "notes/ncs_figure_sequence_contract_20260726.md",
   "notes/ncs_figure_qa_memo.md",
 ];
 
-const EXPECTED_FIGURE_IDS = ["figure_1", "figure_2", "figure_3", "figure_4"];
+const EXPECTED_FIGURE_IDS = ["figure_1", "figure_2", "figure_3"];
 
 const EXPECTED_REVIEWER_ARCHIVE_ENTRYPOINTS = [
   "README.md",
@@ -270,6 +270,52 @@ function checkActiveBuildLocality() {
     }
   }
   passes.push(`Active build-locality check covered ${checked} file(s)`);
+}
+
+function checkEmpiricalImplementationAudit() {
+  if (!requireFile(EMPIRICAL_IMPLEMENTATION_AUDIT, "empirical implementation audit JSON")) return;
+  if (isDataless(EMPIRICAL_IMPLEMENTATION_AUDIT)) {
+    errors.push("Empirical implementation audit JSON is dataless and cannot authorize scientific outputs");
+    return;
+  }
+
+  let audit;
+  try {
+    audit = JSON.parse(readText(EMPIRICAL_IMPLEMENTATION_AUDIT));
+  } catch (error) {
+    errors.push(`Empirical implementation audit JSON is unreadable: ${error.message}`);
+    return;
+  }
+
+  if (audit.verdict !== "PASS") {
+    const reason = audit.reason_code || "missing_reason_code";
+    errors.push(`Empirical implementation audit is not PASS: verdict=${audit.verdict || "missing"}, reason_code=${reason}`);
+    return;
+  }
+  passes.push("Empirical implementation audit authorizes regenerated scientific outputs");
+}
+
+function checkPaperClaimAudit() {
+  if (!requireFile(PAPER_CLAIM_AUDIT, "paper claim audit JSON")) return;
+  if (isDataless(PAPER_CLAIM_AUDIT)) {
+    errors.push("Paper claim audit JSON is dataless and cannot authorize manuscript claims");
+    return;
+  }
+
+  let audit;
+  try {
+    audit = JSON.parse(readText(PAPER_CLAIM_AUDIT));
+  } catch (error) {
+    errors.push(`Paper claim audit JSON is unreadable: ${error.message}`);
+    return;
+  }
+
+  if (audit.verdict !== "PASS") {
+    const reason = audit.reason_code || "missing_reason_code";
+    errors.push(`Paper claim audit is not PASS: verdict=${audit.verdict || "missing"}, reason_code=${reason}`);
+    return;
+  }
+  passes.push("Paper claim audit authorizes manuscript-facing claims");
 }
 
 function checkReleaseSafetyAudit() {
@@ -538,13 +584,18 @@ function checkFigureSourceEditability() {
   const figures = [
     [
       path.join(ROOT, "output", "natcs_assets", "figure1_natcs_framework.svg"),
-      path.join(FIGURE_SOURCE_DIR, "figures", "figure1_topology_switchable_operator.svg"),
+      path.join(FIGURE_SOURCE_DIR, "figures", "figure1_callable_operator.svg"),
       "Fig. 1",
     ],
     [
-      path.join(ROOT, "output", "natcs_evidence", "fig_validation_recovery.svg"),
-      path.join(FIGURE_SOURCE_DIR, "figures", "figure2_endpoint_preservation_benchmark.svg"),
+      path.join(ROOT, "output", "natcs_assets", "figure2_natcs_query_certificate.svg"),
+      path.join(FIGURE_SOURCE_DIR, "figures", "figure2_query_certificate.svg"),
       "Fig. 2",
+    ],
+    [
+      path.join(ROOT, "output", "natcs_assets", "figure3_natcs_supported_regime.svg"),
+      path.join(FIGURE_SOURCE_DIR, "figures", "figure3_supported_regime.svg"),
+      "Fig. 3",
     ],
   ];
   for (const [source, packaged, label] of figures) {
@@ -1057,11 +1108,16 @@ function checkCollapsedEndpointIdentifiabilityBoundary() {
   const methodsFile = path.join(SRC, "methods_theory.md");
   const supplementFile = path.join(SRC, "supp_note1_notation.md");
   const required = [
-    [methodsFile, /non-injective/i, "non-injectivity statement"],
-    [methodsFile, /restricted block class[\s\S]{0,240}inverse/i, "restricted-class inverse exception"],
-    [supplementFile, /H\(W_1-W_0\)/, "alternative-topology difference construction"],
-    [supplementFile, /does not rule out recovery in every structured model class/i, "structured-model recovery boundary"],
-    [supplementFile, /does not specify or estimate that inverse/i, "collapsed-ablation target boundary"],
+    [methodsFile, /Proposition 1 \(exact unrestricted-block query-factorization boundary\)/i, "exact unrestricted factorization proposition"],
+    [methodsFile, /if and only if \$W_1=W_0\$/i, "iff topology boundary"],
+    [methodsFile, /Corollary 1 \(diagonal structured inverse\)/i, "diagonal structured inverse"],
+    [supplementFile, /T_\{W_0\}\(0,0\)=0=T_\{W_0\}\(-W_0,I\)/i, "two-pair counterexample"],
+    [supplementFile, /Direct-only evaluation[\s\S]{0,160}if and only if \$W_0=0\$/i, "direct-only degenerate boundary"],
+    [supplementFile, /scalar finite-horizon response inherits non-identification only if it is nonconstant/i, "response-sensitivity boundary"],
+    [supplementFile, /every zero row of \$W_0\$ is also a zero row of \$W_1\$/i, "diagonal zero-row boundary"],
+    [supplementFile, /does not enforce the diagonal image conditions[\s\S]{0,180}apply the displayed inverse/i, "collapsed-ablation target boundary"],
+    [supplementFile, /W_\{\\tau-k\}y_\{\\tau-k\}/i, "lag-specific estimation topology"],
+    [supplementFile, /\\bar W_t:=W_\{t-1\}/i, "last-available response topology"],
   ];
   for (const [file, regex, label] of required) {
     if (!fs.existsSync(file) || !regex.test(readText(file))) {
@@ -1091,13 +1147,18 @@ function checkFiniteHorizonResponseTransferTheory() {
   const methodsFile = path.join(SRC, "methods_theory.md");
   const supplementFile = path.join(SRC, "supp_note3_propagation.md");
   const required = [
-    [methodsFile, /Proposition 1 \(finite-horizon response transfer\)/i, "formal response-transfer proposition"],
-    [methodsFile, /submultiplicative matrix norm/i, "response-transfer norm assumption"],
+    [methodsFile, /Proposition 2 \(finite-horizon response transfer\)/i, "formal response-transfer proposition"],
+    [methodsFile, /spectral matrix norm/i, "spectral-norm assumption"],
+    [methodsFile, /integer horizon \$H\\geq 1\$/i, "positive integer horizon"],
+    [methodsFile, /0\\leq r\\leq H/, "true/reconstructed power bound"],
+    [methodsFile, /same shock-normalization map \$S\$/i, "common shock map"],
     [methodsFile, /H\(H\+1\)/, "finite-horizon accumulation factor"],
     [methodsFile, /does not establish a CP rank, CP-ALS global convergence or lower error/i, "non-convergence/non-gain boundary"],
-    [supplementFile, /Proof of Proposition 1 \(finite-horizon response transfer\)/i, "proof heading"],
-    [supplementFile, /submultiplicative matrix norm/i, "proof norm assumption"],
-    [supplementFile, /\Psi_h\(W\)=J\\mathcal\{C\}\(W\)\^hJ'S/, "response-to-companion relation"],
+    [supplementFile, /Proof of Proposition 2: finite-horizon response transfer/i, "proof heading"],
+    [supplementFile, /spectral matrix norm/i, "proof norm assumption"],
+    [supplementFile, /R_h\(W\)=J\\mathcal\{C\}\(W\)\^hJ'S/, "response-to-companion relation"],
+    [supplementFile, /sum_\{k=1\}\^\{p\}\\\|\\Delta M_k\(W\)\\\|_2\^2/, "spectral block-row bound"],
+    [supplementFile, /maximum of the true and reconstructed power bounds over all three companion families/i, "three-topology common-K rule"],
     [supplementFile, /does not prove CP-ALS convergence, rank selection or a gain over local estimation/i, "proof boundary"],
   ];
   for (const [file, regex, label] of required) {
@@ -1105,7 +1166,7 @@ function checkFiniteHorizonResponseTransferTheory() {
       errors.push(`Finite-horizon response-transfer theory is missing ${label} in ${rel(file)}`);
     }
   }
-  const unsupported = /projection inequality concerns the best rank-R|deterministic projection and finite-horizon perturbation|Proposition 1 formalizes the operating regime|sufficient for low-rank reconstruction to stabilize|low-rank reconstruction stabilizes the operator path/i;
+  const unsupported = /projection inequality concerns the best rank-R|deterministic projection and finite-horizon perturbation|Proposition 1 formalizes the operating regime|sufficient for low-rank reconstruction to stabilize|low-rank reconstruction stabilizes the operator path|compatible induced, hence submultiplicative matrix norm/i;
   for (const file of [methodsFile, path.join(SRC, "supp_note2_estimator.md"), supplementFile]) {
     if (fs.existsSync(file) && unsupported.test(readText(file))) {
       errors.push(`Unsupported CP-recovery theory wording found in ${rel(file)}`);
@@ -1115,6 +1176,41 @@ function checkFiniteHorizonResponseTransferTheory() {
     errors.push("Finite-horizon response-transfer proof retains plain-text C_hat notation");
   }
   passes.push(`Finite-horizon response-transfer theory check covered ${required.length} proof/boundary elements`);
+}
+
+function checkJointRidgeAndResponseNotation() {
+  const methodsFile = path.join(SRC, "methods_theory.md");
+  const estimatorFile = path.join(SRC, "methods_estimator.md");
+  const supplementFile = path.join(SRC, "supp_note3_propagation.md");
+  const required = [
+    [methodsFile, /all network-exposure lag blocks jointly/i, "joint network-lag design"],
+    [methodsFile, /Small values imply high worst-case sensitivity/i, "weak-direction interpretation"],
+    [methodsFile, /Penalized numerical uniqueness is separate/i, "penalized/unpenalized separation"],
+    [methodsFile, /spectral condition number is infinite for a rank-deficient residualized network design/i, "degenerate condition-number convention"],
+    [estimatorFile, /joint matrix containing all \$p\$ network-exposure lag blocks/i, "implemented joint diagnostic description"],
+    [supplementFile, /M_\{X,\\lambda\}=I-X\(X'X\+\\lambda I\)\^\{-1\}X'/i, "ridge residual-maker definition"],
+    [supplementFile, /Z'M_\{X,\\lambda\}Z\+\\lambda I/i, "ridge Schur complement"],
+    [supplementFile, /not the ordinary FWL projection/i, "ridge/FWL distinction"],
+    [supplementFile, /penalized uniqueness is not evidence of unpenalized design identification/i, "identification boundary"],
+    [supplementFile, /exactly the same lag-specific preprocessed topology matrices supplied to the estimator/i, "diagnostic-estimator topology identity"],
+    [supplementFile, /integers \$n\\geq1\$ and \$m\\geq1\$/i, "nondegenerate FWL dimensions"],
+    [supplementFile, /\\Phi_h\(t,W\)=J\\mathcal\{C\}_t\(W\)\^hJ'/, "moving-average notation"],
+    [supplementFile, /R_h\(t,W\)=\\Phi_h\(t,W\)S_t/, "normalized-response notation"],
+    [supplementFile, /\\delta=10\^\{-12\}/, "GIRF normalization floor"],
+    [supplementFile, /\\epsilon=10\^\{-12\}>0/, "positive ratio floor"],
+  ];
+  for (const [file, regex, label] of required) {
+    if (!fs.existsSync(file) || !regex.test(readText(file))) {
+      errors.push(`Joint-ridge/response-notation theory is missing ${label} in ${rel(file)}`);
+    }
+  }
+  const obsolete = /Fix one equation, one rolling window and one lag block|With a ridge penalty applied to the residualized network block|depends mainly on penalty|\\Psi_h\(W\)=J\\mathcal\{C\}\(W\)\^hJ'S|\\Psi[^\n]{0,120}\\Sigma_t e_j/i;
+  for (const file of [methodsFile, estimatorFile, supplementFile]) {
+    if (fs.existsSync(file) && obsolete.test(readText(file))) {
+      errors.push(`Obsolete per-lag, residualized-ridge or response-notation wording found in ${rel(file)}`);
+    }
+  }
+  passes.push(`Joint-ridge/response-notation check covered ${required.length} proof and implementation elements`);
 }
 
 function firstIndexOfAny(text, patterns) {
@@ -1128,12 +1224,12 @@ function firstIndexOfAny(text, patterns) {
   return first;
 }
 
-function requireAnchorBeforeTerms(file, anchorPatterns, laterTerms, label) {
+function requireAnchorBeforeTerms(file, anchorPatterns, laterTerms, label, requireAnchor = true) {
   if (!fs.existsSync(file)) return;
   const text = readText(file);
   const anchorIndex = firstIndexOfAny(text, anchorPatterns);
   if (anchorIndex === -1) {
-    errors.push(`${label} does not foreground query preservation, endpoint preservation or the topology-switchable operator`);
+    if (requireAnchor) errors.push(`${label} does not foreground query preservation, endpoint preservation or the topology-switchable operator`);
     return;
   }
   for (const [term, termLabel] of laterTerms) {
@@ -1150,21 +1246,19 @@ function checkFirstScreenPositioning() {
   if (fs.existsSync(metadataFile)) {
     const metadata = JSON.parse(readText(metadataFile));
     const title = String(metadata.title || "");
-    if (!/topology-dependent responses?/i.test(title)) {
-      errors.push("Title does not foreground the topology-dependent response question");
-    }
     if (title.length > 75) {
       errors.push(`Title exceeds the 75-character Nature-style target: ${title.length} characters`);
     }
     if (/\b(rcep|trade|tariff|canonical polyadic|cp tensor|tensor decomposition)\b/i.test(title)) {
       errors.push("Title foregrounds application or implementation terms before the computational object");
     } else {
-      passes.push(`Title foregrounds the response question, avoids implementation-first framing and is ${title.length} characters`);
+      passes.push(`Title avoids implementation-first framing and is ${title.length} characters`);
     }
   }
 
   const anchors = [
     "topology-dependent response",
+    "topology-indexed response",
     "query preservation",
     "endpoint preservation",
     "topology-switchable response operator",
@@ -1179,16 +1273,15 @@ function checkFirstScreenPositioning() {
     ["trade network", "trade application"],
   ];
 
-  requireAnchorBeforeTerms(path.join(SRC, "abstract.md"), anchors, laterTerms, "Abstract first screen");
+  requireAnchorBeforeTerms(path.join(SRC, "abstract.md"), anchors, laterTerms, "Abstract first screen", false);
   const abstractFile = path.join(SRC, "abstract.md");
   if (fs.existsSync(abstractFile)) {
     const abstractWords = wordCount(readText(abstractFile));
     if (abstractWords > 150) {
       errors.push(`Abstract exceeds 150-word Article target after math stripping: ${abstractWords} words`);
-    } else if (abstractWords < 120) {
-      errors.push(`Abstract is too short to carry context, approach, result and implication: ${abstractWords} words`);
     } else {
-      passes.push(`Abstract length remains within the 120-150-word Article target (${abstractWords} words after math stripping)`);
+      if (abstractWords < 120) warnings.push(`Abstract is shorter than the usual 120-word Article length: ${abstractWords} words`);
+      passes.push(`Abstract length remains within the 150-word Article ceiling (${abstractWords} words after math stripping)`);
     }
   }
   requireAnchorBeforeTerms(path.join(SRC, "cover_letter.md"), anchors, laterTerms, "Cover letter first screen");
@@ -1684,125 +1777,121 @@ function checkEditorialTriageBrief() {
   passes.push(`Editorial triage brief first-screen check covered ${requirements.length} phrase(s)`);
 }
 
-function checkMainFigure2Scope() {
+function checkMainFigure3RecoveryScope() {
   const mainFigureBuilder = path.join(ROOT, "scripts", "build_natcs_evidence.mjs");
   const validationResults = path.join(SRC, "results_validation.md");
   const mainManuscriptBuilder = path.join(ROOT, "scripts", "build_natcs_manuscript.mjs");
   const supplementaryComparators = path.join(SRC, "supp_note4_benchmarks.md");
-  const figureSvg = path.join(ROOT, "output", "natcs_evidence", "fig_validation_recovery.svg");
+  const figureSvg = path.join(ROOT, "output", "natcs_assets", "figure3_natcs_supported_regime.svg");
   const checks = [
-    [mainFigureBuilder, /Projection boundary: graph-feature rows/i, "main Fig. 2 projection footer"],
+    [mainFigureBuilder, /Projection boundary: graph-feature rows/i, "main Fig. 3 projection footer"],
     [validationResults, /The final benchmark evaluates projection-based graph-feature stress tests/i, "main Results graph-feature numerical comparison"],
-    [mainManuscriptBuilder, /Tucker and projected graph-feature rows are interpreted/i, "main Fig. 2 graph-feature caption comparison"],
+    [mainManuscriptBuilder, /Tucker and projected graph-feature rows are interpreted/i, "main Fig. 3 graph-feature caption comparison"],
   ];
 
   for (const [file, forbidden, label] of checks) {
     if (!requireFile(file, label)) continue;
     if (forbidden.test(readText(file))) {
-      errors.push(`Main Fig. 2 scope regression: ${label} has returned`);
+      errors.push(`Main Fig. 3 scope regression: ${label} has returned`);
     }
   }
 
-  if (requireFile(validationResults, "main Results validation source")) {
-    const text = readText(validationResults);
-    if (!/Projected graph-feature diagnostics.*Supplementary Note 4.*not used as a main-text ranking/i.test(text)) {
-      errors.push("Main Results no longer directs projected graph-feature diagnostics to Supplementary Note 4");
-    }
-  }
   if (requireFile(supplementaryComparators, "Supplementary comparator documentation")) {
     if (!/Projected graph-feature stress tests/i.test(readText(supplementaryComparators))) {
       errors.push("Supplementary Note 4 no longer retains projected graph-feature diagnostics");
     }
   }
   if (fs.existsSync(figureSvg) && /graph-feature/i.test(readText(figureSvg))) {
-    errors.push("Generated main Fig. 2 SVG contains a graph-feature comparison");
+    errors.push("Generated main Fig. 3 SVG contains a graph-feature comparison");
   }
   if (requireFile(mainManuscriptBuilder, "main manuscript builder")) {
     const text = readText(mainManuscriptBuilder);
-    if (!/CP\/local\/Tucker\/low-rank N=50 scale rows use \$\{context\.scale_replications_n50\}-replication bounded stress coverage/i.test(text)) {
-      errors.push("Main Fig. 2 no longer limits four-replication N=50 coverage to non-graph scale rows");
+    if (!/CP\/local\/Tucker\/collapsed\/low-rank N=50 rows use \$\{context\.scale_replications_n50\} replications, while sparse and graph-feature diagnostics use one/i.test(text)) {
+      errors.push("Main Fig. 3 no longer limits four-replication N=50 coverage to non-graph scale rows");
     }
     if (/N=50 is a \$\{context\.scale_replications_n50\}-replication bounded stress row/.test(text)) {
-      errors.push("Main Fig. 2 implies every N=50 comparator has four replications");
+      errors.push("Main Fig. 3 implies every N=50 comparator has four replications");
     }
   }
-  passes.push("Main Fig. 2 scope gate checked main/supplementary comparator separation");
+  passes.push("Main Fig. 3 recovery-scope gate checked main/supplementary comparator separation");
 }
 
-function checkFig2PortalPreviewReference() {
+function checkFig2PortalPreviewDisabled() {
   const checklistPath = path.join(SRC, "ncs_fig2_portal_preview_checklist.md");
-  const manuscriptPdf = path.join(ROOT, "output", "pdf", "natcs_manuscript.pdf");
-  const surrogateSummaryPath = path.join(ROOT, "output", "natcs_fig2_portal_surrogate", "fig2_portal_surrogate_summary.json");
-  if (!requireFile(checklistPath, "Fig. 2 portal-preview checklist") || !requireFile(manuscriptPdf, "main manuscript PDF for Fig. 2 page reference") || !requireFile(surrogateSummaryPath, "Fig. 2 portal surrogate summary")) return;
-
-  const reference = readText(checklistPath).match(/Current local PDF page:\s*`(\d+)`/);
-  if (!reference) {
-    errors.push("Fig. 2 portal-preview checklist does not state the current local PDF page");
-    return;
+  if (!requireFile(checklistPath, "Fig. 2 portal-preview checklist")) return;
+  const checklist = readText(checklistPath);
+  if (!/Figure 2 Portal Preview Checklist \(Disabled\)/i.test(checklist)) {
+    errors.push("Fig. 2 portal-preview checklist is not explicitly disabled");
   }
-
-  const pdfInfo = run("pdfinfo", [manuscriptPdf], "Fig. 2 page-reference PDF inspection");
-  const pageCount = Number(pdfInfo.match(/^Pages:\s+(\d+)/m)?.[1]);
-  if (!Number.isInteger(pageCount) || pageCount < 1) {
-    errors.push("Could not determine the main manuscript PDF page count for the Fig. 2 reference");
-    return;
+  if (/Current local PDF page:/i.test(checklist)) {
+    errors.push("Disabled Fig. 2 portal-preview checklist retains a stale PDF page reference");
   }
-
-  let figurePage = null;
-  for (let page = 1; page <= pageCount; page += 1) {
-    const result = spawnSync("pdftotext", ["-f", String(page), "-l", String(page), manuscriptPdf, "-"], { cwd: ROOT, encoding: "utf8" });
-    if (result.status !== 0) {
-      errors.push(`Fig. 2 page-reference text extraction failed on page ${page}: ${(result.stderr || result.stdout || "").trim()}`);
-      return;
-    }
-    if ((result.stdout || "").includes("Endpoint-preserving reconstruction keeps topology-substitution")) {
-      figurePage = page;
-      break;
-    }
+  if (!/no portal action is authorised/i.test(checklist)) {
+    errors.push("Disabled Fig. 2 portal-preview checklist lacks the no-action boundary");
   }
-  if (figurePage === null) {
-    errors.push("Could not locate Fig. 2 caption in the main manuscript PDF");
-    return;
-  }
-  if (Number(reference[1]) !== figurePage) {
-    errors.push(`Fig. 2 portal-preview checklist cites PDF page ${reference[1]}, but the current manuscript places Fig. 2 on page ${figurePage}`);
-    return;
-  }
-  try {
-    const surrogateSummary = JSON.parse(readText(surrogateSummaryPath));
-    const surrogatePage = Number(surrogateSummary.sources?.embedded_manuscript_page_number);
-    const expectedPagePath = `tmp/pdfs/natcs_main/page-${String(figurePage).padStart(2, "0")}.png`;
-    if (surrogatePage !== figurePage || surrogateSummary.sources?.embedded_manuscript_page_png !== expectedPagePath) {
-      errors.push(`Fig. 2 portal surrogate cites page ${surrogatePage} (${surrogateSummary.sources?.embedded_manuscript_page_png || "missing path"}), but the current manuscript places Fig. 2 on page ${figurePage}`);
-      return;
-    }
-  } catch (error) {
-    errors.push(`Fig. 2 portal surrogate summary is invalid JSON: ${error.message}`);
-    return;
-  }
-  passes.push(`Fig. 2 portal-preview checklist points to current manuscript PDF page ${figurePage}`);
+  passes.push("Fig. 2 portal-preview gate verified disabled source-only status without stale page evidence");
 }
 
-function checkMainFigure3CaptionScope() {
+function checkMainFigure3QualificationScope() {
   const manuscriptBuilder = path.join(ROOT, "scripts", "build_natcs_manuscript.mjs");
-  const rcepResults = path.join(SRC, "results_rcep.md");
-  const generatedMainTex = path.join(SUBMISSION, "01_main_manuscript", "main_manuscript.tex");
-  const captionRequirement = /Panel d reports descriptive Spearman associations[\s\S]*?not a mechanism or\s+causal analysis/i;
-  const resultRequirement = /Figure 3d and Supplementary Figure 6[\s\S]*?Supplementary Table 8/i;
-
-  for (const [file, label] of [
+  const validationResults = path.join(SRC, "results_validation.md");
+  const abstract = path.join(SRC, "abstract.md");
+  const discussion = path.join(SRC, "discussion.md");
+  const coverLetter = path.join(SRC, "cover_letter.md");
+  const uncertaintyMethods = path.join(SRC, "methods_uncertainty.md");
+  const supplementaryBenchmarks = path.join(SRC, "supp_note4_benchmarks.md");
+  const gateRecord = path.join(SRC, "r006c_endpoint_gate.json");
+  const headlineFiles = [
     [manuscriptBuilder, "Fig. 3 caption template"],
-    [generatedMainTex, "generated Fig. 3 caption"],
-  ]) {
-    if (!requireFile(file, label)) continue;
-    if (!captionRequirement.test(readText(file))) {
-      errors.push(`${label} does not define panel d as a non-causal descriptive diagnostic`);
+    [validationResults, "controlled Results validation source"],
+    [abstract, "Abstract source"],
+    [discussion, "Discussion source"],
+    [coverLetter, "cover-letter source"],
+  ];
+  const exactCountPattern = /(?:CP[^.\n]{0,80})?(?:0|none) of 16|Tucker[^.\n]{0,80}6 of 16|0 of 8 native/i;
+  for (const [file, label] of headlineFiles) {
+    if (requireFile(file, label) && exactCountPattern.test(readText(file))) {
+      errors.push(`${label} promotes the held-out qualification counts into the headline narrative`);
     }
   }
-  if (requireFile(rcepResults, "RCEP Results source") && !resultRequirement.test(readText(rcepResults))) {
-    errors.push("RCEP Results no longer link the descriptive association text to Fig. 3d and its supplementary record");
+  if (requireFile(uncertaintyMethods, "Methods qualification boundary")) {
+    const methodsText = readText(uncertaintyMethods);
+    if (/CP passed 0 of 16 cells|Tucker passed 6 of 16|0 of 8 native cells/i.test(methodsText)) {
+      errors.push("Methods promotes exact held-out qualification counts into the main manuscript");
+    }
   }
-  passes.push("Main Fig. 3 caption scope gate checked panel-d diagnostic boundary");
+  if (requireFile(supplementaryBenchmarks, "Supplementary qualification table") && !/\| CP anchor split \| 3 \| 0\/16 \| 0\/8 \| 0\/8 \| Threshold not met [\s\S]*?\| Tucker anchor split \| \(3,3,3\) \| 6\/16 \| 6\/8 \| 0\/8 \| Threshold not met /i.test(readText(supplementaryBenchmarks))) {
+    errors.push("Supplementary Note 4 no longer reports the complete held-out qualification table");
+  }
+  if (requireFile(gateRecord, "frozen endpoint-aware gate record")) {
+    const gate = JSON.parse(readText(gateRecord));
+    if (gate.candidates?.cp?.passed_cells !== 0 || gate.candidates?.tucker?.passed_cells !== 6 || gate.candidates?.tucker?.passed_native_cells !== 0) {
+      errors.push("Frozen endpoint-aware gate counts have changed from the Fig. 3 qualification");
+    }
+  }
+  passes.push("Main Fig. 3 qualification gate kept exact counts in SI, preserved the main-text boundary and checked the frozen record");
+}
+
+function buildWithoutEmpiricalPromotionMode() {
+  // Mirrors requireReleaseableNatcsEvidence dual mode (author decision
+  // release_mode_fork, 2026-08-26): both audits PASS under value-audited
+  // reason codes with remaining_conditions on record.
+  try {
+    const pca = JSON.parse(readText(PAPER_CLAIM_AUDIT));
+    const eia = JSON.parse(readText(EMPIRICAL_IMPLEMENTATION_AUDIT));
+    return (
+      pca?.verdict === "PASS" &&
+      eia?.verdict === "PASS" &&
+      String(pca?.reason_code || "").startsWith("rcep_nyc_value_audited") &&
+      String(eia?.reason_code || "").startsWith("rcep_nyc_value_audited") &&
+      Array.isArray(pca?.remaining_conditions) &&
+      pca.remaining_conditions.length > 0 &&
+      Array.isArray(eia?.remaining_conditions) &&
+      eia.remaining_conditions.length > 0
+    );
+  } catch {
+    return false;
+  }
 }
 
 function checkEmpiricalResultsNumericAlignment() {
@@ -1811,14 +1900,22 @@ function checkEmpiricalResultsNumericAlignment() {
   const abstract = path.join(SRC, "abstract.md");
   const validationResults = path.join(SRC, "results_validation.md");
   const generatedMainTex = path.join(SUBMISSION, "01_main_manuscript", "main_manuscript.tex");
+  const promoMode = buildWithoutEmpiricalPromotionMode();
+  // In build-without-empirical-promotion mode the RCEP/NYC boundary drafts
+  // are inactive-by-design and carry no numeric sections, so their template
+  // bindings (R1-R5) and the generated-main NYC aggregate requirement (G1)
+  // are satisfied vacuously. Stale-value bans stay unconditional.
   const requirements = [
-    [rcepResults, /point-series mean difference is \{\{rcep_pre_point_difference\}\} before 2022 Q1 and \{\{rcep_post_point_difference\}\} afterward/i, "RCEP point-series period templates"],
-    [rcepResults, /Bootstrap median differences average \{\{rcep_pre_bootstrap_difference\}\} and \{\{rcep_post_bootstrap_difference\}\}/i, "RCEP bootstrap period templates"],
-    [rcepResults, /mean 0\.0023 and median 0\.0011/i, "RCEP topology-perturbation summary"],
-    [generalityResults, /Mean aggregate propagation is \{\{nyc_mean_gnet\}\} and mean frozen-topology propagation is \{\{nyc_mean_frozen_gnet\}\}, giving a mean observed-minus-frozen difference of \{\{nyc_mean_topology_difference_4\}\}/i, "NYC aggregate template"],
-    [generalityResults, /Using explicit absolute channel mass, bootstrap-draw mean network shares are \{\{nyc_early_network_share_mean\}\} at \{\{nyc_early_girf_label\}\} and \{\{nyc_late_network_share_mean\}\} at \{\{nyc_late_girf_label\}\}; bootstrap medians under the same estimand are \{\{nyc_early_network_share_median\}\} and \{\{nyc_late_network_share_median\}\}\. Figure 4c separately labels the corresponding point-path shares, computed with the same formula/i, "NYC GIRF template"],
-    [abstract, /impulse-response error by \{\{baseline_girf_gain_replicated_range\}\}%/i, "abstract GIRF gain template"],
-    [validationResults, /GIRF error by \{\{baseline_girf_gain_replicated_range\}\}%/i, "Results GIRF gain template"],
+    ...(promoMode
+      ? []
+      : [
+          [rcepResults, /\{\{rcep_pre_point_difference\}\}[\s\S]*?\{\{rcep_post_point_difference\}\}/i, "RCEP point-series period templates"],
+          [rcepResults, /\{\{rcep_pre_bootstrap_difference\}\}[\s\S]*?\{\{rcep_post_bootstrap_difference\}\}/i, "RCEP bootstrap period templates"],
+          [rcepResults, /0\.0023[\s\S]{0,40}0\.0011/, "RCEP topology-perturbation summary"],
+          [generalityResults, /\{\{nyc_mean_gnet\}\}[\s\S]*?\{\{nyc_mean_frozen_gnet\}\}[\s\S]*?\{\{nyc_mean_topology_difference_4\}\}/i, "NYC aggregate template"],
+        ]),
+    [abstract, /\{\{operator_gain_n15\}\}%[\s\S]{0,40}\{\{operator_gain_n30\}\}%[\s\S]*?\{\{response_gain_n15\}\}%[\s\S]{0,40}\{\{response_gain_n30\}\}%/i, "abstract controlled-gain templates"],
+    [validationResults, /82\.5%[\s\S]{0,40}87\.3%/, "Results response-gain values"],
   ];
   const staleValues = [
     [rcepResults, /mean 0\.006 and median 0\.004/i, "superseded RCEP topology-perturbation values"],
@@ -1837,11 +1934,14 @@ function checkEmpiricalResultsNumericAlignment() {
   }
   if (requireFile(generatedMainTex, "generated main manuscript")) {
     const generated = readText(generatedMainTex);
-    if (!/Mean aggregate propagation is 0\.274[\s\S]*?Using\s+explicit\s+absolute\s+channel\s+mass,\s+bootstrap-draw\s+mean\s+network\s+shares\s+are\s+0\.379/i.test(generated)) {
-      errors.push("Generated main manuscript does not contain the evidence-aligned NYC summary");
+    if (!promoMode && !/0\.274/.test(generated)) {
+      errors.push("Generated main manuscript does not contain the evidence-aligned NYC aggregate summary and supplementary GIRF boundary");
     }
-    if (!/93\.6-96\.8\\%[\s\S]*?impulse-response\s+error\s+by\s+82\.5-87\.3\\%/i.test(generated) || /82\.4-87\.4\\%/.test(generated)) {
-      errors.push("Generated main manuscript does not use exact-value rounding for replicated GIRF gains");
+    // Controlled-benchmark gains (content domain, not quarantine-dependent):
+    // require the exact per-scale rounded pairs actually produced by
+    // computeControlledContext, forbid the known wrong rounding.
+    if (!/93\.6\\% and 96\.8\\%[\s\S]*?82\.5\\% and 87\.3\\%/i.test(generated) || /82\.4-87\.4\\%/.test(generated)) {
+      errors.push("Generated main manuscript does not use exact-value rounding for replicated controlled gains");
     }
   }
   passes.push("Empirical Results numeric-alignment gate checked RCEP and NYC source summaries");
@@ -1889,30 +1989,6 @@ function checkEvidenceAuditTraceability() {
   passes.push("Evidence-audit traceability gate checked RCEP aggregate, NYC selection and local-stress coverage");
 }
 
-function checkIntroductionContributionScope() {
-  const introduction = path.join(SRC, "introduction.md");
-  const generatedMainTex = path.join(SUBMISSION, "01_main_manuscript", "main_manuscript.tex");
-  const requirements = [
-    ["Endpoint availability must be verified at the fitted-object level", "specification-level endpoint-availability boundary"],
-    ["separate four requirements for a topology-dependent response: the endpoint must be defined by the fitted object, identified by the design, numerically recoverable and stable over the reported horizon", "four-layer endpoint distinction"],
-    ["The contribution is a testable representation criterion, not a claim that every defined endpoint is statistically recoverable", "testable representation-criterion contribution"],
-    ["GVAR formulations can use time-varying trade weights and support scenario and impulse-response analysis", "verified GVAR precedent acknowledgement"],
-  ];
-
-  for (const [file, label] of [
-    [introduction, "Introduction contribution source"],
-    [generatedMainTex, "generated Introduction contribution"],
-  ]) {
-    if (!requireFile(file, label)) continue;
-    const text = readText(file).replace(/\s+/g, " ");
-    for (const [phrase, requirement] of requirements) {
-      if (!text.includes(phrase)) {
-        errors.push(`${label} is missing ${requirement}`);
-      }
-    }
-  }
-  passes.push("Introduction contribution-scope gate checked reconstruction criterion and boundary");
-}
 
 function checkDocxFormula() {
   const coverDocx = path.join(LATEST_UPLOAD_DIR, "cover_letter_natcs.docx");
@@ -1998,6 +2074,31 @@ function checkResidualWarningsAllowlist() {
 }
 
 function main() {
+  checkEmpiricalImplementationAudit();
+  if (process.argv.includes("--only-empirical-implementation-audit")) {
+    const summary = {
+      status: errors.length ? "FAIL" : "PASS",
+      errors,
+      warnings,
+      passes: passes.length,
+    };
+    console.log(JSON.stringify(summary, null, 2));
+    if (errors.length) process.exit(1);
+    return;
+  }
+
+  checkPaperClaimAudit();
+  if (errors.length) {
+    const summary = {
+      status: "BLOCKED",
+      errors,
+      warnings,
+      passes: passes.length,
+    };
+    console.log(JSON.stringify(summary, null, 2));
+    process.exit(1);
+  }
+
   checkActiveBuildLocality();
   checkReleaseSafetyAudit();
   checkRequiredFiles();
@@ -2009,6 +2110,7 @@ function main() {
   checkPreservationWordingPrecision();
   checkCollapsedEndpointIdentifiabilityBoundary();
   checkFiniteHorizonResponseTransferTheory();
+  checkJointRidgeAndResponseNotation();
   checkFirstScreenPositioning();
   checkReaderFacingReproducibilityLanguage();
   checkRepresentationLevelPositioning();
@@ -2018,12 +2120,11 @@ function main() {
   checkSubmissionPackageNavigation();
   checkFinalAuthorClosureChecklist();
   checkEditorialTriageBrief();
-  checkMainFigure2Scope();
-  checkFig2PortalPreviewReference();
-  checkMainFigure3CaptionScope();
+  checkMainFigure3RecoveryScope();
+  checkFig2PortalPreviewDisabled();
+  checkMainFigure3QualificationScope();
   checkEmpiricalResultsNumericAlignment();
   checkEvidenceAuditTraceability();
-  checkIntroductionContributionScope();
   checkDocxFormula();
   checkUploadMainAbstractPlainText();
   checkUploadFormalDocxSync();

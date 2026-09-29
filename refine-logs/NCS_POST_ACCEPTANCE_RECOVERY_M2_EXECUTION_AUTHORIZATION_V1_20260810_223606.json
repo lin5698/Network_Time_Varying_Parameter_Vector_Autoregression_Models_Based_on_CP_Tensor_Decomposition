@@ -1,0 +1,139 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m2-execution-authorization-v1",
+  "authorization_id": "ncs-post-acceptance-recovery-m2-execution-20260810-223606-cst-01",
+  "authorized_at": "2026-08-10T22:36:06+08:00",
+  "status": "PLANNED_PENDING_INDEPENDENT_PREFLIGHT_ACCEPTANCE",
+  "purpose": "planned_two_run_read_only_derived_m2",
+  "source_bindings": {
+    "source_authorization_v2": {
+      "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+      "raw_sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59"
+    },
+    "m2a_repair_receipt": {
+      "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2A_REPAIR_RECEIPT_V1_20260810_222232.json",
+      "raw_sha256": "b98f8a4dc6dd36ee28426182d9320d0696880867544a0cc05dd6c1fb5e943395"
+    },
+    "decision_register": {
+      "path": "output/ncs_review_corpus/v1_author_decision_register.json",
+      "raw_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "canonical_item_sha256": {
+        "V1-026": "eb30214e8c353b27d446c1c77242bd6b2dd246841150205c8f339ddafc8f7e20",
+        "V1-033": "79937fd8b053e2bc7fd9abb864938b35a72134ecf93f5f621d7c8088fd383630",
+        "V1-035": "c9b9c201f94a7fd37b2049bfc44220258947f22483e769b39c19253a37e55ee8",
+        "V1-045": "25cd8fbf2e623cfd2fbcdc163f50959f1beb8e8cb1b59322da78d191e802cf82"
+      }
+    },
+    "frozen_e4_r3_inputs": {
+      "results": {
+        "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json",
+        "raw_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032"
+      },
+      "execution_manifest": {
+        "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+        "raw_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d"
+      },
+      "execution_complete": {
+        "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+        "raw_sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b"
+      },
+      "terminal_inventory": {
+        "path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+        "raw_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+      },
+      "candidate": {
+        "path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json",
+        "raw_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6"
+      }
+    },
+    "workspace_authorization_chain": {
+      "path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+      "raw_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+    }
+  },
+  "implementation": {
+    "sha256_algorithm": "sha256(raw bytes)",
+    "source_test_sha256": {
+      "scripts/experiments/analyze_cal_e01_75.py": "08c67e8d14eb0b38504734494b93f82595c15e9e0db2dc6bf36a10288e3edab7",
+      "scripts/experiments/test_analyze_cal_e01_75.py": "6daa94c2e5f5d1ba503e2298b50e8bbaf31b1362c484a2402f47fc9e04b890ce",
+      "scripts/experiments/analyze_cal_e02_128.py": "ba96b03ec7d25d5ddca19718c175fefc424447c14c172d1abefe5f45760793dd",
+      "scripts/experiments/test_analyze_cal_e02_128.py": "702447f1a12435db45d61832757c8d566a1741509b33e32ec3e8ed547929a817",
+      "scripts/experiments/analyze_cal_e02_135.py": "e9b5b6afbca30cefcae93bbc468af2b174ba205aa37140eb2f5b0d97ec234fd8",
+      "scripts/experiments/test_analyze_cal_e02_135.py": "fe330b50c2ef12d409b15801971d4ab379e37c529e60f1f587efdc3086ebaa36",
+      "scripts/experiments/analyze_cal_e03_164.py": "45665b6085428428f6510b73b9add255e8c96bb4187748ce3f1e7d3feed3affd",
+      "tests/test_analyze_cal_e03_164.py": "963c61c188d9afd9c27f260bd6d9e36ac68c6ea13ca017c75be749e9d45793a3"
+    }
+  },
+  "scope": {
+    "run_type": "deterministic_read_only_derived_m2",
+    "run_count": 2,
+    "run_ids": [
+      "primary",
+      "duplicate"
+    ],
+    "read_only_derived": true,
+    "deterministic": true,
+    "register_mutation": false,
+    "manuscript_mutation": false,
+    "e4_r3_mutation": false,
+    "claim_activation": "NOT_AUTHORIZED",
+    "promotion": "NOT_AUTHORIZED",
+    "rcep_nyc": "NOT_AUTHORIZED",
+    "s1_s4": "NOT_AUTHORIZED",
+    "n100_n200": "NOT_AUTHORIZED"
+  },
+  "artifact_boundary": {
+    "CAL-E01:75": {
+      "allowed": [
+        "raw_comparator",
+        "raw_paired_differences",
+        "status_inventory"
+      ],
+      "fresh_freezes": false
+    },
+    "CAL-E02:128": {
+      "allowed": [
+        "descriptive_only"
+      ],
+      "fresh_freezes": false
+    },
+    "CAL-E02:135": {
+      "allowed": [
+        "descriptive_only"
+      ],
+      "fresh_freezes": false
+    },
+    "CAL-E03:164": {
+      "allowed_scales": [
+        20,
+        50
+      ],
+      "n100": "NOT_RUN/ABSTAIN",
+      "n200": "NOT_RUN/ABSTAIN"
+    }
+  },
+  "output_plan": {
+    "output_parent": "refine-logs/ncs_new_analysis_v2/rec-m2b-20260810-223606-cst-01",
+    "execution_id": "rec-m2b-20260810-223606-cst-01",
+    "fresh_before_execution": true,
+    "no_overwrite": true,
+    "allowed_run_ids": [
+      "primary",
+      "duplicate"
+    ],
+    "run_layout": {
+      "primary": "primary/<one-content-addressed-calibration-root>",
+      "duplicate": "duplicate/<one-content-addressed-calibration-root>"
+    },
+    "prohibited_path_tokens": [
+      "e4_r008",
+      "E4_R008"
+    ]
+  },
+  "provenance": {
+    "parent_task": "019fbdde-2c02-7662-b9d2-9dc2b70e1253",
+    "delegated_model": "gpt-5.6-luna",
+    "delegated_reasoning_effort": "max",
+    "independent_preflight_required": true,
+    "m2_execution_proof": "NOT_ESTABLISHED"
+  }
+}

@@ -395,6 +395,13 @@ class QuerySupportPath:
     singular_values: tuple[np.ndarray, ...]
 
 @dataclass(frozen=True)
+class FamilyCandidateRecord:
+    index: int
+    endpoint: np.ndarray
+    path: QuerySupportPath
+    def to_json_dict(self) -> dict[str, object]: ...
+
+@dataclass(frozen=True)
 class EndpointConstruction:
     status: str
     failure_reasons: tuple[str, ...]
@@ -405,8 +412,10 @@ class EndpointConstruction:
     interp_prospective: QuerySupportPath
     family_calibration: QuerySupportPath | None
     family_prospective: QuerySupportPath | None
-    family_candidates: tuple[dict[str, object], ...]
+    family_candidates: tuple[FamilyCandidateRecord, ...]
 ```
+
+All arrays exposed by these frozen records must use immutable backing storage rather than only `writeable=False`. `EndpointConstruction` must enforce exactly 64 candidate records indexed `0..63`, validate the selected endpoint against its selected record, and serialize candidates through `to_json_dict()` using JSON primitives only.
 
 Use R006d `build_design_support_path`, `evaluate_query_path` and `generate_family_pool`. Add `query_amplification`:
 
@@ -643,9 +652,19 @@ class R006EDWTuckerTest(unittest.TestCase):
     def test_start_selection_uses_training_objective_only(self):
         candidates = [fake_start(2.0, 0), fake_start(1.0, 1), fake_start(3.0, 2)]
         self.assertEqual(select_optimizer_start(candidates).start_index, 1)
+
+    def test_perturbation_starts_are_keyed_scaled_and_projected(self): ...
+
+    def test_start_selection_rejects_lower_objective_nonconverged_start(self): ...
+
+    def test_only_tolerance_or_stationarity_sets_converged(self): ...
+
+    def test_backtracking_exhaustion_is_retained_as_failure(self): ...
+
+    def test_projected_gradient_proxy_matches_frozen_unit_step_formula(self): ...
 ```
 
-Fixtures contain fixed arrays only and must not call `build_native_panel`.
+Fixtures contain fixed arrays only and must not call `build_native_panel`. The start fixture must assert the exact `0.05` Frobenius scaling, key tuple, tensor-space application and deterministic projected bytes. The stopping fixture must separately exercise `OBJECTIVE_TOLERANCE`, `STATIONARITY`, `BACKTRACK_FAIL`, `ITERATION_CAP` and `NUMERICAL_FAIL`.
 
 - [ ] **Step 2: Run tests and verify RED**
 
@@ -667,9 +686,11 @@ where each `L_d` uses only its previous 80 observations and `g_bar` is the mean 
 
 - [ ] **Step 4: Implement projected optimization**
 
-Use three deterministic starts: anchor split-Tucker plus two keyed perturbations. Each iteration performs gradient step, rank `(3,3,3)` Tucker projection, factor normalization and post-projection objective evaluation. Backtracking tries multipliers `1.0,0.5,0.25` then continues by `0.5`. Accept only a non-increasing objective. Stop at 300 iterations, after relative improvement below `1e-6` for five consecutive accepted iterations, or projected-gradient stationarity below `1e-4`.
+Use the exact optimizer construction frozen in the R006e protocol. Start 0 separately reconstructs the prefix-specific `M_ref` and `B` split-Tucker blocks, concatenates them, and then applies the joint deterministic rank-`(3,3,3)` projection and normalization. Starts 1 and 2 add tensor-space i.i.d. standard-normal perturbations scaled to `0.05 * max(||Theta_0||_F,1)`, keyed by `(method_seed,prefix_end_date,lambda_T_grid_index,start_index)`, then apply the same deterministic truncated-HOSVD rank-`(3,3,3)` projection, sign convention and factor normalization as the iterations. Implement the protocol's `64 * eps * max(s_max,1)` tied-block rule and projector/coordinate-axis modified-Gram-Schmidt canonical basis, including cutoff-tie tests.
 
-Store per start: initial/final objective, objective trace, accepted step sizes, iteration count, stationarity proxy, convergence, runtime and pairwise final-solution distance. Select the finite converged start with smallest training objective; never pass endpoint loss to this function.
+Each iteration performs a complete-objective gradient step, rank `(3,3,3)` projection, factor normalization and post-projection objective evaluation. Backtracking tests `2^{-j}` for `j=0,...,24` and accepts the first finite objective no larger than the preceding objective plus `1e-12`. Freeze the protocol's relative-improvement formula and unit-step projected-gradient mapping. Only the five-consecutive-step objective tolerance or stationarity `<=1e-4` sets `converged=True`; `BACKTRACK_FAIL`, `ITERATION_CAP` and `NUMERICAL_FAIL` remain non-converged failures.
+
+Store per start: initial/final objective, objective trace, accepted step sizes, iteration count, stationarity proxy, stopping reason, convergence, runtime and pairwise final-solution distance. Select the finite converged start with smallest training objective, breaking exact ties by start index; never pass endpoint loss to this function.
 
 - [ ] **Step 5: Implement strict-prefix lambda selection**
 
@@ -797,7 +818,7 @@ Expected: missing metrics module.
 
 Evaluate `W_ref`, `W_alt_interp` and `W_alt_family` over exactly dates `164-199`. Primary loss is mean raw finite-horizon response error. Never remove unstable dates and never substitute projected sensitivity for raw loss. Store all secondary metrics from approved spec, endpoint availability, support/amplification summaries and fit diagnostics.
 
-The evaluator must produce one flat serializable row per method/seed/cell with keys prefixed by endpoint, including:
+The evaluator must produce one flat serializable method-level scientific payload with keys prefixed by endpoint, including:
 
 ```text
 w_alt_interp_raw_response_error_mean
@@ -811,6 +832,8 @@ b_relative_error_mean
 topology_slope_*_error_mean
 estimated_instability_rate
 ```
+
+The exact frozen evaluator signature intentionally contains no seed or cell coordinates. Task 10's phase-locked runner must turn this payload into a self-contained method/seed/cell replication row by attaching `seed`, `rho`, `a3`, and `eta` directly from the frozen loop context and `peak_memory_bytes` from the measured fit/evaluation resource context. It must not infer identity from method seeds, array contents, truth, endpoints, or results. Missing identity or a missing memory measurement makes the row incomplete and non-scorable. `evaluate_method` must not add identity arguments or fabricate these fields.
 
 - [ ] **Step 4: Run metric and inherited response tests**
 
@@ -860,6 +883,11 @@ class R006ENativeGatesTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'confirmation seed set'):
             evaluate_confirmation_gate(synthetic_passing_screening_rows(),
                                        config=R006EConfig())
+
+    def test_confirmation_bound_is_unavailable_without_frozen_spec(self):
+        with self.assertRaisesRegex(RuntimeError, 'median-bound specification'):
+            evaluate_confirmation_gate(synthetic_confirmation_rows(),
+                                       config=R006EConfig())
 ```
 
 - [ ] **Step 2: Run tests and verify RED**
@@ -874,9 +902,11 @@ Group by exactly eight primary cells and ten seeds. Require all four methods and
 
 - [ ] **Step 4: Implement exact confirmation inference**
 
-For each comparator and seed, compute the minimum log ratio across 16 cell-endpoint combinations. Use an exact one-sided binomial sign test against `log(1.10)`, Holm-adjust three comparator p-values at familywise `0.05`, and invert the sign test for simultaneous median lower bounds. Require all descriptive gates, all three adjusted rejections and all lower bounds above `log(1.10)`.
+For each comparator and seed, compute the minimum log ratio across 16 cell-endpoint combinations. Implement the protocol's exact one-sided binomial sign test against `log(1.10)` and deterministic Holm adjustment at familywise `0.05`.
 
-Implement a deterministic paired seed bootstrap as secondary output only; key its RNG with a declared audit seed and label it non-gating.
+Do not implement or guess the simultaneous median lower-bound inversion in this task. Until a separate pre-outcome specification freezes its confidence allocation, order-statistic indexing, equality handling and finite-sample rounding, `evaluate_confirmation_gate` must return or raise an explicit `CONFIRMATION_NOT_AUTHORIZED` refusal before producing any gating confirmation verdict. After such a specification is approved and hash-locked, this task must be amended with RED tests containing hand-calculated order-statistic cases before bound implementation begins.
+
+Implement the deterministic paired-seed bootstrap frozen in the protocol as secondary output only: NumPy `Generator(PCG64(260901))`, exactly 10,000 replicates, joint resampling of the 30 seed indices across all comparators, comparator-wise median contrast, and 0.025/0.975 empirical quantiles with NumPy's `linear` method. Its output must include `audit_seed=260901`, `replicates=10000`, and `gating=false`; it may not enter a confirmation verdict.
 
 - [ ] **Step 5: Run gate tests**
 
@@ -916,6 +946,13 @@ class R006ENativeExperimentTest(unittest.TestCase):
             authorize_confirmation({'status': 'FAIL'},
                                    fixed_construction_artifact())
 
+    def test_confirmation_refuses_missing_median_bound_specification(self):
+        screening = fixed_screening_artifact(status='PASS')
+        construction = fixed_construction_artifact(status='CONSTRUCTION_PASS')
+        with self.assertRaisesRegex(RuntimeError, 'median-bound specification'):
+            authorize_confirmation(screening, construction,
+                                   median_bound_specification=None)
+
     def test_smoke_cannot_emit_formal_pass(self):
         self.assertNotEqual(normalize_run_status('PASS', run_type='SMOKE'),
                             'PASS')
@@ -937,7 +974,11 @@ python3 -m scripts.experiments.r006e_native_experiment \
   --output output/high_impact_revision/r006e_native_supported_recovery
 ```
 
-Construction iterates screening and confirmation seed-cell endpoint designs, but fits no estimator and evaluates no truth. It stores splits, grids, seeds, stream mapping, all support certificates, endpoint indices, source/dependency hashes, Python/NumPy/platform versions and test-command status. Overall status is `CONSTRUCTION_PASS` only if every required endpoint remains supported prospectively.
+Construction iterates screening seed-cell endpoint designs only, fits no estimator, and evaluates no truth. It stores splits, grids, screening seeds, confirmation seed identifiers and stream declarations as metadata, screening support certificates and endpoint indices, source/dependency hashes, Python/NumPy/platform versions and test-command status. It must not instantiate confirmation panels, predictors, outcomes, endpoint candidates, or support certificates. Overall status is `CONSTRUCTION_PASS` only if every required screening endpoint remains supported prospectively.
+
+Here outcome-free excludes recovery evaluation, recovery metrics, promotion verdicts, serialized truth, and exposed true response targets. Screening support construction simulates native states only to obtain predictors. Its support-only DGP adapter may compute operators internally, but returns predictors, topology, reference topology, the interpolation endpoint and stream declarations only. The frozen `FitInputs` API receives an immutable all-zero outcome sentinel which endpoint construction may not read; neither actual outcomes, `TruthBundle`, nor the full truth-bearing `EndpointPanel` crosses the boundary.
+
+For later outcome phases, the runner owns replication-row identity and resource accounting. It must attach the exact loop values `seed`, `rho`, `a3`, and `eta` to every method payload returned by `evaluate_method`, measure and attach `peak_memory_bytes`, and reject a row with missing identity or memory data as incomplete and non-scorable. Identity and memory are runner context, not evaluator inputs, and may not be reconstructed from scientific results.
 
 - [ ] **Step 4: Implement hash verification and phase authorization**
 
@@ -947,6 +988,8 @@ Before screening or confirmation, recompute every protocol/code/dependency hash 
 - screening uses exactly `240100-240109`;
 - candidate/config hashes equal construction hashes;
 - confirmation uses exactly `250100-250129`;
+- a separately approved simultaneous-median-bound specification and its tests are present, their hashes match the confirmation-authorization manifest, and the specification freezes confidence allocation, order-statistic indexing, equality handling and finite-sample rounding;
+- a separate `confirmation_construction_gate_preoutcome.json` was generated only after the unchanged screening `PASS`, constructs every confirmation seed-cell endpoint exactly once, contains no recovery metrics, and matches the confirmation-authorization hashes;
 - no confirmation artifact already exists unless `--repeat` targets the isolated repeat directory.
 
 - [ ] **Step 5: Implement row and artifact writers**
@@ -964,7 +1007,7 @@ python3 -m scripts.experiments.r006e_native_experiment \
   --output output/high_impact_revision/r006e_native_supported_recovery
 ```
 
-Expected: tests `OK`; command writes only `construction_gate_preoutcome.json`, endpoint certificates and provenance/checkpoint files. It must not write any `screening_*` or `confirmation_*` file.
+Expected: tests `OK`; command writes only the screening-seed `construction_gate_preoutcome.json`, endpoint certificates and provenance/checkpoint files. It must not write any `screening_*`, `confirmation_*`, or `confirmation_construction_gate_preoutcome.json` file and must not instantiate confirmation panels or endpoints.
 
 - [ ] **Step 7: Verify the artifact is outcome-free**
 
@@ -1042,7 +1085,7 @@ python3 -m scripts.experiments.r006e_native_experiment \
   --output output/high_impact_revision/r006e_native_supported_recovery
 ```
 
-Expected: `CONFIRMATION_AUTHORIZED` only when screening status is `PASS`, all hashes match and no source changed. Any other output terminates this task.
+Expected: `CONFIRMATION_AUTHORIZED` only when screening status is `PASS`, all hashes match, no source changed, and a separate pre-outcome specification has frozen and hash-locked the simultaneous median lower-bound confidence allocation, order-statistic indexing, equality handling and finite-sample rounding required by the R006e protocol. Until that prerequisite exists, the only valid response is `CONFIRMATION_NOT_AUTHORIZED`. Any other output terminates this task.
 
 - [ ] **Step 2: Run confirmation on frozen new seeds**
 
@@ -1134,7 +1177,7 @@ Run all `test_r006e_*.py` modules plus unchanged R006c/R006d tests. Expected: al
 
 - [ ] **Step 6: Final provenance checkpoint**
 
-Create `final_manifest.sha256` covering protocol, source, tests, construction, available outcome artifacts and audit report. Commit only the tracked audit source with message `audit: finalize R006e result-to-claim review`.
+Create `final_manifest.sha256` covering protocol, source, tests, construction, available outcome artifacts and audit report. Commit only the three tracked Task 13 files (audit source, focused test and audit report) with message `audit: finalize R006e result-to-claim review`.
 
 ## Execution Decision Tree
 

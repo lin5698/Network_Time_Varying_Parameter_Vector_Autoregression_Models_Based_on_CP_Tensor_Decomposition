@@ -1,0 +1,344 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-author-input-request-v1",
+  "record_id": "REC-M5-author-input-request-v1-20260812",
+  "generated_at": "2026-08-12",
+  "updated_at": "2026-08-12",
+  "phase": "M5-A",
+  "status": "AUTHOR_INPUT_COMPLETE_PENDING_INDEPENDENT_REVIEW",
+  "package_readiness": "ready_for_independent_review",
+  "authorization_boundary": {
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_execution": "NOT_AUTHORIZED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  },
+  "source_documents": {
+    "review_patch": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd"
+    },
+    "review_manifest": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "sha256": "938e5218280fcdf25ffb206040d420e2420851a3483e1cc7c282dabf0c01e0e6"
+    },
+    "worksheet": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341"
+    }
+  },
+  "blocked_patch_groups": [],
+  "input_fields": [
+    {
+      "id": "AIN-RESULT-OP-N15",
+      "group": "G04",
+      "type": "number_percentage",
+      "required": true,
+      "description": "Operator-error relative reduction at N=15",
+      "validation": ["finite numeric value", "formula supplied", "denominator supplied", "endpoint and comparator locator supplied", "evidence SHA supplied"]
+    },
+    {
+      "id": "AIN-RESULT-OP-N30",
+      "group": "G04",
+      "type": "number_percentage",
+      "required": true,
+      "description": "Operator-error relative reduction at N=30",
+      "validation": ["finite numeric value", "formula supplied", "denominator supplied", "endpoint and comparator locator supplied", "evidence SHA supplied"]
+    },
+    {
+      "id": "AIN-RESULT-RESP-N15",
+      "group": "G04",
+      "type": "number_percentage",
+      "required": true,
+      "description": "Finite-horizon response-error relative reduction at N=15",
+      "validation": ["finite numeric value", "formula supplied", "denominator supplied", "endpoint and comparator locator supplied", "evidence SHA supplied"]
+    },
+    {
+      "id": "AIN-RESULT-RESP-N30",
+      "group": "G04",
+      "type": "number_percentage",
+      "required": true,
+      "description": "Finite-horizon response-error relative reduction at N=30",
+      "validation": ["finite numeric value", "formula supplied", "denominator supplied", "endpoint and comparator locator supplied", "evidence SHA supplied"]
+    },
+    {
+      "id": "AIN-RESULT-FORMULA",
+      "group": "G04",
+      "type": "formula_with_denominator",
+      "required": true,
+      "description": "Relative-reduction formula and exact numerator/denominator fields for all four values",
+      "validation": ["no ambiguous median-of-ratios versus ratio-of-medians wording", "endpoint field identified", "comparator field identified"]
+    },
+    {
+      "id": "AIN-ALS-01",
+      "group": "G06",
+      "type": "enum_with_explanation",
+      "required": true,
+      "description": "Whether 60 ALS iterations are fixed or a maximum",
+      "validation": ["one declared choice", "source locator"]
+    },
+    {
+      "id": "AIN-ALS-02",
+      "group": "G06",
+      "type": "string",
+      "required": true,
+      "description": "Monitored quantity",
+      "validation": ["exact quantity", "source locator"]
+    },
+    {
+      "id": "AIN-ALS-03",
+      "group": "G06",
+      "type": "number_or_not_available",
+      "required": true,
+      "description": "Stopping tolerance",
+      "validation": ["numeric value and units or explicit unavailable state", "source locator"]
+    },
+    {
+      "id": "AIN-ALS-04",
+      "group": "G06",
+      "type": "predicate",
+      "required": true,
+      "description": "Early-stop condition",
+      "validation": ["exact predicate", "source locator"]
+    },
+    {
+      "id": "AIN-ALS-05",
+      "group": "G06",
+      "type": "precedence_rule",
+      "required": true,
+      "description": "Precedence among iteration cap, tolerance and failure rules",
+      "validation": ["total ordering or explicit simultaneous rule", "source locator"]
+    },
+    {
+      "id": "AIN-ALS-06",
+      "group": "G06",
+      "type": "path_or_unavailable",
+      "required": true,
+      "description": "Canonical Markdown source for application 100-iteration setting",
+      "validation": ["must not be generated TeX only"]
+    },
+    {
+      "id": "AIN-ALS-07",
+      "group": "G06",
+      "type": "path_or_unavailable",
+      "required": true,
+      "description": "Canonical Markdown source for bootstrap 80-iteration setting",
+      "validation": ["must not be generated TeX only"]
+    },
+    {
+      "id": "AIN-ALS-08",
+      "group": "G06",
+      "type": "boolean_with_text",
+      "required": true,
+      "description": "Explicit separation of application/bootstrap settings from CAL-E03",
+      "validation": ["yes/no plus exact wording and source locator"]
+    },
+    {
+      "id": "AIN-TOPOLOGY-ROWS",
+      "group": "G07",
+      "type": "array_of_scenario_bindings",
+      "required": true,
+      "description": "One binding per retained topology-stress row",
+      "row_schema": ["scenario_id", "category", "exact_amplitude", "affected_object", "generation_or_observation", "seed_policy", "endpoint", "replication_count", "evidence_path_key", "evidence_sha256"],
+      "validation": ["exact amplitude", "generation/observation role", "finite replication count", "evidence locator"]
+    },
+    {
+      "id": "AIN-SOURCE-01",
+      "group": "G06/G07/G08",
+      "type": "path_or_unavailable",
+      "required": true,
+      "description": "Canonical Markdown source for application/bootstrap iteration wording"
+    },
+    {
+      "id": "AIN-SOURCE-02",
+      "group": "G06/G07/G08",
+      "type": "path_or_unavailable",
+      "required": true,
+      "description": "Canonical Markdown source for spectral-radius wording"
+    },
+    {
+      "id": "AIN-SOURCE-03",
+      "group": "G07",
+      "type": "path_or_unavailable",
+      "required": true,
+      "description": "Canonical Markdown source for 50% top-exposure attenuation"
+    },
+    {
+      "id": "AIN-SOURCE-04",
+      "group": "G06/G07/G08",
+      "type": "boolean_with_explanation",
+      "required": true,
+      "description": "Confirmation that generated TeX is not the canonical ownership source"
+    }
+  ],
+  "response_shape": {
+    "author_values": {
+      "AIN-RESULT-OP-N15": {
+        "unrounded_percent": 93.55203369881073,
+        "display_percent": 93.6
+      },
+      "AIN-RESULT-OP-N30": {
+        "unrounded_percent": 96.76394154622214,
+        "display_percent": 96.8
+      },
+      "AIN-RESULT-RESP-N15": {
+        "unrounded_percent": 82.54278845800611,
+        "display_percent": 82.5
+      },
+      "AIN-RESULT-RESP-N30": {
+        "unrounded_percent": 87.32161861932515,
+        "display_percent": 87.3
+      },
+      "AIN-RESULT-FORMULA": {
+        "expression": "100 * (local_network_metric_median - cp_network_metric_median) / local_network_metric_median",
+        "statistic": "ratio of across-replication medians",
+        "denominator": "local_network metric median for the same scenario and endpoint",
+        "operator_field": "coef_error_median",
+        "response_field": "girf_error_median",
+        "comparator": "local_network / Local rolling",
+        "candidate": "cp_network / CP-network",
+        "replications_per_primary_scenario": 20
+      },
+      "AIN-ALS-01": "fixed count of 60 iterations on normal completion",
+      "AIN-ALS-02": "none",
+      "AIN-ALS-03": "not applicable; no stopping tolerance; 1e-6 is a Gram regularizer",
+      "AIN-ALS-04": "none; no early-stop predicate",
+      "AIN-ALS-05": "execute all 60 iterations unless an exception aborts; caller records reconstruction failure",
+      "AIN-ALS-06": "canonical Markdown source unavailable",
+      "AIN-ALS-07": "canonical Markdown source unavailable",
+      "AIN-ALS-08": "yes; CAL-E03 fixed-60 implementation is separate from unowned application/bootstrap 100/80 wording",
+      "AIN-TOPOLOGY-ROWS": [
+        {
+          "scenario_id": "high_topology_vol",
+          "category": "topology volatility",
+          "exact_amplitude": {"topologyVol": 0.18, "sparsity": 0.15, "wNoise": 0.0, "wDrop": 0.0},
+          "affected_object": "truth.W evolution",
+          "generation_or_observation": "generation",
+          "seed_policy": "deterministic scenario/replication seed rooted at 20260328",
+          "endpoint": "per-method controlled_benchmark_contract method_to_endpoint_ids",
+          "replication_count": {"local_network": 3, "each_other_released_method": 20},
+          "evidence_path_key": "scripts/natcs_benchmarks.mjs:27,102-124,405-408,442-483; benchmark_summary.csv scenario=high_topology_vol",
+          "evidence_sha256": ["9cfe55a771f7434617bf67bbc78c22aadcd74fd528b4ea5d8b7762e0ad2b4633", "c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1"]
+        },
+        {
+          "scenario_id": "sparse_misspecified",
+          "category": "combined graph sparsity and noisy observed weights",
+          "exact_amplitude": {"topologyVol": 0.08, "sparsity": 0.55, "wNoise": 0.18, "wDrop": 0.0},
+          "affected_object": "truth.W generation and WEst observation",
+          "generation_or_observation": "both",
+          "seed_policy": "deterministic scenario/replication seed rooted at 20260328",
+          "endpoint": "per-method controlled_benchmark_contract method_to_endpoint_ids",
+          "replication_count": {"each_released_method": 3},
+          "evidence_path_key": "scripts/natcs_benchmarks.mjs:28,102-124,391-414,442-483; benchmark_summary.csv scenario=sparse_misspecified",
+          "evidence_sha256": ["9cfe55a771f7434617bf67bbc78c22aadcd74fd528b4ea5d8b7762e0ad2b4633", "c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1"]
+        },
+        {
+          "scenario_id": "edge_missing",
+          "category": "missing observed edges",
+          "exact_amplitude": {"topologyVol": 0.06, "sparsity": 0.15, "wNoise": 0.0, "wDrop": 0.30},
+          "affected_object": "observed nonzero off-diagonal edges in WEst",
+          "generation_or_observation": "observation, with generation volatility 0.06",
+          "seed_policy": "deterministic scenario/replication seed rooted at 20260328",
+          "endpoint": "per-method controlled_benchmark_contract method_to_endpoint_ids",
+          "replication_count": {"local_network": 3, "each_other_released_method": 20},
+          "evidence_path_key": "scripts/natcs_benchmarks.mjs:29,102-124,417-420,468-483; benchmark_summary.csv scenario=edge_missing",
+          "evidence_sha256": ["9cfe55a771f7434617bf67bbc78c22aadcd74fd528b4ea5d8b7762e0ad2b4633", "c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1"]
+        },
+        {
+          "scenario_id": "noisy_network",
+          "category": "noisy observed weights",
+          "exact_amplitude": {"topologyVol": 0.06, "sparsity": 0.15, "wNoise": 0.35, "wDrop": 0.0},
+          "affected_object": "observed weights in WEst",
+          "generation_or_observation": "observation, with generation volatility 0.06",
+          "seed_policy": "deterministic scenario/replication seed rooted at 20260328",
+          "endpoint": "per-method controlled_benchmark_contract method_to_endpoint_ids",
+          "replication_count": {"local_network": 3, "each_other_released_method": 20},
+          "evidence_path_key": "scripts/natcs_benchmarks.mjs:30,102-124,411-414,468-483; benchmark_summary.csv scenario=noisy_network",
+          "evidence_sha256": ["9cfe55a771f7434617bf67bbc78c22aadcd74fd528b4ea5d8b7762e0ad2b4633", "c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1"]
+        }
+      ],
+      "AIN-SOURCE-01": "unavailable",
+      "AIN-SOURCE-02": "unavailable; no canonical Markdown or controlled-contract source identified; generated TeX excluded",
+      "AIN-SOURCE-03": "unavailable; no canonical Markdown or controlled-contract source identified; generated TeX excluded; operation remains outside CAL-E03",
+      "AIN-SOURCE-04": "yes; generated TeX is not the canonical ownership source"
+    },
+    "submitted_evidence": [
+      {
+        "path": "output/natcs_benchmarks/benchmark_summary.csv",
+        "sha256": "c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1"
+      },
+      {
+        "path": "output/natcs_evidence/table1_simulation_benchmark.csv",
+        "sha256": "e339ccde8a2393d15a59e05857f6ca8b57eefb0a22565012f63854a53ed96c00"
+      },
+      {
+        "path": "refine-logs/REC-M5_RESULT_CANDIDATE_EXTRACTION_V1_20260812.json",
+        "sha256": "48853866e02588d5833699b53ecd42843936cc3ec9d5a4d96faa587b4ed06f84"
+      },
+      {
+        "path": "scripts/natcs_benchmarks.mjs",
+        "sha256": "9cfe55a771f7434617bf67bbc78c22aadcd74fd528b4ea5d8b7762e0ad2b4633"
+      },
+      {
+        "path": "manuscript_src/natcs/controlled_benchmark_contract.json",
+        "sha256": "95199a3c16e6f55a2cf94f7f67289a658bcac7ccb4e17ceee9efa5cc8d7934ba"
+      },
+      {
+        "path": "output/natcs_benchmarks/benchmark_replications.csv",
+        "sha256": "b8c881dcbafee9ee04e8b344478367a17d3e6c5d353b15970c48e3d3783cd32e"
+      },
+      {
+        "path": "refine-logs/REC-M5_ALS_TOPOLOGY_CANDIDATE_EXTRACTION_V1_20260812.json",
+        "sha256": "778367b26bb2d770a5f4125144585731ac8b6a8106fdb3bc2f9a392655b45031"
+      }
+    ],
+    "author_confirmation": {
+      "events": [
+        {
+          "received_at": "2026-08-12",
+          "user_response": "同意，请继续",
+          "scope": "AIN-RESULT"
+        },
+        {
+          "received_at": "2026-08-12",
+          "user_response": "同意，请继续",
+          "scope": "AIN-ALS, AIN-TOPOLOGY, AIN-SOURCE-01 and AIN-SOURCE-04"
+        },
+        {
+          "received_at": "2026-08-12",
+          "user_response": "同意，请继续",
+          "scope": "AIN-SOURCE-02"
+        },
+        {
+          "received_at": "2026-08-12",
+          "user_response": "同意",
+          "scope": "AIN-SOURCE-03"
+        }
+      ],
+      "still_unresolved": [],
+      "does_not_authorize": ["manuscript mutation", "formal-register mutation"]
+    }
+  },
+  "acceptance_gate": {
+    "all_required_fields_resolved": true,
+    "contradictions_reviewed": true,
+    "evidence_hashes_verified": true,
+    "ain_result_resolved": true,
+    "ain_result_evidence_hashes_verified": true,
+    "ain_als_resolved": true,
+    "ain_topology_resolved": true,
+    "ain_source_01_resolved": true,
+    "ain_source_02_resolved": true,
+    "ain_source_03_resolved": true,
+    "ain_source_04_resolved": true,
+    "unresolved_groups": [],
+    "terra_max_semantic_recheck": "REQUIRED",
+    "m5_d_manuscript_mutation_authorization": "REQUIRED_SEPARATELY",
+    "m5_f_formal_register_authorization": "REQUIRED_SEPARATELY"
+  },
+  "provenance": {
+    "delegated_model_preference": "gpt-5.6-terra",
+    "reasoning_effort": "max",
+    "qwen_adjudication": "NOT_USED_IN_THIS_INTAKE"
+  }
+}

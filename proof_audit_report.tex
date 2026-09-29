@@ -1,0 +1,69 @@
+\documentclass[10pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[most]{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+\definecolor{passgreen}{HTML}{1B7F4B}
+\definecolor{blockred}{HTML}{B42318}
+\definecolor{scopeblue}{HTML}{175CD3}
+\definecolor{warnyellow}{HTML}{B54708}
+\newtcolorbox{passbox}{colback=green!4,colframe=passgreen,title=Mathematical proof verdict}
+\newtcolorbox{blockbox}{colback=red!4,colframe=blockred,title=End-to-end manuscript status}
+\newtcolorbox{scopebox}{colback=blue!3,colframe=scopeblue,title=Scope boundary}
+\title{Proof Audit Report\\Topology-switchable finite-horizon response operators}
+\author{Independent Codex blind review}
+\date{18 July 2026}
+\begin{document}
+\maketitle
+
+\begin{passbox}
+\textbf{PASS.} Proposition 1, Corollary 1, the unpenalized FWL/design-identification statement, the joint-ridge Schur complement and Proposition 2 have no open mathematical defects under their stated hypotheses.
+\end{passbox}
+
+\begin{blockbox}
+\textbf{FAIL.} This proof verdict does not authorize submission. Corrected RCEP and NYC scientific outputs have not been regenerated, and the production helper trust evidence is absent. Reason code: \texttt{corrected\_implementation\_not\_regenerated}.
+\end{blockbox}
+
+\section*{Review protocol}
+The reviewer received only the main theory source and Supplementary Notes 1 and 3. Prior audits, empirical outputs and R006e/R006f outcomes were excluded. The review checked definitions, quantifiers, hypothesis discharge, inequalities, interchanges, constants, degenerate cases, dependency cycles and statement--conclusion consistency.
+
+\section*{Result accounting}
+\begin{tabularx}{\textwidth}{@{}lXl@{}}
+\toprule
+Result & Disposition & Status \\
+\midrule
+Proposition 1 & Same-fibre witness proves necessity; identity map proves sufficiency. & PASS \\
+Corollary 1 & Rowwise inverse and zero-row boundary are exact. & PASS \\
+FWL/design & Residualized equation, inverse bound and singular-direction claim are valid. & PASS \\
+Joint ridge & Block elimination gives the exact Schur complement; positive penalty gives uniqueness. & PASS \\
+Proposition 2 & Telescoping and spectral bounds give the finite-horizon response-transfer inequality. & PASS \\
+\bottomrule
+\end{tabularx}
+
+\section*{Proof-obligation closure}
+There are zero open FATAL or CRITICAL proof issues. All results state the finite-dimensional domains and the assumptions used at application. The proof contains no limits, asymptotic notation, expectations, integrals or probability-mode interchanges. The representation, design and propagation dependency branches are acyclic.
+
+\section*{Counterexample pass}
+The red-team pass tested: factorization with unequal topologies; zero and nonzero exposure rows; collisions inside the diagonal class; individually informative but jointly collinear network lags; zero or collinear ridge designs; unstable companions; and bounded low-dimensional companions. No counterexample was found inside the declared hypotheses. Unstable companions are outside Proposition 2's bounded-power assumption.
+
+\begin{scopebox}
+The mathematical results do not establish CP rank recovery, CP-ALS convergence, estimator superiority, empirical bounded-power validity, bootstrap coverage or the validity of any archived RCEP/NYC number. R006e and R006f outcome stages remained closed and were neither inspected nor executed.
+\end{scopebox}
+
+\section*{Audited source hashes}
+\small
+\begin{tabularx}{\textwidth}{@{}Xl@{}}
+\toprule
+File & SHA-256 prefix \\
+\midrule
+\texttt{methods\_theory.md} & \texttt{7679c3ccc2c8e8ba} \\
+\texttt{supp\_note1\_notation.md} & \texttt{985c492e2b7f88da} \\
+\texttt{supp\_note3\_propagation.md} & \texttt{e373666fe2a3b91b} \\
+\bottomrule
+\end{tabularx}
+
+\end{document}

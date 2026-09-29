@@ -1,0 +1,84 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-governance-recheck-v4",
+  "record_id": "REC-M5-governance-recheck-v4-20260812",
+  "generated_at": "2026-08-12",
+  "phase": "M5-C",
+  "result": "CURRENT_PATCH_DETERMINISTIC_PASS_REMAINING_AUTHOR_INPUT_BLOCKED",
+  "acceptance_class": "GOVERNANCE_ARTIFACT_INTEGRITY_AND_CONFIRMED_G04_BINDING_ONLY",
+  "current_artifacts": {
+    "review_patch_markdown": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "sha256": "e7a464c56064cdc0f1e79fa92fecbbb919765582da991749e6c41eddc1023bd5"
+    },
+    "review_patch_manifest": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "sha256": "5ee5561148a466e4b118838b977a2fbfe3ff352e8bb47e0452dce19ff17f505e"
+    },
+    "author_input_request": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "sha256": "91fe7cb288ca5fb8890a12ba4ce9ceec954a16e7e2b50df5fece832fb17a9d07"
+    },
+    "author_input_worksheet": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "sha256": "fbb494f7719bd81735a05dc8599e85fffd50a25f95f2ac0149a39609dff9f2f5"
+    },
+    "result_binding": {
+      "path": "refine-logs/REC-M5_RESULT_CANDIDATE_EXTRACTION_V1_20260812.json",
+      "sha256": "48853866e02588d5833699b53ecd42843936cc3ec9d5a4d96faa587b4ed06f84"
+    }
+  },
+  "checks": {
+    "current_patch_integrity": "65/65 PASS",
+    "declared_input_hashes": "10/10 PASS",
+    "evidence_bundle_hashes": "13/13 PASS",
+    "protected_baseline_hashes": "12/12 PASS",
+    "pre_apply_anchor_hashes": "18/18 PASS",
+    "unit_coverage": "26/26 PASS; unique=26",
+    "placeholder_gate": "PASS; zero double-brace tokens",
+    "author_request_source_references": "3/3 PASS",
+    "partial_author_evidence_hashes": "3/3 PASS",
+    "g04_numeric_recomputation": "4/4 PASS at absolute tolerance 1e-12",
+    "m4_allowlisted_validator": "247/247 PASS"
+  },
+  "confirmed_author_input": {
+    "group": "AIN-RESULT",
+    "status": "RESOLVED_FOR_REVIEW_PATCH",
+    "formula": "100 * (local_network_metric_median - cp_network_metric_median) / local_network_metric_median",
+    "display_values_percent": {
+      "operator_n15": 93.6,
+      "operator_n30": 96.8,
+      "response_n15": 82.5,
+      "response_n30": 87.3
+    },
+    "claim_activation": "NOT_AUTHORIZED"
+  },
+  "remaining_blockers": [
+    "AIN-ALS remains unresolved.",
+    "AIN-TOPOLOGY remains unresolved.",
+    "AIN-SOURCE-OWNERSHIP remains unresolved.",
+    "A fresh GPT-5.6-Luna/max scientific and editorial semantic recheck is required for the current patch.",
+    "M5-D manuscript mutation requires separate explicit authorization after all preceding gates pass.",
+    "M5-F formal-register mutation requires separate explicit authorization."
+  ],
+  "supersession": {
+    "REC-M5_GOVERNANCE_RECHECK_V2_20260812": "HISTORICAL_OLD_PATCH",
+    "REC-M5_GOVERNANCE_RECHECK_V3_20260812": "HISTORICAL_PRE_AIN_RESULT_CONFIRMATION",
+    "this_receipt": "CURRENT_DETERMINISTIC_GOVERNANCE_RECEIPT"
+  },
+  "authorization_boundary": {
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_payload_mutation": "PROHIBITED",
+    "execution_authorization_mutation": "PROHIBITED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  },
+  "operation_policy": {
+    "record_only": true,
+    "manuscript_modified": false,
+    "formal_register_modified": false,
+    "scientific_payload_modified": false,
+    "authorization_modified": false,
+    "git_operations": "NONE"
+  }
+}

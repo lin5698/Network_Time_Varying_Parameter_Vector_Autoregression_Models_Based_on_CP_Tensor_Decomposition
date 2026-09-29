@@ -1,0 +1,69 @@
+{
+  "authorization": "Wave A",
+  "flags": [
+    {
+      "evidence_lines": [
+        "run_cp_empirical_pipeline.py:1533-1545",
+        "girf_cp_point.json:37"
+      ],
+      "id": "RCEP_F1",
+      "residual_scope": "",
+      "resolution_class": "documented_from_existing_artifacts"
+    },
+    {
+      "evidence_lines": [
+        "run_cp_empirical_pipeline.py:2913"
+      ],
+      "id": "NYC_a",
+      "residual_scope": "naming gloss only",
+      "resolution_class": "documented_from_existing_artifacts"
+    },
+    {
+      "evidence_lines": [
+        "stability_summary.csv radii",
+        "selection_summary mappings"
+      ],
+      "id": "NYC_b",
+      "residual_scope": "",
+      "resolution_class": "documented_from_existing_artifacts"
+    },
+    {
+      "evidence_lines": [
+        "run_cp_empirical_pipeline.py:1311-1314",
+        "run_cp_empirical_pipeline.py:1358"
+      ],
+      "id": "NYC_c",
+      "residual_scope": "",
+      "resolution_class": "documented_from_existing_artifacts"
+    },
+    {
+      "evidence_lines": [
+        "run_cp_empirical_pipeline.py:1244",
+        "run_cp_empirical_pipeline.py:1735",
+        "run_cp_empirical_pipeline.py:1758",
+        "run_cp_empirical_pipeline.py:2779"
+      ],
+      "id": "RNG_seed",
+      "residual_scope": "artifact seed echo deferred to Wave B",
+      "resolution_class": "documented_from_existing_artifacts"
+    },
+    {
+      "evidence_lines": [
+        "run_cp_empirical_pipeline.py:1459-1486",
+        "aggregate_cp_metrics.csv:63-70,133"
+      ],
+      "id": "g_net_negative",
+      "residual_scope": "optional offline decomposition in Wave B",
+      "resolution_class": "characterized_from_existing_artifacts"
+    }
+  ],
+  "record": "REC-P3S6_WAVE_A_DOC_RECEIPTS_20260826_220000",
+  "self_sha256": "8d78a52dad10071b7f24bf0ad8614fcbce3b20838d9c02bf4fec8d4744d02f16",
+  "timestamp": "2026-08-26T22:00:00+08:00",
+  "wave_b_data_ready": {
+    "deps": "pip_available",
+    "nyc": "acquired_and_digest_verified",
+    "output_root": "created",
+    "rcep_helper": "origin_pending_author"
+  }
+}

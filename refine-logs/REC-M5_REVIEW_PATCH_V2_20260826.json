@@ -1,0 +1,853 @@
+{
+  "record_version": "V2",
+  "v2_revision": {
+    "generated": "2026-08-26",
+    "timezone_basis": "Asia/Shanghai",
+    "supersedes_bytes": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd"
+    },
+    "authorization": "author structured decision et3_remediation=V2 patch re-review, 2026-08-26",
+    "basis_receipt": "refine-logs/REC-M5_EDITORIAL_RECHECK_V4_20260823.md (E-T3 FAIL, F1-F5)",
+    "revisions_applied": [
+      "F1",
+      "F2a",
+      "F2b",
+      "F3",
+      "F4",
+      "F5a",
+      "F5b",
+      "F5c",
+      "F5d",
+      "F5e",
+      "C1",
+      "C2a",
+      "C2b"
+    ],
+    "semantic_ceiling_changes": "none; restatements preserve boundary meanings verbatim"
+  },
+  "schema_version": "ncs-post-acceptance-recovery-m5-review-patch-v1",
+  "record_id": "REC-M5-review-patch-v1-20260811",
+  "generated_at": "2026-08-11T23:06:28+08:00",
+  "phase": "M5-B",
+  "status": "M5_B_G04_G06_G07_G08_AUTHOR_INPUT_COMPLETE_FINAL_SEMANTIC_RECHECK_REQUIRED",
+  "task_mode": "review_only_paragraph_aware_patch_synthesis",
+  "package_readiness": "ready_for_independent_review",
+  "output": {
+    "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+    "sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd",
+    "applied": false,
+    "submission_ready": false
+  },
+  "authorization_boundary": {
+    "review_patch_generation": "AUTHORIZED_BY_USER_CONTINUATION",
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_payload_mutation": "PROHIBITED",
+    "execution_authorization_mutation": "PROHIBITED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  },
+  "source_ownership": {
+    "canonical_manuscript_sources": "manuscript_src/natcs/*.md and manuscript_src/natcs/controlled_benchmark_contract.json",
+    "generated_outputs": [
+      "main.tex",
+      "supplementary.tex"
+    ],
+    "generator": "scripts/build_natcs_manuscript.mjs",
+    "direct_generated_output_edit": "PROHIBITED",
+    "unresolved_canonical_source": "None; application/bootstrap 100/80, spectral-radius and 50%-attenuation canonical Markdown ownership is author-confirmed unavailable"
+  },
+  "inputs": [
+    {
+      "path": "refine-logs/REC-M5_PREFLIGHT_PLAN_V1_20260811.json",
+      "sha256": "ae85f98ac07123c676645ab5deb6b995ecd84716ae9b4084ed0b4b2bb7b4b218"
+    },
+    {
+      "path": "refine-logs/REC-M4_INDEPENDENT_ACCEPTANCE_V4_20260811.json",
+      "sha256": "c68fe23299eca1697d979ea0e72f9845af0e4793b58aed96a9029ed2a94d7fdc"
+    },
+    {
+      "path": "refine-logs/REC-M3_ACCEPTANCE_V2_20260811.json",
+      "sha256": "9fd8976112f55a8f055d2bc7c7636c762cb2ba00c423da7f9f303a4d35dcebdd"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_026_CLAIM_LEDGER_20260811_R2.json",
+      "sha256": "dd03ce5369dff3c54b53910e4ab9368d07195f5294d5e9a3c130fb8456c145ca"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_026_PATCH_PROPOSAL_20260811.md",
+      "sha256": "5dc82aed028b4cc87bc44050e2d42ffdd0b22b4a21f89b35174dbf513feb2ebb"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json",
+      "sha256": "68a841cb4c5f68916cd305eb354200030564079f2e6fedf4e33a346a35f7f443"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_033_PATCH_PROPOSAL_20260811.md",
+      "sha256": "6d8fff0275be2bbeeefca33193656c397de494e3ad0812e521cd6d3a4551e6da"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json",
+      "sha256": "baee769a51c5861bfe04c7fcfc8e72608ea2bcd6f52fedcd909fca1bbb61ed33"
+    },
+    {
+      "path": "refine-logs/REC-M3_V1_045_PATCH_PROPOSAL_20260811.md",
+      "sha256": "7eb9d17f3c670de2babcd4e0587bd6ba13ff6787abf38119e4c435dd1397a0a0"
+    },
+    {
+      "path": "refine-logs/REC-M5_RESULT_CANDIDATE_EXTRACTION_V1_20260812.json",
+      "sha256": "48853866e02588d5833699b53ecd42843936cc3ec9d5a4d96faa587b4ed06f84"
+    },
+    {
+      "path": "refine-logs/REC-M5_ALS_TOPOLOGY_CANDIDATE_EXTRACTION_V1_20260812.json",
+      "sha256": "778367b26bb2d770a5f4125144585731ac8b6a8106fdb3bc2f9a392655b45031"
+    }
+  ],
+  "protected_baseline": {
+    "files": {
+      "manuscript_src/natcs/methods_estimator.md": "8f4cb0f7efdb1438fcfad1fe1a3441ed80877093077fe7c7b9f8ec56508cb25d",
+      "manuscript_src/natcs/results_validation.md": "746567db7d4087c2335c65768e35a1a9e8b275791095c896afefd632d8278bb3",
+      "manuscript_src/natcs/supp_note4_benchmarks.md": "0bec42db15fd153c7480f42a68280111bef986e04496e72c35612af6a181939e",
+      "manuscript_src/natcs/methods_data.md": "26e0a984ac5af6676466fba2f403882a1fc841832c221b83b06e8c0d01cf7a2d",
+      "manuscript_src/natcs/methods_uncertainty.md": "2faf37836b9b274c9f2bd2cede54cbea9ce5c27a32bdc951ae7b1ee5e00f1601",
+      "manuscript_src/natcs/supp_note7_repro.md": "c33c63370a55ae4afe7abb2e1fb4deef47988585b411d03fa5f54809f6337230",
+      "manuscript_src/natcs/supp_note8_scope.md": "1f8a02a810b372a479bc9e3f877613c2dd670bea4b1d9deffdec681b9933d8fa",
+      "manuscript_src/natcs/controlled_benchmark_contract.json": "95199a3c16e6f55a2cf94f7f67289a658bcac7ccb4e17ceee9efa5cc8d7934ba",
+      "output/ncs_review_corpus/v1_author_decision_register.json": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json": "60523c09126fca78f9e87c1ef4776a74b6f5025bbed19ad65ec1755838d77c68",
+      "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+      "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+    },
+    "comparison_policy": "Exact-path SHA-256 only; no broad refine-logs traversal"
+  },
+  "scientific_boundaries": {
+    "V1-026": {
+      "scientific_execution": "NOT_RUN",
+      "claim_activation": "BLOCKED",
+      "permitted": "Descriptive comparator role, endpoint/interface, coverage, retained statuses and common-completion integrity only",
+      "forbidden": [
+        "confidence interval claim",
+        "ranking",
+        "superiority or equivalence",
+        "native-held-out or general-performance claim",
+        "promotion"
+      ]
+    },
+    "V1-033": {
+      "register": "PARTIAL",
+      "m2c": "BLOCKED/PARTIAL",
+      "evaluation": "simulation_only",
+      "independent_empirical_ground_truth": "NOT_EVALUABLE",
+      "retained_gaps": [
+        "chronology",
+        "selection inputs",
+        "held-out query identity",
+        "endpoint signature",
+        "truth isolation"
+      ]
+    },
+    "V1-045": {
+      "register": "PARTIAL",
+      "m2c": "PARTIAL",
+      "scope": "N=20/N=50 only",
+      "N100_N200": "NOT_RUN/ABSTAIN",
+      "resource_telemetry": "BLOCKED/null",
+      "execution_count": 1,
+      "repeated_run_reproducibility": false,
+      "als_60_iteration_semantics": "AUTHOR_CONFIRMED_FIXED_COUNT_NO_TOLERANCE_NO_EARLY_STOP",
+      "compiled_100_80_settings": "SEPARATE_CANONICAL_MARKDOWN_SOURCE_UNAVAILABLE",
+      "topology_stress_amplitudes": "AUTHOR_CONFIRMED_CODE_BOUND_WITH_ASYMMETRIC_RELEASED_COVERAGE"
+    }
+  },
+  "edit_groups": [
+    {
+      "id": "G01",
+      "target": "manuscript_src/natcs/methods_estimator.md",
+      "anchor": "current paragraph at line 5",
+      "anchor_mode": "exact_paragraph_review",
+      "disposition": "CANDIDATE_NOT_APPLIED",
+      "markdown_section": "G01"
+    },
+    {
+      "id": "G02",
+      "target": "manuscript_src/natcs/methods_estimator.md",
+      "anchor": "current paragraph at line 9",
+      "anchor_mode": "paragraph_aware_editorial_merge",
+      "disposition": "CANDIDATE_NOT_APPLIED",
+      "markdown_section": "G02"
+    },
+    {
+      "id": "G03",
+      "target": "manuscript_src/natcs/methods_estimator.md",
+      "anchor": "last two sentences of current paragraph at line 7",
+      "anchor_mode": "paragraph_aware_editorial_merge",
+      "disposition": "CANDIDATE_NOT_APPLIED",
+      "markdown_section": "G03"
+    },
+    {
+      "id": "G04",
+      "target": "manuscript_src/natcs/results_validation.md",
+      "anchor": "four current paragraphs",
+      "anchor_mode": "full_file_paragraph_replacement_review",
+      "disposition": "CANDIDATE_NOT_APPLIED",
+      "markdown_section": "G04"
+    },
+    {
+      "id": "G05",
+      "target": "manuscript_src/natcs/supp_note4_benchmarks.md",
+      "anchor": "benchmark-contract and qualification-gate paragraphs",
+      "anchor_mode": "multi_paragraph_editorial_merge",
+      "disposition": "CANDIDATE_NOT_APPLIED",
+      "markdown_section": "G05"
+    },
+    {
+      "id": "G06",
+      "target": [
+        "manuscript_src/natcs/methods_estimator.md",
+        "manuscript_src/natcs/controlled_benchmark_contract.json"
+      ],
+      "anchor": "ALS 60-iteration declaration",
+      "anchor_mode": "author_confirmed_review_only",
+      "disposition": "CANDIDATE_NOT_APPLIED",
+      "markdown_section": "G06"
+    },
+    {
+      "id": "G07",
+      "target": [
+        "manuscript_src/natcs/methods_data.md",
+        "manuscript_src/natcs/supp_note4_benchmarks.md"
+      ],
+      "anchor": "topology-stress protocol",
+      "anchor_mode": "author_confirmed_review_only",
+      "disposition": "CANDIDATE_NOT_APPLIED",
+      "markdown_section": "G07"
+    },
+    {
+      "id": "G08",
+      "target": "manuscript_src/natcs/methods_uncertainty.md",
+      "anchor": "current stability paragraph at line 3",
+      "anchor_mode": "paragraph_aware_insertion",
+      "disposition": "CANDIDATE_NOT_APPLIED",
+      "markdown_section": "G08"
+    },
+    {
+      "id": "G09",
+      "target": "manuscript_src/natcs/supp_note7_repro.md",
+      "anchor": "after current final paragraph",
+      "anchor_mode": "paragraph_aware_insertion",
+      "disposition": "CANDIDATE_NOT_APPLIED",
+      "markdown_section": "G09"
+    },
+    {
+      "id": "G10",
+      "target": "manuscript_src/natcs/supp_note8_scope.md",
+      "anchor": "after current final paragraph",
+      "anchor_mode": "paragraph_aware_insertion",
+      "disposition": "CANDIDATE_NOT_APPLIED",
+      "markdown_section": "G10"
+    }
+  ],
+  "unit_coverage": [
+    {
+      "source_item": "V1-026",
+      "unit_id": "P-001",
+      "group": "G05"
+    },
+    {
+      "source_item": "V1-026",
+      "unit_id": "P-002",
+      "group": "G01"
+    },
+    {
+      "source_item": "V1-026",
+      "unit_id": "P-003",
+      "group": "G04"
+    },
+    {
+      "source_item": "V1-033",
+      "unit_id": "V1-033-M01",
+      "group": "G02"
+    },
+    {
+      "source_item": "V1-033",
+      "unit_id": "V1-033-M02",
+      "group": "G02"
+    },
+    {
+      "source_item": "V1-033",
+      "unit_id": "V1-033-M03",
+      "group": "G03"
+    },
+    {
+      "source_item": "V1-033",
+      "unit_id": "V1-033-R01",
+      "group": "G04"
+    },
+    {
+      "source_item": "V1-033",
+      "unit_id": "V1-033-R02",
+      "group": "G04"
+    },
+    {
+      "source_item": "V1-033",
+      "unit_id": "V1-033-R03",
+      "group": "G04"
+    },
+    {
+      "source_item": "V1-033",
+      "unit_id": "V1-033-R04",
+      "group": "G04"
+    },
+    {
+      "source_item": "V1-033",
+      "unit_id": "V1-033-R05",
+      "group": "G04"
+    },
+    {
+      "source_item": "V1-033",
+      "unit_id": "V1-033-S01",
+      "group": "G05"
+    },
+    {
+      "source_item": "V1-033",
+      "unit_id": "V1-033-S02",
+      "group": "G05"
+    },
+    {
+      "source_item": "V1-033",
+      "unit_id": "V1-033-S03",
+      "group": "G05"
+    },
+    {
+      "source_item": "V1-033",
+      "unit_id": "V1-033-S04",
+      "group": "G05"
+    },
+    {
+      "source_item": "V1-033",
+      "unit_id": "V1-033-S05",
+      "group": "G05"
+    },
+    {
+      "source_item": "V1-045",
+      "unit_id": "V1-045-RANK",
+      "group": "G05"
+    },
+    {
+      "source_item": "V1-045",
+      "unit_id": "V1-045-WINDOW",
+      "group": "G05"
+    },
+    {
+      "source_item": "V1-045",
+      "unit_id": "V1-045-ALS",
+      "group": "G06"
+    },
+    {
+      "source_item": "V1-045",
+      "unit_id": "V1-045-TOPOLOGY",
+      "group": "G07"
+    },
+    {
+      "source_item": "V1-045",
+      "unit_id": "V1-045-STABILITY",
+      "group": "G08"
+    },
+    {
+      "source_item": "V1-045",
+      "unit_id": "V1-045-FAILURE",
+      "group": "G05"
+    },
+    {
+      "source_item": "V1-045",
+      "unit_id": "V1-045-REPLICATION",
+      "group": "G09"
+    },
+    {
+      "source_item": "V1-045",
+      "unit_id": "V1-045-SCOPE",
+      "group": "G09"
+    },
+    {
+      "source_item": "V1-045",
+      "unit_id": "V1-045-UNRUN",
+      "group": "G10"
+    },
+    {
+      "source_item": "V1-045",
+      "unit_id": "V1-045-RESOURCE",
+      "group": "G10"
+    }
+  ],
+  "proposal_crosswalk": {
+    "V1-045-RANK": "REC-M3 V1-045 P1 complete parameter table",
+    "V1-045-WINDOW": "REC-M3 V1-045 P1 complete parameter table",
+    "V1-045-ALS": "REC-M3 V1-045 P2 solver-contract separation",
+    "V1-045-TOPOLOGY": "REC-M3 V1-045 P3 topology reproducibility",
+    "V1-045-STABILITY": "REC-M3 V1-045 P4 stability metric distinction",
+    "V1-045-FAILURE": "REC-M3 V1-045 P5 status retention",
+    "V1-045-REPLICATION": "REC-M3 V1-045 P6 M2C provenance boundary",
+    "V1-045-SCOPE": "REC-M3 V1-045 P6 M2C provenance boundary",
+    "V1-045-UNRUN": "REC-M3 V1-045 P7 unrun-scale and telemetry wording",
+    "V1-045-RESOURCE": "REC-M3 V1-045 P7 unrun-scale and telemetry wording"
+  },
+  "traceability": {
+    "G01": {
+      "source_units": [
+        "V1-026:P-002"
+      ],
+      "evidence_locators": [
+        "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/comparator_registry.json#/content/records",
+        "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/comparator_registry.json#/content/required_interface",
+        "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/comparator-ledger.json#/declared_methods"
+      ]
+    },
+    "G02": {
+      "source_units": [
+        "V1-033:V1-033-M01",
+        "V1-033:V1-033-M02"
+      ],
+      "evidence_locators": [
+        "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json#/contract_verdict/ground_truth_distinction",
+        "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json#/contract_verdict/provenance_blocked",
+        "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json#/artifacts/m2c/path"
+      ]
+    },
+    "G03": {
+      "source_units": [
+        "V1-033:V1-033-M03"
+      ],
+      "evidence_locators": [
+        "manuscript_src/natcs/controlled_benchmark_contract.json#/endpoint_availability/unavailable_sentinel",
+        "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json#/patch_units/V1-033-M03"
+      ]
+    },
+    "G04": {
+      "source_units": [
+        "V1-026:P-003",
+        "V1-033:V1-033-R01",
+        "V1-033:V1-033-R02",
+        "V1-033:V1-033-R03",
+        "V1-033:V1-033-R04",
+        "V1-033:V1-033-R05"
+      ],
+      "evidence_locators": [
+        "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/status-inventory.json#/inventory",
+        "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/paired-differences.json#/pairs",
+        "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json#/contract_verdict/claim_ceiling",
+        "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json#/contract_verdict/provenance_blocked",
+        "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json#/forbidden_claims"
+      ]
+    },
+    "G05": {
+      "source_units": [
+        "V1-026:P-001",
+        "V1-033:V1-033-S01",
+        "V1-033:V1-033-S02",
+        "V1-033:V1-033-S03",
+        "V1-033:V1-033-S04",
+        "V1-033:V1-033-S05",
+        "V1-045:V1-045-RANK",
+        "V1-045:V1-045-WINDOW",
+        "V1-045:V1-045-FAILURE"
+      ],
+      "evidence_locators": [
+        "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/comparator-ledger.json#/method_cell_audits",
+        "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/status-inventory.json#/nonfinite_policy",
+        "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/artifact-manifest.json#/claim_activation",
+        "refine-logs/REC-M3_V1_033_CLAIM_LEDGER_20260811.json#/patch_units",
+        "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json#/items"
+      ]
+    },
+    "G06": {
+      "source_units": [
+        "V1-045:V1-045-ALS"
+      ],
+      "evidence_locators": [
+        "manuscript_src/natcs/controlled_benchmark_contract.json#/estimator_configuration/cp_als_iterations",
+        "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json#/items/2"
+      ]
+    },
+    "G07": {
+      "source_units": [
+        "V1-045:V1-045-TOPOLOGY"
+      ],
+      "evidence_locators": [
+        "manuscript_src/natcs/controlled_benchmark_contract.json#/operator_generation/topology",
+        "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json#/items/3"
+      ]
+    },
+    "G08": {
+      "source_units": [
+        "V1-045:V1-045-STABILITY"
+      ],
+      "evidence_locators": [
+        "manuscript_src/natcs/controlled_benchmark_contract.json#/response_evaluation",
+        "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json#/items/4"
+      ]
+    },
+    "G09": {
+      "source_units": [
+        "V1-045:V1-045-REPLICATION",
+        "V1-045:V1-045-SCOPE"
+      ],
+      "evidence_locators": [
+        "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/analysis.json#/resource_audit/execution_contract",
+        "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/reproducibility.csv#seed_count",
+        "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json#/m2c_primary_boundary"
+      ]
+    },
+    "G10": {
+      "source_units": [
+        "V1-045:V1-045-UNRUN",
+        "V1-045:V1-045-RESOURCE"
+      ],
+      "evidence_locators": [
+        "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/analysis.json#/new_experiment/n100_n200_status",
+        "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/resource-audit.json#/telemetry",
+        "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json#/m2c_primary_boundary"
+      ]
+    }
+  },
+  "clause_traceability": {
+    "G01-P1": [
+      "V1-026:P-002"
+    ],
+    "G02-P1": [
+      "V1-033:V1-033-M01",
+      "V1-033:V1-033-M02"
+    ],
+    "G03-P1": [
+      "V1-033:V1-033-M03"
+    ],
+    "G04-P1": [
+      "V1-033:V1-033-R01",
+      "V1-033:V1-033-R02"
+    ],
+    "G04-P2": [
+      "V1-033:V1-033-R03"
+    ],
+    "G04-P3": [
+      "V1-033:V1-033-R04"
+    ],
+    "G04-P4": [
+      "V1-026:P-003",
+      "V1-033:V1-033-R05"
+    ],
+    "G05-A": [
+      "V1-045:V1-045-RANK",
+      "V1-045:V1-045-WINDOW"
+    ],
+    "G05-B": [
+      "V1-026:P-001"
+    ],
+    "G05-C": [
+      "V1-033:V1-033-S01",
+      "V1-045:V1-045-FAILURE"
+    ],
+    "G05-D": [
+      "V1-033:V1-033-S02"
+    ],
+    "G05-E": [
+      "V1-033:V1-033-S03"
+    ],
+    "G05-F": [
+      "V1-033:V1-033-S04",
+      "V1-033:V1-033-S05"
+    ],
+    "G06-P1": [
+      "V1-045:V1-045-ALS"
+    ],
+    "G07-P1": [
+      "V1-045:V1-045-TOPOLOGY"
+    ],
+    "G08-P1": [
+      "V1-045:V1-045-STABILITY"
+    ],
+    "G09-P1": [
+      "V1-045:V1-045-REPLICATION",
+      "V1-045:V1-045-SCOPE"
+    ],
+    "G10-P1": [
+      "V1-045:V1-045-UNRUN",
+      "V1-045:V1-045-RESOURCE"
+    ]
+  },
+  "evidence_bundle_hashes": {
+    "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/artifact-manifest.json": "5767c635dab93ab86713c9b5e09280b0d861a175b553f8de7700b4c1a99e178d",
+    "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/comparator-ledger.json": "8fef72efd9f1b547608323677dbf6e07e569ecb9090ea14928169882d5ebe069",
+    "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/status-inventory.json": "8ac0390d12929bc2a31425f6b907f3eaedf91ae4648aa7d3f93f2d19bbfbfa3a",
+    "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e01-75-2400b0f538932133/paired-differences.json": "6d01447039edae222356b50e265440fd047c4887755c488de0202d70b817a583",
+    "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e02-128-ff23c1c2be0a83baae80298617211b5d0469b2a7614e3a1734df22853f013bbb/analysis.json": "ae4289220a446f0e1a685e2336761475ab4d4f3c3a336be72a1eebb18d896d8e",
+    "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e02-128-ff23c1c2be0a83baae80298617211b5d0469b2a7614e3a1734df22853f013bbb/audit.md": "c6d3f670ba9db6c5e550094716835fd55eac852105c64881571a5218bfc468e9",
+    "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/analysis.json": "8438619a0c03b817d116b6f2a5edbce914bb1c42ba93ac2146483639681a7136",
+    "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/resource-audit.json": "2c43c0af09633f0bedbc567c59efdb51d8da07d2dcb5f6d626b32cf9e88b390a",
+    "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/reproducibility.csv": "7938c947c477909f105749bc941349fad1314778f3f42fbc5edbcb709100f3a5",
+    "output/natcs_benchmarks/benchmark_summary.csv": "c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1",
+    "output/natcs_evidence/table1_simulation_benchmark.csv": "e339ccde8a2393d15a59e05857f6ca8b57eefb0a22565012f63854a53ed96c00",
+    "manuscript_src/natcs/ncs_figure3_python_redesign_qa_20260726.md": "5729a76d3f21a3cc007fe05ec6e293c36e824e3005e46f221e0f8ce37cb1b009",
+    "refine-logs/REC-M5_RESULT_CANDIDATE_EXTRACTION_V1_20260812.json": "48853866e02588d5833699b53ecd42843936cc3ec9d5a4d96faa587b4ed06f84",
+    "scripts/natcs_benchmarks.mjs": "9cfe55a771f7434617bf67bbc78c22aadcd74fd528b4ea5d8b7762e0ad2b4633",
+    "output/natcs_benchmarks/benchmark_replications.csv": "b8c881dcbafee9ee04e8b344478367a17d3e6c5d353b15970c48e3d3783cd32e",
+    "refine-logs/REC-M5_ALS_TOPOLOGY_CANDIDATE_EXTRACTION_V1_20260812.json": "778367b26bb2d770a5f4125144585731ac8b6a8106fdb3bc2f9a392655b45031"
+  },
+  "pre_apply_anchor_checks": {
+    "algorithm": "SHA-256 of UTF-8 paragraph fragments after CRLF normalization and trimEnd; paragraph numbering follows blank-line splitting",
+    "fail_closed_on_drift": true,
+    "anchors": [
+      {
+        "group": "G01",
+        "target": "manuscript_src/natcs/methods_estimator.md",
+        "paragraph": 3,
+        "line_range": "5-5",
+        "sha256": "6ea69844ccd957cb53ae04a8ee91715a1b2ef2d6d1da2e0b705f9a075bc7853d"
+      },
+      {
+        "group": "G02",
+        "target": "manuscript_src/natcs/methods_estimator.md",
+        "paragraph": 5,
+        "line_range": "9-10",
+        "sha256": "00fc2f0136720fd021658ebf5baa46459c65d0cbe2e7c5f2593564d7cfe0c71d"
+      },
+      {
+        "group": "G03",
+        "target": "manuscript_src/natcs/methods_estimator.md",
+        "paragraph": 4,
+        "line_range": "7-7",
+        "sha256": "6119a2fae8cf48d4aeb30c0e440cead32b0da9b902f200c62c7d0e38651f0933"
+      },
+      {
+        "group": "G04",
+        "target": "manuscript_src/natcs/results_validation.md",
+        "paragraphs": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "line_ranges": [
+          "1-1",
+          "3-3",
+          "5-5",
+          "7-8"
+        ],
+        "sha256": [
+          "444a38bcf59dde43cc425bd6e8ea1bceb8818c5009584f3e646326660d264468",
+          "2722adfe458c759aa449c707e65ab20f3f9ee286fb2c5a8be61f103383141d6b",
+          "db8937fac634420ef220ac231d68529e877ae0de4fde2d2b7000ee1ed960a265",
+          "c0ffcc7c0fbb5d8f4923238556ef11e6e4adcd70fd0d7946a97fbeb03b70ebdb"
+        ]
+      },
+      {
+        "group": "G05",
+        "target": "manuscript_src/natcs/supp_note4_benchmarks.md",
+        "paragraphs": [
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10
+        ],
+        "line_ranges": [
+          "1-1",
+          "3-3",
+          "13-13",
+          "15-15",
+          "17-17",
+          "21-21",
+          "23-26",
+          "28-29"
+        ],
+        "sha256": [
+          "ccf0b74830e983794fc55a841091bc53643abd0eae7a6505e93225483f99268a",
+          "9f4678c98470b14780da63c17cabd16a1da0602856be41261c4068e4fe76a778",
+          "a85b0cb6f9a8084f2dac2c3dce3fb982f7985fe1493aea2bca51d423c2c7afff",
+          "5a56b9311724a97da964edbb18c90fbc76d61751c38253115d99242e222c2526",
+          "f99c544b7ab4505ac74495ee075755b120fb2a8e3389e1d72748ec63238118d8",
+          "b70faebee53dd4532953fb18984ef96b0a3d63b67d56437532fe12db05bb851e",
+          "0ada4ae5361dc9649fa9ebdf4e8e85f7f779ba3794f1971d51c11c1cf61c9567",
+          "348e6b96f5842bf719fae734a4d9e9dde5d45d5cf0ce7d7af9036823361eabde"
+        ]
+      },
+      {
+        "group": "G06",
+        "target": "manuscript_src/natcs/methods_estimator.md",
+        "paragraph": 2,
+        "line_range": "3-3",
+        "sha256": "3c924d1da145ab5e840a4892df3853390db6eeb21c1a23751496524ec01f58ef"
+      },
+      {
+        "group": "G07",
+        "target": "manuscript_src/natcs/methods_data.md",
+        "paragraph": 5,
+        "line_range": "11-11",
+        "sha256": "352d74189d598706ce2034e27fc16525ebf814ea2b2fe1e7cb7cec65b99d8c0c"
+      },
+      {
+        "group": "G08",
+        "target": "manuscript_src/natcs/methods_uncertainty.md",
+        "paragraph": 2,
+        "line_range": "3-3",
+        "sha256": "36ae766e672c84154389c3f5bfdf9f32c9146b589198c43c33e786f6e0dddda1"
+      },
+      {
+        "group": "G09",
+        "target": "manuscript_src/natcs/supp_note7_repro.md",
+        "paragraph": 4,
+        "line_range": "7-8",
+        "sha256": "5d5ebb7a8ed67aa34eda6619189baace8faaa3303dbe5a89e3e2a74adbc8770e"
+      },
+      {
+        "group": "G10",
+        "target": "manuscript_src/natcs/supp_note8_scope.md",
+        "paragraph": 8,
+        "line_range": "20-21",
+        "sha256": "2f42751ca0ef001d91c0cd8f05079dffc1137340bc4d6e47e89ec42052abbb1a"
+      }
+    ]
+  },
+  "placeholder_scan": {
+    "targets": [
+      "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md"
+    ],
+    "forbidden_regex": "\\{\\{[^}]+\\}\\}",
+    "allowed_exact_tokens": [],
+    "allowed_location": "none; AIN-RESULT was author-confirmed on 2026-08-12",
+    "expected_draft_count": 0,
+    "fail_closed": true,
+    "application_rule": "No manuscript application while any forbidden token remains or while any remaining author-input and independent-review gate is unresolved"
+  },
+  "author_input_needed": [],
+  "author_input_resolved": [
+    {
+      "id": "AIN-RESULT",
+      "group": "G04",
+      "status": "AUTHOR_CONFIRMED_20260812",
+      "binding": "ratio of across-replication medians; local_network versus cp_network; one-decimal display",
+      "evidence": "refine-logs/REC-M5_RESULT_CANDIDATE_EXTRACTION_V1_20260812.json"
+    },
+    {
+      "id": "AIN-ALS",
+      "group": "G06",
+      "status": "AUTHOR_CONFIRMED_20260812",
+      "binding": "fixed 60 iterations; no monitored objective, stopping tolerance or early stop; exception records failure; 100/80 source unavailable and separate",
+      "evidence": "refine-logs/REC-M5_ALS_TOPOLOGY_CANDIDATE_EXTRACTION_V1_20260812.json"
+    },
+    {
+      "id": "AIN-TOPOLOGY",
+      "group": "G07",
+      "status": "AUTHOR_CONFIRMED_20260812",
+      "binding": "four retained scenarios; code-derived seeds; exact generation/observation parameters; asymmetric released coverage disclosed; no matched ranking",
+      "evidence": "refine-logs/REC-M5_ALS_TOPOLOGY_CANDIDATE_EXTRACTION_V1_20260812.json"
+    },
+    {
+      "id": "AIN-SOURCE-01_AND_04",
+      "group": "G06/G07/G08",
+      "status": "AUTHOR_CONFIRMED_20260812",
+      "binding": "100/80 canonical Markdown ownership unavailable; generated TeX is not a canonical source",
+      "evidence": "refine-logs/REC-M5_ALS_TOPOLOGY_CANDIDATE_EXTRACTION_V1_20260812.json"
+    },
+    {
+      "id": "AIN-SOURCE-02",
+      "group": "G08",
+      "status": "AUTHOR_CONFIRMED_20260812",
+      "binding": "canonical spectral-radius wording source unavailable; generated TeX may not be used to reconstruct ownership or import a metric mapping",
+      "evidence": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V5_20260812.json"
+    },
+    {
+      "id": "AIN-SOURCE-03",
+      "group": "G07",
+      "status": "AUTHOR_CONFIRMED_20260812",
+      "binding": "canonical 50%-attenuation source unavailable; generated TeX excluded and operation remains outside CAL-E03",
+      "evidence": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V6_20260812.json"
+    }
+  ],
+  "delegated_review": {
+    "required_model": "gpt-5.6-terra",
+    "required_reasoning_effort": "max",
+    "scientific_boundary_review": "CURRENT_ALL_AUTHOR_INPUT_BOUND_VERSION_RECHECK_REQUIRED",
+    "governance_manifest_review": "CURRENT_ALL_AUTHOR_INPUT_BOUND_VERSION_RECHECK_REQUIRED",
+    "editorial_traceability_review": "CURRENT_ALL_AUTHOR_INPUT_BOUND_VERSION_RECHECK_REQUIRED"
+  },
+  "independent_review_receipts": [
+    {
+      "path": "refine-logs/REC-M5_EDITORIAL_RECHECK_V2_20260812.md",
+      "sha256": "332bedf26d1d06387d9a6a00dc1e5d9f0eea5f7ef02a454b6748a67b9760212d",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "max",
+      "verdict": "BLOCKED_PENDING_EDITORIAL_REVISIONS",
+      "revisions_applied": true,
+      "final_recheck": "SERVICE_INTERRUPTED",
+      "current_version_applicability": "HISTORICAL_ONLY_PATCH_CHANGED_AFTER_ALL_AUTHOR_INPUT_CONFIRMATIONS"
+    },
+    {
+      "record_id": "REC-M5_SCIENTIFIC_RECHECK_V6_20260826",
+      "lane": "scientific_boundary",
+      "role": "current_byte_scientific_recheck",
+      "path_md": "refine-logs/REC-M5_SCIENTIFIC_RECHECK_V6_20260826.md",
+      "sha256_md": "3ee692fc0093e10afb357e3cc96af8d0b99c1f4262a23451775b32820da6d2f9",
+      "path_json": "refine-logs/REC-M5_SCIENTIFIC_RECHECK_V6_20260826.json",
+      "sha256_json": "1fe5b7bb18ca16c294f9650a451e235cd27671e01f88c398eb65affdcff9f29e",
+      "verdict": "PASS_WITH_ORCHESTRATOR_INSTRUMENTATION_DISCLOSURE",
+      "instrumentation_addendum": {
+        "path_md": "refine-logs/REC-M5_SCIENTIFIC_RECHECK_V6_20260826_INSTRUMENTATION_ADDENDUM.md",
+        "sha256_md": "2a00c07974be8de8ee7c98100ace87a30e22057b5b910a698557940c60deeb07",
+        "path_json": "refine-logs/REC-M5_SCIENTIFIC_RECHECK_V6_20260826_INSTRUMENTATION_ADDENDUM.json",
+        "sha256_json": "1f480f51d3abbfa1fc2cab4c8bb4c6dd356f3ccbabe39ec2841a5ce1119b31b7",
+        "disclosure": "mechanical instrumentation (hash+diff) executed by orchestrator party; adjudicated by reviewer; disclosure inseparable from verdict"
+      },
+      "date": "2026-08-26"
+    },
+    {
+      "record_id": "REC-M5_EDITORIAL_RECHECK_V5_20260826",
+      "lane": "editorial_traceability",
+      "role": "current_byte_editorial_recheck",
+      "path_md": "refine-logs/REC-M5_EDITORIAL_RECHECK_V5_20260826.md",
+      "sha256_md": "83f001600eb99966ead8f1caacccf9220eb6d8dc7c9975448587c989aa1f1420",
+      "path_json": "refine-logs/REC-M5_EDITORIAL_RECHECK_V5_20260826.json",
+      "sha256_json": "547c2b0e689031123840e38bee06107982935d9f63993188b58462fb1ca5297c",
+      "verdict": "PASS",
+      "basis": "four fragment receipts ET1_ET3 / ET2 / ET4_ET5_ET6 / ET7_ET8 consolidated without alteration; supersedes V4 FAIL(E-T3)",
+      "date": "2026-08-26"
+    },
+    {
+      "record_id": "REC-M5_GOVERNANCE_RECHECK_V6_20260826",
+      "lane": "governance_manifest",
+      "role": "current_byte_governance_recheck",
+      "path_md": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V6_20260826.md",
+      "sha256_md": "14b1bfb0826d2d35029a8b6f573bc60f31ba0bbbb85d91a0c3739efbc24cd7e1",
+      "path_json": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V6_20260826.json",
+      "sha256_json": "044e4c130263bd162390a9e8ec236e73ab0ffd734a7943008b233a84b4be199b",
+      "verdict": "PASS",
+      "date": "2026-08-26"
+    }
+  ],
+  "verification": {
+    "json_parse": "PASS",
+    "input_hashes": "PASS",
+    "markdown_hash": "PASS",
+    "unit_count_expected": 26,
+    "unit_count_actual": 26,
+    "unit_uniqueness": "PASS",
+    "edit_group_references": "PASS",
+    "protected_exact_path_hashes_unchanged": "PASS",
+    "evidence_bundle_hashes": "PASS",
+    "clause_traceability": "PASS",
+    "pre_apply_anchor_hashes": "PASS_10_OF_10_GROUP_ANCHOR_RECORDS",
+    "placeholder_scan": "PASS_NO_DOUBLE_BRACE_TOKENS",
+    "editorial_v2_receipt_hash": "PASS_HISTORICAL_RECEIPT_ONLY",
+    "m4_allowlist_validator_before": "247/247 PASS",
+    "m4_allowlist_validator_after": "247/247 PASS",
+    "manuscript_modified": false,
+    "formal_register_modified": false,
+    "scientific_payload_modified": false,
+    "authorization_modified": false,
+    "git_operations": "NONE",
+    "prohibited_path_reads": 0,
+    "semantic_service_note": "All author-input groups are resolved and the internal G04 traceability note is manifest-only; a fresh Terra/max direct semantic recheck is required and no earlier service failure is represented as an adjudication"
+  }
+}

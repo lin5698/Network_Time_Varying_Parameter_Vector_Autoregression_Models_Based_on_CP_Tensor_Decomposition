@@ -497,12 +497,12 @@ def build_doc() -> None:
             "Predetermined network construction",
             "At each quarter t, the trade network is constructed from lagged bilateral import shares observed before the innovation at t. The "
             "baseline matrix uses a four-quarter window, imposes a zero diagonal, and applies row normalization. This timing ensures that the "
-            "matrix used to form W_t y_{t-k} is measurable with respect to information available before the shock at t. Alternative export-based, "
+            "matrix used to form W_{tau-k} y_{tau-k} is measurable with respect to information available before the target date. Alternative export-based, "
             "symmetric, and longer-window definitions are used in the robustness block.",
         ),
         (
             "Network TVP-VAR and low-rank compression",
-            "The main system is y_t = c_t + sum_k A_{k,t} y_{t-k} + sum_k B_{k,t} W_t y_{t-k} + C_t x_t + eps_t. The array formed by stacking "
+            "Within the window labelled by target date t, the fitted system uses y_tau = c_t + sum_k A_{k,t} y_{tau-k} + sum_k B_{k,t} W_{tau-k} y_{tau-k} + C_t x_tau + eps_tau. Response evaluation then holds the last available topology fixed through the horizon. The array formed by stacking "
             "the time-varying lag coefficients across variables, channels, and time is summarized with a CP tensor representation. The purpose "
             "of the factorization is not generic dimension reduction alone; it is to retain a separate network block while replacing unrestricted "
             "entrywise drift with a small number of propagation modes.",

@@ -1,0 +1,149 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-editorial-recheck-v3",
+  "record_id": "REC-M5-editorial-recheck-v3-20260812",
+  "generated_at": "2026-08-12",
+  "phase": "M5-C",
+  "review_role": "editorial_traceability",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "max",
+  "service_status": "COMPLETED_NO_INTERRUPTION",
+  "verdict": "BLOCKED",
+  "scope": {
+    "review_only": true,
+    "manuscript_mutation": false,
+    "patch_mutation": false,
+    "author_input_mutation": false,
+    "register_mutation": false,
+    "authorization_mutation": false,
+    "git_operations": "NONE"
+  },
+  "inputs": [
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "sha256": "6837bbe5fe4e7f9549553b9749ebf49b0870a0a1045678234beea873f5ba8c06",
+      "role": "current review patch markdown"
+    },
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "sha256": "cacd0e6ec75760601c6e3ed3229e122bf70810d6f5c26dec7c9435d1c304ae7b",
+      "role": "current review patch manifest"
+    },
+    {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "sha256": "d622854aba0b0e190ef8653fc87ab95324239be5257ff02d25478e2cdde571cd",
+      "role": "current author-input worksheet"
+    },
+    {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "sha256": "a0890f4c956853c2564478f1f205be93d3694562aefde8b0068bedb4e2dc0018",
+      "role": "current author-input manifest"
+    },
+    {
+      "path": "refine-logs/REC-M5_RESULT_CANDIDATE_EXTRACTION_V1_20260812.json",
+      "sha256": "48853866e02588d5833699b53ecd42843936cc3ec9d5a4d96faa587b4ed06f84",
+      "role": "confirmed G04 result binding"
+    },
+    {
+      "path": "refine-logs/REC-M5_ALS_TOPOLOGY_CANDIDATE_EXTRACTION_V1_20260812.json",
+      "sha256": "778367b26bb2d770a5f4125144585731ac8b6a8106fdb3bc2f9a392655b45031",
+      "role": "confirmed G06/G07 binding"
+    },
+    {
+      "path": "scripts/natcs_benchmarks.mjs",
+      "sha256": "9cfe55a771f7434617bf67bbc78c22aadcd74fd528b4ea5d8b7762e0ad2b4633",
+      "role": "G06/G07 implementation source"
+    },
+    {
+      "path": "output/natcs_benchmarks/benchmark_summary.csv",
+      "sha256": "c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1",
+      "role": "G04/G07 released benchmark evidence"
+    },
+    {
+      "path": "output/natcs_benchmarks/benchmark_replications.csv",
+      "sha256": "b8c881dcbafee9ee04e8b344478367a17d3e6c5d353b15970c48e3d3783cd32e",
+      "role": "released replication evidence"
+    },
+    {
+      "path": "manuscript_src/natcs/controlled_benchmark_contract.json",
+      "sha256": "95199a3c16e6f55a2cf94f7f67289a658bcac7ccb4e17ceee9efa5cc8d7934ba",
+      "role": "endpoint and status contract"
+    }
+  ],
+  "author_input_state": {
+    "status": "AUTHOR_INPUT_COMPLETE_PENDING_INDEPENDENT_REVIEW",
+    "package_readiness": "ready_for_independent_review",
+    "all_required_fields_resolved": true,
+    "unresolved_fields": [],
+    "contradictions_reviewed_before_this_receipt": false,
+    "source_unavailable": {
+      "AIN-SOURCE-01": "unavailable",
+      "AIN-SOURCE-02": "unavailable; generated TeX excluded",
+      "AIN-SOURCE-03": "unavailable; generated TeX excluded; outside CAL-E03",
+      "AIN-SOURCE-04": "yes; generated TeX is not canonical ownership"
+    }
+  },
+  "checks": {
+    "patch_json_parse": "PASS",
+    "patch_output_hash": "PASS",
+    "author_input_json_parse": "PASS",
+    "declared_input_hashes": "PASS",
+    "unit_coverage": "PASS_26_OF_26_UNIQUE",
+    "edit_group_references": "PASS",
+    "pre_apply_anchor_hashes": "PASS_10_OF_10_GROUPS",
+    "placeholder_scan": "PASS_ZERO_DOUBLE_BRACE_TOKENS",
+    "g04_numeric_binding": "PASS_VALUES_FORMULA_FIELDS_AND_HASH_BOUND",
+    "source_ownership_boundary": "PASS_UNAVAILABLE_DECISIONS_EXPLICIT",
+    "no_generated_tex_import": "PASS",
+    "no_application_authorization": "PASS",
+    "workspace_mutation_by_this_review": "NONE"
+  },
+  "findings": [
+    {
+      "id": "E1",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "target": "REC-M5_REVIEW_PATCH_V1_20260811.md:5-14,287",
+      "summary": "Opening package readiness says needs_author_input while current patch and author manifest say ready_for_independent_review."
+    },
+    {
+      "id": "E2",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "target": "REC-M5_REVIEW_PATCH_V1_20260811.md:88-90",
+      "summary": "AIN-RESULT process/path note is not marked manifest-only and would contaminate reader-facing G04 prose; it also says remaining author inputs remain."
+    },
+    {
+      "id": "E3",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "target": "REC-M5_REVIEW_PATCH_V1_20260811.md:88",
+      "summary": "Reader-facing G04 paragraph exposes internal coef_error_median and girf_error_median field names."
+    },
+    {
+      "id": "E4",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "target": "REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md:108",
+      "summary": "Chinese worksheet checklist says remaining groups are pending despite complete English/JSON state and following confirmed lines."
+    },
+    {
+      "id": "E5",
+      "severity": "LOW",
+      "status": "OPEN",
+      "target": "REC-M5_REVIEW_PATCH_V1_20260811.md:180",
+      "summary": "G06 has the grammatical phrase 'a fixed 60 alternating-least-squares iterations'."
+    }
+  ],
+  "authorization_boundary": {
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_execution": "NOT_AUTHORIZED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  },
+  "residual_risk": [
+    "M5-D manuscript mutation requires separate explicit authorization after semantic review passes.",
+    "M5-F formal-register mutation requires separate explicit authorization.",
+    "The blocked editorial findings must be corrected and this current-version receipt superseded before PASS."
+  ]
+}

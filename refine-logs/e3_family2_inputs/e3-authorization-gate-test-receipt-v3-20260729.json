@@ -1,0 +1,12 @@
+{
+  "additional_source_only_suites": {
+    "scripts/experiments/test_e3_family2_authorized_executor.py": "becf568cb02624b925c83b09c4a4ec5dbb7996c562aed5cab8d855f5d6906595",
+    "scripts/experiments/test_e3_family2_candidate_package.py": "6fc149dab7a3b4fcac2b4eeca3e1969f6f5f1af46917e42f7f1d7d4180e786d3",
+    "scripts/experiments/test_e3_family2_synthetic_runner.py": "5b96e46b61aa7d47eba486a6dbdcabc4eabac9fd10c1c290821c0a5b0b516d2e",
+    "scripts/experiments/test_e3_synthetic_core.py": "6e2b2fe3f5ec8466dc21f20d1b72997ebf05316aa791ae3f848fe42ceaa9ad20"
+  },
+  "schema_version": "e3-family2-authorization-gate-test-receipt-v2",
+  "scientific_execution": "NOT_AUTHORIZED",
+  "test_suite_sha256": "235e35f2c621cb5c21d21f4ac87f60398f083b48293a687471711afb98dfb874",
+  "verdict": "PASS"
+}

@@ -1,0 +1,45 @@
+{
+  "audit_skill": "proof-checker",
+  "verdict": "PASS",
+  "reason_code": "all_active_source_only_proof_obligations_complete",
+  "summary": "The finite-basis query certificate, endpoint equivalence, unrestricted and structured one-hop boundaries, design results and finite-horizon transfer bound pass independent proof review on the current source hashes.",
+  "generated_at": "2026-07-30T19:01:36Z",
+  "audited_input_hashes": {
+    "manuscript_src/natcs/methods_theory.md": "sha256:1e81d2d355dbf3846690dba232c4201ce3ae4775b043bc7f3ee7409afea45766",
+    "manuscript_src/natcs/supp_note1_notation.md": "sha256:a97ba5e41923d07017d01779111ec3bcab5fead1a23a99dd50228c95a7bfe5b4",
+    "manuscript_src/natcs/supp_note3_propagation.md": "sha256:66f6f6d0dd2502c6f7f0260f5552840da5a62bd2330d1e3ec0fc34691e848b7f"
+  },
+  "details": {
+    "proof_branches_audited": 6,
+    "open_issues": [],
+    "acceptance_gate": "PASS",
+    "review_chain": [
+      {
+        "reviewer": "active_finite_basis_proof_audit",
+        "role": "counterexample-led complete proof review",
+        "disposition": "two local critical issues identified and repaired"
+      },
+      {
+        "reviewer": "active_proof_critical_fix_blind",
+        "role": "blind critical-fix and exact-hash verification",
+        "disposition": "PASS with no remaining mathematical issue"
+      }
+    ],
+    "verified_claims": [
+      "finite-basis kernel and reversed row-space equivalence",
+      "complete operator-retaining endpoint equivalence",
+      "strict two-hop inclusion on topology domains containing the directed-cycle fixture P",
+      "unrestricted one-hop factorization boundary and diagonal structured inverse",
+      "unpenalized residualized-design result and exact joint-ridge Schur complement",
+      "finite-horizon response-transfer bound under bounded companion powers"
+    ],
+    "submission_status": "BLOCKED",
+    "submission_reason_code": "controlling_empirical_and_release_audits_remain_closed",
+    "outcome_stage_boundary": {
+      "paper_claim_audit": "BLOCKED",
+      "empirical_implementation_audit": "FAIL",
+      "r006e": "closed_not_promoted",
+      "r006f": "closed_not_promoted"
+    }
+  }
+}

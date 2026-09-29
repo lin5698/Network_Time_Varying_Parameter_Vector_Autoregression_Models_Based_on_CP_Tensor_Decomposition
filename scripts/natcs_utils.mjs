@@ -19,6 +19,88 @@ export function readJson(file) {
   return JSON.parse(readText(file));
 }
 
+/**
+ * Refuse to turn source drafts into manuscript-facing artifacts until both
+ * controlling audits release the empirical claim set and the source has
+ * deliberately replaced its inactive empirical boundary records. This check
+ * performs no scientific execution and is evaluated before any build write.
+ */
+export function requireReleaseableNatcsEvidence(root) {
+  const audits = [
+    ["PAPER_CLAIM_AUDIT", path.join(root, "PAPER_CLAIM_AUDIT.json")],
+    ["EMPIRICAL_IMPLEMENTATION_AUDIT", path.join(root, "EMPIRICAL_IMPLEMENTATION_AUDIT.json")],
+  ];
+  const failures = [];
+
+  const parsedAudits = {};
+  for (const [label, file] of audits) {
+    if (!fs.existsSync(file)) {
+      failures.push(`${label} is missing`);
+      continue;
+    }
+    let audit;
+    try {
+      audit = readJson(file);
+    } catch (error) {
+      failures.push(`${label} is unreadable (${error.message})`);
+      continue;
+    }
+    parsedAudits[label] = audit;
+    if (audit.verdict !== "PASS") {
+      failures.push(`${label}=${audit.verdict || "missing"}${audit.reason_code ? ` (${audit.reason_code})` : ""}`);
+    }
+  }
+
+  // Author decision 2026-08-26 (`release_mode_fork=门禁双模式化`): when both
+  // standing audits hold verdict PASS under the value-audited downstream-build
+  // reason codes with explicit remaining_conditions on record, inactive
+  // empirical boundary drafts are an accepted release state
+  // (build-without-empirical-promotion). The tripwire continues to block any
+  // value-bearing activation of those sources outside a full-release mode.
+  const buildWithoutEmpiricalPromotion =
+    parsedAudits.PAPER_CLAIM_AUDIT?.verdict === "PASS" &&
+    parsedAudits.EMPIRICAL_IMPLEMENTATION_AUDIT?.verdict === "PASS" &&
+    String(parsedAudits.PAPER_CLAIM_AUDIT?.reason_code || "").startsWith("rcep_nyc_value_audited") &&
+    String(parsedAudits.EMPIRICAL_IMPLEMENTATION_AUDIT?.reason_code || "").startsWith("rcep_nyc_value_audited") &&
+    Array.isArray(parsedAudits.PAPER_CLAIM_AUDIT?.remaining_conditions) &&
+    parsedAudits.PAPER_CLAIM_AUDIT.remaining_conditions.length > 0 &&
+    Array.isArray(parsedAudits.EMPIRICAL_IMPLEMENTATION_AUDIT?.remaining_conditions) &&
+    parsedAudits.EMPIRICAL_IMPLEMENTATION_AUDIT.remaining_conditions.length > 0;
+
+  const inactiveEmpiricalSources = [
+    [
+      "RCEP empirical source",
+      path.join(root, "manuscript_src", "natcs", "results_rcep.md"),
+      /#\s*Inactive audit-boundary draft:\s*RCEP protocol/i,
+    ],
+    [
+      "NYC empirical source",
+      path.join(root, "manuscript_src", "natcs", "results_generality.md"),
+      /#\s*Inactive audit-boundary draft:\s*NYC protocol/i,
+    ],
+  ];
+
+  for (const [label, file, inactiveMarker] of inactiveEmpiricalSources) {
+    if (!fs.existsSync(file)) {
+      failures.push(`${label} is missing`);
+      continue;
+    }
+    if (inactiveMarker.test(readText(file))) {
+      if (buildWithoutEmpiricalPromotion) {
+        continue;
+      }
+      failures.push(`${label} remains explicitly inactive`);
+    }
+  }
+
+  if (failures.length) {
+    throw new Error(
+      `NCS_BUILD_REFUSED before evidence generation: ${failures.join("; ")}. `
+      + "The source-only revision may be edited, but no manuscript, evidence, figure, archive or submission artifact was generated.",
+    );
+  }
+}
+
 export function writeJson(file, value) {
   writeText(file, JSON.stringify(value, null, 2));
 }
@@ -202,4 +284,105 @@ export function setPngDpi(file, dpi = 900) {
     offset = end;
   }
   fs.writeFileSync(file, Buffer.concat(chunks));
+}
+
+// Shared reader-facing text hygiene and document scaffolding for the active
+// manuscript and Supplementary builders. Moved out of the manuscript builder
+// so the source-only Supplementary builder can use the same guarantees
+// without importing any empirical composition code.
+
+export function readerFacingSubmissionText(text) {
+  return String(text ?? "")
+    .replace(/Agg_g_net\(H=8\)/g, "aggregate propagation index, H=8")
+    .replace(/Pair_([A-Z]{3})<-([A-Z]{3})_s_net_clip/g, "bounded pair-level contribution, $1 <- $2")
+    .replace(/Pair_([A-Z]{3})<-([A-Z]{3})_s_net_raw/g, "raw pair-level contribution, $1 <- $2")
+    .replace(/(^|[^A-Za-z0-9_])net[\s_-]+clip(?![A-Za-z0-9_])/g, "$1bounded network contribution")
+    .replace(/(^|[^A-Za-z0-9_])net[\s_-]+raw(?![A-Za-z0-9_])/g, "$1raw network contribution")
+    .replace(/(^|[^A-Za-z0-9_])s[\s_-]+net[\s_-]+clip(?![A-Za-z0-9_])/g, "$1bounded pair-level propagation contribution")
+    .replace(/(^|[^A-Za-z0-9_])s[\s_-]+net[\s_-]+raw(?![A-Za-z0-9_])/g, "$1raw pair-level propagation contribution")
+    .replace(/(^|[^A-Za-z0-9_])g[\s_-]+net(?![A-Za-z0-9_])/g, "$1aggregate network-propagation index")
+    .replace(/(^|[^A-Za-z0-9_])gnet(?![A-Za-z0-9_])/gi, "$1aggregate network-propagation index");
+}
+
+export function internalObjectPattern() {
+  return /(^|[^A-Za-z0-9_])(s[\s_-]+net[\s_-]+raw|s[\s_-]+net[\s_-]+clip|g[\s_-]+net|Agg[\s_-]+g[\s_-]+net|net[\s_-]+clip|net[\s_-]+raw|gnet|Pair_[A-Z]{3}<-[A-Z]{3}_s_net(?:_clip|_raw)?)(?![A-Za-z0-9_])/i;
+}
+
+export function assertReaderFacingTextClean(label, text) {
+  const source = String(text ?? "");
+  const incomplete = /\{\{[A-Za-z0-9_]+\}\}|\b(?:undefined|NaN|Infinity)\b/.exec(source);
+  if (incomplete) {
+    const start = Math.max(0, incomplete.index - 80);
+    const end = Math.min(source.length, incomplete.index + incomplete[0].length + 120);
+    const excerpt = source.slice(start, end).replace(/\s+/g, " ");
+    throw new Error(`Reader-facing text contains an unresolved value in ${label}: ${excerpt}`);
+  }
+  const pattern = internalObjectPattern();
+  const match = pattern.exec(source);
+  if (!match) return;
+  const start = Math.max(0, match.index - 80);
+  const end = Math.min(source.length, match.index + match[0].length + 120);
+  const excerpt = source.slice(start, end).replace(/\s+/g, " ");
+  throw new Error(`Reader-facing text contains an internal propagation variable in ${label}: ${excerpt}`);
+}
+
+export function yamlHeader(meta, options = {}) {
+  const srcDir = options.srcDir;
+  if (!srcDir) {
+    throw new Error("yamlHeader requires options.srcDir for bibliography and CSL resolution");
+  }
+  const authorLines = options.singleLineAuthors
+    ? [`author: "${meta.authors.join("        ")}"`]
+    : [
+        "author:",
+        ...meta.authors.map((name) => `  - "${name}"`),
+      ];
+  const lines = [
+    "---",
+    `title: "${meta.title}"`,
+    ...authorLines,
+    'date: ""',
+    "documentclass: article",
+    "fontsize: 11pt",
+    "geometry: margin=1in",
+    "numbersections: true",
+    `bibliography: "${path.join(srcDir, "references.bib")}"`,
+    `csl: "${path.join(srcDir, "nature.csl")}"`,
+    "header-includes:",
+    "  - \\usepackage{booktabs}",
+    "  - \\usepackage{longtable}",
+    "  - \\usepackage{float}",
+    "  - \\usepackage{placeins}",
+    "  - \\usepackage{graphicx}",
+    "  - \\usepackage{setspace}",
+    "  - \\usepackage{indentfirst}",
+    "  - \\onehalfspacing",
+    "  - \\setlength{\\parindent}{2em}",
+    "  - \\renewcommand{\\topfraction}{0.95}",
+    "  - \\renewcommand{\\bottomfraction}{0.9}",
+    "  - \\renewcommand{\\textfraction}{0.05}",
+    "  - \\renewcommand{\\floatpagefraction}{0.85}",
+    "  - \\setlength{\\textfloatsep}{12pt plus 2pt minus 2pt}",
+    "  - \\setlength{\\floatsep}{10pt plus 2pt minus 2pt}",
+    "  - \\makeatletter",
+    "  - \\setlength{\\@fptop}{0pt}",
+    "  - \\setlength{\\@fpsep}{10pt plus 1fil}",
+    "  - \\setlength{\\@fpbot}{0pt plus 1fil}",
+    "  - \\makeatother",
+    "---",
+    "",
+  ];
+  return lines.join("\n");
+}
+
+export function referencesBlock(sections) {
+  const joined = sections.filter(Boolean).join("\n");
+  if (!/\[@[A-Za-z0-9:_-]+/.test(joined)) return [];
+  return [
+    "# References {-}",
+    "",
+    "::: {#refs}",
+    ":::",
+    "",
+  ];
 }

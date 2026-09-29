@@ -1,0 +1,83 @@
+{
+  "analysis_script_sha256": "8c65af8d92edc2cb1cd9b7b79bf6d3d50374542db32efcc2c6838243b6573adf",
+  "analysis_version": "cal-e01-75-independent-audit-v1",
+  "artifact_type": "independent_derived_read_only_audit",
+  "author_decision_register_modified": false,
+  "claim_activation": "BLOCKED",
+  "content_address": "c96e620006d55b1459331c3ead28069920962ccf2df1a682030a37f47e97e635",
+  "content_address_payload": {
+    "analysis_version": "cal-e01-75-independent-audit-v1",
+    "expected_frozen_sha256": {
+      "candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+      "execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+      "manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+      "register": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+      "terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+      "workspace_authorization": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+    },
+    "input_sha256": {
+      "authorization": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+      "candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+      "comparator_registry": "4eb3905ecad9115abaf89e8e5cae65c19dde10e83e0a466e5070a384cbad758b",
+      "e4_audit": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5",
+      "execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+      "failure_metric_schema": "8557beef5369783bf0dba773c44aac11ef9a39a029c283ede72561f6bce8e2c2",
+      "manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+      "plan": "29618783ccb17773e88d737bebfed466d5a0bb57fffc1f55261c0e5a6fdf0292",
+      "register": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+      "terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+      "workspace_authorization": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+    },
+    "metric_definition": {
+      "cell_summary": "equal-weight mean over eligible panel log-error-ratios",
+      "ci": "two-sided normal approximation, nominal 95%, descriptive only",
+      "ci_method_serialization_status": "missing_in_frozen_result",
+      "operator_error_field": "operator_mse",
+      "panel_value": "median over same-endpoint log(candidate_error/comparator_error)",
+      "predeclared_serialization_status": "missing_in_frozen_result",
+      "response_error_field": "response_mse",
+      "thresholds_changed": false
+    },
+    "output_scope": "CAL-E01:75-only",
+    "register_key": "CAL-E01:75"
+  },
+  "derived_values_withheld": false,
+  "expected_frozen_sha256": {
+    "candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+    "manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "register": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+    "workspace_authorization": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+  },
+  "frozen_result_mutated": false,
+  "input_sha256": {
+    "authorization": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+    "candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "comparator_registry": "4eb3905ecad9115abaf89e8e5cae65c19dde10e83e0a466e5070a384cbad758b",
+    "e4_audit": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5",
+    "execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+    "failure_metric_schema": "8557beef5369783bf0dba773c44aac11ef9a39a029c283ede72561f6bce8e2c2",
+    "manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "plan": "29618783ccb17773e88d737bebfed466d5a0bb57fffc1f55261c0e5a6fdf0292",
+    "register": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+    "workspace_authorization": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+  },
+  "manuscript_modified": false,
+  "output_sha256": {
+    "claim-audit.json": "e826227c0d33437b51d0a3e30a6a2dc1b080e22e426de9a9d98c8b7e19d567a9",
+    "comparator-audit.json": "e4ae81b08ae31d7c050f26839a2f771053693575a665f221a97ddcaa441bb875",
+    "derived-panel-log-error-ratios.json": "34f9962dbabf43e5b80f8ee6d88faeee9c6c7b22f0324cf9b9ac4c447ec3ba33",
+    "distributions.json": "ba2aa3c1c5396c4744a7bbf452c3e59fd74f1c3d3565682998e5431666449ec9",
+    "input-manifest.json": "4e9fb1443f734f435d3c06e4eec972d690f4b1f9ae643c86d05e6f033b80538e",
+    "sufficiency-audit.json": "96735e0f3625626a65109ba1e267069247a2d4252eab76d41f94a3bf0a6d025a"
+  },
+  "quarantine_modified": false,
+  "register_key": "CAL-E01:75",
+  "verdict": "PASS"
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "e4-incomplete-execution-inventory-v1",
+  "recorded_at": "2026-07-31T14:19:31+08:00",
+  "candidate_id": "e4-domain-stable-v4-20260731-candidate-r2",
+  "candidate_sha256": "9213cec8e947a4919aa8ca603ba5514471e7e6293136051826f234c66fbce964",
+  "authorization_sha256": "15f9789dc72574dd644f6a8b6133b9021cb1e431c08129091d2808620cea70f8",
+  "decision_id": "e4-r2-workspace-author-decision-20260731",
+  "output_root": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r2",
+  "status": "CONSUMED_INCOMPLETE_EXTERNAL_TERMINATION",
+  "scientific_outcome": "UNAVAILABLE",
+  "rerun_same_authorization": "PROHIBITED",
+  "entries": [
+    {
+      "path": "execution-manifest.json",
+      "bytes": 408,
+      "sha256": "6a9109b410536d66c0cf08a2d1dee20f70ea2f3f9f31fc8c2eafb69a03cb4a7a",
+      "birth_time": "2026-07-31T12:46:57+08:00",
+      "status": "RUNNING_QUARANTINE_ONLY"
+    }
+  ],
+  "required_terminal_entries": {
+    "e3-results.json": "ABSENT",
+    "execution-complete.json": "ABSENT",
+    "execution-failure.json": "ABSENT"
+  },
+  "last_live_observation": {
+    "pid": 4252,
+    "elapsed": "00:48:28",
+    "cpu_percent": 100.0,
+    "memory_percent": 0.1,
+    "state": "Rs+"
+  },
+  "post_interruption_observation": {
+    "process_present": false,
+    "python_exception_recorded": false,
+    "system_reboot_detected": false,
+    "sleep_or_wake_transition_detected_near_interruption": false,
+    "matching_kernel_or_launchd_kill_record_found": false
+  },
+  "interpretation": "No scientific values were committed. The attached process ended without a catchable exception record; the exact terminating signal is unavailable.",
+  "promotion": "PROHIBITED"
+}

@@ -12,6 +12,9 @@ natcs-figure-source-package:
 natcs-reviewer-archive:
 	node scripts/build_natcs_reviewer_archive.mjs
 
+natcs-submission-materials:
+	node scripts/finalize_natcs_submission_materials.mjs
+
 natcs-upload-freeze-manifest:
 	node scripts/create_natcs_upload_freeze_manifest.mjs
 
@@ -20,3 +23,6 @@ natcs-release-safety-audit:
 
 natcs-final-gate-check:
 	node scripts/check_natcs_final_gates.mjs
+
+natcs-source-only-gate-check:
+	node scripts/check_natcs_source_only_gates.mjs

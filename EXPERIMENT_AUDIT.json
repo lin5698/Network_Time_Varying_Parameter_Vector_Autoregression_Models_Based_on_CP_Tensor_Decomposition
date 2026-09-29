@@ -1,11 +1,179 @@
 {
-  "date": "2026-07-15",
-  "auditor": "independent-codex-reviewer",
-  "scope": "R006c endpoint-aware estimator post-remediation",
-  "overall_verdict": "warn",
-  "integrity_status": "pass",
+  "date": "2026-07-19",
+  "audit_timezone_basis": "Asia/Shanghai",
+  "auditor": "independent-codex-reviewers",
+  "scope": "preserved R006c audit plus RCEP/NYC execution readiness",
+  "overall_verdict": "fail",
+  "integrity_status": "fail",
+  "r006c_integrity_status": "pass",
   "scientific_outcome": "fail",
   "evaluation_type": "simulation_only",
+  "execution_readiness_audit": {
+    "date": "2026-07-19",
+    "overall_verdict": "fail",
+    "integrity_status": "fail",
+    "checks": {
+      "gt_provenance": {
+        "status": "warn",
+        "details": "R006c is simulation-only; RCEP and NYC are self-supervised operator proxies. RCEP-03 and NYC completed under exact authorization, but neither completed a releasable, independently audited evidence cycle."
+      },
+      "score_normalization": {
+        "status": "warn",
+        "details": "Floors, clipping and small-denominator suppression are explicit, but archived RCEP aggregate ratio behavior is unstable and cannot be current evidence."
+      },
+      "result_existence": {
+        "status": "warn",
+        "details": "RCEP-03 has 36 hash-frozen completed files and NYC has 18 hash-frozen completed files. Both remain quarantined and value-unreviewed; archived promoted artifacts remain stale."
+      },
+      "dead_code": {
+        "status": "pass",
+        "details": "Corrected rank-selection, path-bootstrap and design-diagnostic paths are implemented and covered by focused tests."
+      },
+      "scope": {
+        "status": "fail",
+        "details": "Current abstract and empirical Results wording exceeds the available evidence because both corrected quarantine runs lack independent claim audit and promotion approval."
+      },
+      "eval_type": {
+        "r006c": "simulation_only",
+        "rcep": "self_supervised_proxy",
+        "nyc_taxi": "self_supervised_proxy"
+      }
+    },
+    "static_remediation": {
+      "scientific_authorization_gate": "implemented",
+      "nyc_rcep_helper_decoupling": "implemented",
+      "authorized_input_snapshots": "implemented",
+      "no_follow_output_quarantine": "implemented",
+      "cp_contract_theory_candidate_tests": {
+        "command": "env PYTHONPYCACHEPREFIX=/tmp/natcs_round5_pycache_20260719 PYTHONUNBUFFERED=1 python3 -m unittest -v tests.test_cp_pipeline_contracts tests.test_cp_rank_selection tests.test_natcs_theory_contract tests.test_rcep_helper_candidate_audit",
+        "passed": 85,
+        "failed": 0
+      },
+      "screening_governance_tests": {
+        "command": "env PYTHONPYCACHEPREFIX=/tmp/natcs_round5_pycache_20260719 PYTHONUNBUFFERED=1 python3 -m unittest -v scripts.experiments.test_r006e_attempt_ledger_v2 scripts.experiments.test_r006e_construction_v2 scripts.experiments.test_r006e_duplicate_audit_v2 scripts.experiments.test_r006e_result_claim_audit_v2 scripts.experiments.test_r006e_screening_executor_v2 scripts.experiments.test_r006e_screening_outputs_v2 scripts.experiments.test_r006e_screening_schema_v2 scripts.experiments.test_r006e_screening_v2",
+        "passed": 145,
+        "failed": 0,
+        "duration_seconds": 24.557,
+        "evidence_class": "fixture_only"
+      },
+      "security_review_round_3": {
+        "trace": ".aris/traces/security-audit/2026-07-19_run01/003-independent-blind-security-review.response.md",
+        "result": "High_and_Medium_findings_reported_then_remediated_in_current_code_and_tests",
+        "scope": "CP authorization, import closure, input and output isolation"
+      },
+      "security_review_round_4": {
+        "trace": ".aris/traces/security-audit/2026-07-19_run01/004-final-post-remediation-security-review.response.md",
+        "result": "APPROVE_no_confirmed_Medium_or_higher",
+        "highest_confirmed_severity": "Low",
+        "scope": "R006e screening preclaim and claim transaction"
+      },
+      "security_review_round_5": {
+        "trace": ".aris/traces/security-audit/2026-07-19_run01/005-fixture-only-postclaim-low-closure.response.md",
+        "result": "APPROVE_no_confirmed_in_scope_findings",
+        "highest_confirmed_in_scope_severity": "none",
+        "closed_finding": "Round_4_postclaim_unexpected_sidecar_Low",
+        "scope": "fixture-only post-claim inventory, terminal binding and retained-state readers"
+      },
+      "c3_static_boundary": {
+        "manifest_sha256": "02b151473116bbea39e1dc200f7299cd1d1a3451f8e430bc4d59392eb2525256",
+        "helper_git_commit": "d0e398b896848f26413cf9aa9dfca15fb4e7ce64",
+        "required_api_contract": "PASS_8_of_8",
+        "unbound_local_dependencies": 0,
+        "import_time_side_effect_indicators": 5,
+        "top_level_license": "absent",
+        "helper_executed": false,
+        "claim_boundary": "static identity and local-import closure only"
+      }
+    },
+    "scientific_execution_closure": {
+      "state": "RCEP_NYC_COMPLETED_QUARANTINED_UNREVIEWED",
+      "audit_timezone_basis": "Asia/Shanghai",
+      "authorization_template_sha256": "25001859d494e24bafb05273266a44056803a8107161832902b35dea20183c3c",
+      "cp_cli_exit_code": 1,
+      "cp_cli_terminal_message": "Scientific execution is not authorized.",
+      "cp_probe_output_root_created": false,
+      "cp_pre_science_spy_tests": "PASS_2_of_2_no_forbidden_calls",
+      "screening_cli_exit_code": 2,
+      "screening_cli_terminal_message": "screening-pair refused by governed preflight",
+      "production_primary_entries": [
+        "construction_gate_preoutcome.json",
+        "construction_manifest.sha256"
+      ],
+      "production_primary_sha256": {
+        "construction_gate_preoutcome.json": "4c3139c6cfee8c452b418f09b3bf04ec977e08f8ada5eb4e8b9d032309d5f090",
+        "construction_manifest.sha256": "424ee25104b325bf3e63359d3f61c0d3adb97604e6c9c81d7f5bcf1a4009346b"
+      },
+      "production_repeat_root_absent": true,
+      "production_control_root_absent": true,
+      "authorization_approval": "refine-logs/PRODUCTION_SCIENTIFIC_AUTHORIZATION_APPROVAL_20260719.md",
+      "execution_record": "refine-logs/PRODUCTION_SCIENTIFIC_EXECUTION_RECORD_20260719.json",
+      "nyc_output_inventory": "refine-logs/PSA_NYC_OUTPUT_INVENTORY_20260719.json",
+      "rcep_output_inventory": "refine-logs/PSA_RCEP_03_OUTPUT_INVENTORY_20260719.json",
+      "rcep_execution": "completed_quarantined_unreviewed",
+      "nyc_execution": "completed_quarantined_unreviewed",
+      "scientific_execution_performed": true,
+      "authorized_nyc_input_read": true,
+      "authorized_rcep_input_read": true,
+      "provider_governed_raw_data_read": true,
+      "r006e_outcome_accessed": false,
+      "r006f_outcome_accessed": false
+    },
+    "residual_risks": [
+      "flock is advisory and constrains only cooperating writers",
+      "an actor controlling both role roots and the trusted control ledger requires an external append-only witness before production authorization",
+      "control-first partial publication is intentional witness-first fail-closed abstention with no recovery promise",
+      "the private production trust verifier and certificate loader remain external-I/O boundaries not exercised by fixture tests",
+      "Python dependency imports and cache-directory initialization occur before the CP authorization gate"
+    ],
+    "scope_boundary": {
+      "production_trust_evidence": "installed_manifest_identity_and_static_gate_only",
+      "production_scientific_execution_trust_granted": true,
+      "open_source_or_redistribution_claim": "not_permitted_without_license",
+      "scientific_validity_claim": "not_supported_by_static_or_fixture_evidence"
+    },
+    "claims": [
+      {
+        "id": "theory-and-r006c-negative-gate",
+        "impact": "supportable_with_stated_boundaries"
+      },
+      {
+        "id": "rcep-nyc-numerical-claims",
+        "impact": "blocked_pending_independent_value_and_claim_audit"
+      },
+      {
+        "id": "cross-domain-computability-and-reproducibility",
+        "impact": "blocked_pending_independent_value_and_claim_audit"
+      }
+    ],
+    "trace": ".aris/traces/experiment-audit/2026-07-19_run01/"
+  },
+  "e4_preoutcome_audit": {
+    "date": "2026-07-31",
+    "overall_verdict": "pass",
+    "integrity_status": "pass",
+    "evaluation_type": "preoutcome_static_and_fixture_only",
+    "candidate_sha256": "9213cec8e947a4919aa8ca603ba5514471e7e6293136051826f234c66fbce964",
+    "candidate_status": "CANDIDATE_READY_NOT_AUTHORIZED",
+    "tests_recorded": 73,
+    "quarantine_root_absent": true,
+    "scientific_execution_performed": false,
+    "manuscript_activation": "blocked",
+    "does_not_supersede_overall_verdict": true,
+    "trace": ".aris/traces/experiment-audit/2026-07-31_run01/"
+  },
+  "e4_r2_execution_attempt": {
+    "date": "2026-07-31",
+    "candidate_sha256": "9213cec8e947a4919aa8ca603ba5514471e7e6293136051826f234c66fbce964",
+    "authorization_sha256": "15f9789dc72574dd644f6a8b6133b9021cb1e431c08129091d2808620cea70f8",
+    "status": "consumed_incomplete_external_termination",
+    "scientific_outcome": "unavailable",
+    "result_payload_exists": false,
+    "same_authorization_retry_permitted": false,
+    "same_root_retry_permitted": false,
+    "claim_impact": "none",
+    "E4-R006": "blocked",
+    "trace": "refine-logs/NCS_E4_R2_EXECUTION_INCIDENT_20260731.md"
+  },
   "checks": {
     "gt_provenance": {
       "status": "pass",

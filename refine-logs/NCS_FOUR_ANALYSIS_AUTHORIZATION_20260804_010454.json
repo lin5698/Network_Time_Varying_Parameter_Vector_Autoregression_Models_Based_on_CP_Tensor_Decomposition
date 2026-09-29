@@ -1,0 +1,47 @@
+{
+  "schema_version": "ncs-new-analysis-authorization-v1",
+  "authorization_id": "ncs-four-analysis-20260804-010454-cst",
+  "authorized_at": "2026-08-04T01:04:54+08:00",
+  "authorization_source": "author_in_current_codex_thread",
+  "authorization_text_zh": "启动 4 项新增分析或实验",
+  "authorized_register_items": [
+    {
+      "register_key": "CAL-E01:75",
+      "priority": "P0",
+      "requested_action": "NEW_ANALYSIS"
+    },
+    {
+      "register_key": "CAL-E02:128",
+      "priority": "P0",
+      "requested_action": "NEW_ANALYSIS"
+    },
+    {
+      "register_key": "CAL-E02:135",
+      "priority": "P0",
+      "requested_action": "ROBUSTNESS_CHECK"
+    },
+    {
+      "register_key": "CAL-E03:164",
+      "priority": "P1",
+      "requested_action": "NEW_ANALYSIS"
+    }
+  ],
+  "execution_policy": {
+    "initial_route": "read_only_derived_analysis_over_frozen_e4_r3",
+    "new_grid_requires_fresh_protocol_candidate_and_preoutcome_freeze": true,
+    "retain_failures_unstable_and_nonfinite_records": true,
+    "manuscript_promotion_authorized": false,
+    "frozen_e4_r3_mutation_authorized": false,
+    "rcep_nyc_empirical_activation_authorized": false,
+    "delegated_model": "gpt-5.6-luna",
+    "delegated_reasoning_effort": "max"
+  },
+  "frozen_inputs": {
+    "decision_register_sha256": "3e1aa7086ff11dfed27057db6376618147bcbb40bdc9b5d92b0a69f6d6817625",
+    "e4_r3_results_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "e4_r3_execution_manifest_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "e4_r3_candidate_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "e4_r3_authorization_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+  },
+  "status": "AUTHORIZED_TO_START"
+}

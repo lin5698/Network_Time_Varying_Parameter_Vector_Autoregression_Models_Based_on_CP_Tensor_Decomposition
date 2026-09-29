@@ -1,0 +1,60 @@
+{
+  "schema_version": "e3-synthetic-input-v1",
+  "lifecycle": "PRE_OUTCOME",
+  "input_route": "synthetic_only",
+  "excluded_routes": ["RCEP", "NYC", "R006e", "R006f"],
+  "operator_families": ["family1", "family2"],
+  "operator_forms": {
+    "family1": "A_plus_BW_with_diagonal_blocks",
+    "family2": "C0_plus_C1W_plus_C2W2_with_diagonal_blocks"
+  },
+  "topology_preprocessing": {
+    "raw_zero_diagonal": true,
+    "normalization": "maximum_absolute_row_sum_once_before_fitting_and_evaluation",
+    "square": "W@W",
+    "post_square_reprocessing": "PROHIBITED"
+  },
+  "endpoint": "full_operator_and_finite_horizon_response",
+  "lag_order": 1,
+  "shock_map": "identity",
+  "total_time": 144,
+  "chronological_partitions": {
+    "train": {"start": 1, "stop": 72},
+    "validation": {"start": 72, "stop": 96},
+    "evaluation": {"start": 96, "stop": 144}
+  },
+  "scales": [20, 50],
+  "horizons": [4, 12],
+  "query_classes": ["in_family_interpolation", "cross_generator"],
+  "panel_seeds": [
+    4101, 4102, 4103, 4104, 4105, 4106, 4107, 4108, 4109, 4110,
+    4111, 4112, 4113, 4114, 4115, 4116, 4117, 4118, 4119, 4120
+  ],
+  "methods": {
+    "local_structured": {"windows": [8, 12, 16]},
+    "causal_temporal_smoother": {"alphas": [0.25, 0.55, 0.85]},
+    "fixed_rank_basis": {"ranks": [1, 2, 3]}
+  },
+  "selection": {
+    "loss": "observed_topology_one_step_prediction",
+    "maximum_trials_per_method": 3,
+    "tie_break": "lowest_candidate_list_index",
+    "held_out_topology_truth_access": "PROHIBITED"
+  },
+  "stability": {
+    "threshold": 0.98,
+    "retain_statuses": ["AVAILABLE", "OUTSIDE_TARGET", "NONCONVERGED", "NONFINITE", "UNSTABLE"]
+  },
+  "uncertainty": {
+    "method": "fixed_design_residual_circular_moving_block_bootstrap",
+    "replicates": 80,
+    "block_length": 5,
+    "confidence": 0.95,
+    "confidence_allocation": "simultaneous_max_deviation_over_N_by_N_response_at_H4",
+    "retune_inside_bootstrap": false,
+    "evaluation_target_times": [143],
+    "query_classes": ["in_family_interpolation", "cross_generator"],
+    "bootstrap_seed_derivation": "620001_plus_family_index_times_100000_plus_scale_plus_panel_seed_plus_query_index_times_1000_plus_target_time"
+  },
+  "scientific_execution": "NOT_AUTHORIZED"
+}

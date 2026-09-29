@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "installation_date": "2026-07-19",
+  "authorization_scope": "installation_and_static_gate_only",
+  "selected_candidate": "C3",
+  "candidate_sha256": "02b151473116bbea39e1dc200f7299cd1d1a3451f8e430bc4d59392eb2525256",
+  "production_manifest_path": "manuscript_src/natcs/rcep_helper_trust_manifest.json",
+  "production_manifest_sha256": "02b151473116bbea39e1dc200f7299cd1d1a3451f8e430bc4d59392eb2525256",
+  "candidate_and_production_bytes_identical": true,
+  "helper_git_commit": "d0e398b896848f26413cf9aa9dfca15fb4e7ce64",
+  "bound_files": [
+    "config.py",
+    "research_data_construction.py",
+    "research_network_tvp_var.py"
+  ],
+  "static_identity_gate": "PASS",
+  "helper_import_called": false,
+  "data_loaded": false,
+  "scientific_output_paths_constructed": false,
+  "runtime_environment_paths_set": false,
+  "production_trust_evidence_installed": true,
+  "production_trust_granted": true,
+  "scientific_execution_authorized": false,
+  "r006e_outcome_authorized": false,
+  "r006f_outcome_authorized": false,
+  "paper_claim_audit": "BLOCKED",
+  "empirical_implementation_verdict": "FAIL_corrected_implementation_not_regenerated"
+}

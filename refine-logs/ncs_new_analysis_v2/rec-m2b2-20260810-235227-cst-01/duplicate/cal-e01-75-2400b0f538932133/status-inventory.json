@@ -1,0 +1,50 @@
+{
+  "analysis_version": "cal-e01-75-independent-audit-v1",
+  "failure_records": [],
+  "inventory": {
+    "bootstrap_replicates": {
+      "AVAILABLE": 12800,
+      "NONCONVERGED": 0,
+      "NONFINITE": 0,
+      "OUTSIDE_TARGET": 0,
+      "UNSTABLE": 0
+    },
+    "failure_bins_present_in_summaries": true,
+    "interval_records": {
+      "AVAILABLE": 160,
+      "NONCONVERGED": 0,
+      "NONFINITE": 0,
+      "OUTSIDE_TARGET": 0,
+      "UNSTABLE": 0
+    },
+    "paired_candidate_records": {
+      "AVAILABLE": 30720,
+      "NONCONVERGED": 0,
+      "NONFINITE": 0,
+      "OUTSIDE_TARGET": 0,
+      "UNSTABLE": 0
+    },
+    "paired_comparator_records": {
+      "AVAILABLE": 30720,
+      "NONCONVERGED": 0,
+      "NONFINITE": 0,
+      "OUTSIDE_TARGET": 0,
+      "UNSTABLE": 0
+    },
+    "recovery_records": {
+      "AVAILABLE": 46080,
+      "NONCONVERGED": 0,
+      "NONFINITE": 0,
+      "OUTSIDE_TARGET": 0,
+      "UNSTABLE": 0
+    },
+    "retained_failure_records": {
+      "NONCONVERGED": 0,
+      "NONFINITE": 0,
+      "OUTSIDE_TARGET": 0,
+      "UNSTABLE": 0
+    }
+  },
+  "nonfinite_policy": "retain and count; never impute",
+  "register_key": "CAL-E01:75"
+}

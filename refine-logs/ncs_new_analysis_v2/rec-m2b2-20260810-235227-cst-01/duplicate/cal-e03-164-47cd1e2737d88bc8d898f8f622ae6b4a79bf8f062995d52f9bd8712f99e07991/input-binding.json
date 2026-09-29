@@ -1,0 +1,103 @@
+{
+  "authorization_v2_binding": {
+    "decision_register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "e4_chain": {
+      "candidate_id": "e4-domain-stable-v4-20260731-candidate-r3",
+      "complete": true
+    },
+    "frozen_input_sha256": {
+      "candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+      "execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+      "execution_manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+      "results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+      "terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+    },
+    "item_payload_sha256": "25cd8fbf2e623cfd2fbcdc163f50959f1beb8e8cb1b59322da78d191e802cf82",
+    "register_item": {
+      "action_class": "DIRECT_TEXT_REVISION",
+      "applicability": "DIRECT",
+      "applicability_rationale_zh": "\u5f53\u524d\u7a3f\u4ef6\u5df2\u6709 controlled_benchmark_contract.json\u3001methods_data.md\u3001supp_note4_benchmarks.md \u5bf9 preprocessing assumptions\u3001parameter values\u3001failure/non-finite handling \u548c scenario differences \u7684\u660e\u786e\u5408\u540c\uff1b\u4f46\u8fd9\u4e9b\u6750\u6599\u4e0d\u652f\u6301 universal strategy utility\u3002",
+      "author_approval_required": false,
+      "author_decision": "PENDING",
+      "calibration_concern_domain": "REPRODUCIBILITY",
+      "calibration_cost_level": "HIGH",
+      "calibration_issue_ids": [
+        "CAL-E03-I11"
+      ],
+      "calibration_requested_action": "NEW_ANALYSIS",
+      "calibration_source": {
+        "calibration_id": "CAL-E03",
+        "doi": "10.1038/s43588-026-00977-z",
+        "title": "Benchmarking alignment methods for spatial transcriptomics data"
+      },
+      "cost_level": "HIGH",
+      "current_response_status": "PARTIAL",
+      "item_id": "V1-045",
+      "item_index": 164,
+      "manuscript_risk_status": "PARAMETER_FAILURE_CONTRACT_PRESENT",
+      "minimum_action_zh": "\u6838\u5bf9\u53c2\u6570\u3001rank\u3001window\u3001ALS iterations\u3001topology perturbations\u3001stability thresholds\u3001failure handling \u548c replication counts \u5728 methods_data.md\u3001supp_note4_benchmarks.md \u4e0e controlled_benchmark_contract.json \u4e2d\u4e00\u81f4\u3002",
+      "new_analysis_or_experiment_requires_author_approval": true,
+      "priority": "P0",
+      "public_evidence": {
+        "paragraph_ids": [
+          "CAL-E03-PR-P0003-001",
+          "CAL-E03-PR-P0038-001",
+          "CAL-E03-PR-P0039-001",
+          "CAL-E03-PR-P0049-001"
+        ],
+        "source_type": "PUBLIC_REVIEW_EVIDENCE"
+      },
+      "reviewer_worry_zh": "\u7c97\u914d\u51c6\u3001\u53c2\u6570\u8c03\u8282\u548c\u964d\u91c7\u6837\u7b56\u7565\u7684\u53ef\u590d\u7528\u4ef7\u503c\u3001\u53c2\u6570\u3001\u5931\u8d25\u6807\u51c6\u3001\u9884\u5904\u7406\u548c\u6570\u636e\u96c6\u5dee\u5f02\u9700\u8981\u8bc1\u636e\u3002",
+      "source_matrix_disposition": "ACCEPT_B",
+      "source_residual_limit_zh": "\u516c\u5f00\u6750\u6599\u4e0d\u63d0\u4f9b\u7edf\u4e00\u9608\u503c\u4e0b\u7684\u7b56\u7565\u6548\u76ca\u548c\u5931\u8d25\u7387\u8bc1\u636e",
+      "stop_condition_zh": "\u5f53\u524d\u7a3f\u4ef6\u53ea\u628a\u8fd9\u4e9b\u8bbe\u7f6e\u4f5c\u4e3a declared benchmark contract\uff1b\u6ca1\u6709\u201c\u7b56\u7565\u5bf9\u6240\u6709\u65b9\u6cd5/\u6570\u636e\u96c6\u666e\u904d\u6709\u6548\u201d\u6216 independent reuse claim\u3002",
+      "strong_evidence_action_zh": "\u4ec5\u5728\u4f5c\u8005\u6279\u51c6\u540e\uff0c\u589e\u52a0\u8de8 scenario \u7684 strategy-effect/failed-rate analysis\uff0c\u5e76\u9010\u9879\u62a5\u544a\u6570\u636e\u751f\u6210\u5dee\u5f02\u3001\u5931\u8d25\u9608\u503c\u548c\u4e0d\u53ef\u6bd4 endpoint\u3002",
+      "target_manuscript_files": [
+        "manuscript_src/natcs/methods_data.md",
+        "manuscript_src/natcs/supp_note4_benchmarks.md",
+        "manuscript_src/natcs/controlled_benchmark_contract.json",
+        "manuscript_src/natcs/supp_note7_repro.md"
+      ]
+    },
+    "schema_version": "ncs-four-analysis-authorization-v2",
+    "scope_binding": {
+      "m2_scientific_analysis": "BLOCKED_IN_THIS_TASK",
+      "rec_m2_action": "run_read_only_derived_analysis_after_m1_and_separate_go_gate"
+    },
+    "workspace_authorization_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+  },
+  "content_addressing": "directory name is cal-e03-164-{input_bundle_sha256}",
+  "expected_decision_register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+  "frozen_e4_r3_inputs": {
+    "candidate_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "execution_complete_sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+    "execution_manifest_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "results_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "terminal_inventory_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+  },
+  "input_bundle_sha256": "47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991",
+  "observed_input_sha256": {
+    "audit_markdown": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5",
+    "authorization": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+    "decision_register": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "e4_r3_candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "e4_r3_execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+    "e4_r3_execution_manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "e4_r3_results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "e4_r3_terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+    "e4_r3_workspace_authorization": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+    "plan": "29618783ccb17773e88d737bebfed466d5a0bb57fffc1f55261c0e5a6fdf0292"
+  },
+  "paths": {
+    "audit_markdown": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md",
+    "authorization": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+    "decision_register": "output/ncs_review_corpus/v1_author_decision_register.json",
+    "e4_r3_candidate": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json",
+    "e4_r3_execution_complete": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+    "e4_r3_execution_manifest": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+    "e4_r3_results": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json",
+    "e4_r3_terminal_inventory": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+    "e4_r3_workspace_authorization": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+    "plan": "refine-logs/NCS_FOUR_ANALYSIS_PLAN_20260804_010454.md"
+  }
+}

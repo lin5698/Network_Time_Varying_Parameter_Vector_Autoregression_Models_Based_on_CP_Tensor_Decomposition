@@ -1,0 +1,293 @@
+- generic [ref=f4e1]:
+  - text: mq1200
+  - dialog [ref=f4e2]:
+    - generic [ref=f4e4]:
+      - heading "Your privacy, your choice" [level=2] [ref=f4e6]
+      - generic [ref=f4e8]:
+        - paragraph [ref=f4e9]: We use essential cookies to make sure the site can function. We also use optional cookies for advertising, personalisation of content, usage analysis, and social media, as well as to allow video information to be shared for both marketing, analytics and editorial purposes.
+        - paragraph [ref=f4e10]: By accepting optional cookies, you consent to the processing of your personal data - including transfers to third parties. Some third parties are outside of the European Economic Area, with varying standards of data protection.
+        - paragraph [ref=f4e11]:
+          - text: See our
+          - link "privacy policy" [ref=f4e12] [cursor=pointer]:
+            - /url: https://www.nature.com/info/privacy
+          - text: for more information on the use of your personal data.
+        - paragraph [ref=f4e13]:
+          - button "Manage preferences" [ref=f4e14] [cursor=pointer]
+          - text: for further information and to change your choices.
+      - generic [ref=f4e15]:
+        - button "Accept all cookies" [ref=f4e16] [cursor=pointer]
+        - button "Reject optional cookies" [ref=f4e17] [cursor=pointer]
+  - generic [ref=f4e18]:
+    - link "Skip to main content" [ref=f4e19] [cursor=pointer]:
+      - /url: "#content"
+    - complementary [ref=f4e20]
+    - banner [ref=f4e22]:
+      - generic [ref=f4e25]:
+        - link [ref=f4e27] [cursor=pointer]:
+          - /url: /npjcomplex
+          - img "npj Complexity" [ref=f4e29]
+        - list [ref=f4e30]:
+          - listitem [ref=f4e31]:
+            - link "View all journals" [ref=f4e32] [cursor=pointer]:
+              - /url: https://www.nature.com/siteindex
+          - listitem [ref=f4e34]:
+            - link "Saved research" [ref=f4e35] [cursor=pointer]:
+              - /url: /saved-research
+          - listitem [ref=f4e39]:
+            - button "Search" [ref=f4e40] [cursor=pointer]
+          - listitem [ref=f4e44]:
+            - link "Log in" [ref=f4e45] [cursor=pointer]:
+              - /url: https://idp.nature.com/auth/personal/springernature?redirect_uri=https://www.nature.com/npjcomplex/open-access
+      - generic [ref=f4e49]:
+        - list [ref=f4e50]:
+          - listitem [ref=f4e51]:
+            - button "Explore content" [ref=f4e52] [cursor=pointer]
+          - listitem [ref=f4e56]:
+            - button "About the journal" [ref=f4e57] [cursor=pointer]
+          - listitem [ref=f4e61]:
+            - button "Publish with us" [ref=f4e62] [cursor=pointer]
+        - list [ref=f4e66]:
+          - listitem [ref=f4e67]:
+            - link "Sign up for alerts" [ref=f4e68] [cursor=pointer]:
+              - /url: https://journal-alerts.springernature.com/subscribe?journal_id=44260
+          - listitem [ref=f4e72]:
+            - link "RSS feed" [ref=f4e73] [cursor=pointer]:
+              - /url: https://www.nature.com/npjcomplex.rss
+  - navigation "breadcrumbs" [ref=f4e75]:
+    - list [ref=f4e77]:
+      - listitem [ref=f4e78]:
+        - link "nature" [ref=f4e79] [cursor=pointer]:
+          - /url: /
+      - listitem [ref=f4e82]:
+        - link "npj complexity" [ref=f4e83] [cursor=pointer]:
+          - /url: /npjcomplex
+      - listitem [ref=f4e86]: open access
+  - paragraph [ref=f4e91]:
+    - link "Prof. Laurent Hébert-Dufresne receives the 2026 Erdős-Rényi Prize" [ref=f4e92] [cursor=pointer]:
+      - /url: https://www.santafe.edu/news-center/news/laurent-hebert-dufresne-receives-erdos-renyi-prize
+    - text: . Our Editor-in-Chief, Prof. Laurent Hébert-Dufresne, has been named the 2026 recipient of the Erdős-Rényi Prize, the Network Science Society’s top honor for early-career researchers in network science, recognizing his foundational contributions to the theory of contagion on complex networks.
+  - main [ref=f4e93]:
+    - generic [ref=f4e95]:
+      - heading "Open Access" [level=1] [ref=f4e97]
+      - generic [ref=f4e98]:
+        - paragraph [ref=f4e99]:
+          - emphasis [ref=f4e100]: npj Complexity
+          - text: makes all content freely available to all researchers worldwide, ensuring maximum dissemination of content through the nature.com platform. Content is published continually online to provide timely communication to the community and keep publication times to a minimum.
+        - heading "Publishing open access" [level=2] [ref=f4e101]
+        - paragraph [ref=f4e102]:
+          - emphasis [ref=f4e103]: npj Complexity
+          - text: "is an open access journal: authors pay an article processing charge (APC) for their final published article to be open access online and freely accessible online."
+        - paragraph [ref=f4e104]:
+          - text: Articles are published open access under a
+          - link "CC BY-NC-ND" [ref=f4e105] [cursor=pointer]:
+            - /url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+          - text: (Creative Commons Attribution Non-Commercial No Derivatives 4.0 International licence) or
+          - link "CC BY" [ref=f4e106] [cursor=pointer]:
+            - /url: https://creativecommons.org/licenses/by/4.0/
+          - text: (Creative Commons Attribution 4.0 International licence) licence. •
+          - link "CC BY-NC-ND" [ref=f4e107] [cursor=pointer]:
+            - /url: https://creativecommons.org/licenses/by-nc-nd/4.0/
+          - text: ": The article can be shared for non-commercial purposes as long as the authors are credited. Permission is needed for commercial re-use or sharing adapted and derivative versions. •"
+          - link "CC BY" [ref=f4e108] [cursor=pointer]:
+            - /url: https://creativecommons.org/licenses/by/4.0/
+          - text: ": The article may be shared and adapted for any purpose, including commercially, so long as the authors are credited. To learn more about OA licences visit our"
+          - link "licensing and copyright guide" [ref=f4e109] [cursor=pointer]:
+            - /url: https://www.springernature.com/gp/open-research/policies/journal-policies/licensing-and-copyright
+          - text: .
+        - paragraph [ref=f4e110]: To facilitate self-archiving, Springer Nature deposits open access articles in PubMed Central and Europe PubMed Central on publication. Authors are also permitted to post the final, published PDF of their article on a website, institutional repository or other free public server, immediately on publication.
+        - paragraph [ref=f4e111]:
+          - text: Visit our
+          - link "open research site" [ref=f4e112] [cursor=pointer]:
+            - /url: https://www.springernature.com/gp/open-research
+          - text: for detailed information about publishing open access in
+          - emphasis [ref=f4e113]: npj Complexity
+          - text: ":"
+        - list [ref=f4e114]:
+          - listitem [ref=f4e115]:
+            - link "About Creative Commons licensing" [ref=f4e116] [cursor=pointer]:
+              - /url: https://www.springernature.com/gp/open-research/policies/journal-policies
+          - listitem [ref=f4e117]:
+            - link "APC payment FAQs" [ref=f4e118] [cursor=pointer]:
+              - /url: https://www.springernature.com/gp/open-research/journals-books/journal-pricing-faqs
+          - listitem [ref=f4e119]:
+            - link "Self-archiving and deposition" [ref=f4e120] [cursor=pointer]:
+              - /url: https://www.springernature.com/gp/open-research/policies/journal-policies
+          - listitem [ref=f4e121]:
+            - link "Compliance with funding body requirements" [ref=f4e122] [cursor=pointer]:
+              - /url: https://www.springernature.com/gp/open-research/funding/policy-compliance-faqs
+        - heading "Benefits of open access" [level=2] [ref=f4e123]
+        - paragraph [ref=f4e124]: "Open access publication can lead to:"
+        - list [ref=f4e125]:
+          - listitem [ref=f4e126]: Increased citation and usage
+          - listitem [ref=f4e127]: Greater public engagement
+          - listitem [ref=f4e128]: Faster impact
+          - listitem [ref=f4e129]: Broader collaboration
+          - listitem [ref=f4e130]: Increased interdisciplinary interaction
+        - paragraph [ref=f4e131]:
+          - text: More information about the
+          - link "benefits of open access" [ref=f4e132] [cursor=pointer]:
+            - /url: https://www.springernature.com/gp/open-research/about/benefits
+          - text: is available.
+        - heading "Compliance with funder mandates" [level=2] [ref=f4e133]
+        - paragraph [ref=f4e134]:
+          - text: Springer Nature's services and policies ensure that authors can fully comply with the public access requirements of major funding bodies worldwide. For information and advice about compliance, consult our
+          - link "open access policy information" [ref=f4e135] [cursor=pointer]:
+            - /url: https://www.springernature.com/gp/open-research/policies/journal-policies
+          - text: ", or"
+          - link "contact us" [ref=f4e136] [cursor=pointer]:
+            - /url: https://www.springernature.com/gp/open-research/contact
+          - text: .
+  - contentinfo [ref=f4e137]:
+    - generic [ref=f4e141]:
+      - paragraph [ref=f4e142]: npj Complexity (npj Complex)
+      - paragraph [ref=f4e143]: ISSN 2731-8753 (online)
+    - generic [ref=f4e144]:
+      - generic [ref=f4e145]:
+        - heading "nature.com footer links" [level=2] [ref=f4e146]
+        - generic [ref=f4e148]:
+          - generic [ref=f4e149]:
+            - heading "About Nature Portfolio" [level=3] [ref=f4e150]
+            - list [ref=f4e151]:
+              - listitem [ref=f4e152]:
+                - link "About us" [ref=f4e153] [cursor=pointer]:
+                  - /url: https://www.nature.com/npg_/company_info/index.html
+              - listitem [ref=f4e154]:
+                - link "Press releases" [ref=f4e155] [cursor=pointer]:
+                  - /url: https://www.nature.com/npg_/press_room/press_releases.html
+              - listitem [ref=f4e156]:
+                - link "Press office" [ref=f4e157] [cursor=pointer]:
+                  - /url: https://press.nature.com/
+              - listitem [ref=f4e158]:
+                - link "Contact us" [ref=f4e159] [cursor=pointer]:
+                  - /url: https://support.nature.com/support/home
+          - generic [ref=f4e160]:
+            - heading "Discover content" [level=3] [ref=f4e161]
+            - list [ref=f4e162]:
+              - listitem [ref=f4e163]:
+                - link "Journals A-Z" [ref=f4e164] [cursor=pointer]:
+                  - /url: https://www.nature.com/siteindex
+              - listitem [ref=f4e165]:
+                - link "Articles by subject" [ref=f4e166] [cursor=pointer]:
+                  - /url: https://www.nature.com/subjects
+              - listitem [ref=f4e167]:
+                - link "protocols.io" [ref=f4e168] [cursor=pointer]:
+                  - /url: https://www.protocols.io/
+              - listitem [ref=f4e169]:
+                - link "Nature Index" [ref=f4e170] [cursor=pointer]:
+                  - /url: https://www.natureindex.com/
+          - generic [ref=f4e171]:
+            - heading "Publishing policies" [level=3] [ref=f4e172]
+            - list [ref=f4e173]:
+              - listitem [ref=f4e174]:
+                - link "Nature portfolio policies" [ref=f4e175] [cursor=pointer]:
+                  - /url: https://www.nature.com/authors/editorial_policies
+              - listitem [ref=f4e176]:
+                - link "Open access" [ref=f4e177] [cursor=pointer]:
+                  - /url: https://www.nature.com/nature-research/open-access
+          - generic [ref=f4e178]:
+            - heading "Author & Researcher services" [level=3] [ref=f4e179]
+            - list [ref=f4e180]:
+              - listitem [ref=f4e181]:
+                - link "Reprints & permissions" [ref=f4e182] [cursor=pointer]:
+                  - /url: https://www.nature.com/reprints
+              - listitem [ref=f4e183]:
+                - link "Research data" [ref=f4e184] [cursor=pointer]:
+                  - /url: https://www.springernature.com/gp/authors/research-data
+              - listitem [ref=f4e185]:
+                - link "Language editing" [ref=f4e186] [cursor=pointer]:
+                  - /url: https://authorservices.springernature.com/language-editing/
+              - listitem [ref=f4e187]:
+                - link "Scientific editing" [ref=f4e188] [cursor=pointer]:
+                  - /url: https://authorservices.springernature.com/scientific-editing/
+              - listitem [ref=f4e189]:
+                - link "Nature Masterclasses" [ref=f4e190] [cursor=pointer]:
+                  - /url: https://masterclasses.nature.com/
+              - listitem [ref=f4e191]:
+                - link "Research Solutions" [ref=f4e192] [cursor=pointer]:
+                  - /url: https://solutions.springernature.com/
+          - generic [ref=f4e193]:
+            - heading "Libraries & institutions" [level=3] [ref=f4e194]
+            - list [ref=f4e195]:
+              - listitem [ref=f4e196]:
+                - link "Librarian service & tools" [ref=f4e197] [cursor=pointer]:
+                  - /url: https://www.springernature.com/gp/librarians/tools-services
+              - listitem [ref=f4e198]:
+                - link "Librarian portal" [ref=f4e199] [cursor=pointer]:
+                  - /url: https://www.springernature.com/gp/librarians/manage-your-account/librarianportal
+              - listitem [ref=f4e200]:
+                - link "Open research" [ref=f4e201] [cursor=pointer]:
+                  - /url: https://www.nature.com/openresearch/about-open-access/information-for-institutions
+              - listitem [ref=f4e202]:
+                - link "Recommend to library" [ref=f4e203] [cursor=pointer]:
+                  - /url: https://www.springernature.com/gp/librarians/recommend-to-your-library
+          - generic [ref=f4e204]:
+            - heading "Advertising & partnerships" [level=3] [ref=f4e205]
+            - list [ref=f4e206]:
+              - listitem [ref=f4e207]:
+                - link "Advertising" [ref=f4e208] [cursor=pointer]:
+                  - /url: https://partnerships.nature.com/product/digital-advertising/
+              - listitem [ref=f4e209]:
+                - link "Partnerships & Services" [ref=f4e210] [cursor=pointer]:
+                  - /url: https://partnerships.nature.com/
+              - listitem [ref=f4e211]:
+                - link "Media kits" [ref=f4e212] [cursor=pointer]:
+                  - /url: https://partnerships.nature.com/media-kits/
+              - listitem [ref=f4e213]:
+                - link "Branded content" [ref=f4e214] [cursor=pointer]:
+                  - /url: https://partnerships.nature.com/product/branded-content-native-advertising/
+          - generic [ref=f4e215]:
+            - heading "Professional development" [level=3] [ref=f4e216]
+            - list [ref=f4e217]:
+              - listitem [ref=f4e218]:
+                - link "Nature Awards" [ref=f4e219] [cursor=pointer]:
+                  - /url: https://www.nature.com/immersive/natureawards/index.html
+              - listitem [ref=f4e220]:
+                - link "Nature Careers" [ref=f4e221] [cursor=pointer]:
+                  - /url: https://www.nature.com/naturecareers/
+              - listitem [ref=f4e222]:
+                - link "Nature Conferences" [ref=f4e223] [cursor=pointer]:
+                  - /url: https://conferences.nature.com
+          - generic [ref=f4e225]:
+            - heading "Regional websites" [level=3] [ref=f4e226]
+            - list [ref=f4e227]:
+              - listitem [ref=f4e228]:
+                - link "Nature Africa" [ref=f4e229] [cursor=pointer]:
+                  - /url: https://www.nature.com/natafrica
+              - listitem [ref=f4e230]:
+                - link "Nature China" [ref=f4e231] [cursor=pointer]:
+                  - /url: http://www.naturechina.com
+              - listitem [ref=f4e232]:
+                - link "Nature India" [ref=f4e233] [cursor=pointer]:
+                  - /url: https://www.nature.com/nindia
+              - listitem [ref=f4e234]:
+                - link "Nature Japan" [ref=f4e235] [cursor=pointer]:
+                  - /url: https://www.natureasia.com/ja-jp
+              - listitem [ref=f4e236]:
+                - link "Nature Middle East" [ref=f4e237] [cursor=pointer]:
+                  - /url: https://www.nature.com/nmiddleeast
+        - list [ref=f4e239]:
+          - listitem [ref=f4e240]:
+            - link "Privacy Policy" [ref=f4e241] [cursor=pointer]:
+              - /url: https://www.nature.com/info/privacy
+          - listitem [ref=f4e242]:
+            - link "Use of cookies" [ref=f4e243] [cursor=pointer]:
+              - /url: https://www.nature.com/info/cookies
+          - listitem [ref=f4e244]:
+            - button "Your privacy choices/Manage cookies" [ref=f4e245] [cursor=pointer]
+          - listitem [ref=f4e246]:
+            - link "Legal notice" [ref=f4e247] [cursor=pointer]:
+              - /url: https://www.nature.com/info/legal-notice
+          - listitem [ref=f4e248]:
+            - link "Accessibility statement" [ref=f4e249] [cursor=pointer]:
+              - /url: https://www.nature.com/info/accessibility-statement
+          - listitem [ref=f4e250]:
+            - link "Terms & Conditions" [ref=f4e251] [cursor=pointer]:
+              - /url: https://www.nature.com/info/terms-and-conditions
+          - listitem [ref=f4e252]:
+            - link "Your US state privacy rights" [ref=f4e253] [cursor=pointer]:
+              - /url: https://www.springernature.com/ccpa
+      - generic [ref=f4e254]:
+        - link [ref=f4e255] [cursor=pointer]:
+          - /url: https://www.springernature.com/
+          - img "Springer Nature" [ref=f4e256]
+        - paragraph [ref=f4e257]: © 2026 Springer Nature Limited

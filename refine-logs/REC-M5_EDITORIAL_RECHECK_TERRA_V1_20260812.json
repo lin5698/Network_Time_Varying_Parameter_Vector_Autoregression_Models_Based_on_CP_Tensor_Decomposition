@@ -1,0 +1,221 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-editorial-recheck-terra-v1",
+  "record_id": "REC-M5-editorial-recheck-terra-v1-20260812",
+  "generated_at": "2026-08-12",
+  "phase": "M5-C",
+  "task_mode": "REVIEW_ONLY_RECORD_ONLY",
+  "verdict": "BLOCKED",
+  "result": "BLOCKED_TERRA_NO_COMPLETION_SIGNAL_OR_USABLE_RECEIPT",
+  "model": "gpt-5.6-terra",
+  "reasoning_effort": "max",
+  "review_role": "editorial-traceability",
+  "service_status": {
+    "status": "NO_COMPLETION_SIGNAL_OR_USABLE_RECEIPT",
+    "terminal_state": "SHUTDOWN_AFTER_BOUNDED_NO_PROGRESS",
+    "worker_id": "019ff40b-8395-7c91-9009-254d200e19d8",
+    "target_receipts_present_before_fallback": false,
+    "usable_semantic_adjudication": false,
+    "pass_allowed": false,
+    "service_failure_policy": "SERVICE_FAILURE_TIMEOUT_SHUTDOWN_OR_UNVERIFIABLE_RESULT_IS_NOT_PASS",
+    "http_status": "NOT_EXPOSED_FOR_TERRA_ATTEMPT",
+    "prior_incident_context": "Earlier Luna V1/V2 incident records report 503 Service Unavailable; those statuses are not attributed to this Terra attempt."
+  },
+  "provenance": {
+    "live_root": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition",
+    "inputs": [
+      {
+        "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+        "sha256": "336c3cc4e25276ac6eeb56d597b3fd8486e8a90d02c7d977ace172048138c07d"
+      },
+      {
+        "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+        "sha256": "8d9b1d2a7536daa6a7f7cb3ade5bc0f5b0674d2087d5efeb2fd2a8dcbf3e603a"
+      },
+      {
+        "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+        "sha256": "d622854aba0b0e190ef8653fc87ab95324239be5257ff02d25478e2cdde571cd"
+      },
+      {
+        "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+        "sha256": "83197e8828f894cabf9b21fe108be0c61c751dc8c967bdca684dc1220dfe4913"
+      },
+      {
+        "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V8_20260812.md",
+        "sha256": "8c6620d60a5fcc31cd22d5dbb0abfb6c8104cdc57d1dadba4b0c1bb7913f435c"
+      },
+      {
+        "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V8_20260812.json",
+        "sha256": "ff4182a3e5e67a23c095e8aac69c4a92ee9abcf217d93cc431572bb9f292d966"
+      },
+      {
+        "path": "refine-logs/REC-M5_SEMANTIC_RECHECK_SERVICE_INCIDENT_V1_20260812.json",
+        "sha256": "d264581fd93daf7dfbd7835886ced8fa4d999e383eaf2e652a7ce4b129024dde"
+      },
+      {
+        "path": "refine-logs/REC-M5_SEMANTIC_RECHECK_SERVICE_INCIDENT_V2_20260812.json",
+        "sha256": "2c91c8ecf9c9bd6b409ede6d9173e3b760a90a8e7330b46e798bf6d4acd8e76a"
+      }
+    ],
+    "v8_interpretation": "DETERMINISTIC_ONLY_SEMANTIC_GATE_BLOCKED",
+    "incident_interpretation": "HISTORICAL_SERVICE_CONTEXT_ONLY_NOT_SEMANTIC_EVIDENCE"
+  },
+  "checks": {
+    "top_level_readiness": {
+      "status": "BLOCKED",
+      "evidence": "Current patch is ready_for_independent_review, but the required Terra semantic result was not delivered."
+    },
+    "paragraph_aware_mapping": {
+      "status": "LOCAL_PRECHECK_PASS",
+      "unit_count": 26,
+      "unique_unit_count": 26,
+      "edit_groups": "G01-G10",
+      "anchor_verification": "Declared manifest verification PASS; all groups are paragraph-aware or explicitly review-only."
+    },
+    "candidate_application_state": {
+      "status": "LOCAL_PRECHECK_PASS",
+      "disposition": "All G01-G10 are CANDIDATE_NOT_APPLIED",
+      "application_gate": "No text may be applied until independent review passes and separate authorization is supplied."
+    },
+    "g06_review_only_label": {
+      "status": "LOCAL_PRECHECK_PASS",
+      "label": "AUTHOR_CONFIRMED_REVIEW_ONLY",
+      "boundary": "Fixed-60 ALS semantics do not establish convergence or global optimality."
+    },
+    "g07_review_only_label": {
+      "status": "LOCAL_PRECHECK_PASS",
+      "label": "AUTHOR_CONFIRMED_REVIEW_ONLY",
+      "boundary": "Topology bindings are review-only and do not support matched ranking or general topology robustness."
+    },
+    "topology_disclosure": {
+      "status": "LOCAL_PRECHECK_PASS",
+      "scenario_count": 4,
+      "scenarios": [
+        {
+          "id": "high_topology_vol",
+          "amplitude": "topologyVol=0.18, sparsity=0.15, wNoise=0, wDrop=0",
+          "affected_object": "truth.W evolution",
+          "role": "generation",
+          "coverage": "local_network=3; each other released method=20"
+        },
+        {
+          "id": "sparse_misspecified",
+          "amplitude": "topologyVol=0.08, sparsity=0.55, wNoise=0.18, wDrop=0",
+          "affected_object": "truth.W and WEst",
+          "role": "generation and observation",
+          "coverage": "each released method=3"
+        },
+        {
+          "id": "edge_missing",
+          "amplitude": "topologyVol=0.06, sparsity=0.15, wNoise=0, wDrop=0.30",
+          "affected_object": "observed nonzero off-diagonal edges in WEst",
+          "role": "observation, with generation volatility 0.06",
+          "coverage": "local_network=3; each other released method=20"
+        },
+        {
+          "id": "noisy_network",
+          "amplitude": "topologyVol=0.06, sparsity=0.15, wNoise=0.35, wDrop=0",
+          "affected_object": "observed weights in WEst",
+          "role": "observation, with generation volatility 0.06",
+          "coverage": "local_network=3; each other released method=20"
+        }
+      ],
+      "seed_policy": "Deterministic scenario/replication seed rooted at 20260328",
+      "endpoint_policy": "Per-method declared endpoints",
+      "ranking_boundary": "Bounded diagnostics only; no matched ranking or general topology-robustness claim."
+    },
+    "source_unavailable_boundary": {
+      "status": "LOCAL_PRECHECK_PASS",
+      "unavailable": [
+        "Application/bootstrap 100/80 iteration canonical Markdown source",
+        "Spectral-radius canonical wording source",
+        "50% top-exposure attenuation canonical source"
+      ],
+      "inference_policy": "Do not infer missing canonical ownership from another source or scenario."
+    },
+    "generated_tex_prohibition": {
+      "status": "LOCAL_PRECHECK_PASS",
+      "generated_outputs": ["main.tex", "supplementary.tex"],
+      "generator": "scripts/build_natcs_manuscript.mjs",
+      "policy": "Generated TeX is neither a canonical ownership source nor an edit target."
+    },
+    "placeholder_and_author_input_boundary": {
+      "status": "LOCAL_PRECHECK_PASS",
+      "author_input_needed": [],
+      "result_binding": {
+        "formula": "100 * (local_network_metric_median - cp_network_metric_median) / local_network_metric_median",
+        "statistic": "ratio of across-replication medians",
+        "denominator": "local_network metric median for the same scenario and endpoint",
+        "operator_field": "coef_error_median",
+        "response_field": "girf_error_median",
+        "comparator": "local_network / Local rolling",
+        "candidate": "cp_network / CP-network",
+        "primary_replications": 20
+      },
+      "fail_closed": true,
+      "applied": false
+    },
+    "authorization_boundary": {
+      "status": "LOCAL_PRECHECK_PASS",
+      "manuscript_source_mutation": "NOT_AUTHORIZED",
+      "formal_register_mutation": "NOT_AUTHORIZED",
+      "scientific_payload_mutation": "PROHIBITED",
+      "scientific_execution_authorization_mutation": "PROHIBITED",
+      "authorization_file_mutation": "PROHIBITED",
+      "generated_tex_mutation": "PROHIBITED",
+      "claim_activation": "NOT_AUTHORIZED",
+      "git_operations": "NONE"
+    },
+    "terra_semantic_adjudication": {
+      "status": "BLOCKED",
+      "evidence": "No completion signal, final payload, or Terra receipt was materialized before worker shutdown.",
+      "semantic_pass": false
+    }
+  },
+  "findings": [
+    {
+      "id": "TERRA-E1",
+      "severity": "CRITICAL",
+      "status": "BLOCKED",
+      "summary": "Required gpt-5.6-terra/max editorial semantic result was not delivered.",
+      "effect": "M5-C editorial-traceability cannot pass on local prechecks alone."
+    },
+    {
+      "id": "TERRA-E2",
+      "severity": "HIGH",
+      "status": "OPEN_RISK",
+      "summary": "V8 deterministic integrity and complete author inputs do not constitute semantic acceptance.",
+      "effect": "The patch must remain unapplied pending a verifiable independent semantic PASS and separate authorizations."
+    }
+  ],
+  "residual_risk": [
+    "No independent Terra semantic adjudication is available for current-version editorial traceability.",
+    "No manuscript application, formal-register mutation, scientific execution, or claim activation is authorized.",
+    "Separate M5-D and M5-F authorizations remain required after semantic gates pass."
+  ],
+  "authorization_boundary": {
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_payload_mutation": "PROHIBITED",
+    "scientific_execution_authorization_mutation": "PROHIBITED",
+    "authorization_file_mutation": "PROHIBITED",
+    "generated_tex_mutation": "PROHIBITED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  },
+  "operation_policy": {
+    "record_only": true,
+    "manuscript_modified": false,
+    "formal_register_modified": false,
+    "scientific_payload_modified": false,
+    "authorization_modified": false,
+    "generated_tex_modified": false,
+    "git_operations": "NONE"
+  },
+  "changed_paths": [
+    "refine-logs/REC-M5_EDITORIAL_RECHECK_TERRA_V1_20260812.md",
+    "refine-logs/REC-M5_EDITORIAL_RECHECK_TERRA_V1_20260812.json"
+  ],
+  "changed_paths_only": true,
+  "next_gate_state": "M5_C_EDITORIAL_TRACEABILITY_NOT_PASSED",
+  "promotion_effect": "This receipt grants no authorization to apply manuscript candidates or mutate the formal register."
+}

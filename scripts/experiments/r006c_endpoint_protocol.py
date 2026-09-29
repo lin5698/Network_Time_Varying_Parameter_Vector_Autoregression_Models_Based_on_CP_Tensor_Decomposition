@@ -92,11 +92,32 @@ class EndpointPanel:
     layer: str
 
 
-def spawn_named_streams(seed: int) -> dict[str, np.random.Generator]:
+@dataclass(frozen=True)
+class StreamDeclaration:
+    name: str
+    entropy: int
+    spawn_key: tuple[int, ...]
+    used: bool
+
+
+@dataclass(frozen=True)
+class EstimationConstructionInputs:
+    predictors: np.ndarray
+    topology: np.ndarray
+    W_ref: np.ndarray
+    W_alt_main: np.ndarray
+    stream_declarations: tuple[StreamDeclaration, ...]
+
+
+def spawn_named_seed_sequences(seed: int) -> dict[str, np.random.SeedSequence]:
     children = np.random.SeedSequence(seed).spawn(len(STREAM_NAMES))
+    return dict(zip(STREAM_NAMES, children))
+
+
+def spawn_named_streams(seed: int) -> dict[str, np.random.Generator]:
+    children = spawn_named_seed_sequences(seed)
     return {
-        name: np.random.default_rng(child)
-        for name, child in zip(STREAM_NAMES, children)
+        name: np.random.default_rng(child) for name, child in children.items()
     }
 
 
@@ -141,7 +162,7 @@ def row_normalize(matrix: np.ndarray) -> np.ndarray:
     return values / np.maximum(values.sum(axis=1, keepdims=True), 1e-12)
 
 
-def generate_endpoint_panel(
+def _generate_endpoint_data(
     *,
     config: R006CConfig,
     layer: str,
@@ -149,7 +170,8 @@ def generate_endpoint_panel(
     approximation_target: float,
     separation_strength: float,
     seed: int,
-) -> EndpointPanel:
+    construction_only: bool,
+) -> EndpointPanel | EstimationConstructionInputs:
     if layer not in LAYERS:
         raise ValueError(f"layer must be one of {LAYERS}")
     if config.head_rank != 3 or not config.head_rank < config.true_rank <= config.n:
@@ -180,7 +202,11 @@ def generate_endpoint_panel(
             _calibrate_components,
         )
 
-    streams = spawn_named_streams(seed)
+    child_sequences = spawn_named_seed_sequences(seed)
+    streams = {
+        name: np.random.default_rng(child)
+        for name, child in child_sequences.items()
+    }
     structure_rng = streams["operator_structure"]
     spatial, _ = np.linalg.qr(
         structure_rng.normal(size=(config.n, config.true_rank)), mode="reduced"
@@ -225,25 +251,44 @@ def generate_endpoint_panel(
         raw_predictors = excitation_rng.normal(size=(config.t_len, config.n))
         covariance_root = np.diag(np.linspace(1.0, 1.4, config.n))
         predictors = raw_predictors @ covariance_root
-        outcomes = np.einsum(
-            "tij,tj->ti", observed, predictors, optimize=True
-        ) + innovations
+        if not construction_only:
+            outcomes = np.einsum(
+                "tij,tj->ti", observed, predictors, optimize=True
+            ) + innovations
     else:
         states = np.empty((config.t_len + 1, config.n), dtype=float)
         states[0] = excitation_rng.normal(scale=config.sigma, size=config.n)
         for date in range(config.t_len):
             states[date + 1] = observed[date] @ states[date] + innovations[date]
         predictors = states[:-1]
-        outcomes = states[1:]
 
     w_holdout = _random_topology(streams["main_holdout_topology"], config.n)
     w_alt_main = row_normalize(0.75 * w_ref + 0.25 * w_holdout)
+    if construction_only:
+        declarations = tuple(
+            StreamDeclaration(
+                name=name,
+                entropy=int(child.entropy),
+                spawn_key=tuple(int(value) for value in child.spawn_key),
+                used=name != "stress_topology",
+            )
+            for name, child in child_sequences.items()
+        )
+        return EstimationConstructionInputs(
+            predictors=predictors,
+            topology=topology,
+            W_ref=w_ref,
+            W_alt_main=w_alt_main,
+            stream_declarations=declarations,
+        )
+
     w_alt_stress = _random_topology(streams["stress_topology"], config.n)
+    outcomes = (
+        np.einsum("tij,tj->ti", observed, predictors, optimize=True) + innovations
+        if layer == "matched" else states[1:]
+    )
     estimation = EstimationInputs(
-        predictors=predictors,
-        outcomes=outcomes,
-        topology=topology,
-        W_ref=w_ref,
+        predictors=predictors, outcomes=outcomes, topology=topology, W_ref=w_ref,
     )
     return EndpointPanel(
         estimation=estimation,
@@ -259,3 +304,41 @@ def generate_endpoint_panel(
         a3_ratio=float(a3_ratio),
         layer=layer,
     )
+
+
+def generate_estimation_construction_inputs(
+    *, config: R006CConfig, layer: str, target_rho: float,
+    approximation_target: float, separation_strength: float, seed: int,
+) -> EstimationConstructionInputs:
+    """Generate estimation/support inputs without materializing a truth panel."""
+    result = _generate_endpoint_data(
+        config=config,
+        layer=layer,
+        target_rho=target_rho,
+        approximation_target=approximation_target,
+        separation_strength=separation_strength,
+        seed=seed,
+        construction_only=True,
+    )
+    if not isinstance(result, EstimationConstructionInputs):
+        raise RuntimeError("internal construction result mismatch")
+    return result
+
+
+def generate_endpoint_panel(
+    *, config: R006CConfig, layer: str, target_rho: float,
+    approximation_target: float, separation_strength: float, seed: int,
+) -> EndpointPanel:
+    """Preserved R006c public generator with bitwise-identical behavior."""
+    result = _generate_endpoint_data(
+        config=config,
+        layer=layer,
+        target_rho=target_rho,
+        approximation_target=approximation_target,
+        separation_strength=separation_strength,
+        seed=seed,
+        construction_only=False,
+    )
+    if not isinstance(result, EndpointPanel):
+        raise RuntimeError("internal endpoint panel mismatch")
+    return result

@@ -1,0 +1,63 @@
+{
+  "claim_fidelity_checks": [
+    {
+      "details": "BLOCKED",
+      "name": "claim_activation_blocked",
+      "status": "PASS"
+    },
+    {
+      "details": "False",
+      "name": "no_manuscript_or_register_update",
+      "status": "PASS"
+    },
+    {
+      "details": "simulation_only; frozen E4-r3 synthetic-only operating cells",
+      "name": "simulation_only_ceiling_retained",
+      "status": "PASS"
+    },
+    {
+      "details": "[\"RCEP\", \"NYC\"]",
+      "name": "excluded_routes_retained",
+      "status": "PASS"
+    },
+    {
+      "details": "{\"independent_cell_ci\": \"DERIVED_DESCRIPTIVE_ONLY\", \"independent_panel_log_ratio\": \"DERIVED_ARTIFACT_ONLY\"}",
+      "name": "derived_metric_is_artifact_only",
+      "status": "PASS"
+    },
+    {
+      "details": "{\"derived_frozen_result_unchanged\": true, \"sufficiency_frozen_result_mutated\": false}",
+      "name": "frozen_result_unchanged",
+      "status": "PASS"
+    },
+    {
+      "details": "{\"derived_values_withheld\": false, \"pair_audit_count\": 32}",
+      "name": "derived_values_present_but_descriptive",
+      "status": "PASS"
+    }
+  ],
+  "claim_fidelity_status": "PASS",
+  "content_address": "c96e620006d55b1459331c3ead28069920962ccf2df1a682030a37f47e97e635",
+  "duplicate_root": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/ncs_new_analysis_v2/e4_r008_duplicate_final/cal-e01-75-c96e620006d55b14",
+  "duplicate_root_sha256": "6c3d32d806aaaaf4fdc9ceb72857d9de533ce5856c7ce455d74080f7e8de54ee",
+  "duplicate_status": "PASS",
+  "figure_values_written_by_gate": false,
+  "file_count": 7,
+  "file_sha256": {
+    "artifact-manifest.json": "9ad1cbb37b0dde774157f37357945e114a1a1b513dc18286cf5915df5c895280",
+    "claim-audit.json": "e826227c0d33437b51d0a3e30a6a2dc1b080e22e426de9a9d98c8b7e19d567a9",
+    "comparator-audit.json": "e4ae81b08ae31d7c050f26839a2f771053693575a665f221a97ddcaa441bb875",
+    "derived-panel-log-error-ratios.json": "34f9962dbabf43e5b80f8ee6d88faeee9c6c7b22f0324cf9b9ac4c447ec3ba33",
+    "distributions.json": "ba2aa3c1c5396c4744a7bbf452c3e59fd74f1c3d3565682998e5431666449ec9",
+    "input-manifest.json": "4e9fb1443f734f435d3c06e4eec972d690f4b1f9ae643c86d05e6f033b80538e",
+    "sufficiency-audit.json": "96735e0f3625626a65109ba1e267069247a2d4252eab76d41f94a3bf0a6d025a"
+  },
+  "frozen_quarantine_modified_by_gate": false,
+  "gate_id": "E4-R008",
+  "manuscript_values_written_by_gate": false,
+  "primary_root": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/ncs_new_analysis_v2/e4_r008_primary_final/cal-e01-75-c96e620006d55b14",
+  "primary_root_sha256": "6c3d32d806aaaaf4fdc9ceb72857d9de533ce5856c7ce455d74080f7e8de54ee",
+  "register_key": "CAL-E01:75",
+  "schema_version": "ncs-e4-r008-duplicate-claim-fidelity-v1",
+  "status": "PASS"
+}

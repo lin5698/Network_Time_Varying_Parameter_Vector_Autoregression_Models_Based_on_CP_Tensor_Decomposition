@@ -1,0 +1,306 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m2b2-preflight-receipt-v1",
+  "receipt_id": "ncs-post-acceptance-recovery-m2b2-preflight-20260810-235227-cst",
+  "generated_at": "2026-08-10T23:52:27+08:00",
+  "result": "REC-M2B2_PASS",
+  "final_status": "REC-M2B2 PASS / REC-M2 BLOCKED_PENDING_INDEPENDENT_PREFLIGHT_ACCEPTANCE",
+  "m2_status": "BLOCKED_PENDING_INDEPENDENT_PREFLIGHT_ACCEPTANCE",
+  "independent_acceptance_required": true,
+  "source_bindings": {
+    "m2b2_execution_authorization": {
+      "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json",
+      "raw_sha256": "c012f7d1a40168b264027c55a3760424c7686cd0e7941cf6765d99c2629fd63f",
+      "bytes": 7074,
+      "schema_version": "ncs-post-acceptance-recovery-m2b2-execution-authorization-v1",
+      "status": "PLANNED_PENDING_INDEPENDENT_PREFLIGHT_ACCEPTANCE"
+    },
+    "source_authorization_v2": {
+      "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+      "raw_sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+      "m2_scientific_analysis_status": "BLOCKED_IN_THIS_TASK"
+    },
+    "m2a_repair_receipt": {
+      "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2A_REPAIR_RECEIPT_V1_20260810_222232.json",
+      "raw_sha256": "b98f8a4dc6dd36ee28426182d9320d0696880867544a0cc05dd6c1fb5e943395",
+      "result": "REC-M2A_PASS"
+    },
+    "decision_register": {
+      "path": "output/ncs_review_corpus/v1_author_decision_register.json",
+      "raw_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "bytes": 110685,
+      "canonicalization": "recursive object-key sort, array-order preservation, compact UTF-8 JSON",
+      "canonical_item_sha256": {
+        "V1-026": "eb30214e8c353b27d446c1c77242bd6b2dd246841150205c8f339ddafc8f7e20",
+        "V1-033": "79937fd8b053e2bc7fd9abb864938b35a72134ecf93f5f621d7c8088fd383630",
+        "V1-035": "c9b9c201f94a7fd37b2049bfc44220258947f22483e769b39c19253a37e55ee8",
+        "V1-045": "25cd8fbf2e623cfd2fbcdc163f50959f1beb8e8cb1b59322da78d191e802cf82"
+      }
+    },
+    "frozen_e4_r3_inputs": {
+      "results": {
+        "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json",
+        "raw_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+        "bytes": 19595670
+      },
+      "execution_manifest": {
+        "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+        "raw_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+        "bytes": 408
+      },
+      "execution_complete": {
+        "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+        "raw_sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+        "bytes": 301
+      },
+      "terminal_inventory": {
+        "path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+        "raw_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+        "bytes": 2281
+      },
+      "candidate": {
+        "path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json",
+        "raw_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+        "bytes": 9757
+      }
+    },
+    "workspace_authorization_chain": {
+      "path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+      "raw_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+      "bytes": 1822
+    }
+  },
+  "implementation": {
+    "sha256_algorithm": "sha256(raw bytes)",
+    "allowed_file_count": 8,
+    "files": {
+      "scripts/experiments/analyze_cal_e01_75.py": {
+        "bytes": 97069,
+        "sha256": "0d7371bb0e7803f06567d9d2e9d2e526f2760af72d13ba8b67fdff7ae6109a5f"
+      },
+      "scripts/experiments/test_analyze_cal_e01_75.py": {
+        "bytes": 37737,
+        "sha256": "10f4f61d371c9845871376a8d09aa29ab95beb987d03a7f29c643f34414e0930"
+      },
+      "scripts/experiments/analyze_cal_e02_128.py": {
+        "bytes": 61278,
+        "sha256": "ba96b03ec7d25d5ddca19718c175fefc424447c14c172d1abefe5f45760793dd"
+      },
+      "scripts/experiments/test_analyze_cal_e02_128.py": {
+        "bytes": 11038,
+        "sha256": "6e9209628781d9d3d4d88a93297c97037e2d3b8ee124b81744ca8386264e9aad"
+      },
+      "scripts/experiments/analyze_cal_e02_135.py": {
+        "bytes": 57707,
+        "sha256": "e9b5b6afbca30cefcae93bbc468af2b174ba205aa37140eb2f5b0d97ec234fd8"
+      },
+      "scripts/experiments/test_analyze_cal_e02_135.py": {
+        "bytes": 16451,
+        "sha256": "fe330b50c2ef12d409b15801971d4ab379e37c529e60f1f587efdc3086ebaa36"
+      },
+      "scripts/experiments/analyze_cal_e03_164.py": {
+        "bytes": 71007,
+        "sha256": "45665b6085428428f6510b73b9add255e8c96bb4187748ce3f1e7d3feed3affd"
+      },
+      "tests/test_analyze_cal_e03_164.py": {
+        "bytes": 20642,
+        "sha256": "963c61c188d9afd9c27f260bd6d9e36ac68c6ea13ca017c75be749e9d45793a3"
+      }
+    }
+  },
+  "output_plan": {
+    "output_parent": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01",
+    "execution_id": "rec-m2b2-20260810-235227-cst-01",
+    "planned_parent_exists_before": false,
+    "planned_parent_exists_after": false,
+    "output_parent_created": false,
+    "fresh_before_execution": true,
+    "no_overwrite": true,
+    "allowed_run_ids": [
+      "primary",
+      "duplicate"
+    ],
+    "run_layout": {
+      "primary": "primary/<one-content-addressed-root-per-authorized-analyzer>",
+      "duplicate": "duplicate/<one-content-addressed-root-per-authorized-analyzer>"
+    },
+    "authorized_artifact_prefixes": [
+      "cal-e01-75-",
+      "cal-e02-128-",
+      "cal-e02-135-",
+      "cal-e03-164-"
+    ],
+    "root_hex_lengths": {
+      "cal-e01-75-": [16],
+      "cal-e02-128-": [64],
+      "cal-e02-135-": [16],
+      "cal-e03-164-": [64]
+    },
+    "prohibited_path_tokens": [
+      "e4_r008",
+      "E4_R008"
+    ],
+    "continuation_policy": {
+      "primary": {
+        "first_call": "declared_parent_absent",
+        "later_calls": "only_primary_directory_with_prior_unique_roots",
+        "duplicate_run_forbidden": true
+      },
+      "duplicate": {
+        "first_call": "completed_primary_directory_with_all_four_roots",
+        "later_calls": "only_primary_and_duplicate_directories",
+        "root_reuse_forbidden": true
+      }
+    }
+  },
+  "protected_tree_recheck": {
+    "listing_method": "SHA-256 of UTF-8 sorted relative-path,bytes,raw-SHA-256 lines; symlinks recorded separately",
+    "manuscript_src/natcs": {
+      "file_count": 72,
+      "symlink_count": 0,
+      "before_listing_sha256": "21a1319b6f98e31804b7fd1766c66124553a2ad2904bdc2dcb655097e591a364",
+      "after_listing_sha256": "21a1319b6f98e31804b7fd1766c66124553a2ad2904bdc2dcb655097e591a364",
+      "unchanged": true
+    },
+    "e4_r3_candidate_tree": {
+      "path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3",
+      "file_count": 11,
+      "symlink_count": 0,
+      "before_listing_sha256": "6859c367141f33e589fb2d536c96fbe763f40e406ca65bfa556d89b7536e00ec",
+      "after_listing_sha256": "6859c367141f33e589fb2d536c96fbe763f40e406ca65bfa556d89b7536e00ec",
+      "unchanged": true
+    },
+    "e4_r3_quarantine_tree": {
+      "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3",
+      "file_count": 3,
+      "symlink_count": 0,
+      "before_listing_sha256": "5398ec9a698ba0a7b878b0a8d25a7d8e9184ea6ff98af033f2b33f7165b1a83f",
+      "after_listing_sha256": "5398ec9a698ba0a7b878b0a8d25a7d8e9184ea6ff98af033f2b33f7165b1a83f",
+      "unchanged": true
+    },
+    "formal_register_sha256": {
+      "before": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "after": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "unchanged": true
+    },
+    "workspace_authorization_sha256": {
+      "before": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+      "after": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+      "unchanged": true
+    },
+    "terminal_inventory_sha256": {
+      "before": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+      "after": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+      "unchanged": true
+    }
+  },
+  "historic_m2b1_preservation": {
+    "status": "REC-M2B PASS / REC-M2 BLOCKED_PENDING_INDEPENDENT_PREFLIGHT_ACCEPTANCE",
+    "records_unchanged": true,
+    "authorization": {
+      "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2_EXECUTION_AUTHORIZATION_V1_20260810_223606.json",
+      "bytes": 5715,
+      "raw_sha256": "44677a44f01876bba8c96d924a69cf39a37f4642e00a004c1b03fb2dcbf4034c"
+    },
+    "preflight_receipt": {
+      "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_PREFLIGHT_RECEIPT_V1_20260810_231758.json",
+      "bytes": 10995,
+      "raw_sha256": "5918f4eac9e6b01a012bcf511afc50a357e07e005b99dea242b36eff816359df"
+    },
+    "tracker": {
+      "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_TRACKER_V1_20260810_231758.md",
+      "bytes": 2947,
+      "raw_sha256": "c35bf484768de70b0d64d2858f1328600d9cc5cc4efc7bb704729432336541eb"
+    }
+  },
+  "verification": {
+    "red_green": {
+      "red_observed": true,
+      "red_observation": "New shared continuation tests failed at the old M2B1 filename/schema and single-parent gate before repair.",
+      "green_observed": true,
+      "green_command": "python3 -m unittest scripts.experiments.test_analyze_cal_e01_75.AnalyzeCalE0175Tests.test_shared_multi_artifact_primary_and_duplicate_sequence_has_no_validator_writes scripts.experiments.test_analyze_cal_e01_75.AnalyzeCalE0175Tests.test_shared_layout_rejects_invalid_continuations_and_path_attacks scripts.experiments.test_analyze_cal_e01_75.AnalyzeCalE0175Tests.test_execution_authorization_is_direct_and_rejects_binding_or_layout_drift",
+      "green_tests": 3,
+      "green_exit_code": 0
+    },
+    "py_compile": {
+      "command": "python3 -m py_compile scripts/experiments/analyze_cal_e01_75.py scripts/experiments/test_analyze_cal_e01_75.py scripts/experiments/analyze_cal_e02_128.py scripts/experiments/test_analyze_cal_e02_128.py scripts/experiments/analyze_cal_e02_135.py scripts/experiments/test_analyze_cal_e02_135.py scripts/experiments/analyze_cal_e03_164.py tests/test_analyze_cal_e03_164.py",
+      "file_count": 8,
+      "exit_code": 0
+    },
+    "fresh_test_suites": [
+      {
+        "command": "python3 -m unittest scripts.experiments.test_analyze_cal_e01_75",
+        "tests": 16,
+        "exit_code": 0
+      },
+      {
+        "command": "python3 -m unittest scripts.experiments.test_analyze_cal_e02_128",
+        "tests": 7,
+        "exit_code": 0
+      },
+      {
+        "command": "python3 -m unittest scripts.experiments.test_analyze_cal_e02_135",
+        "tests": 6,
+        "exit_code": 0
+      },
+      {
+        "command": "python3 -m unittest tests.test_analyze_cal_e03_164",
+        "tests": 6,
+        "exit_code": 0
+      }
+    ],
+    "fresh_total_tests": 35,
+    "actual_authorization_direct_validation": {
+      "analyzers": [
+        "CAL-E01:75",
+        "CAL-E02:128",
+        "CAL-E02:135",
+        "CAL-E03:164"
+      ],
+      "run_id": "primary",
+      "validations": 4,
+      "exit_code": 0,
+      "permanent_write_performed": false,
+      "planned_parent_exists_after": false
+    },
+    "rejection_cases": [
+      "malformed or unexpected siblings",
+      "duplicate before primary",
+      "duplicate root reuse",
+      "third run",
+      "symlink or non-directory children",
+      "wrong prefix/root",
+      "path traversal",
+      "source/test hash or frozen-input drift",
+      "forbidden scope activation",
+      "E4-r008 path token",
+      "legacy or wrong authorization schema/status"
+    ]
+  },
+  "scope": {
+    "real_analyzer_cli_invoked": false,
+    "scientific_analysis_executed": false,
+    "scientific_outputs_created": false,
+    "planned_output_parent_created": false,
+    "register_decision_mutated": false,
+    "manuscript_mutated": false,
+    "e4_r3_mutated": false,
+    "claim_activation": "NOT_AUTHORIZED",
+    "promotion": "NOT_AUTHORIZED",
+    "rcep_nyc": "NOT_AUTHORIZED",
+    "s1_s4": "NOT_AUTHORIZED",
+    "n100_n200": "NOT_AUTHORIZED",
+    "existing_e4_r008_outputs_used": false,
+    "scientific_claims_made": false
+  },
+  "limitations": [
+    "This is an authorization/validator repair and preflight receipt only.",
+    "Independent preflight acceptance remains required before any real analyzer CLI or scientific M2 execution.",
+    "No primary or duplicate output root was created, so this receipt is not execution evidence."
+  ],
+  "provenance": {
+    "parent_task": "019fbdde-2c02-7662-b9d2-9dc2b70e1253",
+    "delegated_model": "gpt-5.6-luna",
+    "delegated_reasoning_effort": "max",
+    "m2_execution_proof": "NOT_ESTABLISHED"
+  }
+}

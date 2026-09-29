@@ -1,0 +1,116 @@
+{
+  "analysis_version": "cal-e01-75-independent-audit-v1",
+  "expected_frozen_sha256": {
+    "candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+    "manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "register": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+    "workspace_authorization": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+  },
+  "frozen_result_mutated": false,
+  "hash_algorithm": "sha256",
+  "hash_binding": {
+    "candidate": {
+      "expected_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+      "matches": true,
+      "observed_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6"
+    },
+    "execution_complete": {
+      "expected_sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+      "matches": true,
+      "observed_sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b"
+    },
+    "manifest": {
+      "expected_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+      "matches": true,
+      "observed_sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d"
+    },
+    "register": {
+      "expected_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "matches": true,
+      "observed_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2"
+    },
+    "results": {
+      "expected_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+      "matches": true,
+      "observed_sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032"
+    },
+    "terminal_inventory": {
+      "expected_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+      "matches": true,
+      "observed_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+    },
+    "workspace_authorization": {
+      "expected_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+      "matches": true,
+      "observed_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+    }
+  },
+  "inputs": {
+    "authorization": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+      "sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59"
+    },
+    "candidate": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json",
+      "sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6"
+    },
+    "comparator_registry": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/comparator_registry.json",
+      "sha256": "4eb3905ecad9115abaf89e8e5cae65c19dde10e83e0a466e5070a384cbad758b"
+    },
+    "e4_audit": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md",
+      "sha256": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5"
+    },
+    "execution_complete": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+      "sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b"
+    },
+    "failure_metric_schema": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/failure_metric_schema.json",
+      "sha256": "8557beef5369783bf0dba773c44aac11ef9a39a029c283ede72561f6bce8e2c2"
+    },
+    "manifest": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+      "sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d"
+    },
+    "plan": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/NCS_FOUR_ANALYSIS_PLAN_20260804_010454.md",
+      "sha256": "29618783ccb17773e88d737bebfed466d5a0bb57fffc1f55261c0e5a6fdf0292"
+    },
+    "register": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/output/ncs_review_corpus/v1_author_decision_register.json",
+      "sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2"
+    },
+    "results": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json",
+      "sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032"
+    },
+    "terminal_inventory": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+      "sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+    },
+    "workspace_authorization": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+      "sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+    }
+  },
+  "register_key": "CAL-E01:75",
+  "sha256_by_role": {
+    "authorization": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+    "candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "comparator_registry": "4eb3905ecad9115abaf89e8e5cae65c19dde10e83e0a466e5070a384cbad758b",
+    "e4_audit": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5",
+    "execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+    "failure_metric_schema": "8557beef5369783bf0dba773c44aac11ef9a39a029c283ede72561f6bce8e2c2",
+    "manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "plan": "29618783ccb17773e88d737bebfed466d5a0bb57fffc1f55261c0e5a6fdf0292",
+    "register": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+    "workspace_authorization": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+  }
+}

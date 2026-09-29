@@ -1,0 +1,236 @@
+{
+  "schema_version": "1.0",
+  "record_id": "REC-M5-scientific-recheck-v4-20260812",
+  "generated_at": "2026-08-12T00:49:03Z",
+  "phase": "M5-C current all-author-input-bound scientific-boundary recheck",
+  "task_mode": "review_only",
+  "result": "BLOCKED",
+  "release_readiness": {
+    "status": "FAIL_NOT_READY",
+    "reason": "Required Luna/max semantic adjudication did not produce a usable output, and governance V7 does not hash-bind three current input artifacts."
+  },
+  "decision": "Not PASS. This receipt records an interrupted requested semantic review and limited evidence preflight; it does not adjudicate the scientific claims.",
+  "required_review": {
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "max",
+    "roles": [
+      "scientific-boundary",
+      "governance-manifest",
+      "editorial-traceability"
+    ]
+  },
+  "service_execution": {
+    "agent_lineage": "019ff359-b4a3-7b70-9af6-9f4f6bb56dfc",
+    "attempt_count": 2,
+    "attempts": [
+      {
+        "attempt": 1,
+        "mode": "initial",
+        "outcome": "completed_without_final_response_or_authorized_output_files"
+      },
+      {
+        "attempt": 2,
+        "mode": "same_lineage_retry",
+        "outcome": "completed_without_final_response_or_authorized_output_files"
+      }
+    ],
+    "service_status": "INTERRUPTED_NO_USABLE_REVIEW_OUTPUT",
+    "usable_luna_semantic_adjudication": false,
+    "pass_policy": "SERVICE_INTERRUPTED_OR_NO_OUTPUT_IS_NOT_PASS",
+    "record_producer": "parent_orchestration_fallback_evidence_preflight_only"
+  },
+  "inputs": {
+    "review_patch_markdown": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "observed_sha256": "336c3cc4e25276ac6eeb56d597b3fd8486e8a90d02c7d977ace172048138c07d"
+    },
+    "review_patch_manifest": {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "observed_sha256": "8d9b1d2a7536daa6a7f7cb3ade5bc0f5b0674d2087d5efeb2fd2a8dcbf3e603a"
+    },
+    "author_input_markdown": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "observed_sha256": "d622854aba0b0e190ef8653fc87ab95324239be5257ff02d25478e2cdde571cd"
+    },
+    "author_input_manifest": {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "observed_sha256": "83197e8828f894cabf9b21fe108be0c61c751dc8c967bdca684dc1220dfe4913"
+    },
+    "governance_v7": {
+      "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V7_20260812.json",
+      "declared_state": "AUTHOR_INPUT_COMPLETE_PENDING_LUNA_MAX_SEMANTIC_RECHECK"
+    }
+  },
+  "artifact_hash_freshness": {
+    "status": "FAIL_STALE_V7_BINDING",
+    "v7_current_artifacts": [
+      {
+        "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+        "v7_declared_sha256": "6837bbe5fe4e7f9549553b9749ebf49b0870a0a1045678234beea873f5ba8c06",
+        "observed_sha256": "336c3cc4e25276ac6eeb56d597b3fd8486e8a90d02c7d977ace172048138c07d",
+        "result": "FAIL"
+      },
+      {
+        "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+        "v7_declared_sha256": "cacd0e6ec75760601c6e3ed3229e122bf70810d6f5c26dec7c9435d1c304ae7b",
+        "observed_sha256": "8d9b1d2a7536daa6a7f7cb3ade5bc0f5b0674d2087d5efeb2fd2a8dcbf3e603a",
+        "result": "FAIL"
+      },
+      {
+        "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+        "v7_declared_sha256": "d622854aba0b0e190ef8653fc87ab95324239be5257ff02d25478e2cdde571cd",
+        "observed_sha256": "d622854aba0b0e190ef8653fc87ab95324239be5257ff02d25478e2cdde571cd",
+        "result": "PASS"
+      },
+      {
+        "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+        "v7_declared_sha256": "a0890f4c956853c2564478f1f205be93d3694562aefde8b0068bedb4e2dc0018",
+        "observed_sha256": "83197e8828f894cabf9b21fe108be0c61c751dc8c967bdca684dc1220dfe4913",
+        "result": "FAIL"
+      }
+    ],
+    "author_input_source_document_crosscheck": "Current review-patch Markdown and JSON hashes match the source-document hashes recorded in the author-input request; this does not repair V7's stale current-artifact binding."
+  },
+  "declared_evidence_preflight": {
+    "status": "PARTIAL_PASS_NOT_A_SEMANTIC_ADJUDICATION",
+    "artifacts": [
+      {
+        "path": "scripts/natcs_benchmarks.mjs",
+        "observed_sha256": "9cfe55a771f7434617bf67bbc78c22aadcd74fd528b4ea5d8b7762e0ad2b4633",
+        "candidate_record_binding": "MATCH"
+      },
+      {
+        "path": "output/natcs_benchmarks/benchmark_summary.csv",
+        "observed_sha256": "c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1",
+        "candidate_record_binding": "MATCH"
+      }
+    ],
+    "g04_binding": {
+      "formula": "100 * (local_network_metric_median - cp_network_metric_median) / local_network_metric_median",
+      "statistic": "ratio of across-replication median errors",
+      "denominator": "local_network metric median for the same scenario and endpoint",
+      "candidate": "cp_network",
+      "endpoints": {
+        "coef_error_median": "effective_operator",
+        "girf_error_median": "total_response"
+      },
+      "candidate_values": {
+        "AIN-RESULT-OP-N15": 93.55203369881073,
+        "AIN-RESULT-OP-N30": 96.76394154622214,
+        "AIN-RESULT-RESP-N15": 82.54278845800611,
+        "AIN-RESULT-RESP-N30": 87.32161861932515
+      }
+    },
+    "als_binding": {
+      "normal_completion": "fixed 60 iterations",
+      "monitored_quantity": null,
+      "stopping_tolerance": null,
+      "early_stop_predicate": null,
+      "exception_rule": "abort call and record reconstruction failure",
+      "regularizer_boundary": "1e-6 Gram regularizer is not a stopping tolerance"
+    },
+    "topology_binding": {
+      "retained_scenarios": [
+        "high_topology_vol",
+        "sparse_misspecified",
+        "edge_missing",
+        "noisy_network"
+      ],
+      "asymmetric_coverage": "local_network has 3 released replications and each other released method has 20 for high_topology_vol, edge_missing, and noisy_network; sparse_misspecified has 3 for each released method",
+      "ranking_boundary": "No matched ranking or general topology-robustness claim."
+    }
+  },
+  "checks": [
+    {
+      "id": "EVIDENCE_BOUNDED_CLAIMS",
+      "result": "BLOCKED",
+      "preflight": "Declared CAL-E03 evidence artifacts exist and hash-match their candidate records.",
+      "blocker": "No usable Luna semantic adjudication."
+    },
+    {
+      "id": "G04_FORMULA_BINDING",
+      "result": "BLOCKED",
+      "preflight": "Formula, denominator, comparator, endpoint mapping, values, and benchmark-summary hash are declared and internally bound.",
+      "ceiling": "Simulation-only declared N=15/N=30 rows; no native held-out, empirical, fairness, ranking, equivalence, or broad-superiority claim."
+    },
+    {
+      "id": "G06_FIXED_60_ALS",
+      "result": "BLOCKED",
+      "preflight": "Fixed count, no objective/residual, no tolerance, no early stop, and exception-failure behavior are declared.",
+      "ceiling": "No convergence or global-optimality inference; 100/80 wording is separate and source-unavailable."
+    },
+    {
+      "id": "G07_TOPOLOGY_ROWS_AND_COVERAGE",
+      "result": "BLOCKED",
+      "preflight": "Four exact rows, roles, parameters, seed policy, and asymmetric coverage are declared.",
+      "ceiling": "No matched ranking or general topology-robustness claim; per-method endpoint availability remains controlling."
+    },
+    {
+      "id": "SOURCE_UNAVAILABLE_DECISIONS",
+      "result": "BLOCKED",
+      "preflight": "AIN-SOURCE-01 through AIN-SOURCE-04 explicitly retain source-unavailable states and generated-TeX exclusion.",
+      "ceiling": "Do not reconstruct canonical ownership from generated TeX or import unavailable material into CAL-E03."
+    },
+    {
+      "id": "CURRENT_READINESS",
+      "result": "FAIL_NOT_READY",
+      "preflight": "V7 requires this Luna/max review and its current-artifact binding is stale for three files.",
+      "blocker": "Service interruption plus hash freshness failure."
+    },
+    {
+      "id": "OVERCLAIM_CEILINGS",
+      "result": "BLOCKED",
+      "preflight": "Current patch retains V1-026 non-execution, V1-033 provenance/endpoint gaps, V1-045 N=20/N=50 scope, N=100/N=200 abstention, and blocked/null resource telemetry.",
+      "ceiling": "These boundaries remain in force pending a successful semantic review."
+    }
+  ],
+  "source_unavailable_decisions": [
+    {
+      "id": "AIN-SOURCE-01",
+      "decision": "Application/bootstrap 100/80 canonical Markdown owner unavailable.",
+      "generated_tex_policy": "NOT_CANONICAL"
+    },
+    {
+      "id": "AIN-SOURCE-02",
+      "decision": "Spectral-radius canonical wording source unavailable.",
+      "generated_tex_policy": "NOT_CANONICAL_AND_NO_CAL_E03_MAPPING"
+    },
+    {
+      "id": "AIN-SOURCE-03",
+      "decision": "50% top-exposure attenuation canonical source unavailable.",
+      "generated_tex_policy": "NOT_CANONICAL_AND_OUTSIDE_CAL_E03"
+    },
+    {
+      "id": "AIN-SOURCE-04",
+      "decision": "Generated TeX is not an ownership source.",
+      "result": "RETAINED"
+    }
+  ],
+  "overclaim_ceilings": [
+    "No claim activation or manuscript application.",
+    "No superiority, equivalence, ranking, native held-out recovery, empirical fairness, cross-family generality, or application-performance claim from G04.",
+    "No convergence or global-optimality claim from fixed-60 ALS semantics.",
+    "No matched ranking or general topology-robustness claim from asymmetric stress coverage.",
+    "V1-026 remains scientific_execution=NOT_RUN and claim_activation=BLOCKED.",
+    "V1-033 chronology, selection inputs, held-out query identity, endpoint signature, and truth isolation remain unresolved.",
+    "V1-045 remains N=20/N=50-only; N=100/N=200 are NOT_RUN/ABSTAIN and resource telemetry is BLOCKED/null."
+  ],
+  "required_recovery": [
+    "Create a governance receipt that hash-binds the exact current review-patch and author-input artifacts.",
+    "Obtain a completed gpt-5.6-luna/max semantic-boundary review with auditable output.",
+    "Seek separate authorization before any manuscript-source or formal-register mutation."
+  ],
+  "authorization_boundary": {
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_payload_mutation": "PROHIBITED",
+    "execution_authorization_mutation": "PROHIBITED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "generated_tex_mutation": "NOT_AUTHORIZED",
+    "git_operations": "NONE"
+  },
+  "changed_paths": [
+    "refine-logs/REC-M5_SCIENTIFIC_RECHECK_V4_20260812.md",
+    "refine-logs/REC-M5_SCIENTIFIC_RECHECK_V4_20260812.json"
+  ]
+}

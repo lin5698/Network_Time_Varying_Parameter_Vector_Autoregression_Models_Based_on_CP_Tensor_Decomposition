@@ -1,17 +1,21 @@
-This supplementary note expands `Methods > Estimator` and `Methods > Preservation conditions for topology-sensitive operators` in the main manuscript. It states the implemented algorithm and the reproducibility settings explicitly. One estimator family is used throughout the paper:
+This note expands `Methods > Estimator` and records the algorithmic contract used by the controlled benchmark.
 
-1. estimate rolling local network-VAR coefficients over 40-period windows with lag order p=2;
-2. choose a single global ridge penalty from the fixed validation grid and store the local coefficient blocks date by date;
-3. stack those local blocks into a coefficient tensor over time and select the CP rank from 1, 2, 3 and 4 by blocked one-step-ahead predictive loss;
-4. reconstruct the full coefficient path with the selected CP rank; and
-5. compute the unbounded pair-level contribution, bounded regression contribution, aggregate network-propagation index, generalized impulse responses, frozen-topology responses and moving-block bootstrap summaries from the reconstructed coefficients.
+1. Generate a one-lag evolving-network panel under the scenario contract in Supplementary Note 4.
+2. At each target date, estimate unrestricted direct and network blocks from a rolling ridge regression on $y_{s-1}$ and $W_{s-1}y_{s-1}$.
+3. Stack the local blocks as an $N\times 2N\times T_{roll}$ tensor, keeping the direct/network columns distinct.
+4. Reconstruct that tensor at the scenario rank with CP alternating least squares.
+5. Evaluate every effective operator and response from the reconstructed blocks under the declared topology argument.
 
-The unrestricted local rolling estimator serves as the baseline comparator. Tucker-network, low-rank no-network, sparse network TVP-VAR and graph-convolution VAR estimators enter the synthetic benchmark. In the reported RCEP implementation, the selected ridge penalty is 0.01, the selected CP rank is 1, and the manuscript-facing bootstrap uses 500 replications with block size 4. These values are read from the archived selection summary used by the empirical build.
+The local normal equations use a ridge floor of $10^{-6}$. The main scale scenarios use true and fitted rank two. CP alternating least squares runs for 60 iterations, adds $10^{-6}$ to each Gram system and normalizes the unit and coefficient-mode factors after every iteration. The implementation uses row-major unfoldings and Khatri-Rao orders $(C,B)$, $(C,A)$ and $(B,A)$ for the three updates.
 
-This design is a reproducible end-to-end estimator that preserves an explicit network block and controls dimensionality. The main manuscript states the deterministic finite-horizon response-transfer conditions that map a given reconstruction error into operator-level propagation error.
+The block index is part of the fitted object. If $\widehat\Theta_t=[\widehat A_t\;\widehat B_t]$ denotes one reconstructed slice, the supplied-topology operator is
 
-The estimator implements the target-preservation contract through its reconstruction target. CP reconstruction is applied to the stacked direct and network coefficient blocks, and the block index remains explicit after reconstruction. No additional penalty or constrained CP-ALS objective is introduced. The same reconstructed path supports three operator evaluations: observed evolving topology, direct-only response with zero network mediation, and frozen-topology response using the benchmark topology. Low-rank reconstruction regularizes the operator path while the separated representation preserves the topology argument needed for interpretation.
+$$
+\widehat M_t(W)=\widehat A_t+\widehat B_tW.
+$$
 
-Implementation cost is dominated by the rolling equation-wise ridge fits and the CP-ALS reconstruction of the stacked coefficient tensor. For each rolling window, the restricted network-VAR design estimates one equation per unit with 1+2p dynamic regressors plus optional exogenous regressors, so the local stage scales linearly in the number of units after the lagged network exposures have been formed. The CP stage operates on an N by 2p by T_roll coefficient tensor and repeats alternating least-squares updates for the selected rank. The reported implementation uses six random initializations, at most 100 ALS iterations per initialization and a relative reconstruction-loss tolerance of 1e-6. Table 1 and Supplementary Table 2 give actual runtime and peak-memory measurements because constant factors depend on the benchmark scale, bootstrap setting and available linear-algebra backend.
+The same reconstructed slice therefore supports observed-topology, direct-only and frozen-topology evaluations by supplying $W_t$, zero or a declared benchmark topology. CP is the implementation layer for this separated object; query preservation follows from the retained blocks, not from the name of the decomposition.
 
-The deterministic theory used in the main manuscript is tied to this separated-block reconstruction setting. Proposition 1 transfers a given companion-matrix error into finite-horizon response error inside a bounded stability region. It does not establish the CP rank, global optimality of CP-ALS or a recovery gain over local estimation; those are handled by validation and the controlled benchmark. The implementation reports ALS settings, rank-selection grids, bootstrap settings and network-endogeneity diagnostics alongside the theoretical statement.
+The unrestricted local rolling estimator is the primary recovery comparator. Tucker reconstruction smooths the same separated tensor at matched multilinear rank. Collapsed-operator CP smooths $\widehat A_t+\widehat B_tW_t$ after the local fit, whereas low-rank no-network reconstruction omits the explicit network block. These reduced representations are scored on total-map and total-response endpoints only. Sparse and graph-feature rows are mapped to the operator protocol under the fixed projection rules in Supplementary Table 1b; their role is diagnostic, not a native graph-learning ranking.
+
+The deterministic theory and the numerical benchmark have separate roles. Proposition 1 gives the unrestricted-block query-factorization boundary, Corollary 1 gives a diagonal structured inverse and Proposition 2 transfers a supplied companion-matrix error into finite-horizon response error under bounded powers. None of these results selects the CP rank, guarantees a global CP optimum or implies the observed recovery gain. Those claims are evaluated by the controlled endpoint and replication contract.

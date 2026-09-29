@@ -1,0 +1,54 @@
+{
+  "record_id": "REC-P2_D1D2D3_DECISION_CLOSURE_V1_20260825",
+  "record_class": "decision_closure",
+  "generated": "2026-08-25",
+  "audit_timezone_basis": "Asia/Shanghai",
+  "supersedes_draft": "REC-P2_AUTHORIZATION_DRAFTS_V1_20260824",
+  "draft_status_before": "UNSIGNED_AWAITING_AUTHOR_DECISION",
+  "decisions": {
+    "D1": {
+      "decision": "DO_NOT_SIGN",
+      "rationale": "UNEXECUTABLE_BY_CONSTRUCTION confirmed. All four _PRODUCTION_* runtime bindings (r006e_screening_v2.py lines 75-80) remain None with zero production write sites (47 repo references: 13 read-only production, 34 test-only via mock.patch that reverts on exit). Binding checks precede authorization-file reads, so no signature can enable verify-authorization or screening-pair. Repeat/control frozen roots absent. Primary root holds only two iCloud non-materialized placeholders.",
+      "effect": "No R006e production authorization issued. R006e screening v2 remains NOT_AUTHORIZED and unexecutable.",
+      "residual_risk_acknowledged": [
+        "RR-1",
+        "RR-2",
+        "RR-3"
+      ]
+    },
+    "D2": {
+      "decision": "MAINTAIN_ABSTENTION",
+      "rationale": "Dual-track spec (2026-07-16-r006e-r006f-dual-track-design.md) bounds R006f to identification/abstention only; it cannot rescue R006e. Deviation would require a spec revision plus independent review, which was not requested.",
+      "effect": "R006f abstention stance re-affirmed as a recorded decision. No R006f recovery claim activated.",
+      "residual_risk_acknowledged": [
+        "RR-1",
+        "RR-2",
+        "RR-3"
+      ]
+    },
+    "D3": {
+      "decision": "RESCOPE_NOT_SCHEDULE",
+      "rationale": "E4 r3 grid already ran (2026-08-01) and was independently audited. E4-R006 is structurally foreclosed on r3 bytes (predeclared log-ratio/CI absent, post-outcome substitution forbidden). E4-R007 requires only the independent result-to-claim review against frozen bytes — no new execution.",
+      "actionable_item_authorized": "E4-R007 result-to-claim review (this closure authorizes REC-P2_E4R007_RESULT_TO_CLAIM_V1_20260825).",
+      "e4_r006_status": "BLOCKED — needs pre-outcome CI construction + confidence level spec, or a new pre-outcome declaration plus rerun (separate authorization).",
+      "effect": "Plan-staleness correction (E4 grid ran) already applied 2026-08-24. E4-R007 review produced; claim activation still NOT_ACTIVATED.",
+      "residual_risk_acknowledged": [
+        "RR-1",
+        "RR-2",
+        "RR-3"
+      ]
+    }
+  },
+  "author_signature": {
+    "authorizer_id": "AUTHOR",
+    "authorized_at": "2026-08-24/25 (user: 'agree D1/D2/D3, begin processing')",
+    "method": "explicit chat instruction; no detached cryptographic signature; this closure is a governance record, not a production authorization artifact",
+    "bound_draft_sha256": "31baa95f68b173624c1df0806730a2a78eacd1fcd25847aa185c89666110bbc6"
+  },
+  "unchanged_assertion": "manuscript_src, formal register, all frozen records, all authorization files and generated TeX remain unchanged. No git operation, make target, test suite, or scientific entry was performed. Scientific execution and claim activation remain NOT_AUTHORIZED except for the read-only E4-R007 result-to-claim review authorized above.",
+  "related_records": [
+    "REC-P2_AUTHORIZATION_DRAFTS_V1_20260824.{md,json}",
+    "REC-P2_PLAN_STALENESS_CORRECTION_V1_20260824.{md,json}",
+    "REC-P2_E4R007_RESULT_TO_CLAIM_V1_20260825.{md,json}"
+  ]
+}

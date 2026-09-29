@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "decision_id": "psa-20260719-nyc-01",
+  "decision": "AUTHORIZED",
+  "scientific_execution_authorized": true,
+  "authorized_by": "workspace-author-via-explicit-user-instruction",
+  "authorized_at": "2026-07-19T03:01:12Z",
+  "action": "run_cp_empirical_pipeline",
+  "dataset": "nyc_taxi",
+  "argv": {
+    "window": 40,
+    "p": 2,
+    "n_boot": 500,
+    "block_size": 4,
+    "cp_inits": 6,
+    "cp_max_iter": 100,
+    "cp_tol": 1e-06
+  },
+  "implementation_files": {
+    "scripts/run_cp_empirical_pipeline.py": "1597d03fc0a85bfa299e3497c91d96dc211ccb4d0fb5399a618b0034515f61b6",
+    "scripts/natcs_design_contract.py": "45e14cb8fdaf10e2f4b07e7a27c630841e968994cd246e44d0e27c017a58388b"
+  },
+  "input_identity": {
+    "rcep_helper_repo": null,
+    "rcep_helper_manifest_sha256": null,
+    "rcep_input_files": {},
+    "nyc_dataset_dir": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/tmp/vars_repo/datasets/NYC-taxi",
+    "nyc_upstream_commit": "7e63ba9734021171eaf49edb92be8a7e7e8802eb"
+  },
+  "output_root": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/output/natcs_empirical_cp_authorized_runs/psa-20260719-nyc-01/nyc_taxi",
+  "overwrite": "deny",
+  "r006e_outcome_authorized": false,
+  "r006f_outcome_authorized": false,
+  "downstream_builds_authorized": false,
+  "post_run_controls": {
+    "quarantine_outputs": true,
+    "freeze_inventory_sha256_before_value_review": true,
+    "independent_claim_audit_required": true,
+    "manuscript_promotion_authorized": false
+  }
+}

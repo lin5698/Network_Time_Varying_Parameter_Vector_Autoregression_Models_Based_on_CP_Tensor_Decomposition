@@ -1,0 +1,165 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m5-editorial-recheck-v4",
+  "record_id": "REC-M5-editorial-recheck-v4-20260812",
+  "generated_at": "2026-08-12",
+  "phase": "M5-C",
+  "review_type": "current-version editorial-traceability semantic recheck",
+  "verdict": "BLOCKED",
+  "result": "BLOCKED_LUNA_MAX_DELIVERY_FAILURE_AND_V7_PROVENANCE_DRIFT",
+  "model": {
+    "requested": "gpt-5.6-luna",
+    "reasoning_effort": "max",
+    "required_role": "editorial-traceability"
+  },
+  "service_status": {
+    "status": "FAILED_NO_COMPLETION_PAYLOAD_OR_WRITTEN_RECEIPTS",
+    "policy": "SERVICE_INTERRUPTED_OR_FAILED_IS_NOT_PASS",
+    "attempts": 2,
+    "attempt_1": {
+      "worker_id": "019ff35a-a66b-7013-abaf-595962c4c668",
+      "outcome": "completed_with_null_payload",
+      "requested_output_present": false
+    },
+    "follow_up": {
+      "worker_id": "019ff35a-a66b-7013-abaf-595962c4c668",
+      "outcome": "completed_with_null_payload",
+      "requested_output_present": false
+    },
+    "semantic_review_delivery": "NOT_COMPLETED",
+    "pass_eligibility": "NOT_PASS"
+  },
+  "scope": {
+    "review_only": true,
+    "reviewed_artifacts": [
+      "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "refine-logs/REC-M5_GOVERNANCE_RECHECK_V7_20260812.md",
+      "refine-logs/REC-M5_GOVERNANCE_RECHECK_V7_20260812.json"
+    ],
+    "excluded_actions": [
+      "manuscript source mutation",
+      "formal register mutation",
+      "scientific payload mutation",
+      "authorization mutation",
+      "generated TeX mutation",
+      "Git operation"
+    ]
+  },
+  "provenance": {
+    "live_artifact_sha256": {
+      "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md": "336c3cc4e25276ac6eeb56d597b3fd8486e8a90d02c7d977ace172048138c07d",
+      "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json": "8d9b1d2a7536daa6a7f7cb3ade5bc0f5b0674d2087d5efeb2fd2a8dcbf3e603a",
+      "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json": "83197e8828f894cabf9b21fe108be0c61c751dc8c967bdca684dc1220dfe4913",
+      "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md": "d622854aba0b0e190ef8653fc87ab95324239be5257ff02d25478e2cdde571cd",
+      "refine-logs/REC-M5_GOVERNANCE_RECHECK_V7_20260812.md": "123ebc80e9036d88854ab075416e5dc2a6d15dcca4d01b3382425ea8574f593f",
+      "refine-logs/REC-M5_GOVERNANCE_RECHECK_V7_20260812.json": "5f4538d6b44042dbe6f78035582284bea2f06dfa5d515aa2f6f511f5bc6e91f0"
+    },
+    "v7_declared_current_hashes": {
+      "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md": "6837bbe5fe4e7f9549553b9749ebf49b0870a0a1045678234beea873f5ba8c06",
+      "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json": "cacd0e6ec75760601c6e3ed3229e122bf70810d6f5c26dec7c9435d1c304ae7b",
+      "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json": "a0890f4c956853c2564478f1f205be93d3694562aefde8b0068bedb4e2dc0018",
+      "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md": "d622854aba0b0e190ef8653fc87ab95324239be5257ff02d25478e2cdde571cd"
+    },
+    "v7_live_binding": {
+      "review_patch_markdown": "MISMATCH",
+      "review_patch_manifest": "MISMATCH",
+      "author_input_request_json": "MISMATCH",
+      "author_input_worksheet_markdown": "MATCH"
+    },
+    "note": "The live author-input JSON binds the live review-patch hashes, but V7 does not bind the full live tuple."
+  },
+  "checks": [
+    {
+      "id": "top_level_readiness",
+      "status": "BLOCKED",
+      "evidence": "Author input is complete pending independent review, but the required Luna/max receipt was not delivered and V7 has provenance drift.",
+      "semantic_pass": false
+    },
+    {
+      "id": "paragraph_aware_mapping",
+      "status": "LOCAL_PRECHECK_PASS",
+      "evidence": "26/26 unique source_item/unit_id pairs across G01-G10; all edit groups are CANDIDATE_NOT_APPLIED.",
+      "semantic_pass": false
+    },
+    {
+      "id": "protected_baseline",
+      "status": "LOCAL_PRECHECK_PASS",
+      "evidence": "All 12 exact-path SHA-256 entries in protected_baseline.files match the live workspace.",
+      "semantic_pass": false
+    },
+    {
+      "id": "review_only_labels",
+      "status": "LOCAL_PRECHECK_PASS",
+      "evidence": "G06 and G07 are AUTHOR_CONFIRMED_REVIEW_ONLY; G01-G05 and G08-G10 are candidate/proposed edits.",
+      "semantic_pass": false
+    },
+    {
+      "id": "source_unavailable_and_generated_tex",
+      "status": "LOCAL_PRECHECK_PASS",
+      "evidence": "Unavailable source decisions are explicit, main.tex and supplementary.tex are generated, and direct generated-TeX editing or ownership inference is prohibited.",
+      "semantic_pass": false
+    },
+    {
+      "id": "topology_disclosure",
+      "status": "LOCAL_PRECHECK_PASS",
+      "evidence": "Four rows declare amplitudes, affected object, generation/observation role, deterministic seed policy, endpoints, asymmetric replication coverage, and non-ranking limits.",
+      "semantic_pass": false
+    },
+    {
+      "id": "placeholder_and_author_input_boundary",
+      "status": "LOCAL_PRECHECK_PASS",
+      "evidence": "AIN-RESULT binds the formula, denominator, comparator, fields, 20-replication unit, evidence hash, and four values; the patch remains unapplied and fail-closed.",
+      "semantic_pass": false
+    },
+    {
+      "id": "authorization_boundary",
+      "status": "LOCAL_PRECHECK_PASS",
+      "evidence": "Manuscript, formal-register, scientific, execution, and claim states remain blocked or prohibited; Git operations remain NONE.",
+      "semantic_pass": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "E-V4-1",
+      "severity": "critical",
+      "status": "BLOCKED",
+      "title": "Required Luna/max semantic receipt was not delivered",
+      "evidence": "Two attempts for worker 019ff35a-a66b-7013-abaf-595962c4c668 completed with null payloads and no requested receipt files.",
+      "effect": "No independent editorial-traceability semantic pass can be recorded."
+    },
+    {
+      "id": "E-V4-2",
+      "severity": "high",
+      "status": "BLOCKED",
+      "title": "V7 does not bind the live review bundle",
+      "evidence": "V7 SHA-256 values for the patch Markdown, patch manifest, and author-input JSON differ from the live values.",
+      "effect": "V7 cannot provide a current-version provenance basis for M5-C promotion."
+    }
+  ],
+  "authorization_boundary": {
+    "manuscript_source_mutation": "NOT_AUTHORIZED",
+    "formal_register_mutation": "NOT_AUTHORIZED",
+    "scientific_payload_mutation": "PROHIBITED",
+    "execution_authorization_mutation": "PROHIBITED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "generated_tex_mutation": "PROHIBITED",
+    "git_operations": "NONE"
+  },
+  "operation_policy": {
+    "record_only": true,
+    "manuscript_modified": false,
+    "formal_register_modified": false,
+    "scientific_payload_modified": false,
+    "authorization_modified": false,
+    "generated_tex_modified": false,
+    "git_operations": "NONE"
+  },
+  "changed_paths": [
+    "refine-logs/REC-M5_EDITORIAL_RECHECK_V4_20260812.md",
+    "refine-logs/REC-M5_EDITORIAL_RECHECK_V4_20260812.json"
+  ],
+  "next_gate_state": "M5_C_EDITORIAL_TRACEABILITY_NOT_PASSED",
+  "promotion_effect": "No manuscript application, formal-register mutation, scientific execution, or claim activation is authorized by this receipt."
+}

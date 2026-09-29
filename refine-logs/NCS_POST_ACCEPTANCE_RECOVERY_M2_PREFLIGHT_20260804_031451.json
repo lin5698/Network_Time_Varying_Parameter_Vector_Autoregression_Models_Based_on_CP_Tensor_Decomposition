@@ -1,0 +1,395 @@
+{
+  "schema_version": "ncs-post-acceptance-recovery-m2-preflight-v1",
+  "receipt_id": "ncs-post-acceptance-recovery-m2-preflight-20260804-031451-cst-blocked",
+  "generated_at": "2026-08-04T03:14:51+08:00",
+  "provenance": {
+    "parent_task": "019fbdde-2c02-7662-b9d2-9dc2b70e1253",
+    "delegated_model": "gpt-5.6-luna",
+    "delegated_reasoning_effort": "max",
+    "execution_mode": "recovery_governance_only",
+    "preflight_only": true
+  },
+  "scope": {
+    "stage": "REC-M2",
+    "register_decision_mutation": false,
+    "manuscript_mutation": false,
+    "promotion_mutation": false,
+    "e4_r3_mutation": false,
+    "real_analyzer_cli_invoked": false,
+    "scientific_outputs_created": false,
+    "m2_analysis_started": false,
+    "qwen_used_for_scientific_judgment": false,
+    "rcep_nyc_activation": false,
+    "n100_n200_experiment": false
+  },
+  "conclusion": {
+    "preflight_status": "BLOCKED",
+    "governance_gate": "BLOCKED",
+    "scientific_status": "NOT_RUN",
+    "claim_or_promotion_status": "UNCHANGED",
+    "stop_rule": "At least one analyzer cannot bind authorization v2 and the current register directly without source changes or reuse of legacy authorization.",
+    "analyzer_cli_action": "STOPPED_BEFORE_ANY_REAL_ANALYZER_CLI",
+    "scientific_payload_action": "NONE_CREATED"
+  },
+  "prior_receipts_rechecked": {
+    "m0": {
+      "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M0_REFREEZE_RECEIPT_20260804_023813.json",
+      "sha256": "168b692d81591a9e50a32da6e90489ffc638a78fc06208744fa02291d5c7e3a9",
+      "declared_result": "REC-M0_PASS",
+      "structure_status": "VERIFIED"
+    },
+    "authorization_v2": {
+      "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+      "sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+      "declared_schema_version": "ncs-four-analysis-authorization-v2",
+      "structure_status": "VERIFIED"
+    },
+    "m1": {
+      "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M1_RECEIPT_20260804_025115.json",
+      "sha256": "71e5e0bd5756061b786e28f695f87f726726e01c656ce0e5d6f7b431f7a43877",
+      "declared_result": "REC-M1_PASS",
+      "structure_status": "VERIFIED"
+    }
+  },
+  "hash_recomputation": {
+    "file_hash_algorithm": "SHA-256 over raw file bytes",
+    "canonical_item_algorithm": "recursive_object_key_sort_then_JSON.stringify_utf8_no_whitespace; arrays preserved",
+    "register": {
+      "path": "output/ncs_review_corpus/v1_author_decision_register.json",
+      "schema_version": "ncs-author-decision-register-v1",
+      "observed_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "m0_expected_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "sha256_matches": true,
+      "item_count": 45,
+      "selected_item_mapping_status": "VERIFIED"
+    },
+    "canonical_current_v1_items": [
+      {
+        "register_key": "CAL-E01:75",
+        "item_id": "V1-026",
+        "item_index": 75,
+        "canonical_json_bytes": 2111,
+        "observed_sha256": "eb30214e8c353b27d446c1c77242bd6b2dd246841150205c8f339ddafc8f7e20",
+        "m0_expected_sha256": "eb30214e8c353b27d446c1c77242bd6b2dd246841150205c8f339ddafc8f7e20",
+        "authorization_v2_expected_sha256": "eb30214e8c353b27d446c1c77242bd6b2dd246841150205c8f339ddafc8f7e20",
+        "sha256_matches": true
+      },
+      {
+        "register_key": "CAL-E02:128",
+        "item_id": "V1-033",
+        "item_index": 128,
+        "canonical_json_bytes": 2094,
+        "observed_sha256": "79937fd8b053e2bc7fd9abb864938b35a72134ecf93f5f621d7c8088fd383630",
+        "m0_expected_sha256": "79937fd8b053e2bc7fd9abb864938b35a72134ecf93f5f621d7c8088fd383630",
+        "authorization_v2_expected_sha256": "79937fd8b053e2bc7fd9abb864938b35a72134ecf93f5f621d7c8088fd383630",
+        "sha256_matches": true
+      },
+      {
+        "register_key": "CAL-E02:135",
+        "item_id": "V1-035",
+        "item_index": 135,
+        "canonical_json_bytes": 2152,
+        "observed_sha256": "c9b9c201f94a7fd37b2049bfc44220258947f22483e769b39c19253a37e55ee8",
+        "m0_expected_sha256": "c9b9c201f94a7fd37b2049bfc44220258947f22483e769b39c19253a37e55ee8",
+        "authorization_v2_expected_sha256": "c9b9c201f94a7fd37b2049bfc44220258947f22483e769b39c19253a37e55ee8",
+        "sha256_matches": true
+      },
+      {
+        "register_key": "CAL-E03:164",
+        "item_id": "V1-045",
+        "item_index": 164,
+        "canonical_json_bytes": 2281,
+        "observed_sha256": "25cd8fbf2e623cfd2fbcdc163f50959f1beb8e8cb1b59322da78d191e802cf82",
+        "m0_expected_sha256": "25cd8fbf2e623cfd2fbcdc163f50959f1beb8e8cb1b59322da78d191e802cf82",
+        "authorization_v2_expected_sha256": "25cd8fbf2e623cfd2fbcdc163f50959f1beb8e8cb1b59322da78d191e802cf82",
+        "sha256_matches": true
+      }
+    ],
+    "required_receipts_and_frozen_inputs": [
+      {
+        "role": "m0_receipt",
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M0_REFREEZE_RECEIPT_20260804_023813.json",
+        "sha256": "168b692d81591a9e50a32da6e90489ffc638a78fc06208744fa02291d5c7e3a9"
+      },
+      {
+        "role": "authorization_v2",
+        "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+        "sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59"
+      },
+      {
+        "role": "m1_receipt",
+        "path": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M1_RECEIPT_20260804_025115.json",
+        "sha256": "71e5e0bd5756061b786e28f695f87f726726e01c656ce0e5d6f7b431f7a43877"
+      },
+      {
+        "role": "e4_r3_results",
+        "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json",
+        "sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032"
+      },
+      {
+        "role": "e4_r3_execution_manifest",
+        "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+        "sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d"
+      },
+      {
+        "role": "e4_r3_execution_complete",
+        "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+        "sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b"
+      },
+      {
+        "role": "e4_r3_terminal_inventory",
+        "path": "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+        "sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+      },
+      {
+        "role": "e4_r3_candidate",
+        "path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json",
+        "sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6"
+      },
+      {
+        "role": "e4_r3_workspace_authorization",
+        "path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+        "sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+      },
+      {
+        "role": "e4_r3_audit_json",
+        "path": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.json",
+        "sha256": "60523c09126fca78f9e87c1ef4776a74b6f5025bbed19ad65ec1755838d77c68"
+      },
+      {
+        "role": "e4_r3_audit_markdown",
+        "path": "refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md",
+        "sha256": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5"
+      }
+    ],
+    "analyzer_and_test_files": [
+      {"path": "scripts/experiments/analyze_cal_e01_75.py", "sha256": "60fbce6ba07a8395cd16dd260ccce3abaf7422cc4feb3ed8c8b25da9b17aa3de", "bytes": 61912},
+      {"path": "scripts/experiments/test_analyze_cal_e01_75.py", "sha256": "1dddfe08f47e598b75f926270918d0b8d2974a91796bb34212215505a451983d", "bytes": 4766},
+      {"path": "scripts/experiments/analyze_cal_e02_128.py", "sha256": "cf7d21dfc577ac54900adbeb21ce60d56fec9fc3121020c799aa80bac22de9a4", "bytes": 53819},
+      {"path": "scripts/experiments/test_analyze_cal_e02_128.py", "sha256": "682704d48da341ff66b65948cda6d2f9ac4f64a464b4b9d951c2142c39ef9930", "bytes": 5682},
+      {"path": "scripts/experiments/analyze_cal_e02_135.py", "sha256": "7e34dbefe304132df7fa3b0861cc850a1814568356bd0db0c536f7f76438f50e", "bytes": 52976},
+      {"path": "scripts/experiments/test_analyze_cal_e02_135.py", "sha256": "9c7256386406ed0ac9372bff1e3a7ed90dc5706ec352ef9bf8a94b5f6e5990fa", "bytes": 8739},
+      {"path": "scripts/experiments/analyze_cal_e03_164.py", "sha256": "2a29f0870bef6a5a538ffc952e4cbf1f7810898187a36d0e84b2d6c075d9a4a5", "bytes": 55924},
+      {"path": "tests/test_analyze_cal_e03_164.py", "sha256": "96d396d7af14114c75c5171e93914161942f98e1e9e993cf4df6f81ea161ba34", "bytes": 13562}
+    ],
+    "analyzer_test_group_sha256": "df60991f241e5bf434da00b1a8b5fa85d08e32d1b69cc13da43b46ea5ef7675a"
+  },
+  "structure_recheck": {
+    "register": {
+      "status": "VERIFIED",
+      "root_schema_version": "ncs-author-decision-register-v1",
+      "root_item_count": 45,
+      "selected_items": ["V1-026", "V1-033", "V1-035", "V1-045"]
+    },
+    "authorization_v2": {
+      "status": "VERIFIED",
+      "schema_version": "ncs-four-analysis-authorization-v2",
+      "binding_register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "binding_item_payload_count": 4,
+      "binding_item_payloads_match_current_v1": true,
+      "legacy_fields_absent": ["frozen_inputs", "authorized_register_items", "execution_policy"],
+      "current_v2_fields_present": ["binding", "frozen_e4_r3_inputs", "authorized_scope", "current_task_limits", "source_recovery_constraints"]
+    },
+    "e4_r3_results": {
+      "status": "VERIFIED",
+      "schema_version": "e3-family2-synthetic-quarantine-results-v3",
+      "execution_status": "COMPLETE_QUARANTINE_ONLY",
+      "promotion": "PROHIBITED_PENDING_DUPLICATE_AND_RESULT_TO_CLAIM_AUDIT",
+      "recovery_records": 46080,
+      "recovery_summary_cells": 48,
+      "paired_cells": 32,
+      "interval_records": 160,
+      "interval_cells": 8,
+      "bootstrap_records": 12800,
+      "result_authorization_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+      "result_candidate_sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6"
+    },
+    "e4_r3_manifest_and_completion": {
+      "status": "VERIFIED",
+      "manifest_status": "RUNNING_QUARANTINE_ONLY",
+      "completion_status": "COMPLETE_QUARANTINE_ONLY",
+      "promotion_prohibited": true,
+      "candidate_binding_matches": true,
+      "workspace_authorization_binding_matches": true
+    },
+    "e4_r3_terminal_inventory": {
+      "status": "VERIFIED",
+      "schema_version": "e4-r3-terminal-output-inventory-v1",
+      "inventory_status": "FROZEN_PENDING_INDEPENDENT_AUDIT",
+      "artifact_count": 8,
+      "declared_runs": 1,
+      "last_exit_code": 0,
+      "process_state": "not_running"
+    },
+    "analyzer_test_syntax": {
+      "status": "VERIFIED",
+      "method": "python3 -B ast.parse; no bytecode written",
+      "files_parsed": 8
+    },
+    "output_roots": {
+      "refine-logs/ncs_new_analysis": {"exists": false},
+      "refine-logs/ncs_new_analysis_v2": {"exists": false}
+    }
+  },
+  "raw_frozen_coverage_audit": {
+    "status": "VERIFIED_AS_INPUT_ONLY",
+    "expected_hard_gate": {
+      "recovery_records": 46080,
+      "recovery_cells": 48,
+      "paired_cells": 32,
+      "interval_records": 160,
+      "interval_cells": 8,
+      "bootstrap_records": 12800
+    },
+    "observed_frozen_input": {
+      "recovery_records": 46080,
+      "recovery_summary_cells": 48,
+      "paired_cells": 32,
+      "interval_records": 160,
+      "interval_cells": 8,
+      "bootstrap_records": 12800
+    },
+    "raw_status_counts": {
+      "recovery": {"AVAILABLE": 46080, "NONCONVERGED": 0, "NONFINITE": 0, "OUTSIDE_TARGET": 0, "UNSTABLE": 0},
+      "interval": {"AVAILABLE": 160, "NONCONVERGED": 0, "NONFINITE": 0, "OUTSIDE_TARGET": 0, "UNSTABLE": 0},
+      "bootstrap": {"AVAILABLE": 12800, "NONCONVERGED": 0, "NONFINITE": 0, "OUTSIDE_TARGET": 0, "UNSTABLE": 0}
+    },
+    "retention_gate": "SOURCE_RETENTION_CONTRACTS_PRESENT_BUT_M2_OUTPUT_RETENTION_NOT_EXECUTED",
+    "m2_coverage_gate": "BLOCKED_BEFORE_ANALYZER_RUN"
+  },
+  "authorization_compatibility_gate": {
+    "status": "BLOCKED",
+    "current_authorization": {
+      "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+      "schema_version": "ncs-four-analysis-authorization-v2",
+      "register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "e4_input_binding_fields": ["results_sha256", "execution_manifest_sha256", "execution_complete_sha256", "terminal_inventory_sha256", "candidate_sha256"]
+    },
+    "legacy_authorization_not_reused": {
+      "path": "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_20260804_010454.json",
+      "schema_version": "ncs-new-analysis-authorization-v1",
+      "sha256": "bade9161de7236348c07097f36c8d7a163ead87173ae4d388946b17864c0f85e",
+      "legacy_register_sha256": "3e1aa7086ff11dfed27057db6376618147bcbb40bdc9b5d92b0a69f6d6817625",
+      "reuse_attempted": false
+    },
+    "analyzers": [
+      {
+        "register_key": "CAL-E01:75",
+        "analyzer": "scripts/experiments/analyze_cal_e01_75.py",
+        "test": "scripts/experiments/test_analyze_cal_e01_75.py",
+        "status": "BLOCKED",
+        "blocking_code_paths": [
+          "analyze_cal_e01_75.py:551 requires authorization.frozen_inputs as a mapping; authorization v2 has no such field.",
+          "analyze_cal_e01_75.py:553-556 and :571 read legacy frozen_inputs hash names instead of binding.decision_register_sha256 and frozen_e4_r3_inputs.*.",
+          "analyze_cal_e01_75.py:601-608 requires authorization.authorized_register_items and requested_action; authorization v2 exposes authorized_scope and item payload hashes instead.",
+          "analyze_cal_e01_75.py:1474-1488 defaults output to refine-logs/ncs_new_analysis, not the required v2 root.",
+          "analyze_cal_e01_75.py:243, :880-881 and :1418 emit derived panel log-error ratios and normal-approximation cell CIs, which exceeds the M2 E01 raw comparator ledger / paired-differences boundary."
+        ],
+        "retention_and_write_behavior": {
+          "status": "STATIC_CONTRACT_PRESENT",
+          "content_addressing": "content_address plus truncated directory suffix at :1261-1262",
+          "no_overwrite": "FileExistsError and mkdir(exist_ok=False) at :1263-1265",
+          "failure_nonfinite_retention": "status schema and retained_failure_records at :28-37, :700, :1286"
+        },
+        "test_schema_gap": "test_analyze_cal_e01_75.py exercises local nonfinite/pair summaries only; it does not bind ncs-four-analysis-authorization-v2."
+      },
+      {
+        "register_key": "CAL-E02:128",
+        "analyzer": "scripts/experiments/analyze_cal_e02_128.py",
+        "test": "scripts/experiments/test_analyze_cal_e02_128.py",
+        "status": "BLOCKED",
+        "blocking_code_paths": [
+          "analyze_cal_e02_128.py:32-45 hardcodes the legacy register SHA 3e1aa708... and legacy E4 binding constants.",
+          "analyze_cal_e02_128.py:519-523 reads authorization.frozen_inputs, absent in authorization v2.",
+          "analyze_cal_e02_128.py:541-556 searches item.calibration_id at the top level; current register stores calibration_source.calibration_id, so CAL-E02:128 cannot resolve directly.",
+          "analyze_cal_e02_128.py:1047 defaults analysis_authorization to NCS_FOUR_ANALYSIS_AUTHORIZATION_20260804_010454.json, the legacy authorization.",
+          "analyze_cal_e02_128.py:975-1038 creates fresh protocol/candidate/preoutcome freeze payloads in the derived output, beyond the M2 report-only E02:128 boundary."
+        ],
+        "retention_and_write_behavior": {
+          "status": "STATIC_CONTRACT_PRESENT",
+          "content_addressing": "input_bundle_sha256 at :972-979 and default output cal-e02-128-{bundle} at :1102-1104",
+          "no_overwrite": "mkdir(exist_ok=False) at :1080 and test assertion at test file :113",
+          "failure_nonfinite_retention": "STATUS_ORDER and retained-records.jsonl at :29 and :975-1038"
+        },
+        "test_schema_gap": "test_analyze_cal_e02_128.py:74-98 uses default paths that resolve to legacy authorization and asserts the legacy-blocked register behavior; it does not test v2 binding."
+      },
+      {
+        "register_key": "CAL-E02:135",
+        "analyzer": "scripts/experiments/analyze_cal_e02_135.py",
+        "test": "scripts/experiments/test_analyze_cal_e02_135.py",
+        "status": "BLOCKED",
+        "blocking_code_paths": [
+          "analyze_cal_e02_135.py:36 hardcodes EXPECTED_REGISTER_SHA256=3e1aa708... .",
+          "analyze_cal_e02_135.py:491-500 reads legacy authorization.frozen_inputs; v2 stores the corresponding data under binding and frozen_e4_r3_inputs.",
+          "analyze_cal_e02_135.py:458 treats a missing expected hash as a match, so the absent v2 legacy field is not fail-closed.",
+          "analyze_cal_e02_135.py:1022-1025 reads authorization.authorized_register_items, absent in v2, and proceeds with authorized_item=None.",
+          "analyze_cal_e02_135.py:1215-1225 defaults authorization to NCS_FOUR_ANALYSIS_AUTHORIZATION_20260804_010454.json, the legacy authorization.",
+          "analyze_cal_e02_135.py:1060-1064 and :1145-1147 create protocol/candidate/preoutcome artifacts, which is outside the M2 descriptive existing-seeds/scenarios boundary."
+        ],
+        "retention_and_write_behavior": {
+          "status": "STATIC_CONTRACT_PRESENT",
+          "content_addressing": "binding_sha256 at :1045-1047 and output manifest at :1162-1173",
+          "no_overwrite": "existing destination may be reused byte-for-byte at :1202-1211; differing content raises FileExistsError",
+          "failure_nonfinite_retention": "retained adverse records at :390, :1059 and :1138-1143"
+        },
+        "test_schema_gap": "test_analyze_cal_e02_135.py:31-38 constructs the legacy authorized_register_items/frozen_inputs fixture and does not test v2 or missing-hash fail-closed behavior."
+      },
+      {
+        "register_key": "CAL-E03:164",
+        "analyzer": "scripts/experiments/analyze_cal_e03_164.py",
+        "test": "tests/test_analyze_cal_e03_164.py",
+        "status": "BLOCKED",
+        "blocking_code_paths": [
+          "analyze_cal_e03_164.py:27-29 retains the legacy register SHA constant 3e1aa708... .",
+          "analyze_cal_e03_164.py:641 and :678-685 read authorization.frozen_inputs; v2 has no such object.",
+          "analyze_cal_e03_164.py:744-759 requires authorization.authorized_register_items, absent in v2.",
+          "analyze_cal_e03_164.py:771-780 requires authorization.execution_policy, absent in v2.",
+          "With v2 supplied unchanged, build_input_bindings produces an expected register hash of null and build_integrity_checks returns a blocked authorization gate rather than a direct v2 binding; this is not a legal M2 run."
+        ],
+        "retention_and_write_behavior": {
+          "status": "STATIC_CONTRACT_PRESENT",
+          "content_addressing": "cal-e03-164-{input_bundle_sha256} at :648, :997-998",
+          "no_overwrite": "FileExistsError at :1147-1149",
+          "failure_nonfinite_retention": "KNOWN_STATUSES and retained accounting flags at :30, :265-266, :316-317"
+        },
+        "test_schema_gap": "tests/test_analyze_cal_e03_164.py:20-21 points to legacy authorization and :184-200 constructs frozen_inputs/execution_policy; :274-281 explicitly asserts the legacy register-hash mismatch."
+      }
+    ]
+  },
+  "minimal_repair_before_m2": {
+    "status": "REQUIRED_BEFORE_RETRY",
+    "prohibited_workarounds": [
+      "Do not reuse NCS_FOUR_ANALYSIS_AUTHORIZATION_20260804_010454.json.",
+      "Do not wrap v2 into a legacy frozen_inputs object.",
+      "Do not alter the formal register, manuscript, E4-r3 quarantine/candidate/input/inventory, or the eight restored analyzer/test files as part of this blocked preflight."
+    ],
+    "minimum_changes": [
+      "Update each analyzer to require schema_version ncs-four-analysis-authorization-v2 and directly verify binding.decision_register_sha256, binding.item_payloads, frozen_e4_r3_inputs, authorized_scope.REC_M2, and current_task_limits.",
+      "Remove legacy 3e1aa708... constants and legacy default authorization paths; require the current v2 authorization path or an explicit v2 path.",
+      "Use the current register nested calibration_source.calibration_id selector for CAL-E02:128 and require the exact canonical payload hash for the corresponding V1 item.",
+      "Make missing v2 fields fail closed instead of treating null expected hashes as matches or continuing with a blocked partial output.",
+      "Constrain E01 output to raw comparator ledger and paired differences only; do not emit the current normal-approximation CI/log-ratio publication payload under this M2 route.",
+      "Keep E02:128 and E02:135 M2 outputs descriptive and read-only; do not create fresh protocol/candidate/preoutcome freeze artifacts unless a separately authorized S-route requests them.",
+      "Add/update tests to bind v2, reject legacy authorization, reject missing hashes, enforce the required ncs_new_analysis_v2 run layout, preserve all statuses, and refuse existing output roots."
+    ],
+    "retry_condition": "Repeat the full preflight from a new versioned receipt after source/test repair; no analyzer CLI before all four compatibility statuses are no longer BLOCKED."
+  },
+  "protected_hashes_before": {
+    "register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "manuscript_src_natcs_tree": {"file_count": 72, "sha256": "d51400526813b388d3608fc4257ed4865609514827a71276cc572b6ae1df809a"},
+    "analyzer_test_file_set": {"file_count": 8, "sha256": "df60991f241e5bf434da00b1a8b5fa85d08e32d1b69cc13da43b46ea5ef7675a"},
+    "e4_r3_quarantine_file_set": {"file_count": 3, "sha256": "d4c4df67e3739acf54447e5a2663e6d06f901bc903a57646552fa3375277a85b"},
+    "e4_r3_candidate_file_set": {"file_count": 11, "sha256": "ce1fdc3761e92c6cc5b9f918ea968d7aee208969c3d99447130af5395a9f1e7e"},
+    "terminal_inventory_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+  },
+  "protected_hashes_after": {
+    "register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "manuscript_src_natcs_tree": {"file_count": 72, "sha256": "d51400526813b388d3608fc4257ed4865609514827a71276cc572b6ae1df809a"},
+    "analyzer_test_file_set": {"file_count": 8, "sha256": "df60991f241e5bf434da00b1a8b5fa85d08e32d1b69cc13da43b46ea5ef7675a"},
+    "e4_r3_quarantine_file_set": {"file_count": 3, "sha256": "d4c4df67e3739acf54447e5a2663e6d06f901bc903a57646552fa3375277a85b"},
+    "e4_r3_candidate_file_set": {"file_count": 11, "sha256": "ce1fdc3761e92c6cc5b9f918ea968d7aee208969c3d99447130af5395a9f1e7e"},
+    "terminal_inventory_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+  },
+  "tracker_snapshot": "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_TRACKER_20260804_031451.md",
+  "next_stage": "M2_REPAIR_AND_NEW_PREFLIGHT_REQUIRED"
+}

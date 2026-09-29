@@ -1,0 +1,529 @@
+{
+  "schema_version": "rec-m3-v1-045-contract-ledger-compact-v2",
+  "task": {
+    "stage": "REC-M3",
+    "item": "V1-045",
+    "register_key": "CAL-E03:164",
+    "mode": "read_only",
+    "delegate": "gpt-5.6-luna/max"
+  },
+  "ledger_class": "CONTRACT_LEDGER_R2",
+  "generated_at": "2026-08-26",
+  "timezone_basis": "Asia/Shanghai",
+  "supersedes": "refine-logs/REC-M3_V1_045_CONTRACT_LEDGER_20260811.json",
+  "previous_artifact_sha256": "baee769a51c5861bfe04c7fcfc8e72608ea2bcd6f52fedcd909fca1bbb61ed33",
+  "authorization_chain": [
+    "M5-D application authorized by author (m5d_authorization=full apply), committed 7700a34",
+    "P3 stage-3 rebuild authorized (p3_stage3), audits flipped PASS, first full build of generation",
+    "Backlog item E authorized by author (re-anchor or accept drift; re-anchor chosen)"
+  ],
+  "reason_for_revision": "First regeneration of main.tex/supplementary.tex in this generation shifted content positions; M5-D G06/G07/G08 changed contract facts. Bounds-only locator validation masked content drift on main ranges.",
+  "write_policy": {
+    "manuscript_src_natcs_modified_by_this_record": false,
+    "git_operations": "NONE"
+  },
+  "source_files": {
+    "register": "output/ncs_review_corpus/v1_author_decision_register.json",
+    "contract": "manuscript_src/natcs/controlled_benchmark_contract.json",
+    "methods_data": "manuscript_src/natcs/methods_data.md",
+    "methods_estimator": "manuscript_src/natcs/methods_estimator.md",
+    "methods_uncertainty": "manuscript_src/natcs/methods_uncertainty.md",
+    "supp_note4": "manuscript_src/natcs/supp_note4_benchmarks.md",
+    "supp_note7": "manuscript_src/natcs/supp_note7_repro.md",
+    "supp_note8": "manuscript_src/natcs/supp_note8_scope.md",
+    "main": "main.tex",
+    "compiled_supplement": "supplementary.tex",
+    "m2c_analysis": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/analysis.json",
+    "m2c_resource": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/resource-audit.json",
+    "m2c_repro": "refine-logs/ncs_new_analysis_v2/rec-m2b2-20260810-235227-cst-01/primary/cal-e03-164-47cd1e2737d88bc8d898f8f622ae6b4a79bf8f062995d52f9bd8712f99e07991/reproducibility.csv"
+  },
+  "register_binding": {
+    "item": "V1-045/CAL-E03:164",
+    "locator": "output/ncs_review_corpus/v1_author_decision_register.json:2023-2066",
+    "status": "PARTIAL",
+    "action": "DIRECT_TEXT_REVISION",
+    "risk": "PARAMETER_FAILURE_CONTRACT_PRESENT",
+    "stop_condition": "Keep settings as a declared benchmark contract; do not claim universal strategy utility or independent reuse."
+  },
+  "m2c_primary_boundary": {
+    "scope": "N=20/N=50_only",
+    "verdict": "PARTIAL",
+    "promotion": "PROHIBITED",
+    "claim_activation": "NOT_AUTHORIZED",
+    "N100_N200": "NOT_RUN/ABSTAIN",
+    "resource_telemetry": "BLOCKED",
+    "telemetry_null": [
+      "wall_clock_seconds",
+      "cpu_time_seconds",
+      "peak_memory_bytes",
+      "peak_rss_bytes",
+      "gpu_time_seconds",
+      "per_cell_runtime"
+    ],
+    "runs": 1,
+    "seeds_per_cell": 20,
+    "status_policy": "Failure/non-finite/outside-target/unstable statuses are retained; observed zero counts in this run do not establish failure-free operation.",
+    "interpretation": "Read-only descriptive audit of a separate N=20/N=50 grid; it does not replace N=15/N=30 primary evidence or bounded N=50 stress and does not activate a claim."
+  },
+  "items": [
+    {
+      "id": "V1-045-RANK",
+      "register_item": "V1-045/CAL-E03:164",
+      "topic": "rank",
+      "manuscript": [
+        {
+          "file": "methods_data",
+          "lines": "7,9"
+        },
+        {
+          "file": "methods_estimator",
+          "lines": "3"
+        },
+        {
+          "file": "supp_note4",
+          "lines": "21-26"
+        }
+      ],
+      "current_contract": {
+        "latent_rank": 2,
+        "primary_true_and_fitted_rank": 2,
+        "N50_true_and_fitted_rank": 2,
+        "N20_qualification": "separate rank-3 candidate design"
+      },
+      "evidence": [
+        {
+          "source": "contract",
+          "key_path": "$.operator_generation.latent_temporal_rank; $.primary_scenarios[*].true_rank; $.primary_scenarios[*].fitted_rank; $.bounded_scale_stress.true_rank; $.bounded_scale_stress.fitted_rank"
+        },
+        {
+          "source": "m2c_analysis",
+          "key_path": "$.coverage.*.methods"
+        }
+      ],
+      "suggested_revision": {
+        "target": "supp_note4 after line 1",
+        "text": "State rank 2 for the original N=15/N=30/N=50 contract and label the N=20 rank-3 qualification separately; do not treat M2C fixed_rank_basis as rank validation."
+      },
+      "claim_ceiling": "Rank-specific synthetic evidence only; no rank optimality, ALS global convergence, broad generalization or universal strategy claim."
+    },
+    {
+      "id": "V1-045-WINDOW",
+      "register_item": "V1-045/CAL-E03:164",
+      "topic": "rolling_window",
+      "manuscript": [
+        {
+          "file": "methods_data",
+          "lines": "9"
+        },
+        {
+          "file": "methods_estimator",
+          "lines": "1"
+        },
+        {
+          "file": "supp_note4",
+          "lines": "1,21-28"
+        }
+      ],
+      "current_contract": {
+        "N15_window": 40,
+        "N30_window": 48,
+        "N50_window": 56,
+        "M2C_window": "not exposed; do not infer"
+      },
+      "evidence": [
+        {
+          "source": "contract",
+          "key_path": "$.primary_scenarios[*].rolling_window; $.bounded_scale_stress.rolling_window"
+        },
+        {
+          "source": "m2c_analysis",
+          "key_path": "$.input_binding; $.coverage"
+        }
+      ],
+      "suggested_revision": {
+        "target": "supp_note4 after line 1",
+        "text": "Repeat 40/48/56 and state that the separate M2C N=20/N=50 audit neither changes nor establishes these windows."
+      },
+      "claim_ceiling": "Declared windows only; no optimal-window, window-sensitivity, runtime or scale-efficiency claim."
+    },
+    {
+      "id": "V1-045-ALS",
+      "register_item": "V1-045/CAL-E03:164",
+      "topic": "ALS_iterations_and_stopping",
+      "manuscript": [
+        {
+          "file": "methods_estimator",
+          "lines": "3"
+        },
+        {
+          "file": "contract",
+          "lines": "27-38"
+        },
+        {
+          "file": "main",
+          "lines": "636-646"
+        },
+        {
+          "file": "compiled_supplement",
+          "lines": "451-457"
+        }
+      ],
+      "current_contract": {
+        "controlled": {
+          "gram_regularizer": 1e-06,
+          "iterations": 60,
+          "stopping_rule": "declared fixed-count semantics: no monitored quantity, no tolerance, no early-stop predicate (G06 fields cp_als_iteration_semantics/cp_als_monitored_quantity/cp_als_stopping_tolerance/cp_als_early_stop_predicate)"
+        },
+        "compiled_application": {
+          "main_max_iterations": 100,
+          "main_tolerance": 1e-06,
+          "bootstrap_max_iterations": 80,
+          "bootstrap_tolerance": 1e-05
+        }
+      },
+      "evidence": [
+        {
+          "source": "contract",
+          "key_path": "$.estimator_configuration.cp_als_gram_regularizer; $.estimator_configuration.cp_als_iterations"
+        },
+        {
+          "source": "main",
+          "key_path": "lines 1102-1107"
+        },
+        {
+          "source": "compiled_supplement",
+          "key_path": "lines 451-457"
+        },
+        {
+          "source": "m2c_analysis",
+          "key_path": "$.status_totals.*.NONCONVERGED"
+        }
+      ],
+      "suggested_revision": {
+        "target": "methods_estimator line 3 and contract estimator_configuration; label main/supplement application-bootstrap settings",
+        "text": "For CAL-E03, declare whether 60 is fixed or maximum; if maximum, bind monitored quantity, tolerance, early-stop condition and precedence. Keep 100/80 application/bootstrap settings separate. Do not infer the rule from M2C statuses."
+      },
+      "claim_ceiling": "No ALS convergence, global optimum, rank-selection validity or superiority claim.",
+      "reanchor_note": "compiled_supplement remapped 359-363/398-403 -> 451-457 (single consolidated description block); third old range 2784-2786 (application-layer iteration/tolerance parameters) no longer present in the regenerated 2169-line supplement and is dropped with this note; main 1102-1107 -> 636-646 (content-accurate re-measurement; prior bounds-only validity masked reference-section drift)."
+    },
+    {
+      "id": "V1-045-TOPOLOGY",
+      "register_item": "V1-045/CAL-E03:164",
+      "topic": "topology_generation_and_perturbation",
+      "manuscript": [
+        {
+          "file": "methods_data",
+          "lines": "11,13,15-22"
+        },
+        {
+          "file": "supp_note4",
+          "lines": "19-23"
+        },
+        {
+          "file": "main",
+          "lines": "554-562"
+        },
+        {
+          "file": "compiled_supplement",
+          "lines": "893-899"
+        }
+      ],
+      "current_contract": {
+        "baseline": "zero diagonal, non-negative, row-normalized; mixing weights 0.04/0.05",
+        "stress_categories": [
+          "volatility",
+          "sparsity",
+          "missing edges",
+          "noisy weights"
+        ],
+        "documented_amplitudes": "G07 scenario table now records exact settings per row (topologyVol/sparsity/wNoise/wDrop) with generation-vs-observation roles and replication coverage",
+        "compiled_50_percent": "application-layer top-exposure attenuation; not treated as CAL-E03 amplitude"
+      },
+      "evidence": [
+        {
+          "source": "contract",
+          "key_path": "$.operator_generation.topology; $.primary_scenarios[*].topology_mixing_weight"
+        },
+        {
+          "source": "main",
+          "key_path": "lines 497-501"
+        },
+        {
+          "source": "m2c_analysis",
+          "key_path": "$.stress_comparisons[*]; $.coverage"
+        }
+      ],
+      "suggested_revision": {
+        "target": "methods_data line 11 and supp_note4 lines 15-17",
+        "text": "Bind each CAL-E03 topology stress amplitude, affected object, generation/observation role, seed, endpoint and replication. Keep the compiled 50% attenuation separate unless explicitly bound."
+      },
+      "claim_ceiling": "Declared-law/category descriptive evidence only; no universal topology robustness, transfer or causal topology claim.",
+      "reanchor_note": "compiled_supplement remapped 2409-2412 -> 893-899; main 497-501 -> 554-562 (content-accurate); methods_data locators extended to the G07 scenario table rows."
+    },
+    {
+      "id": "V1-045-STABILITY",
+      "register_item": "V1-045/CAL-E03:164",
+      "topic": "stability_threshold",
+      "manuscript": [
+        {
+          "file": "methods_uncertainty",
+          "lines": "3"
+        },
+        {
+          "file": "main",
+          "lines": "1000-1013"
+        }
+      ],
+      "current_contract": {
+        "spectral_norm_trigger": 0.95,
+        "spectral_norm_target": 0.95,
+        "unscaled_instability": 0.98,
+        "compiled_application": "spectral radius, flag >=1, target radius 0.98; no serialized mapping"
+      },
+      "evidence": [
+        {
+          "source": "contract",
+          "key_path": "$.response_evaluation.spectral_norm_stabilization_trigger; $.response_evaluation.spectral_norm_stabilization_target; $.response_evaluation.unscaled_instability_threshold"
+        },
+        {
+          "source": "main",
+          "key_path": "lines 1128-1132"
+        },
+        {
+          "source": "m2c_analysis",
+          "key_path": "$.verdicts.stability_summary; $.interval_cells[*].metrics.estimated_spectral_radius"
+        }
+      ],
+      "suggested_revision": {
+        "target": "methods_uncertainty line 3 and supp_note7",
+        "text": "Keep CAL-E03 spectral-norm 0.95/0.95/0.98 thresholds explicit; state that radius fields in application/audit artifacts are distinct without a serialized mapping."
+      },
+      "claim_ceiling": "Threshold-defined qualification within declared designs only; no universal stability or unrun-scale claim.",
+      "reanchor_note": "compiled_supplement entry DROPPED: the threshold statement is no longer part of the regenerated 2169-line supplement; declarations live in main.tex 1000-1013 (incl. G08 spectral-norm qualification sentence) and methods_uncertainty.md. Old main 1128-1132 -> 1000-1013."
+    },
+    {
+      "id": "V1-045-FAILURE",
+      "register_item": "V1-045/CAL-E03:164",
+      "topic": "failure_and_nonfinite_handling",
+      "manuscript": [
+        {
+          "file": "contract",
+          "lines": "33-36,80-84"
+        },
+        {
+          "file": "methods_uncertainty",
+          "lines": "3"
+        },
+        {
+          "file": "methods_estimator",
+          "lines": "9"
+        }
+      ],
+      "current_contract": {
+        "policy": "retain failure and non-finite statuses; no favourable imputation",
+        "NaN": "OUTSIDE_TARGET, not zero error or missing-value imputation"
+      },
+      "evidence": [
+        {
+          "source": "contract",
+          "key_path": "$.aggregation_contract.failure_handling; $.endpoint_availability.unavailable_sentinel"
+        },
+        {
+          "source": "m2c_analysis",
+          "key_path": "$.status_totals.*; $.nonfinite_totals; $.recovery_cells[*].retention"
+        }
+      ],
+      "suggested_revision": {
+        "target": "supp_note4 after line 17",
+        "text": "Keep all failure/non-finite/outside-target/unstable statuses in the denominator; a zero count in one frozen run is not a failure-rate bound."
+      },
+      "claim_ceiling": "Handling and observed accounting only; no failure robustness, rate guarantee or universal non-finite safety claim."
+    },
+    {
+      "id": "V1-045-REPLICATION",
+      "register_item": "V1-045/CAL-E03:164",
+      "topic": "replication_and_repeated_run_reproducibility",
+      "manuscript": [
+        {
+          "file": "methods_data",
+          "lines": "9"
+        },
+        {
+          "file": "methods_uncertainty",
+          "lines": "1,5"
+        },
+        {
+          "file": "supp_note4",
+          "lines": "1,21-28"
+        }
+      ],
+      "current_contract": {
+        "N15_N30": "20 replications",
+        "N50": "4 for local/CP/Tucker/collapsed/no-network; 1 for sparse/projected diagnostics",
+        "M2C": "20 observed seeds per cell, one execution"
+      },
+      "evidence": [
+        {
+          "source": "contract",
+          "key_path": "$.primary_scenarios[*].released_replications; $.bounded_scale_stress.replication_coverage_by_method"
+        },
+        {
+          "source": "m2c_repro",
+          "key_path": "header and rows: seed_count"
+        },
+        {
+          "source": "m2c_analysis",
+          "key_path": "$.resource_audit.execution_contract.runs; $.boundaries[1]"
+        }
+      ],
+      "suggested_revision": {
+        "target": "supp_note7 line 7 or supp_note4 audit boundary",
+        "text": "20 seeds per M2C cell are seed coverage, not repeated-run reproducibility and do not replace the original replication contract."
+      },
+      "claim_ceiling": "Original declared replication distributions only; no M2C repeated-run, seed-invariance or general replication claim."
+    },
+    {
+      "id": "V1-045-SCOPE",
+      "register_item": "V1-045/CAL-E03:164",
+      "topic": "N20_N50_scope",
+      "manuscript": [
+        {
+          "file": "methods_data",
+          "lines": "9-13"
+        },
+        {
+          "file": "supp_note4",
+          "lines": "1,15,21-28"
+        }
+      ],
+      "current_contract": {
+        "original": "N15/N30 headline; N50 bounded stress; separate N20 endpoint-aware qualification",
+        "m2c": "N20/N50 only; descriptive status/stress accounting; no claim activation"
+      },
+      "evidence": [
+        {
+          "source": "m2c_analysis",
+          "key_path": "$.scope; $.coverage; $.verdicts"
+        }
+      ],
+      "suggested_revision": {
+        "target": "supp_note7 line 7 or supp_note4 after line 28",
+        "text": "State that REC-M2C is a separate read-only N20/N50 audit; it does not revise N15/N30, change N50 stress status or activate a manuscript claim."
+      },
+      "claim_ceiling": "Descriptive N20/N50 coverage and raw status/stress accounting only; no headline superiority, native-held-out or application claim."
+    },
+    {
+      "id": "V1-045-UNRUN",
+      "register_item": "V1-045/CAL-E03:164",
+      "topic": "N100_N200_not_run_abstain",
+      "manuscript": [
+        {
+          "file": "supp_note7",
+          "lines": "1-7"
+        },
+        {
+          "file": "supp_note8",
+          "lines": "7-20"
+        }
+      ],
+      "current_contract": {
+        "N100_N200": "NOT_RUN/ABSTAIN",
+        "permitted": "No performance, failure, resource or scalability conclusion."
+      },
+      "evidence": [
+        {
+          "source": "m2c_analysis",
+          "key_path": "$.new_experiment.n100_n200_status; $.boundaries[0]"
+        }
+      ],
+      "suggested_revision": {
+        "target": "supp_note7 or supp_note8",
+        "text": "N=100 and N=200 remain NOT_RUN/ABSTAIN; make no performance, failure, resource or scalability conclusion and do not say they failed or do not scale."
+      },
+      "claim_ceiling": "No N100/N200 result, resource conclusion or extrapolation from N20/N50."
+    },
+    {
+      "id": "V1-045-RESOURCE",
+      "register_item": "V1-045/CAL-E03:164",
+      "topic": "resource_telemetry",
+      "manuscript": [
+        {
+          "file": "methods_estimator",
+          "lines": "9"
+        },
+        {
+          "file": "supp_note7",
+          "lines": "1-7"
+        },
+        {
+          "file": "compiled_supplement",
+          "lines": "400-403,1762-1764"
+        }
+      ],
+      "current_contract": {
+        "verdict": "BLOCKED",
+        "missing": [
+          "wall_clock_seconds",
+          "cpu_time_seconds",
+          "peak_memory_bytes",
+          "peak_rss_bytes",
+          "gpu_time_seconds",
+          "per_cell_runtime"
+        ],
+        "proxies_not_telemetry": "one run, exit code 0, process not running, empty stderr, logs/records"
+      },
+      "evidence": [
+        {
+          "source": "m2c_resource",
+          "key_path": "$.verdict; $.missing_telemetry; $.telemetry; $.execution_contract; $.runtime_log_observation"
+        },
+        {
+          "source": "m2c_analysis",
+          "key_path": "$.resource_audit.verdict; $.resource_audit.telemetry"
+        },
+        {
+          "source": "compiled_supplement",
+          "key_path": "lines 400-403,1762-1764"
+        }
+      ],
+      "suggested_revision": {
+        "target": "supp_note7 line 7 or supp_note4 audit boundary",
+        "text": "Keep telemetry BLOCKED/null; do not infer runtime, cost, memory, GPU or scalability from records, exit status, process state or compiled-table wording."
+      },
+      "claim_ceiling": "No resource, runtime, memory, GPU, cost, efficiency or scalability claim; N100/N200 remain NOT_RUN/ABSTAIN."
+    }
+  ],
+  "protected_hash_recheck_override": null,
+  "protected_hashes": {
+    "algorithm": "SHA-256 raw file hashes; tree hash uses sorted relative-path,bytes,raw-SHA-256 lines",
+    "files": {
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B2_EXECUTION_AUTHORIZATION_V1_20260810_235227.json": "c012f7d1a40168b264027c55a3760424c7686cd0e7941cf6765d99c2629fd63f",
+      "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2A_REPAIR_RECEIPT_V1_20260810_222232.json": "b98f8a4dc6dd36ee28426182d9320d0696880867544a0cc05dd6c1fb5e943395",
+      "output/ncs_review_corpus/v1_author_decision_register.json": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+      "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6",
+      "refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2_EXECUTION_AUTHORIZATION_V1_20260810_223606.json": "44677a44f01876bba8c96d924a69cf39a37f4642e00a004c1b03fb2dcbf4034c",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_PREFLIGHT_RECEIPT_V1_20260810_231758.json": "5918f4eac9e6b01a012bcf511afc50a357e07e005b99dea242b36eff816359df",
+      "refine-logs/NCS_POST_ACCEPTANCE_RECOVERY_M2B_TRACKER_V1_20260810_231758.md": "c35bf484768de70b0d64d2858f1328600d9cc5cc4efc7bb704729432336541eb"
+    },
+    "trees": {
+      "manuscript_src/natcs": "21a1319b6f98e31804b7fd1766c66124553a2ad2904bdc2dcb655097e591a364",
+      "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3": "6859c367141f33e589fb2d536c96fbe763f40e406ca65bfa556d89b7536e00ec",
+      "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3": "5398ec9a698ba0a7b878b0a8d25a7d8e9184ea6ff98af033f2b33f7165b1a83f"
+    }
+  },
+  "protected_tree_reanchor": {
+    "path": "manuscript_src/natcs",
+    "previous_expected": {
+      "source": "refine-logs/REC-M3_ACCEPTANCE_V2_20260811.json#protected_hash_recheck.trees[0]",
+      "file_count": 72,
+      "symlink_count": 0,
+      "sha256": "21a1319b6f98e31804b7fd1766c66124553a2ad2904bdc2dcb655097e591a364"
+    },
+    "sha256_new": "822d72c2b198026952dd2556eeec1c3f465562466c47017d6897b510cbfd26b3",
+    "file_count_new": 71,
+    "symlink_count_new": 0,
+    "reason": "Authorized M5-D mutation of seven sources + G06 contract + boundary-draft refreshes changed tree digest; count unchanged at 72 files."
+  }
+}

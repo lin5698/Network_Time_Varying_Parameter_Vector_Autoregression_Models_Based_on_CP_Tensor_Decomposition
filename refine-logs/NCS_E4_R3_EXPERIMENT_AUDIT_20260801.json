@@ -1,0 +1,59 @@
+{
+  "schema_version": "ncs-e4-r3-experiment-audit-v1",
+  "date": "2026-08-01",
+  "auditor": "independent-codex-reviewer",
+  "scope": "frozen-synthetic-only-e4-r3",
+  "inventory_sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "evaluation_type": "simulation_only",
+  "checks": {
+    "ground_truth_provenance": "pass",
+    "score_normalization": "pass",
+    "result_existence_traceability": "pass",
+    "reachability_declared_metrics": "warn",
+    "scope": "pass",
+    "evaluation_classification": "pass",
+    "isolation_parity_retention": "pass",
+    "bootstrap_implementation": "pass",
+    "terminal_provenance": "pass"
+  },
+  "scope_counts": {
+    "recovery_cells": 48,
+    "paired_comparison_cells": 32,
+    "interval_cells": 8,
+    "recovery_records": 46080,
+    "interval_records": 160,
+    "panel_seeds_per_cell": 20,
+    "bootstrap_replicates_per_interval": 80
+  },
+  "findings": [
+    {
+      "id": "missing_predeclared_log_ratio_metric",
+      "severity": "warn",
+      "status": "open",
+      "impact": "e4-r006-not-activated"
+    }
+  ],
+  "claims": [
+    {
+      "id": "E4-R006",
+      "impact": "qualified",
+      "activation": "blocked",
+      "ceiling": "declared-synthetic-dgp-only"
+    },
+    {
+      "id": "E4-R007",
+      "impact": "qualified",
+      "activation": "blocked-pending-result-to-claim",
+      "ceiling": "simulation-only-h4-20-panels-per-cell"
+    }
+  ],
+  "status_invariants": {
+    "paper_claim_audit": "blocked",
+    "empirical_implementation_audit": "fail",
+    "manuscript_build": "not_authorized",
+    "manuscript_promotion": "not_authorized"
+  },
+  "trace": ".aris/traces/experiment-audit/2026-08-01_run01/"
+}

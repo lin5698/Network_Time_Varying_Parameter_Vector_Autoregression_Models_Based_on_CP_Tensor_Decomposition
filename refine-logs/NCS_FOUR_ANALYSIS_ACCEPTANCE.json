@@ -1,0 +1,26 @@
+{
+  "schema_version": "ncs-four-analysis-acceptance-v1",
+  "checkpoint_id": "NCS-NA-AUDIT-20260804-021934-CST",
+  "audited_at": "2026-08-04T02:19:34+08:00",
+  "status": "FAIL",
+  "score": 38,
+  "report": "refine-logs/NCS_FOUR_ANALYSIS_ACCEPTANCE_20260804_021934.md",
+  "blocking_gates": [
+    "authorization_register_binding",
+    "current_artifact_persistence",
+    "current_reproducibility"
+  ],
+  "item_status": {
+    "CAL-E01:75": "PARTIAL_BLOCKED",
+    "CAL-E02:128": "PARTIAL_BLOCKED",
+    "CAL-E02:135": "PARTIAL_BLOCKED",
+    "CAL-E03:164": "PARTIAL_BLOCKED"
+  },
+  "release_decision": {
+    "update_author_decision_register": false,
+    "modify_manuscript": false,
+    "activate_claims": false,
+    "change_promotion": false
+  },
+  "full_json": "refine-logs/NCS_FOUR_ANALYSIS_ACCEPTANCE_20260804_021934.json"
+}

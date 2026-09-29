@@ -1,0 +1,136 @@
+{
+  "authorization_schema_version": "ncs-four-analysis-authorization-v2",
+  "frozen_result_mutated": false,
+  "hash_algorithm": "sha256",
+  "inputs": {
+    "authorization": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json",
+      "sha256": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59"
+    },
+    "candidate": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json",
+      "sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6"
+    },
+    "comparator_registry": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/comparator_registry.json",
+      "sha256": "4eb3905ecad9115abaf89e8e5cae65c19dde10e83e0a466e5070a384cbad758b"
+    },
+    "e4_audit": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/NCS_E4_R3_EXPERIMENT_AUDIT_20260801.md",
+      "sha256": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5"
+    },
+    "execution_complete": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+      "sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b"
+    },
+    "failure_metric_schema": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/preoutcome-artifacts/failure_metric_schema.json",
+      "sha256": "8557beef5369783bf0dba773c44aac11ef9a39a029c283ede72561f6bce8e2c2"
+    },
+    "manifest": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+      "sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d"
+    },
+    "plan": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/NCS_FOUR_ANALYSIS_PLAN_20260804_010454.md",
+      "sha256": "29618783ccb17773e88d737bebfed466d5a0bb57fffc1f55261c0e5a6fdf0292"
+    },
+    "register": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/output/ncs_review_corpus/v1_author_decision_register.json",
+      "sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2"
+    },
+    "results": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json",
+      "sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032"
+    },
+    "terminal_inventory": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/E4_R3_TERMINAL_OUTPUT_INVENTORY_20260801.json",
+      "sha256": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+    },
+    "workspace_authorization": {
+      "path": "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+      "sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+    }
+  },
+  "sha256_by_role": {
+    "authorization": "7d65768118f5517b76a01acef3b7f15390a60ed8a50f09ebae4379330dd6ac59",
+    "candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+    "comparator_registry": "4eb3905ecad9115abaf89e8e5cae65c19dde10e83e0a466e5070a384cbad758b",
+    "e4_audit": "921033acbf4568d630a3eeb82fdcd1c494fbb00d724299a3309c3eb7c52674d5",
+    "execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+    "failure_metric_schema": "8557beef5369783bf0dba773c44aac11ef9a39a029c283ede72561f6bce8e2c2",
+    "manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+    "plan": "29618783ccb17773e88d737bebfed466d5a0bb57fffc1f55261c0e5a6fdf0292",
+    "register": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+    "terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046",
+    "workspace_authorization": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+  },
+  "v2_binding": {
+    "decision_register_sha256": "c970d82959aa447a5ad3d7d4a02008e98c6c81552991b4dcb97a1e082b901fb2",
+    "e4_chain": {
+      "candidate_id": "e4-domain-stable-v4-20260731-candidate-r3",
+      "complete": true
+    },
+    "frozen_input_sha256": {
+      "candidate": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6",
+      "execution_complete": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b",
+      "execution_manifest": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d",
+      "results": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032",
+      "terminal_inventory": "5cf086c49ea72e694e76bba9faf976950960b2a42951eec26a262d7b276f9046"
+    },
+    "item_payload_sha256": "eb30214e8c353b27d446c1c77242bd6b2dd246841150205c8f339ddafc8f7e20",
+    "register_item": {
+      "action_class": "DIRECT_TEXT_REVISION",
+      "applicability": "DIRECT",
+      "applicability_rationale_zh": "\u5f53\u524d\u7a3f\u4ef6\u7684 claim contract \u8981\u6c42 method-to-endpoint roles\u3001replication coverage\u3001failures \u548c outside-target marks \u53ef\u8ffd\u6eaf\uff1b\u5982\u679c\u53ea\u5c55\u793a CP gain\uff0c\u4f1a\u4ea7\u751f\u9009\u62e9\u6027\u62a5\u544a\u98ce\u9669\u3002",
+      "author_approval_required": false,
+      "author_decision": "PENDING",
+      "calibration_concern_domain": "BASELINE_COMPARATOR",
+      "calibration_cost_level": "MEDIUM",
+      "calibration_issue_ids": [
+        "CAL-E01-I23",
+        "CAL-E01-I10"
+      ],
+      "calibration_requested_action": "NEW_ANALYSIS",
+      "calibration_source": {
+        "calibration_id": "CAL-E01",
+        "doi": "10.1038/s43588-022-00247-8",
+        "title": "Large-scale microbiome data integration enables robust biomarker identification"
+      },
+      "cost_level": "MEDIUM",
+      "current_response_status": "PARTIAL",
+      "item_id": "V1-026",
+      "item_index": 75,
+      "manuscript_risk_status": "ACTIVE_BOUNDARY_PRESENT",
+      "minimum_action_zh": "\u6838\u5bf9 results_validation.md \u548c supp_note4_benchmarks.md \u662f\u5426\u540c\u65f6\u5448\u73b0 comparator roles\u3001endpoint availability\u3001replication count\u3001failure/non-finite handling \u548c bounded claim\u3002",
+      "new_analysis_or_experiment_requires_author_approval": true,
+      "priority": "P0",
+      "public_evidence": {
+        "paragraph_ids": [
+          "CAL-E01-PR-P0005-003",
+          "CAL-E01-PR-P0008-001",
+          "CAL-E01-PR-P0024-004",
+          "CAL-E01-PR-P0026-001"
+        ],
+        "source_type": "PUBLIC_REVIEW_EVIDENCE"
+      },
+      "reviewer_worry_zh": "\u52a0\u5165\u66ff\u4ee3\u65b9\u6cd5\u540e\uff0c\u4e3b\u6587\u4ecd\u672a\u5b8c\u6574\u5448\u73b0\u540c\u7b49\u6216\u66f4\u597d\u7ed3\u679c\u53ca\u5168\u90e8\u7ec6\u8282\u3002",
+      "source_matrix_disposition": "MERGE",
+      "source_residual_limit_zh": "\u90e8\u5206\u66ff\u4ee3\u65b9\u6cd5\u540c\u7b49\u6216\u66f4\u597d\u7684\u7ed3\u679c\u672a\u4ee5\u5b8c\u6574\u8868\u683c\u6216\u4e3b\u6587\u7ec6\u8282\u516c\u5f00\u5448\u73b0\u3002",
+      "stop_condition_zh": "\u6bcf\u4e2a\u88ab\u8ba8\u8bba\u7684 comparator \u90fd\u6709 declared endpoint\u3001coverage \u548c failure status\uff1b\u672a\u8fd0\u884c\u6216 outside-target \u9879\u4e0d\u88ab\u4f2a\u88c5\u6210\u96f6\u8bef\u5dee\u6216 missing data\u3002",
+      "strong_evidence_action_zh": "\u4ec5\u5728\u4f5c\u8005\u6279\u51c6\u540e\uff0c\u8865\u5145\u5b8c\u6574 machine-readable result ledger/summary\uff0c\u5305\u62ec\u6240\u6709\u5df2\u8fd0\u884c\u65b9\u6cd5\u548c\u672a\u88ab\u7eb3\u5165 headline \u7684\u7ed3\u679c\u3002",
+      "target_manuscript_files": [
+        "manuscript_src/natcs/results_validation.md",
+        "manuscript_src/natcs/supp_note4_benchmarks.md",
+        "manuscript_src/natcs/controlled_benchmark_contract.json"
+      ]
+    },
+    "schema_version": "ncs-four-analysis-authorization-v2",
+    "scope_binding": {
+      "m2_scientific_analysis": "BLOCKED_IN_THIS_TASK",
+      "rec_m2_action": "run_read_only_derived_analysis_after_m1_and_separate_go_gate"
+    },
+    "workspace_authorization_sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+  }
+}

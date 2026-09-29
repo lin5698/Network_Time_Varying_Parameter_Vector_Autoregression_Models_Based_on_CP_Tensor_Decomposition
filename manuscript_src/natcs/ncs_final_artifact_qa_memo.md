@@ -1,60 +1,29 @@
 # NCS Final Artifact QA Memo
 
-Purpose: record page-level and upload-artifact QA for the current Nature Computational Science-oriented package after the final prose pass. This is a working QA artifact, not manuscript text.
+Status, 2026-08-26: QA baseline restated from governed records under backlog item A authorization; a fresh render-level pass is queued behind the next full rebuild. This edition supersedes the earlier dated QA memo, which remains retrievable from project history for traceability.
 
-Audit date: 2026-07-07.
+## 1. Carried-Forward QA Baseline (verified in governed records)
 
-Serves: clarity / rigour / reproducibility / visual communication.
+- Cover-letter extraction fix: the cover letter uses the plain-text formula string `M_{k,t}(W)=A_{k,t}+B_{k,t}W`, and prior plain-text DOCX extraction retained the full string.
+- Build-locality hardening: macOS `dataless` placeholder detection runs across build and package tooling, and affected active resources were regenerated locally in the earlier cycle.
+- Prior main-PDF page renders passed for the title/abstract opening, the Fig. 2 page (smallest embedded labels need zoom), the Fig. 3 page, the Table 2/NYC opening, the Fig. 4/Discussion opening and the references end page.
+- Abstract stayed within the 150-word Article target with no TeX math.
 
-## Materials Checked
+## 2. Current Artifact State (2026-08-26)
 
-- Main manuscript PDF: `output/pdf/natcs_manuscript.pdf`.
-- Supplementary Information PDF: `output/pdf/natcs_supplementary.pdf`.
-- Main manuscript DOCX: `output/doc/natcs_manuscript.docx`.
-- Word-only upload package: `output/integrated_package/latest_submission_upload_word_only`.
-- Main page renders: `tmp/pdfs/natcs_main/page-01.png`, `page-06.png`, `page-07.png`, `page-09.png`, `page-10.png` and `page-21.png`.
-- Text extraction checks using `pdftotext -layout` and `pandoc ... -t plain`.
+| Artifact | QA state |
+| --- | --- |
+| Main PDF/DOCX | Valid as history; a fresh build is owed before any upload decision. |
+| Supplementary PDF/DOCX | Same standing as the main documents. |
+| Word-only upload directory and zip | Pending regeneration under the exact ten-DOCX set rule. |
+| Figure-source package and zip | Pending refresh; manifest SHA-256 and byte parity required. |
+| Release-safety outputs and upload freeze manifest | Pending generation after the clean integrated package exists. |
+| Support-document twins in `03_submission_materials` | Pending byte-identical copies once stub upgrades finish. |
 
-## Page-Level Findings
+## 3. Open QA Gates
 
-| Item | QA result | Review target |
-| --- | --- | --- |
-| Page 1, title/abstract/Introduction opening | Pass. The title, authors, funding line, abstract and revised Introduction opening render without overlap or truncation. The abstract avoids inline formula notation, retains the topology-switchable-operator wording and preserves the derived-evidence reproducibility boundary. | clarity / novelty |
-| Fig. 2 page | Pass with known caution. The endpoint-availability gate and panel hierarchy remain visible at page scale; smallest secondary labels still require zoom or standalone source inspection. This remains the only major visual-communication gate for journal upload preview. | rigour / visual communication |
-| Fig. 3 page | Pass. The RCEP figure makes the fixed-path versus re-estimation boundary visually dominant, and the adjacent text keeps the empirical interpretation descriptive. | significance / rigour / clarity |
-| Table 2 and NYC opening page | Pass. Table 2 fits within the page, and the NYC section opens as a public second-domain operator check with near-null contrast language. | generality / clarity |
-| Fig. 4 and Discussion opening page | Pass. The NYC near-null readout and Discussion opening connect cleanly. The first Discussion paragraphs foreground query preservation and the transferable criterion. | generality / visual communication |
-| References end page | Pass. The final references page has no visible clipping, overlap or dangling heading. | clarity |
+- Render-level QA pass over the next rebuilt PDF and DOCX set.
+- Fig. 2 journal portal preview observation (external gate routed through the final author decision sheet).
+- Post-rebuild recheck of abstract extraction phrases and the cover-letter formula string across the upload DOCX set.
 
-## DOCX Upload Finding And Fix
-
-The first DOCX extraction pass showed a cover-letter risk: the inline mathematical operator in the cover letter could be flattened poorly by text extraction, yielding an empty formula in the plain-text preview. This is an upload-preview risk for editor-facing material, even though the manuscript PDF renders equations correctly.
-
-Fix applied: the cover letter now uses the plain-text operator string `M_{k,t}(W)=A_{k,t}+B_{k,t}W` instead of a Word equation. The regenerated DOCX plain-text extraction retains the full operator string.
-
-This change affects only the cover letter. The main manuscript keeps the formal mathematical operator in the Introduction and Methods. The abstract now uses formula-insensitive wording so submission-system and DOCX plain-text extraction preserve the computational object.
-
-## Build-Locality Finding And Fix
-
-The rebuild preflight later caught active PNG resources with macOS `dataless` flags in empirical and evidence output directories. These were cloud-placeholder files, not new evidence. The affected active PNG/PDF duplicates were regenerated from their local PDF counterparts or overwritten from the canonical local figure exports.
-
-Fix applied: active figure resources referenced by the manuscript and reviewer archive are now local files. Historical archive and backup paths remain outside the active submission boundary. This change affects file availability only; it does not change estimates, captions, figure logic or manuscript claims.
-
-## Verification
-
-- `node scripts/build_natcs_manuscript.mjs` passed after the cover-letter and build-locality fixes.
-- `node scripts/create_clean_natcs_integrated_package.mjs` passed after the current package rebuild.
-- `node scripts/check_natcs_final_gates.mjs` reports `PASS_WITH_WARNINGS_ALLOWED` with only the expected external author/portal warnings.
-- `pandoc output/integrated_package/latest_submission_upload_word_only/cover_letter_natcs.docx -t plain --wrap=none` retains `M_{k,t}(W)=A_{k,t}+B_{k,t}W`.
-- The upload-facing main-manuscript DOCX abstract extraction retains the first-screen topology-switchable-operator, separated-input, endpoint-availability and raw-to-derived-boundary phrases.
-- The current abstract remains within the 150-word Article target at 149 words.
-- The active build-locality gate reports no active `dataless` blockers.
-
-## Remaining External Gate
-
-This QA does not replace journal portal preview. Fig. 2 still needs either:
-
-- a completed `ncs_fig2_portal_preview_checklist.md` record showing that panel a is readable and the figure can be inspected at comfortable zoom, or
-- a redesign using `ncs_fig2_redesign_contract.md` if the portal rasterizes the embedded figure or blocks source-file inspection.
-
-The raw-source and public-release decisions remain governed by `raw_source_access_decision_worksheet.md`, `public_release_readiness_worksheet.md` and `submission_external_dependency_register.md`.
+Drafted 2026-08-26 under author backlog authorization (item A); assistant-drafted from governed records; open items await author confirmation.

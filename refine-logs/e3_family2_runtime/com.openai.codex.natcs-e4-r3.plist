@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.openai.codex.natcs-e4-r3</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/caffeinate</string>
+    <string>-i</string>
+    <string>/opt/homebrew/opt/python@3.13/bin/python3.13</string>
+    <string>-m</string>
+    <string>scripts.experiments.e3_family2_authorized_executor</string>
+    <string>--candidate</string>
+    <string>/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json</string>
+    <string>--candidate-sha256</string>
+    <string>0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6</string>
+    <string>--authorization</string>
+    <string>/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json</string>
+    <string>--authorization-sha256</string>
+    <string>73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6</string>
+    <string>--output-root</string>
+    <string>/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PYTHONPYCACHEPREFIX</key>
+    <string>/tmp/natcs_e4_r3_pycache_20260731</string>
+    <key>PYTHONUNBUFFERED</key>
+    <string>1</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <false/>
+  <key>ProcessType</key>
+  <string>Interactive</string>
+  <key>StandardOutPath</key>
+  <string>/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_runtime/e4-r3.stdout.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/refine-logs/e3_family2_runtime/e4-r3.stderr.log</string>
+</dict>
+</plist>

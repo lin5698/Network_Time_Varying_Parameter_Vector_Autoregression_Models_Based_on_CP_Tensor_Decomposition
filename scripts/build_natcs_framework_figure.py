@@ -2,357 +2,459 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+from matplotlib.patches import Circle, FancyArrowPatch, FancyBboxPatch, Rectangle
+
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_BASENAME = ROOT / "output" / "natcs_assets" / "figure1_natcs_framework"
 
-WIDTH = 1536
-HEIGHT = 1024
+WARM = "#C85A3A"
+WARM_DARK = "#9F3F28"
+WARM_LIGHT = "#F7E8E3"
+COOL = "#367C8D"
+COOL_LIGHT = "#E5F0F2"
+INK = "#202428"
+MID = "#687078"
+LINE = "#AEB4B8"
+PALE = "#F3F4F4"
+WHITE = "#FFFFFF"
 
-
-def svg_text(
-    x: int,
-    y: int,
-    text: str,
-    cls: str = "label",
-    anchor: str = "start",
-) -> str:
-    return f'<text class="{cls}" x="{x}" y="{y}" text-anchor="{anchor}">{text}</text>'
-
-
-def rect(x: int, y: int, w: int, h: int, cls: str = "box", rx: int = 0) -> str:
-    return f'<rect class="{cls}" x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}"/>'
-
-
-def edge(x1: int, y1: int, x2: int, y2: int, cls: str = "edge") -> str:
-    return f'<line class="{cls}" x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}"/>'
-
-
-def connector(points: list[tuple[int, int]], cls: str = "edge") -> str:
-    coords = " ".join(f"{x},{y}" for x, y in points)
-    return f'<polyline class="{cls}" points="{coords}" fill="none"/>'
-
-
-def node(
-    x: int,
-    y: int,
-    label: str = "",
-    r: int = 17,
-    fill: str = "#ffffff",
-    stroke: str = "#111111",
-    label_cls: str = "nodeLabel",
-) -> str:
-    label_part = ""
-    if label:
-        label_part = f'<text class="{label_cls}" x="{x}" y="{y + 5}" text-anchor="middle">{label}</text>'
-    return (
-        f'<circle cx="{x}" cy="{y}" r="{r}" fill="{fill}" '
-        f'stroke="{stroke}" stroke-width="1.8"/>'
-        f"{label_part}"
-    )
-
-
-def matrix_glyph(x: int, y: int, cell: int = 19, cols: int = 5, rows: int = 4) -> str:
-    shades = [
-        "#ececec",
-        "#d0d0d0",
-        "#f7f7f7",
-        "#bebebe",
-        "#e2e2e2",
-        "#fafafa",
-        "#d9d9d9",
-        "#efefef",
-        "#c6c6c6",
-        "#ededed",
-        "#d3d3d3",
-        "#f3f3f3",
-    ]
-    out = [f'<g transform="translate({x},{y})">']
-    for row in range(rows):
-        for col in range(cols):
-            shade = shades[(row * cols + col) % len(shades)]
-            out.append(
-                f'<rect x="{col * cell}" y="{row * cell}" width="{cell}" height="{cell}" '
-                f'fill="{shade}" stroke="#9f9f9f" stroke-width="0.85"/>'
-            )
-    out.append(f'<text class="matrixDots" x="{cols * cell + 9}" y="{rows * cell - 31}">...</text>')
-    out.append(f'<text class="matrixDots" x="{cols * cell - 33}" y="{rows * cell + 18}">...</text>')
-    out.append("</g>")
-    return "\n".join(out)
-
-
-def mini_network(
-    x: int,
-    y: int,
-    mode: str,
-    scale: float = 1.0,
-    labels: bool = True,
-    frame: bool = False,
-) -> str:
-    def sx(value: float) -> int:
-        return round(x + value * scale)
-
-    def sy(value: float) -> int:
-        return round(y + value * scale)
-
-    pts = {
-        "1": (sx(0), sy(44)),
-        "2": (sx(60), sy(18)),
-        "3": (sx(116), sy(40)),
-        "4": (sx(48), sy(102)),
-        "5": (sx(128), sy(96)),
+mpl.rcParams.update(
+    {
+        "font.family": "sans-serif",
+        "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans", "sans-serif"],
+        "font.size": 7,
+        "axes.linewidth": 0.6,
+        "figure.facecolor": WHITE,
+        "savefig.facecolor": WHITE,
+        "svg.fonttype": "none",
+        "pdf.fonttype": 42,
+        "ps.fonttype": 42,
     }
-    if mode == "observed":
-        edges = [("1", "2"), ("2", "3"), ("2", "4"), ("4", "5"), ("3", "5"), ("1", "4")]
-        edge_cls = "edgeNoArrow"
-        frame_cls = "boxMini"
-        node_stroke = "#111111"
-        node_cls = "nodeLabel"
-    elif mode == "frozen":
-        edges = [("1", "4"), ("4", "3"), ("2", "5"), ("1", "2")]
-        edge_cls = "edgeDashNoArrow"
-        frame_cls = "boxMiniDash"
-        node_stroke = "#111111"
-        node_cls = "nodeLabel"
-    else:
-        edges = []
-        edge_cls = "edgeMutedNoArrow"
-        frame_cls = "boxMiniMuted"
-        node_stroke = "#777777"
-        node_cls = "nodeLabelMuted"
-
-    out: list[str] = []
-    if frame:
-        out.append(
-            f'<rect class="{frame_cls}" x="{sx(-25)}" y="{sy(-8)}" '
-            f'width="{round(180 * scale)}" height="{round(132 * scale)}" rx="6"/>'
-        )
-    for a, b in edges:
-        x1, y1 = pts[a]
-        x2, y2 = pts[b]
-        out.append(edge(x1, y1, x2, y2, edge_cls))
-    for idx, (k, (px, py)) in enumerate(pts.items()):
-        fill = "#ffffff"
-        if mode == "observed" and not labels and idx in {1, 2, 3}:
-            fill = "#d4d4d4"
-        out.append(
-            node(
-                px,
-                py,
-                k if labels else "",
-                r=round(17 * scale),
-                fill=fill,
-                stroke=node_stroke,
-                label_cls=node_cls,
-            )
-        )
-    return "\n".join(out)
+)
 
 
-def response_card(
-    x: int,
-    y: int,
-    w: int,
-    h: int,
-    formula: str,
+def add_text(
+    ax: plt.Axes,
+    x: float,
+    y: float,
     label: str,
-    box_cls: str = "box",
-    trace_cls: str = "trace",
-) -> str:
-    base_y = y + h - 43
-    left = 38
-    right = w - 56
-    xs = [left + (right - left) * frac for frac in (0, 0.14, 0.28, 0.42, 0.56, 0.70, 0.84, 1)]
-    offsets_by_trace = {
-        "trace": [4, -13, 11, -3, 6, -9, 9, -1],
-        "traceMuted": [1, -6, 5, -4, 3, -5, 4, -2],
-        "traceDash": [8, -15, 13, -9, 11, -14, 12, -5],
-    }
-    offsets = offsets_by_trace.get(trace_cls, offsets_by_trace["trace"])
-    points = [(round(x + px), base_y + dy) for px, dy in zip(xs, offsets)]
-    trace_points = " ".join(f"{px},{py}" for px, py in points)
-    return "\n".join(
-        [
-            rect(x, y, w, h, box_cls, rx=8),
-            svg_text(x + w // 2, y + 46, formula, "mathCard", "middle"),
-            svg_text(x + w // 2, y + 78, label, "tiny", "middle"),
-            f'<polyline class="{trace_cls}" points="{trace_points}" fill="none"/>',
-        ]
+    *,
+    size: float = 7,
+    weight: str = "normal",
+    color: str = INK,
+    ha: str = "left",
+    va: str = "center",
+    style: str = "normal",
+    zorder: int = 6,
+) -> None:
+    ax.text(
+        x,
+        y,
+        label,
+        fontsize=size,
+        fontweight=weight,
+        color=color,
+        ha=ha,
+        va=va,
+        fontstyle=style,
+        linespacing=1.15,
+        zorder=zorder,
     )
 
 
-def build_svg() -> str:
-    parts: list[str] = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}">',
-        "<defs>",
-        '  <marker id="arrow" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">',
-        '    <polygon points="0,0 9,3.5 0,7" fill="#111111"/>',
-        "  </marker>",
-        '  <marker id="arrowGrey" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">',
-        '    <polygon points="0,0 9,3.5 0,7" fill="#555555"/>',
-        "  </marker>",
-        "  <style>",
-        "    .panel { font-family: Arial, Helvetica, sans-serif; font-size: 34px; font-weight: 700; fill: #111111; }",
-        "    .labelBold { font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 700; fill: #111111; }",
-        "    .small { font-family: Arial, Helvetica, sans-serif; font-size: 21px; fill: #333333; }",
-        "    .smallBold { font-family: Arial, Helvetica, sans-serif; font-size: 21px; font-weight: 700; fill: #111111; }",
-        "    .tiny { font-family: Arial, Helvetica, sans-serif; font-size: 18px; fill: #444444; }",
-        "    .micro { font-family: Arial, Helvetica, sans-serif; font-size: 15px; fill: #555555; }",
-        "    .nodeLabel { font-family: Arial, Helvetica, sans-serif; font-size: 16px; fill: #111111; }",
-        "    .nodeLabelMuted { font-family: Arial, Helvetica, sans-serif; font-size: 16px; fill: #4a4a4a; }",
-        "    .matrixDots { font-family: Arial, Helvetica, sans-serif; font-size: 17px; font-weight: 700; fill: #333333; }",
-        "    .math { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 30px; fill: #111111; }",
-        "    .mathSmall { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 24px; fill: #111111; }",
-        "    .mathCard { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 23px; fill: #111111; }",
-        "    .blocked { font-family: Arial, Helvetica, sans-serif; font-size: 19px; font-weight: 700; fill: #555555; }",
-        "    .panelFrame { fill: #ffffff; stroke: #111111; stroke-width: 1.35; shape-rendering: crispEdges; }",
-        "    .innerFrame { fill: #fbfbfb; stroke: #b8b8b8; stroke-width: 1.3; }",
-        "    .box { fill: #ffffff; stroke: #111111; stroke-width: 1.75; }",
-        "    .boxDash { fill: #ffffff; stroke: #111111; stroke-width: 1.75; stroke-dasharray: 8 6; }",
-        "    .boxMuted { fill: #ffffff; stroke: #777777; stroke-width: 1.65; }",
-        "    .boxArgument { fill: #ffffff; stroke: #555555; stroke-width: 1.65; }",
-        "    .boxMini { fill: #ffffff; stroke: #111111; stroke-width: 1.75; }",
-        "    .boxMiniDash { fill: #ffffff; stroke: #111111; stroke-width: 1.75; stroke-dasharray: 8 6; }",
-        "    .boxMiniMuted { fill: #ffffff; stroke: #777777; stroke-width: 1.65; }",
-        "    .band { fill: #f1f1f1; stroke: #b8b8b8; stroke-width: 1.75; }",
-        "    .edge { stroke: #111111; stroke-width: 2.25; marker-end: url(#arrow); stroke-linecap: square; stroke-linejoin: miter; shape-rendering: geometricPrecision; }",
-        "    .edgeNoArrow { stroke: #111111; stroke-width: 2.25; stroke-linecap: square; stroke-linejoin: miter; shape-rendering: geometricPrecision; }",
-        "    .edgeDashNoArrow { stroke: #111111; stroke-width: 2.1; stroke-dasharray: 7 5; stroke-linecap: butt; stroke-linejoin: miter; shape-rendering: geometricPrecision; }",
-        "    .edgeDash { stroke: #111111; stroke-width: 2.1; stroke-dasharray: 7 5; marker-end: url(#arrow); stroke-linecap: butt; stroke-linejoin: miter; shape-rendering: geometricPrecision; }",
-        "    .edgeMuted { stroke: #555555; stroke-width: 2; marker-end: url(#arrowGrey); stroke-linecap: square; stroke-linejoin: miter; shape-rendering: geometricPrecision; }",
-        "    .edgeMutedNoArrow { stroke: #777777; stroke-width: 1.9; stroke-linecap: square; stroke-linejoin: miter; shape-rendering: geometricPrecision; }",
-        "    .trace { stroke: #111111; stroke-width: 2; stroke-linecap: square; stroke-linejoin: miter; shape-rendering: geometricPrecision; }",
-        "    .traceMuted { stroke: #777777; stroke-width: 2; stroke-linecap: square; stroke-linejoin: miter; shape-rendering: geometricPrecision; }",
-        "    .traceDash { stroke: #777777; stroke-width: 2; stroke-dasharray: 8 6; stroke-linecap: square; stroke-linejoin: miter; shape-rendering: geometricPrecision; }",
-        "    .separator { stroke: #d1d1d1; stroke-width: 1.2; shape-rendering: crispEdges; }",
-        "    .blockLine { stroke: #555555; stroke-width: 3.1; stroke-linecap: round; shape-rendering: geometricPrecision; }",
-        "    .blockedCross { stroke: #555555; stroke-width: 2.7; stroke-linecap: round; shape-rendering: geometricPrecision; }",
-        "  </style>",
-        "</defs>",
-        f'<rect width="{WIDTH}" height="{HEIGHT}" fill="#ffffff"/>',
-    ]
+def rounded_box(
+    ax: plt.Axes,
+    x: float,
+    y: float,
+    width: float,
+    height: float,
+    *,
+    facecolor: str = WHITE,
+    edgecolor: str = LINE,
+    linewidth: float = 0.8,
+    radius: float = 0.012,
+    linestyle: str = "solid",
+    zorder: int = 1,
+) -> FancyBboxPatch:
+    patch = FancyBboxPatch(
+        (x, y),
+        width,
+        height,
+        boxstyle=f"round,pad=0.004,rounding_size={radius}",
+        facecolor=facecolor,
+        edgecolor=edgecolor,
+        linewidth=linewidth,
+        linestyle=linestyle,
+        zorder=zorder,
+    )
+    ax.add_patch(patch)
+    return patch
 
-    # Panel frames.
-    parts += [
-        rect(14, 15, 590, 994, "panelFrame"),
-        rect(618, 15, 504, 994, "panelFrame"),
-        rect(1136, 15, 386, 994, "panelFrame"),
-    ]
 
-    # Panel a: preserved object.
-    parts += [
-        svg_text(43, 66, "a", "panel"),
-        svg_text(82, 63, "Topology-switchable operator", "labelBold"),
-        svg_text(121, 182, "operator inputs", "smallBold", "middle"),
-        rect(52, 230, 138, 116, "box", rx=7),
-        svg_text(121, 281, "A<tspan baseline-shift=\"sub\" font-size=\"14\">k,t</tspan>", "math", "middle"),
-        rect(52, 470, 138, 116, "box", rx=7),
-        svg_text(121, 521, "B<tspan baseline-shift=\"sub\" font-size=\"14\">k,t</tspan>", "math", "middle"),
-        svg_text(121, 672, "topology input", "smallBold", "middle"),
-        mini_network(77, 711, "observed", scale=0.72, labels=False, frame=True),
-        svg_text(121, 837, "W<tspan baseline-shift=\"sub\" font-size=\"11\">t</tspan>", "mathCard", "middle"),
-        svg_text(326, 126, "evaluation operator", "smallBold", "middle"),
-        rect(214, 156, 224, 724, "innerFrame", rx=12),
-        rect(246, 205, 158, 166, "box", rx=8),
-        svg_text(325, 246, "direct", "tiny", "middle"),
-        svg_text(325, 283, "A<tspan baseline-shift=\"sub\" font-size=\"13\">k,t</tspan>", "mathSmall", "middle"),
-        matrix_glyph(280, 307, cell=17, cols=4, rows=3),
-        svg_text(325, 410, "+", "math", "middle"),
-        rect(246, 445, 158, 166, "box", rx=8),
-        svg_text(325, 486, "network", "tiny", "middle"),
-        svg_text(325, 523, "B<tspan baseline-shift=\"sub\" font-size=\"13\">k,t</tspan>", "mathSmall", "middle"),
-        matrix_glyph(280, 547, cell=17, cols=4, rows=3),
-        svg_text(325, 650, "&#215;", "math", "middle"),
-        rect(246, 676, 158, 150, "boxArgument", rx=8),
-        svg_text(325, 718, "topology", "tiny", "middle"),
-        mini_network(286, 742, "observed", scale=0.56, labels=False, frame=False),
-        edge(190, 288, 242, 288, "edge"),
-        edge(190, 528, 242, 528, "edge"),
-        edge(190, 763, 242, 763, "edgeMuted"),
-        edge(438, 528, 452, 528, "edge"),
-        rect(456, 398, 134, 206, "box", rx=8),
-        svg_text(523, 454, "M<tspan baseline-shift=\"sub\" font-size=\"12\">k,t</tspan>(W<tspan baseline-shift=\"sub\" font-size=\"12\">t</tspan>)", "mathSmall", "middle"),
-        svg_text(523, 508, "=", "mathSmall", "middle"),
-        svg_text(523, 554, "A<tspan baseline-shift=\"sub\" font-size=\"11\">k,t</tspan> +", "mathSmall", "middle"),
-        svg_text(523, 594, "B<tspan baseline-shift=\"sub\" font-size=\"11\">k,t</tspan>W<tspan baseline-shift=\"sub\" font-size=\"11\">t</tspan>", "mathSmall", "middle"),
-    ]
+def arrow(
+    ax: plt.Axes,
+    start: tuple[float, float],
+    end: tuple[float, float],
+    *,
+    color: str = INK,
+    linewidth: float = 1.1,
+    mutation_scale: float = 8,
+    connectionstyle: str = "arc3",
+    linestyle: str = "solid",
+    zorder: int = 4,
+) -> None:
+    ax.add_patch(
+        FancyArrowPatch(
+            start,
+            end,
+            arrowstyle="-|>",
+            mutation_scale=mutation_scale,
+            linewidth=linewidth,
+            color=color,
+            linestyle=linestyle,
+            connectionstyle=connectionstyle,
+            shrinkA=0,
+            shrinkB=0,
+            zorder=zorder,
+        )
+    )
 
-    # Panel b: matched readouts from one fitted path.
-    parts += [
-        svg_text(650, 66, "b", "panel"),
-        svg_text(690, 63, "Same fitted path, three readouts", "labelBold"),
-    ]
-    rows = [
-        (
-            150,
-            "observed topology",
-            "M<tspan baseline-shift=\"sub\" font-size=\"12\">k,t</tspan>(W<tspan baseline-shift=\"sub\" font-size=\"12\">t</tspan>)",
-            "observed response",
-            "observed",
-            "box",
-            "edge",
-            "trace",
-        ),
-        (
-            418,
-            "zero network mediation",
-            "M<tspan baseline-shift=\"sub\" font-size=\"12\">k,t</tspan>(<tspan font-family=\"Arial, Helvetica, sans-serif\" font-style=\"normal\">0</tspan>)",
-            "direct-only response",
-            "direct",
-            "boxMuted",
-            "edgeMuted",
-            "traceMuted",
-        ),
-        (
-            686,
-            "pre-period topology",
-            "M<tspan baseline-shift=\"sub\" font-size=\"12\">k,t</tspan>(W<tspan baseline-shift=\"sub\" font-size=\"12\">pre</tspan>)",
-            "frozen response",
-            "frozen",
-            "boxDash",
-            "edgeDash",
-            "traceDash",
-        ),
-    ]
-    for idx, (y, label, formula, readout, mode, box_cls, edge_cls, trace_cls) in enumerate(rows):
-        if idx:
-            parts.append(edge(642, y - 58, 1097, y - 58, "separator"))
-        parts += [
-            svg_text(666, y, label, "small"),
-            mini_network(696, y + 63, mode, scale=0.95, labels=False, frame=True),
-            edge(850, y + 122, 874, y + 122, edge_cls),
-            response_card(878, y + 43, 210, 150, formula, readout, box_cls, trace_cls),
-        ]
 
-    # Panel c: collapsed-map object.
-    parts += [
-        svg_text(1168, 66, "c", "panel"),
-        svg_text(1208, 63, "Collapsed-map ablation", "labelBold"),
-        svg_text(1330, 162, "collapse at fitted topology", "smallBold", "middle"),
-        svg_text(1330, 204, "A<tspan baseline-shift=\"sub\" font-size=\"12\">k,t</tspan> + B<tspan baseline-shift=\"sub\" font-size=\"12\">k,t</tspan>W<tspan baseline-shift=\"sub\" font-size=\"12\">t</tspan>", "mathSmall", "middle"),
-        rect(1260, 236, 142, 126, "band"),
-        matrix_glyph(1282, 258, cell=20, cols=4, rows=3),
-        edge(1330, 362, 1330, 420, "edge"),
-        rect(1218, 420, 224, 142, "box", rx=8),
-        svg_text(1330, 470, "fixed stored map", "smallBold", "middle"),
-        svg_text(1330, 518, "M<tspan baseline-shift=\"sub\" font-size=\"12\">k,t</tspan>", "mathCard", "middle"),
-        edge(1330, 562, 1330, 634, "edgeMuted"),
-        f'<line class="blockLine" x1="1302" y1="648" x2="1358" y2="648"/>',
-        f'<line class="blockedCross" x1="1318" y1="628" x2="1342" y2="652"/>',
-        f'<line class="blockedCross" x1="1342" y1="628" x2="1318" y2="652"/>',
-        rect(1208, 694, 244, 72, "boxMuted", rx=8),
-        svg_text(1330, 724, "no declared topology", "blocked", "middle"),
-        svg_text(1330, 750, "switch endpoint", "blocked", "middle"),
-        svg_text(1330, 954, "new topology input", "small", "middle"),
-        mini_network(1279, 826, "observed", scale=0.77, labels=False, frame=True),
-        "</svg>",
+def draw_network(
+    ax: plt.Axes,
+    x: float,
+    y: float,
+    width: float,
+    height: float,
+    *,
+    variant: int = 0,
+    edgecolor: str = COOL,
+    nodecolor: str = WHITE,
+    alpha: float = 1.0,
+    linewidth: float = 0.8,
+) -> None:
+    points = {
+        0: (0.06, 0.45),
+        1: (0.31, 0.83),
+        2: (0.68, 0.72),
+        3: (0.42, 0.12),
+        4: (0.92, 0.29),
+    }
+    edge_sets = [
+        [(0, 1), (0, 3), (1, 2), (1, 3), (2, 4), (3, 4)],
+        [(0, 1), (0, 3), (1, 3), (2, 3), (2, 4), (3, 4)],
+        [(0, 2), (0, 3), (1, 2), (1, 3), (2, 4), (3, 4)],
     ]
-    return "\n".join(parts)
+    positions = {
+        key: (x + px * width, y + py * height) for key, (px, py) in points.items()
+    }
+    for source, target in edge_sets[variant % len(edge_sets)]:
+        x0, y0 = positions[source]
+        x1, y1 = positions[target]
+        ax.plot(
+            [x0, x1],
+            [y0, y1],
+            color=edgecolor,
+            linewidth=linewidth,
+            alpha=alpha,
+            solid_capstyle="round",
+            zorder=2,
+        )
+    radius = min(width, height) * 0.075
+    for px, py in positions.values():
+        ax.add_patch(
+            Circle(
+                (px, py),
+                radius,
+                facecolor=nodecolor,
+                edgecolor=edgecolor,
+                linewidth=linewidth,
+                alpha=alpha,
+                zorder=3,
+            )
+        )
+
+
+def draw_matrix(
+    ax: plt.Axes,
+    x: float,
+    y: float,
+    width: float,
+    height: float,
+    *,
+    color: str,
+    diagonal: bool = False,
+    alpha: float = 1.0,
+) -> None:
+    values = (
+        ((0.90, 0.10, 0.05), (0.10, 0.72, 0.08), (0.05, 0.08, 0.56))
+        if diagonal
+        else ((0.18, 0.82, 0.34), (0.64, 0.12, 0.76), (0.38, 0.58, 0.20))
+    )
+    rows = len(values)
+    cols = len(values[0])
+    cell_w = width / cols
+    cell_h = height / rows
+    rgb = mpl.colors.to_rgb(color)
+    for row, row_values in enumerate(values):
+        for col, value in enumerate(row_values):
+            blend = tuple(1 - (1 - channel) * value for channel in rgb)
+            ax.add_patch(
+                Rectangle(
+                    (x + col * cell_w, y + (rows - 1 - row) * cell_h),
+                    cell_w,
+                    cell_h,
+                    facecolor=blend,
+                    edgecolor=WHITE,
+                    linewidth=0.55,
+                    alpha=alpha,
+                    zorder=3,
+                )
+            )
+    ax.add_patch(
+        Rectangle(
+            (x, y),
+            width,
+            height,
+            facecolor="none",
+            edgecolor=color,
+            linewidth=0.7,
+            alpha=alpha,
+            zorder=4,
+        )
+    )
+
+
+def draw_trace(
+    ax: plt.Axes,
+    x: float,
+    y: float,
+    width: float,
+    height: float,
+    *,
+    color: str,
+    variant: int,
+    linewidth: float = 1.2,
+) -> None:
+    profiles = [
+        (0.10, 0.82, 0.34, 0.68, 0.43, 0.57, 0.48),
+        (0.12, 0.68, 0.31, 0.52, 0.38, 0.45, 0.40),
+        (0.08, 0.76, 0.25, 0.60, 0.34, 0.51, 0.42),
+    ]
+    profile = profiles[variant % len(profiles)]
+    xs = [x + width * index / (len(profile) - 1) for index in range(len(profile))]
+    ys = [y + height * value for value in profile]
+    ax.plot(xs, ys, color=color, linewidth=linewidth, solid_capstyle="round", zorder=5)
+    ax.plot([x, x + width], [y + height * 0.40] * 2, color=LINE, linewidth=0.45, zorder=2)
+
+
+def draw_panel_a(ax: plt.Axes) -> None:
+    add_text(ax, 0.018, 0.963, "a", size=8.5, weight="bold")
+    add_text(
+        ax,
+        0.047,
+        0.963,
+        "A learned network operator that remains callable",
+        size=9,
+        weight="bold",
+    )
+
+    add_text(ax, 0.070, 0.868, "observed evolving system", size=7.3, weight="bold")
+    history_x = (0.055, 0.124, 0.193)
+    for index, x in enumerate(history_x):
+        draw_network(ax, x, 0.690, 0.056, 0.105, variant=index, edgecolor=COOL)
+        time_label = "t" if index == 2 else f"t - {2 - index}"
+        add_text(ax, x + 0.028, 0.668, time_label, size=5.7, color=MID, ha="center")
+    ax.plot([0.062, 0.242], [0.640, 0.640], color=LINE, linewidth=0.65, zorder=2)
+    add_text(ax, 0.152, 0.610, "responses and weighted topologies", size=6.2, color=MID, ha="center")
+
+    arrow(ax, (0.255, 0.750), (0.306, 0.750), color=INK, linewidth=1.0)
+    add_text(ax, 0.281, 0.779, "fit once", size=5.8, color=MID, ha="center")
+
+    rounded_box(
+        ax,
+        0.310,
+        0.575,
+        0.292,
+        0.290,
+        facecolor=WHITE,
+        edgecolor=WARM,
+        linewidth=1.35,
+        radius=0.014,
+    )
+    ax.add_patch(
+        Rectangle(
+            (0.310, 0.816),
+            0.292,
+            0.049,
+            facecolor=WARM,
+            edgecolor=WARM,
+            linewidth=0,
+            zorder=2,
+        )
+    )
+    add_text(ax, 0.456, 0.841, "query-certified learned object", size=7.2, weight="bold", color=WHITE, ha="center")
+
+    rounded_box(ax, 0.335, 0.676, 0.104, 0.102, facecolor=WARM_LIGHT, edgecolor=WARM, linewidth=0.85)
+    rounded_box(ax, 0.473, 0.676, 0.104, 0.102, facecolor=WARM_LIGHT, edgecolor=WARM, linewidth=0.85)
+    draw_matrix(ax, 0.347, 0.697, 0.032, 0.055, color=WARM, diagonal=True)
+    draw_matrix(ax, 0.485, 0.697, 0.032, 0.055, color=WARM, diagonal=True)
+    add_text(ax, 0.409, 0.733, "A", size=9, weight="bold", color=WARM_DARK, ha="center")
+    add_text(ax, 0.409, 0.705, "direct", size=5.7, color=MID, ha="center")
+    add_text(ax, 0.547, 0.733, "B", size=9, weight="bold", color=WARM_DARK, ha="center")
+    add_text(ax, 0.547, 0.705, "network", size=5.7, color=MID, ha="center")
+    add_text(ax, 0.456, 0.635, "separated coefficient path", size=6.4, weight="bold", ha="center")
+    add_text(ax, 0.456, 0.605, "topology remains an evaluation argument", size=5.9, color=MID, ha="center")
+
+    rounded_box(ax, 0.372, 0.463, 0.168, 0.075, facecolor=COOL_LIGHT, edgecolor=COOL, linewidth=0.9)
+    draw_network(ax, 0.388, 0.477, 0.047, 0.047, variant=2, edgecolor=COOL, linewidth=0.65)
+    add_text(ax, 0.452, 0.506, "supplied topology W*", size=6.6, weight="bold", color=COOL)
+    add_text(ax, 0.452, 0.480, "at readout only", size=5.7, color=MID)
+    arrow(ax, (0.456, 0.538), (0.456, 0.574), color=COOL, linewidth=1.05)
+
+    arrow(ax, (0.604, 0.750), (0.649, 0.750), color=WARM, linewidth=1.25)
+    add_text(ax, 0.625, 0.781, "call", size=5.8, color=WARM_DARK, ha="center")
+
+    rounded_box(ax, 0.653, 0.575, 0.127, 0.290, facecolor=WHITE, edgecolor=INK, linewidth=0.85)
+    add_text(ax, 0.7165, 0.827, "topology-indexed", size=6.3, weight="bold", ha="center")
+    add_text(ax, 0.7165, 0.801, "response", size=6.3, weight="bold", ha="center")
+    add_text(ax, 0.7165, 0.752, "M(W*) at (k, t)", size=7.7, weight="bold", color=WARM_DARK, ha="center", style="italic")
+    add_text(ax, 0.7165, 0.721, "= A(k,t) + B(k,t) W*", size=6.2, color=INK, ha="center")
+    draw_matrix(ax, 0.679, 0.641, 0.075, 0.060, color=WARM)
+    draw_trace(ax, 0.674, 0.591, 0.085, 0.043, color=WARM, variant=0)
+    add_text(ax, 0.7165, 0.557, "finite-horizon readout", size=5.8, color=MID, ha="center")
+
+
+def draw_call_card(
+    ax: plt.Axes,
+    x: float,
+    title: str,
+    query: str,
+    output: str,
+    *,
+    variant: int,
+    topology: str,
+) -> None:
+    width = 0.222
+    rounded_box(ax, x, 0.094, width, 0.206, facecolor=WHITE, edgecolor=LINE, linewidth=0.75)
+    add_text(ax, x + width / 2, 0.270, title, size=6.6, weight="bold", ha="center")
+    if topology == "zero":
+        rounded_box(ax, x + 0.018, 0.181, 0.060, 0.057, facecolor=PALE, edgecolor=LINE, linewidth=0.6)
+        add_text(ax, x + 0.048, 0.210, "0", size=9, weight="bold", color=MID, ha="center")
+    else:
+        draw_network(
+            ax,
+            x + 0.019,
+            0.181,
+            0.057,
+            0.057,
+            variant=variant,
+            edgecolor=COOL if topology == "observed" else MID,
+            linewidth=0.6,
+        )
+    add_text(ax, x + 0.089, 0.221, query, size=6.2, weight="bold", color=COOL if topology == "observed" else INK)
+    add_text(ax, x + 0.089, 0.193, output, size=5.8, color=MID)
+    draw_trace(ax, x + 0.025, 0.117, width - 0.050, 0.045, color=WARM, variant=variant)
+
+
+def draw_panel_b(ax: plt.Axes) -> None:
+    add_text(ax, 0.018, 0.385, "b", size=8.5, weight="bold")
+    add_text(ax, 0.047, 0.385, "Three calls from the same fitted path", size=8.4, weight="bold")
+    rounded_box(ax, 0.315, 0.337, 0.232, 0.039, facecolor=WARM_LIGHT, edgecolor="none", linewidth=0)
+    add_text(ax, 0.431, 0.356, "same state  |  same shock  |  same horizon", size=5.9, color=WARM_DARK, ha="center")
+    ax.plot([0.081, 0.720], [0.322, 0.322], color=WARM, linewidth=1.0, zorder=2)
+    for center in (0.149, 0.387, 0.625):
+        ax.plot([center, center], [0.322, 0.303], color=WARM, linewidth=1.0, zorder=2)
+
+    draw_call_card(
+        ax,
+        0.038,
+        "observed topology",
+        "W* = W(t-1)",
+        "observed response",
+        variant=0,
+        topology="observed",
+    )
+    draw_call_card(
+        ax,
+        0.276,
+        "zero network mediation",
+        "W* = 0",
+        "direct-only response",
+        variant=1,
+        topology="zero",
+    )
+    draw_call_card(
+        ax,
+        0.514,
+        "frozen topology",
+        "W* = W(pre)",
+        "matched frozen response",
+        variant=2,
+        topology="frozen",
+    )
+    add_text(ax, 0.387, 0.055, "topology changes at evaluation; the model is not refitted", size=6.2, color=MID, ha="center")
+
+
+def draw_panel_c(ax: plt.Axes) -> None:
+    rounded_box(ax, 0.812, 0.055, 0.170, 0.900, facecolor=PALE, edgecolor="#D8DCDE", linewidth=0.7)
+    add_text(ax, 0.827, 0.919, "c", size=8.5, weight="bold")
+    add_text(ax, 0.855, 0.919, "Qualification\nboundary", size=6.8, weight="bold")
+    add_text(ax, 0.897, 0.861, "collapsed at W0", size=6.5, weight="bold", ha="center")
+    rounded_box(ax, 0.842, 0.749, 0.110, 0.079, facecolor=WHITE, edgecolor=LINE, linewidth=0.7)
+    add_text(ax, 0.897, 0.789, "D = A + B W0", size=6.8, weight="bold", ha="center", style="italic")
+    add_text(ax, 0.897, 0.718, "retains a total map", size=5.9, color=MID, ha="center")
+
+    ax.plot([0.897, 0.897], [0.684, 0.625], color=LINE, linewidth=0.9, zorder=2)
+    rounded_box(ax, 0.842, 0.538, 0.110, 0.082, facecolor=WHITE, edgecolor=LINE, linewidth=0.7, linestyle="dashed")
+    add_text(ax, 0.897, 0.588, "query W1", size=6.7, weight="bold", ha="center")
+    add_text(ax, 0.897, 0.562, "W1 differs from W0", size=5.5, color=MID, ha="center")
+
+    ax.plot([0.897, 0.897], [0.536, 0.476], color=LINE, linewidth=0.9, zorder=2)
+    ax.plot([0.884, 0.910], [0.501, 0.501], color=MID, linewidth=1.3, zorder=4)
+    add_text(ax, 0.897, 0.436, "no declared inverse", size=6.2, weight="bold", color=MID, ha="center")
+    add_text(ax, 0.897, 0.397, "topology-substitution", size=5.9, color=MID, ha="center")
+    add_text(ax, 0.897, 0.369, "response is not callable", size=5.9, color=MID, ha="center")
+
+    rounded_box(ax, 0.839, 0.274, 0.116, 0.060, facecolor="#E7E9EA", edgecolor="none", linewidth=0)
+    add_text(ax, 0.897, 0.304, "OUTSIDE TARGET", size=6.1, weight="bold", color=MID, ha="center")
+    add_text(ax, 0.897, 0.227, "not a zero response", size=5.7, color=MID, ha="center")
+    add_text(ax, 0.897, 0.198, "not an error score", size=5.7, color=MID, ha="center")
+    ax.plot([0.842, 0.952], [0.159, 0.159], color="#D4D7D9", linewidth=0.6, zorder=2)
+    add_text(ax, 0.897, 0.122, "A verified structured inverse", size=5.6, color=COOL, ha="center")
+    add_text(ax, 0.897, 0.096, "defines a different contract", size=5.6, color=COOL, ha="center")
+
+
+def build_figure() -> plt.Figure:
+    width_inches = 183 / 25.4
+    fig = plt.figure(figsize=(width_inches, 5.15), facecolor=WHITE)
+    ax = fig.add_axes((0, 0, 1, 1))
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.set_aspect("auto")
+    ax.axis("off")
+
+    ax.plot([0.018, 0.783], [0.423, 0.423], color="#D9DCDE", linewidth=0.65, zorder=1)
+    draw_panel_a(ax)
+    draw_panel_b(ax)
+    draw_panel_c(ax)
+    return fig
 
 
 def main() -> None:
     OUT_BASENAME.parent.mkdir(parents=True, exist_ok=True)
-    OUT_BASENAME.with_suffix(".svg").write_text(build_svg(), encoding="utf8")
+    for suffix in (".svg", ".pdf", ".png"):
+        output_path = OUT_BASENAME.with_suffix(suffix)
+        if output_path.exists():
+            output_path.unlink()
+    fig = build_figure()
+    fig.savefig(OUT_BASENAME.with_suffix(".svg"), format="svg")
+    fig.savefig(OUT_BASENAME.with_suffix(".pdf"), format="pdf")
+    fig.savefig(OUT_BASENAME.with_suffix(".png"), format="png", dpi=600)
+    plt.close(fig)
 
 
 if __name__ == "__main__":

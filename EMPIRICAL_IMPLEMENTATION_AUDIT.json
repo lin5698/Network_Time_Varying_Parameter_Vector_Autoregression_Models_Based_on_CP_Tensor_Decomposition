@@ -1,0 +1,343 @@
+{
+  "audit_date": "2026-08-26",
+  "audit_timezone_basis": "Asia/Shanghai",
+  "generated_at": "2026-08-26T00:00:00Z",
+  "generated_at_note": "UTC wall-clock second-level precision was unmeasurable in this session (spawn tooling failed; see provenance_disclosure.tooling_disclosure); only the date is asserted, under audit_timezone_basis Asia/Shanghai.",
+  "verdict": "PASS",
+  "reason_code": "rcep_nyc_value_audited_downstream_build_authorized",
+  "summary": "Re-adjudication of the standing FAIL (rcep_nyc_quarantined_unreviewed) against the completed 2026-08-26 review chain. Release-condition part 1 is satisfied: both quarantined corrected runs passed independent value audit (RCEP-03 36/36 files, NYC-01 18/18 files, both SUPPORTED_FOR_DOWNSTREAM_REVIEW; hash-frozen bytes verified MATCH 36/36 and 18/18 by orchestrator-executed instrumentation with empty drift/missing/extra_on_disk/symlinks), the receipts are internally coherent and cross-consistent, and this adjudicator's own spot-checks reproduced nine load-bearing statements against the underlying artifacts. Part 2 is satisfied: author decision 2026-08-26 (p3_stage3=授权复审+重建链) grants separate downstream-build authorization while explicitly excluding quarantine-tree promotion and empirical claim activation. Manuscript-promotion authorization was NOT granted and is recorded as a remaining condition rather than a build-gate blocker, because PAPER_TO_EVIDENCE_AUDIT_V1_20260826 found zero active stale citations and zero manuscript sentences bound to quarantine candidates. PASS releases only the fail-closed build gate for the authorized rebuild chain; open characterization flags F1/F2/F3 (RCEP) plus NYC characterizations block activation, not build.",
+  "previous_artifact_sha256": "sha256:29d5656ab2aebc05ebfb424b45eed47849f9394a3a6c811530e0de8f367d527c",
+  "readjudication_basis": {
+    "release_condition_adjudicated_verbatim": "Independently audit both corrected quarantine inventories and values, then obtain separate downstream-build and manuscript-promotion authorization.",
+    "condition_part_1_independent_audit_of_both_corrected_quarantine_inventories_and_values": {
+      "status": "SATISFIED",
+      "rcep_lane": {
+        "receipt": "refine-logs/PSA_RCEP_03_VALUE_AUDIT_20260826.{md,json}",
+        "overall_verdict": "SUPPORTED_FOR_DOWNSTREAM_REVIEW (amended: PASS_QUALIFIED_INSTRUMENT_MEDIATED V-T1)",
+        "file_coverage": "36/36 declared quarantine files: 18 text/data artifacts read and parsed; 18 figures existence-verified via binary oracle",
+        "inventory_integrity": "MATCH 36/36 vs PSA_RCEP_03_OUTPUT_INVENTORY_20260719.json via tmp/rcep_vt1_measurement_20260826.json; drift=[], missing=[], extra_on_disk=[], symlinks=[]",
+        "adjudicator_internal_coherence_check": "PASS - config echo (cp_rank 2, ridge 0.01, rank_losses with rank>=3 exploding to ~13.4, full_fit_loss 0.6196736654708991, stability_rate_cp 0.5277777777777778), flags F1/F2/F3, and stale-vs-candidate deltas are internally consistent and cross-consistent with the stage-2 lane's independent measurements",
+        "per_task_verdicts": {"V_T1": "PASS_QUALIFIED_INSTRUMENT_MEDIATED", "V_T2": "PARTIAL", "V_T3": "PASS_WITH_FLAGS", "V_T4": "PASS_CHARACTERIZATION_ONLY", "V_T5": "PASS_AS_READINESS_ONLY"}
+      },
+      "nyc_lane": {
+        "receipt": "refine-logs/PSA_NYC_01_VALUE_AUDIT_20260826.{md,json}",
+        "overall_verdict": "SUPPORTED_FOR_DOWNSTREAM_REVIEW (revised from initial BLOCKED after adjudicating orchestrator instrumentation)",
+        "file_coverage": "18/18 declared quarantine files, all found on disk",
+        "inventory_integrity": "MATCH 18/18 under corrected base output/natcs_empirical_cp_authorized_runs/psa-20260719-nyc-01/nyc_taxi via tmp/nyc_vt1_measurement_20260826.json; drift=[], missing=[], extra_on_disk=[], symlinks=[]",
+        "row12_incident_closure": "ACCEPTED - auditor transcription incident closed by three orchestrator-executed follow-ups (zero git changes today; inventory mtime 2026-08-12T13:41:40 predates session; fresh PNG sha256 == current-authoritative inventory value)",
+        "adjudicator_internal_coherence_check": "PASS - panel shape (109x16), counts (69 aggregate/stability months, 48 unstable = stability_rate_cp 0.6956521739130435), GIRF remap, origins 66/69 and observations a-f are internally coherent and consistent with the wave record",
+        "per_task_verdicts": {"VT1": "PASS (qualified)", "VT2": "PASS", "VT3": "PASS", "VT4": "PASS", "VT5": "PASS"}
+      },
+      "instrumentation_files_adjudicated_by_this_audit": [
+        "tmp/rcep_vt1_measurement_20260826.json (rows enumerate exactly the 36 declared paths; every row status MATCH with sha256==exp_sha256 and size_bytes==exp_size; is_symlink false throughout)",
+        "tmp/nyc_vt1_measurement_20260826.json (rows enumerate exactly the 18 declared paths; same MATCH structure; row-12 PNG literal matches current-authoritative value)"
+      ],
+      "qualification": "All hash measurements are ORCHESTRATOR-custody (disclosed in both receipts and in provenance_disclosure below); this adjudicator could not recompute any digest (spawn tooling dead). Accepted as instrument-mediated evidence consistent with both receipts' own qualifications; it corroborates consistency, not first-party cryptographic reproduction.",
+      "adjudicator_independent_spot_checks_performed_today": [
+        {"id": "SC-1", "artifact": "output/natcs_empirical_cp_authorized_runs/psa-20260719-rcep-03/rcep/selection_summary.json", "statement_verified": "cp_rank=2; ridge_lambda=0.01; rank_losses {1:0.7080399584476874, 2:0.46325637219845683, 3:13.42220350150378, 4:13.295763431343806}; full_fit_loss=0.6196736654708991; stability_rate_cp=0.5277777777777778; helper_git_commit d0e398b896848f26413cf9aa9dfca15fb4e7ce64; F1 remap 2022-12-31->2020-03-31; F2 evolving point 0.0022967865167819556 > p975 0.0020326520698283287; attenuation_difference.point == evolving.point - frozen.point exact", "result": "CONFIRMED"},
+        {"id": "SC-2", "artifact": "output/natcs_empirical_cp_authorized_runs/psa-20260719-rcep-03/rcep/stability_summary.csv", "statement_verified": "36 dates; first unstable=1 at 2020-06-30 then all subsequent (exactly 19 unstable = rate 0.5277...); min radius 0.4496630475143816 at 2018-06-30; max 1.4489532745859717 at 2021-09-30; unstable==1 iff radius>1 on every row", "result": "CONFIRMED"},
+        {"id": "SC-3", "artifact": "output/natcs_empirical_cp_authorized_runs/psa-20260719-nyc-01/nyc_taxi/stability_summary.csv", "statement_verified": "69 data rows; exactly 48 unstable; 48/69 = 0.6956521739130435 == selection_summary.stability_rate_cp; unstable==1 iff radius_cp>1 on every boundary row checked", "result": "CONFIRMED"},
+        {"id": "SC-4", "artifact": "output/natcs_empirical_cp_authorized_runs/psa-20260719-nyc-01/nyc_taxi/selection_summary.json", "statement_verified": "cp_rank=4; rank_losses [23.159694248708437, 1.7129450637151769, 0.3234590143698836, 0.24095530765437415]; fit_losses verbatim; full_fit_loss=0.13612272962909133; available_origins 69 / evaluated 66 per rank; window 40, lag 2, boot 500, block 4, inits 6, iter 100, tol 1e-06; helper_git_commit null; coef_bootstrap_summary null; GIRF remap {2019-12-31->2020-03-31, 2021-12-31->2020-04-30}", "result": "CONFIRMED"},
+        {"id": "SC-5", "artifact": "output/natcs_empirical_cp_authorized_runs/psa-20260719-nyc-01/nyc_taxi/derived_monthly_panel.csv", "statement_verified": "110 lines = header + exactly 109 monthly rows spanning 2012-12-31..2021-12-31 with strict month-end continuity (incl. leap rows); 16 columns = date + the 15 named zones matching the receipt's zone list verbatim", "result": "CONFIRMED"},
+        {"id": "SC-6", "artifact": "output/natcs_empirical_cp/rcep/selection_summary.json (stale promoted tree)", "statement_verified": "cp_rank=1 with monotone rank losses {0.220164203105874, 0.27280656327033237, 0.497124089658091, 0.730750776146323}; full_fit_loss=1.014484343302525 == governance identifier 1.0144843433; ridge grid byte-identical to candidate tree; intercept_policy field ABSENT", "result": "CONFIRMED"},
+        {"id": "SC-7", "artifact": "output/natcs_empirical_cp_authorized_runs/psa-20260719-rcep-03/rcep/table_rcep_cp_benchmark.csv", "statement_verified": "Evolving topology coefficient 0.0022967865167819556 == selection_summary point to 16 digits, p-value 5.406453063017125e-11; Frozen coefficient 0.0015920158589193666; N=7560 everywhere; trimmed row N=7408 (=7560-152)", "result": "CONFIRMED"},
+        {"id": "SC-8", "artifact": "output/natcs_empirical_cp/rcep/table_rcep_cp_benchmark.csv (stale promoted tree)", "statement_verified": "stale headline Evolving coefficient 0.0008732456785415317 with p=0.013950118975851522; Two-way clustered SE p-value literally 0.0; candidate/stale ratio ~2.63x reproduces", "result": "CONFIRMED"},
+        {"id": "SC-9", "artifact": "PAPER_CLAIM_AUDIT.json", "statement_verified": "verdict BLOCKED with reason_code rcep_nyc_quarantines_unreviewed (audit_date 2026-07-19) as asserted by the paper-to-evidence receipt's standing_blockers_reverified_on_disk_today", "result": "CONFIRMED"}
+      ],
+      "spot_check_verdict": "ALL CONFIRMED - no discrepancy found between today's receipts and underlying bytes on any load-bearing statement tested"
+    },
+    "condition_part_2_separate_downstream_build_authorization": {
+      "status": "SATISFIED",
+      "basis": "Author decision 2026-08-26: p3_stage3=授权复审+重建链 (re-adjudication of both standing audits plus rebuild chain authorized)",
+      "explicit_exclusions_in_authorization": ["quarantine-tree PROMOTION", "empirical CLAIM ACTIVATION"],
+      "note": "This is the separate downstream-build authorization the 2026-07-19 release condition required; it is distinct from manuscript-promotion authorization."
+    },
+    "manuscript_promotion_authorization": {
+      "status": "NOT_GRANTED",
+      "classification": "REMAINING_CONDITION_NOT_A_BUILD_GATE_BLOCKER",
+      "basis_for_not_blocking_build_gate": "PAPER_TO_EVIDENCE_AUDIT_V1_20260826 independently established (and this adjudicator verified key elements): stale_citation_retest.answer_today = NO active citations of stale promoted values; binding_class_counts.BOUND_TO_QUARANTINE_CANDIDATE = 0 (no manuscript sentence binds to quarantined values); per_claim_counts 35 OK / 4 STALE_BOUND / 0 CRITICAL with the four STALE_BOUND items self-fenced (ledger C006/C007/C008 blocked-pending-rerun wording), gate-gated latent builder strings (unreachable while PAPER_CLAIM_AUDIT=BLOCKED and this audit previously FAIL), or inert on-disk residue excluded from submission packaging; PAPER_CLAIM_AUDIT.json remains BLOCKED on disk so the evidence build gate still refuses. Because nothing in the current manuscript binds to quarantine or stale values for active use, promotion authorization can remain pending without blocking the authorized rebuild chain."
+    },
+    "receipts_cited_with_sha256_from_hash_pack": [
+      {"path": "refine-logs/PSA_RCEP_03_VALUE_AUDIT_20260826.md", "sha256": "sha256:e74aba57439cc34a692ee50e93a6f4fb2d177cfa5aa0c9271447b5287b266b0e"},
+      {"path": "refine-logs/PSA_RCEP_03_VALUE_AUDIT_20260826.json", "sha256": "sha256:9a1dd905ad34624540d523dcd34dd2431e2a4f9ac2bbb87642355871fd499250"},
+      {"path": "refine-logs/PSA_NYC_01_VALUE_AUDIT_20260826.md", "sha256": "sha256:3ad9c691eccbe39e7bdf47f7c5a399d1fe17ad141e7d0324ef7c88d240682764"},
+      {"path": "refine-logs/PSA_NYC_01_VALUE_AUDIT_20260826.json", "sha256": "sha256:d3cf2b74951cf760dc79b83ff2bb04d5b5f8aec8747c2ed46a70e0f970cfcf56"},
+      {"path": "refine-logs/PAPER_TO_EVIDENCE_AUDIT_V1_20260826.md", "sha256": "sha256:085e9bf409b06d29eca3f8261076084ea700a07d7b602ddcb2b85c4297ca1623"},
+      {"path": "refine-logs/PAPER_TO_EVIDENCE_AUDIT_V1_20260826.json", "sha256": "sha256:f111daeff0eca254e00db65fddd775bc29b25a610d8bde646c8dfe1493675cfa"},
+      {"path": "refine-logs/REC-P3_VALUE_AUDIT_WAVE_V1_20260826.md", "sha256": "sha256:b36dfc0bcd42b3a62844f95532fe7f0867ea44a526556c2cdabe9d964c44a6da"},
+      {"path": "refine-logs/REC-P3_VALUE_AUDIT_WAVE_V1_20260826.json", "sha256": "sha256:3fdb6572d6b07cbb0527c22fa9e1c449c5e8fd43474410ce5476c1df0d12aa86"}
+    ],
+    "wave_record_consolidation": {
+      "record": "refine-logs/REC-P3_VALUE_AUDIT_WAVE_V1_20260826.{md,json}",
+      "lanes": {"nyc_01": "SUPPORTED_FOR_DOWNSTREAM_REVIEW (V-T1 PASS qualified; match 18/18)", "rcep_03": "SUPPORTED_FOR_DOWNSTREAM_REVIEW (V-T1 PASS qualified instrument-mediated; match 36/36)"},
+      "activated_claims": [],
+      "standing_blockers_recorded_by_wave": ["PAPER_CLAIM_AUDIT=BLOCKED", "EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL"],
+      "note": "The second standing blocker is discharged BY THIS ARTIFACT; PAPER_CLAIM_AUDIT discharge belongs to the sequential second lane."
+    }
+  },
+  "flag_dispositions": {
+    "disposition_class": "OPEN_CHARACTERIZATION_FLAGS_BLOCKING_ACTIVATION_NOT_BUILD",
+    "meaning": "Each flag below remains OPEN as a characterization issue. It blocks any manuscript use or claim activation of the affected fragment until separately resolved or explicitly accepted by the author; none of them blocks the downstream rebuild chain authorized on 2026-08-26.",
+    "flags_carried_forward_verbatim_from_wave_record": [
+      "RCEP_F1_girf_date_substitution_undocumented",
+      "RCEP_F2_point_outside_bootstrap_CI",
+      "RCEP_F3_stable_dates_not_identified",
+      "NYC_stability_rate_semantics",
+      "NYC_girf_date_remap",
+      "NYC_origins_66_of_69",
+      "NYC_negative_late_g_net",
+      "no_rng_seed_recorded_both_trees"
+    ],
+    "detail_verbatim_from_receipts": {
+      "RCEP_F1": "girf date substitution 2022-12-31->2020-03-31 unexplained in artifacts; BOTH dates present in outputs (girf_cp_point.json literal key + full 500-rep bootstrap blocks for both keys)",
+      "RCEP_F2": "headline evolving_coefficient point lies OUTSIDE its own bootstrap percentile CI (point 0.00229679 > p975 0.00203265); analytic-SE significance coexists with this",
+      "RCEP_F3": "stable-dates-only pair-level regression NOT identified under repaired run (TC_relief collinear with pair/time effects; N=3570); honest empty fields in artifact",
+      "NYC_characterizations": [
+        "stability_rate_cp numerically equals the UNSTABLE share (radius>1 fraction), a semantics/labeling question for pipeline owners",
+        "requested GIRF dates remapped to 2020-03-31/2020-04-30 although requested month-ends exist in-panel; rule undocumented; stale tree honored requested dates identically - behavioral divergence needs explanation before any claim uses GIRF shock dates",
+        "evaluated origins 66 < available 69 uniformly across ranks in BOTH trees; unexplained constant shortfall of 3, pipeline-level",
+        "late-period g_net point estimates negative (baseline_mobility -0.376..-0.696 for 2021-05..2021-12; baseline_h12 to -4.353 at 2021-06); finite and internally echoed by bootstrap medians near/below 0",
+        "half_life pinned at cap H (=8 or 12) through 2020-05..2021-04 in all variants",
+        "bootstrap means differ materially from full-sample point estimates in several months (e.g. 2021-12-31 g_net point -0.3817 vs mean -0.2440 vs median +0.0389) - skew, internally consistent"
+      ],
+      "no_rng_seed_recorded_both_trees": "no RNG seed recorded in any output artifact; reproducibility caveat (NYC receipt vt2.rng_seed_note; wave record)"
+    },
+    "binding_effect_on_claims": "All quarantine-candidate mappings remain POTENTIAL_ONLY_NOT_ACTIVATED (PAPER_TO_EVIDENCE_AUDIT_V1_20260826.activation_posture; count of BOUND_TO_QUARANTINE_CANDIDATE entries bound to any manuscript sentence = 0). RCEP F1/F2/F3 and NYC flags block any future activation of the fragments they touch."
+  },
+  "remaining_conditions": [
+    {
+      "id": "RC-1",
+      "condition": "manuscript-promotion authorization",
+      "status": "NOT_GRANTED",
+      "owner": "author",
+      "note": "Separate author decision required before any quarantined-run value, figure, or claim fragment may enter manuscript promotion. Not a blocker to the authorized downstream build gate because zero active manuscript citations bind to quarantine or stale values (verified via PAPER_TO_EVIDENCE_AUDIT_V1_20260826 and spot-checks SC-7/SC-8/SC-9)."
+    },
+    {
+      "id": "RC-2",
+      "condition": "empirical claim activation",
+      "status": "REQUIRES_SEPARATE_AUTHORIZATION",
+      "blocked_by": "OPEN_CHARACTERIZATION_FLAGS_BLOCKING_ACTIVATION_NOT_BUILD",
+      "note": "All mappings stay POTENTIAL_ONLY_NOT_ACTIVATED; fragments touched by F1/F2/F3 or NYC characterizations additionally require resolution or explicit author acceptance of the flag."
+    },
+    {
+      "id": "RC-3",
+      "condition": "post-regeneration review with no open FATAL/CRITICAL issue",
+      "status": "CARRIED_FROM_ORIGINAL_CONDITION_CLAUSE_3",
+      "note": "Rebuilt manuscript, reviewer archive, clean submission package and upload-freeze manifest remain subject to the standing fail-closed gates (e.g. build_natcs_evidence.mjs release gate currently refusing while PAPER_CLAIM_AUDIT=BLOCKED) and to an independent post-regeneration review before any submission-readiness claim."
+    }
+  ],
+  "historical_context_2026_07_19_unmodified": {
+    "label": "historical_context_2026_07_19_unmodified",
+    "preservation_note": "Sections under this key are carried from EMPIRICAL_IMPLEMENTATION_AUDIT.json sha256:29d5656ab2aebc05ebfb424b45eed47849f9394a3a6c811530e0de8f367d527c (audit_date 2026-07-19, verdict FAIL, reason_code rcep_nyc_quarantined_unreviewed). All values are unmodified; three presentational changes were made and are disclosed here: (1) the old top-level five identity fields are nested as superseded_verdict_record; (2) blocking_issues was renamed blocking_issues_at_the_time and each entry's 'status' renamed 'status_then' so they cannot be misread as current; (3) the old 36-entry audited_input_hashes map is preserved via the pinned previous artifact rather than re-transcribed (see audited_input_hashes_as_of_2026_07_19.preservation_method_note). This context does NOT describe the current verdict; statements such as 'unreviewed' or 'stale evidence' describe the state before the 2026-08-26 value-audit wave.",
+    "superseded_verdict_record": {
+      "audit_date": "2026-07-19",
+      "generated_at": "2026-07-19T05:49:32Z",
+      "verdict": "FAIL",
+      "reason_code": "rcep_nyc_quarantined_unreviewed",
+      "summary": "RCEP-03 and NYC completed under exact one-time authorizations and their output inventories are hash-frozen in quarantine. Neither dataset has passed independent value/claim audit or promotion approval."
+    },
+    "outcome_stage_boundary": {
+      "r006e": "closed_not_inspected_not_executed",
+      "r006f": "closed_not_inspected_not_executed"
+    },
+    "scientific_execution_closure": {
+      "state": "RCEP_NYC_COMPLETED_QUARANTINED_UNREVIEWED",
+      "authorization_template": "refine-logs/SCIENTIFIC_EXECUTION_AUTHORIZATION_TEMPLATE_V1.json",
+      "authorization_template_sha256": "25001859d494e24bafb05273266a44056803a8107161832902b35dea20183c3c",
+      "authorization_decision": "EXACT_SHA_APPROVED_AND_ALL_SCIENTIFIC_DECISIONS_CONSUMED",
+      "authorization_approval": "refine-logs/PRODUCTION_SCIENTIFIC_AUTHORIZATION_APPROVAL_20260719.md",
+      "execution_record": "refine-logs/PRODUCTION_SCIENTIFIC_EXECUTION_RECORD_20260719.json",
+      "nyc_output_inventory": "refine-logs/PSA_NYC_OUTPUT_INVENTORY_20260719.json",
+      "rcep_output_inventory": "refine-logs/PSA_RCEP_03_OUTPUT_INVENTORY_20260719.json",
+      "cp_cli_probe": {
+        "command": "python3 scripts/run_cp_empirical_pipeline.py --dataset rcep --authorization refine-logs/SCIENTIFIC_EXECUTION_AUTHORIZATION_TEMPLATE_V1.json --authorization-sha256 25001859d494e24bafb05273266a44056803a8107161832902b35dea20183c3c --output-root /tmp/natcs_cp_denial_probe_20260719 --window 40 --p 2 --n-boot 500 --block-size 4 --cp-inits 6 --cp-max-iter 100 --cp-tol 1e-6",
+        "exit_code": 1,
+        "terminal_message": "Scientific execution is not authorized.",
+        "output_root_created": false
+      },
+      "cp_pre_science_spy_tests": {
+        "command": "python3 -m unittest -v tests.test_cp_pipeline_contracts.ProductionEntryContractTests.test_missing_scientific_authorization_refuses_before_helper_data_or_output tests.test_cp_pipeline_contracts.ProductionEntryContractTests.test_not_authorized_template_refuses_before_input_helper_data_or_output",
+        "passed": 2,
+        "failed": 0,
+        "forbidden_calls_observed": 0,
+        "forbidden_boundaries": [
+          "input resolution",
+          "helper import",
+          "helper requirement",
+          "scientific data loading",
+          "scientific output path construction"
+        ]
+      },
+      "r006e_screening_cli_probe": {
+        "command": "python3 -m scripts.experiments.r006e_screening_v2 screening-pair --workers 6 --authorization /tmp/r006e_missing_production_authorization.json",
+        "exit_code": 2,
+        "terminal_message": "screening-pair refused by governed preflight"
+      },
+      "production_screening_roots": {
+        "primary": {
+          "path": "output/high_impact_revision/r006e_native_supported_recovery_v2",
+          "entries": [
+            "construction_gate_preoutcome.json",
+            "construction_manifest.sha256"
+          ],
+          "construction_gate_preoutcome_sha256": "4c3139c6cfee8c452b418f09b3bf04ec977e08f8ada5eb4e8b9d032309d5f090",
+          "construction_manifest_sidecar_sha256": "424ee25104b325bf3e63359d3f61c0d3adb97604e6c9c81d7f5bcf1a4009346b"
+        },
+        "repeat_root_absent": true,
+        "control_root_absent": true
+      },
+      "scientific_execution_performed": true,
+      "rcep_execution": "completed_quarantined_unreviewed",
+      "nyc_execution": "completed_quarantined_unreviewed",
+      "authorized_nyc_input_read": true,
+      "authorized_rcep_input_read": true,
+      "provider_governed_raw_data_read": true,
+      "r006e_outcome_accessed": false,
+      "r006f_outcome_accessed": false
+    },
+    "blocking_issues_at_the_time": [
+      {"id": "EIA-001", "severity": "FATAL", "status_then": "implementation_fixed_outputs_quarantined_unreviewed", "summary": "CP-ALS unfolding and Khatri-Rao orders were inconsistent."},
+      {"id": "EIA-002", "severity": "CRITICAL", "status_then": "implementation_fixed_outputs_quarantined_unreviewed", "summary": "CP rank validation discarded fitted local intercepts."},
+      {"id": "EIA-003", "severity": "CRITICAL", "status_then": "implementation_fixed_outputs_quarantined_unreviewed", "summary": "Window-independent residual perturbations did not define a coherent full-path bootstrap draw."}
+    ],
+    "resolved_controls": [
+      {
+        "id": "EIA-004",
+        "status": "RESOLVED_trust_manifest_installed_and_statically_validated",
+        "summary": "The exact author-approved schema-v2 candidate was installed at the production path and passed identity validation without importing helper code; scientific execution remains separately closed."
+      },
+      {
+        "id": "EIA-005",
+        "status": "RESOLVED_fixture_only_postclaim_low_closed",
+        "summary": "Role-start and terminal publication now re-scan all three roots under one exclusive lock transaction; retained terminals are bound to byte-identical control markers and revalidated by repeat and derived-state readers."
+      },
+      {
+        "id": "EIA-006",
+        "status": "RESOLVED_fixture_only_user_site_import_root_omission",
+        "summary": "The constrained helper loader now recognizes interpreter-reported global and user site-packages while continuing to reject arbitrary sys.path, helper-local unbound modules and spec spoofing."
+      }
+    ],
+    "helper_candidate_preflight": {
+      "report": "refine-logs/RCEP_HELPER_CANDIDATE_PREFLIGHT_20260719.json",
+      "candidate_selection_made": true,
+      "selected_candidate": "C3",
+      "author_use_boundary_confirmed": true,
+      "manifest_candidate": "refine-logs/RCEP_HELPER_TRUST_MANIFEST_CANDIDATE_20260719.json",
+      "manifest_candidate_sha256": "02b151473116bbea39e1dc200f7299cd1d1a3451f8e430bc4d59392eb2525256",
+      "manifest_candidate_identity_check": "PASS",
+      "manifest_installation_authorized": true,
+      "production_manifest_installed": true,
+      "production_manifest": "manuscript_src/natcs/rcep_helper_trust_manifest.json",
+      "production_manifest_sha256": "02b151473116bbea39e1dc200f7299cd1d1a3451f8e430bc4d59392eb2525256",
+      "production_static_identity_gate": "PASS",
+      "helper_import_called_during_installation_check": false,
+      "production_trust_scope": "installed manifest identity plus consumed exact-SHA one-time RCEP-03 execution",
+      "production_trust_granted_for_installation_static_gate_only": true,
+      "production_scientific_execution_trust_granted": true,
+      "scientific_execution_authorized": true,
+      "selected_helper_git_commit": "d0e398b896848f26413cf9aa9dfca15fb4e7ce64",
+      "selected_helper_required_api_contract": "PASS_8_of_8",
+      "selected_helper_unbound_local_dependencies": 0,
+      "selected_helper_import_time_side_effect_indicators": 5,
+      "selected_helper_top_level_license": "absent",
+      "helper_executed_during_static_checks": false,
+      "permitted_claim": "static identity and local-import closure are bound",
+      "forbidden_claims": [
+        "open source",
+        "redistributable",
+        "side-effect-free",
+        "execution-ready",
+        "scientifically validated"
+      ],
+      "C1": "FAIL_bound_files_differ_from_head",
+      "C2": "FAIL_bound_file_differs_from_head",
+      "C3": "PASS_static_identity_and_import_closure; WARN_no_top_level_license_and_5_import_time_side_effect_indicators"
+    },
+    "nyc_source_preflight": {
+      "report": "refine-logs/NYC_TAXI_SOURCE_PREFLIGHT_20260719.json",
+      "status": "PASS",
+      "repository": "xinychen/vars",
+      "commit": "7e63ba9734021171eaf49edb92be8a7e7e8802eb",
+      "required_files_verified": 10,
+      "scientific_execution_authorized": true
+    },
+    "focused_tests": {
+      "command": "env PYTHONPYCACHEPREFIX=/tmp/natcs_round5_pycache_20260719 PYTHONUNBUFFERED=1 python3 -m unittest -v tests.test_cp_pipeline_contracts tests.test_cp_rank_selection tests.test_natcs_theory_contract tests.test_rcep_helper_candidate_audit",
+      "passed": 85,
+      "failed": 0
+    },
+    "screening_governance_tests": {
+      "command": "env PYTHONPYCACHEPREFIX=/tmp/natcs_round5_pycache_20260719 PYTHONUNBUFFERED=1 python3 -m unittest -v scripts.experiments.test_r006e_attempt_ledger_v2 scripts.experiments.test_r006e_construction_v2 scripts.experiments.test_r006e_duplicate_audit_v2 scripts.experiments.test_r006e_result_claim_audit_v2 scripts.experiments.test_r006e_screening_executor_v2 scripts.experiments.test_r006e_screening_outputs_v2 scripts.experiments.test_r006e_screening_schema_v2 scripts.experiments.test_r006e_screening_v2",
+      "passed": 145,
+      "failed": 0,
+      "duration_seconds": 24.557,
+      "evidence_class": "fixture_only_governance_and_schema_tests"
+    },
+    "security_reviews": {
+      "round_3": {
+        "trace": ".aris/traces/security-audit/2026-07-19_run01/003-independent-blind-security-review.response.md",
+        "status": "findings_reported_then_remediated_in_current_code_and_contract_tests",
+        "scope": "CP scientific authorization, helper/import closure, input and output isolation"
+      },
+      "round_4": {
+        "trace": ".aris/traces/security-audit/2026-07-19_run01/004-final-post-remediation-security-review.response.md",
+        "status": "APPROVE_no_confirmed_Medium_or_higher",
+        "highest_confirmed_severity": "Low",
+        "scope": "R006e screening preclaim, claim transaction and fixture-only supervisor boundary"
+      },
+      "round_5": {
+        "trace": ".aris/traces/security-audit/2026-07-19_run01/005-fixture-only-postclaim-low-closure.response.md",
+        "status": "APPROVE_no_confirmed_in_scope_findings",
+        "highest_confirmed_in_scope_severity": "none",
+        "closed_finding": "Round_4_postclaim_unexpected_sidecar_Low",
+        "scope": "fixture-only post-claim inventory, terminal binding and retained-state readers"
+      }
+    },
+    "audited_input_hashes_as_of_2026_07_19": {
+      "preservation_method_note": "The full 36-entry audited_input_hashes map of the 2026-07-19 artifact is preserved via previous_artifact_sha256 = sha256:29d5656ab2aebc05ebfb424b45eed47849f9394a3a6c811530e0de8f367d527c rather than being re-transcribed here. A direct re-transcription attempt during this readjudication produced at least one digest-length anomaly against the surviving conversation record, demonstrating the hand-copy hazard documented in the NYC row-12 incident; the attempt was discarded. Only entries independently corroborated by today's orchestrator-measured hash pack are repeated below.",
+      "pack_corroborated_entries": {
+        "refine-logs/PSA_NYC_OUTPUT_INVENTORY_20260719.json": "sha256:f7c0e7cdebf6f8252960e0e0de08ed56df82eadfd9a2dd5397a5cee390e9e588",
+        "refine-logs/PSA_RCEP_03_OUTPUT_INVENTORY_20260719.json": "sha256:1645eb66267acbe57b19b5809da0e28af6ecf099cbb765703a96ddba53748ee9",
+        "output/natcs_empirical_cp/rcep/selection_summary.json": "sha256:bacaa2ac54a4d12b3a25829c5da9ee5763856679355569ae1c24683d1b6b4920",
+        "output/natcs_empirical_cp/nyc_taxi/selection_summary.json": "sha256:d204627f2bdd83bbc9c361e0644f7362e504aacb5f5bd03cad688f13882f751f"
+      }
+    },
+    "release_condition_superseded_verbatim": "Independently audit both corrected quarantine inventories and values, then obtain separate downstream-build and manuscript-promotion authorization."
+  },
+  "audited_input_hashes": {
+    "_custody_note": "ALL digests below were measured by the ORCHESTRATOR (full tooling) and recorded in tmp/p3_readjud_hash_pack_20260826.json; this adjudicator has no spawn capability and could not recompute any digest. Disclosed reliance, not first-party verification.",
+    "EMPIRICAL_IMPLEMENTATION_AUDIT.md": "sha256:ab2ad0de9f752c0d1457ff4176d97e37aec969c6a07126878167b3c4a09c09df",
+    "EMPIRICAL_IMPLEMENTATION_AUDIT.json": "sha256:29d5656ab2aebc05ebfb424b45eed47849f9394a3a6c811530e0de8f367d527c",
+    "PAPER_CLAIM_AUDIT.md": "sha256:800c0b68a84066d2ca2d71de7ae7c4602445814e07a11b3069e37e672bfe8cae",
+    "PAPER_CLAIM_AUDIT.json": "sha256:3fe91793793a0b7bb9a6acc6b53793b735c5c5eb3667c27f7b59b7d92ff41d92",
+    "refine-logs/PSA_RCEP_03_VALUE_AUDIT_20260826.md": "sha256:e74aba57439cc34a692ee50e93a6f4fb2d177cfa5aa0c9271447b5287b266b0e",
+    "refine-logs/PSA_RCEP_03_VALUE_AUDIT_20260826.json": "sha256:9a1dd905ad34624540d523dcd34dd2431e2a4f9ac2bbb87642355871fd499250",
+    "refine-logs/PSA_NYC_01_VALUE_AUDIT_20260826.md": "sha256:3ad9c691eccbe39e7bdf47f7c5a399d1fe17ad141e7d0324ef7c88d240682764",
+    "refine-logs/PSA_NYC_01_VALUE_AUDIT_20260826.json": "sha256:d3cf2b74951cf760dc79b83ff2bb04d5b5f8aec8747c2ed46a70e0f970cfcf56",
+    "refine-logs/PAPER_TO_EVIDENCE_AUDIT_V1_20260826.md": "sha256:085e9bf409b06d29eca3f8261076084ea700a07d7b602ddcb2b85c4297ca1623",
+    "refine-logs/PAPER_TO_EVIDENCE_AUDIT_V1_20260826.json": "sha256:f111daeff0eca254e00db65fddd775bc29b25a610d8bde646c8dfe1493675cfa",
+    "refine-logs/REC-P3_VALUE_AUDIT_WAVE_V1_20260826.md": "sha256:b36dfc0bcd42b3a62844f95532fe7f0867ea44a526556c2cdabe9d964c44a6da",
+    "refine-logs/REC-P3_VALUE_AUDIT_WAVE_V1_20260826.json": "sha256:3fdb6572d6b07cbb0527c22fa9e1c449c5e8fd43474410ce5476c1df0d12aa86",
+    "refine-logs/PSA_RCEP_03_OUTPUT_INVENTORY_20260719.json": "sha256:1645eb66267acbe57b19b5809da0e28af6ecf099cbb765703a96ddba53748ee9",
+    "refine-logs/PSA_NYC_OUTPUT_INVENTORY_20260719.json": "sha256:f7c0e7cdebf6f8252960e0e0de08ed56df82eadfd9a2dd5397a5cee390e9e588",
+    "output/natcs_empirical_cp/rcep/selection_summary.json": "sha256:bacaa2ac54a4d12b3a25829c5da9ee5763856679355569ae1c24683d1b6b4920",
+    "output/natcs_empirical_cp/nyc_taxi/selection_summary.json": "sha256:d204627f2bdd83bbc9c361e0644f7362e504aacb5f5bd03cad688f13882f751f",
+    "manuscript_src/natcs/claim_evidence_ledger.csv": "sha256:e360b18af7b7643e197e87e517f017c87aed415b2cb49ab584b3ac4a5770a115"
+  },
+  "provenance_disclosure": {
+    "adjudicator_model": "ox-alpha",
+    "developing_organization": "undisclosed",
+    "role": "independent read-only adjudicator executing P3 stage-3 step 1 (re-adjudication of EMPIRICAL_IMPLEMENTATION_AUDIT against current bytes and the completed 2026-08-26 review chain)",
+    "sole_writes_performed": ["EMPIRICAL_IMPLEMENTATION_AUDIT.json", "EMPIRICAL_IMPLEMENTATION_AUDIT.md"],
+    "untouched_as_ordered": ["PAPER_CLAIM_AUDIT.* (read-only; sequential second lane owns it)", "all other files read-only"],
+    "subagents_used": false,
+    "make_tests_git_scientific_execution": "none performed",
+    "tooling_disclosure": "bash spawn ENOENT on initial call AND mandated single retry (no shell all session); glob and grep failed ripgrep launch repeatedly (no search/enumeration); all evidence gathered via direct file reads; UTC wall-clock second-level precision therefore unmeasurable (see generated_at_note)",
+    "hash_custody_disclosure": "Every sha256 recorded in this artifact originates from tmp/p3_readjud_hash_pack_20260826.json, measured by the orchestrator outside this adjudicator process (orchestrator-executed instrumentation custody, mirroring the V-T1 remediation pattern disclosed in both value-audit receipts). The adjudicator verified internal coherence of the pack-derived measurement files and reproduced content-level statements by direct reads, but performed NO first-party cryptographic reproduction.",
+    "self_adjudicated": true,
+    "ceiling": "self_supervised_proxy",
+    "out_of_scope_confirmed": ["quarantine-tree PROMOTION", "empirical CLAIM ACTIVATION"],
+    "activation_performed": false
+  },
+  "release_condition": "PASS releases ONLY the fail-closed downstream build gate for the rebuild chain authorized by p3_stage3 (2026-08-26). It does NOT authorize manuscript promotion or empirical claim activation. Manuscript promotion additionally requires: (1) separate author authorization; (2) resolution or explicit author acceptance of every OPEN characterization flag (RCEP F1/F2/F3, NYC characterizations) for any fragment it touches; (3) post-regeneration independent review reporting no open FATAL or CRITICAL issue (carried from the 2026-07-19 condition clause 3). PAPER_CLAIM_AUDIT remains BLOCKED and its discharge is owned by the sequential second lane."
+}

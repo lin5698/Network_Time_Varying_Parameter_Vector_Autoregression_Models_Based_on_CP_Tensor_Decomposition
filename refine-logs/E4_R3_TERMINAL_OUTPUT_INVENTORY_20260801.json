@@ -1,0 +1,55 @@
+{
+  "schema_version": "e4-r3-terminal-output-inventory-v1",
+  "candidate_id": "e4-domain-stable-v4-20260731-candidate-r3",
+  "frozen_at": "2026-08-01T02:18:00+08:00",
+  "status": "FROZEN_PENDING_INDEPENDENT_AUDIT",
+  "execution_contract": {
+    "launchd_label": "com.openai.codex.natcs-e4-r3",
+    "runs": 1,
+    "last_exit_code": 0,
+    "process_state": "not_running",
+    "stdout_status": "COMPLETE_QUARANTINE_ONLY",
+    "stderr_empty": true,
+    "execution_failure_absent": true
+  },
+  "artifacts": [
+    {
+      "path": "refine-logs/e3_family2_candidates/e4-domain-stable-v4-20260731-candidate-r3/candidate.json",
+      "sha256": "0c49bca63813316ed65119f0f891074a290bd03392e5e9121c435dc936c199f6"
+    },
+    {
+      "path": "refine-logs/e3_family2_inputs/e4-r3-workspace-author-authorization-20260731.json",
+      "sha256": "73c135edef24e8b4310297070d127d4be6f12d857e009fe178d62e30dba694e6"
+    },
+    {
+      "path": "refine-logs/e3_family2_runtime/com.openai.codex.natcs-e4-r3.plist",
+      "sha256": "54597700bc3250d7dc6d5b801b05554de94388045bd22641595b9e43aa08dc5a"
+    },
+    {
+      "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json",
+      "sha256": "42d2b2da3649c4cfb7f72060ba9ff0587f108f7609177c23d5f68fda1f9a536d"
+    },
+    {
+      "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json",
+      "sha256": "09394a3c68a0babcc9cda7f704b78245553d61a40131e91ff1fc9157ece85032"
+    },
+    {
+      "path": "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-complete.json",
+      "sha256": "18e7dc81acf8c75d53835bcc751d8f37a89645357d302349631dc86d839a775b"
+    },
+    {
+      "path": "refine-logs/e3_family2_runtime/e4-r3.stdout.log",
+      "sha256": "c13a534058b771a7229636f4ae4d624f1cdf413f62efa593d06131ad209faad0"
+    },
+    {
+      "path": "refine-logs/e3_family2_runtime/e4-r3.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "outcome_handling": {
+    "outcome_values_read_by_executor": false,
+    "manuscript_promotion": "PROHIBITED_PENDING_AUDIT",
+    "audit_status_changes": "PROHIBITED_PENDING_AUDIT",
+    "downstream_builds": "PROHIBITED_PENDING_AUDIT"
+  }
+}

@@ -12,9 +12,55 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "output" / "natcs_fig2_portal_surrogate"
 STANDALONE = ROOT / "output" / "natcs_evidence" / "fig_validation_recovery.png"
 MANUSCRIPT_PDF = ROOT / "output" / "pdf" / "natcs_manuscript.pdf"
-FIG2_CAPTION = "Endpoint-preserving reconstruction keeps topology-substitution"
+FIG2_CAPTION = "Query availability is necessary but does not ensure recovery"
 STANDALONE_PANEL_A_CROP = (54, 70, 1212, 222)
 EMBEDDED_PANEL_A_CROP = (215, 160, 1065, 315)
+
+
+def require_releaseable_fig2_preview() -> None:
+    """Refuse stale portal-preview packaging before it can touch preview files."""
+    audits = {
+        "PAPER_CLAIM_AUDIT": ROOT / "PAPER_CLAIM_AUDIT.json",
+        "EMPIRICAL_IMPLEMENTATION_AUDIT": ROOT / "EMPIRICAL_IMPLEMENTATION_AUDIT.json",
+    }
+    inactive_sources = {
+        "RCEP empirical source": (
+            ROOT / "manuscript_src" / "natcs" / "results_rcep.md",
+            re.compile(r"^#\\s*Inactive audit-boundary draft:\\s*RCEP protocol", re.MULTILINE | re.IGNORECASE),
+        ),
+        "NYC empirical source": (
+            ROOT / "manuscript_src" / "natcs" / "results_generality.md",
+            re.compile(r"^#\\s*Inactive audit-boundary draft:\\s*NYC protocol", re.MULTILINE | re.IGNORECASE),
+        ),
+    }
+    failures: list[str] = []
+
+    for label, audit_path in audits.items():
+        if not audit_path.exists():
+            failures.append(f"{label} is missing")
+            continue
+        try:
+            audit = json.loads(audit_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as error:
+            failures.append(f"{label} is unreadable ({error})")
+            continue
+        if audit.get("verdict") != "PASS":
+            detail = f" ({audit['reason_code']})" if audit.get("reason_code") else ""
+            failures.append(f"{label}={audit.get('verdict', 'missing')}{detail}")
+
+    for label, (source_path, inactive_marker) in inactive_sources.items():
+        if not source_path.exists():
+            failures.append(f"{label} is missing")
+            continue
+        if inactive_marker.search(source_path.read_text(encoding="utf-8")):
+            failures.append(f"{label} remains explicitly inactive")
+
+    if failures:
+        raise RuntimeError(
+            "NCS_FIG2_SURROGATE_REFUSED before preview generation: "
+            + "; ".join(failures)
+            + ". No portal preview, figure-source or submission artifact was generated."
+        )
 
 
 def require_image(path: Path) -> Image.Image:
@@ -119,6 +165,7 @@ def save_preview_set(label: str, image: Image.Image, widths: list[int]) -> list[
 
 
 def main() -> None:
+    require_releaseable_fig2_preview()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     for pattern in ("*.png", "*.json"):
         for old in OUT_DIR.glob(pattern):

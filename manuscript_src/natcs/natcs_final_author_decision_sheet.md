@@ -1,101 +1,68 @@
-# NatCS Final Author Decision Sheet
+# NCS Final Author Decision Sheet
 
-Purpose: give the corresponding author and submitting author one consolidated decision sheet before Nature Computational Science upload. This is a working author sign-off document, not manuscript text.
+Status, 2026-08-26: **bounded submission preparation is authorized by governed records; upload stays gated on the open author confirmations listed below.** This sheet replaces the earlier disabled record under that record's own re-entry instruction, after both independent audits returned `PASS` on 2026-08-26 with reason codes in the `rcep_nyc_value_audited_*` family (`PAPER_CLAIM_AUDIT`: `rcep_nyc_value_audited_no_active_stale_citations`; `EMPIRICAL_IMPLEMENTATION_AUDIT`: same family).
 
-Boundary: this sheet does not claim that any external gate is closed. It summarizes the current conservative submission path and names the evidence needed before changing manuscript wording, figure files or availability statements.
+## 1. Confirmed Decision Register
 
-Serves: rigour / reproducibility / clarity / visual communication.
-
-## Current Best Submission Path
-
-The manuscript can remain evidence-bound if the following default positions are kept:
-
-1. Keep Fig. 2 only if the journal upload preview or standalone PDF/SVG route passes the Fig. 2 portal checklist after the actual upload preview.
-2. Keep Data availability and Code availability in derived-evidence mode unless authors confirm stronger raw-source sharing rights.
-3. Keep public DOI wording in future tense unless a DOI, repository route, licence and access terms actually exist.
-4. Keep the representation-level query-preservation positioning in the title, abstract, cover letter, portal fields and scope note without adding causal RCEP, broad generality or temporal-GNN superiority language.
-
-## Submission-Day Stop/Go Triage
-
-Use this table before pressing final submit in the journal portal.
-
-| Situation at upload | Decision | Required action |
+| ID | Item | Recorded decision |
 | --- | --- | --- |
-| Final gate has no errors; upload ZIPs pass integrity checks; Fig. 2 passes the portal route; raw-source and public-release decisions are unresolved but formal wording stays conservative; uploaded files match the freeze manifest. | Go with the conservative submission package. | Keep Data/Code availability unchanged, retain support notes, and record the upload confirmation. |
-| Final gate has no errors, but Fig. 2 portal readability is still unknown. | Hold final submission until Fig. 2 is checked. | Complete `ncs_fig2_portal_preview_checklist.md` or confirm standalone PDF/SVG inspection. |
-| Fig. 2 fails portal preview and no standalone source route is available. | Rebuild before submission. | Redesign Fig. 2 under `ncs_fig2_redesign_contract.md`, rebuild all packages and rerun final gates. |
-| Any Data availability, Code availability, title, abstract, cover letter, figure, reviewer archive or portal-field wording changes after the upload-freeze manifest. | Rebuild before submission. | Regenerate the manuscript package, figure-source package, upload-freeze manifest and final gate output. |
-| Any new wording claims raw-file sharing, public DOI/licence, RCEP policy identification, broad empirical generality or native graph-learning superiority without confirmed evidence. | Stop and revert to bounded wording. | Use the portal-field kit, raw-source worksheet and public-release worksheet before submitting. |
+| D-1 | Independent audits | `PASS` for both audits, 2026-08-26; reason codes `rcep_nyc_value_audited_*`. |
+| D-2 | RC-1, manuscript promotion | `NOT_GRANTED`. RCEP and NYC section drafts remain inactive audit-boundary drafts with template placeholders. |
+| D-3 | RC-2, claim activation | Gated by `OPEN_CHARACTERIZATION_FLAGS_BLOCKING_ACTIVATION_NOT_BUILD`, carrying the RCEP F1, F2 and F3 characterization flags together with the NYC characterization flags. The gate is evidential; no build-side defect is cited. |
+| D-4 | Active empirical number set | Effective-operator error reductions of 93.6% and 96.8% (N=15, N=30) and finite-horizon unit-shock response error reductions of 82.5% and 87.3% (N=15, N=30) are the only active empirical numbers. Quarantined RCEP/NYC values stay outside active text. |
+| D-5 | Title | "Predictive fit does not certify topology-indexed network responses". |
 
-## Final Gate Dashboard
+## 2. Positioning Guardrail For Upload-Time Edits
 
-| Gate | Minimum author action before upload | If unresolved | If pass/confirmed | Files to update only if status changes | Review target |
-| --- | --- | --- | --- | --- | --- |
-| Fig. 2 portal preview | Complete `ncs_fig2_portal_preview_checklist.md` after journal upload preview. Upload or retain the standalone Fig. 2 PDF/SVG route if the portal permits it. Save page or panel-a screenshot if possible. | Do not mark Fig. 2 gate as passed. If panel a is unreadable and no standalone source route exists, redesign before submission. | Keep current Fig. 2 and retain `latest_natcs_main_figure_sources.zip` for source inspection. | `ncs_figure_qa_memo.md`; `submission_external_dependency_register.md`; rebuild figure-source package only if redesigned. | rigour / visual communication |
-| Raw-source access | Review `raw_source_access_decision_worksheet.md` and either sign off conservative defaults or record source-block permissions. | Keep current Data/Code availability. Do not claim raw-file sharing or full raw rebuild. | Strengthen only the confirmed source blocks, with exact reviewer route or public query route. | `data_availability.md`; `code_availability.md`; Supplementary Note 7; raw-source worksheet. | reproducibility / rigour / clarity |
-| RCEP helper checkout | Confirm whether helper checkout has private credentials, private paths, unpublished code or non-redistributable dependencies. | Keep helper non-redistributed and outside the default reviewer path. | Release a cleaned helper or record a tested public replacement route. | `code_availability.md`; Supplementary Note 7; raw-source worksheet; public-release worksheet. | reproducibility / rigour |
-| Public DOI release | Review `public_release_readiness_worksheet.md` and choose repository route, code licence, data licence, exclusions and embargo timing. | Keep future-tense DOI-minting language. Do not name a repository, DOI or licence. | Replace future-tense wording only after the record exists or the journal requests a pre-publication repository. | `data_availability.md`; `code_availability.md`; Supplementary Note 7; public-release worksheet. | reproducibility / clarity |
-| Reviewer archive freeze | Confirm the archive used at upload matches the local upload-freeze manifest and has not changed after clean-copy checks. | Do not make stronger reproducibility claims. Use the latest verified package only. | Retain the frozen archive path, figure-source ZIP and checksums for editor/reviewer transfer. | `submission_checklist.md`; `natcs_upload_freeze_manifest.md/json`; cleanroom reproduction notes only if rerun. | reproducibility / rigour |
-| Final title and positioning | Confirm the title remains object-first and the NCS fit remains representation-level: the fitted object determines which topology-substitution readouts stay measurable after temporal smoothing. | Keep current title and current query-preservation wording. | Change only if all title/abstract/cover-letter/portal-field references are updated together. | `abstract.md`; `cover_letter.md`; `ncs_portal_field_kit.md`; metadata in build script if needed. | novelty / clarity |
+The editor-facing claim stays representation-level: query preservation for topology-substitution response queries is the contribution signal, the fitted object determines which such queries remain measurable after temporal smoothing, and CP remains the implementation layer. Every portal field, cover-letter paragraph and availability statement edited at upload time must preserve this framing; the final-gate positioning check fails any file that drops it.
 
-## Decisions That Can Stay Conservative At Submission
+## 3. Submission-Day Stop/Go Triage
 
-| Decision | Conservative submission position | Why this is acceptable for review |
-| --- | --- | --- |
-| Raw IMF, tariff, bilateral trade and MRIO inputs | Raw inputs are documented through acquisition notes and governed by provider terms. | The submitted-evidence layer regenerates manuscript-facing figures, tables and numerical summaries from derived objects. |
-| Public DOI release | Deposit will occur on acceptance in a DOI-minting repository. | A DOI cannot be named before it exists; the release contents and exclusions are already mapped. |
-| NYC upstream source | Public route and commit are recorded; derived monthly panel is available for review. | The NYC panel supports same-operator execution and reproducibility, not broad empirical generality. |
-| Projected graph-feature comparisons | Rows remain operator-recovery stress tests after projection. | The benchmark target is topology-substitution endpoint recovery, not native temporal-GNN forecasting. |
+| Signal | Action |
+| --- | --- |
+| All Section 4 rows closed and the package freshly rebuilt | Go: proceed with portal entry using the routing in 5.7. |
+| Fig. 2 portal preview still unrecorded | Hold: keep the frozen package in place and schedule the preview. **Needs action** |
+| New material proposes activating quarantined RCEP/NYC values | Stop: RC-2 gating stands; route the material through the characterization process, away from text edits. |
 
-## Decisions That Should Trigger Text Changes
+## 4. Open Items (author confirmation pending)
 
-| New author evidence | Text/package change | Guardrail |
-| --- | --- | --- |
-| Provider terms permit reviewer sharing for one raw-source block. | Add the exact reviewer route and access condition for that block. | Do not generalize that permission to other source blocks. |
-| Repository and DOI are assigned. | Replace future-tense public-release wording with repository name, DOI, licence and access terms. | Do not insert placeholder DOI or expected licence. |
-| Fig. 2 portal preview fails. | Redesign Fig. 2 using `ncs_fig2_redesign_contract.md`; rebuild manuscript and figure-source package. | Do not submit an unreadable benchmark figure because Fig. 2 carries the methods evidence chain. |
-| Co-authors want stronger RCEP policy language. | Do not add it without a separate identification design and evidence. | Keep the manuscript claim as fixed-path topology-sensitive measurement. |
-| Co-authors want broad domain-generalization language. | Do not add it without additional domain tests. | Keep NYC as a public second-domain operator check. |
-
-## Post-Confirmation Update Checklist
-
-Use this checklist after any external gate evidence arrives. A gate is closed only when the source worksheet, linked formal text and regenerated package all tell the same story.
-
-| New evidence received | Files to update first | Rebuild and verification required before upload | What this protects |
+| # | Gate | Current state | Evidence that closes it |
 | --- | --- | --- | --- |
-| Fig. 2 portal preview passes. | `ncs_fig2_portal_preview_checklist.md`; `ncs_figure_qa_memo.md`; `submission_external_dependency_register.md`; this sheet. | Rebuild the submission package and upload-freeze manifest, then rerun `scripts/check_natcs_final_gates.mjs` and both ZIP integrity tests. | The visual gate is recorded without changing the benchmark claim or figure files. |
-| Fig. 2 portal preview fails. | `ncs_fig2_redesign_contract.md`; figure-generation script or source figure; `ncs_figure_qa_memo.md`; this sheet. | Regenerate figures, manuscript, figure-source package, upload-freeze manifest and final gates. Inspect the redesigned Fig. 2 page and source figure before upload. | The endpoint-preservation benchmark remains readable enough to support the methods claim. |
-| Raw-source defaults are signed off with no stronger sharing route. | `raw_source_access_decision_worksheet.md`; this sheet; `submission_external_dependency_register.md`. | Rebuild the submission package and rerun final gates. Keep Data availability, Code availability and Supplementary Note 7 unchanged. | The conservative reproducibility boundary is explicitly confirmed. |
-| One or more raw-source blocks gain confirmed reviewer or public access. | `raw_source_access_decision_worksheet.md`; `data_availability.md`; `code_availability.md`; Supplementary Note 7; this sheet. | Rebuild manuscript artifacts, reviewer archive if file contents or routes change, upload-freeze manifest and final gates. Check that strengthened wording names only the confirmed blocks. | Source access is improved without implying full raw-layer reproducibility. |
-| Public repository, DOI, licence and access terms are assigned. | `public_release_readiness_worksheet.md`; `data_availability.md`; `code_availability.md`; Supplementary Note 7; this sheet. | Rebuild manuscript artifacts, release-safety audit, upload-freeze manifest and final gates. Check the release contains no restricted raw files or private helper material. | Public-release wording matches an existing record and remains release-safe. |
-| Portal fields, title, abstract, cover letter or formal availability text are edited. | The edited source file plus `ncs_portal_field_kit.md` or `ncs_availability_consistency_audit.md` as applicable. | Rebuild all submission artifacts and rerun final gates before using the edited text. | First-screen positioning, overclaim boundaries and DOCX extraction remain synchronized. |
+| O-1 | Fig. 2 journal portal preview | No external portal observation on record; local surrogate stress checks exist. **Needs action** | Dated observation record in `ncs_fig2_portal_preview_checklist.md`. |
+| O-2 | Raw-source access defaults | Conservative defaults prefilled in `raw_source_access_decision_worksheet.md`; author sign-off absent. **Needs action** | Signed-off worksheet row for each source block. |
+| O-3 | Public-release record | Repository route, DOI, licence and access terms unassigned in `public_release_readiness_worksheet.md`. **Needs action** | Assigned-record confirmation at acceptance stage. |
+| O-4 | Companion support documents | Governed support companions await upgrade from disabled stubs under backlog item A assignments. | Upgraded source files copied byte-identically into `03_submission_materials`. |
 
-## Local Freeze Evidence
+## 5. Post-Confirmation Update Checklist
 
-The current package includes a local upload-freeze manifest in `output/submission_package/natcs_current/03_submission_materials/natcs_upload_freeze_manifest.md` and `.json`. This manifest records hashes for the main manuscript PDF/DOCX, Supplementary PDF/DOCX, latest word-only upload ZIP, stamped submission-upload ZIP, main figure-source ZIP, submission inventory, reviewer-archive manifest and reviewer-archive README.
+Apply each branch that matches newly arrived evidence, in order, counting from the most recent freeze:
 
-Interpretation: this closes the local file-identity check for the current build. It does not close the journal portal preview, raw-source access, helper-code or public-release gates. If any manuscript wording, figure file, reviewer archive file or end-matter file changes, rebuild and regenerate the upload-freeze manifest before upload.
+### 5.1 Fig. 2 portal preview passes
 
-## Final Author Sign-Off
+Archive the dated portal observation and screenshots in `ncs_fig2_portal_preview_checklist.md`, close its open markers, keep the frozen figure sources unchanged, then run the close-out step in 5.7.
 
-Complete this table before upload.
+### 5.2 Fig. 2 portal preview fails
 
-| Item | Status: Confirmed / Conservative / Needs action | Author note |
-| --- | --- | --- |
-| Fig. 2 portal-preview checklist completed. | Needs action | TODO |
-| Standalone Fig. 2 PDF/SVG route accepted or manuscript preview zoom is comfortable. | Needs action | TODO |
-| Raw-source access worksheet signed off or corrected. | Needs action | TODO |
-| RCEP helper checkout boundary signed off. | Needs action | TODO |
-| Public-release readiness worksheet signed off or corrected. | Needs action | TODO |
-| Reviewer archive and figure-source package are locally frozen and hashed. | Confirmed | See `natcs_upload_freeze_manifest.md/json`; rerun after any edits. |
-| Upload uses the frozen package without post-freeze edits. | Needs action | Confirm during portal upload. |
-| Representation-level query-preservation positioning is preserved in title, abstract, cover letter and portal fields. | Conservative | Keep current object-first wording unless all linked files are updated together. |
-| No causal RCEP, broad generality, native temporal-GNN superiority or full raw-data reproducibility language has been added. | Conservative | Keep current bounded wording unless new evidence exists. |
+Invoke `ncs_fig2_redesign_contract.md` (two-tier layout with an enlarged endpoint-gate panel), regenerate the figure set, refresh the figure-source package with contact-sheet and summary updates, complete a fresh page-render QA pass, then run 5.7.
 
-## Next Action Order
+### 5.3 Raw-source defaults are signed off
 
-1. Upload the manuscript from the latest clean upload package and, if allowed, upload or retain `figure2_endpoint_preservation_benchmark.pdf` and `.svg` from the figure-source package.
-2. Inspect Fig. 2 using `ncs_fig2_portal_preview_checklist.md`; compare panel a against `fig2_panel_a_contact_sheet.png`.
-3. If Fig. 2 fails and no standalone source inspection route exists, redraw before submission using `ncs_fig2_redesign_contract.md`.
-4. If Fig. 2 passes, sign off raw-source and public-release defaults or provide stronger source/licence evidence.
-5. Rebuild the package only after any wording or figure-status change.
+Transfer the dated sign-off into the worksheet record and leave Data availability wording exactly at the signed-off conservative level; this branch alone calls for no availability rewrite.
+
+### 5.4 raw-source blocks gain confirmed reviewer or public access
+
+Raise `data_availability.md` block by block to the confirmed access level, rerun the availability-consistency review against the worksheet, and treat the outcome as a formal-text edit under 5.6.
+
+### 5.5 Public repository, DOI, licence and access terms are assigned
+
+Insert the assigned identifiers and terms into `code_availability.md` and `data_availability.md`, keeping derived-evidence wording inside the overclaim bans (no raw-data-completeness assertion), and treat the outcome as a formal-text edit under 5.6.
+
+### 5.6 Portal fields, title, abstract, cover letter or formal availability text are edited
+
+Re-apply the Section 2 guardrail, take short portal fields from the length-limited variants in `ncs_portal_field_kit.md`, hold the abstract at 120-150 words with no TeX math, keep the cover-letter formula string `M_{k,t}(W)=A_{k,t}+B_{k,t}W` intact, and regenerate the generated formal texts so source and packaged copies match byte for byte.
+
+### 5.7 Close-Out
+
+After any branch fires: **Rebuild the package end to end and rerun final gates** — `make natcs-manuscript`; `node scripts/finalize_natcs_package.mjs`; `node scripts/create_clean_natcs_integrated_package.mjs`; `node scripts/create_natcs_upload_freeze_manifest.mjs`; `node scripts/check_natcs_final_gates.mjs`. The packaged twin of this sheet lives at `output/submission_package/natcs_current/03_submission_materials/natcs_final_author_decision_sheet.md` and must stay byte-identical to this source file.
+
+Drafted 2026-08-26 under author backlog authorization (item A); assistant-drafted from governed records; open items await author confirmation.

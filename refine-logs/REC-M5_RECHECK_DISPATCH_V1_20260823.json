@@ -1,0 +1,247 @@
+{
+  "record": "REC-M5_RECHECK_DISPATCH_V1_20260823",
+  "generated": "2026-08-23",
+  "timezone_basis": "Asia/Shanghai",
+  "record_class": "dispatch_packet",
+  "purpose": "Dispatch the two outstanding M5-C independent review lanes against current bytes, with exact paths and expected hashes, so that a third failure caused by path or byte-generation ambiguity cannot recur.",
+  "status": "AWAITING_REVIEWER_EXECUTION",
+  "not_a_receipt": {
+    "is_independent_review_receipt": false,
+    "satisfies_m5_c": false,
+    "statement": "A dispatch packet specifies work. It does not perform or substitute for it."
+  },
+  "reviewer_requirements": {
+    "provenance": "gpt-5.6-terra / max",
+    "adjudication": "direct self-adjudication",
+    "independence": "The reviewer must not treat REC-M5_DETERMINISTIC_PREFLIGHT_V1_20260823 as evidence. It was produced by the patch-synthesizing party and is supplied only to localize prior findings.",
+    "fail_closed_policy": "Missing, unreadable or contradictory input yields BLOCKED or FAIL, never a default PASS. A zero failure count is not evidence of coverage. Generated TeX may not be used to reconstruct source ownership.",
+    "byte_generation_control": "refine-logs contains two byte generations of these record names. Open only the exact paths listed. Never resolve a path by glob or by name approximation. The ' 2.' copies are the superseded generation bound by 33 to 39 historical receipts and are not interchangeable with current bytes.",
+    "required_reporting": "Report measured SHA-256 for every file opened, a per-task verdict, and an explicit overall verdict. Do not summarize verdict codes into prose equivalents."
+  },
+  "authoritative_inputs": [
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.md",
+      "role": "patch_human_readable",
+      "bytes": 27202,
+      "expected_sha256": "69888df4a1f369eba0bb79e9f8c76d583d1f92e0f7319d98a967e44b05e580bd",
+      "authoritative": true
+    },
+    {
+      "path": "refine-logs/REC-M5_REVIEW_PATCH_V1_20260811.json",
+      "role": "patch_machine_readable",
+      "bytes": 28217,
+      "expected_sha256": "938e5218280fcdf25ffb206040d420e2420851a3483e1cc7c282dabf0c01e0e6",
+      "authoritative": true
+    },
+    {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.md",
+      "role": "author_input_human_readable",
+      "bytes": 10097,
+      "expected_sha256": "1555484a0849fd96425754ebfa4e3191473cf8c32008cd4df69091b2404b9341",
+      "authoritative": true
+    },
+    {
+      "path": "refine-logs/REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812.json",
+      "role": "author_input_machine_readable",
+      "bytes": 15091,
+      "expected_sha256": "ebb639ed613520ac643ee1ac21b53c9420e4bbf3a010af1f130a8e3d3b12d8b6",
+      "authoritative": true
+    },
+    {
+      "path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.md",
+      "role": "governance_baseline_human_readable",
+      "bytes": 1467,
+      "expected_sha256": "dfd4385fd1f6f027e7a9ba12fc91f8e710e059edbe38179606898264e3d00539",
+      "authoritative": true
+    },
+    {
+      "path": "refine-logs/REC-M5_GOVERNANCE_BASELINE_V10_20260812.json",
+      "role": "governance_baseline_machine_readable",
+      "bytes": 2987,
+      "expected_sha256": "94668a914aeba43dc2d8ca34e7639cb4930e34b2abbe8211980a77bf4adfd3ee",
+      "authoritative": true
+    }
+  ],
+  "advisory_context_non_authoritative": [
+    {
+      "path": "refine-logs/REC-M5_DETERMINISTIC_PREFLIGHT_V1_20260823.md",
+      "role": "preflight_advisory_non_authoritative",
+      "bytes": 8596,
+      "expected_sha256": "d768bc973faf552be2284a8cf8b373d63b736cbb51d6083aaa976fd9e56fef2f",
+      "authoritative": false
+    },
+    {
+      "path": "refine-logs/REC-M5_DETERMINISTIC_PREFLIGHT_V1_20260823.json",
+      "role": "preflight_advisory_non_authoritative",
+      "bytes": 21753,
+      "expected_sha256": "dfc8ac5ece1dd3a2387b511355b10528eab3a84b4987374eb6368d15bcb2a0c3",
+      "authoritative": false
+    },
+    {
+      "path": "refine-logs/REC-P0_WORKING_COPY_INTEGRITY_V1_20260823.md",
+      "role": "p0_availability_context_non_authoritative",
+      "bytes": 7666,
+      "expected_sha256": "e57d61afbe36e5ea807480f527f784cb73eed2fb7f274b8c586028724edfeb86",
+      "authoritative": false
+    }
+  ],
+  "prior_receipts": [
+    {
+      "path": "refine-logs/REC-M5_SCIENTIFIC_RECHECK_TERRA_V5_20260812.md",
+      "verdict": "PASS",
+      "applies_to_current_bytes": true,
+      "use": "context only; does not transfer to other lanes"
+    },
+    {
+      "path": "refine-logs/REC-M5_EDITORIAL_RECHECK_TERRA_V3_20260812.md",
+      "verdict": "BLOCKED",
+      "applies_to_current_bytes": false,
+      "use": "read TERRA-V3-E1 finding text; its input hashes b95a0960…/8c0546a7…/c7664285… are superseded bytes"
+    },
+    {
+      "path": "refine-logs/REC-M5_GOVERNANCE_RECHECK_TERRA_V4_20260812.md",
+      "verdict": "BLOCKED",
+      "applies_to_current_bytes": false,
+      "use": "read the unresolved-path failure; do not reuse its input path spellings"
+    }
+  ],
+  "lanes": [
+    {
+      "lane_id": "M5C-LANE-EDITORIAL",
+      "lane": "editorial_traceability",
+      "supersedes": "REC-M5_EDITORIAL_RECHECK_TERRA_V3_20260812",
+      "required_output_record": "refine-logs/REC-M5_EDITORIAL_RECHECK_V4_20260823.{md,json}",
+      "tasks": [
+        {
+          "id": "E-T1",
+          "task": "Adjudicate TERRA-V3-E1 closure on current bytes.",
+          "detail": "The finding was an unmarked AIN-RESULT binding process note between G04 Proposed paragraph 1 and 2. On current bytes that statement sits at line 283 under '## Missing information and risk flags'. Judge independently whether (a) the G04 proposed-paragraph run is free of process statements, and (b) relocating the statement into a record-level status section is an adequate remedy or merely displaces the risk.",
+          "must_not": "Accept the preflight's structural PASS as the finding of this lane."
+        },
+        {
+          "id": "E-T2",
+          "task": "Verify 26-unit traceability.",
+          "detail": "Each of the 26 units must trace to its source_item (V1-026, V1-033, V1-045) and to a G01–G10 group anchor, with no orphan and no duplicate."
+        },
+        {
+          "id": "E-T3",
+          "task": "Reader-facing test on every proposed paragraph.",
+          "detail": "Each proposed paragraph must read as journal manuscript prose. Flag any governance vocabulary, record identifier, verdict code, hash, or internal process reference that would be inappropriate in the published text."
+        },
+        {
+          "id": "E-T4",
+          "task": "Verify the four manifest-only labels.",
+          "detail": "Labels sit at lines 127, 231, 241, 242. Confirm each unambiguously excludes its content from manuscript application, and that no manifest-only content is reachable by a paragraph-level applier."
+        },
+        {
+          "id": "E-T5",
+          "task": "Verify claim-ceiling wording is not exceeded.",
+          "detail": "V1-026 must remain descriptive with NOT_RUN/BLOCKED. V1-033 must remain simulation-only and NOT_EVALUABLE. V1-045 must remain limited to N=20 and N=50, with N=100 and N=200 as NOT_RUN/ABSTAIN and resource_telemetry BLOCKED/null. G06 and G07 are AUTHOR_CONFIRMED_REVIEW_ONLY and must not read as convergence, global optimum or general topology robustness."
+        },
+        {
+          "id": "E-T6",
+          "task": "Verify author-input traceability.",
+          "detail": "Every AIN-derived value in the proposed text must trace to REC-M5_AUTHOR_INPUT_REQUEST_V1_20260812, including the four percentages, the ratio-of-medians formula, its denominator, and evidence hash c29aa14107f3815ef128ba6308bc3edfbc91da0404952d2d548042bc1c929cc1. The application/bootstrap 100/80, spectral-radius and 50% top-exposure attenuation sources are author-confirmed Unavailable and must not be reconstructed from generated TeX."
+        },
+        {
+          "id": "E-T7",
+          "task": "Report which byte generation was consumed.",
+          "detail": "State the measured SHA-256 of every file opened. If any path resolved to a ' 2.' conflict copy, declare it and return BLOCKED."
+        }
+      ]
+    },
+    {
+      "lane_id": "M5C-LANE-GOVERNANCE",
+      "lane": "governance_manifest",
+      "supersedes": "REC-M5_GOVERNANCE_RECHECK_TERRA_V4_20260812",
+      "required_output_record": "refine-logs/REC-M5_GOVERNANCE_RECHECK_V5_20260823.{md,json}",
+      "tasks": [
+        {
+          "id": "G-T1",
+          "task": "Measure and compare all six authoritative input hashes.",
+          "detail": "Report actual measured SHA-256 for each. Any deviation from expected_sha256 is BLOCKED, not a warning."
+        },
+        {
+          "id": "G-T2",
+          "task": "Resolve the V10 path-name question that blocked TERRA_V4.",
+          "detail": "REC-M5_GOVERNANCE_RECHECK_V10_20260812.{md,json} do not exist. The actual records are REC-M5_GOVERNANCE_BASELINE_V10_20260812.{md,json}. Confirm both facts independently and adjudicate whether the BASELINE record discharges the governance-baseline role.",
+          "constraint": "Do not request or perform any edit to the V10 baseline. Its hashes dfd4385f… and 94668a91… are bound inside the SCIENTIFIC_RECHECK_TERRA_V5 PASS receipt; rewriting it would invalidate the only current-byte PASS in the project."
+        },
+        {
+          "id": "G-T3",
+          "task": "Audit the independent_review_receipts field.",
+          "detail": "Confirm it currently holds exactly one entry, REC-M5_EDITORIAL_RECHECK_V2_20260812, self-marked HISTORICAL_ONLY_PATCH_CHANGED_AFTER_ALL_AUTHOR_INPUT_CONFIRMATIONS, and that no current-byte receipt is yet registered for the editorial or governance lane."
+        },
+        {
+          "id": "G-T4",
+          "task": "Independently recompute the 10 group anchor records.",
+          "detail": "Use the recorded algorithm: SHA-256 of UTF-8 paragraph fragments after CRLF normalization and trimEnd, paragraph numbering by blank-line splitting. 20 paragraph segments total. fail_closed_on_drift is true."
+        },
+        {
+          "id": "G-T5",
+          "task": "Verify protected_baseline fail-closed.",
+          "detail": "12 entries. output/ncs_review_corpus/v1_author_decision_register.json is non-materialized and unreadable; it must be reported NOT_VERIFIABLE and must not be scored PASS. A zero-mismatch count does not supply the missing row."
+        },
+        {
+          "id": "G-T6",
+          "task": "Confirm no mutation has occurred.",
+          "detail": "All 26 candidates unapplied; manuscript_src, formal register and generated TeX unchanged; no authorization issued or implied."
+        },
+        {
+          "id": "G-T7",
+          "task": "Report gate items that are not verifiable in this environment.",
+          "detail": "tracked/clean, 247/247, 85/85 and 145/145 must be reported NOT_VERIFIABLE while git is unresolvable. git rev-parse HEAD fails and git fsck dumps core; see REC-P0_WORKING_COPY_INTEGRITY_V1_20260823."
+        },
+        {
+          "id": "G-T8",
+          "task": "Report which byte generation was consumed.",
+          "detail": "Same requirement as E-T7."
+        }
+      ]
+    }
+  ],
+  "closure_condition": {
+    "requirement": "Both lanes PASS on the six authoritative hashes above.",
+    "then": [
+      "Write the M5-C closure record.",
+      "Register the three current-byte receipts (SCIENTIFIC_RECHECK_TERRA_V5 plus the two new ones) in the patch JSON independent_review_receipts field.",
+      "Request M5-D manuscript mutation authorization from the author."
+    ],
+    "forbidden_before_m5_d": [
+      "edit manuscript_src/natcs/*.md",
+      "edit controlled_benchmark_contract.json",
+      "edit the formal register",
+      "edit or regenerate main.tex or supplementary.tex",
+      "run any make target",
+      "activate any claim"
+    ],
+    "note": "Registering receipts into the patch JSON changes its bytes and therefore invalidates hash 938e5218…. That step is itself part of M5-C closure and must be sequenced after both lanes report, not before."
+  },
+  "p0_interaction": {
+    "blocking": false,
+    "rationale": "Both lanes read only materialized refine-logs and manuscript_src bytes, so they can proceed in parallel with P0 host-side materialization. Only G-T5 and G-T7 are affected, and both are handled by reporting NOT_VERIFIABLE rather than by waiting.",
+    "hard_stop": "P0-C4 still forbids any make target, test suite or scientific entry until materialization completes."
+  },
+  "authorization_boundary": {
+    "files_created": [
+      "refine-logs/REC-M5_RECHECK_DISPATCH_V1_20260823.json",
+      "refine-logs/REC-M5_RECHECK_DISPATCH_V1_20260823.md"
+    ],
+    "files_modified": [],
+    "files_deleted": [],
+    "manuscript_src_touched": false,
+    "formal_register_touched": false,
+    "frozen_records_touched": false,
+    "authorization_files_touched": false,
+    "generated_tex_touched": false,
+    "git_operations": 0,
+    "make_targets": 0,
+    "tests": 0,
+    "scientific_entries": 0,
+    "scientific_execution": "NOT_AUTHORIZED",
+    "claim_activation": "NOT_AUTHORIZED"
+  },
+  "issuance_notes": [
+    "The advisory preflight md hash was updated at issuance after a pre-citation correction to three transcribed anchor-target filenames (G07, G09, G10) in that record's C3 table. No verdict changed. The preflight record is non-authoritative for this dispatch, so no authoritative expected hash was affected."
+  ]
+}

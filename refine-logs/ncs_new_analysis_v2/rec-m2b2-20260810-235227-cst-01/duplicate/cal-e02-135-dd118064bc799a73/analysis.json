@@ -1,0 +1,44 @@
+{
+  "analysis_binding_sha256": "dd118064bc799a7344e777af9c58aae05cbff5d34344b1ddd7ffed742e459c1f",
+  "analysis_id": "cal-e02-135-derived-sensitivity-v1",
+  "authorization_snapshot": {
+    "authorization_id": "ncs-four-analysis-recovery-20260804-023813-cst-v2",
+    "authorized_at": "2026-08-04T02:38:13+08:00",
+    "e4_chain_complete": true,
+    "item_payload_sha256": "c9b9c201f94a7fd37b2049bfc44220258947f22483e769b39c19253a37e55ee8",
+    "schema_version": "ncs-four-analysis-authorization-v2"
+  },
+  "derived_sensitivity_file": "seed-scenario-sensitivity.json",
+  "derived_sensitivity_verdict": "SUPPORTED",
+  "endpoint_audit_file": "independent-endpoint-audit.json",
+  "formal_register_item_index": 135,
+  "formal_register_snapshot": {
+    "author_approval_required": true,
+    "author_decision": "PENDING",
+    "calibration_id": "CAL-E02",
+    "calibration_requested_action": "ROBUSTNESS_CHECK",
+    "current_response_status": "PARTIAL",
+    "item_id": "V1-035",
+    "item_index": 135,
+    "priority": "P1"
+  },
+  "full_overfitting_and_stopping_sensitivity_verdict": "BLOCKED",
+  "governance_gate": "V2_BOUND_DESCRIPTIVE_AUDIT_ONLY",
+  "independent_endpoint_audit_verdict": "PARTIAL",
+  "input_manifest_file": "input-manifest.json",
+  "new_grid_execution_status": "NOT_RUN_DESCRIPTIVE_ONLY",
+  "output_root_name": "cal-e02-135-dd118064bc799a73",
+  "priority_as_authorization": "P1",
+  "register_key": "CAL-E02:135",
+  "retained_adverse_records_file": "retained-adverse-records.json",
+  "schema_version": "ncs-cal-e02-135-analysis-v1",
+  "sufficiency_audit_file": "frozen-data-sufficiency-audit.json",
+  "unresolved_boundaries": [
+    "No stopping variants or iteration/checkpoint trajectories in frozen E4-r3 records.",
+    "No record-level split labels or independent endpoint provenance receipt.",
+    "Only descriptive seed/scenario sensitivity is licensed by this repair route.",
+    "No new stopping-variant grid was executed.",
+    "No manuscript, author decision register, RCEP, NYC, or E4-r3 quarantine file was modified."
+  ],
+  "verdict": "PARTIAL"
+}
