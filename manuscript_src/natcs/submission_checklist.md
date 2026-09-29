@@ -8,8 +8,8 @@ Status, 2026-08-26: rebuilt from governed records after both audits returned `PA
 - [x] `EMPIRICAL_IMPLEMENTATION_AUDIT` returns `PASS`; same reason-code family (2026-08-26).
 - [x] Active numeric discipline locked: 93.6% and 96.8% effective-operator error reduction (N=15, N=30); 82.5% and 87.3% finite-horizon unit-shock response error reduction (N=15, N=30); quarantined RCEP/NYC values stay outside active text.
 - [x] Title set: "Predictive fit does not certify topology-indexed network responses".
-- [x] RCEP and NYC section drafts carry inactive audit-boundary markers with template placeholders.
-- [x] RC-1 recorded `NOT_GRANTED` and RC-2 gating recorded under `OPEN_CHARACTERIZATION_FLAGS_BLOCKING_ACTIVATION_NOT_BUILD` (RCEP F1/F2/F3 plus NYC characterization flags).
+- [x] RCEP and NYC sections contain only activated descriptive readouts with explicit characterization limits.
+- [x] RC-1 is `ACTIVATED` and RC-2 is `ACTIVATED_WITH_LIMITATIONS`; RCEP F3 remains `not_identified`.
 - [x] Author-decision support drafting under backlog item A covers this checklist, the final author decision sheet, the coauthor action request, the completion audit and the artifact QA memo.
 
 ## Open Before Any Upload — **Needs action** On Each Row

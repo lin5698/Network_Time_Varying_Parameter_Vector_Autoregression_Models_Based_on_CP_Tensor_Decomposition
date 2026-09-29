@@ -1,0 +1,26 @@
+{
+  "schema_version": "rec-p3-post-regeneration-review-v1",
+  "reviewed_at": "2026-08-30T00:17:48+08:00",
+  "source_revision": "6c1ee4515d5375aaf7791b07945b2fbdc1565471",
+  "overall": "PASS_WITH_WARNINGS",
+  "fatal_count": 0,
+  "critical_count": 0,
+  "warnings": [
+    "pytest is not installed in the current environment",
+    "legacy release-gate test assumes controlling audits are non-releaseable while current standing audits are PASS"
+  ],
+  "release_safety": {
+    "blockers": 0,
+    "warnings": 0,
+    "files_seen": 425
+  },
+  "final_gate": {
+    "status": "PASS_WITH_WARNINGS_ALLOWED",
+    "errors": [],
+    "passes": 220,
+    "author_marker_groups_open": 4
+  },
+  "promotion_state": "NOT_GRANTED",
+  "empirical_claim_activation": "BLOCKED",
+  "inactive_fences_verified": true
+}

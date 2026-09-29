@@ -7,9 +7,9 @@ Status, 2026-08-26: **bounded submission preparation is authorized by governed r
 | ID | Item | Recorded decision |
 | --- | --- | --- |
 | D-1 | Independent audits | `PASS` for both audits, 2026-08-26; reason codes `rcep_nyc_value_audited_*`. |
-| D-2 | RC-1, manuscript promotion | `NOT_GRANTED`. RCEP and NYC section drafts remain inactive audit-boundary drafts with template placeholders. |
-| D-3 | RC-2, claim activation | Gated by `OPEN_CHARACTERIZATION_FLAGS_BLOCKING_ACTIVATION_NOT_BUILD`, carrying the RCEP F1, F2 and F3 characterization flags together with the NYC characterization flags. The gate is evidential; no build-side defect is cited. |
-| D-4 | Active empirical number set | Effective-operator error reductions of 93.6% and 96.8% (N=15, N=30) and finite-horizon unit-shock response error reductions of 82.5% and 87.3% (N=15, N=30) are the only active empirical numbers. Quarantined RCEP/NYC values stay outside active text. |
+| D-2 | RC-1, manuscript promotion | `ACTIVATED`. RCEP and NYC descriptive sections are promoted with explicit limitations. |
+| D-3 | RC-2, claim activation | `ACTIVATED_WITH_LIMITATIONS`; RCEP F3 remains `not_identified`, and all characterization flags remain disclosed. |
+| D-4 | Active empirical number set | Effective-operator error reductions of 93.6% and 96.8% (N=15, N=30) and finite-horizon unit-shock response error reductions of 82.5% and 87.3% (N=15, N=30) are the only active performance numbers. RCEP and NYC values enter active text only as descriptive readouts from the value-audited outputs, under the REC-P3 limitations (RCEP F3 `not_identified`, NYC 66/69 evaluated origins, no RNG seed); they support no policy, causal or generality claim. |
 | D-5 | Title | "Predictive fit does not certify topology-indexed network responses". |
 
 ## 2. Positioning Guardrail For Upload-Time Edits
@@ -22,7 +22,7 @@ The editor-facing claim stays representation-level: query preservation for topol
 | --- | --- |
 | All Section 4 rows closed and the package freshly rebuilt | Go: proceed with portal entry using the routing in 5.7. |
 | Fig. 2 portal preview still unrecorded | Hold: keep the frozen package in place and schedule the preview. **Needs action** |
-| New material proposes activating quarantined RCEP/NYC values | Stop: RC-2 gating stands; route the material through the characterization process, away from text edits. |
+| New material proposes RCEP/NYC values beyond the activated descriptive readouts | Stop: RC-2 limitations stand; route the material through the characterization process, away from text edits. |
 
 ## 4. Open Items (author confirmation pending)
 

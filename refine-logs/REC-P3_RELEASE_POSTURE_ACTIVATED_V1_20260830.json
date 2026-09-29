@@ -1,0 +1,13 @@
+{
+  "record_type": "release_posture",
+  "recorded": "2026-08-30",
+  "posture": "BUILD_COMPLETE_WITH_LIMITED_EMPIRICAL_ACTIVATION",
+  "rc1_manuscript_promotion": "ACTIVATED",
+  "rc2_empirical_claim_activation": "ACTIVATED_WITH_LIMITATIONS",
+  "final_gate": "PASS_WITH_WARNINGS_ALLOWED",
+  "final_gate_errors": [],
+  "release_safety": {"blockers": 0, "warnings": 0},
+  "open_author_marker_groups": 4,
+  "rcep_f3": "not_identified",
+  "scientific_experiments_rerun": false
+}

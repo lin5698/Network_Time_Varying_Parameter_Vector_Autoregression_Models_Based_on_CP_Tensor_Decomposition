@@ -17,6 +17,7 @@ function write(relativePath, content) {
 try {
   write("PAPER_CLAIM_AUDIT.json", JSON.stringify({ verdict: "PASS" }));
   write("EMPIRICAL_IMPLEMENTATION_AUDIT.json", JSON.stringify({ verdict: "PASS" }));
+  const activationReceipt = fs.readFileSync(path.join(root, "refine-logs", "REC-P3_RC1_RC2_ACTIVATION_V1_20260830.json"), "utf8");
   write("manuscript_src/natcs/results_rcep.md", "# Inactive audit-boundary draft: RCEP protocol\n");
   write("manuscript_src/natcs/results_generality.md", "# Inactive audit-boundary draft: NYC protocol\n");
 
@@ -28,6 +29,7 @@ try {
 
   write("manuscript_src/natcs/results_rcep.md", "# Candidate active RCEP result source\n");
   write("manuscript_src/natcs/results_generality.md", "# Candidate active NYC result source\n");
+  write("refine-logs/REC-P3_RC1_RC2_ACTIVATION_V1_20260830.json", activationReceipt);
   assert.doesNotThrow(
     () => requireReleaseableNatcsEvidence(fixtureRoot),
     "Replacing both inactive boundary records is a separate deliberate source change after audits pass.",

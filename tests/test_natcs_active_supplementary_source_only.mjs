@@ -132,15 +132,19 @@ assert.doesNotMatch(
 
 // --- 3. The demoted legacy builder stays quarantined. ---
 
+// scripts/_archives/ is gitignored, so a clean checkout has no legacy
+// module. When a local copy exists it must still carry the fail-closed guard.
 const legacyRelative = "scripts/_archives/legacy_empirical_supplement_builder_20260726.mjs";
-const legacySource = read(legacyRelative);
-assert.match(legacySource, /LEGACY_EMPIRICAL_SUPPLEMENT_DISABLED/, "Legacy module must carry the fail-closed guard.");
-assert.match(
-  legacySource,
-  /NATCS_ALLOW_LEGACY_EMPIRICAL_SUPPLEMENT !== "explicitly-authorized-review-only"/,
-  "Legacy module must require the explicit review-only authorization variable."
-);
-assert.match(legacySource, /throw new Error/, "Legacy guard must throw.");
+if (fs.existsSync(path.join(root, legacyRelative))) {
+  const legacySource = read(legacyRelative);
+  assert.match(legacySource, /LEGACY_EMPIRICAL_SUPPLEMENT_DISABLED/, "Legacy module must carry the fail-closed guard.");
+  assert.match(
+    legacySource,
+    /NATCS_ALLOW_LEGACY_EMPIRICAL_SUPPLEMENT !== "explicitly-authorized-review-only"/,
+    "Legacy module must require the explicit review-only authorization variable."
+  );
+  assert.match(legacySource, /throw new Error/, "Legacy guard must throw.");
+}
 
 const activeScriptDir = path.join(root, "scripts");
 for (const entry of fs.readdirSync(activeScriptDir)) {

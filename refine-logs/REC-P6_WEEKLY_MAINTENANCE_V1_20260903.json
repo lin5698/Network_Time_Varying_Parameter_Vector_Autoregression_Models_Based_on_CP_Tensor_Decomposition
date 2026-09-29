@@ -1,0 +1,66 @@
+{
+  "record_id": "REC-P6_WEEKLY_MAINTENANCE_V1_20260903",
+  "date": "2026-09-03",
+  "scope": "weekly_maintenance_checkpoint",
+  "outcome": "PASS_WITH_FOLLOW_UP",
+  "scientific_experiments_rerun": false,
+  "external_markers_closed": false,
+  "git_snapshot_created": false,
+  "evidence_check": {
+    "new_author_reply": false,
+    "new_fig2_portal_observation": false,
+    "new_raw_source_access_record": false,
+    "new_repository_or_doi_assignment": false,
+    "new_public_release_decision": false,
+    "filesystem_timestamp_scan_after_2026_08_31": "no_new_files_found_in_gate_worksheets_or_refine_logs",
+    "timestamp_scan_is_external_evidence": false
+  },
+  "verification": {
+    "final_gates": {
+      "status": "PASS_WITH_WARNINGS_ALLOWED",
+      "passes": 225,
+      "errors": 0,
+      "known_external_marker_warning_groups": 4
+    },
+    "release_safety": {
+      "blockers": 0,
+      "warnings": 0,
+      "files_seen": 425,
+      "text_files_scanned": 355,
+      "binary_files_skipped": 70
+    },
+    "git_diff_check": "PASS"
+  },
+  "open_external_gates": {
+    "author_decision_markers": 4,
+    "fig2_portal_markers": 5,
+    "raw_source_access_markers": 42,
+    "public_release_markers": 25
+  },
+  "release_posture": {
+    "RC-1": "ACTIVATED",
+    "RC-2": "ACTIVATED_WITH_LIMITATIONS",
+    "RCEP_F3": "not_identified"
+  },
+  "maintenance_finding": {
+    "id": "P6-MF-01",
+    "severity": "MEDIUM",
+    "confidence": "CONFIRMED",
+    "type": "documentation_consistency",
+    "evidence": [
+      "manuscript_src/natcs/natcs_final_author_decision_sheet.md:10-11",
+      "manuscript_src/natcs/ncs_fig2_portal_preview_checklist.md:9-10",
+      "manuscript_src/natcs/ncs_fig2_portal_preview_checklist.md:19-22"
+    ],
+    "impact": "The Fig. 2 checklist can misstate the current RC-1/RC-2 posture even though its four portal-observation rows correctly remain open.",
+    "minimal_mitigation": "Reconcile only the explanatory checklist wording at the next authorized source edit; retain all four Not checked rows and the no-portal-observation boundary.",
+    "expected_risk_reduction": "Prevents a stale governance explanation from being mistaken for the current controlling status without falsely closing an external gate."
+  },
+  "follow_up": {
+    "required": true,
+    "next_action": "Update the Fig. 2 checklist explanatory wording, then run the complete Task 4 focused-suite/build/final-gate sequence and write its rebuild receipt.",
+    "scientific_content_change_authorized": false,
+    "portal_upload_authorized": false,
+    "git_snapshot_authorized": false
+  }
+}

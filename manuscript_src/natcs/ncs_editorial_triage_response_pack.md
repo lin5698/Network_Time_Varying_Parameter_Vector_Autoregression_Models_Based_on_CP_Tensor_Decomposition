@@ -1,6 +1,6 @@
 # NCS Editorial Triage Response Pack
 
-Status, 2026-08-26: **response pack reactivated under author backlog authorization (item A).** `PAPER_CLAIM_AUDIT.json` carries verdict PASS dated 2026-08-26 with reason code `rcep_nyc_value_audited_no_active_stale_citations`; `EMPIRICAL_IMPLEMENTATION_AUDIT.json` carries verdict PASS with reason code `rcep_nyc_value_audited_downstream_build_authorized`. Quarantine-candidate values stay deactivated: RC-1 (manuscript promotion) is NOT_GRANTED and RC-2 (empirical claim activation) remains gated by RCEP flags F1/F2/F3 plus open NYC characterization flags. Wording below draws exclusively on active governed state.
+Status, 2026-08-30: **response pack updated after author-approved limited activation.** Both controlling audits carry PASS; RC-1 is ACTIVATED and RC-2 is ACTIVATED_WITH_LIMITATIONS. Wording below stays descriptive and preserves all RCEP/NYC characterization limits.
 
 ## Portal-Field Snippets
 
@@ -21,7 +21,7 @@ Suggested wording:
 ## Response Posture And Open Gates
 
 - Answer scope questions at representation level first: query preservation names a property of the fitted object, ahead of any implementation or application vocabulary.
-- Keep empirical answers bounded: RCEP and NYC panels are fixed-path and public second-domain readouts whose activation awaits RC-2 clearance; no quarantine-candidate value may enter a response.
+- Keep empirical answers bounded: RCEP and NYC panels are fixed-path descriptive readouts; no causal or mechanism extension may enter a response.
 - Record open gates honestly: Fig. 2 portal-preview evidence, raw-source access sign-off and public-release sign-off remain outstanding.
 - Re-run `scripts/check_natcs_final_gates.mjs` after every edit to this pack; triage snippets reject discouraged defensive transitions and inline formula notation.
 - The prior disabled banner (2026-07-23) is superseded by the 2026-08-26 PASS verdicts recorded above; its prohibition on historic RCEP/NYC claim language remains in force pending activation clearance.
