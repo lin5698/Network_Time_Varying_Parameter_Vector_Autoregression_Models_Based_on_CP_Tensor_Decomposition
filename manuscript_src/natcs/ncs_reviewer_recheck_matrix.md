@@ -130,7 +130,7 @@ Tags: visual communication / rigour.
 1. Fig. 2 journal-portal preview result or screenshot using `ncs_fig2_portal_preview_checklist.md`.
 2. Author sign-off for each raw-source block in `raw_source_access_decision_worksheet.md`.
 3. Author sign-off for public-release route, licence and embargo plan in `public_release_readiness_worksheet.md`.
-4. Title settled as "Query-certified operator learning for topology-indexed responses" (64 characters); recheck any portal field or draft that still cites a retired working-title variant.
+4. Title settled as "Predictive fit does not certify topology-indexed network responses" (66 characters); recheck any portal field or draft that still cites a retired working-title variant.
 5. Confirmation that the empirical claim remains "bounded operator readout" and will not be strengthened to RCEP policy causality.
 
 ## Provenance

@@ -1,6 +1,6 @@
 Dear Editors,
 
-Please consider our Article, "Query-certified operator learning for topology-indexed responses", for publication in Nature Computational Science.
+Please consider our Article, "Predictive fit does not certify topology-indexed network responses", for publication in Nature Computational Science.
 
 Scientific models are often reused under inputs or structures that differ from those observed during fitting. In evolving networks, a representation may reproduce observed trajectories yet discard the topology argument required to evaluate a changed network. We formulate this mismatch as a computational question: does the requested topology-indexed response factor through the retained representation?
 

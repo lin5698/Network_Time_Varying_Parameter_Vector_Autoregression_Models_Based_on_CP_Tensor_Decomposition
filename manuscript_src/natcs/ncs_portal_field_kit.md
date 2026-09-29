@@ -57,7 +57,7 @@ The journal-fit argument stays representation-level throughout: query preservati
 - RC-1 manuscript-promotion authorization: NOT_GRANTED.
 - RC-2 empirical-claim activation: gated by RCEP F1/F2/F3 and NYC characterization flags; all quarantine mappings stay potential-only and unactivated.
 - Active manuscript sources: `results_rcep.md` and `results_generality.md` remain inactive audit-boundary drafts; controlled gains 93.6/96.8/82.5/87.3 are the only active numbers.
-- Title: "Query-certified operator learning for topology-indexed responses" (64 characters).
+- Title: "Predictive fit does not certify topology-indexed network responses" (66 characters).
 - Open items: Fig. 2 portal-preview evidence, raw-source access sign-off, public-release sign-off.
 
 ## Provenance

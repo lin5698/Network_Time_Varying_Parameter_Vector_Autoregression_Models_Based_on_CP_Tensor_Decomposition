@@ -9,7 +9,7 @@ Status, 2026-08-26: current-state completion audit of the Nature Computational S
 - RC-1 (manuscript promotion): `NOT_GRANTED`.
 - RC-2 (claim activation): gated by `OPEN_CHARACTERIZATION_FLAGS_BLOCKING_ACTIVATION_NOT_BUILD`, carrying the RCEP F1, F2 and F3 characterization flags together with the NYC characterization flags; the gate is evidential, with no build-side defect cited.
 - Consequence: RCEP and NYC section drafts stay inactive audit-boundary drafts with template placeholders, and the controlled benchmark supplies the only active empirical numbers — 93.6% and 96.8% effective-operator error reduction (N=15, N=30) plus 82.5% and 87.3% finite-horizon unit-shock response error reduction (N=15, N=30).
-- Title on record: "Query-certified operator learning for topology-indexed responses".
+- Title on record: "Predictive fit does not certify topology-indexed network responses".
 
 ## 2. Requirement-To-Evidence Completion Matrix
 

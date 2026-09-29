@@ -5,7 +5,7 @@ Status, 2026-08-26: this request supersedes the earlier disabled note. Both inde
 ## What Is Settled By Governed Records
 
 - Controlled-benchmark results stand as the only active empirical numbers: effective-operator error reductions of 93.6% and 96.8% (N=15, N=30) and finite-horizon unit-shock response error reductions of 82.5% and 87.3% (N=15, N=30).
-- The title stands at "Query-certified operator learning for topology-indexed responses".
+- The title stands at "Predictive fit does not certify topology-indexed network responses".
 - RCEP and NYC section drafts remain inactive audit-boundary drafts with template placeholders; quarantined values stay outside active text.
 - RC-1 (manuscript promotion) was recorded `NOT_GRANTED`.
 - RC-2 (claim activation) stays gated by `OPEN_CHARACTERIZATION_FLAGS_BLOCKING_ACTIVATION_NOT_BUILD`, carrying the RCEP F1/F2/F3 characterization flags plus the NYC characterization flags; the gate is evidential, with no build-side defect cited.

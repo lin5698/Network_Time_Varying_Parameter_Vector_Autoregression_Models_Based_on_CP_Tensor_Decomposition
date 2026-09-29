@@ -22,13 +22,13 @@ Serves: novelty / significance / rigour / clarity / generality / reproducibility
 
 ## 1. Title Signal
 
-Current title: "Query-certified operator learning for topology-indexed responses" (64 characters, settled in `metadata.json`).
+Current title: "Predictive fit does not certify topology-indexed network responses" (66 characters, settled in `metadata.json`).
 
 First-screen read:
 
 | Screen question | Current signal | Risk | Keep or revise | Tags |
 | --- | --- | --- | --- | --- |
-| Does the title name a computational object? | Yes: "query-certified operator learning" names the certified object and "topology-indexed responses" names the question class. | Low. | Keep the certification and query pairing. | novelty / clarity |
+| Does the title name a computational object? | It states the finding instead: "predictive fit does not certify" names the failure mode and "topology-indexed network responses" names the question class; the certified object, query-certified operator learning, is named in the third abstract sentence. | Low. | Keep the finding and query pairing; keep the object name early in the abstract. | novelty / clarity |
 | Does it overlead with implementation or application terms? | No. Canonical-polyadic implementation vocabulary and trade-application wording stay out of the title. | Low. | Keep implementation and application wording out of headline position. | novelty / significance |
 | Does it imply universal temporal-network scope? | No. Scope stays bounded by the response question class. | Moderate if readers assume all temporal-network models. | Keep limitations in abstract and cover letter. | generality / clarity |
 
@@ -123,7 +123,7 @@ Do not move RCEP, NYC, CP rank, tariff details or topology-correlation diagnosti
 
 | Check | Status | Blocking level | Needed material | Tags |
 | --- | --- | --- | --- | --- |
-| Title and abstract object-first. | Passed on visible source; title settled at 64 characters. | Low. | None; the title is settled. | novelty / clarity |
+| Title and abstract object-first. | Passed on visible source; title settled at 66 characters and states the finding, with the object named in the abstract. | Low. | None; the title is settled. | novelty / clarity |
 | Cover-letter first two paragraphs object-first. | Passed on visible source and DOCX formula extraction was previously checked. | Low. | Re-run final gate after any cover-letter edit. | clarity / reproducibility |
 | Portal novelty/significance snippets evidence-bound. | Passed if snippets above are used. | Low. | None. | novelty / significance |
 | Desk-reject trigger language absent from formal first screen. | Passed on visible source. | Medium after future edits. | Run final gate after edits. | rigour / clarity |

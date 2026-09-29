@@ -10,7 +10,7 @@ Status, 2026-08-26: **bounded submission preparation is authorized by governed r
 | D-2 | RC-1, manuscript promotion | `NOT_GRANTED`. RCEP and NYC section drafts remain inactive audit-boundary drafts with template placeholders. |
 | D-3 | RC-2, claim activation | Gated by `OPEN_CHARACTERIZATION_FLAGS_BLOCKING_ACTIVATION_NOT_BUILD`, carrying the RCEP F1, F2 and F3 characterization flags together with the NYC characterization flags. The gate is evidential; no build-side defect is cited. |
 | D-4 | Active empirical number set | Effective-operator error reductions of 93.6% and 96.8% (N=15, N=30) and finite-horizon unit-shock response error reductions of 82.5% and 87.3% (N=15, N=30) are the only active empirical numbers. Quarantined RCEP/NYC values stay outside active text. |
-| D-5 | Title | "Query-certified operator learning for topology-indexed responses". |
+| D-5 | Title | "Predictive fit does not certify topology-indexed network responses". |
 
 ## 2. Positioning Guardrail For Upload-Time Edits
 
