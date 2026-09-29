@@ -21,7 +21,19 @@ function copyFile(src, dest) {
   if (fs.existsSync(dest) && !fs.lstatSync(dest).isDirectory()) {
     fs.rmSync(dest, { force: true });
   }
+  if (src.endsWith(".py")) {
+    const sourceText = fs.readFileSync(src, "utf8");
+    fs.writeFileSync(dest, sanitizeArchivePythonSource(sourceText), "utf8");
+    return;
+  }
   fs.copyFileSync(src, dest);
+}
+
+export function sanitizeArchivePythonSource(sourceText) {
+  return sourceText.replace(
+    /Path\(\s*["']\/(?:Users|home)\/[^"']+\/output\/ncs_review_corpus\/([^"']+)["']\s*\)/g,
+    'ROOT / "output/ncs_review_corpus/$1"'
+  );
 }
 
 function macFileFlags(file) {
@@ -254,6 +266,10 @@ function computeReviewerTemplateContext() {
       .sort((a, b) => a - b).map((x) => Number(x).toFixed(1)).join("-"),
     baseline_girf_gain_replicated_range: [synth.baseline_small_girf_gain_pct, synth.baseline_medium_girf_gain_pct]
       .sort((a, b) => a - b).map((x) => Number(x).toFixed(1)).join("-"),
+    operator_gain_n15: Number(synth.baseline_small_coef_gain_pct).toFixed(1),
+    operator_gain_n30: Number(synth.baseline_medium_coef_gain_pct).toFixed(1),
+    response_gain_n15: Number(synth.baseline_small_girf_gain_pct).toFixed(1),
+    response_gain_n30: Number(synth.baseline_medium_girf_gain_pct).toFixed(1),
     baseline_coef_gain_n50: Number(gainFor("Scale baseline (T=240, N=50)", "Effective-operator error")).toFixed(1),
     baseline_girf_gain_n50: Number(gainFor("Scale baseline (T=240, N=50)", "GIRF error")).toFixed(1),
     synthetic_scenario_count: synth.scenario_count ?? "",
@@ -280,6 +296,8 @@ function computeReviewerTemplateContext() {
     rcep_post_bootstrap_difference: Number(rcepAggregate.post_2022?.bootstrap_median_difference_mean ?? 0).toFixed(5),
     rcep_pre_bootstrap_level: Number(rcepAggregate.pre_2022?.bootstrap_observed_level_median_mean ?? 0).toFixed(4),
     rcep_post_bootstrap_level: Number(rcepAggregate.post_2022?.bootstrap_observed_level_median_mean ?? 0).toFixed(4),
+    rcep_baseline_pair_coefficient: Number(summary.baseline_association?.coefficient ?? 0).toFixed(6),
+    rcep_frozen_pair_coefficient: Number(summary.fixed_topology_benchmark?.frozen_topology_coefficient ?? 0).toFixed(6),
     girf_pre: Number(summary.girf_network_contribution?.["2018-12-31"]?.mean ?? 0).toFixed(2),
     girf_post: Number(summary.girf_network_contribution?.["2022-12-31"]?.mean ?? 0).toFixed(2),
     break_dates_main: String((summary.structural_breaks || [])[0]?.break_dates ?? "").replace(/;\s*/g, " and "),
@@ -366,6 +384,8 @@ function computeReviewerTemplateContext() {
     nyc_late_girf_label: nyc.late_girf_label ?? "",
     nyc_early_network_share_median: Number(nyc.early_network_share?.median ?? 0).toFixed(3),
     nyc_late_network_share_median: Number(nyc.late_network_share?.median ?? 0).toFixed(3),
+    nyc_early_share_median: Number(nyc.early_network_share?.median ?? 0).toFixed(4),
+    nyc_late_share_median: Number(nyc.late_network_share?.median ?? 0).toFixed(4),
     nyc_early_network_share_mean: Number(nyc.early_network_share?.mean ?? 0).toFixed(3),
     nyc_late_network_share_mean: Number(nyc.late_network_share?.mean ?? 0).toFixed(3),
     nyc_stability_rate_pct: Number(nyc.stability_rate_pct ?? 0).toFixed(1),
