@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import fs from "fs";
 import path from "path";
 import { spawnSync } from "child_process";
@@ -10,7 +11,7 @@ import { spawnSync } from "child_process";
 import { buildSourceOnlySupplementaryMarkdown } from "./build_natcs_supplementary_source_only.mjs";
 import { assertReaderFacingTextClean, ensureDir, markdownTable, readCsv, readJson, readText, readerFacingSubmissionText, referencesBlock, renderTemplate, requireReleaseableNatcsEvidence, runCommand, writeText, yamlHeader } from "./natcs_utils.mjs";
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = path.join(ROOT, "manuscript_src", "natcs");
 const TMP = path.join(ROOT, "tmp", "manuscript_build", "natcs");
 const LATEX_BUILD = path.join(ROOT, "tmp", "latex_build");
@@ -22,6 +23,7 @@ const SUPPORTED_REGIME_BASENAME = path.join(ROOT, "output", "natcs_assets", "fig
 const END_MATTER_FILES = [
   ["data_availability", "data_availability.txt"],
   ["code_availability", "code_availability.txt"],
+  ["funding", "funding.txt"],
   ["author_contributions", "author_contributions.txt"],
   ["competing_interests", "competing_interests.txt"],
   ["ethics_statement", "ethics_statement.txt"],
@@ -43,7 +45,7 @@ function splitLeadParagraph(text) {
 }
 
 export function computeControlledContext(meta = {}) {
-  const summaryPath = path.join(ROOT, "output", "natcs_benchmarks", "benchmark_summary.csv");
+  const summaryPath = path.join(ROOT, readJson(path.join(SRC, "controlled_benchmark_contract.json")).released_artifacts.summary);
   const rows = readCsv(summaryPath);
   const rowFor = (scenario, method) => {
     const matches = rows.filter((row) => row.scenario === scenario && row.method === method);
@@ -78,28 +80,54 @@ export function computeControlledContext(meta = {}) {
 
   const operatorGains = ["scale_n15", "scale_n30"].map((scenario) => reduction(scenario, "coef_error_median"));
   const responseGains = ["scale_n15", "scale_n30"].map((scenario) => reduction(scenario, "girf_error_median"));
+  // Topology-substitution (frozen-topology) and network-component queries: the readouts the certificate protects.
+  const frozenGains = ["scale_n15", "scale_n30"].map((scenario) => reduction(scenario, "frozen_counterfactual_error_median"));
+  const networkComponentGains = ["scale_n15", "scale_n30"].map((scenario) => reduction(scenario, "network_component_error_median"));
+  const tuckerFrozenGains = ["scale_n15", "scale_n30"].map((scenario) => {
+    const local = numberField(rowFor(scenario, "local_network"), "frozen_counterfactual_error_median");
+    const tucker = numberField(rowFor(scenario, "tucker_network"), "frozen_counterfactual_error_median");
+    return 100 * (local - tucker) / local;
+  });
+  const allScenarios = [...new Set(rows.map((row) => row.scenario))];
+  const frozenGainsAllScenarios = allScenarios.map((scenario) => reduction(scenario, "frozen_counterfactual_error_median"));
+  // Collapsed ablation: same local inputs, total-map target. Relative difference to CP on outputs both define.
+  const collapsedVsCp = (scenario, field) => {
+    const collapsed = numberField(rowFor(scenario, "collapsed_operator_cp"), field);
+    const cp = numberField(rowFor(scenario, "cp_network"), field);
+    return 100 * Math.abs(collapsed - cp) / cp;
+  };
+  const collapsedNextStateGap = Math.max(...["scale_n15", "scale_n30"].map((scenario) => collapsedVsCp(scenario, "prediction_error_median")));
+  const diagnostics = {};
+  for (const size of ["n15", "n30"]) {
+    for (const [label, method] of [["cp", "cp_network"], ["local", "local_network"], ["tucker", "tucker_network"]]) {
+      const row = rowFor("scale_" + size, method);
+      for (const [metric, field, digits, scale] of [["operator", "coef_error_median", 4, 1], ["response", "girf_error_median", 5, 1], ["share", "share_error_median", 4, 1], ["instability", "instability_rate_mean", 2, 100]]) {
+        diagnostics[label + "_" + metric + "_" + size] = (numberField(row, field) * scale).toFixed(digits);
+      }
+    }
+  }
   return {
+    ...diagnostics,
     title: meta.title || "Query-certified operator learning for evolving weighted networks",
     operator_gain_n15: operatorGains[0].toFixed(1),
     operator_gain_n30: operatorGains[1].toFixed(1),
     response_gain_n15: responseGains[0].toFixed(1),
     response_gain_n30: responseGains[1].toFixed(1),
+    frozen_gain_n15: frozenGains[0].toFixed(1),
+    frozen_gain_n30: frozenGains[1].toFixed(1),
+    netcomp_gain_n15: networkComponentGains[0].toFixed(1),
+    netcomp_gain_n30: networkComponentGains[1].toFixed(1),
+    tucker_frozen_gain_n15: tuckerFrozenGains[0].toFixed(1),
+    tucker_frozen_gain_n30: tuckerFrozenGains[1].toFixed(1),
+    frozen_gain_min_all: Math.min(...frozenGainsAllScenarios).toFixed(1),
+    frozen_gain_max_all: Math.max(...frozenGainsAllScenarios).toFixed(1),
+    scenario_count_all: allScenarios.length,
+    collapsed_next_state_gap_max: collapsedNextStateGap.toFixed(1),
     baseline_coef_gain_replicated_range: operatorGains.map((value) => value.toFixed(1)).join("-"),
     baseline_girf_gain_replicated_range: responseGains.map((value) => value.toFixed(1)).join("-"),
     scale_replications_n15: replicationCount("scale_n15"),
     scale_replications_n30: replicationCount("scale_n30"),
     scale_replications_n50: replicationCount("scale_n50"),
-    rcep_baseline_pair_coefficient: "0.000873",
-    rcep_frozen_pair_coefficient: "0.000693",
-    rcep_pre_point_difference: "-0.000091",
-    rcep_post_point_difference: "-0.002567",
-    rcep_pre_bootstrap_difference: "-0.001965",
-    rcep_post_bootstrap_difference: "-0.001434",
-    nyc_mean_gnet: "0.274",
-    nyc_mean_frozen_gnet: "0.274",
-    nyc_mean_topology_difference_4: "-0.0004",
-    nyc_early_share_median: "0.3715",
-    nyc_late_share_median: "0.4810",
   };
 }
 
@@ -108,7 +136,7 @@ function buildMainBenchmarkTable(context) {
     [
       {
         "Endpoint": "Primary replicated recovery (N=15/N=30)",
-        "Primary evidence": `${context.baseline_coef_gain_replicated_range}% lower operator error; ${context.baseline_girf_gain_replicated_range}% lower response error`,
+        "Primary evidence": `${context.baseline_coef_gain_replicated_range}% lower operator error; ${context.baseline_girf_gain_replicated_range}% lower normalized response error`,
         "Scope flag": "Headline benchmark evidence",
       },
       {
@@ -212,21 +240,19 @@ function removeDocxSiblingOutputs(targetFile) {
   }
 }
 
-function buildMainMarkdown(meta, context, evidence, assetFormat = "vector") {
+export function buildMainMarkdown(meta, context, evidence, assetFormat = "vector") {
   const frameworkFigure = assetFormat === "vector" ? evidence.framework_figure_pdf : evidence.framework_figure_png;
   const frameworkFigureWidth = assetFormat === "vector" ? "92%" : "6.8in";
   const queryCertificateFigure = assetFormat === "vector" ? evidence.query_certificate_figure_pdf : evidence.query_certificate_figure_png;
   const queryCertificateFigureWidth = assetFormat === "vector" ? "94%" : "6.8in";
   const supportedRegimeFigure = assetFormat === "vector" ? evidence.supported_regime_figure_pdf : evidence.supported_regime_figure_png;
   const supportedRegimeFigureWidth = assetFormat === "vector" ? "95%" : "6.8in";
-  const affiliations = `${meta.affiliations.map((line) => `*${line}*`).join("  \n")}  \n`;
+  const affiliations = `${meta.affiliations.map((line, index) => `^${index + 1}^ *${line}*`).join("  \n")}  \n`;
   const abstract = loadSection("abstract", context);
   const introduction = loadSection("introduction", context);
   const resultsFramework = loadSection("results_framework", context);
   const [resultsFrameworkLead, resultsFrameworkBody] = splitLeadParagraph(resultsFramework);
   const resultsValidation = loadSection("results_validation", context);
-  const resultsRcep = loadSection("results_rcep", context);
-  const resultsGenerality = loadSection("results_generality", context);
   const [resultsValidationLead, resultsValidationBody] = splitLeadParagraph(resultsValidation);
   const discussion = loadSection("discussion", context);
   const methodsData = loadSection("methods_data", context);
@@ -236,7 +262,7 @@ function buildMainMarkdown(meta, context, evidence, assetFormat = "vector") {
   const methodsUncertainty = loadSection("methods_uncertainty", context);
   const dataAvailability = loadSection("data_availability", context);
   const codeAvailability = loadSection("code_availability", context);
-  const acknowledgements = loadSection("acknowledgements", context);
+  const funding = loadSection("funding", context);
   const authorContributions = loadSection("author_contributions", context);
   const competingInterests = loadSection("competing_interests", context);
   const ethicsStatement = loadSection("ethics_statement", context);
@@ -245,8 +271,6 @@ function buildMainMarkdown(meta, context, evidence, assetFormat = "vector") {
     introduction,
     resultsFramework,
     resultsValidation,
-    resultsRcep,
-    resultsGenerality,
     discussion,
     methodsData,
     methodsEstimator,
@@ -255,7 +279,7 @@ function buildMainMarkdown(meta, context, evidence, assetFormat = "vector") {
     methodsUncertainty,
     dataAvailability,
     codeAvailability,
-    acknowledgements,
+    funding,
     authorContributions,
     competingInterests,
     ethicsStatement,
@@ -266,11 +290,10 @@ function buildMainMarkdown(meta, context, evidence, assetFormat = "vector") {
   const visibleTitleBlock = [];
 
   return readerFacingSubmissionText([
-    yamlHeader(meta, { singleLineAuthors: assetFormat === "raster", srcDir: SRC }),
+    yamlHeader({ ...meta, authors: meta.authors.map((name, index) => `${name}^${index + 1}^`) }, { singleLineAuthors: assetFormat === "raster", srcDir: SRC }),
     ...visibleTitleBlock,
     affiliations,
     `*${meta.correspondence}*  `,
-    `*${meta.funding}*`,
     "",
     "# Abstract {-}",
     "",
@@ -292,31 +315,25 @@ function buildMainMarkdown(meta, context, evidence, assetFormat = "vector") {
     "y_{\\tau} = c_t + \\sum_{k=1}^{p} A_{k,t} y_{\\tau-k} + \\sum_{k=1}^{p} B_{k,t} W_{\\tau-k} y_{\\tau-k} + C_t x_{\\tau} + \\varepsilon_{\\tau}, \\quad \\tau \\in \\mathcal{I}_t",
     "$$",
     "",
-    "This rolling equation uses lag-specific historical exposure matrices. Response evaluation is separate: for target date $t$, the last matrix available inside the window, $\\bar W_t=W_{t-1}$, is held fixed through the horizon. Reconstruction must keep the direct and network blocks separately evaluable, or provide an identified inverse to those blocks, for topology to remain a readout argument. This representation condition defines the query; design identification, numerical recovery and finite-horizon stability are evaluated separately.",
+    "The rolling equation uses lag-specific historical exposure matrices. For target date $t$, response evaluation holds the last matrix available inside the window, $\\bar W_t=W_{t-1}$, fixed through the horizon. The topology argument remains available if reconstruction preserves the separated blocks or a verified inverse to them.",
     "",
-    "![Figure 1 | One learned coefficient path remains callable under supplied topologies. a, The fitted object retains direct and network-mediated blocks while topology remains an argument supplied at readout. b, Observed, direct-only and frozen-topology responses use the same fitted state, shock normalization and horizon; changing topology does not refit the model. c, A collapsed total map without a declared inverse does not expose a genuine topology-substitution response.](" + path.relative(ROOT, frameworkFigure) + "){ width=" + frameworkFigureWidth + " }",
+    "![Figure 1 | One learned coefficient path remains callable under supplied topologies. a, The fitted object retains direct and network-mediated blocks while topology is supplied at readout. b, Observed, direct-only, and frozen-topology responses use the same fitted state, shock normalization, and horizon; changing topology does not refit the model. c, An unrestricted collapsed total map without a verified inverse does not expose a genuine topology-substitution response.](" + path.relative(ROOT, frameworkFigure) + "){ width=" + frameworkFigureWidth + " }",
     "",
     resultsFrameworkBody,
     "",
-    "![Figure 2 | Query preservation is certified by factorization through the retained representation. a, For a row-separable finite-basis operator, a requested query is callable exactly when the retained kernel is contained in the query kernel, equivalently when the query factors through the retained object. The criterion applies to the one-hop (I,W) and two-hop (I,W,W2) bases; strict family inclusion holds on every declared topology domain containing the directed-cycle fixture P. This is a representation result, not two-hop recovery evidence. b, For unrestricted one-hop blocks and W1 distinct from W0, the pairs (A,B)=(0,0) and (-W0,I) share the retained map D=0 at W0 but return 0 and W1-W0 at W1, so no single evaluator exists. c, For diagonal A and B with zero-diagonal W0, the displayed rowwise inverse recovers the separated coefficients when each exposure row is nonzero; the full condition additionally requires every zero row of W0 to remain zero in W1. d, Endpoint availability is assigned before error comparison. Separated CP and Tucker define the declared total, network-component and frozen-topology responses, whereas the evaluated collapsed and no-network controls retain total responses only; grey dashes denote outside-target readouts, not zero error.](" + path.relative(ROOT, queryCertificateFigure) + "){ width=" + queryCertificateFigureWidth + " }",
+    "![Figure 2 | Query preservation is certified by factorization through the retained representation. a, A row-separable finite-basis query is callable if and only if each retained row kernel is contained in its query-row kernel. Equivalently, the query factors through the retained object. The criterion covers one-hop (I,W) and two-hop (I,W,W²) bases. The two-hop class strictly contains the one-hop class on topology domains containing the directed three-cycle P. b, For unrestricted blocks and W1 distinct from W0, pairs (A,B)=(0,0) and (-W0,I) share D=0 at W0 but return 0 and W1-W0 at W1. c, For diagonal A and B with zero-diagonal W0, the displayed inverse recovers coefficients on nonzero exposure rows. Query evaluability additionally requires every zero row of W0 to remain zero in W1. d, Separated CP and Tucker define total, network-component, and frozen-topology responses. The evaluated collapsed and no-network controls retain total responses only. Grey dashes indicate outside-target readouts, not zero error.](" + path.relative(ROOT, queryCertificateFigure) + "){ width=" + queryCertificateFigureWidth + " }",
     "",
     "## Structured reconstruction preserves response queries in a controlled regime",
     "",
     resultsValidationLead,
     "",
-    "*Table 1 | Endpoint-preservation benchmark matrix. The table separates the response endpoint tested, the manuscript-facing evidence and the comparison scope. Replication counts, full comparator diagnostics and bounded-stress rows are reported in Supplementary Tables 1b-3.*",
+    "*Table 1 | Recovery evidence and comparator roles. The table identifies the tested outputs, results, and replication coverage. Supplementary Tables 1b-3 give the full comparator diagnostics and stress results.*",
     "",
     mainBenchmarkTable,
     "",
     resultsValidationBody,
     "",
-    "## Descriptive topology readouts across trade and mobility panels",
-    "",
-    resultsRcep,
-    "",
-    resultsGenerality,
-    "",
-    `![Figure 3 | Target-matched reconstruction improves controlled operator and response recovery. a, Across ${context.scale_replications_n15} and ${context.scale_replications_n30} replications at N=15 and N=30, respectively, CP reconstruction reduced median effective-operator error by ${context.operator_gain_n15}% and ${context.operator_gain_n30}% relative to unrestricted local rolling. b, Median finite-horizon unit-shock response error decreased by ${context.response_gain_n15}% and ${context.response_gain_n30}% under the same comparison. Response error uses the common 0.95 spectral-norm stabilization rule; unscaled instability is reported separately. Points show medians and intervals show interquartile ranges; axes are logarithmic and lower values indicate better recovery. c, Both methods return the same declared operator and finite-horizon response endpoint, and both primary scales use 20 matched replications. Stress rows and the separate held-out qualification are reported in Supplementary Note 4.](${path.relative(ROOT, supportedRegimeFigure)}){ width=${supportedRegimeFigureWidth} }`,
+    `![Figure 3 | Controlled CP errors relative to unrestricted local estimation. a, Across ${context.scale_replications_n15} and ${context.scale_replications_n30} replications at N=15 and N=30, respectively, CP reconstruction reduced median frozen-topology response error by ${context.frozen_gain_n15}% and ${context.frozen_gain_n30}% relative to unrestricted local rolling; this is the query endpoint protected by Theorem 1 and Proposition 1. b, On the observed-topology endpoint, CP reduced median effective-operator error by ${context.operator_gain_n15}% and ${context.operator_gain_n30}%; unscaled spectral-norm threshold exceedance remains high, pair-level share errors worsen and Tucker has lower operator errors (Supplementary Tables 2a–2d). Points show medians and intervals show interquartile ranges; axes are logarithmic and lower values indicate better recovery. c, Both methods return the same declared operator and finite-horizon response endpoint, and both primary scales use 20 matched replications. Stress rows and the separate held-out qualification are reported in Supplementary Note 4.](${path.relative(ROOT, supportedRegimeFigure)}){ width=${supportedRegimeFigureWidth} }`,
     "",
     "\\FloatBarrier",
     "",
@@ -358,9 +375,9 @@ function buildMainMarkdown(meta, context, evidence, assetFormat = "vector") {
     "",
     codeAvailability,
     "",
-    "# Acknowledgements",
+    "# Funding",
     "",
-    acknowledgements,
+    funding,
     "",
     "# Author contributions",
     "",
@@ -641,8 +658,8 @@ function syncSourceOnlySubmissionPackage(meta, artifacts, context) {
     path.join(ROOT, "output", "natcs_evidence", "table1b_baseline_tuning_projection.md"),
     path.join(ROOT, "output", "natcs_evidence", "table1d_benchmark_fairness_audit.csv"),
     path.join(ROOT, "output", "natcs_evidence", "table1d_benchmark_fairness_audit.md"),
-    path.join(ROOT, "output", "natcs_benchmarks", "benchmark_summary.csv"),
-    path.join(ROOT, "output", "natcs_benchmarks", "benchmark_replications.csv"),
+    path.join(ROOT, readJson(path.join(SRC, "controlled_benchmark_contract.json")).released_artifacts.summary),
+    path.join(ROOT, readJson(path.join(SRC, "controlled_benchmark_contract.json")).released_artifacts.replications),
     path.join(SRC, "controlled_benchmark_contract.json"),
   ];
   assertLocalFiles("Controlled benchmark submission artifacts", supportingArtifacts);

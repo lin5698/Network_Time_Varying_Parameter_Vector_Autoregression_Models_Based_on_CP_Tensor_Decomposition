@@ -32,20 +32,21 @@ for (const format of ["svg", "pdf", "png"]) {
 }
 assert.match(
   manuscriptBuilder,
-  /Figure 3 \| Target-matched reconstruction improves controlled operator and response recovery/,
+  /Figure 3 \| Controlled CP errors relative to unrestricted local estimation/,
   "The manuscript must use the supported-regime asset as Figure 3.",
+);
+assert.match(
+  manuscriptBuilder,
+  /\$\{context\.frozen_gain_n15\}% and \$\{context\.frozen_gain_n30\}%/,
+  "Figure 3 caption must derive the frozen-topology reductions from the controlled benchmark context.",
 );
 assert.match(
   manuscriptBuilder,
   /\$\{context\.operator_gain_n15\}% and \$\{context\.operator_gain_n30\}%/,
   "Figure 3 caption must derive the operator-error reductions from the controlled benchmark context.",
 );
-assert.match(
-  manuscriptBuilder,
-  /\$\{context\.response_gain_n15\}% and \$\{context\.response_gain_n30\}%/,
-  "Figure 3 caption must derive the response-error reductions from the controlled benchmark context.",
-);
-assert.match(figureSource, /Response error \(log scale; lower is better\)/, "Figure 3 must use the implemented unit-shock response label.");
+assert.match(figureSource, /Frozen-topology response error \(log scale; lower is better\)/, "Figure 3 panel a must use the frozen-topology response label.");
+assert.match(figureSource, /Effective-operator error \(log scale\)/, "Figure 3 panel b must use the operator-error label.");
 assert.doesNotMatch(figureSource, /xlabel="GIRF error/i, "Figure 3 must not label the unit-shock benchmark as a covariance-normalized GIRF.");
 
 console.log("Figure 3 Python-backend and released-evidence contract test passed.");
