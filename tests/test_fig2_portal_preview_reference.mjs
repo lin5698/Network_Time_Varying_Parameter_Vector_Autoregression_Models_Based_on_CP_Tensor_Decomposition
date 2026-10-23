@@ -14,8 +14,8 @@ const surrogateBuilder = fs.readFileSync(surrogateBuilderPath, "utf8");
 const figureQaMemo = fs.readFileSync(figureQaMemoPath, "utf8");
 
 assert.match(checklist, /Figure 2 Portal Preview Checklist \(Disabled\)/i);
-assert.match(checklist, /PAPER_CLAIM_AUDIT=BLOCKED/i);
-assert.match(checklist, /EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL/i);
+assert.match(checklist, /no portal action is authorised/i, "The checklist must stay disabled until a real upload event exists.");
+assert.doesNotMatch(checklist, /\|\s*(Checked|Passed|Pass)\s*\|/i, "No preview item may be recorded as checked without an upload event.");
 assert.doesNotMatch(checklist, /Current local PDF page:/i);
 assert.match(finalGates, /function checkFig2PortalPreviewDisabled\(\)/, "The final gate must verify disabled status without treating historical previews as current evidence.");
 assert.doesNotMatch(finalGates, /Current local PDF page:\\s\*`\(\\d\+\)`/, "The final gate must not require a stale manuscript page reference.");

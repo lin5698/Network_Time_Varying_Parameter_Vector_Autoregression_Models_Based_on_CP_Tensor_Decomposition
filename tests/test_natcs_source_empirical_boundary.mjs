@@ -53,8 +53,8 @@ assert.match(data, /20 replications/i);
 assert.doesNotMatch(activeSources, /independent (?:synthetic )?replications/i, "Reader-facing sources must not infer independence without released seed provenance.");
 assert.match(estimator, /N\\times 2N\\times T_\{roll\}/i);
 assert.match(uncertainty, /0\.95 spectral-norm stabilization rule|spectral norm at or above 0\.95/i);
-assert.match(note4, /CP anchor split, rank 3 \| 0\/16/i);
-assert.match(note4, /Tucker anchor split, rank \(3,3,3\) \| 6\/16/i);
+assert.match(note4, /\| CP anchor split \| 3 \| 0\/16/i);
+assert.match(note4, /\| Tucker anchor split \| \(3,3,3\) \| 6\/16/i);
 
 for (const inactive of ["supp_note5_empirical.md", "supp_note6_robustness.md", "supp_note7_repro.md"]) {
   assert.match(read(path.join("manuscript_src/natcs", inactive)), /inactive|not a data- or code-availability declaration/i, `${inactive} must remain an explicitly inactive source record.`);

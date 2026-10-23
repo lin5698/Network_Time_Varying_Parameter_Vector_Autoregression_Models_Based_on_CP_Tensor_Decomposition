@@ -1,12 +1,12 @@
 # NCS Portal Field Kit
 
-Status, 2026-08-26: **paste-ready portal kit under author backlog authorization (item A).** Controlling audits hold PASS dated 2026-08-26 (`PAPER_CLAIM_AUDIT.json` reason code `rcep_nyc_value_audited_no_active_stale_citations`; `EMPIRICAL_IMPLEMENTATION_AUDIT.json` reason code `rcep_nyc_value_audited_downstream_build_authorized`). The earlier disabled banner (2026-07-23) is superseded; its caution survives only for quarantined RCEP/NYC values, which stay deactivated pending RC-1 promotion authorization (NOT_GRANTED) and RC-2 activation clearance gated by RCEP flags F1/F2/F3 plus open NYC characterization flags.
+Status, 2026-08-30: **paste-ready portal kit with limited empirical activation.** Both controlling audits hold PASS; RC-1 manuscript promotion is ACTIVATED and RC-2 empirical claims are ACTIVATED_WITH_LIMITATIONS. RCEP F1/F2 and NYC characterization limits remain disclosed, while RCEP F3 remains not identified.
 
 ## Usage Rules
 
 - Keep query preservation and the topology-indexed response question ahead of implementation vocabulary in every pasted field.
 - Attach numbers exclusively to the replicated controlled benchmark record (93.6%, 96.8%, 82.5%, 87.3%).
-- Treat RCEP and NYC panels as bounded readouts awaiting separately authorized activation; never paste quarantine-candidate values.
+- Treat RCEP and NYC panels as bounded descriptive readouts; never extend them to causal or mechanism claims.
 - Re-run `scripts/check_natcs_final_gates.mjs` after any edit; portal snippets reject discouraged defensive transitions and inline formula notation.
 
 ## One-Line Fields
@@ -54,9 +54,9 @@ The journal-fit argument stays representation-level throughout: query preservati
 ## Release-State Record (2026-08-26)
 
 - Audits: both controlling audits PASS 2026-08-26 under value-audited reason codes with remaining conditions on record.
-- RC-1 manuscript-promotion authorization: NOT_GRANTED.
-- RC-2 empirical-claim activation: gated by RCEP F1/F2/F3 and NYC characterization flags; all quarantine mappings stay potential-only and unactivated.
-- Active manuscript sources: `results_rcep.md` and `results_generality.md` remain inactive audit-boundary drafts; controlled gains 93.6/96.8/82.5/87.3 are the only active numbers.
+- RC-1 manuscript-promotion authorization: ACTIVATED.
+- RC-2 empirical-claim activation: ACTIVATED_WITH_LIMITATIONS; RCEP F3 remains not identified and all characterization limits remain disclosed.
+- Active manuscript sources: `results_rcep.md` and `results_generality.md` contain descriptive bounded readouts; controlled gains remain active.
 - Title: "Predictive fit does not certify topology-indexed network responses" (66 characters).
 - Open items: Fig. 2 portal-preview evidence, raw-source access sign-off, public-release sign-off.
 

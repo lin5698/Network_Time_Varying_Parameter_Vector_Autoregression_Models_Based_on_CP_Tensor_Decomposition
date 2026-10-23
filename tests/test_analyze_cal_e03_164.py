@@ -15,9 +15,7 @@ from scripts.experiments.test_analyze_cal_e01_75 import _execution_authorization
 
 
 WORKTREE = Path(__file__).resolve().parents[1]
-MAIN_REGISTER = Path(
-    "/Users/wuyilin/Desktop/translation/Network_Time_Varying_Parameter_Vector_Autoregression_Models_Based_on_CP_Tensor_Decomposition/output/ncs_review_corpus/v1_author_decision_register.json"
-)
+MAIN_REGISTER = WORKTREE / "output/ncs_review_corpus/v1_author_decision_register.json"
 RESULTS = WORKTREE / "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/e3-results.json"
 MANIFEST = WORKTREE / "refine-logs/e3_family2_quarantine/e4-domain-stable-v4-20260731-quarantine-r3/execution-manifest.json"
 AUTHORIZATION = WORKTREE / "refine-logs/NCS_FOUR_ANALYSIS_AUTHORIZATION_V2_20260804_023813.json"

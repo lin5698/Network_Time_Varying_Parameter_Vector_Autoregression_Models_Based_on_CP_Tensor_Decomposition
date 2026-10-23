@@ -32,6 +32,16 @@ export function requireReleaseableNatcsEvidence(root) {
   ];
   const failures = [];
 
+  const activationReceipt = path.join(root, "refine-logs", "REC-P3_RC1_RC2_ACTIVATION_V1_20260830.json");
+  if (!fs.existsSync(activationReceipt)) {
+    failures.push("RC-1/RC-2 activation receipt is missing");
+  } else {
+    const decision = readJson(activationReceipt);
+    if (decision.rc1_manuscript_promotion !== "ACTIVATED") failures.push("RC-1 manuscript promotion is not activated");
+    if (decision.rc2_empirical_claim_activation !== "ACTIVATED_WITH_LIMITATIONS") failures.push("RC-2 empirical claim activation is not limitation-bounded");
+    if (decision.scientific_experiments_rerun !== false) failures.push("scientific execution rerun is not explicitly false");
+  }
+
   const parsedAudits = {};
   for (const [label, file] of audits) {
     if (!fs.existsSync(file)) {
@@ -51,22 +61,6 @@ export function requireReleaseableNatcsEvidence(root) {
     }
   }
 
-  // Author decision 2026-08-26 (`release_mode_fork=门禁双模式化`): when both
-  // standing audits hold verdict PASS under the value-audited downstream-build
-  // reason codes with explicit remaining_conditions on record, inactive
-  // empirical boundary drafts are an accepted release state
-  // (build-without-empirical-promotion). The tripwire continues to block any
-  // value-bearing activation of those sources outside a full-release mode.
-  const buildWithoutEmpiricalPromotion =
-    parsedAudits.PAPER_CLAIM_AUDIT?.verdict === "PASS" &&
-    parsedAudits.EMPIRICAL_IMPLEMENTATION_AUDIT?.verdict === "PASS" &&
-    String(parsedAudits.PAPER_CLAIM_AUDIT?.reason_code || "").startsWith("rcep_nyc_value_audited") &&
-    String(parsedAudits.EMPIRICAL_IMPLEMENTATION_AUDIT?.reason_code || "").startsWith("rcep_nyc_value_audited") &&
-    Array.isArray(parsedAudits.PAPER_CLAIM_AUDIT?.remaining_conditions) &&
-    parsedAudits.PAPER_CLAIM_AUDIT.remaining_conditions.length > 0 &&
-    Array.isArray(parsedAudits.EMPIRICAL_IMPLEMENTATION_AUDIT?.remaining_conditions) &&
-    parsedAudits.EMPIRICAL_IMPLEMENTATION_AUDIT.remaining_conditions.length > 0;
-
   const inactiveEmpiricalSources = [
     [
       "RCEP empirical source",
@@ -85,12 +79,7 @@ export function requireReleaseableNatcsEvidence(root) {
       failures.push(`${label} is missing`);
       continue;
     }
-    if (inactiveMarker.test(readText(file))) {
-      if (buildWithoutEmpiricalPromotion) {
-        continue;
-      }
-      failures.push(`${label} remains explicitly inactive`);
-    }
+    if (inactiveMarker.test(readText(file))) failures.push(`${label} remains explicitly inactive`);
   }
 
   if (failures.length) {

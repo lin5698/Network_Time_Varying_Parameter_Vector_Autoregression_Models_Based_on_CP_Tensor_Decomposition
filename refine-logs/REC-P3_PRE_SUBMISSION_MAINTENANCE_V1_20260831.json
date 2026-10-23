@@ -1,0 +1,51 @@
+{
+  "record_id": "REC-P3_PRE_SUBMISSION_MAINTENANCE_V1_20260831",
+  "date": "2026-08-31",
+  "scope": "pre_submission_maintenance",
+  "scientific_experiments_rerun": false,
+  "git_snapshot_created": false,
+  "rebuild": {
+    "status": "PASS",
+    "targets": [
+      "natcs-evidence",
+      "natcs-manuscript",
+      "natcs-reviewer-archive",
+      "natcs-submission-materials",
+      "natcs-upload-freeze-manifest"
+    ],
+    "submission_inventory_items": 27,
+    "upload_freeze_artifacts": 11,
+    "reviewer_archive_files": 342
+  },
+  "verification": {
+    "final_gates": {
+      "status": "PASS_WITH_WARNINGS_ALLOWED",
+      "passes": 225,
+      "errors": 0,
+      "warnings": 4
+    },
+    "release_safety": {
+      "blockers": 0,
+      "warnings": 0,
+      "files_seen": 425,
+      "text_files_scanned": 355,
+      "binary_files_skipped": 70
+    },
+    "focused_tests": {
+      "passed": 8,
+      "failed": 0
+    },
+    "git_diff_check": "PASS"
+  },
+  "open_external_gates": {
+    "author_decision_markers": 4,
+    "fig2_portal_markers": 5,
+    "raw_source_access_markers": 42,
+    "public_release_markers": 25
+  },
+  "release_posture": {
+    "RC-1": "ACTIVATED",
+    "RC-2": "ACTIVATED_WITH_LIMITATIONS",
+    "RCEP_F3": "not_identified"
+  }
+}

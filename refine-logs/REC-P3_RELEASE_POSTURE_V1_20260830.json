@@ -1,0 +1,23 @@
+{
+  "schema_version": "rec-p3-release-posture-v1",
+  "recorded_at": "2026-08-30T00:17:48+08:00",
+  "source_revision": "6c1ee4515d5375aaf7791b07945b2fbdc1565471",
+  "posture": "BUILD_COMPLETE_BUT_PROMOTION_BLOCKED",
+  "rc1_manuscript_promotion": "NOT_GRANTED",
+  "rc2_empirical_claim_activation": "BLOCKED",
+  "rc3_post_regeneration_review": "RECORDED_WITHOUT_FATAL_OR_CRITICAL_FINDINGS",
+  "activated_claim_set": [],
+  "open_characterization_flags": [
+    "RCEP F1",
+    "RCEP F2",
+    "RCEP F3",
+    "NYC stability-rate semantics",
+    "NYC GIRF date remap",
+    "NYC origins 66-of-69",
+    "NYC negative late-period g_net estimates",
+    "NYC missing RNG-seed record"
+  ],
+  "author_marker_groups_open": 4,
+  "submission_ready": false,
+  "snapshot_commit": "NOT_CREATED_PENDING_EXPLICIT_AUTHORIZATION"
+}

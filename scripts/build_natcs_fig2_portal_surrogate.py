@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "output" / "natcs_fig2_portal_surrogate"
 STANDALONE = ROOT / "output" / "natcs_evidence" / "fig_validation_recovery.png"
 MANUSCRIPT_PDF = ROOT / "output" / "pdf" / "natcs_manuscript.pdf"
-FIG2_CAPTION = "Query availability is necessary but does not ensure recovery"
+FIG2_CAPTION = "Query preservation is certified by factorization through the retained representation"
 STANDALONE_PANEL_A_CROP = (54, 70, 1212, 222)
 EMBEDDED_PANEL_A_CROP = (215, 160, 1065, 315)
 

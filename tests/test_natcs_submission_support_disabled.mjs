@@ -15,13 +15,16 @@ const files = [
 
 for (const relativePath of files) {
   const text = read(relativePath);
-  assert.match(text, /PAPER_CLAIM_AUDIT=BLOCKED/i, `${relativePath} must retain the paper-claim block.`);
-  assert.match(text, /EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL/i, `${relativePath} must retain the implementation block.`);
+  assert.doesNotMatch(text, /PAPER_CLAIM_AUDIT=BLOCKED|EMPIRICAL_IMPLEMENTATION_AUDIT=FAIL/i, `${relativePath} must not retain superseded audit blocks.`);
 }
 
 const checklist = read("manuscript_src/natcs/submission_checklist.md");
 const decisionSheet = read("manuscript_src/natcs/natcs_final_author_decision_sheet.md");
 assert.doesNotMatch(checklist, /Upload the main manuscript|Run `node scripts\/build_natcs_manuscript\.mjs`/i);
-assert.doesNotMatch(decisionSheet, /Go with the conservative submission package|Submission-Day Stop\/Go/i);
+assert.match(decisionSheet, /Submission-Day Stop\/Go/i);
+assert.doesNotMatch(
+  decisionSheet,
+  /RC-1, manuscript promotion \| `NOT_GRANTED`|RC-2, claim activation \| gated by `OPEN_CHARACTERIZATION_FLAGS_BLOCKING_ACTIVATION_NOT_BUILD`/i,
+);
 
 console.log("NCS submission-support disablement test passed.");

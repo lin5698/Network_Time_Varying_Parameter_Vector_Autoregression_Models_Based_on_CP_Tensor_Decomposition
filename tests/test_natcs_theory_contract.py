@@ -131,6 +131,34 @@ class NatcsTheoryContractTests(unittest.TestCase):
         rhs = np.sqrt(sum(np.linalg.norm(block, ord=2) ** 2 for block in blocks))
         self.assertLessEqual(lhs, rhs + 1e-12)
 
+    def test_finite_horizon_response_transfer_bound(self):
+        rng = np.random.default_rng(97)
+        n = 3
+        h_horizon = 6
+        c_true = rng.normal(scale=0.1, size=(n, n))
+        c_hat = c_true + rng.normal(scale=0.01, size=(n, n))
+        j_map = np.eye(n)
+        shock = rng.normal(size=(n, 1))
+        shock = shock / np.linalg.norm(shock, ord=2)
+        k_bound = max(
+            max(np.linalg.norm(np.linalg.matrix_power(c_true, r), ord=2) for r in range(h_horizon + 1)),
+            max(np.linalg.norm(np.linalg.matrix_power(c_hat, r), ord=2) for r in range(h_horizon + 1)),
+        )
+        k_bound = max(k_bound, 1.0)
+        l_s = float(np.linalg.norm(shock, ord=2))
+        companion_error = np.linalg.norm(c_hat - c_true, ord=2)
+
+        summed_response_error = sum(
+            np.linalg.norm(
+                j_map @ np.linalg.matrix_power(c_hat, h) @ j_map.T @ shock
+                - j_map @ np.linalg.matrix_power(c_true, h) @ j_map.T @ shock,
+                ord=2,
+            )
+            for h in range(1, h_horizon + 1)
+        )
+        declared_bound = l_s * k_bound**2 * (h_horizon * (h_horizon + 1) / 2) * companion_error
+        self.assertLessEqual(summed_response_error, declared_bound + 1e-12)
+
     def test_finite_telescoping_identity(self):
         rng = np.random.default_rng(41)
         c = rng.normal(scale=0.1, size=(4, 4))

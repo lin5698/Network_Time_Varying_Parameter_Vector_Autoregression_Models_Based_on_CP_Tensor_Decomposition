@@ -1,0 +1,27 @@
+{
+  "receipt_id": "REC-P3_DOWNSTREAM_REBUILD_BLOCKED_V1_20260829",
+  "date": "2026-08-29",
+  "completed": [
+    "evidence_build",
+    "manuscript_build",
+    "reviewer_archive",
+    "submission_materials",
+    "upload_freeze_manifest"
+  ],
+  "final_gate": {
+    "status": "FAIL",
+    "passes": 218,
+    "release_safety_blockers": 0,
+    "release_safety_warnings": 1
+  },
+  "warning": {
+    "kind": "private_absolute_path",
+    "file": "output/reviewer_archive/natcs_reviewer_archive/code/scripts/experiments/test_analyze_cal_e02_128.py"
+  },
+  "open_markers": true,
+  "promotion_authorization": "NOT_GRANTED",
+  "empirical_claim_activation": "NOT_ACTIVATED",
+  "upload_freeze_conclusion": "NOT_ISSUED",
+  "scientific_rerun": false,
+  "next_action": "authorized_archive_sanitization_then_full_regeneration"
+}

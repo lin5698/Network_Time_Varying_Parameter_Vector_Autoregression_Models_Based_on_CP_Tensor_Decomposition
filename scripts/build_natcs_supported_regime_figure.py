@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import json
 import math
 import re
 from dataclasses import dataclass
@@ -14,7 +15,7 @@ from matplotlib.ticker import FixedLocator, FuncFormatter
 
 ROOT = Path(__file__).resolve().parents[1]
 SUMMARY_PATH = ROOT / "output" / "natcs_evidence" / "table1_simulation_benchmark.csv"
-RAW_SUMMARY_PATH = ROOT / "output" / "natcs_benchmarks" / "benchmark_summary.csv"
+RAW_SUMMARY_PATH = ROOT / json.loads((ROOT / "manuscript_src/natcs/controlled_benchmark_contract.json").read_text())["released_artifacts"]["summary"]
 OUT_BASENAME = ROOT / "output" / "natcs_assets" / "figure3_natcs_supported_regime"
 
 WARM = "#C85A3A"
@@ -73,18 +74,22 @@ def parse_interval(value: str) -> Interval:
 
 
 def load_controlled_rows() -> dict[tuple[str, str], dict[str, Interval]]:
-    with SUMMARY_PATH.open(newline="", encoding="utf8") as handle:
+    with RAW_SUMMARY_PATH.open(newline="", encoding="utf8") as handle:
         rows = list(csv.DictReader(handle))
-    selected: dict[tuple[str, str], dict[str, Interval]] = {}
-    for display_scenario, source_scenario in SCENARIOS.items():
-        for method in METHODS:
-            matches = [row for row in rows if row["Scenario"] == source_scenario and row["Method"] == method]
+    selected = {}
+    for scenario, source_scenario in {"N=15": "scale_n15", "N=30": "scale_n30"}.items():
+        for method, source_method in {"CP-network": "cp_network", "Local rolling": "local_network"}.items():
+            matches = [row for row in rows if row["scenario"] == source_scenario and row["method"] == source_method]
             if len(matches) != 1:
-                raise ValueError(f"Expected one released row for {source_scenario!r} and {method!r}")
+                raise ValueError(f"Expected one summary row for {source_scenario} and {source_method}")
             row = matches[0]
-            selected[(display_scenario, method)] = {
-                "operator": parse_interval(row["Effective-operator error"]),
-                "response": parse_interval(row["GIRF error"]),
+            selected[(scenario, method)] = {
+                label: Interval(*(float(row[f"{field}_{stat}"]) for stat in ("median", "q25", "q75")))
+                for label, field in (
+                    ("operator", "coef_error"),
+                    ("response", "girf_error"),
+                    ("frozen", "frozen_counterfactual_error"),
+                )
             }
     return selected
 
@@ -105,6 +110,7 @@ def load_raw_controlled_values() -> dict[tuple[str, str, str], float]:
                 raise ValueError(f"Figure 3 requires 20 replications for {scenario} and {method}; found {replications}")
             raw_values[(scenario, method, "operator")] = float(matches[0]["coef_error_median"])
             raw_values[(scenario, method, "response")] = float(matches[0]["girf_error_median"])
+            raw_values[(scenario, method, "frozen")] = float(matches[0]["frozen_counterfactual_error_median"])
     if not all(math.isfinite(value) and value > 0 for value in raw_values.values()):
         raise ValueError("Figure 3 raw medians must be finite and positive")
     return raw_values
@@ -269,31 +275,31 @@ def build_figure() -> plt.Figure:
     canvas.axis("off")
 
     add_text(canvas, 0.018, 0.965, "a", size=8.5, weight="bold")
-    add_text(canvas, 0.047, 0.965, "Controlled operator recovery", size=8.8, weight="bold")
+    add_text(canvas, 0.047, 0.965, "Frozen-topology response error", size=8.8, weight="bold")
     add_text(canvas, 0.047, 0.925, "Separated reconstruction versus unrestricted local rolling", size=5.9, color=MID)
     add_text(canvas, 0.592, 0.965, "b", size=8.5, weight="bold")
-    add_text(canvas, 0.622, 0.965, "Matched response recovery", size=8.3, weight="bold")
-    add_text(canvas, 0.622, 0.925, "Same scales, endpoint and replications", size=5.9, color=MID)
+    add_text(canvas, 0.622, 0.965, "Unscaled operator error", size=8.3, weight="bold")
+    add_text(canvas, 0.622, 0.925, "Observed-topology endpoint", size=5.9, color=MID)
 
     ax_a = fig.add_axes((0.075, 0.485, 0.445, 0.345))
     draw_metric_panel(
         ax_a,
         rows,
         raw_values,
-        metric="operator",
-        xlim=(20, 2000),
-        ticks=(30, 100, 300, 1000),
-        xlabel="effective-operator error (log scale; lower is better)",
+        metric="frozen",
+        xlim=(0.10, 0.60),
+        ticks=(0.12, 0.20, 0.30, 0.50),
+        xlabel="Frozen-topology response error (log scale; lower is better)",
     )
     ax_b = fig.add_axes((0.650, 0.485, 0.305, 0.345))
     draw_metric_panel(
         ax_b,
         rows,
         raw_values,
-        metric="response",
-        xlim=(0.035, 0.60),
-        ticks=(0.05, 0.10, 0.20, 0.50),
-        xlabel="Response error (log scale; lower is better)",
+        metric="operator",
+        xlim=(20, 2000),
+        ticks=(30, 100, 300, 1000),
+        xlabel="Effective-operator error (log scale)",
     )
 
     canvas.scatter([0.245], [0.875], s=22, color=WARM, edgecolors=WHITE, linewidths=0.45, zorder=6)

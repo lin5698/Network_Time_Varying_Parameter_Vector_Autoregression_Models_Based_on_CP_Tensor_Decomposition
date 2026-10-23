@@ -1873,24 +1873,12 @@ function checkMainFigure3QualificationScope() {
 }
 
 function buildWithoutEmpiricalPromotionMode() {
-  // Mirrors requireReleaseableNatcsEvidence dual mode (author decision
-  // release_mode_fork, 2026-08-26): both audits PASS under value-audited
-  // reason codes with remaining_conditions on record.
+  // RC-1/RC-2 activation is recorded in the author decision receipt.
   try {
-    const pca = JSON.parse(readText(PAPER_CLAIM_AUDIT));
-    const eia = JSON.parse(readText(EMPIRICAL_IMPLEMENTATION_AUDIT));
-    return (
-      pca?.verdict === "PASS" &&
-      eia?.verdict === "PASS" &&
-      String(pca?.reason_code || "").startsWith("rcep_nyc_value_audited") &&
-      String(eia?.reason_code || "").startsWith("rcep_nyc_value_audited") &&
-      Array.isArray(pca?.remaining_conditions) &&
-      pca.remaining_conditions.length > 0 &&
-      Array.isArray(eia?.remaining_conditions) &&
-      eia.remaining_conditions.length > 0
-    );
+    const decision = JSON.parse(readText(path.join(ROOT, "refine-logs", "REC-P3_RC1_RC2_ACTIVATION_V1_20260830.json")));
+    return decision?.rc1_manuscript_promotion !== "ACTIVATED" || decision?.rc2_empirical_claim_activation !== "ACTIVATED_WITH_LIMITATIONS";
   } catch {
-    return false;
+    return true;
   }
 }
 

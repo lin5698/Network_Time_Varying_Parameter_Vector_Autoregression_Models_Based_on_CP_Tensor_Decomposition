@@ -1,0 +1,58 @@
+{
+  "record_id": "REC-P5_SUBMISSION_READINESS_REVIEW_V1_20260831",
+  "date": "2026-08-31",
+  "scope": "submission_readiness_review",
+  "scientific_experiments_rerun": false,
+  "git_snapshot_created": false,
+  "rebuild": {
+    "status": "PASS",
+    "targets": [
+      "natcs-evidence",
+      "natcs-manuscript",
+      "natcs-reviewer-archive",
+      "natcs-submission-materials",
+      "natcs-upload-freeze-manifest"
+    ],
+    "submission_inventory_keys": 27,
+    "upload_freeze_artifacts": 11,
+    "reviewer_archive_files": 342,
+    "artifact_timestamp": "2026-08-31T00:33:38+0800"
+  },
+  "routing_checks": {
+    "main_and_supplementary_pdf_docx_tex_same_timestamp": true,
+    "figure_source_zip_present": true,
+    "reviewer_archive_zip_present": true,
+    "inventory_freeze_cover_metadata_declarations_references_routed": true,
+    "final_author_decision_sheet_upload_day_entry_point": true,
+    "external_markers_visible": true,
+    "unsafe_upload_contents_detected": false
+  },
+  "verification": {
+    "final_gates": {
+      "status": "PASS_WITH_WARNINGS_ALLOWED",
+      "passes": 225,
+      "errors": 0
+    },
+    "release_safety": {
+      "blockers": 0,
+      "warnings": 0,
+      "files_scanned": 425
+    },
+    "focused_tests": {
+      "passed": 8,
+      "failed": 0
+    },
+    "git_diff_check": "PASS"
+  },
+  "open_external_gates": {
+    "author_decision_markers": 4,
+    "fig2_portal_markers": 5,
+    "raw_source_access_markers": 42,
+    "public_release_markers": 25
+  },
+  "release_posture": {
+    "RC-1": "ACTIVATED",
+    "RC-2": "ACTIVATED_WITH_LIMITATIONS",
+    "RCEP_F3": "not_identified"
+  }
+}

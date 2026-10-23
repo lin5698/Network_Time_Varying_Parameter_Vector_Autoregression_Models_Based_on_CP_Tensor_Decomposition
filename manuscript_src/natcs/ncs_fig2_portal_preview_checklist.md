@@ -6,8 +6,8 @@ Status: **no portal action is authorised** under this checklist. No journal port
 
 The 2026-08-26 audit chain moved the controlling records to verdict PASS (reason codes `rcep_nyc_value_audited_no_active_stale_citations` and `rcep_nyc_value_audited_downstream_build_authorized`). That authorization releases the downstream rebuild chain alone. It grants none of the three things a portal preview would require:
 
-1. Manuscript-promotion authorization remains NOT_GRANTED (RC-1), so there is no promoted manuscript version to preview.
-2. Empirical claim activation stays gated behind `OPEN_CHARACTERIZATION_FLAGS_BLOCKING_ACTIVATION_NOT_BUILD` (RC-2), so no rebuilt application evidence exists to appear beside the certificate figure.
+1. Manuscript-promotion authorization is `ACTIVATED` (RC-1); the RCEP and NYC descriptive sections are promoted with explicit limitations, but no portal preview has been observed.
+2. Empirical claim activation is `ACTIVATED_WITH_LIMITATIONS` (RC-2); RCEP F3 remains `not_identified` and characterization flags remain disclosed, so this status does not close the portal-preview gate.
 3. Post-regeneration review (RC-3) has yet to run on any rebuilt package, so no reviewed artifact set exists to carry into an upload event.
 
 A disabled checklist is the correct steady state while any of these conditions holds.
